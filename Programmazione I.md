@@ -332,7 +332,6 @@ int square(int x){
 Questo metodo è adatto al caso dove il valore del parametro debba essere letto, *ma non al caso dove debba essere scritto*
 
 I valori vengono copiati all'interno della funzione, ma non vengono scritti, `return` ritorna un unico valore.
-
 ### *Per riferimento*
 È possibile dichiarare (e definire) funzioni con parametri di tipo *puntatore*
 ```c
@@ -368,7 +367,7 @@ int voti[5];
 Indicizzazione da 0 a N-1
 ## *Assegnazione di valore all'elemento i-esimo*
 `<nome array>[<indice>] = <valore>`
-o tramite valori noti:
+o tramite valori noti: 
 ```c
 int voti[5] = {18, 19, 20, 21, 22};
 int voti[] = {18, 19, 20, 21, 22};

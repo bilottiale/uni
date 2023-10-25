@@ -19,10 +19,8 @@ reto.buzano@unito.it
 
 # Numeri reali
 [[Matematica Discreta#Insiemistica|Vedi insiemi]]
-
 ## Costruzione dei numeri reali
 $Def:$ *Successione di Cauchy*: una successione $(a_{n})_{n}$ è di Cauchy se per ogni $\epsilon > 0$ esiste un intero positivo $N$ tale che ogni coppia di numeri interi positivi $n, m > N$ si ha che $|x_{n} - x_{m}| < \epsilon$.
-
 ## Criterio di convergenza di Cauchy
 Il **criterio di convergenza di Cauchy** asserisce che una successione $\{a_{n}\}$di numeri reali ha limite finito se e solo se è [di Cauchy](https://it.wikipedia.org/wiki/Successione_di_Cauchy "Successione di Cauchy"). In altre parole, se e solo se per ogni $\epsilon > 0$ esiste $N$ tale che $|a_{n} - a_{m} | < \epsilon$ per ogni $n, m > N$.
 
