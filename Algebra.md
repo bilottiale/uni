@@ -16,20 +16,17 @@ reto.buzano@unito.it
 [[Matematica Discreta]]
 # Indice
 [[Algebra#Numeri reali|Numeri reali]]
-
 # Numeri reali
 [[Matematica Discreta#Insiemistica|Vedi insiemi]]
 ## Costruzione dei numeri reali
 $Def:$ *Successione di Cauchy*: una successione $(a_{n})_{n}$ è di Cauchy se per ogni $\epsilon > 0$ esiste un intero positivo $N$ tale che ogni coppia di numeri interi positivi $n, m > N$ si ha che $|x_{n} - x_{m}| < \epsilon$.
 ## Criterio di convergenza di Cauchy
 Il **criterio di convergenza di Cauchy** asserisce che una successione $\{a_{n}\}$di numeri reali ha limite finito se e solo se è [di Cauchy](https://it.wikipedia.org/wiki/Successione_di_Cauchy "Successione di Cauchy"). In altre parole, se e solo se per ogni $\epsilon > 0$ esiste $N$ tale che $|a_{n} - a_{m} | < \epsilon$ per ogni $n, m > N$.
-
 #Esempio 1.5.5
 
 $$a_{n} = (1 + \frac{1}{n})^{n} \space \text{con} \space n \geq 1$$
 $$a_{1} = 2 \quad a_{2} = \left(\frac{3}{2}^{2}\right) = \frac{9}{4} = 2,25 \quad a_{3} = (\frac{4}{3})^{3} = \frac{64}{27} = 2,\overline{370}$$
 È una [[Algebra#Costruzione dei numeri reali|successione di Cauchy]] che non converge a un numero razionale
-
 Con questa interpretazione, un numero reale che abbia sviluppo decimale:
 $$723, 1291851\dots$$
 Corrisponde ad una [[Algebra#Costruzione dei numeri reali|successione di Cauchy]] $(a_{n})$ di numeri razionali.
@@ -40,7 +37,6 @@ $$a_{4} = 723,1291$$
 $$\dots$$
 $Def:$ Siano $a, b$ due numeri reali rappresentati da due [[Algebra#Costruzione dei numeri reali|successioni di Cauchy]] $(a_{n})$ e $(b_{n})$ di numeri razionali
 La *somma* $a + b$ ed il *prodotto* $a \cdot b$ sono le [[Algebra#Costruzione dei numeri reali|successioni di Cauchy]] $(a_{n} + b_{n})$ e $(a_{n}b_{n})$.
-
 ## Numeri irrazionali
 Esistono numeri in $\mathbb{R}\setminus\mathbb{Q}$ detti [[Algebra#Numeri irrazionali|numeri irrazionali]].
 

@@ -1,20 +1,16 @@
 [[README]]
 ## Indice
 [[Fondamenti dell'informatica#Base 2, base 10...|Base 2, base 10...]]
-
 # Base 2, base 10...
 Se un oggetto può essere scelto in $n$ modi, e un secondo oggetto può essere scelto in $k$ modi, ci sono $n \cdot k$ modi per scegliere gli oggetti a coppie:
 $$\overbrace{\overbrace{* \quad * \quad * \quad \dots}^{*\quad\textcolor{red}{\text{k modi}}} \quad \overbrace{* \quad * \quad * \quad \dots}^{*} \quad \overbrace{* \quad * \quad * \quad \dots}^{*} \quad * \quad \dots}^{\textcolor{red}{\text{n modi}}}$$
 
 ![tree](https://www.researchgate.net/profile/Do-Dong/publication/235903176/figure/fig1/AS:670050021290010@1536763782826/The-full-binary-tree-of-depth-m-the-root-is-at-level-0-leaves-are-at-level-m-Branches.png)
-
 $2 \cdot \#$ sequenze di bit di lunghezza $n$
-
 #Esempio
 Riga 1 -> 0, 1 -> 1 bit -> 2 coppie/valori (0 e 1)
 Riga 2 -> 00, 01, 10, 11 -> 2 bit -> 4 coppie/valori
 Riga 3 -> 000, 001, 010, 011, 100, 101, 110, 111 -> 4 bit -> 8 coppie/valori
-
 Ogni riga raddoppia il valore della riga precedente.
 
 | Sequenza di bit | # sequenza di bit di quella lunghezza       |
@@ -50,7 +46,6 @@ $$16 \cdot 1 + 8 \cdot 0 + 4 \cdot 1 + 2 \cdot 1 + 1 \cdot 1 = 23_{10}$$
 * Cifre: $0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F$
 *Base 8* (Ottale)
 * Cifre: $0,1,2,3,4,5,6,7$
-
 ## Excess notation
 Utilizzata in sequenze di bit di lunghezza fissata
 $\overbrace{0}^{positivo} \quad \overbrace{111}^{eccesso di \ 4 \ (3 + 4 = 7)} \quad \overbrace{101.0}^{virgola \ data \ dall'esponente}$
@@ -58,7 +53,6 @@ $\overbrace{0}^{positivo} \quad \overbrace{111}^{eccesso di \ 4 \ (3 + 4 = 7)} \
 ![[Pasted image 20230928114024.png]]
 #Esempio 
 ![[Pasted image 20230928114304.png]]
-
 ## Esercizi
 #Esercizio 
 $2\frac{3}{4} \rightarrow 10.01 \rightarrow 2,75_{10} \rightarrow 01101011$
@@ -68,23 +62,20 @@ $5\frac{1}{4} \rightarrow 101.01 \rightarrow 5,25 \rightarrow 01111010(1)$
 $01001010 \rightarrow + \ 0.1010 \rightarrow \frac{1}{2} + \frac{1}{8} = \frac{5}{8}$
 $01101101 \rightarrow + \ 11.01 \rightarrow 3\frac{1}{4}$
 $11011100 \rightarrow - \ 1.100 \rightarrow - \ 1\frac{1}{2}$
-
 # Logica
 $(3 < 5) \land (5 \ dispari \lor 3 \ pari)$
 Dove $3 < 5$, $5 \ dispari$ e $3 \ pari$ sono *proposizioni*,
 e $\land$ (and) e $\lor$ (or) *connettivi proposizionali*.
 L'insieme degli elementi è una *formula proposizionale*
-
 ## Tabelle di verità
 *XOR*
 
 | $p$ | $q$ | $(p \lor q) \land \neg \ (p \land q)$ |
-| --- | --- | ----------------------------------- |
-| T   | T   | F                                   |
-| T   | F   | T                                   |
-| T   | F   | T                                   |
-| F   | F   | F                                   |
-
+| --- | --- | ------------------------------------- |
+| T   | T   | F                                     |
+| T   | F   | T                                     |
+| T   | F   | T                                     |
+| F   | F   | F                                     |
 ## Implicazione logica
 $A \to B$
 - $A$ è *condizione sufficiente* per $B$;
@@ -96,7 +87,6 @@ $A \to B$
 | 0   | 1   | 1         | 0         | 0                     |
 | 1   | 0   | 0         | 1         | 0                     |
 | 1   | 1   | 1         | 1         | 1                     |
-
 ## Tautologia
 Una formula proposizionale $A$ è una *tautologia*, o *logicamente valida*, se *per ogni* assegnazioni di valori di verità alle variabili proposizionali che contiene, il suo valore è $T$ (True), e si scrive:
 $$\models A$$
@@ -105,16 +95,12 @@ $$\models A$$
 * $\models p \to (q \to p)$
 * $\models (p \to q) \to (\neg \ q \to \neg \ p)$
 
-\* $\underbrace{p}_{antecedente} \to \underbrace{q}_{conseguente}$ 
-
+$\underbrace{p}_{antecedente} \to \underbrace{q}_{conseguente}$ 
 ## Dimostrazioni
 [Vari teoremi e tipi di dimostrazione](http://www.integr-abile.unito.it/Libri/Logica/1.1%20-%20Teoremi%20e%20Dimostrazioni.html#dimostrazione-diretta)
-
 ## Il metodo delle tavole
 [Il metodo delle tavole, Moodle](https://informatica.i-learn.unito.it/pluginfile.php/386734/mod_resource/content/1/Il%20metodo%20delle%20tavole.pdf)
-
 ***!TODO***
-
 $A \rightarrow B$
 Come si dimostra ciò?
 - *Diretta*:
@@ -141,7 +127,7 @@ C \\
 \therefore A \\
 \end{alignat}
 $$
-## *Da frase a funzione*
+## Da frase a funzione
 Fissiamo un universo di discordo $U$ che contiene tutto quello di cui vorremmo poter parlare
 - Numeri naturali, interi, reali, ...
 - Individui come: Cesare, Cleopatra, Bruto, Topolino, Pippo, ...
@@ -153,12 +139,11 @@ La prima frase si può anche scrivere:
 - ___ ama Cleopatra --> ___ ama ___
 Dove ___ sono gli *argomenti*
 Usiamo variabili: $x$ ama $y$ --> $A(x,y)$
-## *Insieme di Russell*
+## Insieme di Russell
 $R = \{ x|x \in x \} = R \in R$ non è ne vera ne falsa.
 - Se fosse *vera*: $R \notin R$
 - Se fosse *falsa*: $R \notin R$ (falsa) quindi $R \in R$ (vera) portando ad una *contraddizione*
-
-# *Quantificatori*
+# Quantificatori
 $R(x,y)$
 $\forall x, R(x,y)$ *Quantificatore universale* ($\forall$)
 $\exists x, R(x,y)$ *Quantificatore esistenzaiale* ($\exists$)
@@ -184,8 +169,7 @@ $P(x) = x$ è protestante
 $\forall x (S(x)\rightarrow P(x))$
 *Solo* gli svedesi sono protestanti
 $\forall x (P(x) \rightarrow S(x))$
-
-## *Dimostrazione diretta*
+## Dimostrazione diretta
 Per dimostrare una proposizione della forma
 $\forall x (P(x) \rightarrow Q(x))$
 Dove $P(x), Q(x)$ sono funzioni proposizionali
@@ -219,25 +203,21 @@ Per assurdo: $A\subseteq B \rightarrow A \cup B=B$
 Assumo $A\subseteq B$, assumo anche $A\cup B \neq B$. Quindi c'è un elemento $a$ di $A$ che non è elemento di $B$, cioè $a\notin B$, ma per ipotesi $a\subseteq B$ quindi $a \in B$.
 
 ---
-## *Riepilogo*
+## Riepilogo
 - Logica proposizionale
 	- $A \lor B, A \land B, \dots$
 	- Sintassi: variabili proposizionali, connettivi($\lor,\land,\neg,\rightarrow,\leftrightarrow$)
 	- Semantica: tavole di verità, conseguenti logici($\vdash, \vDash$), tavole semantiche(alberi), inferenza logica
-
 ### !TODO SCHEMA
-
 $C \rightarrow A, C \rightarrow B, C \vdash A \land B$
 
 $\begin{rcases} 1. \ C \rightarrow A \\ 2. \ C \rightarrow B \\ 3. \ C \end{rcases}Premesse$
 $4. \ A$ da 1,3 per *modus ponens*
 $5. \ B$ da 2,3 per *modus ponens*
 $6. \ A\land B$ da 4,5 per $\land$
-
-*Modus ponens*
+***Modus ponens***
 $\begin{rcases} p \\ p\rightarrow q \end{rcases} \ \text{Premesse}$
 $\therefore q$ Conclusione
-
 Da questo possiamo ricavare:
 $C$
 $C \rightarrow A$
@@ -246,15 +226,79 @@ $\therefore A$
 $C$
 $C \rightarrow B$
 $\therefore B$
-## *Ripasso dimostrazioni*
+## Ripasso dimostrazioni
 *Diretta*:
 $A \rightarrow B$ o anche $\forall x(A\in B)$
 *Assurdo*:
 Per dimostrare formule della forma:
 $\textcolor{red}{\neg A}$ Assumendo $\textcolor{lightgreen}{A}$ per ottenere una contraddizione
 $\textcolor{lightgreen}{A}$ Assumendo $\textcolor{red}{\neg A}$ per ottenere una contraddizione
-
-
-
-
-
+# Anatomia di una formula della logica dei predicati
+$\underbrace{x}_{variabile} = \underbrace{5}_{proposizione}$
+$x$ è pari
+$x$ è rosso
+$x$ ama $y=R(x,y)$
+Maria ama $y=R(\text{Maria},y)=P(y)$
+- $x$ è pari
+	- $\exists y x = 2 \cdot y \quad \forall x \in \mathbb{Z}$
+- Tutti gli uomini sono mortali
+	- $\forall x (D(x)\to M(x))$
+- Ogni donna ha ballato con qualche uomo
+	- $\forall x(D(x)\to \exists y(U(x)\land B(x,y)))$
+- C'è un uomo con il quale ogni donna ha ballato
+	- $\exists x(U(x)\land \forall y(D(y)\to B(x,y)))$
+- Tutti amano qualcuno
+	- $\forall x\exists y A(x,y)$
+- Tutti sono amati da qualcuno
+	- $\forall x\exists y A(y,x)$
+- C'è qualcuno che ama tutti
+	- $\exists y\forall x A(y,x)$
+Come rendere falsa una proposizione della forma:
+$$\overbrace{\forall x \underbrace{P(x)}}_{x \text{  è libera, non è vincolata}}^{x\text{ è vincolata al quantificatore}(\forall, \exists)}$$ $\neg(\forall x P(x))\equiv \exists x\neg P(x)$
+#Esempio 
+Per ogni $m$ ed ogni $n$, se $m$ ed $n$ sono dispari, allora $m+n$ è pari.
+$$\forall m\forall n((\exists k|m=2*k+1)\land(\exists u|n=2*u+1)\to(\exists v|m+n=2v))$$
+$$\forall m\forall n(A\land B\to C)$$
+*Dimostrazione diretta*:
+Come dimostro che per ogni $m$ e ogni $n$ qualcosa è vero?
+Prendiamo elementi generici, $a$ e $b$, dell'universo di discorso.
+Assumiamo che:
+- $\exists w|a=2*w+1$ --> $a$ dispari
+- $\exists z|b=2*z+1$ --> $b$ dispari
+Bisogna dimostrare che $a+b$ è pari facendo vedere che, per $a+b=2d$, $a+b$ è pari.
+Allora: $a+b=(2*w+1)+(2*z+1)=2*(w+z+1)$
+$$a+b \text{ è pari}$$
+### Altre dimostrazioni
+Dimostra che:
+	Per ogni intero $n$, se $n^{2}$ è pari allora $n$ è pari
+Dimostrazione: La proposizione ha la forma:
+$$\forall n(n^{2}\text{ pari } \to n \text{ pari})$$
+*Dimostrazione diretta*:
+Sia $n$ un generico intero.
+Assumiamo $n^{2}$ pari, dobbiamo concludere $n$ pari.
+### !TODO SCHEMA
+---
+$$min(a,b)=\begin{cases}  a &\mbox{se }a\leq b\\  b &\mbox{se }a>b\end{cases}$$
+Per ogni $a,b$ e $x$
+$x \leq min(a,b)\to (x\leq a\land x\leq b)$
+Dimostrazione:
+Ci sono due casi:
+- $a\leq b$: quindi $a=min(a,b)$
+	- $x\leq a$ per ipotesi, inoltre $x\leq a<b$ per transitività
+- $a>b$: quindi $min(a,b)=b$
+	- Simmetrica alla precedente
+---
+Se due interi hanno opposta parità, la loro somma è dispari.
+$$\forall x\forall y(\text{se }x,y\text{ hanno opposta parità, allora }x+y\text{ è dispari})$$
+Ci sono due casi:
+- $x$ dispari, $y$ pari:
+	- $x=2a+1$, $y=2b$
+	- $x+y=2(a+b)+1$ che ha forma $2c+1$ quindi $x+y$ è dispari
+- $x$ pari, $y$ dispari:
+	- Simmetrica alla precedente
+---
+#Esempio 
+Per ciascuna delle seguenti proposizioni, indicare una forma equivalente alla sua *negazione*:
+$$2<5 \to 2\geq 5$$
+$$2<5\text{ e }3>1 \to 2\geq 5\text{ oppure } 3\leq 1$$
+$$1<2\text{ oppure } 3\text{ è pari }\to 1\geq 2\text{ e }3\text{ è dispari}$$

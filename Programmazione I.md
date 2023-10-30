@@ -213,7 +213,7 @@ int main(void){
 	int y = 2;
 }
 ```
-![[Pasted image 20231004161223.png|450]]
+![[Pasted image 20231004161223.png|250]]
 # *If - Else*
 ## Il costrutto *if*
 * Il costrutto di selezione(branch)
@@ -303,7 +303,7 @@ Collocazione *`return`*:
 * L’indirizzo della prima parola del frame è memorizzato nel registro *Frame Pointer (FP)*
 * L’indirizzo dell’utima parola del frame è memorizzato nel registro *Stack Pointer (SP)*
 * Lo stack cresce vero il basso, quindi l’indirizzo SP < indirizzo FP
-![[Pasted image 20231017195746.png|450]]
+![[Pasted image 20231017195746.png|250]]
 *Cosa contiene il frame?*
 - una parola per l’indice della prossima linea di codice da eseguire dopo il ritorno della funzione chiamata (`retl`)
 - una parola per il valore restituito dalla funzione chiamata (`retv`)
@@ -357,7 +357,7 @@ Il passaggio per riferimento è utilizzato in tutti quei casi dove la funzione c
 - L'operatore `*` anteposto ad un nome di puntatore è detto dereferenziazione (*dereferencing*) e produce il *valore della variabile puntatata dal puntatore*
 - `*<nome puntatore a variabile>` è l'inverso di `&<nome variabile>`
 	- `*pX` equivale a `x`
-![[Pasted image 20231024135832.png|450]]
+![[Pasted image 20231024135832.png|350]]
 # *Arrays*
 Gli array sono collezioni di elementi dello stesso tipo allocati in *aree contigue di memoria*
 Un array di N elementi si alloca come `<tipo><noma array>[<numero elementi>]`
@@ -372,6 +372,23 @@ o tramite valori noti:
 int voti[5] = {18, 19, 20, 21, 22};
 int voti[] = {18, 19, 20, 21, 22};
 ```
+### *Accesso tramite indice*
+```c
+#define SIZE_A 5
+int main(void){
+	int voti[SIZE_A];
+
+	for(int i=0; i < SIZE_A; i++){
+		voti[i] = i+18;
+	}
+
+	for(int i=0; i < SIZE_A; i++){
+		printf("%d\t%d", i, voti[i]);
+	}
+}
+```
+![[Pasted image 20231025154011.png|350]]
+## *Bubble sort*
 
 
 
