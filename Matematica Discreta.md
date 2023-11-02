@@ -5,6 +5,11 @@
 ![[MatematicaDiscreta_AMori.pdf]]
 ## Indice
 [[Matematica Discreta#Insiemistica|Insiemistica]]
+[[Matematica Discreta#Funzioni|Funzioni]]
+[[Matematica Discreta#Combinatoria|Combinatoria]]
+[[Matematica Discreta#Matrici e vettori|Matrici]]
+[[Matematica Discreta#Permutazioni|Permutazioni]]
+[[Matematica Discreta#Aritmetica|Aritmetica]]
 # Insiemistica
 Un insieme è una collezione *ben definita*(determinabile se un oggetto appartiene o meno all'insieme) di oggetti detti elementi dell'insieme.
 [[Algebra#Numeri reali|Algebra - Numeri reali]]
@@ -419,7 +424,7 @@ Siano $n$ e $k$ due interi con $0\leq k\leq n$
 Allora $C_{n,k}=C_{n,n-k}$
 #Dimostrazione 
 $C_{n,k}=\frac{n!}{k!(n-k)!}=\frac{n!}{(n-k)!k!}$
-## COefficienti binomiali
+## Coefficienti binomiali
 #Definizione 
 Siano $k,n\in\mathbb{N}$ e $0\leq k\leq n$
 Definiamo *coefficiente binomiale* il numero
@@ -466,7 +471,7 @@ Si dice *combinazione con ripetizione* di ordine $k$ in $A$, la scelta di $k$ el
 Il numero delle combinazioni con ripetizione di ordine $k$ in $A$ è:
 $$C'_{n,k}=\tbinom{k+n-.1}{n-1}=\frac{(k+n-1)!}{(n+1)!k!}$$
 ### Riassunto: Combinazioni
-#### Permutazioni
+#### Le permutazioni
 Scambio dell'ordine degli elementi di una sequenza
 - Semplici $P_{n}=n!$
 - Con ripetizione $P'_{n}=\frac{n!}{\underbrace{r_{1}!r_{2}1\dots r_{n}!}_{\text{n di volte che comprare ogni elemento}}}$
@@ -489,10 +494,393 @@ $$
 $$
 #### Come scegliere cosa usare
 ![[Pasted image 20231029152035.png|450]]
-
-
-
-
-
-# Matrici
+# Matrici e vettori
 [Matrici](https://www.edutecnica.it/matematica/matrici/matrici.htm)
+#Definizione 
+Con *matrice* si definisce un insieme composto da elementi ordinati in $m$righe con $n$ colonne:
+$$A=A_{m\times n}=[a_{ij}]=
+\begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{bmatrix}$$
+Gli elementi $a_{ij}$ possono essere variabili.
+Se abbiamo $n=1$, abbiamo una matrice particolare detta *vettore colonna* o semplicemente *vettore*.
+#### Matrice trasposta
+Data una matrice $A_{m\times n}$ si definisce *matrice trasposta* la matrice ottenuta scambiando le right e le colonne:
+$$A^{\top}_{n\times n}=
+\begin{bmatrix}
+a_{11} & a_{21} & \cdots & a_{m1} \\
+a_{12} & a_{22} & \cdots & a_{m2} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{bmatrix}$$
+Vale $(A^{\top})^{\top}=A$.
+#### Matrice quadrata
+Una matrice si dice *quadra* se $m=n$. Anche la trasposta è quadra.
+Una *matrice quadra* $n\times n$ si dice *triangolare superiore* se $a_{ij}=0$ per $i>j$
+$$A_{n\times n}=
+\begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+0 & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & a_{nn}
+\end{bmatrix}$$
+Una *matrice quadrata* è *triangolare inferiore*, la sua trasposta è *triangolare inferiore*
+$$A^{\top}_{n\times n}=
+\begin{bmatrix}
+a_{11} & 0 & \cdots & 0 \\
+a_{12} & a_{22} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{1n} & a_{2n} & \cdots & a_{nn}
+\end{bmatrix}$$
+#### Matrice diagonale
+Una matrice si dice *diagonale* se $a_{ij}=0$ per $i\neq j$
+$$A_{n\times m}= diag(a_{i})=
+\begin{bmatrix}
+a_{1} & 0 & \cdots & 0 \\
+0 & a_{2} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & a_{n}
+\end{bmatrix}$$
+#### Matrice simmetrica
+Una *matrice diagonale* è sempre *simmetrica*.
+$$A_{n\times m}=
+\begin{bmatrix}
+0 & a_{12} & \cdots & a_{1n} \\
+-a_{12} & 0 & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+-a_{1n} & -a_{2n} & \cdots & 0
+\end{bmatrix}$$
+In una matrice *antisimmetrica* vi sono al più $\frac{n(n-1)}{2}$ elementi indipendenti e non nulli.
+#### Matrice identità
+Una matrice si dice *identità* quando gli elementi sulla diagonale sono tutti uguale a $1$.
+$$I=\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0& 1
+\end{bmatrix}$$
+La *matrice identità* è l'elemento neutro del prodotto tra matrici, cioè: $I_{n\times x}\times A_{n\times m}=A_{n\times m}\times I_{m\times m}=A_{n\times m}$
+
+## Operazioni sulle matrici
+### Spazio vettoriale
+#### !TODO
+### Moltiplicazione per uno scalare
+- Moltiplicare ogni elemento per lo scalare.
+- Sia $c^{*}=3$ lo scalare.
+$3^{*}A = B$
+$$
+3^{*}\begin{bmatrix}
+2 & 1 \\
+3 & 2 \\
+-2 & 2
+\end{bmatrix}
+=
+\begin{bmatrix}
+6 & 3 \\
+9 & 6 \\
+-6 & 6
+\end{bmatrix}
+$$
+### Addizione e Sottrazione di matrici
+- Aggiungere ciascun elemento della prima matrice all'elemento corrispondente della seconda matrice.
+- Per operare le matrici devono avere stesse dimensioni.
+$$
+\begin{bmatrix}
+2 & 1 \\
+3 & 2 \\
+-2 & 2
+\end{bmatrix}
++
+\begin{bmatrix}
+1 & 1 \\
+4 & 2 \\
+-2 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+3 & 2 \\
+7 & 4 \\
+-4 & 3
+\end{bmatrix}
+$$
+*Commutativa*: $A+B=B+A$
+*Assciativa*: $A+(B+C)=(A+B)+C$
+### Moltiplicazione tra matrici
+- La prima matrice deve avere un numero di colonne pari al numero di righe della seconda;
+- Ciascun elemento della matrice prodotto si ottiene dal prodotto scalare tra ciascuna riga della prima matrice per ciascuna colonna della seconda: $c_{ik}=\sum_{j}d_{ij}\times a_{jk}$;
+- La matrice prodotto ha un numero di righe pari alle righe della prima matrice e un numero di colonne pari alle colonne della seconda
+$$
+\begin{bmatrix}
+2 & 1 & 3 \\
+-2 & 2 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+2 & 1 \\
+3 & 2 \\
+-2 & 2
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 10 \\
+0 & 4
+\end{bmatrix}
+$$
+### Matrice Unità
+- È una matrice i cui elemento sono tutti $1$. Di solito si indica con $U$ o $1$.
+$$U=\begin{bmatrix}
+1 & 1 \\
+1 & 1 \\
+1 & 1
+\end{bmatrix}$$
+## Determinante di una Matrice
+Il *determinante* di una *matrice quadra* si indica con:
+$$\det(A)=|A|$$
+### Determinante di matrici 2x2
+$$\det \begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}
+= [a \cdot d]-[b \cdot c]$$
+### Determinante di matrici 3x3 - Regola di Sarrus
+$$\det \begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33} 
+\end{bmatrix}=
+$$
+$$=a_{11}\cdot a_{22}\cdot a_{33} + \cdot a_{12}\cdot a_{23}\cdot a_{31}+a_{13}\cdot a_{21}\cdot a_{32}-(a_{13}\cdot a_{22}\cdot a_{31}+a_{12}\cdot a_{21}\cdot a_{33}+a_{11}\cdot a_{23}\cdot a_{32})$$
+A memoria è impossibile, quindi basta riscrivere la matrice accostano la matrice stessa sulla destra:
+$$\begin{matrix}
+a_{11} & a_{12} & a_{13} & a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} & a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33} & a_{31} & a_{32} & a_{33}
+\end{matrix}$$
+Ora:
+1. Sommare i prodotti lungo le prime 3 diagonali complete da sinistra verso destra.
+2. Sommare i prodotto lungo le ultime tre antidiagonali complete percorse da destra verso sinistra.
+3. Calcolare la differenza tra i risultati ottenuti da 1. e 2.
+![[Pasted image 20231031150902.png|450]]
+## Determinante di matrici quadrate di ordine qualsiasi - Teorema di Laplace
+Il *teorema di Laplace* permette di calcolare il determinante di una matrice quadrata attraverso formule *ricorsive*, dette *sviluppi di Laplace*, che possono essere applicate per righe o per colonne.
+Consideriamo una matrice di ordine $n$:
+$$
+A_{n\times n}=
+\begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{bmatrix}
+$$
+denotiamo con $A_{ij}$ la matrice che si ottiene *eliminando* la riga $i$ e la colonna $j$ della matrice $A$, e con $\det(A_{ij})$ il suo determinante.
+Fissa to un qualsiasi elemento $a_{ij}\in A$, chiamiamo *complemento algebrico*(o *cofattore*) di $a_{ij}$ il numero:
+$$(-1)^{i+j}\cdot \det(A_{ij})$$
+### Sviluppo di Laplace per righe
+Fissata una qualsiasi riga della matrice $A$, il determinante di $A$ è pari alla somma dei prodotto degli elementi della riga scelta per i rispettivi complementi algebrici:
+$$\det(A)=\displaystyle\sum_{j=1}^{n}[a_{ij}\cdot(-1)^{i+j}\cdot \det(A_{ij})]$$
+Ci si muove lungo la $i$-esima riga.
+### Sviluppo di Laplace per colonne
+Fissata una qualsiasi riga della matrice $A$, il determinante di $A$ è pari alla somma dei prodotto degli elementi della riga scelta per i rispettivi complementi algebrici:
+$$\det(A)=\displaystyle\sum_{i=1}^{n}[a_{ij}\cdot(-1)^{i+j}\cdot \det(A_{ij})]$$
+Ci si muove lungo la $j$-esima colonna.
+
+In base a cosa scegliamo righe o colonne?
+Solitamente si sceglie la riga o colonna con più zeri.
+
+#proprietà 3
+Se $\tilde{A}$ si ottiene da $A$ scambiando tra loro due righe o colonne allora $\det(A)=-\det(A)$
+#proprietà 4
+Se $A$ ha due righe(o colonne) uguali, allora $\det(A)=0$
+#proprietà 5
+Se la matrice $\tilde{A}$ si ottiene da $A$ sostituendo la $i$-esima riga di $A$ con la $i$-esima riga più un multiplo della $k$-esima riga $(k\neq i)$
+$$\tilde{A}_{i}=A_{i}+\lambda \cdot A_{k}\text{ allora }\det(\tilde{A})=\det(A)$$
+Uguale per le colonne.
+### Cofattori di una matrice
+Consideriamo una matrice $A$ di dimensione $n \times n$. I suoi cofattori $cof_{ij}(-1)^{i+j}$ formano la matrice dei cofattori
+$$cof(A)=cof_{ij}$$
+Possiamo riformulare lo *sviluppo di Laplace* come:
+$$\det(A)=\displaystyle\sum_{j=1}^{n}a_{ij}\cdot cof_{ij}\quad \forall i\in\{1,\dots,n\}$$
+$$\det(A)=\displaystyle\sum_{i=1}^{n}a_{ij}\cdot cof_{ij}\quad \forall j\in\{1,\dots,n\}$$
+Utilizzando la #proprietà 5:
+$$0=\displaystyle\sum_{j=1}^{n}a_{ij}\cdot cof_{kj}\quad \forall_{i,k}\in\{1,\dots ,n\}, i\neq k$$
+$$0=\displaystyle\sum_{i=1}^{n}a_{ij}\cdot cof_{ik}\quad \forall_{j,k}\in\{1,\dots ,n\}, j\neq k$$
+## Inversa di una matrice
+Può essere calcolata se la matrice $A$ è quadrata e con determinante diverso da 0: $B:A\times B=1$
+- La *matrice inversa* si indica con $A^{-1}$
+- Si ha quindi $A^{-1}\times A=A\times A^{-1}=1$
+- Per uno scalare: $a^{-1}=\frac{1}{a}$ e $\frac{1}{a}\times a=a\times\frac{1}{a}=1$
+
+---
+##### Il determinante può anche essere calcolato con
+La formula di *Leibniz*:
+$$\det(A):=\displaystyle\sum_{\sigma\in S_{n}}sgn(\sigma)\prod^{n}_{i=1}a_{i,\sigma(i)}$$
+# Permutazioni
+Ricordiamo che le *permutazioni* sono *disposizioni semplici* di $n$ oggetti in un insieme di $n$ oggetti, quindi un *ordinamento* di $n$ oggetti.
+#Esempio 
+se $X=\{a,b,c\}$, i possibili ordinamenti di $X$ sono:
+$abc, acb, bac, bca, cba, cab$
+$D_{n,n}=n!$
+
+Scelti un ordinamento (per esempio $abc$), tutti gli altri si ottengono applicando una *biezione* $X\to X$, $X\neq \varnothing$
+#Esempio 
+$$\begin{align}
+\sigma: & X\to X \\
+&a \longmapsto b \\
+&b \longmapsto c \\
+&c \longmapsto a
+\end{align}$$
+Sia $X$ un insieme non vuoto, una *permutazione* su $X$ è una biezione $\sigma:X\to X$
+L'insieme di tutte le permutazioni su $X$ si denota $S_{x}$.
+$S_{x}\neq\varnothing$, infatti $id:X\to X$ è un elemento di $S_{x}$.
+
+$S_{x}$ è dotato di un operazione detta ***composizione*** $(\circ)$.
+Sappiamo che, date due funzioni biiettive, la loro composizione è ancora biiettiva.
+$$\begin{align}
+&S_{x}\times S_{n}\longrightarrow S_{x} \\
+&(\sigma, \tau)\longmapsto \sigma \circ \tau \\
+&\sigma \circ \tau = \sigma(\tau(x)) \\
+\end{align}$$
+![[Pasted image 20231031154946.png|250]]
+#proprietà 
+- *Associativa*
+	- $\forall \sigma,\tau,\nu$
+	- $(\sigma\circ\tau)\circ\nu=\sigma\circ(\tau\circ\nu)$
+- *Esiste elemento neutro*:
+	- $id_{x}$
+	- $id\circ\sigma=\sigma\circ id=\sigma$
+- *Ogni funzione biiettiva è invertibile*
+	- $\forall \sigma\in S_{x} \quad \exists(unico)\sigma^{-1}\quad:\quad \sigma\circ\sigma^{-1}=\sigma^{-1}\circ\sigma=id_{x}$
+### Notazione matriciale
+#Esempio 
+La permutazione in $S_{4}$
+$$\begin{align}
+\sigma: & In\to In \\
+&1 \longmapsto 2 \\
+&2 \longmapsto 4 \\
+&3 \longmapsto 3 \\
+&4 \longmapsto 1
+\end{align}$$
+è rappresentata da:
+$$\sigma=\begin{pmatrix}
+1 & 2 & 3 & 4 \\
+2 & 4 & 3 & 1
+\end{pmatrix}$$
+### Potenze di permutazioni
+$\forall n \in \mathbb{N}$
+$$\begin{align}
+&\underbrace{\sigma^{n}=\sigma \cdot \sigma \cdot\dots \cdot \sigma}_{n \ volte} \\
+&\sigma^{0}=id=\begin{pmatrix}
+1 & 2 & 3 & \dots & n \\
+1 & 2 & 3 & \dots & n 
+\end{pmatrix}
+\end{align}$$
+#Esempio 
+$$\sigma=
+\begin{pmatrix}
+1 & 2 & 3 & 4 & 5 \\
+2 & 1 & 4 & 5 & 3
+\end{pmatrix}$$
+$$
+\sigma^{2}=
+\begin{pmatrix}
+1 & 2 & 3 & 4 & 5 \\
+\cancel{2} & \cancel{1} & \cancel{4} & \cancel{5} & \cancel{3} \\
+1 & 2 & 5 & 3 & 4
+\end{pmatrix}
+$$
+
+#### Esponente negativo
+Possiamo definire: $\sigma^{-n}=(\sigma^{-1})^{n}=(\sigma^{n})^{-1}$
+In questo modo si definisce $\sigma^{n}\quad \forall n\in \mathbb{Z}$
+#Esempio 
+$$\sigma^{-1}=
+\begin{pmatrix}
+1 & 2 & 3 & 4 & 5 \\
+2 & 1 & 5 & 3 & 4
+\end{pmatrix}$$
+#Esercizio 
+![[Pasted image 20231031160639.png|450]]
+## Ciclo
+In $S_{\sigma}$ consideriamo $\sigma=\begin{pmatrix}1&2&3&4&5&6\\2&3&5&4&1&6 \end{pmatrix}$, $\sigma(4)=4$, $\sigma(6)=6$
+
+```tikz
+\usepackage{tikz-cd}
+
+\begin{document}
+\begin{tikzcd}
+1 \arrow[r] & 2 \arrow[r] & 3 \arrow[r] & 5 \arrow[lll, bend left]
+\end{tikzcd}
+\end{document}
+```
+
+Ciclo di *lunghezza* $\sigma=(1 \ 2\ 3\ 5)$
+#Esempio 
+Poniamo $\alpha=(1\ 4)$ e $\beta=(2\ 6\ 7)$
+$$\alpha=\begin{pmatrix}
+1&2&3&4&5&6&7 \\
+4&2&3&1&5&6&7
+\end{pmatrix}$$
+$$\beta=\begin{pmatrix}
+1&2&3&4&5&6&7 \\
+1&6&3&4&5&7&2
+\end{pmatrix}$$
+$$\alpha \circ \beta=\beta \circ \alpha=T$$
+## Inverso di un ciclo
+#Esempio 
+$$\begin{align}
+\sigma&=(2\ 1\ 6\ 3) \text{ in } S_{7} \\
+\sigma^{-1}&=(3\ 6\ 1\ 2)
+\end{align}$$
+## Cicli disgiunti
+Siano $\sigma=(i_{1},\dots,i_{n}), \quad \tau=(j_{1},\dots,j_{n})$ due cicli in $S_{n}$ diciamo che $\sigma,\tau$ sono disgiunti se
+$$\{i_{1},\dots,i_{n}\} \cap \{j_{1},\dots,j_{n}\}=\varnothing$$
+#Esempio 
+$(1\ 4)(2\ 6\ 7)$ *sono disgiunti*
+$(1\ \textcolor{yellow}{4})(\textcolor{yellow}{4}\ 6\ 7)$ *non sono disgiunti*
+
+I cicli disgiunti *commutano*, quindi se:
+$\sigma=(i_{1},\dots,i_{n}), \quad \tau=(j_{1},\dots,j_{n})$ sono disgiunti allora:
+$$\sigma \circ \tau=\tau \circ \sigma$$
+
+---
+Ogni permutazione si scrive come prodotto di cicli disgiunti o transposizioni
+$$C=(2\ 3\ 1\ 5\ 4)=(2\ 4)(2\ 5)(2\ 1)(2\ 3)$$
+$\mid S\mid=n!$
+$\mid\{\text{transposizioni in }S_{n}\}\mid=\dbinom{n}{2}=\frac{n(n-1)}{2}=\frac{n!}{2}$
+## Periodo di una permutazione
+Il *periodo di una permutazione* è il numero minimo di volte che è necessario applicare una permutazione affinché si ritorni alla configurazione iniziale.
+Il periodo di una permutazione è il *minimo comune multiplo* dei numeri del tipo di ciclo.
+#Esempio 
+$$\begin{align}
+\text{Se } &\sigma=(1\ 2)(3\ 4\ 5) &per(\sigma)=6\\
+&\tau=(1\ 2)(3\ 4\ 5\ 6) &per(\sigma)=4
+\end{align}$$
+Dato che $\sigma$ ha tipo $(2, 3)$ e $\tau$ ha tipo $(2, 4)$
+
+Quindi se $\sigma$ ha periodo $n$ e voglio calcolare $\sigma^{N}$, calcolo il *resto* $K$ della divisione $N$ per $n$ e si avrà:
+$\sigma^{N}=\sigma^{K}$
+$N=qn+r$ (con $q$ quoziente e $r$ resto)
+$\sigma^{N}=\underbrace{(\sigma^{n})^{q}}_{=id}\circ\sigma^{r}=\sigma^{r}$
+#Esempio 
+$\sigma=(1\ 2)(1\ 4)(5\ 6\ 7)(1\ 3\ 2)$
+Calcolare $\sigma^{9999}$
+Ci serve il *periodo*, quindi il *tipo*, dobbiamo scrivere $\sigma$ come periodo di *cicli disgiunti*.
+$\sigma=(1\ 3)(2\ 4)(5\ 6\ 7)$ --> *cicli disgiunti*
+tipo di $\sigma=(3,2,2)$ --> *tipo*
+$mcm(3,2,2)=6$ --> *periodo*
+$9999/6$ --> considero il *resto*
+$=1666 \quad r=3$
+$\sigma^{9999}=\sigma^{3}=(1\ 3)^{3}(3\ 4)^{3}(5\ 6\ 7)^{3}=(1\ 3)(2\ 4)$
+$\sigma^{3}\circ \underbrace{id}_{(\sigma^{6})^{1666}=id} = \sigma^{3}$
+# Aritmetica
+Studio dei numeri naturali e opposti (numeri interi)
+$$\mathbb{Z}=\{\dots,-3,-2,-1,0,+1,+2,+3,\dots\}$$
+
+
+
+
+
+

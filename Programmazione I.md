@@ -365,6 +365,10 @@ Un array di N elementi si alloca come `<tipo><noma array>[<numero elementi>]`
 int voti[5];
 ```
 Indicizzazione da 0 a N-1
+```c
+int myNumbers[] = {25, 50, 75, 100};  
+myNumbers[0] = 33;
+```
 ## *Assegnazione di valore all'elemento i-esimo*
 `<nome array>[<indice>] = <valore>`
 o tramite valori noti: 
@@ -374,6 +378,7 @@ int voti[] = {18, 19, 20, 21, 22};
 ```
 ### *Accesso tramite indice*
 ```c
+#include<stdio.h>
 #define SIZE_A 5
 int main(void){
 	int voti[SIZE_A];
@@ -389,8 +394,31 @@ int main(void){
 ```
 ![[Pasted image 20231025154011.png|350]]
 ## *Bubble sort*
+```c
+#include <stdio.h> 
+#define N 10
 
+int main(){
+	int i, j, temp;
+	int lista[N] = {6, 2, 4, 7, 5, 1, 9, 3, 15, 22};
 
+	for(i=0; i<N-1; i++){
+		for(j=0; j<N-i-1; j++){
+			if(lista[j]>lista[j+1]){
+				temp = lista[j];
+				lista[j] = lista[j+1];
+				lista[j+1] = temp;
+			}
+		}
+	}
+
+	for(i=0; i<N; i++){
+		printf("%d ", lista[i]);
+	}
+
+	return 0;
+}
+```
 
 
 
