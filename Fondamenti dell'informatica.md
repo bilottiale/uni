@@ -302,3 +302,66 @@ Per ciascuna delle seguenti proposizioni, indicare una forma equivalente alla su
 $$2<5 \to 2\geq 5$$
 $$2<5\text{ e }3>1 \to 2\geq 5\text{ oppure } 3\leq 1$$
 $$1<2\text{ oppure } 3\text{ è pari }\to 1\geq 2\text{ e }3\text{ è dispari}$$
+## XOR
+Come si definisce *xor* con $\neg,\land,\lor$
+$A\oplus B\equiv(A\lor B)\land \neg(A\land B)$
+La tavola di verità conclude: $F,T,T,F$
+$\models (A\oplus B)\longleftrightarrow(A\lor B)\land\neg(A\land B)$
+# Alcuni esempi relativi a formalizzazione, connettivi proposizionali e quantificatori
+Spesso il significato di una proposizione $A$ può essere spiegato meglio dicendo che cosa la contraddice. Ecco una serie di esempi in cui si cerca di trovare una proposizione equivalente a $\neg A$.
+Inizio con un esempio aritmetico, relativo a un qualsiasi insieme numerico. La negazione di $2<5$ è $2\geq 5$ e **non** $2>5$: bisogna considerare il caso in cui $2=5$, che pur non essendo equivalente alla negazione di $2<5$, è incompatibile con essa.
+La negazione di $2<5$ e $3>1$ è $2\geq 5$ oppure $3\leq 1$. Questo segue da un. delle due *Leggi di de Morgan*:
+$$\neg(A\land B)\equiv\neg A\lor\neg B$$
+$$\neg(A\lor B)\equiv\neg A\land\neg B$$
+#Esercizio Come esercizio si dimostri che queste equivalente sono vere, cioè che:
+$$\models\neg(A\land B)\longleftrightarrow\neg A\lor\neg B$$
+$$\models\neg(A\lor B)\longleftrightarrow\neg A\land\neg B$$
+cosa che può essere dimostrata facendo vedere che:
+$$\models\neg(A\land B)\longleftrightarrow\neg A\lor\neg B$$
+$$\models\neg(A\lor B)\longleftrightarrow\neg A\land\neg B$$
+$$\models\neg A\lor \neg B\longleftrightarrow\neg (A\land B)$$
+$$\models\neg A\land \neg B\longleftrightarrow\neg (A\lor B)$$
+o, in maniera equivalente che:
+$$\neg(A\land B)\models\neg A\lor\neg B$$
+$$\neg(A\lor B)\models\neg A\land\neg B$$
+$$\neg A\lor \neg B\models\neg (A\land B)$$
+$$\neg A\land \neg B\models\neg (A\lor B)$$
+infatti $\models A\rightarrow B$ e $A \models B$ sono equivalenti.
+#Esempio 
+'Qualche numero primo è pari' può essere tradotta in formule usando funzioni proposizionali $Primo(x)$ e $Pari(x)$:
+$$\exists x(Primo(x)\land Pari(x))$$
+La negazione di questa proposizione ha allora forma:
+$$\forall x(\neg Primo(x)\lor \neg Pari(x))$$
+che è equivalente a:
+$$\forall x(Primo(x)\rightarrow \neg Pari(x))$$
+perché, in generale, $A\rightarrow B\equiv\neg A\lor B$ (dimostrare come in esercizio).
+Usando ancora la funzione proposizionale $Primo(x)$, traduciamo in una formula la proposizione 'Ci sono numeri primi minori di $17$', che diventa:
+$$\exists x(\neg Primo(x)\land x<17)$$
+La sua negazione ha la forma:
+$$\forall x(\neg Primo(x)\lor \neg (x<17))$$
+che è equivalente a:
+$$\forall x(Primo(x)\rightarrow x\geq17)$$
+Consideriamo ora:
+$$\text{Tutti i numeri}>5\text{ sono anche}>3$$
+La sua traduzione è:
+$$\forall x(x>5\rightarrow x>3)$$
+e la sua negazione diventa:
+$$\exists x\neg(x>5\rightarrow x>3)$$
+che è equivalente a:
+$$\exists x(x>5\land\neg(x>3))$$
+perché, in generale, $\neg(A\rightarrow B)\equiv A\land \neg B$ (dimostrare come in esercizio).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
