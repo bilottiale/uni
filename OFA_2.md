@@ -716,15 +716,10 @@ Si definisce *logaritmo* in base $a$ di $k$ qual numero $y$ che rappresenta l'es
 $$a^{y}=k \iff y=\log_{a}k$$
 $k$ si dice argomento del logaritmo.
 ### Proprietà
-$\log_{a}a^{x}=x$
-$a^{\log_{a}x}=x$
-$\log_{a}x=-\log_{a}\frac{1}{x}$
-
-Per risolvere equazioni logaritmiche è utile conoscere anche le seguenti proprietà:
-$\log_{a}xy=\log \mid x\mid+\log_{a}\mid y\mid$
-$\log_{a}\frac{x}{y}=\log_{a}\mid x\mid-\log_{a}\mid y\mid$
-$\log_{a}x^{n}=n\cdot \log_{a}\mid x\mid$
-$\log_{a} b =\frac{\log_{c}b}{\log_{c}a}$ formula del cambiamento di base, calcola il logaritmo in una nuova base a noti i logaritmi in base $c$
+- $\log_{a}(b)+\log_{a}(c)=\log_{a}(b\cdot c)$
+- $\log_{a}(b)-\log_{a}(c)=\log_{a}\left( \frac{b}{c} \right)$
+- $\log_{a}(b^{n})=n\log_{a}(b)$
+- $\log_{a}(b)=\frac{\log_{c}(b)}{\log_{c}(a)}$
 ## Caratteristiche principali della funzione logaritmica
 La funzione logaritmica $y=f(x)=\log_{a}x$
 - è definita solo per valori positiva dell'argomento $x$
@@ -1044,6 +1039,38 @@ $$C(n,k)=\frac{n!}{k!(n-k)!}$$
 Dati $n$ elementi distinti, le permutazioni $P(n)$ di $n$ elementi sono i gruppo che contengono tutti gli $n$ elementi e che differiscono uno dall'altro per l'ordine degli elementi.
 Il numero di permutazioni di $n$ elementi è:
 $$P(n)=n\cdot(n-1)\cdot(n-2)\cdot \dots \cdot 3\cdot2\cdot1$$
+# Radicali
+## Calcoli
+### Somma e differenza
+$$3\sqrt{ 2 }+2\sqrt{ 3 }-5\sqrt{ 2 }+4\sqrt{ 3 }+\sqrt{ 2 }$$
+Avviciniamo i termini simili:
+$$3\sqrt{ 2 }-5\sqrt{ 2 }+\sqrt{ 2 }+2\sqrt{ 3 }+4\sqrt{ 3 }$$
+Sommiamo i coefficienti:
+$$(3-5+1)\sqrt{ 2 }+(2+4)\sqrt{ 3 }$$
+Ossia:
+$$-\sqrt{ 2 }+6\sqrt{ 3 }$$
+### Prodotto
+$$\sqrt[n]{ a }\sqrt[n]{ b }=\sqrt[n]{ ab }$$
+### Quoziente
+$$\frac{\sqrt[n]{ a }}{\sqrt[n]{ b }}=\sqrt[n]{ \frac{a}{b} }$$
+### Riduzione a stesso indice
+- Consideriamo due radici con indici distinti $\sqrt[n]{ a },\sqrt[m]{ b }$
+- Calcoliamo il m.c.m tra $n$ e $m$, diventerà l'indice tra tutte le radici
+- Dividiamo il nuovo indice per i rispettivi indici delle radici, ed eleviamo i radicandi ai rispettivi quozienti
+#Esempio 
+$$\sqrt[3]{ 8 } \quad , \quad \sqrt[4]{ 16 }$$
+m.c.m = $12$
+$$\sqrt[12]{ \dots } \quad , \quad \sqrt[12]{ \dots }$$
+Dividiamo $12$ per $3$ e otteniamo $4$, che è l'esponente del primo radicando. Dividiamo $12$ per $4$ e ricaviamo $3$, che è l'esponente del secondo radicando.
+$$\sqrt[12]{ 8^{4} } \quad , \quad \sqrt[12]{ 16^{3} }$$
+## Trasporto di un fattore dentro il segno di radice
+$$a\sqrt[n]{ b }=\sqrt[n]{ a^{n}\cdot b }$$
+#Esempio 
+$$2\sqrt[3]{ 3 }=\sqrt[3]{ 2^{3}\cdot 3 }=\sqrt[3]{ 24 }$$
+## Trasporto di un fattore fuori dal segno di radice
+$$\sqrt[n]{ a^{n}\cdot b }=a\sqrt[n]{ b }$$
+#Esempio 
+$$\sqrt{ 12 }=\sqrt{ 2^{2}\cdot 3 }=2\sqrt{ 3 }$$
 
 
 

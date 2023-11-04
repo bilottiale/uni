@@ -11,12 +11,6 @@ int main(void)
         4, 3, 3, 3, 2, 3, 3, 2, 2, 5};
     int freq[sz] = {0, 0, 0, 0, 0};
     int k = 0;
-    // for (int i = 0; i < NUM_RISP; i++)
-    // {
-    //     if (risposte[i] == i + 1)
-    //         freq[i]++;
-    //     printf("%d\n", risposte[i]);
-    // }
 
     while (k < NUM_RISP)
     {
@@ -25,11 +19,10 @@ int main(void)
             if (risposte[j] == k + 1)
                 freq[k]++;
         }
-            k++;
+        k++;
     }
 
     printf("Stelle Frequenza\n");
     for (size_t i = 0; i < sz; i++)
         printf("%6zu%10d\n", i + 1, freq[i]);
-
 }
