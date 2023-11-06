@@ -66,45 +66,6 @@ $A \times B = \{(0,x),(0,y),(1,x),(1,y),(2,x),(2,y)\}$
 * Esistenziale ($\exists$):
 	* $\exists x \in \mathbb{Z}|x^{2}-16=0$ --> esiste almeno un valore che soddisfa la proprietà
 (esiste uno e uno solo ($\exists!$))
-## Connettivi logici
-*And*:
-$$p \land q$$
-*Or*:
-$$p \lor q$$
-*Implicazione*:
-"Se... allora..."
-$$p \implies q$$
-*Doppia implicazione*:
-"Se e solo se"
-$$p \iff q$$
-*Negazione*:
-"non"
-$$\neg p$$
-## Dimostrazione e controesempi
-Dimostrare un'implicazione:
-* *Diretta*:
-"Se $x$ è dispari allora $x^2$ è dispari"
-Dimostrazione:
-Suppongo $x$ dispari: $x = 2a + 1, a \in \mathbb{Z}$
-$x^{2}=(2a+1)^{2}=4a^{2}+4a+1$
-pongo --> $4a^{2}+4a=2b,b\in\mathbb{Z}$
-quindi --> $x^{2}=2b+1,b\in\mathbb{Z}$
-quindi --> $x^{2}$ è dispari
-* *Dimostrazione indiretta: contronominale*
-Nella tecnica di dimostrazione per contronominale, anziché dimostrare l’implicazione diretta $H \implies T$ se ne dimostra la contronominale, ossia $\neg T \implies \neg H$
-Dimostrazione:
-Siano $a,b,c$ numeri reali con $a>b$. Se $ac\leq bc$  allora $c\leq 0$:
-Dimostriamo la contronominale, ovvero che se $c > 0$ allora $ac > bc$.
-Questo è ovvio, basta moltiplicare ambo i membri di $a > b$ per $c$ (lo possiamo fare perché $c$ è positivo).
-* *Dimostrazione indiretta: per assurdo*
-La tecnica di dimostrazione indiretta per assurdo consiste nell’assumere l’ipotesi $H$ e la negazione della tesi $\neg T$. 
-Dimostrazione:
-Sia $n \in \mathbb{N}$. Dimostrare che se $n^{2}$ è un numero parti allora $n$ è pari.
-Procediamo per assurdo assumendo come ipotesi che $n^{2}$ sia un numero naturale pari ce che esista almeno un numero $n$ non pari(negazione della tesi).
-Allora un tale $n$ dispari si può scrivere come $n = 2p+1$ con $p \in \mathbb{N}$.
-Quindi $n^{2}=4p^{2}+2p+1$ ossia $n^{2}$ è dispari, in contrasto con l'ipotesi.
-* *Controesempio*
-Per confutare una proposizione è sufficiente produrre un controesempio, ossia un solo esempio che, pur verificando le ipotesi, non verifica la tesi.
 # Numeri
 ## Numeri irrazionali
 Soffermiamoci sulla misura della diagonale di un quadrato di lato uno: applicando il teorema di Pitagora segue che la misura di quella diagonale è $\sqrt{2}$.
