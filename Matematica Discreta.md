@@ -565,7 +565,13 @@ La *matrice identità* è l'elemento neutro del prodotto tra matrici, cioè: $I_
 
 ## Operazioni sulle matrici
 ### Spazio vettoriale
-#### !TODO
+Uno *spazio vettoriale* è una struttura algebrica definita a partire da un insieme di vettori, da un campo di scalari e da due operazioni binarie, dette somma tra vettori e prodotto di un vettore per uno scalare, che devono soddisfare 3 proprietà:
+1. $0_{v}\in W$
+	1. $0_{v}=\begin{bmatrix}0&0&0 \\ 0&0&0 \\ 0&0&0\end{bmatrix}=0_{v}^{\top}$
+2. $v_{1},v_{2}\in W$ allora $v_{1}+v_{2}\in W$
+	1. $P,Q\in W\rightarrow P^{\top}=P,Q^{\top}=Q$
+3. $v_{1}\in W, \lambda$ scalare in $K$, allora $\lambda v\in W$
+	1. $\lambda P\in W \longleftrightarrow(\lambda P)^{\top}=\lambda P$
 ### Moltiplicazione per uno scalare
 - Moltiplicare ogni elemento per lo scalare.
 - Sia $c^{*}=3$ lo scalare.
@@ -712,11 +718,6 @@ Può essere calcolata se la matrice $A$ è quadrata e con determinante diverso d
 - La *matrice inversa* si indica con $A^{-1}$
 - Si ha quindi $A^{-1}\times A=A\times A^{-1}=1$
 - Per uno scalare: $a^{-1}=\frac{1}{a}$ e $\frac{1}{a}\times a=a\times\frac{1}{a}=1$
-
----
-##### Il determinante può anche essere calcolato con
-La formula di *Leibniz*:
-$$\det(A):=\displaystyle\sum_{\sigma\in S_{n}}sgn(\sigma)\prod^{n}_{i=1}a_{i,\sigma(i)}$$
 # Permutazioni
 Ricordiamo che le *permutazioni* sono *disposizioni semplici* di $n$ oggetti in un insieme di $n$ oggetti, quindi un *ordinamento* di $n$ oggetti.
 #Esempio 
@@ -878,7 +879,79 @@ $\sigma^{3}\circ \underbrace{id}_{(\sigma^{6})^{1666}=id} = \sigma^{3}$
 # Aritmetica
 Studio dei numeri naturali e opposti (numeri interi)
 $$\mathbb{Z}=\{\dots,-3,-2,-1,0,+1,+2,+3,\dots\}$$
+## Teorema della divisione euclidea
+Dati due numeri interi $a,b$ con $b\neq 0$, esiste un'unica coppia di interi $q,r$ detti *quoziente* e *resto* tali che:
+$$\begin{align}
+&a=b\cdot q+r \\
+&0\leq r< \mid b\mid
+\end{align}$$
+### Algoritmo euclideo per MCD
+#Esempio $MCD(3575,654)$
+$$\begin{align}
+3575&=654\cdot 5+305 \\
+654&=305\cdot 2+4 \\
+305&=44\cdot 6+41 \\
+44&=41\cdot 1+3 \\
+41&=3\cdot 13+2 \\
+3&=2\cdot 1+\textcolor{yellow}{1} \\
+2&=1\cdot 2+0
+\end{align}$$
+$MCD(3575,654)=\textcolor{yellow}{1}$
+L'$MCD$ è l'ultima cifra *non nulla* dei resti.
+Regola generale per calcolare $MCD(a,b)$
+$$\begin{align}
+a&=b\cdot q_{1}+r_{1} \\
+b&=r_{1}\cdot q_{2}+r_{2} \\
+c&=r_{2}\cdot q_{3}+r_{3} \\
+\vdots \\
+\end{align}$$
+### Identità di Bézout
+Siano $a,b\in \mathbb{Z}$ non entrambi nulli $(b\neq 0)$ allora esistono (non unici) $A,B\in\mathbb{Z}$ t.c. $d=Aa+Bb$ dove $d=MCD(a,b)$
+Prendiamo un nuovo esempio: $MCD(126,35)$
+$$\begin{align}
+126&=35\cdot 3+21 \\
+35&=21\cdot 1+14 \\
+21&=14\cdot 1+\textcolor{yellow}{7} \\
+14&=7\cdot 2+0
+\end{align}$$
+Risalendo:
+$$\begin{align}
+\textcolor{yellow}{7}&=21-14 \\
+&=21-(35-21)=2\cdot 21-35 \\
+&=2(126-35\cdot 3)-35 \\
+&=126\cdot\underbrace{2}_{A}-35\underbrace{7}_{B}
+\end{align}$$
+Se $d=A_{0}a+B_{0}b$ allora $d=\underbrace{\left( A_{0}+\frac{b}{d}k \right)}_{A}a+\underbrace{\left( B_{0}-\frac{a}{d}k \right)}_{B}b$
+Esistono infinite scritture di $d=AaBb$
 
+#Esempio DA ESAME
+1) Determinare $MCD$ e identità di Bézout di $252$ e $198$.
+$$\begin{align}
+252&=198\cdot 1+54 \\
+198&=54\cdot 3+36 \\
+54&=35\cdot 1+\textcolor{yellow}{18} \\
+36&=18\cdot 2+0
+\end{align}$$
+Identità di Bézout:
+$$\begin{align}
+18&=54-36 \\
+&=54-(198-54\cdot 3) \\
+&=-198-54\cdot 4 \\
+&=-198+4(252-198) \\
+&=\underbrace{4}_{A}\cdot 252\underbrace{-5}_{B}\cdot 198
+\end{align}$$
+2) Determinare una soluzione intera dell'equazione $252x+198y=54$
+Sappiamo che $MCD(252,198)=18$
+Bézout ci dice che $252\cdot 12+198(-15)=54$ (soluzione x3)
+Le soluzioni sono tutte della forma $(x_{k},y_{k})$ con:
+$$
+\begin{cases}
+x_{k}=12+11k \\
+y_{k}=-15-14k
+\end{cases}
+$$
+3) Dimostrare se l'equazione $252x+198y=7$ ha soluzione
+No, il $MCD(252,198)=18\not\div 7$
 
 
 

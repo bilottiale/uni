@@ -328,7 +328,7 @@ $$\neg A\lor \neg B\models\neg (A\land B)$$
 $$\neg A\land \neg B\models\neg (A\lor B)$$
 infatti $\models A\rightarrow B$ e $A \models B$ sono equivalenti.
 #Esempio 
-'Qualche numero primo è pari' può essere tradotta in formule usando funzioni proposizionali $Primo(x)$ e $Pari(x)$:
+"*Qualche numero primo è pari*" può essere tradotta in formule usando funzioni proposizionali $Primo(x)$ e $Pari(x)$:
 $$\exists x(Primo(x)\land Pari(x))$$
 La negazione di questa proposizione ha allora forma:
 $$\forall x(\neg Primo(x)\lor \neg Pari(x))$$
@@ -351,12 +351,38 @@ che è equivalente a:
 $$\exists x(x>5\land\neg(x>3))$$
 perché, in generale, $\neg(A\rightarrow B)\equiv A\land \neg B$ (dimostrare come in esercizio).
 
-
-
-
-
-
-
+# Induzione
+$Q=3^{2}>2^{2}\longrightarrow Q(x)=x^{2}>x^{2}$
+Ci aiuta a dimostrare che per tutti i numeri naturali esiste una proprietà:
+![[Pasted image 20231108134622.png|250]]
+Se un punto $n$ ha una proprietà $P$ allora $n+1$ ha la proprietà $P$.
+$$\begin{align}
+&P(0) \\
+&\forall n\geq 0\quad (P(n)\rightarrow P(n+1)) \\
+-&------------\\
+\therefore&\forall n\geq 0\quad P(n)
+\end{align}$$
+Se siamo a un $k$ numero possiamo aumentare verso infinito, ma per tornare verso $0$ abbiamo un numero finito $k$ di passi da fare.
+#Dimostrazione 
+$$\forall n\geq 0\quad\underbrace{\displaystyle\sum_{i=0}^{n}i=\frac{n(n+1)}{2}}_{S(n)}$$
+$\forall n\geq 0 \quad S(n)$
+Usiamo il *principio di induzione*:
+Dimostriamo la *base* $S(0)$:
+$$S(0)=\displaystyle\sum_{i=0}^{0}i=\frac{0(0+1)}{2}\longrightarrow 0=0$$
+$S(0)$ è vera.
+Ora dimostro il *passo induttivo*:
+$\forall k\geq 0\quad (S(k)\rightarrow S(k+1))$
+Prendiamo un $k\geq 0$ generico e assumiamo $S(k)$, cioè:
+$$\textcolor{yellow}{\displaystyle\sum_{i=0}^{k}i}=\textcolor{yellow}{\frac{k(k+1)}{2}}\longrightarrow \sum_{i=0}^{k+1}i=\frac{(k+1)(k+2)}{2}$$
+Possiamo riscrivere come:
+$$\displaystyle\sum_{i=0}^{k+1}i=\frac{(k+1)(k+2)}{2}\longrightarrow\textcolor{yellow}{\sum_{i=0}^{k}i}+k+1=\textcolor{yellow}{\frac{k(k+1)}{2}}+\frac{2(k+1)}{2}$$
+Conclude la dimostrazione del passo induttivo.
+Per *principio di induzione* possiamo concludere che:
+$$\begin{align}
+&\forall n\geq 0\quad S(n) \\
+&\forall n\geq 0\quad \left( \displaystyle\sum_{i=0}^{n}i=\frac{n(n+1)}{2} \right)
+\end{align}$$
+08-11-23
 
 
 
