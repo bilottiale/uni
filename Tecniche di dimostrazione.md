@@ -103,4 +103,4 @@ Siano $x$ e $y$ numeri reali qualsiasi, e supponiamo per assurdo che $P$ sia ver
 Dalla negazione di $Q$ segue che $x+1<1+1$, ovvero $x+y<2$. Ma questo contraddice l'assunzione $P$, ovvero si avrebbe che:
 $$x+y\geq 2\text{ e }\neg(x+y\geq 2)$$
 Questo dimostra che se vale $P$, allora $Q$ non può essere falsa. In altre parole, è vero che se vale $P$ allora deve valere anche $Q$, quindi il teorema è dimostrato.
-## Dimostrazione per contrapposizione
+## Dimostrazione per Induzione

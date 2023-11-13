@@ -382,7 +382,33 @@ $$\begin{align}
 &\forall n\geq 0\quad S(n) \\
 &\forall n\geq 0\quad \left( \displaystyle\sum_{i=0}^{n}i=\frac{n(n+1)}{2} \right)
 \end{align}$$
-08-11-23
+#### Riepilogo
+Quando vogliamo dimostrare che per ogni $n\geq 0 \quad P(n)$ (base dell'induzione)
+$$\begin{align}
+&P(0) \\
+passo(2 \ alternative)
+&\begin{cases}
+&\forall k \geq 0(\textcolor{red}{P(k)}\to P(k+1)) \\
+&\forall k >0(P(k-1)\to P(k))\\
+\end{cases}\\
+&\therefore\forall n\geq 0\quad P(n)
+\end{align}$$
+Con $\textcolor{red}{P(k)}$ ipotesi induttiva.
+Per dimostrare con una dimostrazione diretta:
+- Prendere un generico $K\geq 0$
+- Assumere $P(k)$
+- Dimostrare $P(k+1)$
+
+*Invariante* (di ciclo): una proprietà che è vera dopo ogni iterazione del ciclo.
+#Esempio dopo $n$ iterazioni
+$n+Dq+r$
+Dobbiamo dimostrare
+$\forall n\geq 0\quad P(n)$
+Per induzione su $n\geq 0$
+***Base***: $P(0)$ che significa, dopo $0$ iterazioni $X=qD+r$, o, equivalentemente, prima di iniziare l'esecuzione del ciclo.
+- $X=0D+r$
+***Passo induttivo***: $\forall k\geq 0\quad (P(k)\to P(k+1))$
+- Prendiamo generico $k\geq 0$, assumiamo $P(k)$, cioè, dopo $k$ iterazioni, $X=qD+r$. Bisogna dimostrare che dopo $k+1$ iterazioni, $X=qD+r$.
 
 
 
@@ -391,3 +417,5 @@ $$\begin{align}
 
 
 
+
+09-11-23
