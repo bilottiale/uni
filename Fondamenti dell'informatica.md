@@ -482,9 +482,4 @@ $$\forall x\in X\ \exists y\in Y \ xfy$$
 
 
 
-
-
-
-
-
 16-11-23

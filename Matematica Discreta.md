@@ -562,7 +562,6 @@ $$I=\begin{bmatrix}
 0 & 0& 1
 \end{bmatrix}$$
 La *matrice identità* è l'elemento neutro del prodotto tra matrici, cioè: $I_{n\times x}\times A_{n\times m}=A_{n\times m}\times I_{m\times m}=A_{n\times m}$
-
 ## Operazioni sulle matrici
 ### Spazio vettoriale
 Uno *spazio vettoriale* è una struttura algebrica definita a partire da un insieme di vettori, da un campo di scalari e da due operazioni binarie, dette somma tra vettori e prodotto di un vettore per uno scalare, che devono soddisfare 3 proprietà:
@@ -695,7 +694,6 @@ Ci si muove lungo la $j$-esima colonna.
 
 In base a cosa scegliamo righe o colonne?
 Solitamente si sceglie la riga o colonna con più zeri.
-
 #proprietà 3
 Se $\tilde{A}$ si ottiene da $A$ scambiando tra loro due righe o colonne allora $\det(A)=-\det(A)$
 #proprietà 4
@@ -861,7 +859,7 @@ $$\begin{align}
 \end{align}$$
 Dato che $\sigma$ ha tipo $(2, 3)$ e $\tau$ ha tipo $(2, 4)$
 
-Quindi se $\sigma$ ha periodo $n$ e voglio calcolare $\sigma^{N}$, calcolo il *resto* $K$ della divisione $N$ per $n$ e si avrà:
+Quindi, se $\sigma$ ha periodo $n$ e voglio calcolare $\sigma^{N}$, calcolo il *resto* $K$ della divisione $N$ per $n$ e si avrà:
 $\sigma^{N}=\sigma^{K}$
 $N=qn+r$ (con $q$ quoziente e $r$ resto)
 $\sigma^{N}=\underbrace{(\sigma^{n})^{q}}_{=id}\circ\sigma^{r}=\sigma^{r}$
@@ -957,7 +955,7 @@ In alcuni contesti si conta in modo ciclico come:
 - Giorni della settimana --> Modulo 7
 - Ore del giorno --> Modulo 24
 
-Permutazioni:
+*Permutazioni*:
 Se $\sigma\in S_{n}$ e $per(\sigma)=k$
 Le potenze di $\sigma$ si contano in modulo $k$
 $$\begin{align}
