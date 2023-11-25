@@ -507,8 +507,6 @@ Una funzione è suriettiva se ogni elemento del codominio è immagine di qualche
 Una funzione $f$ si dice suriettiva se per ogni $y$ appartenente al codominio esiste un $x$ appartenente al dominio tale che $f(x)=y$
 #Esempio di funzione suriettiva:
 ![[Pasted image 20231024172823.png|250]]
-La funzione rappresentata dal seguente grafico, invece, non è suriettiva se come codominio si considera l'insieme dei numeri reali.
-![[Pasted image 20231024172915.png|250]]
 ***Funzioni biiettive o biunivoche***
 Una funzione è biiettiva o biunivoca quando è contemporaneamente iniettiva e suriettiva. Nel caso di funzione biunivoca vi è una corrispondenza uno a uno tra elementi del dominio e del codominio.
 A livello grafico una funzione biunivoca interseca sempre una qualsiasi retta parallela all’asse delle $x$ in uno ed un solo punto.
@@ -516,8 +514,6 @@ A livello grafico una funzione biunivoca interseca sempre una qualsiasi retta pa
 La funzione reale $f$ di variabile reale deinita come $y=f(x)=x^{3}$ è un esempio di funzione sia iniettiva che suriettiva e quindi biunivoca.
 Dal suo grafico si osserva che una qualsiasi retta parallela all’asse delle $x$ interseca la funzione in uno ed un solo punto.
 ![[Pasted image 20231024173221.png|250]]
-La funzione rappresentata dal seguente grafico, invece, non è biunivoca in quanto è suriettiva ma non iniettiva.
-![[Pasted image 20231024173327.png|250]]
 ## Restrizione di una funzione
 Si è detto che una funzione è definita da un insieme $A$, detto dominio, ad un insieme $B$, detto codominio. A volte però può essere utile o addirittura necessario considerare una funzione solo in una parte del suo dominio. In questi casi si parla di restrizione di una funzione.
 La restrizione di una funzione $f$ all'insieme $D$, dove $D\subseteq A$ è definita nel seguente modo:

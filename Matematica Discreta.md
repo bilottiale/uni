@@ -932,7 +932,7 @@ $$\begin{align}
 54&=35\cdot 1+\textcolor{yellow}{18} \\
 36&=18\cdot 2+0
 \end{align}$$
-Identità di Bézout:
+Identità di *Bézout*:
 $$\begin{align}
 18&=54-36 \\
 &=54-(198-54\cdot 3) \\
@@ -952,101 +952,58 @@ y_{k}=-15-14k
 $$
 3) Dimostrare se l'equazione $252x+198y=7$ ha soluzione
 No, il $MCD(252,198)=18\not\div 7$
-# Sistemi lineari
-## Algoritmi di risoluzione
-### Mosse di Gauss
-Un sistema lineare è un insieme di $k$ equazioni lineari in $n$ variabili:
-$$\begin{cases}
-a_{11}x_{1}+\dots+a_{1n}x_{n}=b_{1} \\
-\vdots \\
-a_{k_{1}}x_{1}+\dots+a_{kn}x_{n}=b_{k}
-\end{cases}$$
-I numeri $a_{ij}$ sono i *coefficienti* e i $b_{i}$ sono i *termini noti* del sistema. Sono entrambi fissati in un campo $\mathbb{K}$.
-$$A=\begin{bmatrix}
-a_{11}&\dots&a_{1n} \\
-\vdots & \ddots & \vdots \\
-a_{k_{1}} & \dots & 1_{kn}
-\end{bmatrix}, \quad b=\begin{bmatrix}
-b_{1} \\
-\vdots \\
-b_{k}
-\end{bmatrix}$$
-Possiamo unire tutti in un'unica matrice $k\times(n+1):$
-$$C=(A|b)$$
-Il nostro scopo è determinare l'insieme $S\subset \mathbb{K}^n$ delle soluzioni del sistema.
-Si può ottenere ciò tramite le *mosse di Gauss*:
-1. Scambiare due righe
-2. Moltiplicare una riga per un numero $\lambda \neq 0$
-3. Aggiungere ad una riga un'altra riga moltiplicata per $\lambda$ qualsiasi.
+# Aritmetica modulare
+In alcuni contesti si conta in modo ciclico come:
+- Giorni della settimana --> Modulo 7
+- Ore del giorno --> Modulo 24
 
-### Algoritmo di Gauss
-L’algoritmo trasforma una arbitraria matrice $C$ in una matrice particolare detta *a scalini*.
-Ovvero una matrice nel quale il *pivot* di ogni riga è strettamente più a destra del pivot della riga precedente.
-Si può ottenere ciò utilizzando le *mosse di Gauss*.
-### Algoritmo di Gauss-Jordan
-Dopo aver ridotto la matrice a scalini, è a volte utile fare delle ulteriori mosse di Gauss per fare in modo che tutti i numeri *sopra i pivot siano nulli*.
-Si può ottenere ciò utilizzando le *mosse di Gauss*.
-L'*algoritmo di Gauss-Jordan* consiste in due fasi:
-1. Trasformare la matrice a scalini tramite l'algoritmo di Gauss.
-2. Ottenere solo zeri sopra il pivot e i pivot uguali a 1.
-## Risoluzione di un sistema lineare
-Il sistema è descritto da una matrice $C = (A | b)$. Usando l’algoritmo di Gauss - Jordan, possiamo trasformare C in una matrice a scalini, in cui ogni pivot ha valore 1 e tutti i numeri sopra i pivot sono nulli.
+Permutazioni:
+Se $\sigma\in S_{n}$ e $per(\sigma)=k$
+Le potenze di $\sigma$ si contano in modulo $k$
+$$\begin{align}
+&\sigma^{0}=id, \sigma^{1}=\sigma, \sigma^{2},\dots,\sigma^{k-1},\dots \\
+\dots,&\sigma^{k}=id, \sigma^{k+1}=\boldsymbol{\sigma}\dots
+\end{align}$$
+Fissiamo $N\in\mathbb{Z}$, $N\geq 2$ modulo
+Introduciamo su $\mathbb{Z}$ la relazione di *congruenza* $mod\ N$:
+$$\begin{align}
+\text{Se }a,b\in \mathbb{Z}&\text{ diciamo che} \\
+&a\equiv b \ mod \ N \text{ se }N/a-b
+\end{align}$$
+Dato $a\in \mathbb{Z}$ definiamo
+$$[a]_{N}=\{b\in\mathbb{Z}|b\equiv a\ mod\ N\}=\{a+kN|k\in\mathbb{N}\}$$
+Detto *classe di resto di $a\ mod\ N$*
+#Esempio $N=5$
+$$\begin{align}
+[0]_{5}&=\{b\in\mathbb{Z}|b=0\ mod\ 5\} \\
+&=\{b\in\mathbb{Z}\ t.c.\ 5|b\}=\{5k\ t.c.\ k\in\mathbb{Z}\} \\
+&=\{\dots,-20,-15,-10,-5,0,5,10,15,\dots\}
+\end{align}$$
+$$\begin{align}
+[1]_{5}&=\{b\in\mathbb{Z}|b=1\ mod\ 5\} \\
+&=\{b\in\mathbb{Z}\ t.c.\ 5|1\}=\{1+5k\ t.c.\ k\in\mathbb{Z}\} \\
+&=\{\dots,-19,-14,-9,-4,1,6,11,16,21,\dots\}
+\end{align}$$
+$$\begin{align}
+[2]_{5}&=\{b\in\mathbb{Z}|b=2\ mod\ 5\} \\
+&=\{b\in\mathbb{Z}\ t.c.\ 5|2\}=\{2+5k\ t.c.\ k\in\mathbb{Z}\} \\
+&=\{\dots,-18,-13,-8,-3,2,7,8,12,17,\dots\}
+\end{align}$$
+$$[3]_{5}=\{3+5k|k\in\mathbb{Z}\}$$
+$$[4]_{5}=\{4+5k|k\in\mathbb{Z}\}$$
+$$[5]_{5}=[0]_{5} \quad (\text{ciclico})$$
+$$[6]_{5}=[1]_{5} \quad \text{etc...}$$
+#proposizione 
+Fissato $N$, *le classi di resto modulo $N$ formano una partizione di $\mathbb{Z}$*
+#Dimostrazione 
+Ogni $a\in\mathbb{Z}$ sta in $[a]_{N}$ quindi l'unione di tutte le classi di resto modulo $N$ è $\mathbb{Z}$.
+Supponiamo che $x\in[a]_{N}\cap[b]_{N}$
+$$\begin{align}
+x&=a+kN \quad k\in\mathbb{Z} \\
+&=b+hN \quad h\in\mathbb{Z} \\
 
-Se fatto ciò troviamo un pivot nella colonna dei termini noti abbiamo $0=1$ che non può avere soluzione. In questo caso l'insieme delle soluzioni $S=\varnothing$.
-Se invece abbiamo una matrice di questo tipo:
-$$\left[\begin{array}{c c c c c c | c }
-0&1&a_{13}&0&0&a_{16}&b_{1} \\
-0&0&0&1&0&a_{26}&b_{2} \\
-0&0&0&0&1&a_{36}&b_{3}
-\end{array}\right]$$
-Ricordiamo che ogni colonna corrisponde ad una variabile $x_{1},\dots,s_{n}$, eccetto l'ultima che contiene i termini noti.
-Assegniamo un parametro $t_{1},t_{2},\dots$ a ciascuna variabile che corrisponde ad una colonna che non contiene pivot.
-Il *pivot* coincide con il *rango*($rk$) del sistema.
-$$\begin{cases}
-x_{2}+a_{13}t_{2}+a_{16}t_{3} &=b_{1} \\
-x_{4}+a_{26}t_{3}&=b_{2} \\
-x_{5}+a_{26}t_{3}&=b_{3}
-\end{cases}$$
-Spostiamo a destra dell'uguale tutti i parametri:
-$$\begin{cases}
-x_{2}=-a_{13}t_{2}-a_{16}t_{3}+b_{1} \\
-x_{4}=-a_{26}t_{3}+b_{2} \\
-x_{5}=-a_{26}t_{3}+b_{3}
-\end{cases}$$
-Aggiungiamo i parametri liberi:
-$$\begin{cases}
-x_{1}=t_{1}\\
-x_{2}=-a_{13}t_{2}-a_{16}t_{3}+b_{1} \\
-x_{3}=t_{2} \\
-x_{4}=-a_{26}t_{3}+b_{2} \\
-x_{5}=-a_{26}t_{3}+b_{3} \\
-x_{6}=t_{3}
-\end{cases}$$
-Il sistema è risolto.
-#Esempio Risolviamo il sistema seguente:
-$$\begin{cases}
-x_{1}+3x_{2}+4x_{5}&=1 \\
-x_{3}-2x_{4}&=3
-\end{cases}$$
-Le variabili corrispondenti ai pivot sono $x_{1}$ e $x_{3}$ Le variabili libere sono $x_{2},x_{4},x_{5}$ quindi scriviamo:
-$$\begin{cases}
-x_{1}=1-4t_{1}-4t_{3} \\
-x_{2}=t_{1} \\
-x_{3}=3+2t_{2} \\
-x_{4}=t_{2} \\
-x_{5}=t_{3}
-\end{cases}$$
-## Teorema di Rouché-Capelli
-Se $rk(A)\neq rk(A|b)$ il sistema non ha soluzioni
-Se $rk(A)=rk(A|b)$ il sistema ha almeno una soluzione
-	- se $n$ = numero di incognite. $n-rk(A)=$ dimensione del sottospazio vettoriale generato dalle soluzioni.
-Se $rk(A)=n$ la soluzione è unica.
-# Applicazioni lineari
-Un'*applicazione lineare* è una *funzione lineare* (o *omomorfismo*) che mette in relazione due spazi vettoriali $V$ e $W$ nel campo $K$
-$$f:V\to W$$
-e soddisfa due proprietà:
-1. $f(v_{1}+v_{2})=f(v_{1})+f(v_{2})$
-2. $f(a\cdot v)=a\cdot f(v)$
+\end{align}$$
+
 
 
 

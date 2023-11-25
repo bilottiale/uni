@@ -19,7 +19,6 @@ $$(a+b)(a^{2}-ab+b^{2})=a^{3}+b^{3}$$
 $$(a-b)(a^{2}+ab+b^{2})=a^{3}-b^{3}$$
 # Potenza del binomio
 $$(a+b)^{n}=\displaystyle\sum_{k=0}^{n}\dbinom{n}{k}a^{k}b^{n-k}$$
-$$\dbinom{n}{k}=\frac{n!}{k!(n-k)!}$$
 # Scomposizioni
 $$\text{Raccoglimento totale a fattore comune: }ab+ac=a(b+c)$$
 $$\text{Raccoglimento parziale a fattore comune: }a+b+ac+nb+nc=a(b+c)+n(b+c)=(b+c)(a+n)$$
