@@ -59,7 +59,6 @@ $A \times B = \{(0,x),(0,y),(1,x),(1,y),(2,x),(2,y)\}$
 
 *Predicato*: na proposizione il cui valore di verità dipende da una o più variabili.
 *"$x$ è maggiore di zero, $x \in \mathbb{Z}$"* il predicato è vero per valori di $x$ positivi, falso per valori di $x$ negativi.
-
 *Quantificatori*:
 * Universale ($\forall$):
 	* $n + 1 > n, \forall n \in \mathbb{N}$ --> tutti gli elementi di $\mathbb{N}$ sono validi
@@ -376,7 +375,8 @@ La formula si ottiene calcolando la distanza tra $P_{0}$ e $H,$ piede della p
 ## Fasci di rette
 Si definiscono tre tipi
 1. il fascio improprio di rette formato da tutte le rette parallele ad una retta assegnata;
-	1. $y=mx+q$ con $m$ fissato e $q$ che assume ogni valore reale![[Pasted image 20231021155643.png|350]]
+	1. $y=mx+q$ con $m$ fissato e $q$ che assume ogni valore reale
+	2. ![[Pasted image 20231021155643.png|350]]
 2. siano: $r:ax+by+c=0$ e $r':a'x+b'y+c'=0$ due rette incidenti nel punto $P_{0}(x_{0},y_{0})$. Il fascio proprio di rette per $P_{0}$ è dato da:
 	1. $\lambda(ax+by+c)+\mu(a'x+b'y+c')=0$ per ogni valore reale di $\lambda$ e $\mu$
 3. il fascio proprio di rette formato da tutte le rette passanti per un punto, detto centro del fascio.
@@ -593,13 +593,6 @@ Una funzione che è sia limitata superiormente che inferiormente si dice *limit
 Non è limitata né superiormente né inferiormente.
 ## Traslazione di funzioni
 Data una funzione $f(x)$, se $c$ è una costante reale positiva, è possibile tracciare graficamente le funzioni:
-- $f(x+c)$
-- $f(x-c)$
-- $f(x)+c$
-- $f(x)-c$
-a partire dal grafico di $f(x)$. Esse corrispondono a delle *traslazioni*della funzione di partenza, compiute in una delle direzioni coordinate (orizzontali oppure verticali).
-
-Nello specifico, quando la costante viene addizionata o sottratta *internamente* all'argomento, la traslazione è orizzontale, mentre quando essa è addizionata o sottratta *esternamente* all'argomento, la traslazione è verticale.
 - Il grafico $f(x+c)$ si ottiene a partire da quello di $f(x)$ traslandolo verso *sinistra* di una quantità $c$;
 - Il grafico $f(x-c)$ si ottiene a partire da quello di $f(x)$ traslandolo verso *destra* di una quantità $c$;
 - Il grafico $f(x)+c$ si ottiene a partire da quello di $f(x)$ traslandolo verso l'*alto* di una quantità $c$;
@@ -622,10 +615,9 @@ $$f:\mathbb{R}\to\mathbb{R},y=f(x)=k,\ k \text{ valore costante}$$
 ![[Pasted image 20231025160914.png|250]]
 $y=f(x)=5$
 ## Funzioni definite a tratti
-Una funzione è definita a tratti quando non è definita con una espressione compatta per tutti i valori del dominio, ma è composta da più espressioni che la definiscono in intervalli diversi del dominio.
 Sia $f:\mathbb{R}\to\mathbb{R}$ una funzione così definita:
 $$f(x)= \begin{cases} 2x+1 & \mbox{per }x\ge0 \\ x^2+1 & \mbox{per }x\end{cases}$$
-Come si osserva la funzione $f$ non è definita con una espressione compatta per tutti i valori del dominio, ma è composta da due espressioni: $2x+1$ quando i valori del dominio sono maggiori o uguali a zero, $x^{2}+1$ quando i valori del dominio sono minori di zero.
+È composta da due espressioni: $2x+1$ quando i valori del dominio sono maggiori o uguali a zero, $x^{2}+1$ quando i valori del dominio sono minori di zero.
 ![[Pasted image 20231025161502.png|250]]
 ## Funzione valore assoluto
 $$y=f(x)=|x|=  \begin{cases}  x &\mbox{per }x\ge0\\  -x &\mbox{per }x\end{cases}$$
@@ -643,88 +635,48 @@ Nel caso in cui $q=0$ la funzione lineare si riduce a $y=f(x)=mx$ e la retta
 Due grandezze inversamente proporzionali $x$ e $y$ sono legate dalla legge $y=\frac{1}{x}$, definita per tutti i valori reali diversi da zero.
 ![[Pasted image 20231025162412.png|250]]
 # Esponenziali e logaritmi
-La funzione esponenziale associa $x$ il valore di $a^{x}$:
-$$x \to a^{x} \text{ dove }a\text{ è un valore fissato per la base}$$
-Bisogna imporre le seguenti condizioni affinché la funzioni esponenziale risulti definita:
-$$a^{x}\text{ è definita per valori di }a >0 \text{ e } a\neq 1$$
-Perché è necessario porre queste condizioni?
-
-Se fosse $a=1$ l'espressione $a^{x}$ sarebbe $1^{x}$ e quindi $1$.
-La condizione $a>0$ è necessaria per poter definire correttamente $a^{x}$ con $x \in \mathbb{R}$: occorre infatti operare una serie di estensioni successive sull’insieme di definizione degli esponenti $x$ che portano a dover porre delle restrizioni sulla base $a$.
-1. esponente intero positivo $a^{n}=a\cdot a\cdot a \dots a$ ($n$ volte)
-2. esponente intero relativo $a^{-n}=\frac{1}{a^{n}}$ con $n>0$
-3. esponente razionale $a^{\frac{m}{n}}=\sqrt[n]{a^{m}}$
-4. esponente reale - dominio di definizione dell'esponenziale
-La condizione $a>0$ entra in gioco in caso di esponente razionale.
-## Caratteristiche principali della funzione esponenziale
-La funzione esponenziale $y=f(x)=a^{x}$
-- è definita per ogni valore di $x$ reale
-- è definita solo per valori della base $a$ positivi $\neq 1$
-- assume sempre valori positivi
-- passa sempre per $(0,1)$: infatti per $x=0$ si ha $a^{0}=1$
-- è monotona (crescente nel caso $a>1$, decrescente nel caso $0<a<1$)
-![[Pasted image 20231025164531.png|250]]
-$y=a^{x}, \quad a>1$
-![[Pasted image 20231025164601.png|250]]
-$y=a^{x}, \quad 0<a<1$
+## Funzioni esponenziali
+Chiamiamo *funzioni esponenziali* tutte quelle funzioni che si presentano nella forma $y=a^{x}$, con $a$ numero reale positivo e diverso da $1$.
+$$y=2^{n} \quad y=3^{x} \quad y=\left( \frac{1}{2} \right)^{x} \quad y=\left( \frac{1}{3} \right)^{x} \quad y=\pi^{x}$$
+Il numero reale $a$ è detto *base*. Si esclude il caso $a=1$ perché si avrebbe: ![[Pasted image 20231128164312.png]]
+Conviene distinguere due casi:
+![[Pasted image 20231128164424.png]]
+Entrambe sono strettamente positive, passanti per $(0,1)$.
+## Equazioni/Disequazioni esponenziali
+$$2^{x+3}=7 \quad \sqrt{ 2 }\cdot 3^{5x}=\frac{1}{2} \quad 2^{2x}-3\cdot 2^{x}+1=0$$
+Le più semplici si presentano nella forma:
+$$a^{x}=b \quad \text{ con }a>0 \text{ e }a\neq 1$$
+Quante soluzioni ci sono:
+- *nessuna* se $b\leq 0$
+- *unica* se $b>0$
+$$a^{x}=b \Rightarrow x=\log_{a}b$$
+#Esempio 
+$$2^{x}=8 \Rightarrow x=\log_{2}8=3$$
+Alternativamente:
+$$2^{x}=8 \Rightarrow 2^{x}=2^{3} \Rightarrow x=3$$
+#Esempio 
+$$3^{x}=\frac{1}{9} \Rightarrow 3^{x}=\frac{1}{3^{2}} \Rightarrow 3^{x}=3^{-2}\Rightarrow x=-2$$
 # Logaritmo
-Sia $a>0, a\neq 1,k>0$
-Si definisce *logaritmo* in base $a$ di $k$ qual numero $y$ che rappresenta l'esponente al quale si deve elevare la base $a$ per ottenere $k$:
-$$a^{y}=k \iff y=\log_{a}k$$
-$k$ si dice argomento del logaritmo.
+Si definisce *logaritmo* in base $a$ di $b$ qual numero $x$ che rappresenta l'esponente al quale si deve elevare la *base* $a$ per ottenere l'*argomento* $b$:
+$$a^{x}=b \rightarrow x=\log_{a}b$$
+Definito per $b>0$ e $a>0 \text{ e } a\neq 1$
+#Esempio 
+$$\begin{align}
+\log_{7}49&=2 \\
+\log_{2}\frac{1}{2}&=-1 \\
+\log_{2}\frac{1}{\sqrt{ 8 }}&=\frac{1}{\sqrt{ 2^{3} }}=\frac{1}{2^{\frac{3}{2}}}=2^{-\frac{3}{2}}
+\end{align}$$
+## Funzioni logaritmiche
+$$y=\log_{a}x$$
+![[Pasted image 20231128170812.png]]
+Sempre positive per l'asse $x$ e passante per $(1,0)$.
 ### Proprietà
-- $\log_{a}(b)+\log_{a}(c)=\log_{a}(b\cdot c)$
-- $\log_{a}(b)-\log_{a}(c)=\log_{a}\left( \frac{b}{c} \right)$
-- $\log_{a}(b^{n})=n\log_{a}(b)$
-- $\log_{a}(b)=\frac{\log_{c}(b)}{\log_{c}(a)}$
-## Caratteristiche principali della funzione logaritmica
-La funzione logaritmica $y=f(x)=\log_{a}x$
-- è definita solo per valori positiva dell'argomento $x$
-- è definita solo per valori della base $a$ positivi e diversi da $1$
-- passa sempre per il punto $(1,0)$
-- è monotona (crescente nel caso $a>1$, decrescente nel caso $0<a<1$)
-![[Pasted image 20231025165806.png|250]]
-$y=\log_{a}x, a>1$
-![[Pasted image 20231025165827.png|250]]
-$y=\log_{a}x, 0<a<1$
-## Equazioni esponenziali
-Equazioni del tipo $a^{f(x)}=a^{g(x)}$:
-Le equazioni esponenziali riconducibili a questo tipo si risolvono facilmente uguagliando le funzioni che compaiono ad esponente, in quanto due esponenziali con la stessa base sono uguali quando sono uguali i loro esponenti:
-$$a^{f(x)}=a^{g(x)}\to f(x)=g(x)$$
-#Esempio 
-$$3^{x+6}=3^{4-x}\to x+6=4-x\to x=-1$$
-Equazioni del tipo $a^{f(x)}=c$:
-Le equazioni esponenziali riconducibili a questo tipo si risolvono applicando ad ambo i membri il logaritmo in base $c$:
-$$a^{f(x)}=c\to \log_{a}a^{f(x)}=\log_{a}c\to f(x)=\log_{a}c$$
-#Esempio 
-$$5^{2x+3}=18\to \log_{5}5^{2x+3}=\log_{5}18\to x=\frac{\log_{5}18-3}{2}$$
-Equazioni del tipo $a^{f(x)}=b^{g(x)}$:
-Le equazioni esponenziali riconducibili a questo tipo in cui ci sono due basi diverse fra loro, si risolvono passando ai logaritmi (in una base qualsiasi):
-$$a^{f(x)}=b^{g(x)}=\log_{c}a^{f(x)}=\log_{c}b^{g(x)}\to f(x)\log_{c}a=g(x)\log_{c}b$$
-#Esempio 
-$$2^{x-1}=3^{2x+1}\to \log_{10}2^{x-1}=\log_{10}3^{2x+1}\to (x-1)\log_{10}2=(2x+1)\log_{10}3\to x=\frac{\log_{10}3+\log_{10}2}{\log_{10}2-2\log_{10}3}$$
-### Esempi di risoluzione di equazioni esponenziali
-#Esempio 
-Risolvere $3^{8x+2}=9^{2x-1}$
-Con gli opportuni passaggi si può ricondurre a $a^{f(x)}=a^{g(x)}$, dove $a=3$.
-$$3^{8x+2}=9^{2x-1}$$
-$$3^{8x+2}=(3^{2})^{2x-1}$$
-$$3^{8x+2}=3^{4x-2}$$
-$$8x+2=4x-2$$
-$$x=-1$$
-#Esempio 
-Risolvere $\left( \frac{1}{2} \right)^{1-5x}=1$
-Si riconosce la forma $a^{f(x)}=c$
-In questo caso si applica ad ambo i membri il logaritmo in base $\frac{1}{2}$:
-$$1-5x=\log_{\frac{1}{2}}1$$
-$$1-5x=0$$
-$$x=\frac{1}{5}$$
-#Esempio 
-Risolvere $\frac{1}{2^{x-2}}-5^{1+5}=5x$
-Trasportiamo a primo membro i termini con potenze in base $2$ e al secondo membro potenze in base $5$, facendo le opportune semplificazioni:
-$$2^{x-2}=5^{x}+5\cdot5^{x}$$
-$$\frac{1}{4}\cdot 2^{x}=6\cdot5^{x}$$
-L’equazione presenta membri con basi diverse: ci si ritrova in una situazione del tipo $a^{f(x)}=b^{g(x)}$.
+- $\underbrace{\log_{a}(x)}_{m}+\underbrace{\log_{a}(y)}_{n}=\log_{a}(xy)$
+	- $x=a^{m}$
+	- $y=a^{n}$
+	- $xy=a^{m}\cdot a^{n}=a^{m+n}\rightarrow m+n=\log_{a}(xy)$
+- $\log_{a}(x)-\log_{a}(y)=\log_{a}\left( \frac{x}{y} \right)$
+- $\log_{a}x^{y}=y\log_{a}x$
 ## Equazioni logaritmiche
 Una equazione si definisce logaritmica quando l’incognita $x$ compare dentro all’argomento di uno o più logaritmi. Le equazioni logaritmiche rientrano nella categoria delle equazioni trascendenti.
 
@@ -745,40 +697,6 @@ Risolvi $\log_{5}(x+1)=\log_{5}(3x-5)$
 Condizioni di esistenza: $x+1>0$ e $3x-5>0$
 Dovendo essere verificate contemporaneamente segue: $x>\frac{5}{3}$
 $$\log_{5}(x+1)=\log_{5}(3x-5)\to(x+1)=(3x-5)\to x=3$$
-## Disequazioni esponenziali
-Disequazioni esponenziali del tipo $a^{f(x)}>a^{g(x)}$
-È ufficiente confrontare i relativi esponenti facendo attenzione al valore della base:
-- Se $a>1$ --> $a^{f(x)}>a^{g(x)}\to f(x)>g(x)$
-- Se $0<a<1$ --> $a^{f(x)}>a^{g(x)}\to f(x)<g(x)$
-#Esempio 
-- $3^{3x-2}>3^{6x}\to3x-2>6x\to x<-\frac{2}{3}$
-- $\left( \frac{1}{2} \right)^{8x-14}>\left( \frac{1}{2} \right)^{x}\to8x-14<x\to x$
-
-Disequazioni esponenziali del tipo $a^{f(x)}>b^{g(x)}$
-Per risolverle si passa ai logaritmi, applicando a ciascun membro il logaritmo in una determinata base:
-Con $c>1$ si ha:
-$$a^{f(x)}>b^{g(x)}\to \log_{c}a^{f(x)}>\log_{c}b^{g(x)}\to f(x)\log_{c}a>g(x)\log_{c}b$$
-#Esempio 
-- $3^{5x}>7^{2x-4}\to \log_{10}3^{5x}>\log_{10}7^{2x-4}\to(5x)3\log_{10}3>(2x-4)\log_{10}7\to x> - \frac{4\log_{10}7}{5\log_{10}3-2\log_{10}7}$
-## Disequazioni logaritmiche
-Disequazioni logaritmiche del tipo $\log_{a}f(x)>\log_{a}g(x)$
-È ufficiente confrontare i relativi esponenti facendo attenzione al valore della base:
-- Se $a>1$ --> $\log_{a}f(x)>\log_{a}g(x)\to f(x)>g(x)$
-- Se $0<a<1$ --> $\log_{a}f(x)<\log_{a}g(x)\to f(x)<g(x)$
-#Esempio 
-- $\log_{2}(1-3x)>\log_{2}(-x+5)$
-	- Condizioni di esistenza: $1-3x>0$ e $-x+5>0$
-	- Dovendo essere verificate contemporaneamente segue: $x$
-	- $\log_{2}(1-3x)>\log_{2}(-x+5)\to1-3x>-x+5\to x$
-- $\log_{\frac{1}{5}}(x+4)>\log_{\frac{1}{5}}(2x)\to x+4<2x\to x>4$
-
-Disequazioni logaritmiche del tipo $\log_{a}f(x)>c$
-Nel caso di disequazioni di questo tipo, in cui un membro è una costante, ci si riconduce alla tipologia precedente riscrivendo la costante in forma di logaritmo:
-$$c=\log_{a}a^{c}$$
-#Esempio 
-- $log_{3}(6-x)>2$
-	- Condizioni di esistenza: $6-x>0$ da cui $x$
-	- $\log_{3}(6-x)>2\to \log_{3}(6-x)>\log_{3}3^{2}\to 6-x>9\to x$
 # Trigonometria
 Le principali funzioni trigonometriche sono: *seno*, *coseno*, *tangente*, *cotangente*.
 ## Seno e coseno
