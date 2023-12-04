@@ -494,6 +494,110 @@ Cioè se nella matrice $(A,b)$ dei coefficienti e termini noti del sistema:
 - si scambiano di posto due righe
 - si moltiplica o divide una riga per un numero costante $\neq 0$
 - si aggiunge ad una riga il multiplo di un'altra
+# Capitolo 2 - Determinanti
+#Definizione 1.1
+Dicesi **determinante** di una matrice quadrata $A$ di ordine $n$, $\det(A)$, il numero reale ottenuto secondo la seguente procedura:
+1. si prende una matrice quadrata $A'$ ottenuta da $A$ scambiando di posto le colonne, si calcola il prodotto degli elementi diagonali di $A'$ e si prende tale prodotto con il proprio segno o con il segno cambiato a seconda che $A'$ sia stata ottenuta da $A$ con un numero pari o dispari di scambi di colonne
+2. si ripete il passo 1. per tutte le matrici quadrate $A'$ che è possibile ottenere da $A$ scambiando di posto le colonne
+3. si calcola la somma di tutti i numeri ottenuti con il procedimento descritto dal passo 1.
+In altri termini il determinante di $A$ è la somma degli $n!$ numeri reali del tipo:
+$$(-1)^{k}a_{1,j_{1}}\cdot a_{2,j_{2}}\cdot\dots \cdot a_{n,j_{n}}$$
+dove $(j_{1},j_{2},\dots,j_{n})$ è una permutazione dell'insieme ${1,2,\dots,n}$ e $k$ il numero degli scambi di indici necessari per ottenere la permutazione $(j_{1},j_{2},\dots,j_{n})$ dalla permutazione naturale $(1,2,\dots,n)$.
+#Definizione 1.2
+Si dice che $A$ è una matrice **singolare** o **non singolare** a seconda che i risulti $\det(A)=0$ o $\det(A)\neq 0$.
+#Esempio 
+Se $n=2$, le uniche due matrici che è possibile ottenere sono:
+$$
+\begin{pmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{pmatrix}
+\quad
+(\text{con 0 scambi})
+\quad
+\text{e}
+\quad
+\begin{pmatrix}
+a_{12} & a_{11} \\
+a_{22} & a_{21}
+\end{pmatrix}
+\quad
+(\text{con 1 scambio})
+$$
+Ne segue che, per ogni matrice $A$ di ordine $2$:
+$$\det A=\det \begin{pmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{pmatrix}
+=a_{11}a_{22}-a_{12}a_{21}$$
+#Esempio 
+$$
+\det
+\begin{pmatrix}
+3 & -5 \\
+2 & -4
+\end{pmatrix}
+= 3(-4)-2(4)=-2
+\quad\quad
+\det \begin{pmatrix}
+-2 & 4 \\
+\frac{1}{2} & -3
+\end{pmatrix}
+= (-2)(-3)-4\left( \frac{1}{2} \right)=4
+$$
+#Esempio 
+Se $n=3$, allora le $3! =6$ matrici che possibile ottenere da $A$ scambiando le colonne sono:
+$$
+\begin{pmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{pmatrix}
+\quad (\text{con 0 scambi})
+$$
+$$
+\begin{pmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{pmatrix},
+\begin{pmatrix}
+a_{13} & a_{12} & a_{11} \\
+a_{23} & a_{22} & a_{21} \\
+a_{33} & a_{32} & a_{31}
+\end{pmatrix},
+\begin{pmatrix}
+a_{13} & a_{11} & a_{12} \\
+a_{23} & a_{21} & a_{22} \\
+a_{33} & a_{31} & a_{32}
+\end{pmatrix}, \quad (\text{con 1 scambio})
+$$
+$$
+\begin{pmatrix}
+a_{12} & a_{13} & a_{11} \\
+a_{22} & a_{23} & a_{21} \\
+a_{32} & a_{33} & a_{31}
+\end{pmatrix},
+\begin{pmatrix}
+a_{13} & a_{11} & a_{12} \\
+a_{23} & a_{21} & a_{22} \\
+a_{33} & a_{31} & a_{32}
+\end{pmatrix}, \quad (\text{con 2 scambi})
+$$
+Ne segue che:
+$$
+\det(A)=\det
+\begin{pmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{pmatrix}=
+$$
+$$
+=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{12}a_{21}a_{33}-a_{13}a_{22}a_{31}-a_{11}a_{23}a_{32}
+$$
+#Teorema 1.3 Proprietà dei determinanti
+![[Pasted image 20231203181224.png]]
 
 
 
