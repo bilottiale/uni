@@ -239,7 +239,7 @@ C=\begin{pmatrix}
 0 & 0 & 0 & 3
 \end{pmatrix}
 $$
-La matrice che ha uguali ad $1$ tutti gli elementi della diagonale prende il nome di **matrice identica** $I_{n}$.
+La matrice che ha uguali ad $1$ tutti gli elementi della diagonale prende il nome di **matrice identità** $I_{n}$.
 ## Operazioni tra matrici
 Nell’ insieme delle matrici di tipo $k \times n$ si definiscono un’operazione di addizione tra due matrici e una operazione di moltiplicazione di un numero reale $\alpha$ per una matrice.
 $$
@@ -599,7 +599,7 @@ $$
 #Teorema 1.3 Proprietà dei determinanti
 ![[Pasted image 20231203181224.png]]
 ## Algoritmo di Gauss Jordan per il calcolo del determinante di una matrice
-#Osservazione 2.1
+#Osservazione 2.2
 Utilizzando le mosse di Gauss su $A$ possiamo ottenere una matrice triangolare $A'$.
 #Esempio 
 $$
@@ -654,7 +654,7 @@ In altri termini $\forall h=1,2,\dots,n$ si ha:
 $$\det A=\displaystyle\sum_{j=1}^{n}(-1)^{h+j}a_{hj}\cdot \det A_{hj}=\sum_{i=0}^{n}(-1)^{i+j}a_{ih}\cdot \det A_{ih}$$
 #Dimostrazione 
 Dimostriamo la tesi per $n=3$ prendendo come base di calcolo la prima riga.
-Dette $E_{1},E_{2},E_{3}$ le righe della matrice identica, essendo $A_{1}=a_{11}E_{1}+a_{12}E_{2}+a_{13}E_{3}$, per le proprietà $(D6-D7)$ si ha:
+Dette $E_{1},E_{2},E_{3}$ le righe della matrice identità, essendo $A_{1}=a_{11}E_{1}+a_{12}E_{2}+a_{13}E_{3}$, per le proprietà $(D6-D7)$ si ha:
 $$
 \det A=a_{11}\det
 \begin{pmatrix}
@@ -895,13 +895,377 @@ D_{z}=\det (A^{1},A^{2},b)=\det
 $$
 L'unica soluzione del sistema è dunque il vettore di coordinate:
 $$x=\frac{D_{x}}{D}=-\frac{3}{2},\quad y=\frac{D_{y}}{D}=\frac{1}{2}, \quad z=\frac{D_{z}}{D}=2$$
+## Matrici invertibili
+Per le matrici quadrate di ordine $n$ è possibile introdurre la nozione di **invertibilità**.
+#Definizione 5.1
+Se $A$ è una matrice quadrata di ordine $n$, si dice che $A$ è invertibile se esiste una matrice quadrata $B$ di ordine $n$ tale che $BA=AB=I_{n}$.
+La matrice inversa è unica e viene denotata anche come $A^{-1}$.
+L'unicità è dovuta dal fatto che se $B',B''$ sono due matrici tali che $B'A=I_{n}$ ed $AB''=I_{n}$, allora si ha:
+$$B'=B'I_{n}=B'(AB'')=(B'A)B''=I_{n}B''=B''$$
+#proposizione 5.2
+Se $A$ è una matrice quadrata di ordine $n$, allora le seguenti proprietà sono equivalenti:
+1. $A$ è invertibile
+2. $\det(A)\neq 0$
+3. $\det(A^{T})\neq 0$
+4. $A^{T}$ è invertibile
 
+#Dimostrazione di $1. \Rightarrow 2.$, il teorema di Binet segue:
+$$\det(A)\cdot \det(A^{-1})=\det(A\cdot A^{-1})=\det(I_{n})=1\neq 0\quad \text{ e quindi che }\quad \det(A)\neq 0$$
+#Dimostrazione di $2. \Rightarrow 1.$ per l'osservazione 2.2 si ha $\det(A)\neq 0$ se e solo se l'algoritmo di Gauss Jordan trasforma $A$ in $I_{n}$.
+$$A\cdot B=I_{n}\quad\text{ e }\quad B\cdot A=I_{n}$$
+#Osservazione 5.3
+Affianchiamo alla matrice $A$ la matrice identità $I_{n}$, quindi sulla matrice $(A|I_{n})$ si esegue l'algoritmo di Gauss Jordan:
+#Esempio 
+Dire se è invertibile e trovare l'eventuale inversa di:
+$$
+A=
+\begin{pmatrix}
+1 & 2 & -1 \\
+-1 & 3 & -2 \\
+4 & -1 & -3
+\end{pmatrix}
+$$
+Consideriamo $(A|I_{n})$:
+$$
+(A|I_{n})=
+\begin{pmatrix}
+1 & 2 & -1  & | & 1 & 0 & 0\\
+-1 & 3 & -2  & | & 0 & 1 & 0 \\
+4 & -1 & -3 & | & 0 & 0 & 1
+\end{pmatrix}
+$$
+effettuiamo le varie mosse di Gauss Jordan:
+$A_{2}=A_{2}-A_{1}$ e $A_{3}-4A_{1}$:
+$$
+\begin{pmatrix}
+1 & 2 & -1  & | & 1 & 0 & 0\\
+0 & 5 & -3  & | & 1 & 1 & 0 \\
+0 & 9 & 1 &   | & -4 & 0 & 1
+\end{pmatrix}
+$$
+$A_{2}=\frac{A_{2}}{5}$ e $A_{1}=A_{1}-\left( \frac{2}{5} \right)A_{2}$ e $A_{3}=A_{3}+\left( \frac{9}{5} \right)A_{2}$:
+$$
+\begin{pmatrix}
+1 & 0 & \frac{1}{5}  & | & \frac{3}{5} & -\frac{2}{5} & 0\\
+0 & 1 & -\frac{3}{5}  & | & \frac{1}{5} & \frac{1}{5} & 0 \\
+0 & 0 & -\frac{22}{5} &   | & -\frac{11}{5} & \frac{9}{5} & 1
+\end{pmatrix}
+$$
+$A_{1}=A_{1}+\left( \frac{1}{22} \right)A_{3}$ e $A_{3}=A_{2}-\left( \frac{15}{22} \right)A_{3}$ e $A_{3}=\frac{A_{3}}{-\frac{22}{5}}$:
+$$
+\begin{pmatrix}
+1 & 0 & 0  & | & \frac{1}{2} & -\frac{7}{22} & \frac{1}{22} \\
+0 & 1 & 0  & | & \frac{1}{2} & -\frac{1}{22} & -\frac{3}{22} \\
+0 & 0 & 1 &   | & \frac{1}{2} & -\frac{9}{22} & -\frac{5}{22}
+\end{pmatrix}
+$$
+La matrice $A$ è quindi invertibile e la sua inversa è:
+$$
+B=
+\begin{pmatrix}
+\frac{1}{2} & -\frac{7}{22} & \frac{1}{22} \\
+\frac{1}{2} & -\frac{1}{22} & -\frac{3}{22} \\
+\frac{1}{2} & -\frac{9}{22} & -\frac{5}{22}
+\end{pmatrix}
+$$
+Un metodo alternativo fornito dal teorema di Cramer è:
+#proposizione 5.4
+La matrice inversa di $A$ coincide con la matrice ottenuta dividendo per $\det(A)$ la matrice trasposta della matrice dei complementi algebrici degli elementi di $A$.
+#Dimostrazione 
+Sia $x_{ij}$ il generico elemento di $A^{-1}$ e siano $E^{1},E^{2},\dots,E^{n}$ le colonne della matrice identità. Allora la $j$-esima colonna di $A^{-1}$ è la soluzione del sistema $Ax=E^{j}$:
+$$x_{ij}=\frac{\det(A^{1},A^{2},\dots,A^{i-1},E^{j},A^{i+1},\dots,A^{n})}{\det(A)}$$
+#Esempio 
+Nel caso di:
+$$
+A=
+\begin{pmatrix}
+1 & 2 & -1 \\
+-1 & 3 & -2 \\
+4 & -1 & -3
+\end{pmatrix}
+$$
+si ha:
+$$
+\begin{align}
+&\det(A_{11})\begin{pmatrix}
+3 & -2 \\
+-1 & -3
+\end{pmatrix}=-11,
+&\det(A_{12})\begin{pmatrix}
+-1 & -2 \\
+4 & -3
+\end{pmatrix}=11,
+&&\det(A_{13})\begin{pmatrix}
+-1 & 3 \\
+4 & -1
+\end{pmatrix}=-11,
 
+\\
 
+&\det(A_{21})\begin{pmatrix}
+2 & -1 \\
+-1 & -3
+\end{pmatrix}=-7,
+&\det(A_{22})\begin{pmatrix}
+1 & -1 \\
+-4 & -3
+\end{pmatrix}=1,
+&&\det(A_{23})\begin{pmatrix}
+1 & 2 \\
+4 & -1
+\end{pmatrix}=-9,
 
+\\
 
-
-
+&\det(A_{31})\begin{pmatrix}
+2 & -1 \\
+3 & -2
+\end{pmatrix}=-1,
+&\det(A_{32})\begin{pmatrix}
+1 & -1 \\
+-1 & -2
+\end{pmatrix}=-3,
+&&\det(A_{33})\begin{pmatrix}
+1 & 2 \\
+-1 & 3
+\end{pmatrix}=5,
+\end{align}
+$$
+La matrice dei complementi algebrici degli elementi di $A$ è la matrice:
+$$
+\begin{pmatrix}
+-11 & -11 & -11 \\
+7 & 1 & 9 \\
+-1 & 3 & 5
+\end{pmatrix}
+$$
+La trasposta:
+$$
+\begin{pmatrix}
+-11 & 7 & -1 \\
+-11 & 1 & 3 \\
+-11 & 9 & 5
+\end{pmatrix}
+$$
+Il determinante:
+$$\det(A)=\displaystyle\sum_{j=1}^{3}(-1)^{1+j}a_{1j}=-11-2\cdot_{1}1-(-11)=-22$$
+L'inversa di $A$ si ottiene dividendo per $-22$ la matrice trasposta coniugata di $A$:
+$$
+A^{-1}
+\begin{pmatrix}
+\frac{1}{2} & -\frac{7}{22} & \frac{1}{22} \\
+\frac{1}{2} & -\frac{1}{22} & -\frac{3}{22} \\
+\frac{1}{2} & -\frac{9}{22} & -\frac{5}{22}
+\end{pmatrix}
+$$
+# Capitolo 3 - Sottospazi, Basi, Dimensioni
+## Sottospazi vettoriali
+#Definizione 1.1
+Un **sottospazio vettoriale** di $R^{n}$ è ogni insieme non vuoto $H\subseteq R^{n}$ tale che:
+1. $\forall u,v\in H$ risulta $u+v\in H$
+2. $\forall \lambda\in R$ e $\forall v\in H$ risulta $a\cdot v\in H$
+In altri termini, un sottospazio vettoriale è un sottoinsieme chiuso alle operazioni di addizione e di prodotto per uno scalare.
+### Verificare se un sottoinsieme è uno spazio vettoriale
+1. $\forall s_{1},s_{2} \in S, s_{1}+s_{2}\in S$
+2. $\forall s\in S, \forall \lambda \in \mathbb{K}, \lambda s\in S$
+3. Esiste elemento neutro
+#Esempio 
+$W$ è sottospazio?
+$$W=\{\binom{x}{y}\in R^{2}, 2x-y=0\}$$
+esiste elemento nullo?
+$$\binom{0}{0}\in W\ ?$$
+$$
+\begin{align}
+&2x-y=0 \\
+&2(0)-(0)=0 \quad \text{ con }x=0, y=0\\
+&0=0
+\end{align}
+$$
+Si, ora devo verificare le altre due proprietà:
+prendo due elementi del sottoinsieme $w_{1}=(x_{1},y_{1}), w_{2}=(x_{2},y_{2})$
+li sommo e verifico che $w_{1}+w_{2}\in W$:
+$$w_{1}+w_{2}=(x_{1},y_{1})+(x_{2}+y_{2})=(x_{1}+x_{2}),(y_{1},y_{2})$$
+$$
+\begin{align}
+&2x-y=0 \\
+&2(x_{1}+x_{2})-(y_{1}+y_{2})=0 \\
+&2x_{1}+2x_{2}-y_{1}-y_{2}=0 \\
+&(2x_{1}-y_{2})+(2x_{2}-y_{2})=0
+\end{align}
+$$
+so che $(2x-y)=0$ e che $0+0=0$ quindi la somma appartiene a $W$.
+Ora verifichiamo per il prodotto scalare:
+prendo un elemento in $W$ e uno scalare in $R$:
+$$w_{1}\in W, \quad \lambda\in R$$
+$$w_{1}=(x_{1},y_{1})$$
+li moltiplico:
+$$
+\begin{align}
+\lambda \cdot w_{1} &=\lambda \cdot(x_{1},y_{1}) \\
+&=(\lambda x_{1},\lambda y_{1})
+\end{align}
+$$
+verifico se il risultato appartiene a $W$:
+$$
+\begin{align}
+&2x-y=0 \\
+&2\lambda x_{1}-\lambda y_{1}=0 \\
+&\lambda(2x_{1}-y_{1})=0
+\end{align}
+$$
+so che $(2x-y)=0$ e che $\lambda \cdot0=0$ quindi la moltiplicazione appartiene a $W$.
+#Definizione 1.3
+Sia $V$ uno spazio vettoriale definito su un campo $\mathbb{K}$ e ${v_{1},v_{2},\dots,v_{n}}\subseteq V$ un insieme di vettori di $V$.
+Si dice $span$ o **sottospazio generato** dai vettori $v_{1},v_{2},\dots,v_{n}$ l'insieme di tutte le possibili combinazioni lineari:
+$$
+\begin{align}
+&Span(v_{1},v_{2},\dots,v_{n}) \\
+&L(v_{1},v_{2},\dots,v_{n}) \\
+&<v_{1},v_{2},\dots,v_{n}>
+\end{align}
+$$
+In simboli:
+$$Span(v_{1},v_{2},\dots,v_{n}):=\{a_{1}v_{1}+a_{2}v_{2}+\dots+a_{n}v_{n}\}\quad a_{1},a_{2},\dots,a_{n}\in \mathbb{K}$$
+## Sottospazio generato
+Un qualsiasi insieme di vettori $\{v_{1},v_{2},\dots,v_{n}\}$ contenuto in uno spazio vettoriale $V$ su un campo $\mathbb{K}$ è un sistema di generatori $V$ se e solo se ogni $w\in V$ si può esprimere come combinazione lineare dei vettori $v_{1},v_{2},\dots,v_{n}$.
+Ovvero se $\{v_{1},v_{2},\dots,v_{n}\}\subseteq V$ è un sistema di generatori di $V$ se e solo se per ogni $w\in V$ esistono gli scalari $a_{1},a_{2},\dots,a_{n}\in \mathbb{K}$ tali che:
+$$a_{1}v_{1}+a_{2}v_{2}+\dots+a_{n}v_{n}=w$$
+L'insieme di tutte le possibili combinazioni lineari dei vettori $v_{1},v_{2},\dots,v_{n}\in V$ è, per definizione, il sottospazio generato da questi vettori ossia:
+$$V=Span(v_{1},v_{2},\dots,v_{n})$$
+## Vettori linearmente dipendenti o indipendenti
+Si dice che gli $n$ vettori $v_{1},v_{2},\dots,v_{n}$ sono **linearmente indipendenti** tra loro se, prendendo $n$ scalari $a_{1},a_{2},\dots,a_{n}\in \mathbb{K}$ e imponendo
+$$a_{1}v_{1}+a_{2}v_{2}+\dots+a_{n}v_{n}=0$$
+risulta che la precedente uguaglianza è soddisfatta se e solo se:
+$$a_{1}=a_{2}=\ldots=a_{n}=0$$
+cioè se e solo se l'unica $n$-upla di scalari che annulla la combinazione lineare $a_{1}v_{1}+a_{2}v_{2}+\ldots+a_{n}v_{n}$ è la $n$-upla di coefficienti nulli.
+Diciamo invece che i vettori $v_{1},v_{2},\ldots,v_{n}$ sono **linearmente dipendenti** se oltre alla $n$-upla di scalari tutti nulli esiste almeno una $n$-upla di scalari non tutti nulli che annulla la combinazione lineare.
+#Esempio 
+I vettori $v_{1}=(1,0), v_{2}=(0,1)\in \mathbb{R}^{2}$ sono linearmente indipendenti.
+Consideriamo due generici $a,b\in \mathbb{R}$ e imponiamo che sia nulla la generica combinazione lineare
+$$
+\begin{align}
+&av_{1}+bv_{1} \\
+&a(1,0)+b(0,1)=(0,0)
+\end{align}
+$$
+svolgendo le operazioni otteniamo:
+$$
+\begin{align}
+&(a,0)+(0,b)=(0,0) \\
+&(a,b)=(0,0)
+\end{align}
+$$
+quindi abbiamo che $a=b=0$
+#Esempio 
+I vettori $v_{1}=(1,1,0), v_{2}=(0,0,2), v_{3}=(0,0,-3)\in \mathbb{R}^{3}$ sono linearmente dipendenti.
+Per vederlo basta considerare tre generici scalari $a,b,c\in \mathbb{R}$ e richiedere che:
+$$av_{1}+bv_{2}+cv_{3}=0$$
+ossia:
+$$a(1,1,0)+b(0,0,2)+c(0,0,-3)=0$$
+dopo i vari calcoli otteniamo:
+$$(a,a,2b-3c)=(0,0,0)$$
+soddisfatta per $a=b=c=0$ ma anche per $a=0,2b=3c$.
+Ad esempio $a=0, b=\frac{3}{2}, c=1$ sono tre scalari non tutti nulli che annullano la generica combinazione lineare, dunque i tre vettori sono linearmente dipendenti.
+## Sistemi di generatori
+Un **sistema di generatori** di uno spazio o di un sottospazio vettoriale è un insieme di vettori che permette di ricostruire tutti i vettori dello spazio.
+Sia $V$ uno spazio su un campo $\mathbb{K}$. Diciamo che un insieme di vettori $\{v_{1},v_{2},\dots,v_{n}\}\subseteq V$ è un **sistema di generatori** di $V$ se ogni elemento di $V$ si può esprimere mediante una combinazione lineare di tali vettori.
+Ovvero, $\{v_{1},v_{2},\dots,v_{n}\}\subseteq V$ è un sistema di generatori di $V$ se e solo se $\forall w\in V$ esistono $n$ scalari $a_{1},a_{2},\dots,a_{n}\in \mathbb{K}$ tali che:
+$$a_{1}v_{1}+a_{2}v_{2}+\ldots+a_{n}v_{n}=\displaystyle\sum_{i=1}^{n}a_{i}v_{i}=w$$
+#Esempio 
+Consideriamo lo spazio vettoriale $\mathbb{R}^{2}$ dei vettori a due componenti reali e consideriamo l'insieme:
+$$\{(0,2),(1,0),(1,1)\}\subseteq \mathbb{R}^{2}$$
+esso costituisce un sistema di generatori di $\mathbb{R}^{2}$, infatti $\forall w\in \mathbb{R}^{2}$, ossia per ogni $(w_{1},w_{2})\in \mathbb{R}^{2}$, possiamo trovare dei coefficienti $a_{1},a_{2},a_{3}\in\mathbb{R}$ tali che:
+$$(w_{1},w_{2})=a_{1}(0,2)+a_{2}(1,0)+a_{3}(1,1)$$
+per fissare le idee proviamo con il vettore:
+$$w=(w_{1},w_{2})=(27,4)$$
+Se consideriamo i coefficienti:
+$$a_{1}=2,a_{2}=27,a_{3}=0$$
+allora
+$$
+\begin{align}
+&a_{1}(0,2)+a_{2}(1,0)+a_{3}(1,1)= \\
+&=2\cdot(0,2)+27\cdot(1,0)+0\cdot(1,1)= \\
+&=(0,4)+(27,0)+(0,0)=(27,4)
+\end{align}
+$$
+In generale la scelta degli scalari $a_{1},a_{2},a_{3}\in \mathbb{R}$ non è unica. Anche considerando:
+$$a_{1}=1,a_{2}=25,a_{3}=2$$
+si può costruire una combinazione lineare che genera il vettore $w=(27,4)$.
+### Come stabilire se un insieme di vettori è un sistema di generatori
+Per capire il seguente metodo, utile per verificare se un insieme di vettori è un sistema di generatori di uno spazio vettoriale, è necessario conoscere il *teorema di Rouché Capelli* e come si calcola il *rango di una matrice*.
+Sia $V$ uno spazio vettoriale qualsiasi su un campo $\mathbb{K}$ e immaginiamo di avere un insieme di $n$ vettori $\{v_{1},v_{2},\dots,v_{n}\}\in V$.
+Secondo la definizione di sistema di generatori, per effettuare la verifica dobbiamo considerare un generico vettore $w\in V$ e stabilire se esistono $n$ scalari $a_{1},a_{2},\dots,a_{n}\in \mathbb{K}$ tali che:
+$$a_{1}v_{2}+a_{2}v_{2}+\ldots+a_{n}v_{n}=w$$
+Il trucco consiste nello svolgere i calcoli al primo membro dell'equazione, ricavando un'uguaglianza tra vettori, a cui associamo un sistema lineare nelle incognite $a_{1},a_{2},\dots,a_{n}$.
+Quale che sia lo spazio vettoriale in esame, al sistema lineare nelle incognite $a_{1},a_{2},\dots,a_{n}$ associamo la forma matriciale:
+$$Ax=b$$
+dove $A$ è la matrice dei coefficienti, $x$ il vettore colonna delle incognite $a_{1},a_{2},\dots,a_{n}$ e $b$ il vettore colonna dei termini noti.
+Affinché $\{v_{1},v_{2},\dots,v_{n}\}$ sia un sistema di generatori, $Ax=b$ deve ammettere soluzione, dunque il tutto si traduce nello studio della compatibilità del sistema lineare.
+Per il *teorema di Rouché Capelli*, $Ax=b$ ammette soluzione se e solo se il rango della matrice incompleta $A$ è uguale al rango della matrice completa $(A|b)$ associata al sistema.
+Quindi:
+- se $rk(A)=rk(A|b)$ l'insieme dei vettori è un sistema di generatori
+- se $rk(A)\neq rk(A|b)$ allora l'insieme di vettori non è un sistema di generatori
+#Esempio 
+Vogliamo capire se il seguente insieme di vettori è un sistema di generatori di $\mathbb{R}^{3}$:
+$$\{(1,0,1),(0,0,3),(1,2,1),(1,-1,0)\}$$
+tali vettori generano $\mathbb{R}^{3}$ se e solo se $\forall w\in\mathbb{R}^{3}$ esistono quattro scalari $a_{1},a_{2},a_{3},a_{4}\in\mathbb{R}$ tali che:
+$$a_{1}(1,0,1)+a_{2}(0,0,3)+a_{3}(1,2,1)+a_{4}(1,-1,0)=w$$
+scriviamo le coordinate del generico vettore $w$:
+$$w=(w_{1},w_{2},w_{3})\in\mathbb{R}^{3}$$
+sostituiamole nella precedente relazione e svolgiamo i calcoli:
+$$
+\begin{align}
+&a_{1}(1,0,1)+a_{2}(0,0,3)+a_{3}(1,2,1)+a_{4}(1,-1,0)=(w_{1},w_{2},w_{3}) \\
+&(a_{1},0,a_{1})+(0,0,3a_{2})+(a_{3},2a_{3},a_{3})+(a_{4},-a_{4},0)=(w_{1},w_{2},w_{3}) \\
+&(a_{1}+a_{3}+a_{4},2a_{3}-a_{4},a_{1}+3a_{2}+a_{3})=(w_{1},w_{2},w_{3})
+\end{align}
+$$
+uguagliando le componenti otteniamo il seguente sistema lineare nelle incognite $a_{1},a_{3},a_{3},a_{4}$:
+$$
+\begin{cases}
+a_{1}+a_{3}+a_{4}=w_{1} \\
+2a_{3}-a_{4}=w_{2} \\
+a_{1}+3a_{2}+a_{3}=w_{3}
+\end{cases}
+$$
+Scriviamo la matrice incompleta $A$ e la matrice completa $(A|b)$:
+$$
+\begin{align}
+&A= \begin{pmatrix}
+1 & 0 & 1 & 1 \\
+0 & 0 & 2 & -1 \\
+1 & 3 & 1 & 0
+\end{pmatrix} \\ \\
+&(A|b)=\begin{pmatrix}
+1 & 0 & 1 & 1 & | & w_{1} \\
+0 & 0 & 2 & -1 & | & w_{2} \\
+1 & 3 & 1 & 0 & | & w_{3}
+\end{pmatrix}
+\end{align}
+$$
+Sostituiamo
+$R_{3}=R_{3}-R_{1}$:
+$$
+(A|b)'=
+\begin{pmatrix}
+1 & 0 & 1 & 1 & | & w_{1} \\
+0 & 0 & 2 & -1 & | & w_{2} \\
+0 & 3 & 0 & -1 & | & w_{3}-w_{1}
+\end{pmatrix}
+$$
+Scambiamo seconda e terza riga:
+$$
+(A|b)'=
+\begin{pmatrix}
+1 & 0 & 1 & 1 & | & w_{1} \\
+0 & 3 & 0 & -1 & | & w_{3}-w_{1} \\
+0 & 0 & 2 & -1 & | & w_{2}
+\end{pmatrix}
+$$
+troviamo tre pivot: $a''_{11}=1,a''_{22}=3,a''_{33}=2$.
+Possiamo concludere che:
+$$rk(A)=rk(A|b)=3$$
+per qualsiasi valore di $(w_{1},w_{2},w_{3})$, quindi i vettori assegnati costituiscono un sistema di generatori di $\mathbb{R}^{3}$.
 
 
 
