@@ -105,16 +105,15 @@ void stampa_matrice(const int mat[ROWS][COLS])
 bool matrici_uguali(const int matA[ROWS][COLS],
                     const int matB[ROWS][COLS])
 {
-    // COMPLETARE
-    bool is_equal = true;
-    for (size_t r = 0; r < ROWS && is_equal; r++)
+    bool uguali = true;
+    for (size_t r = 0; r < ROWS && uguali; r++)
     {
-        for (size_t c = 0; c < COLS && is_equal; c++)
+        for (size_t c = 0; c < COLS && uguali; c++)
         {
-            is_equal = matA[r][c] == matB[r][c];
+            uguali = matA[r][c] == matB[r][c];
         }
     }
-    return is_equal;
+    return uguali;
 }
 
 //------------------------------------------------------------------
@@ -125,19 +124,11 @@ bool matrici_uguali(const int matA[ROWS][COLS],
 void init_alternate(int mat[ROWS][COLS],
                     const int *pPari, const int *pDispari)
 {
-    // COMPLETARE
     for (size_t r = 0; r < ROWS; r++)
     {
         for (size_t c = 0; c < COLS; c++)
         {
-            if (r % 2 == 0)
-            {
-                mat[r][c] = pPari[c];
-            }
-            else
-            {
-                mat[r][c] = pDispari[c];
-            }
+            mat[r][c] = (r % 2 == 0 ? pPari : pDispari)[c];
         }
     }
 }
@@ -149,13 +140,10 @@ void init_alternate(int mat[ROWS][COLS],
 // non e' un indiice di riga valido, allora la funzione non esegue operazioni.
 void imposta_riga(int mat[ROWS][COLS], const size_t r, const int val)
 {
-    // COMPLETARE
     if (r < ROWS)
     {
         for (size_t c = 0; c < COLS; c++)
-        {
             mat[r][c] = val;
-        }
     }
 }
 
@@ -166,13 +154,10 @@ void imposta_riga(int mat[ROWS][COLS], const size_t r, const int val)
 // non e' un indiice di colonna valido, allora la funzione non esegue operazioni.
 void imposta_colonna(int mat[ROWS][COLS], const size_t c, const int val)
 {
-    // COMPLETARE
     if (c < COLS)
     {
-        for (size_t r = 0; r < COLS; r++)
-        {
+        for (size_t r = 0; r < ROWS; r++)
             mat[r][c] = val;
-        }
     }
 }
 
@@ -180,26 +165,24 @@ void imposta_colonna(int mat[ROWS][COLS], const size_t c, const int val)
 
 // Una riga ha un elemento divisivo in posizione j se
 // tutti gli elementi della riga sono divisibili per tale elemento
-// Ritorna true se la riga in ingresso ha un elemento divisivo
+// Restituisce true se la riga in ingresso ha un elemento divisivo
 // in posizione j
 bool elem_div_riga(const int pRiga[COLS], const size_t j)
 {
-    // COMPLETARE
-    bool is_div = true;
-    for (size_t c = 0; c < COLS && is_div; c++)
+    bool elem_div = true;
+    for (size_t c = 0; c < COLS && elem_div; c++)
     {
-        is_div = is_div && (pRiga[c] % pRiga[j] == 0);
+        elem_div = elem_div && (pRiga[c] % pRiga[j] == 0);
     }
-    return is_div;
+
+    return elem_div;
 }
 
 //------------------------------------------------------------------
 
 // una matrice e' divisiva se tutte le righe hanno almeno
 // una posizione divisiva.
-// Ritorna true se la matrice in ingresso e' divisiva.
-// bool elem_div_mat(const int mat[ROWS][COLS])
-
+// Restituisce true se la matrice in ingresso e' divisiva.
 bool elem_div_mat(const int mat[ROWS][COLS])
 {
     bool mat_div = true;

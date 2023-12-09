@@ -598,6 +598,306 @@ $$
 $$
 #Teorema 1.3 Proprietà dei determinanti
 ![[Pasted image 20231203181224.png]]
+## Algoritmo di Gauss Jordan per il calcolo del determinante di una matrice
+#Osservazione 2.1
+Utilizzando le mosse di Gauss su $A$ possiamo ottenere una matrice triangolare $A'$.
+#Esempio 
+$$
+A=
+\begin{pmatrix}
+1 & 2 & -1 & 0 \\
+2 & -1 & -2 & -1 \\
+-1 & 8 & 0 & 3 \\
+0 & 5 & 4 & 0 & 
+\end{pmatrix}
+$$
+eseguiamo un passo di pivot parziale sull'elemento $a_{11}=1$, cioè sostituiamo la riga $A_{2}$ con $A_{2}-2A_{1}$ e la riga $A_{3}$ con $A_{3}+A_{1}$:
+$$
+\begin{pmatrix}
+1 & 2 & -1 & 0 \\
+0 & -5 & 0 & -1 \\
+0 & 10 & -1 & 3 \\
+0 & 5 & 4 & 0
+\end{pmatrix}
+$$
+eseguiamo un secondo passo di pivot parziale su $a_{22}=-5$, cioè sostituiamo la riga $A_{3}$ con $A_{3}+2A_{2}$ e la riga $A_{4}$ con $A_{4}+A_{2}$:
+$$
+\begin{pmatrix}
+1 & 2 & -1 & 0 \\
+0 & -5 & 0 & -1 \\
+0 & 0 & -1 & 1 \\
+0 & 0 & 4 & -1
+\end{pmatrix}
+$$
+eseguiamo infine un terzo passo di pivot parziale su $a_{33}=-1$, cioè sostituiamo la riga $A_{4}$ con $A_{4}+4A_{3}$ e otteniamo la matrice triangolare superiore:
+$$
+A'=
+\begin{pmatrix}
+1 & 2 & -1 & 0 \\
+0 & -5 & 0 & -1 \\
+0 & 0 & -1 & 1 \\
+0 & 0 & 0 & 3
+\end{pmatrix}
+$$
+#Teorema 2.3 **(di Binet)**
+Se $A$ e $B$ sono matrici quadrate di ordine $n$, allora si ha:
+$$\det(AB)=\det A\cdot \det B$$
+## Regola di Laplace
+In alternativa all'algoritmo di Gauss Jordan, il determinante di una matrice quadrata può essere calcolato in un altro modo.
+#Definizione 
+Sia $A$ una matrice quadrata di ordine $n>1$ e, $\forall i,j=1,2,\dots,n$, indichiamo con $A_{ij}$ la matrice quadrata di ordine $n-1$ ottenuta eliminando da $A$ la riga $i$-esima e la colonna $j$-esima.
+$\det A_{ij}$ dicesi **minore complementare** dell'elemento $a_{ij}$ di $A$
+$(-1)^{i+j}\det A_{ij}$ dicesi **complemento algebrico** di $a_{ij}$
+#Teorema 2.3 **(di Laplace)**
+Se $A$ è una matrice quadrata di ordine $n>1$, allora il determinante di $A$ è uguale alla somma dei prodotti degli elementi di una qualunque riga o colonna per i rispettivi complementi algebrici.
+In altri termini $\forall h=1,2,\dots,n$ si ha:
+$$\det A=\displaystyle\sum_{j=1}^{n}(-1)^{h+j}a_{hj}\cdot \det A_{hj}=\sum_{i=0}^{n}(-1)^{i+j}a_{ih}\cdot \det A_{ih}$$
+#Dimostrazione 
+Dimostriamo la tesi per $n=3$ prendendo come base di calcolo la prima riga.
+Dette $E_{1},E_{2},E_{3}$ le righe della matrice identica, essendo $A_{1}=a_{11}E_{1}+a_{12}E_{2}+a_{13}E_{3}$, per le proprietà $(D6-D7)$ si ha:
+$$
+\det A=a_{11}\det
+\begin{pmatrix}
+1 & 0 & 0 \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{pmatrix}
++a_{12}\det
+\begin{pmatrix}
+0 & 1 & 0 \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{pmatrix}
++a_{13}\det
+\begin{pmatrix}
+0 & 0 & 1 \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{pmatrix}
+$$
+Effettuando un passo di pivot parziale sull'elemento non nullo della prima riga di ciascuna matrice si ha:
+$$
+\det A=a_{11}\det
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & a_{22} & a_{23} \\
+0 & a_{32} & a_{33}
+\end{pmatrix}
++a_{12}\det
+\begin{pmatrix}
+0 & 1 & 0 \\
+a_{21} & 0 & a_{23} \\
+a_{31} & 0 & a_{33}
+\end{pmatrix}
++a_{13}\det
+\begin{pmatrix}
+0 & 0 & 1 \\
+a_{21} & a_{22} & 0 \\
+a_{31} & a_{32} & 0
+\end{pmatrix}
+$$
+Ora scambiamo la prima con la seconda colonna:
+$$
+\det
+\begin{pmatrix}
+0 & 1 & 0 \\
+a_{21} & 0 & a_{23} \\
+a_{31} & 0 & a_{33}
+\end{pmatrix}
+=-\det
+\begin{pmatrix}
+0 & 1 & 0 \\
+0 & a_{22} & a_{23} \\
+0 & a_{32} & a_{33}
+\end{pmatrix}
+$$
+Invece, con due scambi di colonna si ha:
+$$
+\det
+\begin{pmatrix}
+0 & 0 & 1 \\
+a_{21} & a_{22} & 0 \\
+a_{31} & a_{32} & 0
+\end{pmatrix}
+=-\det
+\begin{pmatrix}
+0 & 1 & 0 \\
+a_{21} & 0 & a_{23} \\
+a_{31} & 0 & a_{33}
+\end{pmatrix}
+=\det
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & a_{22} & a_{23} \\
+0 & a_{32} & a_{33}
+\end{pmatrix}
+$$
+Infine, eseguire l'algoritmo di Gauss Jordan sulle matrici
+$$
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & a_{22} & a_{23} \\
+0 & a_{32} & a_{33}
+\end{pmatrix},
+\quad\quad
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & a_{21} & a_{23} \\
+0 & a_{31} & a_{33}
+\end{pmatrix},
+\quad\quad
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & a_{21} & a_{22} \\
+0 & a_{31} & a_{32}
+\end{pmatrix}
+$$
+## Sistemi lineari non omogenei - Teorema di Cramer
+L’algoritmo di Gauss Jordan oltre a consentirci di calcolare facilmente il determinante di una matrice quadrata ci consente anche di risolvere un sistema lineare non omogeneo di $n$ equazioni in $n$ incognite.
+#proposizione 4.1
+Se $A$ è una matrice quadrata non singolare di ordine $n$, allora $\forall b\in R^{n}$ il sistema lineare non omogeneo $Ax=b$ ha una ed una sola soluzione; tale soluzione è il vettore $b'$ tale che l'algoritmo di Gauss Jordan completo trasforma la matrice $(A,b)$ nella matrice $(I_{n},b')$.
+#Dimostrazione 
+Per quanto visto nell'osservazione 7.4 del Capitolo 1, il sistema lineare non omogeneo $Ax=b$ è equivalente al sistema $A'x=b'$ dove $(A',b')$ è stata ottenuta da $(A,b)$ mediante l'algoritmo di Gauss Jordan l'algoritmo di Gauss Jordan completo.
+D’altra parte, se il determinante di $A$ è $\neq 0$, allora per quanto visto nella Osservazione 2.2, l’algoritmo di Gauss Jordan completo trasforma la matrice $A$ nella matrice $I_{n}$ e quindi $(A,b)$ in $I_{n},b'$.
+Pertanto il sistema $Ax=b$ è equivalente al sistema $I_{n}x=b'$, ha l'unica soluzione $x=b'$ e quindi $b'$ è l'unica soluzione del sistema $Ax=b$.
+#Esempio 
+$$
+\left\{\begin{aligned}
+&x_1+2 x_2-x_3 & =2 \\
+&2 x_1-x_2-2 x_3-x_4 & =-1 \\
+&-x_1+8 x_2+3 x_4 & =0 \\
+&5 x_2+4 x_3 & =1
+\end{aligned}\right.
+$$
+Cioè
+![[Pasted image 20231204174421.png|324]]
+![[Pasted image 20231204174441.png]]
+Il sistema ha dunque l'unica soluzione $x=\left( -{\frac{44}{5}},\frac{17}{5},-4,-12 \right)^{T}$.
+
+Il teorema di Cramer fornisce un metodo di risoluzione del sistema lineare $Ax=b$ alternativo all'algoritmo di Gauss Jordan.
+#Teorema 4.2 **(Teorema di Cramer)**
+Se $A$ è una matrice quadrata non singolare, allora $\forall b\in R^{n}$ l'unica soluzione del sistema $Ax=b$ è il vettore $x=(x_{1},x_{2},\dots,x_{n})^{T}$ tale che:
+$$
+d_{j}=\frac{\det(A^{1},A^{2},\dots,A^{j-1},b,A^{j+1},\dots,A^{n})}{\det A} \quad\quad \forall j=1,2,\dots,n
+$$
+#Dimostrazione 
+Per la proposizione 4.1 sappiamo che il sistema $Ax=b$ ha un'unica soluzione $x$, può essere identificata osservando che $x=(x_{1},x_{2},\dots,x_{n})^{T}$ è soluzione del sistema se e solo se:
+$$b=x_{1}A^{1}+x_{2}A^{2}+\dots+x_{n}A^{n}$$
+Per le proprietà dei determinanti si ha:
+$$
+\begin{align}
+\det(b,A^{2},\dots,A^{n})&=\det(x_{1}A^{1}+x_{2}A^{2}+\dots+x_{n}A^{n},A^{2},\dots,A^{n})= \\
+&=x_{1}\det(A^{1},A^{2},\dots,A^{n})+x_{2}\det(A^{2},A^{2},\dots,A^{n})+\dots+x_{n}\det(A^{n},A^{2},\dots,A^{n})
+\end{align}
+$$
+dal momento che il determinante di una matrice in cui due colonne coincidono è nullo, si deduce che:
+$$\det(b,A^{2},\dots,A^{n})=x_{1}\det A\quad \text{ e quindi che }\quad x_{1}=\frac{\det(b,A^{2},\dots,A^{n})}{\det A}$$
+Analogamente, $\forall j=2,3,\dots,n$:
+$$
+\det(A^{1},A^{2},\dots,A^{j-1},b,A^{j+1},\dots,A^{n})=x_{j}\det A
+$$
+quindi:
+$$x_{j}=\frac{\det(A^{1},\dots,A^{j-1},b,A^{j+1},\dots,A^{n})}{\det A}$$
+provando la tesi.
+#Esempio 2
+Risolvere il sistema
+$$
+\begin{cases}
+x+y+z&=1 \\
+x-y+z&=0 \\
+-x-3y+z&=2
+\end{cases}
+$$
+Calcolare i determinanti
+$$
+D=\det A=\det
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & -1 & 1 \\
+-1 & -3 & 1
+\end{pmatrix}
+=\det
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & -2 & 0 \\
+0 & -2 & 2
+\end{pmatrix}
+=\det
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & -2 & 0 \\
+0 & 0 & 2
+\end{pmatrix}
+=-4
+$$
+$$
+D_{x}=\det (b,A^{2},A^{3})=\det
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & -1 & 1 \\
+2 & -3 & 1
+\end{pmatrix}
+=\det
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & -1 & 1 \\
+0 & -5 & -1
+\end{pmatrix}
+=\det
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & -1 & 1 \\
+0 & 0 & -6
+\end{pmatrix}
+=6
+$$
+$$
+D_{y}=\det (A^{1}, b, A^{3})=\det
+\begin{pmatrix}
+1 & 1 & 1 \\
+1 & 0 & 1 \\
+-1 & 2 & 1
+\end{pmatrix}
+=\det
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & -1 & 0 \\
+0 & 3 & 2
+\end{pmatrix}
+=\det
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & -1 & 0 \\
+0 & 0 & 2
+\end{pmatrix}
+=-2
+$$
+$$
+D_{z}=\det (A^{1},A^{2},b)=\det
+\begin{pmatrix}
+1 & 1 & 1 \\
+1 & -1 & 0 \\
+-1 & -3 & 2
+\end{pmatrix}
+=\det
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & -2 & -1 \\
+0 & -2 & 3
+\end{pmatrix}
+=\det
+\begin{pmatrix}
+1 & 1 & 1 \\
+0 & -2 & -1 \\
+0 & 0 & 4
+\end{pmatrix}
+=-8
+$$
+L'unica soluzione del sistema è dunque il vettore di coordinate:
+$$x=\frac{D_{x}}{D}=-\frac{3}{2},\quad y=\frac{D_{y}}{D}=\frac{1}{2}, \quad z=\frac{D_{z}}{D}=2$$
+
+
+
 
 
 

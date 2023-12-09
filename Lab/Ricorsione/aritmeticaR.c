@@ -77,12 +77,46 @@ int main(void) {
 
 int mcd_euclideR(int a, int b) {
 	// caso base: MCD(a, 0) = a
-
+	if (b == 0)
+    return a;  
 	// passo induttivo: MCD(a, b) = MCD(b, a mod b)
+  else
+    return mcd_euclideR(b, a % b); 
 }
 
 //------------------------------------------------------------------
 
 // COMPLETARE
+int somma_dispariR(int n){
+	if(n==0){
+		return 0;
+	}
+	if(n%2==0){
+		return somma_dispariR(n-1);
+	}
+	return n+somma_dispariR(n-1);
+};
+
+int prodotto_multipli_in_intervalloR(int n_min, int n, int k){
+	if(n_min>n){
+		return 1;
+	}
+	if(n%k==0){
+		return n*prodotto_multipli_in_intervalloR(n_min, n-1, k);
+	}
+	return prodotto_multipli_in_intervalloR(n_min, n-1, k);
+};
+
+// ritorna true se esiste un numero tra n_min ed n (estremi inclusi)
+// che e' un divisore di k. Ritorna false altrimenti.
+bool esiste_divisore_in_intervalloR(int n_min, int n, int k){
+	if(n_min>n){
+		return false;
+	}
+	if(k%n==0){
+		return true;
+	}
+	return esiste_divisore_in_intervalloR(n_min, n-1, k);
+};
 
 //------------------------------------------------------------------

@@ -472,14 +472,41 @@ $f:X\times Y$
 $$\forall x\in X(\forall y\in Y\ \forall y'\in Y(xfy\land xfy'\to y=y'))$$
 - $f$ è totale
 $$\forall x\in X\ \exists y\in Y \ xfy$$
-### Relazione riflessiva
-### Relazione simmetrica
-### Relazione di transitività
-### Relazione antisimmetrica
-### Relazione inversa
+## Relazione riflessiva
+In logica una relazione binaria $R$ in un insieme $X$ è detta **riflessiva** se ogni elemento di $X$ è in relazione $R$ con sé stesso.
+$$\forall a\in X, aRa$$
+## Relazione simmetrica
+In logica una relazione binaria $R$ in un insieme $X$ è **simmetrica** se e solo se, presi due elementi qualsiasi $a$ e $b$, vale che se $a$ è in relazione con $b$, allora anche $b$ è in relazione con $a$.
+$$\forall a,b\in X, aRb\Rightarrow bRa$$
+## Relazione antisimmetrica
+In logica una relazione binaria $R$ in un insieme $X$ è **antisimmetrica** se, dati due elementi diversi tra loro $a$ e $b$, per ogni elemento $a$ in relazione con $b$, l'elemento $b$ non è in relazione con $a$.
+$$aRb, a\neq b\Rightarrow b\not R a$$
+## Relazione di transitività
+In logica una relazione binaria $R$ in un insieme $X$ è **transitiva** se e solo se per ogni $a,b$ e $c$ appartenenti a $x$, se $a$ è in relazione con $b$ e $b$ è in relazione con $c$, allora $a$ è in relazione con $c$.
+$$\forall a,b,c \in X, aRb\land bRc \Rightarrow aRc$$
+## Relazione di equivalenza
+$$
+\begin{align}
+&(X,\sim) \sim \subseteq X\times X \\
+&x\longmapsto [x]_{\sim}=\{y\in X|x\sim y\}
+\end{align}
+$$
+$[x]_{\sim}$ classe di equivalenza di $x$ modulo $\sim$.
+# Circuiti combinatori e algebra booleana
+Associamo a una espressione booleana o, equivalentemente, a un circuito combinatorio, la funzione booleana corrispondente.
+$$\underbrace{X}_{\text{sintassi}}\longrightarrow\underbrace{[X]}_{\text{semantica}}$$
+relazione di equivalenza tra espressioni
+$$X\sim Y \iff[X]=[Y]$$
+Ad una espressione booleana:
+$$X(x_{1},\dots,x_{n})$$
+viene associata una funzione booleana:
+$$[X(x_{1},\dots,x_{n})]:\underbrace{2\cdot\ldots \cdot 2}_{n\text{ volte}}\longrightarrow 2$$
+## Da circuito a espressione
 
 
 
 
 
-16-11-23
+
+
+30-11-23
