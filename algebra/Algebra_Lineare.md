@@ -1266,6 +1266,15 @@ troviamo tre pivot: $a''_{11}=1,a''_{22}=3,a''_{33}=2$.
 Possiamo concludere che:
 $$rk(A)=rk(A|b)=3$$
 per qualsiasi valore di $(w_{1},w_{2},w_{3})$, quindi i vettori assegnati costituiscono un sistema di generatori di $\mathbb{R}^{3}$.
+## Base di uno spazio vettoriale
+Una base di uno spazio vettoriale è un sistema di generatori linearmente indipendenti che generano l'intero spazio vettoriale.
+Dato uno spazio vettoriale $V$ su un campo $\mathbb{K}$, diciamo che un insieme di vettori $\{v_{1},v_{2},\dots,v_{n}\}\subseteq V$ è una base di $V$ se:
+1. $\{v_{1},v_{2},\dots,v_{n}\}$ è un sistema di generatori
+2. i vettori $v_{1},v_{2},\dots,v_{n}$ sono vettori linearmente indipendenti
+Ovvero
+1. $\forall w\in V$ esistono $n$ scalari $a_{1},a_{2},\dots,a_{n}\in\mathbb{K}$ tali che:
+	1. $w=a_{1}v_{1}+a_{2}v_{2}+\ldots+a_{n}v_{n}$
+2. L'unica $n$-upla di scalari che soddisfa l'uguaglianza $b_{1}v_{1}+b_{2}v_{2}+\ldots+b_{n}v_{n}=0$ è la $n$-upla di scalari tutti nulli, cioè $b_{1}=b_{2}=\ldots=b_{n}=0$
 
 
 
