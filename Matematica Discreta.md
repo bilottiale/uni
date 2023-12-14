@@ -1,7 +1,7 @@
 [[README]]
 [[Simbologia]]
 [[Lettere]]
-[[Algebra]]
+[[Algebra1]]
 ![[MatematicaDiscreta_AMori.pdf]]
 ## Indice
 [[Matematica Discreta#Insiemistica|Insiemistica]]
@@ -12,7 +12,7 @@
 [[Matematica Discreta#Aritmetica|Aritmetica]]
 # Insiemistica
 Un insieme è una collezione *ben definita*(determinabile se un oggetto appartiene o meno all'insieme) di oggetti detti elementi dell'insieme.
-[[Algebra#Numeri reali|Algebra - Numeri reali]]
+[[Algebra1#Numeri reali|Algebra - Numeri reali]]
 $$\mathbb{N} = \{naturali\}$$
 $$\mathbb{Z} = \{interi\}$$
 $$\mathbb{Q} = \{razionali\}$$

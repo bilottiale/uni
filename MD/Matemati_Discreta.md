@@ -123,9 +123,13 @@ Sia $\sim$ una relazione di equivalenza in $X$. Allora le classi di equivalenza 
 3. $\bigcup_{a\in X}[a]=X$
 #Dimostrazione Verifichiamo le condizioni
 1. $[a]\neq\emptyset$ poiché $a\in[a]$
-2. 
-
-
+2. Supponiamo $[a]\cap[b]\neq 0$ e sia $c$ un elemento di $[a]\cap[b]$. Proviamo che $[a]\subseteq[b]$.
+	1. se $x\in [a]$, ossia se $a\sim x$, allora:
+		1. $x\sim a$
+		2. $a\sim c$ perché $c\in [a]$ e $b\sim c perché $c\in [b]$ quindi
+		3. $c\sim b$
+# Le funzioni
+## Generalità sulle applicazioni o funzioni
 
 
 

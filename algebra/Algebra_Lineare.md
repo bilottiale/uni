@@ -1275,6 +1275,289 @@ Ovvero
 1. $\forall w\in V$ esistono $n$ scalari $a_{1},a_{2},\dots,a_{n}\in\mathbb{K}$ tali che:
 	1. $w=a_{1}v_{1}+a_{2}v_{2}+\ldots+a_{n}v_{n}$
 2. L'unica $n$-upla di scalari che soddisfa l'uguaglianza $b_{1}v_{1}+b_{2}v_{2}+\ldots+b_{n}v_{n}=0$ è la $n$-upla di scalari tutti nulli, cioè $b_{1}=b_{2}=\ldots=b_{n}=0$
+## Dimensioni di uno spazio vettoriale
+La **dimensione di uno spazio vettoriale** è la cardinalità di una sua base qualsiasi.
+Se $V$ è uno spazio vettoriale e $B$ è una sua base, indichiamo con $dim(V)$ la dimensione di $V$ si ha che:
+$$dim(V)=|B|$$
+dove $|B|$ indica la cardinalità della base considerata.
+#Esempio 
+Supponiamo di voler calcolare la dimensione del seguente sottospazio generato:
+$$
+\begin{align}
+&U=Span(u_{1},u_{2},u_{3}) \\
+&u_{1}=(1,0,-3) \\
+&u_{2}=(2,1,-5) \\
+&u_{3}=(0,4,4)
+\end{align}
+$$
+per determinare una base di $U$ e quindi calcolarne la dimensione è sufficiente estrarre una base dal sistema di generatori $\{u_{1},u_{2},u_{3}\}$. Procediamo, ad esempio, con il metodo di eliminazione di Gauss.
+$$
+M=
+\begin{pmatrix}
+1 & 2 & 0 \\
+0 & 1 & 4 \\
+-3 & -5 & 4
+\end{pmatrix}
+$$
+$R_{3}=R_{3}+3R_{1}$:
+$$
+M'=
+\begin{pmatrix}
+1 & 2 & 0 \\
+0 & 1 & 4 \\
+0 & 1 & 4
+\end{pmatrix}
+$$
+$R_{3}=R_{3}-R_{2}$:
+$$
+M'=
+\begin{pmatrix}
+1 & 2 & 0 \\
+0 & 1 & 4 \\
+0 & 0 & 0
+\end{pmatrix}
+$$
+Il numero di pivot di $M'$ è il massimo numero di vettori linearmente indipendenti del sottospazio $U$. Una base di tale sottospazio è data dalle colonne della matrice non ridotta che corrispondono alle colonne della matrice ridotta contenenti i pivot:
+$$B=\{u_{1},u_{2}\}=\{(1,0,-3),(2,1,-5)\}$$
+la dimensione del sottospazio è quindi $2$.
+# Capitolo 4 - Sistemi lineari
+## Risoluzione di un sistema lineare
+Trasformiamo la matrice $(A|b)$ in una matrice a scalini con Gauss-Jordan:
+$$
+C=(A|b)=
+\begin{pmatrix}
+0 & 1 & ? & 0 & 0 & ? & | & ? \\
+0 & 0 & 0 & 1 & 0 & ? & | & ? \\
+0 & 0 & 0 & 0 & 1 & ? & | & ?
+\end{pmatrix}
+$$
+Adesso guardiamo le colonne che contengono i pivot, che in questo esempio sono la seconda, la quarta e la quinta.
+Se la colonna dei termini noti b contiene un pivot, allora la matrice è indicativamente di questo tipo:
+$$
+\begin{pmatrix}
+0 & 1 & ? & 0 & 0 & ? & | & ? \\
+0 & 0 & 0 & 1 & 0 & ? & | & ? \\
+0 & 0 & 0 & 0 & 0 & ? & | & 1
+\end{pmatrix}
+$$
+La riga che contiene l’ultimo pivot rappresenta l’equazione $0 = 1$ che chiaramente non può avere soluzione, quindi l'insieme $S$ delle soluzioni è vuoti, $S=\emptyset$.
+Consideriamo adesso il caso in cui l’ultima colonna non contenga pivot:
+$$
+\begin{pmatrix}
+0 & 1 & a_{13} & 0 & 0 & a_{16} & | & b_{1} \\
+0 & 0 & 0 & 1 & 0 & a_{26} & | & b_{2} \\
+0 & 0 & 0 & 0 & 1 & a_{36} & | & b_{3}
+\end{pmatrix}
+$$
+Ricordiamo che ciascuna colonna corrisponde ad una variabile $x_{1},\dots,x_{n}$, eccetto l'ultima che contiene i termini a noi noti.
+Adesso assegniamo un parametro $t_{1},t_{2},\dots,t_{n}$ a ciascuna variabile che corrisponde ad una colonna che non contiene pivot. Quindi:
+$$x_{1}=t_{1},x_{3}=t_{2}\text{ e }x_{6}=t_{3}$$
+Il sistema è ora in questa forma:
+$$\begin{cases}
+x_{2}+a_{13}t_{2}+a_{16}t_{3}=b_{1} \\
+x_{4}+a_{26}t_{3}=b_{2} \\
+x_{5}+a_{36}t_{3}=b_{3}
+\end{cases}$$
+Spostiamo a destra dell’uguale tutti i nuovi parametri e otteniamo:
+$$\begin{cases}
+x_{2}=b_{1}-a_{13}t_{2}-a_{16}t_{3} \\
+x_{4}=b_{2}-a_{26}t_{3} \\
+x_{5}=b_{3}-a_{36}t_{3}
+\end{cases}$$
+Al sistema aggiungiamo anche le equazioni corrispondenti alle assegnazioni dei parametri liberi:
+$$\begin{cases}
+x_{1}=t_{1} \\
+x_{2}=b_{1}-a_{13}t_{2}-1_{16}t_{3} \\
+x_{3}=t_{2} \\
+x_{4}=b_{2}-a_{26}t_{3} \\
+x_{5}=b_{3}-a_{36}t_{3} \\
+x_{6}=t_{3}
+\end{cases}$$
+Il sistema è risolto. I parametri $t_{1},t_{2},\dots$ sono liberi e possono assumere qualsiasi valore in $\mathbb{K}$, e le variabili $x_{1},x_{2},\dots,x_{n}$ dipendono da questi parametri liberi come indicato.
+$$
+\begin{pmatrix}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4} \\
+x_{5} \\
+x_{6}
+\end{pmatrix}
+=
+\begin{pmatrix}
+t_{1} \\
+b_{1}-a_{13}t_{2}-a_{16}t_{3} \\
+t_{2} \\
+b_{2}-a_{26}t_{3} \\
+b_{3}-a_{36}t_{3} \\
+t_{3}
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+b_{1} \\
+0 \\
+b_{2} \\
+b_{3} \\
+0
+\end{pmatrix}+t_{1}
+\begin{pmatrix}
+1 \\
+0 \\
+0 \\
+0 \\
+0 \\
+0
+\end{pmatrix}+t_{2}
+\begin{pmatrix}
+0 \\
+-a_{13} \\
+1 \\
+0 \\
+0 \\
+0
+\end{pmatrix}+t_{3}
+\begin{pmatrix}
+0 \\
+-a_{16} \\
+0 \\
+-a_{26} \\
+-a_{36} \\
+1
+\end{pmatrix}
+$$
+Le soluzioni sono del tipo:
+$$x=x_{0}+t_{1}v_{1}+\ldots+t_{h}v_{h}$$
+dove $x_{0},v_{1},\dots,v_{h}\in \mathbb{K}^{n}$ sono vettori fissati, e i $v_{i}$ della forma:
+$$v_{i}=\begin{pmatrix}
+? \\
+\vdots \\
+? \\
+1 \\
+0 \\
+\vdots \\
+0
+\end{pmatrix}$$
+#Esempio Risolviamo il sistema già ridotto con Gauss-Jordan:
+$$\begin{cases}
+x_{1}+3x_{2}+4x_{5}=1 \\
+x_{3}-2x_{4}=3
+\end{cases}$$
+Le variabili corrispondenti ai pivot sono $x_{1}$ e $x_{3}$. Le variabili libere sono $x_{2},x_{4}$ e $x_{5}$. Quindi:
+$$\begin{cases}
+x_{1}=1-3t_{2}+4t_{5} \\
+x_{2}=t_{2} \\
+x_{3}=3-t_{3}+2t_{2} \\
+x_{4}=t_{2} \\
+x_{5}=t_{3}
+\end{cases}$$
+## Teorema di Rouché - Capelli
+### Sistema omogeneo asociato
+Consideriamo un sistema di equazioni lineari
+$$\begin{cases}
+a_{11}x_{1}+\dots+a_{1n}x_{n}=b_{1} \\
+\vdots \\
+a_{k1}x_{1}+\dots+a_{kn}x_{n}=b_{k}
+\end{cases}$$
+Il sistema omogeneo associato è quello ottenuto semplicemente mettendo a zero tutti i termini noti $b_{i}$:
+$$\begin{cases}
+a_{11}x_{1}+\dots+a_{1n}x_{n}=0 \\
+\vdots \\
+a_{k1}x_{1}+\dots+a_{kn}x_{n}=0
+\end{cases}$$
+Scriviamo la matrice $A=(a_{ij})$ dei coefficienti ed il vettore$b=(b_{i})$ dei termini noti. $C=(A|b)$ rappresenta il sistema lineare iniziale, mentre $(A|0)$ o solo $A$, rappresenta il sistema lineare omogeneo associato.
+#Esempio Consideriamo il sistema in $\mathbb{R}^{3}$
+$$\begin{cases}
+x-y+z=1 \\
+y-z=2
+\end{cases}$$
+Risolvendo troviamo le soluzioni $S$ del tipo:
+$$
+\begin{pmatrix}
+3 \\
+t \\
+t-2
+\end{pmatrix}
+=
+\begin{pmatrix}
+3 \\
+0 \\
+-2
+\end{pmatrix}
++
+\begin{pmatrix}
+0 \\
+t \\
+t
+\end{pmatrix}
+$$
+al variare di $t\in \mathbb{R}$. Le soluzioni $S_{0}$ del sistema omogeneo associato
+$$\begin{cases}
+x-y+z=0 \\
+y-z=0
+\end{cases}$$
+sono i vettori del tipo:
+$$\begin{pmatrix}
+0 \\
+t \\
+t
+\end{pmatrix}$$
+Le soluzioni in $S$ sono tutte ottenute prendendo la soluzione particolare
+$$\begin{pmatrix}
+3 \\
+0 \\
+-2
+\end{pmatrix}$$
+ed aggiungendo a questa le soluzioni in $S_{0}$ del sistema omogeneo associato. Qualsiasi elemento di $S$ può fungere da soluzione particolare, per esempio:
+$$\begin{pmatrix}
+3 \\
+2 \\
+0
+\end{pmatrix}$$
+e quindi descrivere lo stesso insieme $S$ di soluzioni come:
+$$
+\begin{pmatrix}
+3 \\
+2 \\
+0
+\end{pmatrix}
++
+\begin{pmatrix}
+0 \\
+u \\
+u
+\end{pmatrix}
+=
+\begin{pmatrix}
+3 \\
+2+u \\
+u
+\end{pmatrix}
+$$
+Si ottiene lo stesso insieme $S$ di prima, sostituendo $t=u+2$.
+## Sottospazio affine
+Che tipo di luogo geometrico è $S$?
+$S$ è sempre un **sottospazio affine**.
+Sia $V$ uno spazio vettoriale. Un sottospazio affine di $V$ è qualsiasi sottoinsieme del tipo:
+$$S=\{x+v|v\in W\}$$
+dove $x$ è un punto fissato di $V$ e $W\subset V$ è un sottospazio vettoriale.
+#proposizione 
+Gli spazi affini $x+W$ e $x'+W'$ coincidono se e solo se $W=W'$ e $x-x'\in W$.
+## Rango
+#Definizione 
+Il rango di $A$ è la dimensione dello spazio:
+$$Span(A^{1},\dots,A^{n})\subset \mathbb{K}^{m}$$
+È la dimensione dello spazio generato dalle colonne, indicato con $rk(A)$.
+#proposizione 
+Il rango di $A$ è il massimo numero di colonne linearmente indipendenti di $A$.
+#Dimostrazione 
+Poiché il rango non cambia con mosse di Gauss, possiamo supporre che $A$ sia già ridotta a scalini e inoltre usare la seconda parte dell’algoritmo di Gauss-Jordan per fare in modo che le $k$ colonne contenenti i pivot siano precisamente i primi $k$ vettori $e_{1},\dots,e_{k}$ della base canonica di $\mathbb{K}^{m}$
+
+
+
+
+
+
 
 
 

@@ -23,17 +23,17 @@ Il **criterio di convergenza di Cauchy** asserisce che una successione $\{a_{
 
 $$a_{n} = (1 + \frac{1}{n})^{n} \space \text{con} \space n \geq 1$$
 $$a_{1} = 2 \quad a_{2} = \left(\frac{3}{2}^{2}\right) = \frac{9}{4} = 2,25 \quad a_{3} = (\frac{4}{3})^{3} = \frac{64}{27} = 2,\overline{370}$$
-È una [[Algebra#Costruzione dei numeri reali|successione di Cauchy]] che non converge a un numero razionale
+È una [[Algebra1#Costruzione dei numeri reali|successione di Cauchy]] che non converge a un numero razionale
 Con questa interpretazione, un numero reale che abbia sviluppo decimale:
 $$723, 1291851\dots$$
-Corrisponde ad una [[Algebra#Costruzione dei numeri reali|successione di Cauchy]] $(a_{n})$ di numeri razionali.
+Corrisponde ad una [[Algebra1#Costruzione dei numeri reali|successione di Cauchy]] $(a_{n})$ di numeri razionali.
 $$a_{1} = 723,1$$
 $$a_{2} = 723,12$$
 $$a_{3} = 723,129$$
 $$a_{4} = 723,1291$$
 $$\dots$$
-$Def:$ Siano $a, b$ due numeri reali rappresentati da due [[Algebra#Costruzione dei numeri reali|successioni di Cauchy]] $(a_{n})$ e $(b_{n})$ di numeri razionali
-La *somma* $a + b$ ed il *prodotto* $a \cdot b$ sono le [[Algebra#Costruzione dei numeri reali|successioni di Cauchy]] $(a_{n} + b_{n})$ e $(a_{n}b_{n})$.
+$Def:$ Siano $a, b$ due numeri reali rappresentati da due [[Algebra1#Costruzione dei numeri reali|successioni di Cauchy]] $(a_{n})$ e $(b_{n})$ di numeri razionali
+La *somma* $a + b$ ed il *prodotto* $a \cdot b$ sono le [[Algebra1#Costruzione dei numeri reali|successioni di Cauchy]] $(a_{n} + b_{n})$ e $(a_{n}b_{n})$.
 # Sistemi lineari
 ## Algoritmi di risoluzione
 ### Mosse di Gauss
