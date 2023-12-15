@@ -1,6 +1,6 @@
 # Numeri reali
 ## Insiemi
-### Insiemi numerici
+
 **Naturali**:
 $$\mathbb{N}=\{0,1,2,3,\dots\}$$
 **Interi**:
@@ -211,14 +211,615 @@ Queste due operazioni devono soddisfare gli assiomi per lo spazio euclideo:
 3. $(\lambda+\mu)=\lambda v+\lambda \mu$
 4. $(\lambda \mu)v=\lambda(\mu v)$
 5. $1v=v$
-## Lo spazio
+## Lo spazio $\mathbb{K}^{n}$
+L’esempio principale di spazio vettoriale su $\mathbb{R}$ è ovviamente lo spazio euclideo $\mathbb{R}^{n}$ già incontrato precedentemente. Più in generale, è possibile definire per qualsiasi campo $\mathbb{K}$ uno spazio $\mathbb{K}^{n}$.
+Sia $n\geq 1$ un numero naturale. Lo spazio $\mathbb{K}^{n}$ è l'insieme delle sequenze $(x_{1},\dots,x_{n})$ di numeri in $\mathbb{K}$. Gli elementi $v\in \mathbb{K}^{n}$ sono descritti come vettori colonna:
+$$v=
+\begin{pmatrix}
+x_{1} \\
+\vdots \\
+x_{n}
+\end{pmatrix}
+\in \mathbb{K}^{n}
+$$
+La somma e la moltiplicazione per scalare sono definiti termine a termine:
+$$
+\begin{pmatrix}
+x_{1} \\
+\vdots \\
+x_{n}
+\end{pmatrix}
++
+\begin{pmatrix}
+y_{1} \\
+\vdots \\
+y_{n}
+\end{pmatrix}
+=
+\begin{pmatrix}
+x_{1} + y_{1}\\
+\vdots \\
+x_{n} + y_{n}
+\end{pmatrix},
+\quad \quad
+\lambda
+\begin{pmatrix}
+x_{1} \\
+\vdots \\
+x_{n}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\lambda x_{1} \\
+\vdots \\
+\lambda x_{n}
+\end{pmatrix}
+$$
+#Esempio con vettori di $\mathbb{C}^{2}$
+$$
+\begin{pmatrix}
+1+i \\
+-2
+\end{pmatrix}
++
+\begin{pmatrix}
+3i \\
+1-i
+\end{pmatrix}
+=
+\begin{pmatrix}
+1+4i \\
+-1-i
+\end{pmatrix},
+\quad \quad
+\begin{pmatrix}
+2+1
+\end{pmatrix}
+\begin{pmatrix}
+3 \\
+1-i
+\end{pmatrix}
+=
+\begin{pmatrix}
+6+3i \\
+3-i
+\end{pmatrix}
+$$
+## Lo spazio $\mathbb{K}[x]$ dei polinomi
+Indichiamo con $\mathbb{K}[x]$ l'insieme di tutti i polinomi con coefficienti in un certo campo $\mathbb{K}$. Due polinomi possono essere sommati, e moltiplicando un polinomio per uno scalare otteniamo un polinomio:
+$$(x^{3}-2x+1)+(4x^{4}+x-3)=4x^{4}+x^{3}-x-2, \quad\quad 3(x^{3}-2x)=3x^{3}-6x$$
+$\mathbb{K}[x]$ è uno spazio vettoriale su $\mathbb{K}$.
+# Matrici
+## Le matrici
+Introduciamo un terzo oggetto matematico importante che rientra negli spazi vettoriali: le *matrici*.
+Sia sempre $\mathbb{K}$ un campo fissato. Una matrice con $m$ righe e $n$ colonne a coefficienti in $\mathbb{K}$ è tipo:
+$$
+A=
+\begin{pmatrix}
+a_{11} & \cdots & a_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{m1} & \cdots & a_{mn}
+\end{pmatrix}
+$$
+in cui tutti gli $mn$ numeri $a_{11},\dots,a_{mn}$ sono elementi del campo $\mathbb{K}$. Diciamo che $A$ è una matrice $m\times n$.
+Righe:
+$$
+A_{i}=
+\begin{pmatrix}
+a_{i1} & \cdots & a_{in}
+\end{pmatrix}
+$$
+Colonne:
+$$
+A^{j}=
+\begin{pmatrix}
+a_{1j} \\
+\vdots \\
+a_{mj}
+\end{pmatrix}
+$$
+Due matrici $A$ e $B$ possono essere sommate creando:
+$$
+C=
+\begin{pmatrix}
+a_{11}+b_{11} & \cdots & a_{1n}+b_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{m1}+b_{m1} & \cdots & a_{mn}+b_{mn}
+\end{pmatrix}
+$$
+Analogamente è possibile moltiplicare $A$ per uno scalare $\lambda\in \mathbb{K}$:
+$$
+\lambda A=
+\begin{pmatrix}
+\lambda a_{11} & \cdots & \lambda a_{1n} \\
+\vdots & \ddots & \vdots \\
+\lambda a_{m1} & \cdots & \lambda a_{mn}
+\end{pmatrix}
+$$
+## Sottospazio vettoriale
+Definiamo adesso in che senso uno spazio vettoriale può contenerne un altro.
+Sia $V$ uno spazio vettoriale su un campo $\mathbb{K}$. Un *sottospazio vettoriale* di $V$ è un sottoinsieme $W\subset V$ che soddisfa tre assiomi:
+1. $0\in W$
+2. se $v,v'\in W$, allora anche $v+v'\in W$
+3. se $v\in W$ e $\lambda\in\mathbb{K}$, allora $\lambda v\in W$
+Ovvero:
+1. $W$ deve contenere l'origine
+2. $W$ deve essere chiuso rispetto alla somma
+3. $W$ deve essere chiuso rispetto al prodotto per scalare
+## Sottospazio banale e totale
+- Il sottospazio *banale* $W=\{0\}$, formato da solo punto, l'origine
+- Il sottospazio *totale* $W=V$, formato da tutti i vettori di $V$
+$$\{0\}\subset W\subset V$$
+## Combinazioni lineari
+Sia $V$ uno spazio vettoriale qualsiasi e siano $v_{1},\dots,v_{k}\in V$ vettori arbitrari. Una *combinazione lineare* dei vettori è un qualsiasi vettore $v$ che si ottiene come:
+$$v=\lambda_{1}v_{1}+\ldots+\lambda_{k}v_{k}$$
+dove $\lambda_{1},\dots,\lambda_{k}$ sono scalari arbitrari.
+#Esempio se $V=\mathbb{R}^{3}$ e
+$$
+v_{1}=
+\begin{pmatrix}
+1 \\
+0 \\
+0
+\end{pmatrix},
+\quad\quad
+v_{2}=
+\begin{pmatrix}
+0 \\
+1 \\
+0
+\end{pmatrix}
+$$
+allora una combinazione lineare arbitraria di questi due vettori è:
+$$
+\lambda_{1}v_{1}+\lambda_{2}v_{2}=
+\lambda_{1}
+\begin{pmatrix}
+1 \\
+0 \\
+0
+\end{pmatrix}
++\lambda_{2}
+\begin{pmatrix}
+0 \\
+1 \\
+0
+\end{pmatrix}
+=
+\begin{pmatrix}
+\lambda_{1} \\
+0 \\
+0
+\end{pmatrix}
++
+\begin{pmatrix}
+0 \\
+\lambda_{2} \\
+0
+\end{pmatrix}
+=
+\begin{pmatrix}
+\lambda_{1} \\
+\lambda_{2} \\
+0
+\end{pmatrix}
+$$
+Questo vettore sta nel piano orizzontale $z=0$. Al variare di $\lambda_{1}$ e $\lambda_{2}$, facendo le combinazioni lineari di $v_{1}$ e $v_{2}$ otteniamo tutti i punti del piano orizzontale $z=0$.
+## Sottospazio generato
+Sia $V$ uno spazio vettoriale e siano $v_{1},\dots,v_{k}\in V$ vettori arbitrari. Il *sottospazio generato* dai vettori è il sottoinsieme di $V$ formato da tutte le combinazioni lineari dei vettori.
+$$Span(v_{1},\dots,v_{k})$$
+$$Span(v_{1},\dots,v_{k})=\{\lambda_{1}v_{1}+\ldots+\lambda_{k}v_{k}|\lambda_{1},\dots,\lambda_{k}\in\mathbb{K}\}$$
+Il sottoinsieme $Span(v_{1},\dots,v_{k})$ è un sottospazio vettoriale di $V$. Dimostriamo che $W=Span(v_{1},\dots,v_{k})$ soddisfa i 3 assiomi di sottospazio:
+1. $0\in W$, infatti usando $\lambda_{1}=\dots=\lambda_{k}=0$ troviamo$$0v_{1}+\ldots+0v_{k}=0+\ldots+0=0\in W$$
+2. Se $v,w\in W$, allora $v+w\in W$. Infatti per ipotesi:
+$$\begin{align}v&=\lambda_{1}v_{1}+\ldots+\lambda_{k}v_{k} \\w&=\mu_{1}v_{1}+\ldots+\mu_{k}v_{k}\end{align}$$
+Quindi:$$v+w=(\lambda_{1}+\mu_{1})v_{1}+\ldots+(\lambda_{k}\mu_{k})v_{k}$$
+3. Se $v\in W$ e $\lambda\in \mathbb{K}$, allora $\lambda v\in W$:
+$$v=\lambda_{1}v_{1}+\ldots+\lambda_{k}v_{k}$$
+allora:
+$$\lambda v=(\lambda \lambda_{1})v_{1}+\ldots+(\lambda \lambda_{k})v_{k}$$
+#Esempio se $v$ è un singolo vettore di $V$:
+$$W=Span(v)=\{\lambda v|\lambda\in\mathbb{K}\}$$
+#Esempio se $V=\mathbb{R}^{2}$ e $v=\dbinom{1}{2}$:
+$$W=Span(v)=\{t\dbinom{1}{2}|t\in \mathbb{R}\}=\{\dbinom{t}{2t}|t\in\mathbb{R}\}$$
+## Matrici diagonali, triangolari, simmetriche e antisimmetriche
+Possiamo definire dei sottospazi di $M(m,n,\mathbb{K})$ imponendo restrizioni. Data una matrice $A$, indichiamo con $A_{ij}$ o $a_{ij}$ i coefficienti.
+Una matrice $n\times n$ è detta quadrata.
+Una matrice $A$ quadrata è:
+- diagonale se $a_{ij}=0 \ \forall i\neq j$
+- triangolare superiore se $a_{ij}=0 \ \forall i>j$
+- triangolare inferiore se $a_{ij}=0 \ \forall i <j$
+- triangolare se è triangolare inferiore o superiore;
+- simmatrica se $a_{ij}=a_{ji} \ \forall i,j$
+- antisimmetrica se $a_{ij}=-a_{ji} \ \forall i,j$
+## Dimensione
+## (In)dipendenza lineare
+Sia $V$ uno spazio vettoriale su $\mathbb{K}$ e siano $v_{1},..,v_{k}\in V$ dei vettori. Diciamo che questi vettori sono *linearmente dipendenti*  se esistono coefficienti $\lambda_{1},\dots,\lambda_{k}\in\mathbb{K}$, non tutti nulli tali che:
+$$\lambda_{1}v_{1}+\ldots+\lambda_{k}v_{k}=0$$
+se i vettori sono linearmente dipendenti, allora è possibile esprimere uno di loro in funzione degli altri. Per ipotesi esiste almeno un $\lambda_{i}\neq 0$ e dopo aver diviso tutto per $\lambda_{i}$ e spostato gli addendi otteniamo:
+$$v_{i}=-\frac{\lambda_{1}}{\lambda_{i}}v_{1}-\ldots-\frac{\lambda_{k}}{\lambda_{i}}v_{k}$$
+dove tra i vettori di destra ovviamente non compare $v_{i}$, quindi i vettori sono dipendenti se e solo se uno di loro è esprimibile come combinazione lineare degli altri.
+#Esempio i vettori $\dbinom{1}{2},\dbinom{1}{1}$ e $\dbinom{2}{0}$ in $\mathbb{R}^{2}$ sono dipendenti perché:
+$$-2\dbinom{1}{2}+4\dbinom{1}{1}-\dbinom{2}{2}=\dbinom{0}{0}$$
+In questo caso ogni vettore è esprimibile come combinazione lineare degli altri due:
+$$\dbinom{1}{2}=2\dbinom{1}{1}-\frac{1}{2}\dbinom{2}{0}, \quad \dbinom{1}{1}=\frac{1}{4}\dbinom{2}{0}+\frac{1}{2}\dbinom{1}{2},\quad \dbinom{2}{0}=-2\dbinom{1}{2}+4\dbinom{1}{1}$$
+I vettori sono *linearmente indipendenti* se sono sono dipendenti, ovvero:
+$$\lambda_{1}v_{1}+\ldots+\lambda_{k}v_{k}=0\Longrightarrow \lambda_{1}=\ldots=\lambda_{k}=0$$
+Quindi l'unica combinazione lineare che può dare il vettore nullo è quella banale in cui tutti i coefficienti sono nulli.
+I casi $k=1$ e $k=2$ sono:
+- un vettore $v_{1}$ è dipendente $\iff v_{1}=0$
+- due vettori $v_{1},v_{2}$ sono dipendenti $\iff$ sono multipli, cioè se esiste un $k\in\mathbb{K}$ tale che $v_{1}=kv_{2}$ oppure $v_{2}=kv_{1}$
 
+I vettori $v_{1}=\dbinom{1}{1}, v_{2}=\dbinom{-2}{-2}$ di $\mathbb{R}^{2}$ sono dipendenti; $w_{1}=\dbinom{1}{2}, w_{2}=\dbinom{2}{1}$ sono indipendenti perché non sono multipli.
+In caso con tre o più vettori è più complesso:
+$$
+v_{1}=
+\begin{pmatrix}
+1 \\
+1 \\
+0
+\end{pmatrix},
+\quad\quad
+v_{2}=
+\begin{pmatrix}
+0 \\
+1 \\
+1
+\end{pmatrix},
+\quad\quad
+v_{3}=
+\begin{pmatrix}
+1 \\
+0 \\
+-1
+\end{pmatrix}
+$$
+in $\mathbb{R}^{3}$ sono dipendenti perché $v_{1}-v_{2}-v_{3}=0$. A coppie i vettori sono indipendenti, ma tutti e tre non lo sono. Non è certamente un fatto che si vede immediatamente come nel caso k = 2. D’altra parte, i vettori:
+$$
+e_{1}=
+\begin{pmatrix}
+1 \\
+0 \\
+0
+\end{pmatrix},
+\quad\quad
+e_{2}=
+\begin{pmatrix}
+0 \\
+1 \\
+0
+\end{pmatrix},
+\quad\quad
+e_{3}=
+\begin{pmatrix}
+0 \\
+0 \\
+1
+\end{pmatrix}
+$$
+sono indipendenti: se una combinazione lineare produce il vettore nullo:
+$$\lambda_{1}e_{1}+\lambda_{2}e_{2}+\lambda_{3}e_{3}=0$$
+riscriviamo i membri come vettori:
+$$
+\begin{pmatrix}
+\lambda_{1} \\
+\lambda_{2} \\
+\lambda_{3}
+\end{pmatrix}
+=\lambda_{1}
+\begin{pmatrix}
+1 \\
+0 \\
+0 \\
+\end{pmatrix}
++\lambda_{2}
+\begin{pmatrix}
+0 \\
+1 \\
+0 \\
+\end{pmatrix}
++\lambda_{3}
+\begin{pmatrix}
+0 \\
+0 \\
+1
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+0 \\
+0
+\end{pmatrix}
+$$
+Deduciamo quindi che $\lambda_{1}=\lambda_{2}=\lambda_{3}=0$. L'unica combinazione di $e_{1},e_{2},e_{3}$ che dà il vettore nullo è quella banale.
+Se $v_{1},\dots,v_{k}$ sono indipendenti, allora qualsiasi sottoinsieme di ${v_{1},\dots,v_{k}}$ è anch'esso formato da vettori indipendenti.
+## Basi
+Sia $V$ uno spazio vettoriale. Una sequenza $v_{1},\dots,v_{n}\in V$ di vettori è una *base* se:
+- i vettori $v_{1},\dots,v_{n}$ sono indipendenti
+- i vettori $v_{1},\dots,v_{n}$ generano $V$
+	- quindi $V=Span(v_{1},\dots,v_{n})$, qualsiasi vettore di $V$ è esprimibile come combinazione lineare dei vettori
+#proposizione Gli elementi
+$$
+e_{1}=
+\begin{pmatrix}
+1 \\
+0 \\
+\vdots \\
+0
+\end{pmatrix},
+\quad\quad
+e_{2}=
+\begin{pmatrix}
+0 \\
+1 \\
+\vdots \\
+0
+\end{pmatrix},
+\quad\quad
+\dots
+\quad\quad
+e_{n}=
+\begin{pmatrix}
+0 \\
+0 \\
+\vdots \\
+1
+\end{pmatrix}
+$$
+formano una base in $\mathbb{K}^{n}$ detta *base canonica*.
+#Dimostrazione 
+Mostriamo che i vettori sono indipendenti. Supponiamo di avere una combinazione lineare nulla:
+$$\lambda_{1}e_{1}+\ldots+\lambda_{n}e_{n}=0$$
+tradotta in vettori
+$$
+\begin{pmatrix}
+\lambda_{1} \\
+\lambda_{2} \\
+\vdots \\
+\lambda_{n}
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+0 \\
+\vdots \\
+0
+\end{pmatrix}
+$$
+ne deduciamo che $\lambda_{1}=\ldots=\lambda_{n}=0$ quindi $e_{1},\dots,e_{n}$ sono indipendenti.
+Mostriamo che i vettori generano $\mathbb{K}^{n}$. Un generico vettore $x\in \mathbb{K}^{n}$ si può scrivere come combinazione lineare:
+$$
+x=
+\begin{pmatrix}
+x_{1} \\
+x_{2} \\
+\vdots \\
+x_{n}
+\end{pmatrix}
+=x_{1}
+\begin{pmatrix}
+1 \\
+0 \\
+\vdots \\
+0
+\end{pmatrix}
++x_{2}
+\begin{pmatrix}
+0 \\
+1 \\
+\vdots \\
+0
+\end{pmatrix}
++\ldots+x_{n}
+\begin{pmatrix}
+0 \\
+0 \\
+\vdots \\
+1
+\end{pmatrix}
+=x_{1}e_{1}+x_{2}e_{2}+\ldots+x_{n}e_{n}
+$$
+Dimostrazione conclusa.
+## Coordinate di un vettore rispetto ad una base
+Le basi servono per dare un nome a tutti i vettori dello spazio.
+#proposizione 
+Sia $V$ uno spazio vettoriale e sia $v_{1},\dots,v_{n}$ una base di $V$. Ogni vettore $x\in V$ si scrive:
+$$v=\lambda_{1}v_{1}+\ldots+\lambda_{n}v_{n}$$
+#Dimostrazione 
+Sappiamo che i vettori generano, quindi $v$ si può scrivere come combinazione lineare dei vettori. Supponiamo che lo si possa fare in due modi diversi:
+$$v=\lambda_{1}v_{1}+\ldots+\lambda_{n}v_{n}=\mu_{1}v_{1}+\ldots+\mu_{n}v_{n}$$
+Spostando tutto a sinistra:
+$$(\lambda_{1}-\mu_{1})v_{1}+\ldots+(\lambda_{n}-\mu_{n})v_{n}=0$$
+Siccome sono indipendenti: $\mu_{i}=\lambda_{i} \ \forall i$.
+I coefficienti $\lambda_{1},\dots,\lambda_{n}$ sono coordinate di $v$ rispetto alla base.
+## Dimensione
+#Teorema 
+Due basi dello stesso spazio vettoriale $V$ contengono lo stesso numero $n$ di elementi.
 
+#Definizione 
+Se uno spazio vettoriale $V$ ha base $v_{1},\dots,v_{n}$, diciamo che $V$ ha dimensione $n$. Se $V$ non ha una base allora diciamo che ha dimensione $\infty$.
 
+Supponiamo di avere:
+- dei vettori $v_{1},\dots,v_{n}\in V$ che generano $V$
+- dei vettori $w_{1},\dots,w_{n}\in V$ indipendenti
+allora anche i vettori $w_{1},\dots,w_{n}$ generano $V$.
+Sappiamo che $V=Span(v_{1},\dots,v_{n})$, vogliamo dimostrare che $V=Span(w_{1},\dots,w_{n})$. Otteniamo ciò posizionando ciascun $w_{i}$ al posto di un $v_{j}$, iterativamente per $i=1,\dots,_{n}$.
+$$w_{1}=\lambda_{1}v_{1}+\ldots+\lambda_{n}v_{n}$$
+Poiché $w_{1}\neq 0$, almeno un $\lambda_{i}$ è non nullo: a meno di riordinare i vettori $v_{1},\dots,v_{n}$, supponiamo che $\lambda_{1}\neq 0$. Allora dividendo per $\lambda_{1}$:
+$$v_{1}=\frac{1}{\lambda_{1}}w_{1}-\frac{\lambda_{2}}{\lambda_{1}}v_{2}-\dots-\frac{\lambda_{n}}{\lambda_{1}}v_{n}$$
+quindi $v_{1}$ è combinazione lineare dei $w_{1},v_{2},\dots,v_{n}$. Questo implica che i vettori generino $V$, cioè possiamo sostituire $v_{1}$ con $w_{1}$ e:
+$$V=Span(w_{1},v_{2},\dots,v_{n})$$
+Iteriamo il processo $n$ volte. Al passo numero $s$, supponiamo di aver già dimostrato che $V=Span(w_{1},\dots,w_{s-1},v_{s},\dots,v_{n})$. Allora:
+$$w_{s}=\lambda_{1}w_{1}+\ldots+\lambda_{s-1}w_{s-1}+\lambda_{s}v_{s}+\ldots+\lambda_{n}v_{n}$$
+Esiste almeno un $i\geq s$ con $\lambda_{i}\neq 0$. Se così non fosse, questa sarebbe una relazione di dipendenza fra i soli $w_{1},\dots,w_{s}$, ma questo è escluso perché sono indipendenti.
 
+Ora dimostriamo il teorema.
+Supponiamo per assurdo che uno spazio vettoriale $V$ contenga due basi:
+$$v_{1},\dots,v_{n}, \quad\quad w_{1},\dots,w_{m}$$
+con $n\neq m$. Sia ad esempio $n<m$.
+Per ipotesi i vettori $v_{i}$ generano $V$ e i vettori $w_{j}$ sono indipendenti. Deduciamo che $w_{j}$ generano $V$. Quindi $w_{n+1}$ può essere espresso come combinazione lineare dei $w_{1},\dots,w_{n}$, e allora i vettori $w_{1},\dots,w_{m}$ non sono indipendenti: assurdo.
 
+Indichiamo la dimensione di uno spazio $V$ come $dim \ V$.
+Possiamo calcolare la dimensione di tutti gli spazi vettoriali dei quali abbiamo esibito una base:
+$$
+\begin{align}
+dim \ \mathbb{K}^{n}&=n \\
+dim \ \mathbb{K}_{n}[x]&=n+1 \\
+dim \ M(m,n,\mathbb{K})&=mn
+\end{align}
+$$
+ricordiamo che $dim \ V=\infty$ se $V$ non ha una base.
+## Trasposta di una matrice
+La trasposta di una matrice $A\in M(m,n,\mathbb{K})$ è:
+$$^{t}A\in M(n,n,\mathbb{K})$$
+definita scambiando right e colonne:
+$$(^{t}A)_{ij}=A_{ji}$$
+#Esempio 
+$$
+A=
+\begin{pmatrix}
+2 & 1 \\
+-1 & 0 \\
+5 & 7
+\end{pmatrix}
+\Longrightarrow
+\quad \quad
+\prescript{t}{}{A}=
+\begin{pmatrix}
+2 & -1 & 5 \\
+1 & 0 & 7
+\end{pmatrix}
+$$
+Valgono le proprietà:
+$$\prescript{t}{}{(A+B)}=\prescript{t}{}{A}+\prescript{t}{}{B},\quad\quad \prescript{t}{}{(\lambda A)}=\lambda\prescript{t}{}{A}$$
+## Rango
+Sappiamo come risolvere un sistema lineare e che l’insieme $S$ delle soluzioni può essere vuoto o un sottospazio affine di una certa dimensione. Cerchiamo adesso delle tecniche per capire rapidamente se un sistema lineare abbia soluzioni, e in caso affermativo la loro dimensione.
+Sia $A$ una matrice $m\times n$ a coefficienti in $\mathbb{K}$. Ricordiamo che indichiamo con $A^{1},\dots,A^{n}$ le colonne di $A$. Ciascun $A^{i}$ è un vettore in $\mathbb{K}^{m}$.
+#Definizione 
+Il *rango* di $A$ è la dimensione dello spazio:
+$$Span(A^{1},\dots,A^{n})\subset \mathbb{K}^{m}$$
+Il rango di $A$ è la dimensione dello spazio generato dalle colonne.
+Viene indicato con $rk(A)$.
+#proposizione 
+Se modifichiamo $A$ per mosse di Gauss sulle righe, il rango non cambia.
+#proposizione 
+Il rango di $A$ è il numero di pivot in una sua qualsiasi riduzione a scalini.
+## Prodotto fra matrici
+Se $A$ è una matrice $m\times n$ e $B$ una matrice $n\times p$ il prodotto $AB$ è una nuova matrice $m\times p$ definita come:
+$$(AB)_{ij}=\displaystyle\sum_{k=1}^{n}A_{ik}B_{kj}=A_{i1}B_{1j}+\ldots+A_{in}B_{nj}$$
+Questo tipo di prodotto fra matrici si chiama *prodotto* riga per colonna perché l'elemento $(AB)_{ij}$ si ottiene facendo un opportuno prodotto fra la riga $i$-esima $A_{i}$ di $A$ e la colonna $j$-esima $B^{j}$ di $B$.
+#Esempio 
+$$
+\begin{pmatrix}
+1 & 2 \\
+-1 & 1 \\
+0 & 3
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+-1 & 2 & 0 & 1 \\
+3 & 0 & 3 & 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+5 & 2 & 6 & 1 \\
+4 & -2 & 3 & -1 \\
+9 & 0 & 9 & 0
+\end{pmatrix}
+$$
+### Proprietà
+Ricordiamo che il prodotto AB ha senso solo se il numero di colonne di $A$ coincide con il numero di righe di $B$.
+Valgono le proprietà seguenti, per ogni $A, B, C$ matrici per cui i prodotti e le somme abbiano senso e per ogni $\lambda\in\mathbb{K}$:
+1. $A(B+C)=AB+AC$ e $(A+B)C=AC+BC$ distributività
+2. $A(BC)=(AB)C$ associatività
+3. $\lambda(AB)=(\lambda A)B=A(\lambda B)$
+## Traccia di una matrice
+La *traccia* di una matrice quadrata $A\in M(n)$ è il numero:
+$$tr(A)=A_{11}+\ldots+A_{nn}$$
+la traccia di $A$ è la somma dei valori sulla diagonale principale di $A$.
+Due matrici *simili* hanno la stessa traccia.
+#Dimostrazione 
+Se $A=M^{-1}BM$, troviamo:
+$$tr(A)=tr(M^{-1}BM)=tr((M^{-1}B)M)=tr(M(M^{-1}B))=tr(B)$$
+#Esempio 
+$$
+tr
+\begin{pmatrix}
+1 & 0 \\
+2 & 5
+\end{pmatrix}
+= 1+5=6
+$$
+#Esempio 
+$$
+tr
+\begin{pmatrix}
+1 & 2 & 4 \\
+-1 & 3 & 7 \\
+0 & 5 & -4
+\end{pmatrix}
+=1+3+(-4)=0
+$$
+## Determinante
+#Definizione 
+Sia $A$ una matrice quadrata $n\times n$. Il *determinante* di $A$ è il numero:
+$$\det A=\displaystyle\sum_{\sigma\in S_{n}}sgn(\sigma)a_{1\sigma(1)}\ldots a_{n\sigma(n)}$$
+#Esempio 
+$$
+A=
+\begin{pmatrix}
+2 & -1 & 4 \\
+1 & 2 & 0 \\
+3 & 5 & 1
+\end{pmatrix}
+$$
+$$
+\begin{matrix}
+2 & -1 & 4 & 2 & -1 & 4 \\
+1 & 2 & 0 & 1 & 2 & 0 \\
+3 & 5 & 1 & 3 & 5 & 1
+\end{matrix}
+$$
+Sommiamo i prodotti lungo le tre diagonali principali:
+$$(2\cdot 2\cdot 1)+(-1 \cdot 0 \cdot 3)+(4 \cdot 1 codt 5)=4+0+20=24$$
+Quelli lungo le ultime tre diagonali:
+$$(4 \cdot 2 \cdot 3)+(-1 \cdot 1 \cdot 1)+(2 \cdot 0 \cdot 5)=24-1+0=23$$
+Sottraendo, nell'ordine, i due risultati otteniamo:
+$$\det(A)=24-23=1$$
+## Matrici triangolari
+Il calcolo del determinante di una matrice triangolare è particolarmente semplice: è il prodotto dei valori sulla diagonale principale.
+Sia $A\in M(n)$ una matrice superiore:
+$$
+A=
+\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+0 & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots  & a_{nn}
+\end{pmatrix}
+$$
+vale:
+$$\det(A)=a_{11}a_{22}\cdots a_{nn}$$
+## Matrice identità
+La *matrice identità* di taglia $n\times n$ è:
+$$
+I_{n}=
+\begin{pmatrix}
+1 & 0 & \cdots & 0 \\
+0 & 1 & \cdots & 0 \\
+\vdots  & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & 1
+\end{pmatrix}
+$$
+i cui coefficienti sono $1$ sulla diagonale principale e $0$ altrove.
+## Sviluppo di Laplace
+Ci sono vari algoritmi che permettono di calcolare il determinante di una matrice più agevolmente che con la cruda definizione. Uno di questi è noto come lo *sviluppo di Laplace* e funziona nel modo seguente.
+Sia $A$ una matrice $n\times n$ con $n\geq 2$. Indichiamo con $C_{ij}$ la sottomatrice $(n-1)\times(n-1)$ ottenuta da $A$ rimuovendo la $i$-esima riga e la $j$-esima colonna.
+#Teorema per ogni $i$ fissato vale:
+$$
+\det (A)=\displaystyle\sum_{j=1}^{n}(-1)^{i+j}a_{ij}\det (C_{ij})
+$$
 
-LEZIONE 04: Polinomi (1.3.1-1.3.3, 1.4.7, 1.4.8)
 
 
 
