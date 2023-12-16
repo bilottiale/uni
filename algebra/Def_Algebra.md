@@ -819,6 +819,59 @@ Sia $A$ una matrice $n\times n$ con $n\geq 2$. Indichiamo con $C_{ij}$ la sottom
 $$
 \det (A)=\displaystyle\sum_{j=1}^{n}(-1)^{i+j}a_{ij}\det (C_{ij})
 $$
+#Dimostrazione 
+In caso $n=3$ e $i=1$ e
+$$\det(A)=a_{11}\det(C_{11})-a_{12}\det(C_{12})+a_{13}\det(C_{13})$$
+![[Screenshot 2023-12-16 alle 12.43.30.png]]
+Per ogni $j=1,\dots,n$, le colorazioni della sottomatrice $C_{ij}$, che sommate danno $\det(C_{ij})$, contribuiscono alle colorazioni della matrice $A$ con un peso che va moltiplicato. per $a_{ij}$ e per un segno $(-1)^{i+j}$.
+#Esempio 
+$$
+\det
+\begin{pmatrix}
+1 & -1 & 0 \\
+2 & -2 & 5 \\
+1 & 1 & -1
+\end{pmatrix}
+=1\cdot \det
+\begin{pmatrix}
+-1 & 5 \\
+1 & -1
+\end{pmatrix}
+-(5
+1)\cdot \det
+\begin{pmatrix}
+2 & 5 \\
+1 & -1
+\end{pmatrix}
+$$
+$$
++o\cdot \det
+\begin{pmatrix}
+2 & -1 \\
+1 & 1
+\end{pmatrix}
+=-4-7+0=-11
+$$
+è conveniente sviluppare lungo una riga che contiene degli zeri.
+Grazie al fatto che $\prescript{t}{}{A}=\det A$, è anche possibile usare lo svilupppo di Laplace sulle colonne. Ad esempio sviluppando la matrice seguente sulla seconda colonna otteniamo:
+$$
+\det
+\begin{pmatrix}
+1 & 0 & 1 \\
+2 & 0 & 1 \\
+\pi & 3 & \sqrt{ 7 }
+\end{pmatrix}
+=(-1)\cdot 3\cdot \det
+\begin{pmatrix}
+1 & 1 \\
+2 & 1
+\end{pmatrix}
+=3
+$$
+
+
+
+## Mosse di Gauss
 
 
 
