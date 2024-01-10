@@ -102,14 +102,14 @@ Mentre i numeri reali $\mathbb{R}$ formano una retta, i numeri complessi $\mathb
 ![[Pasted image 20231213184538.png|350]]
 ## Coordinate polari
 Un punto $(x,y)$ diverso dall'origine del piano cartesiano può essere identificato usando la lunghezza $r$ del vettore corrispondente e l'angolo $\theta$ formato dal vettore con l'asse reale. Le *coordinate polari* del punto sono la coppia $(r,\theta)$. Per passare dalle coordinate polari $(r,\theta)$ a quelle cartesiane $(x,y)$ basta usare le formule:
-$$x=r\cos \theta, \quad y=rsen\theta$$
+$$x=r\cos \theta, \quad y=r\sin\theta$$
 Viceversa:
-$$r=\sqrt{ x^{2}+y^{2} }, \quad \theta=arcos \frac{x}{\sqrt{ x^{2}+y^{2} }}$$
+$$r=\sqrt{ x^{2}+y^{2} }, \quad \theta=arc\ cos \frac{x}{\sqrt{ x^{2}+y^{2} }}$$
 Un numero complesso $z=x+yi$ può essere scritto in coordinate polari come:
 $$z=x+yi=r\cos \theta+(rsen\theta)i=r(\cos \theta+isen\theta)$$
 Notiamo che:
 $$|z|=\sqrt{ x^{2}+y^{2} }=r$$
-Il modulo di $z$ è quindi la lunghezza del vettore che descrive $z$. Il coniugio $\overline{z}=a-ib$ è il punto ottenuto cambiando il segno della coordinata immaginaria: geometricamente questo corrisponde a riflettere il punto rispetto all'asse reale. In coordinate polari, questo corrisponde a cambiare $\theta$ in $-\theta$ lasciando fisso $r$.
+Il modulo di $z$ è quindi la lunghezza del vettore che descrive $z$. Il *coniugio* $\overline{z}=a-ib$ è il punto ottenuto cambiando il segno della coordinata immaginaria: geometricamente questo corrisponde a riflettere il punto rispetto all'asse reale. In coordinate polari, questo corrisponde a cambiare $\theta$ in $-\theta$ lasciando fisso $r$.
 In coordinate polari è quindi comodo scrivere:
 $$e^{i\theta}=\cos \theta+isen\theta$$
 In questo modo ogni numero complesso $z\neq 0$ si scrive come:
@@ -121,7 +121,7 @@ I numeri complessi hanno numerose proprietà. Queste si dimostrano facilmente: i
 #Esempio Valgono i fatti seguenti per ogni $z,w\in \mathbb{C}$
 $$|z+w|\leq|z|+|w|, \quad |zw|=|z||w|, \quad |z|^{-1}=\frac{1}{|z|}$$
 $$|z|=|\overline{z}|, \quad \overline{z+w}=\overline{z}+\overline{w}, \quad \overline{zw}=\overline{z}\ \overline{w}$$
-Il numero costante $e$ di *Nepero* è dovuto alle rappresentazioni delle funzioni $e^{x},\sin x, \cos x$ come serie di potenze. Questo numero $e^{i\theta}$ vuole dire semplicemente $\cos \theta+i\sin \theta$.
+Il numero costante $e$ di *Nepero* è dovuto alle rappresentazioni delle funzioni $e^{x},\ \sin x,\ \cos x$ come serie di potenze. Questo numero $e^{i\theta}$ vuole dire semplicemente $\cos \theta+i\sin \theta$.
 Vale la relazione:
 $$e^{i(\theta+\varphi)}=e^{i\theta}\cdot e^{i\varphi}$$
 Adesso capiamo perché le coordinate polari sono particolarmente utili quando moltiplichiamo due numeri complessi. Se:
@@ -194,12 +194,10 @@ $$a_{n}\overline{z}^{n}+\ldots+a_{1}\overline{z}+a_{0}=0$$
 In altre parole, anche $\overline{z}$ è radice di $p(x)$.
 # Spazi vettoriali
 ## Lo spazio euclideo
-Partendo da $\mathbb{R}$ e usando l'operazione di prodotto cartesiano fra insiemi, definiamo subito la nozione di spazio euclideo in dimensione arbitraria. Sia $n\geq 1$ un numero naturale.
-Lo spazio euclideo $n$-dimensionale è l'insieme $\mathbb{R}^{n}$.
-Ricordiamo che $\mathbb{R}^{n}$ è il prodotto cartesiano $\mathbb{R}\times\dots \times \mathbb{R}$ di $n$ copie di $\mathbb{R}$. Un elemento dell'insieme $\mathbb{R}^{2}$ è il piano cartesiano, in cui ogni punto è determinato da una coppia $(x,y)$. Analogamente in $\mathbb{R}^{3}$ è una terna $(x,y,z)$.
+Partendo da $\mathbb{R}$ e usando l'operazione di prodotto cartesiano fra insiemi, definiamo la nozione di spazio euclideo in dimensione arbitraria. Sia $n\geq 1$ un numero naturale, lo spazio euclideo $n$-dimensionale è l'insieme $\mathbb{R}^{n}$.
+$\mathbb{R}^{n}$ è il prodotto cartesiano $\mathbb{R}\times\dots \times \mathbb{R}$ di $n$ copie di $\mathbb{R}$. Un elemento dell'insieme $\mathbb{R}^{2}$ è il piano cartesiano, in cui ogni punto è determinato da una coppia $(x,y)$. Analogamente in $\mathbb{R}^{3}$ è una terna $(x,y,z)$.
 ![[Pasted image 20231213215133.png|350]]
 ## Spazi vettoriali
-Nella sezione precedente abbiamo iniziato a studiare lo spazio euclideo $\mathbb{R}^{n}$, che generalizza il piano cartesiano $\mathbb{R}^{2}$ in ogni dimensione.
 #Definizione 
 Fissiamo un campo $\mathbb{K}$. Questo è generalmente il campo $\mathbb{K=\mathbb{R}}$ dei numeri reali, ma può anche essere il campo dei complessi o quello dei razionali.
 Gli elementi del campo sono detti *scalari*.
@@ -207,13 +205,13 @@ Uno spazio vettoriale su $\mathbb{K}$ è un insieme $V$ di elementi, detti vetto
 - *somma* che associa a due vettori $v,w \in V$, un terzo vettore $v+w\in V$
 - *prodotto per scalare* che associa ad un vettore $v\in V$ e ad uno scalare $\lambda\in \mathbb{K}$ un vettore $\lambda v\in V$
 Queste due operazioni devono soddisfare gli assiomi per lo spazio euclideo:
-1. L'insieme $V$ è un gruppo commutativo con la somma $+$
+1. L'insieme $V$ è un *gruppo commutativo* (abeliano) con la somma $+$
 2. $\lambda(v+w)=\lambda v+\lambda w$
 3. $(\lambda+\mu)=\lambda v+\lambda \mu$
 4. $(\lambda \mu)v=\lambda(\mu v)$
 5. $1v=v$
 ## Lo spazio $\mathbb{K}^{n}$
-L’esempio principale di spazio vettoriale su $\mathbb{R}$ è ovviamente lo spazio euclideo $\mathbb{R}^{n}$ già incontrato precedentemente. Più in generale, è possibile definire per qualsiasi campo $\mathbb{K}$ uno spazio $\mathbb{K}^{n}$.
+L’esempio principale di spazio vettoriale su $\mathbb{R}$ è lo spazio euclideo $\mathbb{R}^{n}$. Più in generale, è possibile definire per qualsiasi campo $\mathbb{K}$ uno spazio $\mathbb{K}^{n}$.
 Sia $n\geq 1$ un numero naturale. Lo spazio $\mathbb{K}^{n}$ è l'insieme delle sequenze $(x_{1},\dots,x_{n})$ di numeri in $\mathbb{K}$. Gli elementi $v\in \mathbb{K}^{n}$ sono descritti come vettori colonna:
 $$v=
 \begin{pmatrix}
@@ -292,8 +290,8 @@ $$(x^{3}-2x+1)+(4x^{4}+x-3)=4x^{4}+x^{3}-x-2, \quad\quad 3(x^{3}-2x)=3x^{3}-6x$$
 $\mathbb{K}[x]$ è uno spazio vettoriale su $\mathbb{K}$.
 # Matrici
 ## Le matrici
-Introduciamo un terzo oggetto matematico importante che rientra negli spazi vettoriali: le *matrici*.
-Sia sempre $\mathbb{K}$ un campo fissato. Una matrice con $m$ righe e $n$ colonne a coefficienti in $\mathbb{K}$ è tipo:
+Introduciamo un terzo oggetto matematico importante che rientra negli spazi vettoriali: le ***matrici***.
+Sia sempre $\mathbb{K}$ un campo fissato. Una matrice con $m$ righe e $n$ colonne a coefficienti in $\mathbb{K}$ è del tipo:
 $$
 A=
 \begin{pmatrix}
@@ -338,7 +336,7 @@ $$
 \end{pmatrix}
 $$
 ## Sottospazio vettoriale
-Definiamo adesso in che senso uno spazio vettoriale può contenerne un altro.
+Definiamo in che senso uno spazio vettoriale può contenerne un altro.
 Sia $V$ uno spazio vettoriale su un campo $\mathbb{K}$. Un *sottospazio vettoriale* di $V$ è un sottoinsieme $W\subset V$ che soddisfa tre assiomi:
 1. $0\in W$
 2. se $v,v'\in W$, allora anche $v+v'\in W$
@@ -347,10 +345,9 @@ Ovvero:
 1. $W$ deve contenere l'origine
 2. $W$ deve essere chiuso rispetto alla somma
 3. $W$ deve essere chiuso rispetto al prodotto per scalare
-## Sottospazio banale e totale
+
 - Il sottospazio *banale* $W=\{0\}$, formato da solo punto, l'origine
 - Il sottospazio *totale* $W=V$, formato da tutti i vettori di $V$
-$$\{0\}\subset W\subset V$$
 ## Combinazioni lineari
 Sia $V$ uno spazio vettoriale qualsiasi e siano $v_{1},\dots,v_{k}\in V$ vettori arbitrari. Una *combinazione lineare* dei vettori è un qualsiasi vettore $v$ che si ottiene come:
 $$v=\lambda_{1}v_{1}+\ldots+\lambda_{k}v_{k}$$
@@ -407,7 +404,7 @@ $$
 $$
 Questo vettore sta nel piano orizzontale $z=0$. Al variare di $\lambda_{1}$ e $\lambda_{2}$, facendo le combinazioni lineari di $v_{1}$ e $v_{2}$ otteniamo tutti i punti del piano orizzontale $z=0$.
 ## Sottospazio generato
-Sia $V$ uno spazio vettoriale e siano $v_{1},\dots,v_{k}\in V$ vettori arbitrari. Il *sottospazio generato* dai vettori è il sottoinsieme di $V$ formato da tutte le combinazioni lineari dei vettori.
+Sia $V$ uno spazio vettoriale e siano $v_{1},\dots,v_{k}\in V$ vettori arbitrari. Il *sottospazio generato* dai vettori è il sottoinsieme di $V$ formato da tutte le *combinazioni lineari* dei vettori.
 $$Span(v_{1},\dots,v_{k})$$
 $$Span(v_{1},\dots,v_{k})=\{\lambda_{1}v_{1}+\ldots+\lambda_{k}v_{k}|\lambda_{1},\dots,\lambda_{k}\in\mathbb{K}\}$$
 Il sottoinsieme $Span(v_{1},\dots,v_{k})$ è un sottospazio vettoriale di $V$. Dimostriamo che $W=Span(v_{1},\dots,v_{k})$ soddisfa i 3 assiomi di sottospazio:
@@ -422,24 +419,25 @@ $$\lambda v=(\lambda \lambda_{1})v_{1}+\ldots+(\lambda \lambda_{k})v_{k}$$
 #Esempio se $v$ è un singolo vettore di $V$:
 $$W=Span(v)=\{\lambda v|\lambda\in\mathbb{K}\}$$
 #Esempio se $V=\mathbb{R}^{2}$ e $v=\dbinom{1}{2}$:
-$$W=Span(v)=\{t\dbinom{1}{2}|t\in \mathbb{R}\}=\{\dbinom{t}{2t}|t\in\mathbb{R}\}$$
+$$W=Span(v)=\{\lambda\dbinom{1}{2}|\lambda\in \mathbb{R}\}=\{\dbinom{\lambda}{2\lambda}|\lambda\in\mathbb{R}\}$$
 ## Matrici diagonali, triangolari, simmetriche e antisimmetriche
 Possiamo definire dei sottospazi di $M(m,n,\mathbb{K})$ imponendo restrizioni. Data una matrice $A$, indichiamo con $A_{ij}$ o $a_{ij}$ i coefficienti.
 Una matrice $n\times n$ è detta quadrata.
 Una matrice $A$ quadrata è:
-- diagonale se $a_{ij}=0 \ \forall i\neq j$
-- triangolare superiore se $a_{ij}=0 \ \forall i>j$
-- triangolare inferiore se $a_{ij}=0 \ \forall i <j$
-- triangolare se è triangolare inferiore o superiore;
-- simmatrica se $a_{ij}=a_{ji} \ \forall i,j$
-- antisimmetrica se $a_{ij}=-a_{ji} \ \forall i,j$
+- *diagonale* se solo i valori sulla diagonale sono $\neq 0$
+- *triangolare superiore* se $a_{ij}=0 \ \forall i>j$
+- *triangolare inferiore* se $a_{ij}=0 \ \forall i <j$
+- *simmetrica* se $a_{ij}=a_{ji} \ \forall i,j$
+![[Pasted image 20231223103839.png|250]]
+- *antisimmetrica* se $a_{ij}=-a_{ji} \ \forall i,j$, l'opposta coincide con la trasposta
 ## Dimensione
+Una retta e un piano hanno dimensione 0, 1 e 2. Definiamo la dimensione di uno spazio vettoriale.
 ## (In)dipendenza lineare
 Sia $V$ uno spazio vettoriale su $\mathbb{K}$ e siano $v_{1},..,v_{k}\in V$ dei vettori. Diciamo che questi vettori sono *linearmente dipendenti*  se esistono coefficienti $\lambda_{1},\dots,\lambda_{k}\in\mathbb{K}$, non tutti nulli tali che:
 $$\lambda_{1}v_{1}+\ldots+\lambda_{k}v_{k}=0$$
 se i vettori sono linearmente dipendenti, allora è possibile esprimere uno di loro in funzione degli altri. Per ipotesi esiste almeno un $\lambda_{i}\neq 0$ e dopo aver diviso tutto per $\lambda_{i}$ e spostato gli addendi otteniamo:
 $$v_{i}=-\frac{\lambda_{1}}{\lambda_{i}}v_{1}-\ldots-\frac{\lambda_{k}}{\lambda_{i}}v_{k}$$
-dove tra i vettori di destra ovviamente non compare $v_{i}$, quindi i vettori sono dipendenti se e solo se uno di loro è esprimibile come combinazione lineare degli altri.
+dove tra i vettori di destra non compare $v_{i}$, quindi i vettori sono dipendenti se e solo se uno di loro è esprimibile come combinazione lineare degli altri.
 #Esempio i vettori $\dbinom{1}{2},\dbinom{1}{1}$ e $\dbinom{2}{0}$ in $\mathbb{R}^{2}$ sono dipendenti perché:
 $$-2\dbinom{1}{2}+4\dbinom{1}{1}-\dbinom{2}{2}=\dbinom{0}{0}$$
 In questo caso ogni vettore è esprimibile come combinazione lineare degli altri due:
