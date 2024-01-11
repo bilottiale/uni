@@ -106,15 +106,15 @@ bool matrici_uguali(const int matA[ROWS][COLS],
                     const int matB[ROWS][COLS])
 {
     // COMPLETARE
-    bool uguali = true;
-    for (size_t r = 0; r < ROWS && uguali; r++)
+    bool is_equal = true;
+    for (size_t r = 0; r < ROWS; r++)
     {
-        for (size_t c = 0; c < COLS && uguali; c++)
+        for (size_t c = 0; c < COLS; c++)
         {
-            uguali = matA[r][c] == matB[r][c];
-        };
+            is_equal = matA[r][c] == matB[r][c];
+        }
     }
-    return uguali;
+    return is_equal;
 }
 
 //------------------------------------------------------------------
@@ -178,7 +178,12 @@ void imposta_colonna(int mat[ROWS][COLS], const size_t c, const int val)
 bool elem_div_riga(const int pRiga[COLS], const size_t j)
 {
     // COMPLETARE
-    
+    bool is_div = true;
+    for (size_t c = 0; c < COLS; c++)
+    {
+        is_div = is_div && (pRiga[c] % pRiga[j] == 0);
+    }
+    return is_div;
 }
 
 //------------------------------------------------------------------
@@ -189,6 +194,18 @@ bool elem_div_riga(const int pRiga[COLS], const size_t j)
 bool elem_div_mat(const int mat[ROWS][COLS])
 {
     // COMPLETARE
+    bool mat_div = true;
+    for (size_t r = 0; r < ROWS && mat_div; r++)
+    {
+        bool esiste = false;
+        for (size_t c = 0; c < COLS && !esiste; c++)
+        {
+            esiste = esiste || elem_div_riga(mat[r], c);
+        }
+
+        mat_div = mat_div && esiste;
+    }
+    return mat_div;
 }
 
 //------------------------------------------------------------------

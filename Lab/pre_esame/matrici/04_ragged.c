@@ -206,13 +206,17 @@ int min_colonna(const int mat[ROWS][COLS], const size_t rags[ROWS], const size_t
 void sostituisci_se_esiste_primo(int mat[ROWS][COLS], const size_t rags[ROWS], const int val)
 {
     bool primo = false;
-    for (size_t r = 0; r < ROWS;r++){
-        for (size_t c = 0; c < COLS && !primo;c++){
+    for (size_t r = 0; r < ROWS; r++)
+    {
+        for (size_t c = 0; c < COLS && !primo; c++)
+        {
             if (verifica_primalita(mat[r][c]))
                 primo = true;
         }
-        if(primo){
-            for (size_t c = 0; c < COLS;c++){
+        if (primo)
+        {
+            for (size_t c = 0; c < COLS; c++)
+            {
                 mat[r][c] = val;
             }
         }

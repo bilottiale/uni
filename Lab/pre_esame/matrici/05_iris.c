@@ -99,7 +99,7 @@ int main(void)
 // COMPLETARE
 float media_riga(const float mat[ROWS][COLS], const size_t rags[ROWS], const size_t r)
 {
-    int sum = 0.0;
+    int sum = 0;
     for (size_t c = 0; c < rags[r]; c++)
     {
         sum = sum + mat[r][c];
