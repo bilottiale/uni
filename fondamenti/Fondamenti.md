@@ -210,8 +210,290 @@ $$b,c$$
 $$a,a,b,c,q$$
 Devono rispettare l'ordine in cui si trovano nella sequenza originaria.
 ## 3.3 Relations
+$X=\{\text{Bill, Mary, Beth, Dave}\}$ e $Y=\{\text{CompSci, Math, Art, History}\}$ le relazioni $R$ sono:
+$$
+\begin{align}
+R=&\{\text{(Bill, CompSci),(Mary, Math), (Bill, Art), (Beth, History)} \\
+&\text{(Beth, CompSci), (Dave, Math)}\}
+\end{align}
+$$
+Si può scrivere anche $\text{Beth }R \text{ History}$.
+#Esempio 
+Le relazioni $R$ in $X=\{a,b,c,d\}$ date dal seguente diagramma sono: $R=\{(a,a),(b,c),(c,b),(d,d)\}$.
+![[Pasted image 20240120112359.png|250]]
 
+Una relazione $R$ è *simmetrica* se per ogni $x,y\in X$, se $(x,y)\in R$, allora $(y,x)\in R$.
+$$\forall x\forall y[(x,y)\in R]\to [(y,x)\in R]$$
+Una relazione $R$ è *antisimmetrica* se per ogni $x,y\in X$, se $(x,y)\in R$ e $(y,x)\in R$, allora $x=y$.
+$$\text{if }(x,y)\in R \text{ and }(y,x)\in R, \text{ then }x=y$$
+Una relazione $R$ è *transitiva* se per ogni $x,y,z\in X$, se $(x,y)$ e $(y,z)\in R$, allora $(x,z)\in R$.
+$$\text{if }(x,y)\text{ e }(y,z)\in R, \text{ allora }(x,z)\in R$$
+Sia $R$ una relazione da $X$ a $Y$. La *inversa* di $R$ ($R^{-1}$), è la relazione da $Y$ a $X$ definita da:
+$$R^{-1}=\{(y,x)|(x,y)\in R\}$$
+#Esempio $R$ da $X=\{2,3,4\}$ a $Y=\{3,4,5,6,7\}$ definita da:
+$$(x,y)\in R\quad \text{se }x \text{ divide }y$$
+otteniamo:
+$$R=\{(2,4),(2,6),(3,3),(3,6),(4,4)\}$$
+La relazione inversa è:
+$$R^{-1}=\{(4,2),(6,2),(3,3),(6,3),(4,4)\}$$
 
+Sia $R_{1}$ una relazione da $X$ a $Y$ e $R_{2}$ una relazione da $Y$ a $Z$. La *composizione* di $R_{1}$ e $R_{2}$ scritta come $R_{2}\circ R_{1}$, è la relazione da $X$ a $Z$ definita come:
+$$R_{2}\circ R_{1}=\{(x,z)|(x,y)\in R_{1}\text{ e }(y,z)\in R_{2}\text{ per alcuni }y\in Y\}$$
+La composizione delle relazioni
+$$R_{1}=\{(1,2),(1,6),(2,4),(3,4),(3,6),(3,8)\}$$
+$$R_{2}=\{(2,u),(4,s),(4,t),(6,t),(8,u)\}$$
+è:
+$$
+R_{2}\circ R_{1}=\{(1,u),(1,t),(2,s),(2,t),(3,s),(3,t),(3,u)\}
+$$
+## 11 Boolean Algebras and Combinatorial Circuits
+## 11.1 Combinatorial Circuits
+L'output di un *circuito combinatorio* è unicamente definito per ogni combinazione di input, non ha memoria, gli input precedenti non hanno effetto sul circuiti, a differenze dei *circuiti sequenziali*.
+I circuiti combinatori sono formati da porte, dette *gates* logici.
+***AND***
+$$
+\begin{align}
+x_{1}\land x_{2}=\begin{cases}
+1 &\text{if }x_{1}=1 \text{ e }x_{2}=1 \\
+0 &\text{altrimenti}
+\end{cases}
+\end{align}
+$$
+![[Pasted image 20240120144802.png|250]]
 
+***OR***
+$$
+\begin{align}
+x_{1}\land x_{2}=
+\begin{cases}
+1 &\text{se }x_{1}=1  \text{ oppure }x_{2}=1\\
+0 &\text{altrimenti}
+\end{cases}
+\end{align}
+$$
+![[Pasted image 20240120144926.png|250]]
+
+***NOT***
+$$
+\begin{align}
+\overline{x}=
+\begin{cases}
+1 &\text{se }x=0\\
+0 &\text{se }x=1
+\end{cases}
+\end{align}
+$$
+![[Pasted image 20240120145050.png|500]]
+
+#Esempio circuito combinatorio
+![[Pasted image 20240120145203.png|500]]
+
+Un circuito può essere scritto come espressione booleana:
+![[Pasted image 20240120151345.png|500]]
+$$
+y=\overline{(x_{1}\land x_{2})\lor x_{3}}
+$$
+*Soluzione*:
+assegnamo $1$ o $0$ ad ogni $x_{n}$:
+$$
+\begin{align}
+X(1,0,0)&=\overline{(1\land 0)\lor 0} \\
+&=\overline{0\lor 0} \\
+&=\overline{0} \\
+&=1
+\end{align}
+$$
+## 11.2 Properties of Combinatorial Circuits
+*Associativa*:
+$$
+\begin{align}
+&(a\lor b)\lor c=a\lor(b\lor c)\\
+&(a\land b)\land c=a\lor(b\lor c)
+\end{align}
+$$
+*Commutativa*:
+$$
+\begin{align}
+a\lor b=b\lor a\quad \quad a\land b=b\land a
+\end{align}
+$$
+*Distributiva*:
+$$
+\begin{align}
+a\land(b\lor c)=(a\land b)\lor(a\land c) \\
+a\lor(b\land c)=(a\lor b)\land(a\lor c)
+\end{align}
+$$
+*Identità*:
+$$
+a\lor 0=a, \quad\quad a\land 1=a
+$$
+*Complemento*:
+$$
+a\lor\overline{a}=1,\quad\quad a\land\overline{a}=0
+$$
+## 11.3 Boolean Algebras
+L'*algebra Booleana* consiste in un insieme $S$ contenente gli elementi $1$ e $0$, le operazioni binarie $+$ e $\cdot$ su $S$.
+*Legge associative*:
+$$
+\begin{align}
+(x+y)+z&=x+(y+z) \\
+(x\cdot y)\cdot z&=x\cdot(y\cdot z)
+\end{align}
+$$
+*Legge commutativa*:
+$$
+x+y=y+x, \quad\quad x\cdot y=y\cdot x
+$$
+*Legge distributiva*:
+$$
+\begin{align}
+x\cdot(y+z)&=(x\cdot y)+(x\cdot z) \\
+x+(y\cdot z)&=(x+y)\cdot(x+z)
+\end{align}
+$$
+*Identità*:
+$$
+x+0=x,\quad\quad x\cdot 1=x
+$$
+*Complemento*:
+$$
+x+x'=1,\quad\quad x\cdot x'=0
+$$
+## 11.5 Boolean Function and Applications
+Un *gate* rappresenta una funzione:
+$$
+Z_{2}^{n}\to Z_{2}
+$$
+dove $Z_{2}=\{0,1\}$.
+Il gate *AND* è la funzione $\land$ da $Z_{2}^{2}$ a $Z_{2}$.
+Il gate *OR* è la funzione $\lor$ da $Z_{2}^{2}$ a $Z_{2}$.
+Il gate *NOT* è la funzione $\overline{}$ da $Z_{2}^{2}$ a $Z_{2}$.
+![[Pasted image 20240120160226.png|500]]
+
+Il gate *NAND* riceve come input due bit $x_{1}$ e $x_{2}$, produce un output scritto come $x_{1}\uparrow x_{2}$, dove:
+$$
+\begin{align}
+x_{1}\uparrow x_{2}=
+\begin{cases}
+0 &\text{se }x_{1}=1\text{ e }x_{2}=1\\
+1 &\text{altrimenti}
+\end{cases}
+\end{align}
+$$
+![[Pasted image 20240120160622.png|250]]
+$$x\uparrow y=\overline{xy}$$
+
+***Half-Adder***: accetta come input due bits $x$ e $y$ e produce come output la somma binaria $cs$ di $x$ e $y$. Dove $s$ è la somma e $c$ il resto (carry bit).
+![[Pasted image 20240120161556.png|500]]
+
+***Full-Adder***: accetta come input 3 bits $x,y$ e $z$ e produce come output la somma binaria $cs$ di $x,y$ e $z$. Dove $s$ è la somma e $c$ il resto (carry bit).
+![[Pasted image 20240120161809.png|500]]
+
+#Esempio Un circuito che somma numeri binari è composto da:
+![[Pasted image 20240120162012.png|500]]
+
+## 12 Automata, Grammars, and Languages
+## 12.1 Sequential Circuits and Finite-State Machines
+Le operazioni all'interno di un computer digitale vengono eseguite a intervalli di tempo. L'output dipende dallo stato del sistema così come dall'input. Assumeremo che lo stato del sistema cambi solo al tempo $t=0,1,\dots$. Un modo semplice per introdurre la sequenza nei circuiti è introdurre una unità di *ritardo temporale* (delay).
+L'unità di delay prende in input un bit $x_{t}$ ad un momento $t$ e restituisce $x_{t-1}$, il bit ricevuto come input al momento $t-1$.
+![[Pasted image 20240120163621.png|250]]
+
+Il delay viene utilizzato nel *serial adder*, il quale prende come input due numeri binari:
+$$x=0x_{N}x_{N-1}\dots x_{0}\quad \text{ e }\quad y=0y_{N}y_{N-1}\dots y_{0}$$
+e restituisce in output la somma $z_{N+1}z_{N}\dots z_{0}$ di $x$ e $y$.
+I numeri $x$ e $y$ sono input sequenziali in paia, $x_{0}y_{0};x_{N}y_{N};0,0$. La somma è l'output $z_{0},z_{1},\dots ,z_{N+1}$.
+![[Pasted image 20240120164114.png|250]]
+
+Una ***macchina a stati finiti*** è un modello astratto di una macchina con una memoria primitiva. Una macchina a stati finiti $M$ consiste di:
+- Un insieme finito $I$ di *simboli di input*
+- Un insieme finito $O$ di *simboli di output*
+- Un insieme finito $S$ di *stati*
+- Una *funzione prossimo stato* $f$ da $S\times I$ a $S$
+- Una *funzione di output* $g$ da $S\times I$ a $O$
+- Uno *stato iniziale* $\sigma\in S$
+Scriviamo $M=\{I,O,S,f,g,\sigma\}$.
+## 12.2 Finite-State Automata
+Un *automa a stati finiti* è una forma speciale di macchina a stati finiti, data la loro relazione con i linguaggi.
+Sia $A=\{I,O,S,f,g,\sigma\}$ una macchina a stati finiti nel quale l'insieme degli output è $\{0,1\}$ e dove lo stato corrente determina l'ultimo output. Gli stati nel quale l'ultimo output era $1$ sono detti *stati accettanti*.
+![[Pasted image 20240120165724.png|500]]
+## 12.3 Languages and Grammars
+La lingua è “le parole, la loro pronuncia e i metodi per combinarle, usate e comprese da una comunità”. Tali linguaggi sono spesso chiamati *linguaggi naturali* per distinguerli dai *linguaggi formali*, utilizzati per modellare i linguaggi naturali e per comunicare con i computer. Le regole di un linguaggio naturale sono molto complesse e difficili da comprendere completamente. D'altra parte, è possibile specificare completamente le regole con cui sono costruiti certi linguaggi formali.
+Iniziamo con la definizione di linguaggio formale: sia $A$ un insieme finito. $A$ linguaggio (formale) $L$ di $A$, è un sottoinsieme di $A^{*}$.
+
+Una *grammatica che struttura della frase* o semplicemente *grammatica* $G$ consiste di:
+- un insieme finito $N$ di *simboli non terminali*
+- un insieme finito $T$ di *simboli terminali* dove $N\cap T=\varnothing$
+- un sottoinsieme finito $P$ di $[(N\cup T)^{*}-T^{*}]\times(N\cup T)^{*}$, chiamato insieme di *produzioni*
+- un *simbolo iniziale* $\sigma\in N$
+Scriviamo $G=\{N,T,P,\sigma\}$.
+Una produzione $(A,B)\in P$ è scritta:
+$$A\to B$$
+#Esempio Sia
+$$
+\begin{align}
+&N=\{\sigma,S\} \\
+&T=\{a,b\} \\
+&P=\{\sigma \to b\sigma, \sigma\to aS, S\to bS, S\to b\}
+\end{align}
+$$
+allora $G=\{N,T,P,\sigma\}$ è una grammatica.
+Data una grammatica $G$, possiamo costruire un linguaggio $L(G)$ da $G$ usando le produzioni per derivare le stringhe che compongono $L(G)$. L'idea è di iniziare con il simbolo iniziale e poi utilizzare ripetutamente le produzioni fino ad ottenere una stringa di simboli terminali. Il linguaggio L(G) è l'insieme di tutte queste stringhe ottenute.
+
+Sia $G=(N,T,P,\sigma)$ una grammatica.
+Se $\alpha\to \beta$ è una produzione e $x\alpha y\in (N\cup T)^{*}$, diciamo che $x\beta y$ è *direttamente derivabile* da $x\alpha y$ e quindi scrivere:
+$$
+x\alpha y\Rightarrow x\beta y
+$$
+se $\alpha_{i}\in (N\cup T)^{*}$ per $i=1,\dots,n$, e $a_{i+1}$ è direttamente derivabile da $a_{i}$ per $i=1,\dots,n-1$, diciamo che $\alpha_{n}$ è *derivabile da* $\alpha_{1}$ e scrivere:
+$$\alpha_{1}\Rightarrow\alpha_{n}$$
+ovvero:
+$$
+\alpha_{1}\Rightarrow\alpha_{2}\Rightarrow\dots\Rightarrow\alpha_{n}
+$$
+la derivazione di $\alpha_{n}$ (da $\alpha_{1}$). Per convenzione, ogni elemento di $(N\cup T)^{*}$ è derivabile da se stessa.
+Il *linguaggio geerato* da $G$, scritto $L(G)$, consiste nelle stringhe di $T$ derivabili da $\sigma$.
+
+Sia la grammatica:
+$$
+\begin{align}
+&N=\{\sigma,S\} \\
+&T=\{a,b\} \\
+&P=\{\sigma \to b\sigma, \sigma\to aS, S\to bS, S\to b\}
+\end{align}
+$$
+La stringa $abSbb$ è direttamente derivabile da $aSbb$:
+$$aSbb\Rightarrow abSbb$$
+usando la produzione $S\to bS$.
+La stringa $bbab$ è derivabile da $\sigma$:
+$$\sigma\Rightarrow bbab$$
+la derivazione è:
+$$
+\sigma\Rightarrow b\sigma\Rightarrow bb\sigma\Rightarrow bbaS\Rightarrow bbab
+$$
+Sia $G$ una grammatica, denotiamo con $\lambda$ il carattere vuoto.
+## 12.4 Nondeterministic Finite-State Automata
+#Esempio 
+Ho un automa non deterministico che lavora con un alfabeto binario $\{0,1\}$.
+L'automa analizza una stringa composta da $0$ e $1$.
+![[Pasted image 20240120182719.png|500]]
+
+La funzione di transizione è:
+$$\Delta=\{(a,0,a),(a,1,a),(a,1,b),(b,0,c),(c,0,c),(c,1,c)\}$$
+Questo automa riconosce le stringhe con una sequenza interna composta almeno una volta dalla sottostringa "$01$".
+Provo ad analizzare la stringa "$11$":
+***Primo evento***:
+Il primo evento è il simbolo $1$ ossia il primo carattere della stringa $11$.
+L'automa non deterministico resta nello stato $A$ e contemporaneamente passa nello stato $B$.
+È come se lanciasse due processi in esecuzione in background.
+![[Pasted image 20240120183026.png|500]]
+
+***Secondo evento***:
+L'evento successivo è il simbolo $1$, secondo carattere della stringa "$11$".
+Il nuovo evento è analizzato sia nel nodo $A$ che nel nodo $B$.
+![[Pasted image 20240120183134.png|500]]
+
+- Il processo nel nodo $A$ continua a girare, è previsto l'evento ($1$). In questo caso permane nello stesso nodo $A$.
+- Il processo nel nodo $B$ viene eliminato, non è previsto l'evento ($1$) in uscita.
 
 
