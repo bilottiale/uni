@@ -1,0 +1,9 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/alessandrobilotti/Desktop/uni/Lab/pre_esame/porcodio/ric/rec/rec1'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _e2R, symObjAddr: 0x0, symBinAddr: 0x100003DC8, symSize: 0xEC }
+  - { offsetInCU: 0x33, offset: 0x33, size: 0x8, addend: 0x0, symName: _e2R, symObjAddr: 0x0, symBinAddr: 0x100003DC8, symSize: 0xEC }
+  - { offsetInCU: 0x9D, offset: 0x9D, size: 0x8, addend: 0x0, symName: _e2, symObjAddr: 0xEC, symBinAddr: 0x100003EB4, symSize: 0x48 }
+  - { offsetInCU: 0xF9, offset: 0xF9, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x134, symBinAddr: 0x100003EFC, symSize: 0x94 }
+...
