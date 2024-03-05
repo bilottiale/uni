@@ -1,0 +1,49 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{tikz, pgfplots, amssymb, xcolor, mdframed, framed, amsmath, amsthm, mathtools, enumitem, bm, mathrsfs, cancel}
+\usetikzlibrary{positioning, shapes, arrows, patterns, calc, decorations.pathreplacing, decorations.pathmorphing, decorations.markings, shapes.geometric, arrows.meta, bending, intersections, through, backgrounds, quotes, angles, patterns, matrix, external}
+\pgfplotsset{compat=1.18, width=10cm}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\begin{document}
+
+\section{Obiettivo}
+Problema della tangente, possibilità di definire la pendenza del grafico di $f$ in un certo punto.
+
+\section{Funzioni Lineari}
+\begin{center}
+$f(x)=mx+q$\\
+\end{center}Il grafico di $f$ è una retta.
+$q$ è l'ordinata del punto in cui la retta interseca l'asse $y$. $f(0)=m\cdot 0+q=q$.
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[xmin=-2, xmax=2, ymin=-2, ymax=2,
+    axis lines=middle,
+    xlabel=$x$, ylabel=$y$]
+    \addplot[color=red, mark=*] coordinates {(0, 1)} node[pos=0.5, above right] {$q$};
+\end{axis}
+\end{tikzpicture}
+\end{center}$m$ è il coefficiente angolare, ed è legato alla pendenza.
+\\Dati $x_0, x_1 \in \mathbb{R}$, consideriamo:\\
+$\Delta x = x_1 - x_0$ \\
+$\Delta f = f(x_1) - f(x_0)$ incremento della $f$ tra $x_0$ e $x_1$.
+\begin{mdframed}[backgroundcolor=red!20, linecolor=red] 
+    $\frac{\Delta f}{\Delta x}= \frac{f(x_1)-f(x_0)}{x_1-x_0}$ Rapporto incrementale (o Quoziente di Newton)
+\end{mdframed}
+È il tasso medio di variazione della $f$ tra $x_0$ e $x_1$.\\
+\textbf{Proposizione:}
+Se $f(x)=mx+q$, allora $\forall x_0,x_1 \in \mathbb{R} (x_0 \neq x_1)$ si ha
+\begin{center}
+    $\frac{\Delta f}{\Delta x}=m$
+\end{center}
+\textbf{Dimostrazione:}
+\begin{center}
+    $\frac{\Delta f}{\Delta x}= \frac{f(x_1)-f(x_0)}{x_1-x_0}=\frac{mx_1+\cancel{q}-(mx_0+\cancel{q})}{x_1-x_0} = \frac{m\cancel{(x_1-x_0)}}{\cancel{x_1-x_0}}=m$
+\end{center}
+\textbf{Def:} si dice \textit{PENDENZA} di $f(x)=mx+q$ il suo tasso di variazione medio \circled{$m$}.
+
+
+\end{document}
