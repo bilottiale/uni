@@ -1,0 +1,60 @@
+BEGIN TEST of ContactBookADT
+
+Creating contact book
+Contact book size: 0
+/*contact book start*/
+/*contact book end*/
+
+Adding contact, check = 1
+Contact book size: 1
+/*contact book start*/
+Primo,Contatto,123456,primo@contatto.it
+/*contact book end*/
+
+Adding contact, check = 1
+Contact book size: 2
+/*contact book start*/
+Primo,Contatto,123456,primo@contatto.it
+Secondo,Contatto,42,
+/*contact book end*/
+
+Searching non-existing contact, check = 0x0
+
+Searching existing contact, check = 0x154605d90
+mobile: 123456, url: primo@contatto.it
+
+Modifying existing contact
+Contact book size: 2
+/*contact book start*/
+Primo,Contatto,000000,---
+Secondo,Contatto,42,
+/*contact book end*/
+
+Writing to file, check = 1
+
+Destroying contact book
+Contact book size: -1
+/*contact book start*/
+/*contact book end*/
+
+Reading from file, check = 0x154704080
+Contact book size: 2
+/*contact book start*/
+Primo,Contatto,000000,---
+Secondo,Contatto,42,
+/*contact book end*/
+
+Removing non-existing contact, check = 0
+Contact book size: 2
+/*contact book start*/
+Primo,Contatto,000000,---
+Secondo,Contatto,42,
+/*contact book end*/
+
+Removing existing contact, check = 1
+Contact book size: 1
+/*contact book start*/
+Primo,Contatto,000000,---
+/*contact book end*/
+
+Destroying contact book

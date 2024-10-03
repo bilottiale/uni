@@ -1,3 +1,0 @@
-/Users/alessandrobilotti/Desktop/uni/Lab/pre_esame/porcodio/cmake-build-debug/CMakeFiles/porcodio.dir
-/Users/alessandrobilotti/Desktop/uni/Lab/pre_esame/porcodio/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/alessandrobilotti/Desktop/uni/Lab/pre_esame/porcodio/cmake-build-debug/CMakeFiles/rebuild_cache.dir

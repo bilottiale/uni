@@ -1,0 +1,4 @@
+This is a sample text file.
+It contains some words and punctuation.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
