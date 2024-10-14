@@ -91,4 +91,4 @@ Nella tecnologia **CMOS IC**:
 $$
 \text{Power} =\text{Capacitive load} \times \text{Voltage}^{2} \times \text{Frequency}
 $$
-
+![[math-20241015.svg#invert_B]]
