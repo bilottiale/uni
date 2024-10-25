@@ -263,5 +263,18 @@ v_{t} =\sqrt{ \frac{mg}{b} }=92m/s
 \end{gather}
 $$
 
+## Moto 2d
+### 1
+Una palla di $150 g$ legata all’estremità di una corda rotea uniformemente lungo una circonferenza orizzontale di raggio $0.6 m$. La palla compie due rivoluzioni in $1s$. Quanto valgono l’ accelerazione e la forza radiale?
+$$
+a_{r} = \frac{v^{2}}{r} = \frac{(2\pi rf)^{2}}{r} = 94,8 \frac{m}{s^{2}}
+$$
+$$
+F_{r} = ma_{r} = 14,22 N
+$$
+## Lavoro ed energia
+
+
+
 
 

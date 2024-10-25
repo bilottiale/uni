@@ -178,6 +178,27 @@ a&=-g-9.8N/kg \\
 &=-9.8m/s^{2}
 \end{align}
 $$
+#### Resistenza dell'aria
+Se in un moto di caduta sotto l’azione della forza di gravità la resistenza dell’aria NON si può trascurare il diagramma di corpo libero del corpo si modifica come segue:
+Dalla seconda legge di Newton:
+$$
+\sum F_{y}=F_{d}-w=ma
+$$
+dove $F_{d}$ è l'intensità della forza d'attrito ($d=$drag).
+Questa forza è in verso opposto alla velocità e ad essa proporzionale:
+$$
+F_{d}=bv^{2}
+$$
+con $b$ parametro che dipende dalla forma e dalle dimensioni del corpo.
+La forza di attrito aumenta man mano che aumenta la velocità.
+Si raggiungerà quindi ad un certo dato istante della caduta una condizione in cui $F_{d}=w$, cioè:
+$$
+\begin{gather}
+\sum F_{y}=F_{d}-w=ma=0 \\
+bv^{2}-mg=0 \\
+\text{ quando } v=v_{i}=\sqrt{ \frac{mg}{b} }
+\end{gather}
+$$
 ## Moto armonico semplice
 ### Moto armonico semplice
 Un corpo si muove di **moto armonico semplice** quando al corpo è applicata una **forza di richiamo**, cioè una forza sempre diretta verso un *punto di equilibrio stabile*, **direttamente proporzionale allo spostamento** del corpo dalla posizione di equilibrio.
@@ -231,30 +252,278 @@ La velocità si annulla agli estremi dell’oscillazione ed è massima quando il
 ### Oscillazioni smorzate
 Quando l’attrito non è trascurabile l’ampiezza delle oscillazioni diminuisce nel tempo:
 ![[Pasted image 20241013173206.png|500]]
-#### Resistenza dell'aria
-Se in un moto di caduta sotto l’azione della forza di gravità la resistenza dell’aria NON si può trascurare il diagramma di corpo libero del corpo si modifica come segue:
-Dalla seconda legge di Newton:
-$$
-\sum F_{y}=F_{d}-w=ma
-$$
-dove $F_{d}$ è l'intensità della forza d'attrito ($d=$drag).
-Questa forza è in verso opposto alla velocità e ad essa proporzionale:
-$$
-F_{d}=bv^{2}
-$$
-con $b$ parametro che dipende dalla forma e dalle dimensioni del corpo.
-La forza di attrito aumenta man mano che aumenta la velocità.
-Si raggiungerà quindi ad un certo dato istante della caduta una condizione in cui $F_{d}=w$, cioè:
-$$
-\begin{gather}
-\sum F_{y}=F_{d}-w=ma=0 \\
-bv^{2}-mg=0 \\
-\text{ quando } v=v_{i}=\sqrt{ \frac{mg}{b} }
-\end{gather}
-$$
 ## Moto dei proiettili
 Un aereo vola alla quota di $1050 m$ alla velocità di $115 m/s$. Ad un certo istante lancia una cassa contenente generi di pronto soccorso. A quale distanza dal punto di lancio la cassa colpirà il suolo?
 ![[Pasted image 20241013174440.png]]
+# Moti 2d circolari
+**La variabile angolare**:
+$$
+\begin{gather}
+\theta = \text{coordinata angolare} \\
+\theta = \frac{s}{r}
+\end{gather}
+$$
+$\theta$ è misurato in *radianti*, è il rapporto tra due lunghezze.
+Gli angoli misurati in senso antiorario sono positivi.
+$2\pi$ radianti $= 360° = 1$ rotazione completa.
+Usando la variabile angolare il moto circolare si può descrivere con una sola *coordinata cinematica*.
+![[diagram-20241016.svg#invert|400]]
+La *lunghezza dell'arco percorso* nel tempo è:
+$$
+\begin{gather}
+\Delta t = t_{f} - t_{i} \\
+\Delta s = r \Delta \theta
+\end{gather}
+$$
+dove:
+$$
+\Delta \theta = \theta_{f} - \theta_{i}
+$$
+è lo *spostamento angolare*.
+## Velocità angolare media e istantanea
+$$
+\omega_{av} = \frac{\Delta \theta}{\Delta t} \ \text{ e } \ \omega = \lim_{ \Delta t \to 0 } \frac{\Delta \theta}{\Delta t}
+$$
+$\omega$ si misura in $rad/s$ (radianti al secondo).
+![[Screenshot 2024-10-16 alle 16.36.47.png|400]]
+Il vettore $\mathbf{\omega}$ ha direzione perpendicolare al piano del moto, è diretto verso di voi se la rotazione è antioraria, ha invece verso opposto se la rotazione è oraria.
+**Velocità media**:
+$$
+v_{av} = \frac{\text{distanza totale}}{\text{tempo totale}} = \frac{r\Delta \theta}{\Delta t} = r\left( \frac{\Delta \theta}{\Delta t} \right) = r\omega_{av}
+$$
+Vale anche per i valori istantanei $v = r\omega$.
+## Accelerazione
+La velocità di una particella che si muove su una traiettoria circolare è tangente alla traiettoria.
+Varia in modulo, direzione e verso, generando una accelerazione $\neq 0$.
+L’accelerazione, in generale, ha una componente lungo la direzione tangente una componente lungo la direzione radiale.
+![[diagram-20241016.svg#invert]]
+## Moto circolare uniforme
+$r$ raggio della traiettoria circolare percorsa.
+$T$ il tempo necessario a compiere un giro completo.
+$f$ la frequenze, cioè il numero di cicli per secondo.
+$$
+|v| = \frac{2\pi r}{T}
+$$
+$$
+v = v_{av} = \frac{\text{distanza totale}}{\text{tempo totale}} = \frac{2\pi r}{T}
+$$
+Anche la velocità angolare è costante:
+$$
+\omega = \frac{2\pi}{T} = 2\pi f \quad \quad v = \omega r
+$$
+La *direzione* di $v$ cambia, quindi, $\Delta v \neq 0 \Rightarrow a\neq 0$. È quindi presente una forza $\neq 0$.
+## Accelerazione
+### Modulo
+$$
+\frac{\Delta v}{v} \sim \frac{v\Delta t}{r} \rightarrow \frac{\Delta v}{\Delta t} \sim \frac{v^{2}}{r}
+$$
+Il modulo dell’accelerazione radiale è costante e vale:
+$$
+a_{r} = \frac{v^{2}}{r} = r\omega^{2} = \omega v
+$$
+### Direzione orientata
+L’accelerazione istantanea in un moto circolare uniforme è diretta lungo la direzione radiale e orientata verso il centro della traiettoria circolare.
+![[Pasted image 20241016170359.png|350]]
+## Forza centripeta
+La forza che tiene il corpo in rotazione uniforme è, quindi, costante in modulo e diretta *verso il centro*, ed è chiamata **forza centripeta**.
+# Lavoro ed energia
+## Lavoro
+Quando una forza non nulla sposta un corpo viene compiuto **LAVORO**. Se la forza $F$ è costante e ha la direzione orientate dello spostamento:
+$$
+W = Fs
+$$
+L’unità di misura della forza è il Joule ($J$).
+$$
+1J = 1Nm = 1kg \ m^{2}/s^{2}  
+$$
+Il lavoro compiuto da una forza costante non parallela allo spostamento è definito come:
+$$
+W = Fs \ \cos \theta
+$$
+Dove $F$ è l'intensità della forza, $s$ la lunghezza dello spostamento, e $\theta$ l'angolo tra $F$ e $s$.
+![[Pasted image 20241022113529.png]]
+### Prodotto scalare tra due vettori
+Il **prodotto scalare** di due vettori $a$ e $b$ è una grandezza scalare.
+$$
+\overrightarrow{a} \cdot \overrightarrow{b} = ab\cos \alpha
+$$
+In coordinate cartesiane:
+$$
+\overrightarrow{a} \cdot \overrightarrow{b} = a_{x}b_{x} + a_{y}b_{y} + a_{z}b_{z}
+$$
+## Lavoro come prodotto scalare
+possiamo definire il lavoro come *prodotto scalare del vettore forza per il vettore spostamento*:
+$$
+W = F \circ S
+$$
+In presenza di più forze $F = F_{1}+F_{2} + \dots + F_{n}$ il lavoro gode della *proprietà additiva*:
+$$
+L = L_{1}+L_{2}+L_{2}+\dots+L_{n}
+$$
+**Esercizio**:
+
+> [!NOTE] Esercizio
+> Una scatola di massa m viene trascinata a velocità costante su un piano privo di attrito. La forza applicata $F$ è parallela al piano. Calcolare il lavoro totale compiuto sulla scatola.
+
+Velocità costante, quindi accelerazione$a = 0$.
+![[Pasted image 20241022115127.png|400]]
+Applico la seconda legge di Newton:
+$$
+\begin{gather}
+\sum F_{x} = F - w\sin \theta = 0 \\
+\sum F_{y} = N - w\cos \theta = 0
+\end{gather}
+$$
+Il modulo di $F$ vale:
+$$
+F = mg \sin \theta
+$$
+La scatola percorre lungo la rampa una distanza $\Delta x$, il lavoro della forza $F$ è:
+$$
+W_{F} = F\Delta x\cos0° = mg\Delta x\sin \theta
+$$
+Il lavoro della gravità è:
+$$
+W_{g} = w\Delta x\cos(\theta + 90°) = -mg\Delta x\sin \theta
+$$
+Il lavoro della forza normale è:
+$$
+W_{N} = N\Delta x\cos90° = 0
+$$
+Il lavoro netto compiuto sulla scatola è:
+$$
+\begin{align}
+W_{net} &= W_{F} + W_{g} + W_{N} \\
+&= mg\Delta x\sin \theta - mg\Delta x\sin \theta + 0 \\
+&= 0
+\end{align}
+$$
+
+> [!NOTE] Esercizio
+> Qual è il lavoro totale sulla scatola dell’esercizio precedente se la scatola non è tirata a velocità costante?
+
+$$
+\begin{align}
+&\sum F_{x} = F - w\sin \theta = ma \\
+&\therefore F = ma + w\sin \theta
+\end{align}
+$$
+Se la velocità NON è costante, significa che ci sarà una accelerazione non nulla, e quindi anche la risultante delle forze sarà non nulla.
+Procedendo come prima:
+$$
+W_{net} = W_{F} + W_{a} = (ma\Delta x + mg\sin \theta \Delta x) - mg\sin \theta \Delta x = ma\Delta x
+$$
+## Lavoro di una forza variabile
+Se la forza varia da punto a punto lungo lo spostamento, allora il lavoro deve essere calcolato con l’aiuto dell’analisi matematica.
+$$
+\int_{x_{1}}^{x_{2}} F(x) \cdot dx 
+$$
+Anche in questo caso il lavoro può essere calcolato determinando l’area delimitate dal grafico della forza applicata in funzione dello spostamento.
+
+> [!NOTE] Esercizio
+> Una molla ideale ha $k = 20,0 N/m$. Qual’è il lavoro compiuto da un agente esternoper deformare la molla di $0.40 m$ partendo dalla molla non deformata?
+
+Usiamo l’interpretazione grafica dell’integrale:
+![[Screenshot 2024-10-22 alle 12.10.11.png|300]]
+$$
+\begin{align}
+W &= \text{area sotto la curva} \\
+&= \frac{1}{2} (kx_{1})(x_{1}) = \frac{1}{2}kx_{1}^{2}  = \frac{1}{2}(20.0N/m)(0.4m)
+^{2} = 1.6J\end{align}
+$$
+Usiamo l'analisi matematica per l'integrale:
+$$
+\begin{align}
+L_{i \rightarrow f} = \int_{0}^{x_{1}} F \circ  dx' \\
+= k \int_{x}^{x_{1}} x' dx' = \frac{1}{2}kx_{1}^{2}
+\end{align}
+$$
+## Energia Cinetica
+$$
+K = \frac{1}{2}mv^{2}\ \  \text{è l'energia cinetica traslazionale di un corpo} 
+$$
+È posseduta da un corpo in virtù del suo stato di moto.
+**Teorema dell'energia cinetica**:
+$$
+W_{i \to f} = \Delta E_{C} = E^{f}_{C} - E_{C}^{i}  
+$$
+Dimostrazione:
+$$
+\begin{gather}
+dW = Fdx = m \frac{dv}{dt}dx = m \frac{dv}{dt}vdt \\
+W = \int_{i}^{f} dW = \int_{i}^{f} mvdv = m \int_{i}^{f} vdv = \frac{1}{2} mv_{f}^{2} - \frac{1}{2} mv_{i}^{2}  
+\end{gather}
+$$
+## Lavoro e forza gravitazionale
+$$
+W = mg \cdot |\Delta h| \cdot \cos \theta = (mg h_{f} - mg h_{i})
+$$
+## Lavoro ed energia potenziale gravitazionale
+$$
+\begin{gather}
+W_{if} = -(E_{Pf}-E_{\Pi}) \\
+E_{P} = m \cdot g \cdot h
+\end{gather}
+$$
+$m =$ massa, $g=$ forza di gravità e $h=$ altezza.
+
+Una forza è **conservativa** quando il lavoro compiuto NON dipende dal particolare cammino seguito per andare dalla posizione iniziale a quella finale, ma solo dalla posizione iniziale e finale. Per questa categoria di forze:
+$$
+W_{cons} = -\Delta U
+$$
+Ci sono quindi diverse forme di energia potenziale.
+La forza gravitazionale è una forza conservativa. *Vicino* alla superficie della Terra:
+$$
+\Delta U_{g} = mg\Delta y
+$$
+dove $\Delta y$ è la variazione della coordinata verticale del corpo rispetto ad una arbitraria posizione di riferimento.
+*Lontano* dalla superficie della Terra la forza gravitazionale che agisce su una massa $M_{2}$ per effetto di una massa $M_{1}$ a distanza $r$ è:
+$$
+\begin{gather}
+F(r) = - \frac{GM_{1}M_{2}}{r^{2}} \\
+L = \int_{r_{i}}^{r_{f}} drF(r) = GM_{1}M_{2}\int_{r_{i}}^{r_{f}} - \frac{1}{2} dr = \frac{GM_{1}M_{2}}{r_{f}} - \frac{GM_{1}M_{2}}{r_{i}}
+\end{gather}
+$$
+l’espressione più generale per l’energia potenziale gravitazionale della massa $M_{2}$ è:
+$$
+U(r) = - \frac{GM_{1}M_{2}}{r}
+$$
+dove $U(r=\infty)=0$.
+**La forza elastica è una forza conservativa**
+## Energia potenziale elastica
+Il lavoro della forza elastica, come quello della forza peso, *non dipende dalla traiettoria*,  ma solo dalla posizione iniziale e finale.
+Introducendo la funzione $U(x) = \left( \frac{1}{2} \right)kx^{2}$ il lavoro è dato da:
+$$
+L = \frac{1}{2} kx_{A}^{2} - \frac{1}{2}kx_{B}^{2}  = U(A) - U(B) = -\Delta U
+$$
+La funzione $U(x)$ è detta *energia potenziale elastica* ed è una grandezza scalare associata alla *posizione* in cui si trova il punto.
+La funzione $U(x)$ è definita a meno di una costante: se si pone $U(x) = \left( \frac{1}{2} \right) kx^{2}+c$ vale sempre la relazione $L = -\Delta U$.
+L’energia meccanica di una massa m collegata ad una molla è:
+$$
+E(t) = K(t) + U(t) = \frac{1}{2} mv(t)^{2} + \frac{1}{2} kx(t)^{2}  
+$$
+Quando non ci sono forze di natura non conservativa l’energia meccanica di un sistema fisico si conserva, cioè:
+$$
+E_{i} = E_{f}
+$$
+equivalmente:
+$$
+\Delta K = -\Delta U
+$$
+## Potenza
+La potenza è il **tasso di trasferimento dell'energia**:
+$$
+\text{Potenza media} \ P_{av} = \frac{\Delta E}{\Delta}
+$$
+$$
+\text{Potenza istantanea} \ P = Fv\cos \theta
+$$
+Unità di misura è il Watt. $1 Watt = 1J/s = 1W$.
+
+
+
+
+
 
 
 

@@ -294,11 +294,6 @@ $$
 **Esempio** di rete logica con gate:
 - **HALF ADDER**, un sommatore senza riporto in ingresso.
 ![[Half_Adder.svg#invert|250]]
-
-
-
-
-
 ## Reti sequenziali
 - ogni segnale di uscita dipende dai valori degli ingressi in quell’istante $E$ dai valori che gli ingressi hanno assunto negli istanti precedenti.
 - rete con memoria, *ha stato*, è una rete in cui l’uscita cambia in funzione del cambiamento dell’ingresso e della specifica configurazione interna in quell’istante (*STATO*). Lo stato riassume la sequenza degli ingressi precedenti.
@@ -309,6 +304,231 @@ $$
 Progettare la rete logica di gestione di un ascensore:
 - La rete ha tre uscite *UP*, *DW* e *O*. *UP*, *DW* indicano le direzioni su e giù mentre *O* vale $1$ se la porta deve essere aperta e $0$ altrimenti. La rete ha come ingresso due segnali che indicano il piano $\{ 0,1,2,3 \}$ corrispondente al tasto premuto. Per calcolare l’uscita è necessario conoscere il piano corrente che indica lo stato interno.
 ![[Pasted image 20241015110907.png#invert|400]]
+## Algebra di Boole
+L’algebra di Boole è un sistema matematico che descrive funzioni di variabili binarie: è composto da:
+- un insieme di simboli $B=\{0, 1\}$
+- un insieme di operazioni $O=\{+,\cdot,'\}$
+	- $+$ somma logica (*OR*)
+	- $\cdot$ prodotto logico (*AND*)
+	- $'$ complementazione (*NOT*)
+- un insieme $P$ di postulati (assiomi).
+**Proprietà di chiusura**: per ogni $a,b \in B$:
+$$
+\begin{gather}
+a + b \in B \\
+a \cdot b \in B
+\end{gather}
+$$
+**Costanti** dell'algebra: i simboli $0$ e $1$.
+**Variabile**: un qualsiasi simbolo che può essere sostituito da una delle due costanti.
+Un **espressione** secondo l’algebra di Boole è una stringa di elementi di B che soddisfa una delle seguenti regole:
+- una costante è un’espressione;
+- una variabile è un'espressione;
+- se $X$ è un’espressione allora il complemento di $X$ è un’espressione;
+- se $X,Y$ sono espressioni allora la somma logica di $X$ e $Y$ è un’espressione;
+- se $X,Y$ sono espressioni allora il prodotto logico di $X$ e $Y$ è un’espressione.
+Ogni *espressione* di $n$ variabili descrive una funzione completamente specificata che può essere valutata attribuendo ad ogni variabile un valore assegnato.
+## Analisi di uno schema logico
+Dallo schema logico tramite le espressioni è possibile ricavare il comportamento di una rete logica.
+**Esercizio**: Eseguire l’analisi del seguente schema
+![[Pasted image 20241015173504.png]]
+![[Pasted image 20241015173758.png]]
+## Teoremi dell'algebra di Boole
+**Principio di dualità**:
+- ogni espressione algebrica presenta una forma **duale** ottenuta scambiando l’operatore *OR* con *AND*, la costante $0$ con la costante $1$ e mantenendo i letterali invariati.
+- ogni proprietà vera per un’espressione è vera anche per la sua **duale**.
+- il principio di dualità è indispensabile per trattare segnali attivi alti e segnali attivi bassi.
+	- Logica negativa
+	- Logica positiva
+**Teorema di Identità**:
+$$
+(\text{T1}) \ X + 0 = X \quad \quad (\text{T1'}) \ X \cdot 1 = X
+$$
+**Teorema di Elementi nulli**:
+Utili nella sintesi di reti logiche: gli elementi nulli permettono di “lasciar passare” un segnale di ingresso in determinate condizioni.
+$$
+(\text{T2}) \ X + 1 = 1 \quad \quad (\text{T2'}) \ X \cdot 0 = 0
+$$
+**Idempotenza**:
+$$
+(\text{T3}) \ X + X = X \quad \quad (\text{T3'}) \ X \cdot X = X
+$$
+**Involuzione**:
+$$
+(\text{T4}) \ (X')' = X
+$$
+**Complementarietà**:
+$$
+(\text{T5}) \ X + X' = 1 \quad \quad (\text{T5'}) \ X \cdot X' = 0
+$$
+**Proprietà commutativa**:
+$$
+(\text{T6}) \ X + Y = Y + X \quad \quad (\text{T6'}) \ X \cdot Y = Y \cdot X
+$$
+**Proprietò associativa**:
+$$
+\begin{gather}
+(\text{T7}) \ (X + Y) + Z = X + (Y + Z) = X + Y + Z \\
+\\ 
+(\text{T7'}) \ (X \cdot Y) \cdot Z = X \cdot (Y \cdot Z) = X \cdot Y \cdot Z
+\end{gather}
+$$
+**Proprietà di assorbimento**:
+$$
+(\text{T8}) \ X + X \cdot Y = X \quad \quad (\text{T8'}) \ X \cdot (X + Y) = X
+$$
+**Proprietà distributiva**:
+$$
+(\text{T9}) \ X \cdot Y + X \cdot Z = X \cdot (Y + Z \quad \quad (\text{T9'}) \ (X + Y) \cdot (X + Z) = X + Y \cdot Z
+$$
+**Proprietà della combinazione**:
+$$
+(\text{T10}) \ (X + Y) \cdot (X' + Y) = Y \quad \quad (\text{T10'}) \ X \cdot Y + X' \cdot Y = Y
+$$
+**Proprietà del consenso**:
+$$
+\begin{gather}
+(\text{T11}) \ (X + Y) \cdot (X' + Z) \cdot (Y + Z) = (X + Y) \cdot (X' + Z) \\
+\\
+(\text{T11'}) \ X \cdot Y + X' \cdot Z + Y \cdot Z = X \cdot Y + X' \cdot Z
+\end{gather}
+$$
+**Teorema di De Morgan**:
+$$
+(\text{T12}) \ (X + Y)' = (X' + Y') \quad \quad (\text{T12'}) \ (X \cdot Y)' = (X' + Y')
+$$
+generalizzabile per $n$ variabili.
+### Parità
+- I *codici rilevatori d’errori* sono codici in cui è possibile rilevare se sono stati commessi errori nella trasmissione.
+- *Codici ridondanti*: in cui l’insieme dei simboli dell’alfabeto è minore dell’insieme di configurazioni rappresentabili col codice.
+- *Codici con bit di parità*: alla codifica binaria si aggiunge un bit di parità.
+
+- **Parità pari**: rende pari il numero di 1 presenti nella parola.
+- **Parità dispari**: rende dispari il numero di 1 presenti nella parola.
+**Esempio**:
+Vogliamo trasmettere il dato a *8 bit*: $n = 46 \rightarrow 00101110$, la sua parità *pari* $\rightarrow 0$.
+![[Pasted image 20241019161801.png|350]]
+- Supponiamo un errore di trasmissione durante la scrittura in memoria così che il numero memorizzato sia $001011000$.
+- Quando il dato viene riletto ed utilizzato viene fatto il check di parità e si verifica che quel numero non è ammissibile per la codifica binaria con parità pari *perché la somma dei bit a 1 è dispari*.
+# Sintesi di reti logiche combinatorie
+La più semplice rappresentazione delle funzioni Booleane è attraverso la *forma canonica*, che può essere ottenuta da qualsiasi rete logica combinatoria.
+## Forma canonica SP
+Somma di prodotti:
+*Teorema*: una funzione di $n$ variabili può essere rappresentata in un solo modo come somme di prodotti di $n$ variabili (*mintermini*).
+- **Minitermine**: prodotto logico di $n$ letterali.
+- Da ogni tabella si deriva la forma SP, prendendo in *OR* tutti i mintermini corrispondenti alle righe in cui l’uscita vale $1$, in cui ogni variabile è in forma diretta se nella colonna appare il valore $1$ ed in forma complementata se $0$.
+Indipendentemente dalla complessità della rete logica da realizzare, la rete logica
+ottenuta dalla forma canonica è una rete molto veloce, in quanto composta da soli due
+livelli e mezzo (livello dei not).
+![[Pasted image 20241019163756.png|300]]
+## Forma canonica PS
+Prodotto di somme:
+*Teorema*: una funzione di $n$ variabili può essere rappresentata in un solo modo come prodotto di somme di $n$ variabili (*maxtermini*).
+- **Maxtermine**: somma logica di $n$ letterali.
+- Da ogni tabella si deriva la forma PS, prendendo in *AND* tutti i maxtermini corrispondenti alle righe in cui l’uscita vale $0$, in cui ogni variabile e’ in forma diretta se nella colonna appare il valore $0$ ed in forma complementata se $1$.
+![[Pasted image 20241019163831.png|300]]
+Dalla tabella precedente:
+- $R = (r+a+b)(r+a+b')(r+a'+b)(r'+a+b)$
+## Funzioni non completamente specificate
+(o **funzioni booleane incompletamente specificate**)
+Se le uscite hanno condizioni di *indifferenza*.
+
+| x1  | x2  | Output |
+| --- | --- | ------ |
+| 0   | 0   | 1      |
+| 0   | 1   | -      |
+| 1   | 0   | 0      |
+| 1   | 1   | -      |
+## Sintesi e minimizzazione
+**Sintesi** di reti logiche  combinatori:
+1. descrizione mediante tabella della verità
+2. sintesi della espressione canonica SP o PS
+3. corrispondenza 1 a 1 con schema logico
+
+Normalmente una rete logica si dice in forma minima per indicare il minor numero di livelli e, a parità di livelli, il minor numero di gate e di ingressi dei gate.
+**Tecniche di minimizzazione**:
+- minimizzazione con manipolazione algebrica
+- minimizzazione manuale (k-mappe)
+- minimizzazione con algoritmi CAD o software appositi (Logisim)
+Perché minimizzare?
+Perché le forme canoniche richiedono troppi gate, troppo consumo di area.
+## Mappe
+Rappresentazione più compatta della tabella di verità, tramite matrici.
+Le *righe* indicano tutte le possibili configurazioni di un sottoinsieme delle variabili di ingresso e le *colonne* tutte le configurazioni delle variabili.
+Il valore nelle celle indica il valore dell’uscita nella configurazione corrispondente.
+### Mappe di Karnaugh
+![[Screenshot 2024-10-19 alle 16.53.14.png|250]]
+Le mappe vanno viste come «arrotolate» su se stesse. La prima riga risulta «adiacente» all’ultima riga. Stessa cosa per le colonne.
+![[Pasted image 20241019165748.png|500]]
+## Minimizzazione con mappe di Karnaugh
+Ogni casella della mappa è adiacente a caselle corrispondenti a *mintermini* (*maxtermini*) aventi distanza di Hamming unitaria dal *mintermine* (*maxtermine*) corrispondente alla casella considerata.
+$$
+F = AB' + AB = A(B+B') = A \quad \text{proprietà distributiva}
+$$
+
+| A   | B   | Output |
+| --- | --- | ------ |
+| 0   | 0   | 0      |
+| 0   | 1   | 0      |
+| 1   | 0   | 1      |
+| 1   | 1   | 1      |
+
+![[Pasted image 20241019170156.png|150]]
+### Raggruppamenti rettangolari
+Si dice **raggruppamento rettangolare** di ordine $p$ una parte di una mappa a $n$ variabili costituita da $2^{p}$ elementi (con $p \leq n$) tali da avere $n-p$ coordinate uguali fra loro, e di far assumere alle restanti $p$ coordinate tutte le possibili configurazioni.
+Ogni raggruppamento ha all’interno p celle adiacenti.
+$$
+\begin{gather}
+\text{RR ordine }0 \rightarrow 1 \text{ cella} \\
+\text{RR ordine }1 \rightarrow 2 \text{ cella} \\
+\text{RR ordine }2 \rightarrow 4 \text{ cella}
+\end{gather}
+$$
+![[Pasted image 20241019170624.png|300]]
+Un Raggruppamento Rettangolare (*RR*) nel quale la funzione assume sempre valore $1$ si dice **implicante** della funzione.
+In modo duale, un *RR* nel quale la funzione assume sempre valore $0$ si dice **implicato** della funzione.
+- Si dice **copertura degli 1** un insieme di implicanti che contengono tutti gli $1$ della funzione ed indifferenze.
+- Un implicante non contenuto in nessun implicante di dimensioni maggiori prende il nome di **implicante primo**.
+- **Implicanti essenziale**: un implicante primo contenente almeno un mintermine non contenuto in nessun altro implicante primo
+- Ogni implicante essenziale deve essere contenuto nella *somma minima*. Vale il duale per gli implicati.
+
+Una **copertura di 1** <font style="color:Chartreuse">indica una forma SP</font>.
+Una **copertura di 0** <font style="color:Chartreuse">indica una forma PS</font>.
+## Complessità - Velocità
+Per valutare la complessità di una rete logica in termini di complessità e velocità si utilizzano 3 indicatori:
+- $N_{gate} =$ numero di gate,
+- $N_{conn} =$ numero di connessioni,
+- $N_{casc} =$ numero massimo di gate disposti in cascata
+**Complessità**: funzione *crescente* di $N_{gate}, N_{conn}$
+**Velocità di elaborazione**: funzione *decrescente* di $N_{casc}$
+## Forme normali e minime
+Una espressione si dice:
+- **normale SP** se è data dalla somma di prodotti non necessariamente di $n$ variabili.
+- **normale PS** se è data dal prodotto di somme non necessariamente di $n$ variabili.
+Una espressione normale è equivalente alla forma canonica ma minimizzata.
+### Sintesi minima
+(di costo minimo)
+- minor numero di livelli
+- minimo numero di gate
+- minimo numero di connessioni
+l’espressione **minima normale** e non ridondante si ottiene con una *copertura* usando il **numero minimo di RR di ordine massimo**.
+- <font style="color:red">Ordine massimo</font>: minor numero di ingressi
+- <font style="color:red">Minimo numero di RR</font>: minimo numero di gate
+- Forma normale <font style="color:red">irridondante</font>: solo implicazioni essenziali
+**Forma minima PS ed SP** sono diverse.
+## Sintesi di reti combinatorie complesse
+Esistono tecniche ed algoritmi per la sintesi automatica a più livelli:
+- *Manipolazione algebrica*, ad esempio usando sistematicamente la proprietà distributiva.
+- *Algoritmi di sintesi logica*.
+- *CAD tools*.
+- *Metodi empirici*.
+# Componenti Notevoli Combinatori
+
+
+
+
+
+
 
 
 
