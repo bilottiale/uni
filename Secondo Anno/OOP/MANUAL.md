@@ -28,7 +28,7 @@ public class ContoBancario {
 
 ```
 
-Il saldo è protetto e può essere modificato solo tramite i metodi deposita() e `getSaldo()`. Questo previene accessi non controllati e garantisce che il saldo sia sempre valido.
+Il saldo è protetto e può essere modificato solo tramite i metodi `deposita()` e `getSaldo()`. Questo previene accessi non controllati e garantisce che il saldo sia sempre valido.
 
 ## Ereditarietà
 
