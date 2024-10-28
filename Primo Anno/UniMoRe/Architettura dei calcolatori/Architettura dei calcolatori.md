@@ -31,8 +31,13 @@ T=\frac{1}{f}
 $$
 Dove:
 - $T$ è il **periodo di clock** (misurato in secondi)
-- $f$ è la **frequenza del clock** (misurata in hertz, Hz)
-![[Pasted image 20241014172619.png]]
+- $f$ è il suo inverso, la **frequenza del clock** (misurata in hertz, Hz)
+![[Pasted image 20241014172619.png|500]]
+Il **duty cycle** è la percentuale del tempo in cui il clock rimane alto.
+$$
+duty_{cycle} = \frac{T_{clkh}}{T_{clk}}
+$$
+![[Pasted image 20241028173505.png|500]]
 **Esempio**:
 Se la frequenza del clock della CPU è **2 GHz** (2 miliardi di cicli al secondo), il periodo di clock sarà:
 $$
@@ -49,7 +54,6 @@ $$
 **ISA**: Instruction Set Architecture.
 Il **conteggio delle istruzioni** per un programma sono determinati dal programma, ISA e compilatore.
 Il numero medio di **cicli per istruzione** (CPI), sono determinati dall'hardware della CPU. Se istruzioni differenti hanno CPI differenti, il CPI medio è influenzato dal mix di istruzioni.
-
 **Esempio**:
 - Computer A: $\text{Cycle Time} = 250ps, CPI = 2.0$
 - Computer B: $\text{Cycle Time}=500ps, CPI=1.2$
@@ -77,7 +81,7 @@ Media pesata dei CPI:
 $$
 \text{CPI} = \frac{\text{Clock Cycles}}{\text{Instruction Count}} = \sum^{n}_{i=1}\left( \text{CPI}_{i} \times \underbrace{\frac{\text{Instruction Count}_{i}}{\text{Instruction Count}}}_{\text{Relative frequency}} \right)
 $$
-![[Pasted image 20241014175013.png#invert]]
+![[Pasted image 20241014175013.png#invert|500]]
 **IPC**: Istruzioni per ciclo:
 $$
 \text{IPC} = \frac{\text{Instruction Count}}{\text{Clock Cycle}} = \frac{1}{\text{CPI}}
@@ -86,6 +90,8 @@ $$
 $$
 \text{CPU Time} = \frac{\text{Instructions}}{\text{Program}} \times \frac{\text{Clock Cycles}}{\text{Instruction}} \times \frac{\text{Seconds}}{\text{Clock Cycle}}
 $$
+- $T_{sup}$ (*tempo di setup*) è il periodo in cui gli ingressi devono rimanere stabili prma del fronte del clock per poter essere campionati correttamente.
+- $T_{h}$ (*tempo di hold*) è il periodo in cui gli ingressi devono rimanere stabili dopo l’evento del clock
 ## Power Trends
 Nella tecnologia **CMOS IC**:
 $$
@@ -132,10 +138,10 @@ $$
 \end{align}
 $$
 ## Conversione di interi: Base 10 -> Base 2
-![[Pasted image 20241015091736.png#invert]]
+![[Pasted image 20241015091736.png#invert|500]]
 ## La rappresentazione dei numeri all'interno di un computer
 Gli interi positivi si rappresentano usando 4 o 8 byte.
-![[Pasted image 20241015093230.png#invert]]
+![[Pasted image 20241015093230.png#invert|500]]
 - Se uso 4 byte (32 bit) posso rappresentare tutti i numeri da $0$ a $2^{32}-1$.
 ### Numeri relativi
 - **Modulo e segno**
@@ -212,7 +218,7 @@ Si specificano 3 parametri:
 Per la **precisione singola** (32 bit):
 - $P = 23, E_{max} = 127 \text{ e }E_{min} = -126$
 - $1$ bit di *segno*; $8$ bit *esponente*
-![[Pasted image 20241015102331.png#invert]]
+![[Pasted image 20241015102331.png#invert|500]]
 - La mantissa viene normalizzata scegliendo l’esponente in modo che sia sempre nella forma $1,xxx\dots$
 - L’esponente è *polarizzato*, ovvero ci si somma $E_{max}$
 	- costante di polarizzazione o **bias**
@@ -242,17 +248,17 @@ Per la **precisione doppia** (64 bit)
 ## Reti logiche
 Sistema digitale avente $n$ segnali binari di ingresso ed $m$ segnali binari di uscita.
 I segnali sono rigorosamente binari $(0/1)$.
-![[Pasted image 20241015104915.png#invert]]
+![[Pasted image 20241015104915.png#invert|500]]
 I segnali sono grandezze funzioni del tempo
 $$
 X = \{ x_{n-1}(t), \dots, x_{0}(t) \}
 $$
 ### Proprietà delle reti logiche
 - **Interconnessione**: l’interconnessione di più reti logiche, aventi per ingresso segnali esterni o uscite di altre reti logiche e per uscite segnali di uscita esterne o ingressi di altre reti logiche, è ancora una rete logica.
-![[Pasted image 20241015105327.png#invert]]
+![[Pasted image 20241015105327.png#invert|500]]
 - **Decomposizione**: una rete logica complessa può essere decomposta in reti logiche più semplic.
 - **Decomposizione in parallelo**: una rete logica a $m$ uscite può essere decomposta in $m$ reti logiche ad $1$ uscita, aventi ingressi condivisi.
-![[Pasted image 20241015105436.png#invert]]
+![[Pasted image 20241015105436.png#invert|500]]
 ## Reti combinatorie
 - ogni segnale di uscita dipende solo dai valori degli ingressi in quell’istante.
 - senza memoria, *non ha stato*, non ricorda gli ingressi precedenti, *transitori* a parte, basta conoscere gli ingressi in un istante per sapere esattamente quali saranno tutte le uscite nel medesimo istante.
@@ -295,44 +301,66 @@ $$
 - **HALF ADDER**, un sommatore senza riporto in ingresso.
 ![[Half_Adder.svg#invert|250]]
 ## Reti sequenziali
-- ogni segnale di uscita dipende dai valori degli ingressi in quell’istante $E$ dai valori che gli ingressi hanno assunto negli istanti precedenti.
-- rete con memoria, *ha stato*, è una rete in cui l’uscita cambia in funzione del cambiamento dell’ingresso e della specifica configurazione interna in quell’istante (*STATO*). Lo stato riassume la sequenza degli ingressi precedenti.
-- Per sapere l’uscita in un certo istante ho due possibilità:
-	- Mi ricordo *TUTTI* gli ingressi che si sono presentati alla rete dalla sua accensione.
-	- Memorizzo uno *STATO* del sistema, che riassume in qualche modo tutti gli ingressi precedenti al fine di valutare il valore delle uscite.
+**Definizione**: Circuiti digitali in cui l'uscita dipende non solo dagli ingressi attuali EE, ma anche dai valori assunti negli istanti precedenti. Hanno **memoria** e uno **stato** che riassume la sequenza degli ingressi precedenti.    
+- **Caratteristiche**:
+    - L'uscita cambia in funzione del cambiamento degli ingressi e dello stato interno.
+    - Due modalità per determinare l'uscita:
+        1. Memorizzare **tutti** gli ingressi dall'accensione.
+        2. Memorizzare uno **stato** che riassuma gli ingressi precedenti
 **Esempio**:
 Progettare la rete logica di gestione di un ascensore:
 - La rete ha tre uscite *UP*, *DW* e *O*. *UP*, *DW* indicano le direzioni su e giù mentre *O* vale $1$ se la porta deve essere aperta e $0$ altrimenti. La rete ha come ingresso due segnali che indicano il piano $\{ 0,1,2,3 \}$ corrispondente al tasto premuto. Per calcolare l’uscita è necessario conoscere il piano corrente che indica lo stato interno.
 ![[Pasted image 20241015110907.png#invert|400]]
+### Alcune reti sequenziali
+- **Macchine a Stati Finiti (FSM)**:
+    - Le reti sequenziali comprendono le **macchine a stati finiti (FSM)**, che giocano un ruolo cruciale nella progettazione di sistemi digitali.
+    - Le FSM utilizzano elementi di retroazione, principalmente **flip-flop**, per memorizzare lo stato del sistema.
+- **Registro di Stato**:
+    - L'insieme dei flip-flop utilizzati in una FSM è chiamato **registro di stato**. Questo registro:
+        - Memorizza lo **stato futuro** del sistema.
+        - Presenta a valle lo **stato presente**, che è influenzato dagli ingressi e dallo stato corrente.
+- **Caratteristiche delle FSM**:
+    - Operano con un **unico segnale di clock**, il che significa che tutte le transizioni di stato avvengono in modo sincrono, facilitando la progettazione e la previsione del comportamento del sistema.
+    - Le FSM possono essere **sincrone** o **asincrone**, ma le implementazioni più comuni utilizzano la sincronizzazione tramite clock.
 ## Algebra di Boole
-L’algebra di Boole è un sistema matematico che descrive funzioni di variabili binarie: è composto da:
-- un insieme di simboli $B=\{0, 1\}$
-- un insieme di operazioni $O=\{+,\cdot,'\}$
-	- $+$ somma logica (*OR*)
-	- $\cdot$ prodotto logico (*AND*)
-	- $'$ complementazione (*NOT*)
-- un insieme $P$ di postulati (assiomi).
-**Proprietà di chiusura**: per ogni $a,b \in B$:
+L'algebra di Boole è un sistema matematico fondamentale per descrivere funzioni di variabili binarie e costituisce la base della logica digitale. È definita da:
+- **Insieme di Simboli**: 
+  - $( B = \{ 0, 1 \} )$
+- **Insieme di Operazioni**: 
+  - $( O = \{ +, \cdot, ' \} )$
+    - $( + )$: somma logica (*OR*)
+    - $( \cdot )$: prodotto logico (*AND*)
+    - $( ' )$: complementazione (*NOT*)
+- **Postulati (Assiomi)**: 
+  - Rappresentano le regole fondamentali dell'algebra.
+### Proprietà di Chiusura
+L'algebra di Boole è caratterizzata dalla proprietà di chiusura, che stabilisce che per ogni $( a, b \in B )$:
+
 $$
 \begin{gather}
 a + b \in B \\
 a \cdot b \in B
 \end{gather}
 $$
-**Costanti** dell'algebra: i simboli $0$ e $1$.
-**Variabile**: un qualsiasi simbolo che può essere sostituito da una delle due costanti.
-Un **espressione** secondo l’algebra di Boole è una stringa di elementi di B che soddisfa una delle seguenti regole:
-- una costante è un’espressione;
-- una variabile è un'espressione;
-- se $X$ è un’espressione allora il complemento di $X$ è un’espressione;
-- se $X,Y$ sono espressioni allora la somma logica di $X$ e $Y$ è un’espressione;
-- se $X,Y$ sono espressioni allora il prodotto logico di $X$ e $Y$ è un’espressione.
-Ogni *espressione* di $n$ variabili descrive una funzione completamente specificata che può essere valutata attribuendo ad ogni variabile un valore assegnato.
+### Costanti e Variabili
+- **Costanti**: 
+  - I simboli $( 0 )$ e $( 1 )$.
+- **Variabile**: 
+  - Un simbolo che può assumere il valore di una delle costanti $( 0 )$ o $( 1 )$.
+### Espressioni nell'Algebra di Boole
+Un'espressione è una stringa di elementi di $( B )$ che segue queste regole:
+1. Una costante è un’espressione.
+2. Una variabile è un'espressione.
+3. Se $( X )$ è un’espressione, allora il complemento di $( X )$ è un’espressione.
+4. Se $( X, Y )$ sono espressioni, allora la somma logica di $( X )$ e $( Y )$ è un’espressione.
+5. Se $( X, Y )$ sono espressioni, allora il prodotto logico di $( X )$ e $( Y )$ è un’espressione.
+### Funzione Completamente Specificata
+Ogni espressione di $n$ variabili descrive una funzione completamente specificata, che può essere valutata attribuendo un valore a ciascuna variabile (0 o 1). 
 ## Analisi di uno schema logico
 Dallo schema logico tramite le espressioni è possibile ricavare il comportamento di una rete logica.
 **Esercizio**: Eseguire l’analisi del seguente schema
-![[Pasted image 20241015173504.png]]
-![[Pasted image 20241015173758.png]]
+![[Pasted image 20241015173504.png|500]]
+![[Pasted image 20241015173758.png|500]]
 ## Teoremi dell'algebra di Boole
 **Principio di dualità**:
 - ogni espressione algebrica presenta una forma **duale** ottenuta scambiando l’operatore *OR* con *AND*, la costante $0$ con la costante $1$ e mantenendo i letterali invariati.
@@ -523,8 +551,260 @@ Esistono tecniche ed algoritmi per la sintesi automatica a più livelli:
 - *CAD tools*.
 - *Metodi empirici*.
 # Componenti Notevoli Combinatori
+## Demultiplexer/Decoder
+Il **demultiplexer**(*decoder*) smista un singolo input in una delle $n$ possibili uscite.
+È una rete logica con $1$ ingresso, $n$ segnali di controllo e $2^{n}$ uscite: l’uscita contrassegnata dall’indice pari alla configurazione dei segnali di controllo riceve l’ingresso, mentre le altre non sono abilitate (normalmente poste a livello logico 0).
+Si dice anche *decoder* in quanto viene usato per decodificare un segnale binario (se si mantiene l’ingresso EN a 1).
+![[Pasted image 20241028122351.png|500]]
+Può essere usato come generatore di *mintermini*.
+**Esempio**:
+Realizzare la rete logica
+$S_{1} = A'BC'+A'B'C+A'B'C'$
+$S_{2} = AB'C' + ABC$
+![[Pasted image 20241028122631.png|500]]
+![[Pasted image 20241028151739.png|250]]
+## Multiplexer
+l **multiplexer** è un dispositivo logico che consente di deviare su un'unica uscita un segnale proveniente da uno tra $n$ ingressi. Funziona come un selettore, permettendo di scegliere quale segnale di ingresso deve essere inviato all'uscita in base ai segnali di controllo.
+![[Pasted image 20241028140711.png|250]]
+![[Pasted image 20241028151714.png|250]]
+uando i segnali di controllo vengono configurati, il multiplexer identifica quale ingresso deve essere attivato e invia il segnale corrispondente all'uscita. Questo consente di ridurre il numero di linee necessarie per trasmettere i dati, facilitando il routing delle informazioni nei circuiti digitali.
+**Esempio**:
+In un multiplexer 4:1 (che ha 4 ingressi dati e 2 segnali di controllo), la configurazione dei segnali di controllo determina quale ingresso sarà passato all'uscita. La tabella di verità per un multiplexer 4:1 è la seguente:
 
+| S1  | S0  | Uscita (Y) |
+| --- | --- | ---------- |
+| 0   | 0   | l0         |
+| 0   | 1   | l1         |
+| 1   | 0   | l2         |
+| 1   | 1   | l3         |
+## Amplificatore Tri-State
+Supponiamo che:
+- $IN$ sia l'ingresso del buffer.
+- $OE$ sia il segnale di abilitazione.
+- $OUT$ sia l'uscita.
+![[Pasted image 20241028142112.png|250]]
 
+| $IN$ (ingresso) | $OE$ (abilitazione) | $OUT$ (uscita)       |
+| --------------- | ------------------- | -------------------- |
+| $X$             | $0$                 | $Z$ (alta impedenza) |
+| $0$             | $1$                 | $0$                  |
+| $1$             | $1$                 | $1$                  |
+L’*impedenza* è una grandezza fisica che rappresenta l’opposizione che un circuito elettrico offre al passaggio della corrente alternata, ed è una generalizzazione della resistenza elettrica per circuiti in corrente continua (DC) e alternata (AC).
+L'impedenza, indicata con $Z$, è misurata in **ohm** ($\Omega$), è composta da due elementi:
+- *Resistenza*(R): la parte dell’impedenza che oppone una resistenza costante alla corrente, 1. indipendentemente dalla frequenza;
+- *Reattezza*(X): la parte dell’impedenza che varia con la frequenza e dipende da componenti come induttori e condensatori.
+## Half adder (HA)
+Somma due bit in input, restituendo somma ed eventuale riporto.
+
+| A   | B   | Somma | Carry |
+| --- | --- | ----- | ----- |
+| 0   | 0   | 0     | 0     |
+| 0   | 1   | 1     | 0     |
+| 1   | 0   | 1     | 0     |
+| 1   | 1   | 0     | 1     |
+![[Pasted image 20241028143719.png|500]]
+## Full Adder (FA)
+![[Pasted image 20241028144356.png|500]]
+Realizzato con due *Half Adder*.
+Un sommatore a $n$ bit si può ottenere replicando in serie $n$ volte un sommatore completo.
+# ALU
+*Arithmetic Logic Unit*: - L'ALU è un circuito combinatorio che esegue operazioni aritmetiche e logiche su due operandi. Le operazioni possono essere selezionate tramite segnali di controllo.
+- **Funzioni Principali**:
+    - **Operazioni Aritmetiche**: Somma, sottrazione, moltiplicazione, divisione.
+    - **Operazioni Logiche**: AND, OR, NOT, XOR.
+    - **Output di FLAG**: Indicano informazioni sul risultato, come zero, overflow, e carry out.
+- **Implementazione**:
+    - Utilizzo di circuiti logici paralleli per ciascuna operazione.
+    - Un **multiplexer** seleziona il risultato dell'operazione desiderata in base ai segnali di controllo.
+![[Pasted image 20241028151809.png|250]]
+## ALU a 1-bit
+L’uscita dell’unità viene comandata da un multiplexer che seleziona l’operazione da compiere, a seconda dei segnali di controllo che gli vengono forniti.
+- *AND* logico
+- *OR* logico
+- *Somma* (con/senza carry in ingresso)
+- *Sottrazione* (con/senza carry in ingresso)
+Sottrazione $A-B = A + \text{complemento }2 \text{ di }B = A +B' + 1$
+- Nego $B$ e aggiungo $1$ dal carry-in (solo quello iniziale del primo bit)
+## ALU a 4-bit
+![[Pasted image 20241028151634.png|500]]
+# Sintesi di reti logiche sequenziali
+## Reti sequenziali
+Reti logiche in cui in ogni istante le uscite (e il comportamento interno) dipendono dalla configurazione degli ingressi in quell’istante e dalle configurazioni degli ingressi negli istanti precedenti, quindi posseggono **memoria** nel proprio **stato** interno.
+#### Aggiornamento dello Stato:
+L'aggiornamento dello stato presente a quello futuro avviene in base alla logica del circuito e al tipo di rete sequenziale.
+#### Tipi di Reti Sequenziali
+1. **Reti Sequenziali Asincrone**:
+    - **Definizione**: Le variazioni delle configurazioni di ingresso vengono sentite e possono modificare lo stato e le uscite in qualsiasi istante.
+    - **Caratteristiche**:
+        - Non richiedono un clock per aggiornare lo stato.
+        - Possono rispondere immediatamente ai cambiamenti degli ingressi, rendendole più reattive ma potenzialmente instabili.
+    - **Esempi**: Circuiti di controllo di flusso, sistemi di automazione.
+2. **Reti Sequenziali Sincrone**:
+    
+    - **Definizione**: Le variazioni delle configurazioni di ingresso modificano lo stato e le uscite solo in presenza di un opportuno evento di sincronizzazione.
+    - **Caratteristiche**:
+        - Utilizzano un segnale di clock per gestire l'aggiornamento dello stato.
+        - L'uscita e il nuovo stato vengono calcolati e stabilizzati solo al fronte di un clock.
+    - **Esempi**: Flip-flop, registri, contatori.
+## Clock
+Il **clock** è un segnale periodico utilizzato nei circuiti digitali e nei sistemi a microprocessore per sincronizzare e coordinare tutte le operazioni. Può essere visto come un "metronomo" che scandisce il ritmo, garantendo che tutti i componenti del sistema operino in armonia e nei tempi corretti.
+**Albero di clock**: L'albero di clock è una struttura utilizzata nei circuiti digitali per *distribuire il segnale di clock* in modo uniforme a tutte le parti del sistema, minimizzando il *ritardo di propagazione* (*clock skew*). Garantisce che tutti i componenti operino in armonia.
+## Memoria binaria bistabile
+Sono elementi fondamentali delle reti sequenziali, capaci di mantenere il valore 1 o 0, quindi un singolo bit di memoria.
+### Latch SR (Set-Reset)
+è un circuito semplice che usa due porte logiche NAND o NOR per memorizzare un bit. Ha due ingressi:
+- **Set (S)**: imposta l'uscita a 1.
+- **Reset (R)**: imposta l'uscita a 0.
+- **Quit (Q)** e **Complementary Quit (Q')**: rappresentano rispettivamente il valore del bit memorizzato e il suo complemento.
+#### Sintesi a porte NOR
+
+| S (Set) | R (Reset) | Q (Uscita) | Q' (Complemento) |
+| ------- | --------- | ---------- | ---------------- |
+| 0       | 0         | Mantiene   | Mantiene         |
+| 0       | 1         | 0          | 1                |
+| 1       | 0         | 1          | 0                |
+| 1       | 1         | Indefinito | Indefinito       |
+- $S = 0, R = 0$: Il latch mantiene il valore precedente.
+- $S = 0, R = 1$: L’uscita $Q$ viene resettata a 0.
+- $S = 1, R = 0$: L’uscita $Q$ viene impostata a 1.
+- $S = 1, R = 1$: Condizione proibita o indefinita, poiché porta a un conflitto logico in cui sia $Q$ che $Q'$ potrebbero essere 0, violando il principio che $Q$ e $Q'$ devono sempre essere opposti.
+#### Sintesi a porte NAND
+
+| S (Set) | R (Reset) | Q (Uscita) | Q' (Complemento) |
+| ------- | --------- | ---------- | ---------------- |
+| 1       | 1         | Mantiene   | Mantiene         |
+| 1       | 0         | 1          | 0                |
+| 0       | 1         | 0          | 1                |
+| 0       | 0         | Indefinito | Indefinito       |
+- $S = 1, R = 1$: Il latch mantiene il valore precedente.
+- $S = 1, R = 0$: L’uscita $Q$ viene resettata a 0.
+- $S = 0, R = 1$: L’uscita $Q$ viene impostata a 1.
+- $S = 0, R = 0$: Condizione proibita o indefinita.
+### Latch S-R sensibile a livello (del clock)
+Risponde agli ingressi **Set (S)** e **Reset (R)** solo quando il segnale di controllo o **clock (CLK)** si trova in uno stato specifico, ossia **livello alto** (1) o **livello basso** (0). Questo latch è detto "sensibile a livello" perché monitora e reagisce agli ingressi **S** e **R** finché il clock rimane al livello attivo.
+
+| CLK (Livello) | S (Set) | R (Reset) | Q (Uscita) | Q' (Complemento) |
+| ------------- | ------- | --------- | ---------- | ---------------- |
+| 0             | X       | X         | Mantiene   | Mantiene         |
+| 1             | 0       | 0         | Mantiene   | Mantiene         |
+| 1             | 0       | 1         | 0          | 1                |
+| 1             | 1       | 0         | 1          | 0                |
+| 1             | 1       | 1         | Indefinito | Indefinito       |
+### D Latch
+Memorizza un bit di informazione in base al valore dell'ingresso **D** (Data) quando il segnale di controllo o **clock (CLK)** è nel livello attivo (solitamente alto). Il D Latch è molto utile per evitare stati ambigui, come avviene invece nel latch S-R, grazie alla sua struttura che ha solo un ingresso dati.
+
+| CLK (Clock) | D (Data) | Q (Uscita) | Q' (Complemento) |
+| ----------- | -------- | ---------- | ---------------- |
+| 0           | X        | Mantiene   | Mantiene         |
+| 1           | 0        | 0          | 1                |
+| 1           | 1        | 1          | 0                |
+- $CLK = 0$: il latch mantiene il valore precedente di $Q$.
+- $CLK = 1$: il latch "segue" il valore di $D$, cioè $Q = D$.
+### Flip-Flop D
+Derivato dal *D-Latch* è il flip flop più usato per memorizzare dei segnali il cui valore è significativo – e quindi deve essere campionato – solo in un dato istante.
+
+| CLK (Clock) | D (Data) | Q (Uscita) | Q' (Complemento) |
+| ----------- | -------- | ---------- | ---------------- |
+| $\uparrow$  | 0        | 0          | 1                |
+| $\uparrow$  | 1        | 1          | 0                |
+- $\uparrow$: indica un fronte di salita del clock.
+- $D$: valore che viene memorizzato su $Q$ al fronte di salita di $CLK$.
+## Flip-Flop e Latch
+### Latch
+Un **latch** è un dispositivo bistabile sincrono trasparente, in grado di memorizzare o meno segnali di ingresso in base a un segnale di abilitazione (clock o enable).
+**Funzionamento**:
+- La transizione di stato avviene mentre il clock è attivo (alto).
+- Il latch è trasparente agli ingressi quando l'enable è attivo, quindi ogni cambiamento negli ingressi si riflette nell'uscita durante questo periodo.
+### Flip-Flop
+Un **flip-flop** è un dispositivo bistabile che non possiede la proprietà di trasparenza.
+**Funzionamento**:
+- Il cambiamento dell'uscita non dipende direttamente dagli ingressi, ma è il risultato di un cambiamento (edge-triggered) di un ingresso di controllo sincrono (clock) o asincrono (preset o clear).
+- I flip-flop si definiscono bistabili sincroni a commutazione sul fronte, poiché la transizione di stato avviene solo in corrispondenza di un evento significativo del clock (fronte di salita o di discesa), in base agli ingressi in quel momento.
+## Flip flop master/slave
+È una configurazione che utilizza due flip-flop (master e slave) per garantire la sincronizzazione delle operazioni e prevenire problemi di instabilità nel circuito. Questa architettura è particolarmente utile nei sistemi digitali per gestire i dati in modo sicuro e affidabile.
+- **Master Flip-Flop**: Riceve i dati in ingresso e li memorizza quando il segnale di clock è attivo (alto). Durante questo tempo, il master è sensibile ai cambiamenti degli ingressi.
+- **Slave Flip-Flop**: Memorizza l'uscita del master. Il slave si aggiorna solo quando il segnale di clock è inattivo (basso), quindi è insensibile alle variazioni degli ingressi durante questo intervallo.
+### Flip-Flop JK
+È un'estensione del flip-flop SR e presenta un comportamento più versatile, eliminando la condizione indeterminata presente nel flip-flop SR quando entrambi gli ingressi sono attivi.
+
+| J   | K   | Q (Next State) | Descrizione            |
+| --- | --- | -------------- | ---------------------- |
+| 0   | 0   | Q              | Mantieni stato         |
+| 0   | 1   | 0              | Reset (Q = 0)          |
+| 1   | 0   | 1              | Set (Q = 1)            |
+| 1   | 1   | Q'             | Toggle (inverti stato) |
+#### Applicazioni
+- **Contatori**: I flip-flop JK possono essere utilizzati per costruire contatori binari.
+- **Circuiti di Memoria**: Utilizzati nei registri di memoria per memorizzare bit di dati.
+- **Circuiti di Stato**: Utilizzati nei sistemi sequenziali per gestire stati e transizioni.
+### Flip-Flop T (Toggle)
+È un tipo di flip-flop bistabile che cambia stato (toggle) ogni volta che riceve un impulso sul segnale di clock, se l'ingresso T è attivo. È particolarmente utile nei circuiti di conteggio e in altre applicazioni che richiedono una semplice alternanza tra due stati.
+
+| T   | Q (next state) | Descrizione            |
+| --- | -------------- | ---------------------- |
+| 0   | Q              | Mantieni stato         |
+| 1   | Q'             | Toggle (inverti stato) |
+#### Applicazioni
+- **Contatori**: Utilizzato per costruire contatori binari a 1 bit. Collegando più flip-flop T in cascata, è possibile realizzare contatori che incrementano di 1 ad ogni impulso di clock.
+## Quando usarli?
+- **S-R latch** sono poco usati come blocchi funzionali (e comunque all’interno dei JK e D).
+- **Flip Flop T** sono molto usati (realizzati con JK o D) all’interno dei contatori o per ricordarsi l’evoluzione di un contesto interno al sistema di elaborazione in due stati possibili.
+- **Flip Flop JK** e **D** sono entrambi i più usati: con JK si realizzano funzioni più complesse con meno logica esterna, ma richiedono più pin. In VLSI si usano più i D (componenti base della memoria).
+## Registri
+Elemento di memoria in cui $n$ flip-flop vengono controllati dallo stesso clock, formando una unità in grado di memorizzare parole composte da $n$ bit.
+#### Caratteristiche Principali
+- **Composizione**: Un registro è formato da nn flip-flop, dove ogni flip-flop memorizza un singolo bit. Pertanto, un registro a nn bit può memorizzare parole di nn bit.
+- **Controllo Sincronizzato**: Tutti i flip-flop all'interno di un registro vengono controllati da un segnale di clock comune, garantendo che le operazioni di scrittura e lettura siano sincronizzate.
+- **Segnali di Controllo**:
+    - **Input Enable (o Chip Select, CS)**: Questo segnale consente di attivare la fase di memorizzazione. Quando CS è attivo, il registro è in grado di ricevere dati e memorizzarli.
+    - **Output Enable**: Questo segnale rende visibile l'uscita della parola memorizzata. Se l'output enable è attivo, il contenuto del registro viene presentato all'uscita.
+#### Funzionamento dei Registri
+1. **Memorizzazione dei Dati**: Quando il segnale di Input Enable è attivo e viene fornito un dato in ingresso, i flip-flop del registro memorizzano il dato alla prossima transizione del clock.
+2. **Lettura dei Dati**: Quando il segnale di Output Enable è attivo, il contenuto del registro è visibile all'uscita. Questo permette ad altri circuiti di leggere i dati memorizzati.
+## Reti asincrone e sincrone
+Nella progettazione dei circuiti digitali, si predilige l'uso di **reti sincrone** rispetto alle **reti asincrone** per vari motivi legati alla stabilità, all'affidabilità e alla facilità di progettazione.
+### Reti Sincrone
+Nelle reti sincrone, tutte le operazioni sono coordinate da un segnale di clock comune. Questo segnale fornisce un riferimento temporale uniforme per le transizioni di stato.
+- **Vantaggi**:
+  - **Coordinamento**: La sincronizzazione riduce il rischio di conflitti e incertezze nei dati, rendendo le operazioni più prevedibili.
+  - **Progettazione Semplificata**: I designer possono pianificare il comportamento del circuito basandosi su un ciclo di clock ben definito.
+  - **Resistenza alle Alee**: Le reti sincrone sono meno sensibili alle alee, o corse critiche, che possono causare risultati errati.
+- **Componenti**: Nelle reti sincrone, componenti come i **flip-flop D** sono frequentemente utilizzati. Questi dispositivi memorizzano lo stato dell'ingresso al fronte del clock, garantendo che il cambiamento di stato avvenga in modo controllato.
+- **Segnali Asincroni**: Anche se sono sincrone, possono includere segnali asincroni come **clear** e **preset**, che possono forzare il flip-flop a uno stato specifico immediatamente, indipendentemente dal clock.
+### Reti Asincrone
+**Definizione**: Le reti asincrone non dipendono da un segnale di clock comune. Le transizioni di stato possono avvenire in qualsiasi momento, in base ai cambiamenti degli ingressi.
+- **Svantaggi**:
+  - **Sensibilità alle Alee**: Le reti asincrone possono essere soggette a problemi di corsa critica, dove segnali diversi possono arrivare a componenti critici in momenti diversi, portando a risultati inaffidabili.
+  - **Progettazione Complessa**: La mancanza di un riferimento temporale uniforme rende la progettazione e la verifica più difficili.
+  - **Difficoltà di Sincronizzazione**: Risulta complicato garantire che tutti i componenti reagiscano simultaneamente a un cambiamento degli ingressi.
+### Automa a stati finiti
+#### Automata di Mealy
+- **Definizione**: Uscite dipendono dallo stato corrente e dagli ingressi attuali.
+- **Caratteristiche**:
+  - Uscite cambiano immediatamente in risposta a variazioni negli ingressi.
+  - Rappresentazione delle uscite associata alle transizioni.
+- **Vantaggi**: 
+  - Maggiore reattività agli ingressi.
+- **Esempio**: Controllo di porte che si apre/chiude in base al pulsante premuto.
+#### Automata di Moore
+- **Definizione**: Uscite dipendono solo dallo stato corrente.
+- **Caratteristiche**:
+  - Uscite cambiano solo con un cambiamento di stato.
+  - Rappresentazione delle uscite associata agli stati.
+- **Vantaggi**:
+  - Maggiore stabilità nelle uscite.
+- **Esempio**: Semaforo che mostra il colore in base allo stato attuale (rosso, verde, giallo).
+## Sintesi di reti sequenziali
+1. **Descrizione Comportamentale**: Iniziare con una preparazione della descrizione comportamentale del sistema, utilizzando un linguaggio di descrizione dell'hardware o semplicemente a parole, che stabilisce le specifiche del progetto.
+2. **Diagramma degli Stati**: Creare un diagramma degli stati che definisce le transizioni tra stati. Questa fase è cruciale e corrisponde, nel contesto del software, alla creazione dell'algoritmo, poiché si identificano gli stati interni e le transizioni necessarie.
+3. **Minimizzazione degli Stati**: Utilizzare metodi manuali o automatici per minimizzare il numero di stati. Il diagramma degli stati può spesso essere ridotto a un numero minore di stati attraverso algoritmi specifici.
+4. **Tabella delle Transizioni e delle Uscite**: A partire dal diagramma minimizzato e dalla tabella di flusso, creare la tabella delle transizioni e delle uscite. In questa fase, si assegna un numero binario a ogni stato, definendo le variabili di stato presente e futuro.
+5. **Implementazione**: Infine, realizzare l'implementazione selezionando i componenti bistabili elementari e i gate logici per le reti combinatorie, completando così il progetto della rete sequenziale.
+## Automi
+**Esercizio**:
+Progettare una rete sequenziale in grado di riconoscere, in presenza di una sequenza di cifre binarie, quando si sono presentati successivamente due 0 e un 1 (es. 001).
+![[Pasted image 20241028185600.png|250]] ![[Pasted image 20241028190153.png|250]]
+# Instruction Set Architecture: Formati di Istruzione RISC-V
 
 
 

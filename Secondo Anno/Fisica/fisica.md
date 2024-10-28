@@ -1,4 +1,4 @@
-# Forze
+ù# Forze
 La **meccanica** si occupa di studiare le interazioni tra corpi.
 Una interazione tra due corpi può essere descritta in termini  di **due forze**, ogniuna esercitata su ciascuno dei due corpi.
 ### Forze a lungo raggio
@@ -519,6 +519,160 @@ $$
 \text{Potenza istantanea} \ P = Fv\cos \theta
 $$
 Unità di misura è il Watt. $1 Watt = 1J/s = 1W$.
+# Elettromagnetismo
+## Conduttori e isolanti
+Un **conduttore** è formato da un materiale che consente alle cariche elettriche di muoversi attraverso esso in modo facile.
+Un **isolante** è formato da un materiale che non consente alle cariche elettriche di muoversi facilmente attraverso esso.
+Ci sono due tipi di carica elettrica: *positiva* e *negativa*.
+L’unità elementare di carica è $$e = 1.602 \times 10^{-19}C$$
+La carica dell’elettrone è $-1e$.
+La carica del protone è $+1e$.
+La carica del neutrone è $0e$.
+Un oggetto può diventare **polarizzato** se le cariche al suo interno possono essere separate.
+![[Pasted image 20241028093013.png|500]]
+## Carica puntiforme e Legge di Coulomb
+Il modulo della forza tra due cariche puntiformi è:
+$$
+F = \frac{k|q_{1}||q_{2}|}{r^{2}}
+$$
+dove $q_{1}$ e $q_{2}$ sono le cariche e $r$ è la distanza tra le due cariche.
+$$
+k = 8.99 \times 10^{9} Nm^{2}/C^{2}   
+$$
+![[Pasted image 20241028095336.png|500]]
+**Esempio**:
+Qual’ è il rapporto tra la forza elettrica e quella gravitazionale tra un protone e un elettrone separati da $5.3 \times 10^{11}$m (il raggio di un atomo di idrogeno)?
+$$
+\begin{align}
+&F_{e} = \frac{k|q_{1}||q_{2}|}{r^{2}} && |q_{1}|=|q_{2}|=e \\
+&F_{g} = \frac{Gm_{1}m_{2}}{r^{2}} && m_{1} = m_{p} = 1.67 \times 1^{-27}kg \\
+& && m_{2} = m_{e} = 9,11 \times 10^{-31}kg 
+\end{align}
+$$
+Il rapporto tra le due forze è:
+$$
+\frac{F_{e}}{F_{g}} = \frac{k|q_{1}||q_{2}|}{Gm_{1}m_{2}} = \frac{ke^{2}}{Gm_{e}m_{p}} = 2.3 \times 10^{39} 
+$$
+## Il campo elettrico
+$F_{g} = m\mathbf{g}$ dove $\mathbf{g}$ è l'accelerazione di gravità.
+$F_{e} = q\mathbf{E}$ similmente per le forze elettriche possiamo definire il modulo del campo elettrico $\mathbf{E}$.
+Per una carica puntiforme $Q$, il modulo della forza per unità di carica alla distanza $r$ (il campo elettrico) è:
+$$
+E = \frac{F_{e}}{q} = \frac{k|Q|}{r^{2}}
+$$
+Il campo elettrico in un punto dello spazio si trova sommando tutti i campi elettrici presenti in quel punto:
+$$
+\mathbf{E}_{net} = \sum_{i} \mathbf{E}_{i} \quad \text{Attenzione! Il campo elettrico è un vettore!}
+$$
+### Linee di Campo Elettrico
+Le linee di campo elettrico sono un modo utile per rappresentare il modulo e la direzione di un campo elettrico nello spazio.
+1. La direzione del campo $E$ è tangente alle linee di campo in ciascun punto dello spazio.
+2. Il campo è intenso nelle regioni dove sono presenti molte linee di campo e debole dove ce ne sono poche.
+3. Le linee di campo partono dalle cariche $+$ e terminano sulle cariche $–$ .
+4. Le linee di campo non si incrociano mai.
+![[Pasted image 20241028103016.png|500]]
+## Legge di Gauss
+Circonda una carica puntiforme $+Q$ con una sfera immaginaria.
+Le linee del campo $E$ escono dalla sfera.
+![[Pasted image 20241028103342.png|250]]
+Ricorda
+$$
+E \propto \frac{\text{number of field lines}}{A}
+$$
+cosicché $\text{number of field lines} \propto EA$.
+Il **flusso** è una quantità scalare correlate al numero di linee di campo che attraversano la superficie:
+$$
+\text{flux} = \Phi_{e} = E_{\perp}A = (E\cos \theta)A
+$$
+$\text{flux} > 0$ quando le linee di campo escono dalla superficie.
+$\text{flux} < 0$ quando entrano nella superficie.
+**Esempio**:
+Trova il flusso del campo elettrico attraverso ciascuna faccia di una cubo di spigolo a immerso in un campo elettrico uniforme di intensità $E$.
+![[Pasted image 20241028104313.png|250]]
+Il cubo ha sei facce: le linee di campo entrano in una faccia ed escono attraverso la faccia opposta. Qual’ è il flusso attraverso ciascuna delle altre quattro facce?
+- Il flusso attraverso la faccia sinistra è $–EA$.
+- Il flusso attraverso la faccia destra è $+EA$.
+- il flusso netto attraverso il cubo è *nullo*.
+Il flusso attraverso una superficie chiusa dipende quindi dalla quantità di carica all’interno della superficie chiusa stessa.
+**Legge di Gauss**:
+$$
+\Phi_{e} = \frac{Q_{inside}}{\epsilon_{0}}
+$$
+Calcolo dell’integrale a primo membro su una superficie sferica avente centro nella posizione della carica $Q$:
+$$
+\begin{gather}
+\int_{\text{sfera di raggio }R} \overrightarrow{E} \cdot d\overrightarrow{A} = \\ \\
+\frac{Q}{4\pi \epsilon_{0}} \int_{\text{sfera di raggio }R} \frac{1}{r^{2}} dA = \\ \\
+\frac{Q}{4\pi \epsilon_{0}} \frac{1}{R^{2}} \int_{\text{sfera di raggio }R} dA = \\ \\
+\frac{Q}{4\pi \epsilon_{0}} \frac{1}{R^{2}} 4\pi R^{2} = \frac{Q}{\epsilon_{0}} 
+\end{gather}
+$$
+### Calcolo del campo elettrico a partire dalla legge di Gauss
+Densità di carica:
+$$
+p = \frac{Q}{V} = \frac{Q}{\frac{4}{3}\pi R^{3}} = \frac{3Q}{4\pi R^{3}}
+$$
+Per $r < R$:
+$$
+\int_{\text{sfera di raggio }r} \overrightarrow{E} \cdot d\overrightarrow{A} = \frac{Q_{in}}{\epsilon_{0}}
+$$
+Primo membro:
+$$
+E(r)4\pi r^{2}
+$$
+Secondo membro:
+$$
+\frac{p}{\epsilon_{0}} \frac{r}{3} \pi r^{3}
+$$
+Quindi:
+$$
+E(r) = \frac{p}{\epsilon_{0}} \frac{r}{3} = \frac{Q}{4\pi \epsilon_{0}R^{3}} r = kr
+$$
+Per $r \geq R$:
+$$
+\int_{\text{sfera di raggio }r} \overrightarrow{E} \cdot d\overrightarrow{A} = \frac{Q_{in}}{\epsilon_{0}}
+$$
+Primo membro:
+$$
+E(r)4\pi r^{2} 
+$$
+secondo membro:
+$$
+Q_{in} = Q
+$$
+Quindi:
+$$
+\begin{gather}
+E(r)4\pi r^{2} = Q \\
+E(r) = \frac{Q}{4\pi \epsilon_{0}r^{2}}
+\end{gather}
+$$
+### Moto di una carica puntiforme in un campo elettrico uniforme
+Una regione di spazio in cui è presente un campo elettrico $E$ uniforme contiene una particella di carica $q$ ($q>0$) e massa $m$.
+Applica la seconda legge di Newton e risolviamo per l'accelerazione:
+$$
+\begin{align}
+\sum F_{x} &= F_{e} = ma \\
+F_{e} &= qE = ma \\
+a &= \frac{q}{m} E
+\end{align}
+$$
+![[Pasted image 20241028110211.png|350]]
+**Esempio**:
+Qual è l’intensità del campo elettrico necessaria per mantenere un elettrone sospeso in aria?
+![[Pasted image 20241028110259.png|200]]
+Seconda legge di Newton:
+$$
+\begin{align}
+\sum F_{y} &= F_{e}-w = 0 \\
+F_{e} &= w \\
+qE &= eE = mg \\
+E &= \frac{mg}{e} = 5.6\times 10^{-11} N/C 
+\end{align}
+$$
+
+
+
 
 
 
