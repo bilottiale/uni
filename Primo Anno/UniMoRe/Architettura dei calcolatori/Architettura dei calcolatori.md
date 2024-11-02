@@ -805,7 +805,154 @@ Nelle reti sincrone, tutte le operazioni sono coordinate da un segnale di clock 
 Progettare una rete sequenziale in grado di riconoscere, in presenza di una sequenza di cifre binarie, quando si sono presentati successivamente due 0 e un 1 (es. 001).
 ![[Pasted image 20241028185600.png|250]] ![[Pasted image 20241028190153.png|250]]
 # Instruction Set Architecture: Formati di Istruzione RISC-V
+- **RISC**: *Reduced Instruction-Set Computer*, per eseguire una istruzione c'è un circuito elettronico separato nella *CU* (Control Unit), che produce i segnali necessari. Anche chiamato approccio "cablato".
+- **CISC**(Intel x86): *Complex Instruction-Set Computer*, la *CU* contiene circuiti per generare una serie di segnali di controllo, ogni microcircuito è attivato da un [microcodice](https://it.wikipedia.org/wiki/Microcodice).
+## Il linguaggio della CPU
+La CPU delle istruzioni tramite la ALU, la quale processa i dati che sono stati precedentemente copiati nel *file di registro* dalla *memoria dati*.
+Le *instructions* sono memorizzare nella nella *instruction memory*, il *program counter* (PC) contiene l'indirizzo della prossima istruzione.
+La architettura RISC-V contiene registri a $32 \times 64-bit$.
+## Registri e Memoria
+- I *registri* sono vicini alla CPU, su tecnologie molto veloci (SRAM), ma molto piccole.
+- La *memoria* è più distante dalla CPU, su tecnologie più lente (DRAM), ma molto più capienti.
+```assembly
+x0: contiene semppre il valore 0
+x1: indirizzo di return
+x2: puntatore allo stack
+x3: puntatore globale
+x4: puntatore al thread
+x5 - x7, x28 - x31: temps
+x8: puntatore al frame
+x9,x18 - x27: registri salvati
+x10 - x11: argomenti di funzione/risultati
+x12-x17: argomenti di funzione
+```
+## Le Istruzioni
+Codificate in binario, sono chiamate *codice macchina*.
+Dove si trovano le istruzioni?
+1. **Memoria Principale (RAM)**:
+    - Le istruzioni di un programma vengono caricate dalla memoria di archiviazione (disco rigido o SSD) nella **RAM** quando il programma viene avviato.
+    - La RAM consente un accesso rapido alle istruzioni durante l'esecuzione.
+2. **Cache della CPU**:
+    - Le istruzioni frequentemente utilizzate possono essere memorizzate nella **cache della CPU**, che è più veloce della RAM.
+    - Questo riduce il tempo di accesso alle istruzioni e migliora le prestazioni.
+3. **Registro Program Counter (PC)**:
+    - Il **Program Counter (PC)** è un registro all'interno della CPU che tiene traccia dell'indirizzo della prossima istruzione da eseguire.
+    - Viene aggiornato ad ogni ciclo di istruzione per puntare all'istruzione successiva.
+## Encoding
+Le istruzioni RISC-V sono principalmente a **32 bit** e sono divise in formati standard per semplificare la decodifica e ottimizzare la pipeline.
+**Principali Formati di Istruzione**:
+- **Formato R**: Usato per operazioni aritmetiche e logiche tra registri.
+	- Campi: `opcode` | `rd` | `funct3` | `rs1` | `rs2` | `funct7`
+	- Esempio: `ADD rd, rs1, rs2`
+- **Formato I**: Usato per operazioni con valore immediato (es. caricamenti).
+    - Campi: `opcode` | `rd` | `funct3` | `rs1` | `imm`
+    - Esempio: `ADDI rd, rs1, imm`
+- **Formato S**: Usato per memorizzare dati in memoria.
+	- Campi: `opcode` | `imm[4:0]` | `funct3` | `rs1` | `rs2` | `imm[11:5]`
+	- Esempio: `SW rs2, imm(rs1)`
+- **Formato B**: Usato per salti condizionati.
+	- Campi: `opcode` | `imm[11]` | `imm[4:1]` | `funct3` | `rs1` | `rs2` | `imm[10:5]` | `imm[12]`
+	- Esempio: `BEQ rs1, rs2, offset`
+- **Formato U**: Usato per caricare valori immediati alti.
+	- Campi: `opcode` | `rd` | `imm[31:12]`
+	- Esempio: `LUI rd, imm`
+- **Formato J**: Usato per salti incondizionati.
+	- Campi: `opcode` | `rd` | `imm[19:12]` | `imm[11]` | `imm[10:1]` | `imm[20]`
+	- Esempio: `JAL rd, offset`
+## Campi delle Istruzioni RISC-V
+1. **opcode (Operation Code)**:
+   - Campo di 7 bit che identifica il tipo generale di operazione da eseguire (es. operazioni aritmetiche, logiche, di controllo).
+2. **rd (Destination Register Number)**:
+   - Campo di 5 bit che specifica il registro di destinazione dove sarà memorizzato il risultato dell'operazione.
+3. **funct3 (3-Bit Function Code)**:
+   - Campo di 3 bit che fornisce ulteriori dettagli sull'operazione da eseguire, specificando una funzione aggiuntiva dell'opcode.
+4. **rs1 (First Source Register Number)**:
+   - Campo di 5 bit che indica il primo registro sorgente da cui recuperare un operando per l'operazione.
+5. **rs2 (Second Source Register Number)**:
+   - Campo di 5 bit che indica il secondo registro sorgente, utilizzato nelle operazioni che richiedono due operandi (es. somma).
+6. **funct7 (7-Bit Function Code)**:
+   - Campo di 7 bit che fornisce ulteriori specifiche sull'operazione, consentendo una maggiore varietà di istruzioni all'interno di un'opcode comune.
+7. **immediate (Constant Operand or Offset)**:
+   - Campo di 12 bit che rappresenta un valore costante o un offset da aggiungere all'indirizzo di base. Utilizza la rappresentazione a 2, viene **esteso con il segno** per garantire la corretta interpretazione nei calcoli aritmetici.
+`add x9,x20,x21x`
+![[Pasted image 20241029103344.png|350]]
+## Operazioni logiche
 
+| Operazione     | C   | Java | RISC-V            |
+| -------------- | --- | ---- | ----------------- |
+| Shift Left     | <<  | <<   | `slli`            |
+| Shift RIght    | >>  | >>>  | `srli`            |
+| Bit-by-bit AND | &   | &    | `and, andi`       |
+| Bit-by-bit OR  | \|  | \|   | `or, ori`         |
+| Bit-by-bit XOR | ^   | ^    | `xor, xori`       |
+| Bit-by-bit NOT | ~   | ~    | `xor, xori FF..F` |
+### Operazioni di shift
+- **Formato I**: Utilizza 6 bit per il campo **immed**, che specifica di quante posizioni si devono spostare i bit.
+- *Shift left logical* `slli`sposta i bit a sinistra e riempie i bit vuoti con zeri.
+	- moltiplica il valore per $2^{immed}$
+- *Shift right logical* `srli` sposta i bit a destra e riempie i bit vuoti con zeri.
+	- divide il valore per $2^{immed}$
+### Operazioni di AND
+Utili per *mascherare* i bit di una parola.
+`and x9,x10,x11`
+![[Pasted image 20241029105516.png|500]]
+### Operazioni di OR
+Utile per impostare determinati bit a $1$, senza modificare gli altri.
+`or x9,x10,x11`
+![[Pasted image 20241029105638.png|500]]
+### Operazioni di XOR
+Operazione di differenziazione. Imposta determinati bit a $1$, senza modificare gli altri.
+`xor x9,x10,x12`
+![[Pasted image 20241029105859.png|500]]
+### Operazioni condizionali
+*Branch*
+`beq rs1, rs2, L1`
+- `if(rs1 == rs2)` branch alla istruzione `L1`
+`bne rs1, rs2, L1`
+- `if(rs1 != rs2)` branch alla istruzione `L1`
+### If Statements
+- in C:
+```c
+if(i == j) f = g+h;
+else f = g-h;
+```
+- Compilato in codice RISC-V:
+```asm
+		bne x22, x23, Else
+		add x19, x20, x21
+		beq x0, x0, Exit // unconditional
+Else:   sub x19, x20, x21
+Exit:   ...
+```
+### Loops
+- in C:
+```c
+while(save[i] == k) i++;
+```
+- Compilato in codice RISC-V:
+```asm
+Loop: slli x10, x22, 3
+	  add x10, x10, x25
+	  ld x9, 0(x10)
+	  bne x9, x24, Exit
+	  addi x22, x22, 1
+	  beq x0, x0, Loop
+Exit: ...
+```
+### Signed vs. Unsigned
+- Signed: `blt, bge`
+- Unsigned: `bltu, bgeu`
+```
+x22 = 1111 1111 1111 1111 1111 1111 1111 1111
+x23 = 0000 0000 0000 0000 0000 0000 0000 0001
+x22 < x23 // signed
+	-1 < +1
+x22 > x23 // unsigned
+	+4,294,967,295 > +1
+```
+### Jumps
+- Jump and link (`jal`) usa 20 bit *immediati*.
+# Instruction Set Architecture: RISC-V Procedure Calling
 
 
 

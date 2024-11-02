@@ -1,4 +1,4 @@
-ù# Forze
+# Forze
 La **meccanica** si occupa di studiare le interazioni tra corpi.
 Una interazione tra due corpi può essere descritta in termini  di **due forze**, ogniuna esercitata su ciascuno dei due corpi.
 ### Forze a lungo raggio
@@ -519,7 +519,7 @@ $$
 \text{Potenza istantanea} \ P = Fv\cos \theta
 $$
 Unità di misura è il Watt. $1 Watt = 1J/s = 1W$.
-# Elettromagnetismo
+# Elettrostaticità
 ## Conduttori e isolanti
 Un **conduttore** è formato da un materiale che consente alle cariche elettriche di muoversi attraverso esso in modo facile.
 Un **isolante** è formato da un materiale che non consente alle cariche elettriche di muoversi facilmente attraverso esso.
@@ -670,9 +670,511 @@ qE &= eE = mg \\
 E &= \frac{mg}{e} = 5.6\times 10^{-11} N/C 
 \end{align}
 $$
+## Energia potenziale elettrica
+L'*energia potenziale elettrica* $U_{e}$ è l'energia posseduta da una carica $q$ in un punto di un campo elettrico generato da altre cariche.
+Per una carica $q$ posizionata a una distanza $r$ da un'altra carica $Q$. l'energia potenziale elettrica $U_{e}$ è:
+$$
+U_{e} = \frac{k \cdot Q \cdot q}{r}
+$$
+- $k$ è la costante di Coulomb ($8,99 \times 10^{9} Nm^{2}/C^{2}$).
+- $Q$ e $q$ le cariche in gioco.
+- $r$ la distanza tra le du cariche.
+## Potenziale elettrico
+Il **potenziale elettrico** $V_{e}$​ in un punto dello spazio, generato da una distribuzione di cariche, è definito come l'energia potenziale elettrica $U_{e}$ di una carica di prova $q$ in quel punto divisa per il valore della carica di prova stessa:
+$$
+V_{e} = \frac{U_{e}}{q} = \frac{k \cdot Q}{r}
+$$
+- $V_{e}$ dipende SOLO dal punto.
+- $V_{e} =0$ dove $U_{e}=0$ (per esempio a $r = \infty$).
+- $k$ è la costante di Coulomb ($8,99 \times 10^{9} Nm^{2}/C^{2}$).
+- $Q$ la carica che genera il potenziale,
+- $r$ la distanza tra le du cariche.
+**Esempio**
+Un protone e un elettrone, inizialmente separati da una distanza r, vengono avvicinati. Come cambia l’energia potenziale di questo sistema di cariche?
+$$
+U_{e} = - \frac{k \cdot e^{2}}{r}
+$$
+Avvicinare le cariche significa diminuire $r$:
+$$
+\Delta U_{e} = U_{ef} - U_{ei} < 0
+$$
+Come cambierebbe l’energia potenziale elettrica se entrambe le particelle avessero carica positiva (o negativa)?
+Quando $q_{1}$ e $q_{2}$ hanno lo stesso segno $\Delta U_{e} > 0$.
+### Differenze tra $V_{e}$ e $U_{e}$
 
+- **Potenziale Elettrico** ($V_{e}$​): Energia per unità di carica.
+- **Energia Potenziale Elettrica** ($U_{e}$​): Energia totale posseduta dalla carica $q$, calcolabile con $U_{e} = V_{e} \cdot q$.
+## Cariche in movimento in campi elettrostatici
+Quando una **carica** si muove in un **campo elettrostatico** e agiscono solo **forze elettriche**, la sua **energia meccanica totale** si conserva. Questo è dovuto al fatto che la forza elettrica è una forza conservativa.
+### Conservazione dell'Energia Meccanica
+Se agiscono solo forze elettriche, l’energia meccanica totale $E=K+U_{e}​$ della carica si conserva:
+$$
+K_{i} + U_{e,i} = K_{f} + U_{e,f}
+$$
+## Superfici Equipotenziali
+- **Definizione**: Superfici in cui il potenziale elettrico è costante.
+- **Forma**: Per una carica puntiforme, le superfici equipotenziali sono sfere concentriche con centro nella carica $Q$.
+- **Caratteristiche**:
+    - Il potenziale è lo stesso in ogni punto della superficie.
+    - Non è necessario compiere lavoro per spostarsi su una superficie equipotenziale.
+    - Perpendicolari alle linee del campo elettrico.
+## Condensatori
+Un **condensatore** è un dispositivo progettato per **immagazzinare energia potenziale elettrica** accumulando cariche positive e negative su due conduttori separati, noti come **piastre** del condensatore. Quando il condensatore è caricato, una piastra accumula carica positiva ($+Q$) e l’altra accumula una carica uguale e opposta ($-Q$).
+### Principio di Funzionamento del Condensatore
+- **Separazione delle Cariche**: Per immagazzinare energia, occorre separare le cariche positive e negative sulle due piastre del condensatore. Questo processo richiede un **lavoro** per superare la forza di attrazione tra le cariche opposte.
+- **Energia Potenziale Elettrica**: L’energia potenziale elettrica accumulata nel condensatore è proporzionale alla quantità di carica immagazzinata e alla differenza di potenziale $V$ tra le piastre.
+- **Capacità**: $C$ del condensatore misura la sua capacità di immagazzinare carica per una data differenza di potenziale e si esprime come:
+$$
+C = \frac{Q}{V}
+$$
+- $C$ capacità in Farad ($F$).
+- $Q$ la carica immagazzinata sulle piastre.
+### Condensatori
+Un **condensatore** è un dispositivo elettrico che immagazzina energia potenziale elettrica separando cariche positive e negative su due conduttori (piastre).
+#### Funzionamento
+- **Separazione delle Cariche**: Per caricare un condensatore, è necessario compiere un lavoro per separare le cariche opposte sulle piastre.
+- **Energia Potenziale Elettrica**: L'energia potenziale accumulata è proporzionale alla carica immagazzinata e alla differenza di potenziale tra le piastre.
+#### Capacità
+- **Formula della Capacità**:
+  $C = \frac{Q}{V}$
+  dove $C$ è la capacità in farad (F), $Q$ è la carica, e $V$ è la differenza di potenziale.
+#### Energia Immagazzinata
+- **Formula dell'Energia**:
+  $U_e = \frac{1}{2} C V^2$
+  L'energia immagazzinata può anche essere espressa in termini di carica:
+  $U_e = \frac{Q^2}{2C} = \frac{1}{2} Q V$
+#### Condensatore a Facce Piane Parallele
+1. **Struttura**:
+   - Due piastre conduttrici parallele separate da una distanza \( d \) con area \( A \).
+   - Cariche opposte sulle piastre (+Q e -Q).
+2. **Campo Elettrico**:
+   - Uniforme e perpendicolare alle piastre:
+   $E = \frac{V}{d}$
+3. **Capacità**:
+   - Formula per la capacità:
+   $C = \frac{\varepsilon_0 \cdot A}{d}$
+   dove  $\varepsilon_0$ è la costante dielettrica nel vuoto. Con un dielettrico, si ha:
+   $C = \frac{\varepsilon \cdot A}{d}$
+   con $\varepsilon = \varepsilon_0 \cdot \kappa$.
+4. **Energia Immagazzinata**:
+   - L’energia nel condensatore può essere espressa in base alla capacità e alla differenza di potenziale.
+**Esercizio:**
+Un condensatore a facce piane parallele è formato da due armature quadrate di 10.0 cm di lato, separate da un’intercapedine di aria di 0.75 mm.
+(a) Qual è la carica sul condensatore quando la differenza di potenziale è di 150 volts?
+(b) Quanta energia è immagazzinata nel condensatore?
+1. Calcolare l'**area della armature**: $0.10^{2} = 0.01m^{2}$
+2. **Calcolare la Capacità del Condensatore**:
+$$
+C = \frac{\varepsilon_{0} \cdot A}{d}
+$$
+- $\varepsilon_{0}$ è la costante dielettrica nel vuoto, $\varepsilon_{0} = 8.854 \times 10^{-12}F/m$.
+- $A$ 'area delle armature.
+- $d$ distanza tra le armature $0.00075m$.
+$$
+C = \frac{(8.854 \times 10^{-12}F/m)\cdot(0.01m^{2})}{0.00075m} \approx 1.177 \times 10^{-10} F 
+$$
+3. **Calcolare la Carica sul Condensatore**:
+$$
+Q = C \cdot V
+$$
+Sostituendo:
+$$
+Q = (1.177 \times 10^{-10}F) \cdot (150V) \approx 1.7708 \times 10^{-8} C
+$$
+4. **Calcolare l'energia immagazzinata**:
+$$
+U = \frac{1}{2} CV^{2} 
+$$
+Sostituendo:
+$$
+U = \frac{1}{2} \cdot (1.177 \times 10^{-10}F) \cdot (150V)^{2} \approx 1.3281 \times 10^{-6} J
+$$
+# Correnti e circuiti elettrici
+La **corrente elettrica** è il flusso di cariche elettriche che si muovono attraverso un conduttore a causa di una differenza di potenziale. Si misura in **ampere (A)**.
+$$
+I = \frac{Q}{t}
+$$
+- $I$ corrente (A).
+- $Q$ corrente elettrica (C).
+- $t$ tempo (s).
+#### Tipi di Corrente Elettrica
+1. **Corrente Continua (DC)**: Fluisce in una sola direzione (es. batterie).
+2. **Corrente Alternata (AC)**: Cambia direzione periodicamente (es. rete elettrica domestica).
+#### Caratteristiche della Corrente
+- **Intensità**: Quantità di carica che passa in un punto del circuito.
+- **Tensione (V)**: Forza che spinge le cariche; misura in volt (V).
+- **Resistenza (R)**: Opposizione al flusso di corrente; misura in ohm (Ω).
+- **Legge di Ohm**:
+$$
+V=I⋅R
+$$
+## Circuiti Elettrici, Resistenza e Resistività
+- **Circuiti in Serie**: Corrente costante; tensione totale = somma delle tensioni.
+- **Circuiti in Parallelo**: Tensione costante; corrente varia nei rami.
+### Resistenza (R)
+- **Definizione**: Misura della difficoltà al passaggio della corrente elettrica; espressa in **ohm (Ω)**:
+$$
+R = \frac{V}{I}
+$$
+- $V$ tensione.
+- $I$ corrente.
+- **Fattori che Influenzano la Resistenza**:
+    1. **Materiale**: Tipo di materiale conduttore o isolante.
+    2. **Lunghezza**: La resistenza aumenta con l'aumentare della lunghezza.
+    3. **Sezione Trasversale**: La resistenza diminuisce con un'area maggiore.
+    4. **Temperatura**: La resistenza può aumentare all'aumentare della temperatura.
+## Legge di OHM
+stabilisce una relazione semplice tra tensione ($\Delta V$), corrente ($I$) e resistenza ($R$) in un circuito elettrico.
+$$
+\Delta V = I \cdot R
+$$
+- $\Delta V$ differenza di potenziale elettrico (tensione) in volt (V).
+- $I$ corrente elettrica in ampere (A).
+- $R$ resistenza in ohm (Ω).
+**Esempio**:
+Se hai un circuito con una resistenza di $5\ohm$ e una tensione applicata di $10V$, puoi calcolare la corrente utilizzando la legge di Ohm:
+$$
+I = \frac{\Delta V}{R} = \frac{10V}{5\ohm} = 2A
+$$
+### Resistività ($\rho$)
+- **Definizione**: Proprietà intrinseca di un materiale che misura l'opposizione al passaggio di corrente; espressa in **ohm-metri (Ω·m)**.
+$$
+R = \rho \frac{L}{A}
+$$
+- $R$ resistenza ($\ohm$).
+- $\rho$ resistenza del materiale ($\ohm \cdot m$).
+- $L$ lunghezza ($m$).
+- $A$ area della sezione trasversale($m^{2}$).
+**Esempio**:
+Se hai un conduttore di rame lungo $2m$ e con un'area di sezione trasversale di $1mm^{2}$ (equivale a $1 \times 10^{-6} m^{2}$), e conosci la resistività del rame ($\rho \approx 1.68 \times 10^{-8} \ohm \cdot m$), calcola la resistenza:
+$$
+R = 1.68 \times 10^{-8} \ohm \cdot m \times \frac{2m}{1 \times 10^{-6} m^{2}} = 3.36 \ohm
+$$
+## Potenza e Energia nei Circuiti
+- La **potenza** elettrica è la quantità di energia trasferita per unità di tempo. Si misura in **watt (W)**
+$$P = V \cdot I$$
+  - $P$ potenza (W)
+  - $V$ tensione (V)
+  - $I$ corrente (A)
+#### Tipi di Potenza
+- **Potenza Attiva ($P$)**: È la potenza reale consumata nel circuito, misurata in watt (W). È responsabile per il lavoro utile svolto.
+- **Potenza Reattiva ($Q$)**: È la potenza immagazzinata e restituita nei circuiti AC, misurata in volt-ampere reattivi (VAR).
+- **Potenza Apparente ($S$)**: È la combinazione di potenza attiva e reattiva, misurata in volt-ampere (VA). È data da:
+$$S = V \cdot I$$
+### Legge di Joule
+La potenza dissipata da un resistore è data dalla legge di Joule:
+$$P = I^2 R$$oppure
+$$P = \frac{V^2}{R}$$
+  - $R$ resistenza (Ω).
+### Energia
+- L'**energia elettrica** è la quantità totale di lavoro svolto in un certo periodo di tempo e si misura in **joule (J)** o **kilowattora (kWh)**.
+$$E = P \cdot t$$
+ - $E$ energia (J o kWh).
+ - $P$ potenza (W).
+ - $t$ tempo (s o ore).
+## Principi di Kirchhoff
+### Legge delle Correnti di Kirchhoff (KCL)
+**Legge dei nodi**.
+- La somma algebrica delle correnti che entrano e escono da un nodo è sempre zero.
+  $$\sum I_{\text{entranti}} = \sum I_{\text{uscenti}}$$
+- **Significato**: La corrente totale che entra in un nodo è uguale a quella che esce, basata sulla conservazione della carica elettrica.
+#### Esempio KCL
+Se entrano 3 A e 2 A in un nodo, allora esce:
+$$3 \, A + 2 \, A = 5 \, A$$
+### Legge delle Tensioni di Kirchhoff (KVL)
+**Legge delle maglie**.
+- La somma algebrica delle tensioni in un circuito chiuso è sempre zero.
+ $$ \sum V = 0$$
+- **Significato**: Quando si percorre un circuito chiuso, la somma delle tensioni deve risultare zero, basata sulla conservazione dell'energia.
+#### Esempio KVL
+In una maglia con una sorgente di 12 V e due resistori (4 Ω e 2 Ω) con una corrente di 2 A:
+- Sorgente: +12 V
+- Tensione sul resistore da 4 Ω: \( 8 \, V \)
+- Tensione sul resistore da 2 Ω: \( 4 \, V \)
+Applicando KVL:
+$$12 \, V - 8 \, V - 4 \, V = 0$$
+# Circuiti in serie e parallelo
+## Resistenza
+### Resistenze in serie
+**Resistenza Totale**: è data dalla somma delle resistenze individuali:
+$$
+R_{tot} = R_{1}+R_{2}+R_{3}+\dots
+$$
+### Resistenze in parallelo
+**Resistenza Totale**: è calcolata usando la formula:
+$$
+\frac{1}{R_{tot}} = \frac{1}{R_{1}} + \frac{1}{R_{2}} + \frac{1}{R_{3}} + \dots
+$$
+## Condensatori
+### Condensatori in serie
+**Capacitance Totale**: è data dalla formula:
+$$
+\frac{1}{C_{tot}} = \frac{1}{C_{1}} + \frac{1}{C_{2}} + \frac{1}{C_{3}} + \dots
+$$
+### Condensatori in parallelo
+**Capacitance Totale**: è data dalla somma delle capacità individuali:
+$$
+C_{tot} = C_{1} + C_{2} + C_{3} +\dots
+$$
+# Elettromagnetismo
+I magneti esercitano una forza uno sull'altro.
+Poli "opposti" si attraggono, poli "uguali" si respingono.
+### Magneti
+Il dipolo magnetico genera un campo, tutti i magneti presentano un polo Nord e un polo Sud. Le linee di polo escono dal Nord ed entrano nel Sud (sono linee chiuse).
+Se un magnete viene diviso si ottengono due magneti, entrambe con polo Nord e polo Sud come dimostra la **Legge di Gauss per il Magnetismo**.
+## Legge di Gauss per il Magnetismo
+La **Legge di Gauss per il magnetismo** afferma che non esistono monopoli magnetici, i campi magnetici non hanno sorgenti isolate.
+$$
+\oint_{\partial V} \mathbf{B} \cdot d\mathbf{A} = 0
+$$
+- $\oint_{\partial V}$ integrale di superficie chiusa.
+- $\mathbf{B}$ campo magnetico.
+- $d\mathbf{A}$ vettore area infinitesimale.
+## Forza magnetica su una carica puntiforme (forza di Lorentz)
+La **forza di Lorentz** è la forza esercitata su una carica elettrica *in movimento* all'interno di un campo elettrico e/o magnetico. È un concetto fondamentale nella fisica dell'elettromagnetismo.
+**Forza di Lorentz**
+$$
+F_{B} = q(v \times B)
+$$
+- $F$ forza totale che agisce sulla carica.
+- $q$ la carica elettrica (in Coulomb).
+- $v$ la velocità della carica (in metro/secondo).
+- $B$ il campo magnetico (in tesla, $1T = 1 N/Am$, 1 Tesla = 1 Newton/Ampere\*metro).
+- $\times$ denota il prodotto vettoriale.
+#### Comportamento della Forza di Lorentz
+- **Direzione**: La forza magnetica è sempre perpendicolare sia alla velocità della carica sia alla direzione del campo magnetico. Ciò significa che la forza non compie lavoro sulla carica, cambiando solo la sua direzione e non la sua energia cinetica.
+- **Caso di una Carica in Movimento**: Se una carica si muove in una direzione perpendicolare a un campo magnetico, la forza magnetica raggiunge il suo massimo valore:
+$$
+F_{B} = qvB
+$$
+- **Se la Carica è Ferma**: Se la carica è ferma ($v= 0$), non c'è forza magnetica ($F=0$).
+Il **modulo** di $F$ è:
+$$
+F_{B} = qB (v \sin \theta)
+$$
+- $v \sin \theta$ è la componente della velocità perpendicolare alla direzione del campo magnetico. $\theta$ rappresenta l'angolo tra $v$ e $B$.
+## Cariche in campo magnetico uniforme
+### Caso $v \not\perp B$
+Il moto della carica diventa una **spirale elicoidale**.
+#### Componenti della Velocità
+1. **Componente Perpendicolare**($v⊥$​):
+    
+    - Responsabile del **moto circolare** attorno al campo magnetico.
+    - **Raggio di Larmor** $r = \frac{mv_{\perp}}{qB}$.
+    - **Frequenza di ciclotrone** $\omega = \frac{qB}{m}$.
+2. **Componente Parallela** ($v_{\parallel}$):
+    - Non subisce l'influenza del campo magnetico e resta costante.
+    - Causa un **moto rettilineo** lungo il campo magnetico.
+#### Risultante: Moto Elicoidale
+- **Traiettoria**: combinazione di un moto circolare (attorno a $B$) e un moto rettilineo (lungo $B$).
+- **Passo dell’elica** (distanza tra due giri consecutivi):
+$$
+Passo = \frac{2\pi mv}{qB}
+$$
+## Forza magnetica su un filo percorso da corrente
+$$
+F = I(L \times B)
+$$
+- $I$ corrente elettrica che scorre nel filo.
+- $L$ vettore lunghezza del filo.
+- $B$ vettore campo magnetico.
+- $\times$ denota il prodotto vettoriale.
+**Modulo**:
+$$
+F = ILB \sin \theta
+$$
 
-
+**Casi particolari**:
+1. *Filo perpendicolare al campo magnetico* ($\theta = 90°$):
+	1. La forza è massima: $F = ILB$.
+2. *Filo parallelo al campo magnetico* ($\theta = 0°$ o $180°$):
+	1. La forza è nulla: $F = 0$.
+## Campo magnetico dovuto a una corrente
+### Caso del filo rettilineo di corrente
+Un filo rettilineo percorso da corrente genera un **campo magnetico circolare** attorno a sé. Questo campo magnetico è descritto dalla **legge di Ampère** o dalla formula di Biot-Savart per fili infiniti.
+Il modulo del campo magnetico $B$ a una distanza $r$ da un filo rettilineo infinito percorso da una corrente $I$ è:
+$$
+B =\frac{\mu_{0}I}{2\pi r}
+$$
+- $\mu_{0}$ è la **permeabilità del vuoto** ($\mu_{0} \approx 4\pi \times 10^{-7}N/A^{2}$).
+- $I$ corrente nel filo (Ampere).
+- $r$ distanza dal filo al punto in cui si misura $B$ (metri).
+**Direzione del Campo Magnetico**:
+La direzione del campo magnetico attorno a un filo rettilineo si determina usando la **regola della mano destra**:
+1. Punta il pollice nella direzione della corrente II lungo il filo.
+2. Le dita arrotolate attorno al filo indicano la direzione del campo magnetico $B$.
+### Caso della spira
+Un **solenoide** è una bobina lunga formata da molte spire circolari avvolte strettamente l’una accanto all’altra, e percorso da una corrente elettrica. Il campo magnetico generato all'interno del solenoide è **quasi uniforme** e ha intensità:
+$$
+B = \mu_{0}nI
+$$
+- $\mu_{0}$ permeabilità del vuoto ($\mu_{0}\approx_{4}\pi \times 10^{-7} N/A^{2}$).
+- $n$ densità di spire, cioè il numero di spire per unità di lunghezza ($n = \frac{N}{L}$, con $N$ numero totale di spire e $L$ lunghezza del solenoide).
+- $I$ corrente che scorre nel solenoide.
+## La legge di Ampère
+La **legge di Ampère** descrive la relazione tra la corrente elettrica e il campo magnetico che essa genera. La legge stabilisce che il **campo magnetico lungo un percorso chiuso** è proporzionale alla corrente totale che attraversa la superficie delimitata dal percorso.
+$$
+\oint_{c} B \cdot dl = \mu_{0}I_{tot}
+$$
+- $\oint_{c}B \cdot dl$ è l'integrale di linea del campo magnetico $B$ lungo un percorso chiuso $C$.
+- $\mu_{0}$ la permeabilità del vuoto ($\mu_{0}\approx 4\pi \times 10^{-7} N/A^{2}$).
+- $I_{tot}$ la corrente totale che attraversa la superficie delimitata dal percorso chiuso di $C$.
+**Forma discreta**:
+$$
+\oint_{c} B \cdot dl = \lim_{ N \to \infty } \sum_{1}^{N} B \cdot dl_{i}
+$$
+#### Interpretazione
+- La legge di Ampère implica che il campo magnetico generato attorno a un conduttore è proporzionale alla corrente in esso.
+- Per un filo rettilineo infinito, ad esempio, il campo magnetico BB a distanza rr dal filo è:
+$$
+B = \frac{\mu_{0}I}{2\pi r}
+$$
+## Legge di Oersted
+Afferma che un filo percorso da corrente genera un campo magnetico attorno a sé. Questa scoperta, fatta da Hans Christian Oersted nel 1820, ha dimostrato per la prima volta che le correnti elettriche possono influenzare gli oggetti magnetici.
+**Connessione con la Legge di Ampère**:
+La legge di Ampère descrive quantitativamente come la corrente produce un campo magnetico. Possiamo derivare la legge di Oersted dalla legge di Ampère considerando un filo rettilineo percorso da corrente.
+*FIlo rettilineo*
+$$
+B = \frac{\mu_{0}I}{2\pi r}
+$$
+*Applicazione legge di Ampère*
+$$
+\oint_{C}B \cdot dl = B \cdot (2\pi r) = \mu_{0}I
+$$
+da cui otteniamo la formula per il campo magnetico $B$ attorno a un filo rettilineo.
+### Calcoliamo l’intensità della forza
+Due fili paralleli che giacciono su un piano orizzontale trasportano le correnti $I_{1}$ e $I_{2}$ verso destra. I fili sono lunghi entrambi $L$ e sono separate da una distanza $d$.
+1. Scriviamo il modulo e la direzione del campo $B$ generato dal filo $1$ nella posizione del filo:
+$$
+B_{1} = \frac{\mu_{0}I_{1}}{2\pi d}
+$$
+Ora scriviamo il modulo della forza magnetica sul filo $2$ dovuti al filo:
+$$
+\begin{align}
+F_{12} &= I_{2}LB_{1}\sin \theta \\
+&= I_{2}LB_{1} = \frac{\mu_{0}I_{1}I_{2}L}{2\pi d}
+\end{align}
+$$
+reciprocamente, scriviamo il modulo e verso del campo $B$ generato dal filo $2$ nella posizione del filo:
+$$
+B_{2} = \frac{\mu_{0}I_{2}}{2\pi d}
+$$
+Infine, il modulo della forza magnetica sul filo $1$ dovuto al $2$ è:
+$$
+\begin{align}
+F_{12} &= I_{1}LB_{2}\sin \theta \\
+&= I_{1}LB_{2} = \frac{\mu_{0}I_{1}I_{2}L}{w\pi d}
+\end{align}
+$$
+Dunque:
+- correnti parallele si attraggono.
+- correnti antiparallele si respingono.
+## Forza elettromotrice indotta
+Considera un conduttore in un campo $B$ in moto verso destra.
+![[Pasted image 20241101142653.png|300]]
+$$
+F_{B} = q(v \times B)
+$$
+Un elettrone nel conduttore sperimenta una forza verso il basso.
+![[Pasted image 20241101142907.png|200]]
+Ciò crea nella sbarra un campo elettrico e una differenza di potenziale tra l'apice e il fondo della sbarra.
+## Legge di Faraday
+$$
+\varepsilon = -N \frac{\Delta \Phi_{B}}{\Delta t}
+$$
+Una FEM indotta in un avvolgimento di $N$ spire è dovuta al cambiamento del flusso.
+- $\varepsilon$ forza elettromotrice indotta (volt).
+- $\Phi_{B}$ flusso magnetico, definito come $\Phi_{B} = B \cdot A \cdot \cos \theta$.
+	- $B$ intensità del campo magnetico.
+	- $A$ area della superficie attraversata dal campo.
+	- $\theta$ angolo tra la superficie e la direzione del campo magnetico.
+- $\frac{\Delta \Phi_{B}}{\Delta t}$ variazione del flusso magnetico nel tempo.
+Il segno **negativo** è determinato dalla **legge di Lenz**.
+## Legge di Lenz
+Stabilisce che la f.e.m. indotta genera una corrente che crea un campo magnetico opposto alla variazione di flusso che la causa. Questo principio riflette la **conservazione dell’energia**.
+Il **segno negativo** (legge di Lenz) indica che la direzione della f.e.m. indotta è tale da generare una corrente che si oppone alla variazione di flusso.
+## Autoinduzione
+L'autoinduzione è il fenomeno per cui una variazione di corrente in un circuito induce una forza elettromotrice (f.e.m.) nel circuito stesso, opponendosi alla variazione della corrente.
+**FEM indotta**:
+$$
+\varepsilon = -L \frac{\Delta I}{\Delta t}
+$$
+- $\varepsilon$ forza elettromotrice indotta.
+- $L$ induttanza del circuito in henry (H).
+- $\frac{\Delta I}{\Delta t}$ variazione della corrente nel tempo.
+## Campo elettrici e magnetici prodotti da cariche elettriche accelerate
+Quando una carica è in movimento rettilineo e uniforme, genera solo un **campo elettrico statico** e un **campo magnetico costante**.
+Quando una carica accelera, si crea una perturbazione nei campi elettrico e magnetico che si propaga lontano dalla carica. Questa perturbazione è un’**onda elettromagnetica**.
+## Legge di Ampère-Maxwell
+**magnetostatica**, la **legge di Ampère** stabilisce che il campo magnetico $B$ circolante attorno a un circuito chiuso è proporzionale alla corrente elettrica $I$ che attraversa la superficie racchiusa dal circuito:
+$$
+\oint_{C} B \cdot \Delta I = \mu_{0} I_{tot}
+$$
+Quando una carica accelera o cambia velocità, il campo elettrico variabile genera un **campo magnetico variabile**. Questa condizione, che non era presente in situazioni statiche, richiede un termine aggiuntivo nella legge di Ampère.
+### Corrente di Spostamento
+James Clerk Maxwell introdusse il concetto di **corrente di spostamento** per estendere la legge di Ampère ai fenomeni in cui il campo elettrico varia nel tempo. La corrente di spostamento rappresenta il contributo di un campo elettrico variabile alla creazione di un campo magnetico, anche in assenza di corrente conduttrice.
+Modifichiamo quindi la **legge di Ampère**:
+$$
+\oint_{C} B \cdot \Delta I = \mu_{0}\left( I + \varepsilon_{0} \frac{\Delta \Phi_{E}}{\Delta t} \right)
+$$
+- $\varepsilon_{0}$ è la costante **dielettrica** nel vuoto ($\varepsilon_{0} \approx 8.85 \times 10^{-12} F/m$ (Farad per metro)).
+- $\frac{\Delta \Phi_{E}}{\Delta t}$ la variazione del **flusso del campo elettrico**.
+## Equazioni di Maxwell
+### Legge di Gauss per il Campo Elettrico
+$$
+\oint_{S} \vec{E} \cdot \Delta \vec{A} = \frac{Q_{int}}{\varepsilon_{0}}
+$$
+La legge di Gauss per il campo elettrico afferma che il flusso del campo elettrico $\vec{E}$ attraverso una superficie chiusa è proporzionale alla carica totale $Q_{int}$ contenuta all'interno della superficie.
+### Legge di Gauss per il Campo Magnetico
+$$
+\oint_{S} \vec{B} \cdot \Delta \vec{A} = 0
+$$
+La legge di Gauss per il magnetismo afferma che il flusso del campo magnetico $\vec{B}$ attraverso una superficie chiusa è zero.
+### Legge di Faraday sull'induzione Elettromagnetica
+$$
+\oint_{C} \vec{B} \cdot \Delta \vec{l} = \frac{\Delta \Phi_{B}}{\Delta t}
+$$
+La legge di Faraday indica che una variazione nel tempo del flusso magnetico $\Phi_{B}$​ attraverso una superficie induce un campo elettrico circolare lungo il contorno $C$ della superficie.
+### Legge di Ampère-Maxwell
+$$
+\oint_{C} \vec{B} \cdot \Delta \vec{l} = \mu_{0}(I_{tot}) + \varepsilon_{0}\frac{\Delta \Phi_{E}}{\Delta t}
+$$
+La legge di Ampère, estesa da Maxwell, afferma che il campo magnetico circolante attorno a un circuito è generato dalla corrente totale $I_{tot}$​ e dalla variazione nel tempo del flusso del campo elettrico $\Phi_{E}$.
+## Onde periodiche
+![[Pasted image 20241101152834.png]]
+$$
+v = \lambda f 
+$$
+- $v$ velocità di propagazione dell'onda.
+- $f$ la frequenza.
+- $\lambda$ la lunghezza d'onda.
+Le due soluzioni per la coppia di campi sono onde periodiche sinusoidali di tipo “seno” o “coseno”.
+Per esempio, per la soluzione di tipo “seno” i moduli dei due campi variano nello spazio e nel tempo in modo periodico secondo la legge:
+$$
+E_{z} = E_{max} \sin(:\varphi(y, t)) \quad B_{x} = B_{max} \sin(\varphi(y,t))
+$$
+Esplicitando $\varphi(y,t)$:
+![[Pasted image 20241101153203.png]]
+Dalle equazioni di Maxwell si ricava anche la relazione matematica che lega i moduli di $E$ e $B$:
+$$
+E = cB
+$$
+Chiamiamo **onda elettromagnetica** l’insieme dei due campi.
+## Velocità di propagazione delle onde EM
+Le onde EM si propagano sia nel vuoto che in un mezzo.
+Maxwell calcolò teoricamente la velocità di propagazione delle onde EM nel vuoto ottenendo il seguente risultato:
+$$
+\begin{align}
+C &= \frac{1}{\sqrt{ \varepsilon_{0} \mu_{0}}} \\
+&= \frac{1}{\sqrt{ (8.85 \times 10^{-12} C^{2}/Nm^{2}) (4\pi \times 10^{-7} Tm/A)}} \\
+&= 3.00 \times 10^{8} m/s
+\end{align}
+$$
+### Valore della Velocità della Luce nel Vuoto
+$$
+c \approx 3.00 \times 10^{8} m/s 
+$$
+Indipendente dalla frequenza! Inoltre in un mezzo $v<c$.
 
 
 

@@ -492,6 +492,379 @@ $\dbinom{n}{k}$ in `R`:
 ```r
 choose(n,k)
 ```
+**Esempio**:
+Lanciamo una moneta 10 volte, la regola del prodotto ci dice che si sono $2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 2^{10} = 1024$ possibili risultati.
+Sia $E$ l'evento "abbiamo ottenuto esattamente 3 volte testa" (HHHTTTTTTT or TTTHTHTTHT, ...). Quale è la probabilità di $E$? $P(E) =$
+$$
+|E| = \dbinom{10}{3} = \frac{10 \times 9 \times 8}{3\times 2 \times 1} = 120
+$$
+quindi $P(E) = \frac{120}{1024} \approx 0.117$.
+```r
+event <- replicate(10000, {
+  flips <- sample(c("H", "T"), 10, replace = TRUE)
+  heads <- sum(flips == "H")
+  heads == 3
+})
+mean(event)
+```
+```
+## [1] 0.1211
+```
+
+```r
+## Title: Counting
+## Author: Luca La Rocca
+## Date: 15 October 2024
+
+## Sys.setLanguage("en", unset="it") # uncomment to disable message translation
+rm(list=ls(all=TRUE)) # clean the workspace
+
+prodCart <- function(spaces) # list of vectors
+{ # begin function
+  S <- expand.grid(rev(spaces))
+  if(ncol(S)>1) S <- S[, ncol(S):1]
+  colnames(S) <- paste("Pos", 1:ncol(S), sep="")
+  return(S)
+} # end function
+
+dispRep <- function(S0, # vector of items available for selection
+                     k) # number of items to be selected
+  return(prodCart(rep(list(S0), k)))
+
+dispSemp <- function(S0, # vector of items available for selection
+                      k) # number of items to be selected
+{ # begin function
+  if(k==1){ # base case
+    S <- as.data.frame(S0)
+    colnames(S) <- "Pos1"
+  }else{ # recursive case
+    S <- Recall(S0[-1], k-1)
+    recsize <- nrow(S)
+    S <- cbind(rep(S0[1], recsize), S)
+    colnames(S) <- paste("Pos", 1:ncol(S), sep="")
+    for(i in 2:length(S0)){
+      Schunk <- cbind(rep(S0[i], recsize), Recall(S0[-i], k-1))
+      colnames(Schunk) <- colnames(S)
+      S <- rbind(S, Schunk)
+    } # end for
+  } # end if-else
+  return(S)
+} # end function
+
+perm <- function(S0) # vector of items to be permuted
+  return(dispSemp(S0,length(S0)))
+
+combSemp <- function(S0, # vector of items available for selection
+                      k) # number of items to be selected
+{ # begin function
+  S <- as.data.frame(t(combn(S0, k)))
+  colnames(S) <- paste("Item", 1:ncol(S), sep="")
+  return(S)
+} # end function
+
+## SPAZI CAMPIONARI ELEMENTARI
+cat("Sample space for a coin (head?):", fill=TRUE)
+Scoin <- c(FALSE, TRUE)
+print(Scoin)
+cat("total outcomes =", length(Scoin), fill=TRUE)
+
+cat("Sample space for a French card seed:", fill=TRUE)
+Scard <- c("heart", "diamond", "club", "spade")
+print(Scard)
+cat("total outcomes =", length(Scard), fill=TRUE)
+
+cat("Sample space for a die:", fill=TRUE)
+Sdie <- 1:6
+print(Sdie)
+cat("total outcomes =", length(Sdie), fill=TRUE)
+
+## PRODOTTO CARTESIANO DI SPAZI FINITI
+cat("Sample space for a coin (head?) and a French card seed:", fill=TRUE)
+Scoincard <- prodCart(list(Scoin, Scard))
+print(Scoincard)
+cat("total outcomes =", length(Scoin)*length(Scard), fill=TRUE)
+
+cat("Sample space for a coin (head?) a French card seed and a die:", fill=TRUE)
+Scoincardie <- prodCart(list(Scoin, Scard, Sdie))
+print(Scoincardie)
+cat("total outcomes =", length(Scoin)*length(Scard)*length(Sdie), fill=TRUE)
+
+## SPAZI DI DISPOSIZIONI CON RIPETIZIONE
+cat("Sample space for two dice:", fill=TRUE)
+Stwodice <- dispRep(Sdie, 2)
+print(Stwodice)
+cat("total outcomes =", length(Sdie)^2, fill=TRUE)
+
+cat("Sample space for three coins (head?):", fill=TRUE)
+Sthreecoins <- dispRep(Scoin, 3)
+print(Sthreecoins)
+cat("total outcomes =", length(Scoin)^3, fill=TRUE)
+
+## SPAZI DI DISPOSIZIONI SEMPLICI
+cat("Sample space for an ordered hand of two French queens:", fill=TRUE)
+Stwocards <- dispSemp(Scard, 2)
+print(Stwocards)
+cat("total outcomes =", prod(length(Scard):(length(Scard)-2+1)), fill=TRUE)
+
+cat("Sample space for an ordered hand of three French queens:", fill=TRUE)
+Sthreecards <- dispSemp(Scard, 3)
+print(Sthreecards)
+cat("total outcomes =", prod(length(Scard):(length(Scard)-3+1)), fill=TRUE)
+
+## SPAZI DI PERMUTAZIONI
+nlet <- 4 # number of letters
+AnagramSimSize <- 2500 # number of simulations
+cat("Sample space for a random anagram of", nlet, "distinct letters:",
+    fill=TRUE)
+AnagramS <- perm(LETTERS[1:nlet])
+print(AnagramS)
+cat("total outcomes =", factorial(length(AnagramS)), fill=TRUE)
+AnagramD <- apply(AnagramS, 1, function(row) !any(row==LETTERS[1:nlet]))
+cat("derangement event", fill=TRUE)
+print(AnagramS[AnagramD,])
+cat("favorable outcomes =", sum(AnagramD), fill=TRUE)
+AnagramP <- sum(AnagramD)/nrow(AnagramS)
+cat("exact probability of derangement =", AnagramP, fill=TRUE)
+cat("how far is it from the limit value?",fill=TRUE)
+print(all.equal(exp(-1), AnagramP))
+AnagramDtrials <- replicate(AnagramSimSize,{
+  permutation <- AnagramS[sample(1:nrow(AnagramS), 1),]
+  !any(permutation==LETTERS[1:nlet])
+})
+cat("empirical proportion of derangement =", mean(AnagramDtrials),
+    "with margin of error =", 1/sqrt(AnagramSimSize), fill=TRUE)
+
+## SPAZI DI COMBINAZIONI SEMPLICI
+cat("Sample space for an unordered hand of two French queens:", fill=TRUE)
+SunordHand <- combSemp(Scard, 2)
+print(SunordHand)
+cat("total outcomes =", choose(length(Scard), 2), fill=TRUE)
+
+cat("Sample space for an unordered hand of three French queens:", fill=TRUE)
+SunordHand <- combSemp(Scard, 3)
+print(SunordHand)
+cat("total outcomes =", choose(length(Scard), 3), fill=TRUE)
+```
+# Massa di probabilità e valore atteso
+## Variabili casuali discrete
+In statistica e probabilità, una **variabile casuale** (o **variabile aleatoria**) è una funzione che associa a ciascun elemento di uno spazio campionario $S$ un numero reale. Le variabili casuali sono denotate con lettere maiuscole.
+La **funzione di massa di probabilità** (pmf) è una funzione associata a una variabile casuale discreta. Essa fornisce la probabilità che la variabile casuale assuma un determinato valore xx. La pmf di una variabile casuale XX è definita come:
+$$
+p(x) = P(X = x)
+$$
+**Teorema 3.1**:
+Sia $p$ la funzione di massa di probabilità di $X$.
+1. $p(x) \geq 0 \forall x$, la probabilità di ciascun valore $x$ deve essere maggiore o uguale a zero.
+2. $\sum_{x} p(x) = 1$, la somma delle probabilità di tutti i possibili valori che può assumere la variabile casuale deve essere $= 1$.
+**Esempio 3.2**: Lancio di 3 monete
+Spazio campionario:
+$$
+S = \{ HHH,HHT,HTH,HTT,THH,THT,TTH,TTT \}
+$$
+Ogni esito è ugualmente probabile, quindi la probabilità di ciascun risultato è:
+$$
+P(esito) = \frac{1}{8}
+$$
+Definiamo una variabile casuale $X$ che rappresenta il numero di teste osservate nei tre lanci delle monete. La funzione $X$ può essere descritta come segue:
+$$
+\begin{gather}
+X(HHH)=3 (3\ teste) \\
+X(HHT)=2 (2\ teste) \\
+X(HTH)=2 (2\ teste) \\
+X(THH)=2 (2\ teste) \\
+X(TTH)=1 (1\ testa) \\
+X(THT)=1 (1\ testa) \\
+X(HTT)=1 (1\ testa) \\
+X(TTT)=0 (0\ teste) \\
+\end{gather}
+$$
+L'evento $X=2$ rappresenta il numero di esiti in cui abbiamo esattamente 2 teste. Gli esiti che soddisfano questa condizione sono:
+$$
+\{HHT, HTH, THH\}
+$$
+possiamo calcolare la probabilità dell'evento $X=2$:
+$$
+P(X = 2) = P(\{HHT, HTH, THH\}) = P(HHT)+P(HTH)+P(THH)
+$$
+ogni esito ha la stessa probabilità di $\frac{1}{8}$:
+$$
+P(X=2) = P(HHT) + P(HTH) + P(THH) = \frac{1}{8} + \frac{1}{8} + \frac{1}{8} = \frac{3}{8}
+$$
+## Valore previsto
+La definizione formale del valore atteso per una variabile casuale discreta $X$ con funzione di massa di probabilità (pmf) $p$ è:
+$$
+E[X] = \sum_{x}x \cdot p(x)
+$$
+dove la somma è presa su tutti i valori possibili della variabile casuale $X$, a condizione che questa somma esista.
+**Teorema 3.2** La Legge dei Grandi Numeri
+La Legge dei Grandi Numeri afferma che la media di $n$ osservazioni di una variabile casuale $X$ converge al valore atteso $E[X]$ quanto $n \to \infty$, assumendo che $E[X]$ sia definito:
+$$
+\text{Se } n \to \infty, \quad \frac{1}{n}\sum_{i=1}^{n} X_{i} \to E[X]
+$$
+dove $X_{i}$ è il valore osservato della variabile casuale nella $i$-esima osservazione.
+**Esempio 3.9**
+Usando la simulazione, determiniamo il valore atteso di un rotolo di dado. Ecco 30 osservazioni e la loro media:
+```r
+rolls <- sample(1:6, 30, replace = TRUE)
+rolls
+```
+```
+##  [1] 3 3 3 3 1 5 1 2 2 3 3 6 5 1 1 6 6 5 2 6 5 2 5 2 6 1 3 6 6 5
+```
+```r
+mean(rolls)
+```
+```
+## [1] 3.6
+```
+# Variabili Casuali Binomiali e Geometriche
+Sono modelli comuni e utili per molte situazioni reali. Entrambe coinvolgono esperimenti chiamati **prove di Bernoulli**.
+# !TODO per esame
+## Prove di Bernoulli
+Una **prova di Bernoulli** è un esperimento che può risultare in due esiti distinti, "successo" e "fallimento". La probabilità di un successo è rappresentata con $p$, mentre la probabilità di fallimento è quindi:
+$$
+1-p
+$$
+## Variabili Casuali Binomiali
+È utilizzata per contare il numero di successi in un numero fisso di prove di Bernoulli. La variabile casuale $X$ che rappresenta il numero di successi in $n$ prove di Bernoulli ([[Statistica#Schemi di Bernoulli finiti|finite]]).
+### Schemi di Bernoulli finiti
+Un **schema di Bernoulli finito** consiste in un numero fisso di prove $n$, ciascuna con una probabilità di successo $p$ e una probabilità di fallimento $1−p$. Questo schema è descritto dalla variabile casuale binomiale $X$, che rappresenta il numero di successi in $n$ prove.
+$$
+P(X=k) = \dbinom{n}{k} p^{k} (1-p)^{n-k}, \quad k=0,1,\dots,n
+$$
+- $\dbinom{n}{k}$ *variabile binomiale*: rappresenta il numero di modi in cui possono verificarsi $k$ successi in $n$ prove.
+- $k$ è il numero di successi (con $k = 0,1,2,\dots,n)$.
+- $p$ è la probabilità di successo in ogni prova.
+A volte si scrive $X \sim Binom(n,p)$, $X$ segue una **distribuzione binomiale** con parametri $n$ e $p$:
+- $n$: numero prove di Bernoulli;
+- $p$: **probabilità di successo** in ogni prova.
+**Teorema 3.4**:
+Sia $X$ una variabile binomiale casuale, con $n$ prove e $p$ probabilità di successo, allora:
+$$
+E[X] = np
+$$
+## Variabili Casuali Geometriche
+Conta il numero di prove di Bernoulli fino al primo successo. Se $Y$ rappresenta il numero di prove fino al primo successo ([[Statistica#Schemi di Bernoulli infiniti|Schemi di Bermoulli infiniti]]).
+### Schemi di Bernoulli infiniti
+Un **schema di Bernoulli infinito** prevede un numero potenzialmente *infinito* di prove. In questo schema, si continua a eseguire prove di Bernoulli fino a quando non si ottiene il primo successo. La variabile casuale che descrive il numero di prove necessarie fino al primo successo segue una distribuzione geometrica.
+$$
+P(Y=k) = (1-p)^{k-1}p, \quad k=1,2,3,\dots 
+$$
+- $p$  è la probabilità di successo in ciascuna prova.
+- $(1-p)^{x}$ *variabile geometrica*: appresenta la probabilità di ottenere $x$ fallimenti prima di un successo.
+**Teorema 3.6**:
+Sia $X$ una variabile geometrica casuale, con $p$ probabilità di successo, allora:
+$$
+E[X] = \frac{(1-p)}{p}
+$$
+```r
+## Title: Binomial and geometric variables
+## Author: Luca La Rocca
+## Date: 22 October 2024
+
+## Sys.setLanguage("en", unset="it") # uncomment to disable message translation
+rm(list=ls(all=TRUE)) # clean the workspace
+
+plotPMF <- function(x, # vector of values taken with positive probability
+                    p, # vector of corresponding probability masses
+                    ...) # extra arguments for plot() and points()
+{ # begin function
+  plot(x, p, type="h", ylim=c(0,max(p)), frame=FALSE, ylab="p(x)", ...)
+  points(x, p, pch=20, ...)
+  abline(h=0, lty="dotted")
+} # end function
+
+plotCDF <- function(cdf, # step function giving the cumulative probabilities
+                    main = "", # title of the plot
+                    ...) # extra arguments for plot()
+{ # begin function
+  plot(cdf, verticals=FALSE, ylim=c(0,1), frame=FALSE, pch=20, ylab="F(x)",
+       main=main, ...)
+  abline(h=c(0,1), lty="dotted")
+} # end function
+
+## rolling a die ten times and counting the sixes
+Bn <- 10
+Bp <- 1/6
+
+Blo <- 2 # lower threshold
+Bhi <- 4 # upper threshold
+
+cat("In n =", Bn, "repeated trials with success probability p =", Bp,
+    fill=TRUE)
+cat("the probability of getting at least", Blo, "and at most", Bhi,
+    "successes is", sum(dbinom(Blo:Bhi, Bn, Bp)), fill=TRUE)
+cat("the probability of getting less than", Blo,
+    "successes is", pbinom(Blo-1, Bn, Bp), fill=TRUE)
+cat("the probability of getting more than", Bhi,
+    "successes is", pbinom(Bhi, Bn, Bp, lower=FALSE), fill=TRUE)
+cat("and these three probabilities sum to", sum(dbinom(0:Bn, Bn, Bp)),
+    fill=TRUE)
+
+Bsimsize <- 10^6
+cat("Simulating", Bsimsize, "binomial counts with n =", Bn, "and p =", Bp,
+    fill=TRUE)
+cat("the proportion of counts that are at least", Blo, "and at most", Bhi,
+    "is", mean(rbinom(Bsimsize, Bn, Bp) %in% Blo:Bhi), fill=TRUE)
+cat("with margin of error", 1/sqrt(Bsimsize), fill=TRUE)
+
+Bvalues <- 0:Bn
+Bmasses <- dbinom(Bvalues, Bn, Bp)
+
+pdf("Rfig10dbinom.pdf", width = 8, height = 5)
+plotPMF(Bvalues, Bmasses,
+        main=paste("Binomial p.m.f. with n =", Bn, "and p =", round(Bp, 4)))
+dev.off()
+
+cbinom <- stepfun(Bvalues, c(0, pbinom(Bvalues, Bn, Bp)))
+
+pdf("Rfig10pbinom.pdf", width = 8, height = 5)
+plotCDF(cbinom,
+        main=paste("Binomial c.d.f. ( n =", Bn, ", p =", round(Bp, 4), ")"))
+dev.off()
+
+## tossing a coin until you get head and counting the tails
+Gp <- 1/2
+Gmax <- qgeom(0.99, Gp)
+
+Glo <- 3 # lower threshold
+Ghi <- 5 # upper threshold
+
+cat("In repeated trials with success probability p =", Gp, fill=TRUE)
+cat("the probability of getting at least", Glo, "and at most", Ghi, "failures",
+    fill=TRUE)
+cat("before the first success is", sum(dgeom(Glo:Ghi, Gp)), fill=TRUE)
+cat("the probability of getting less than", Glo, "failures", fill=TRUE)
+cat("before the first success is", pgeom(Glo-1, Gp), fill=TRUE)
+cat("the probability of getting more than", Ghi, "failures", fill=TRUE)
+cat("before the first success is", pgeom(Ghi, Gp, lower=FALSE), fill=TRUE)
+cat("and the three probabilities sum to",
+    pgeom(Ghi, Gp) + pgeom(Ghi, Gp, lower=FALSE), fill=TRUE)
+
+Gsimsize <- 10^6
+cat("Simulating", Gsimsize, "geometric counts with p =", Gp, fill=TRUE)
+cat("the proportion of counts that are at least", Glo, "and at most", Ghi,
+    "is", mean(rgeom(Gsimsize, Gp) %in% Glo:Ghi), fill=TRUE)
+cat("with margin of error", 1/sqrt(Gsimsize), fill=TRUE)
+
+Gvalues <- 0:Gmax
+Gmasses <- dgeom(Gvalues, Gp)
+
+pdf("Rfig10dgeom.pdf", width = 8, height = 5)
+plotPMF(Gvalues, Gmasses, main=paste("Geometric p.m.f. with p =", round(Gp, 4)))
+dev.off()
+
+cgeom <- stepfun(Gvalues, c(0, pgeom(Gvalues, Gp)))
+
+pdf("Rfig10pgeom.pdf", width = 8, height = 5)
+plotCDF(cgeom, main = paste("Geometric c.d.f. ( p =", round(Gp, 4), ")"))
+dev.off()
+```
+# Trasformazioni e variabilità
+
+
+
+
 
 
 
