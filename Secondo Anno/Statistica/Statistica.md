@@ -696,7 +696,7 @@ $$
 E[X] = \sum_{x}x \cdot p(x)
 $$
 dove la somma è presa su tutti i valori possibili della variabile casuale $X$, a condizione che questa somma esista.
-**Teorema 3.2** La Legge dei Grandi Numeri
+**Teorema 3.2** La **Legge dei Grandi Numeri**
 La Legge dei Grandi Numeri afferma che la media di $n$ osservazioni di una variabile casuale $X$ converge al valore atteso $E[X]$ quanto $n \to \infty$, assumendo che $E[X]$ sia definito:
 $$
 \text{Se } n \to \infty, \quad \frac{1}{n}\sum_{i=1}^{n} X_{i} \to E[X]
@@ -861,7 +861,159 @@ plotCDF(cgeom, main = paste("Geometric c.d.f. ( p =", round(Gp, 4), ")"))
 dev.off()
 ```
 # Trasformazioni e variabilità
+## Scarti quadratici e media
+Consideriamo $\mu_{X} = E[X]$ e $\mu_{Y} = E[Y]$, le medie attese dei ricavi per i due prodotti. Gli scarti quadratici dai valori attesi per ciascuna variabile sono dati da:
+$$
+(X-\mu_{X})^{2} \quad \text{e} \quad (Y - \mu_{Y})^{2}  
+$$
+Queste espressioni rappresentano la distanza al quadrato tra il ricavo osservato e il suo valore medio. Questi scarti quadratici servono a misurare la dispersione o variabilità attorno alla media senza cancellare gli effetti di valori estremi (perché il quadrato elimina i segni negativi).
+## Trasformazioni di Variabili Aleatorie
+Gli scarti quadratici sono anche esempi di **trasformazioni** delle variabili aleatorie $X$ e $Y$, in cui la funzione $g(X) = (X - \mu_{X})^{2}$ è applicata a $X$ e produce una nuova variabile aleatoria, $g(X)$, che rappresenta lo scarto quadratico.
+Queste trasformazioni possono essere utili in contesti statistici per valutare la distanza dal valore medio. Analogamente, altre trasformazioni come il valore assoluto $∣X−\mu_{X}∣$ possono essere utili in altre situazioni per ridurre la sensibilità ai valori estremi.
+## Legge dello Statistico Inconsapevole
+La **legge dello statistico inconsapevole** afferma che per calcolare l'attesa di una funzione di una variabile aleatoria, basta la distribuzione di quella variabile e non serve conoscere esplicitamente la funzione. Per esempio, se vogliamo trovare l’attesa di $(X - \mu_{X})^{2}$, non serve calcolare ogni valore di $(X - \mu_{X})^{2}$ ma è sufficiente conoscere la distribuzione di $X$ e applicare:
+$$
+E[(X−\mu_{X})^{2} ]=Var(X)
+$$
+## Varianza e Deviazione Standard come Misura della Variabilità
+La **varianza** di $X$, indicata come $Var(X)$, è data dall’attesa dello scarto quadratico:
+$$
+Var(X) = E[(X - \mu_{X})^{2}]
+$$
+La varianza misura quanto i ricavi di $X$ si discostano in media dalla loro media. La **deviazione standard** di $X, \sigma_{X} = \sqrt{ Var(X) }$, fornisce una misura della dispersione dei ricavi di $X$ attorno alla media nello stesso ordine di grandezza dei valori osservati.
+## Teorema della Linearità della Media
+Se consideriamo una combinazione lineare di due variabili aleatorie $X$ e $Y$, ad esempio $Z = aX+bY$, dove $a$ e $b$ sono costanti, possiamo calcolare la media di $Z$ usando la **linearità dell'attesa**:
+$$
+E[Z] = E[aX+bY] = aE[X] + bE[Y] = a\mu_{X} + b\mu_{Y}
+$$
+## Invarianza per Traslazione
+Se aggiungiamo una costante $c$ alla variabile aleatoria $X$ per ottenere $X' = X+c$, a media di $X'$ è semplicemente traslata di $c$:
+$$
+E[X'] = E[X+c] = E[X] + c = \mu_{X} + c
+$$
+La **varianza**, invece, non cambia, perché la dispersione attorno alla media rimane la stessa:
+$$
+Var(X') = Var(X)
+$$
+**Esempio**:
+Vediamo un esempio concreto con dei dati numerici per ogni concetto che abbiamo trattato. Immaginiamo di avere due ricavi giornalieri, $X$ e $Y$, di due prodotti in euro, osservati su un periodo di 5 giorni. I valori osservati per $X$ e $Y$ sono:
+$$
+\begin{gather}
+X = [120,135,150,160,140] \\
+Y = [100,115,130,125,110]
+\end{gather}
+$$
+Gli scarti quadratici della media:
+$$
+\begin{gather}
+\mu_{X} = \frac{120+135+150+160+140}{5} = 141 \\
+\mu_{Y} = \frac{100+115+130+125+110}{5} = 116
+\end{gather}
+$$
+Ora calcoliamo gli scarti quadratici di ciascun valore dalla rispettiva media.
+Per $X$:
+$$
+\begin{gather}
+(120−141)^{2} =(−21)^{2} = 441 \\
+(135−141)^{2} =(−6)^{2} = 36 \\
+(150−141)^{2} =(9)^{2} = 81 \\
+(160−141)^{2} =(19)^{2} = 361 \\
+(140−141)^{2} =(−1)^{2} = 1 \\
+\end{gather}
+$$
+Per $Y$:
+$$
+\begin{gather}
+(100−116)^{2} =(-16)^{2} = 256 \\
+(115−116)^{2} =(−1)^{2} = 1 \\
+(130−116)^{2} =(14)^{2} = 196 \\
+(125−116)^{2} =(9)^{2} = 81 \\
+(110−116)^{2} =(-6)^{2} = 36 \\
+\end{gather}
+$$
+La **varianza** di $X$ si calcola come la media degli scarti quadratici:
+$$
+Var(X) = \frac{441+36+81+361+1}{5} = \frac{920}{5} = 184
+$$
+La **deviazione standard** di $X$ è la radice quadrata della varianza:
+$$
+\sigma_{X} = \sqrt{ 184 } \approx 13.56
+$$
+Analogamente, la **varianza** di $Y$ è:
+$$
+Var(Y) = \frac{256+1+196+81+36}{5} = \frac{570}{5} = 114
+$$
+La **deviazione standard** di $Y$ è:
+$$
+\sigma_{Y} = \sqrt{ 114 } \approx 10.68
+$$
+---
+Consideriamo ora una combinazione lineare dei due ricavi, per esempio $Z = 2X + 3Y$. Per trovare la media di $Z$, usiamo la **linearità della media**:
+$$
+E[Z] = E[2X + 3Y] = 2E[X] + 3E[Y]
+$$
+Sostituendo i valori delle medie trovate:
+$$
+E[Z] = 2\times141+3\times116=282+348=630
+$$
+Immaginiamo di aggiungere una costante di $c = 10$ euro al ricavo giornaliero di $X$ per ogni giorno. Questo ci dà una nuova variabile aleatoria $X' = X + 10$.
+La media di $X'$ sarà:
+$$
+E[X'] = E[X + 10] = E[X] + 10 = 141 + 10 = 151
+$$
+La **varianza** di $X′$, invece, resta invariata, poiché aggiungere una costante non cambia la dispersione:
+$$
+Var(X') = Var(X) = 184
+$$
+La **legge dello statistico inconsapevole** ci permette di calcolare l’attesa di una trasformazione di $X$ usando solo la distribuzione di $X$. Per esempio, se vogliamo calcolare l’attesa dello scarto quadratico $E[(X - \mu_{X})^{2}]$, possiamo notare che questa non è altro che la **varianza** di $X$. Pertanto, anche senza calcolare esplicitamente ogni scarto, sappiamo che:
+$$
+E[(X - \mu_{X})^{2}] = Var(X) = 184
+$$
+# Indipendenza e correlazione
+```r
+## Title: Law of Large Numbers
+## Author: Luca La Rocca
+## Date: 4 November 2024
 
+## Sys.setLanguage("en", unset="it") # uncomment to disable message translation
+rm(list=ls(all=TRUE)) # clean the workspace
+
+m <- 2500 # size of simulations
+n <- 12 # number of Bernoulli trials
+p <- 1/6 # success probability
+g <- 100 # number of terms to keep when approximating Geom(p)
+
+cat("Sampling m =", m, "observations from a binomial distribution", fill=TRUE)
+cat("with n =", n, "and p =", p, "gives...", fill=TRUE)
+x <- rbinom(m, n, p)
+cat("...an empirical mean equal to", mean(x),
+    "with margin of error", 2*sd(x)/sqrt(length(x)), fill=TRUE)
+
+pdf("Rfig12indepdraws.pdf", width=8, height=5)
+plot(1:m, x, type="l", ylim=c(0, 12))
+title(main=paste("Independent draws from Binom(n=", n,",p=", round(p, 4), ")",
+                 sep=""))
+dev.off()
+
+pdf("Rfig12runningmean.pdf", width=8, height=5)
+plot(1:m, cumsum(x)/1:m, type="l", ylim=c(0, 12), ylab=expression(bar(x)))
+title(main=paste("Running mean from Binom(n=", n, ",p=", round(p, 4), ")",
+                 sep=""))
+abline(h=n*p, col=gray(0.75))
+dev.off()
+
+cat("Sampling m =", m, "observations from a geometric distribution", fill=TRUE)
+cat("with p =", p, "gives...", fill=TRUE)
+y <- rgeom(m, p)
+cat("...an empirical mean equal to", mean(y),
+    "with margin of error", 2*sd(y)/sqrt(length(y)), fill=TRUE)
+cat("whereas the population mean is", (1-p)/p,
+    "or approximately", sum(0:(g-1)*dgeom(0:(g-1), p)),
+    "(adding", g, "terms)", fill=TRUE)
+
+plot(1:m, cumsum(2^(y+1))/1:m, type="l", ylab=expression(bar(x)))
+title(main=paste("Running mean from the St. Petersburg paradox"))
+```
 
 
 
