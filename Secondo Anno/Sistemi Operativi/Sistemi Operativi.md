@@ -72,6 +72,8 @@ Se si è usata l'istruzione `sysenter` per entrare in kernel mode, si usa ora l'
 ## La libreria del C
 Linux usa una libreria wrapper per facilitare l'accesso ai servizi del kernel: la libreria del C (**GNU C Library**).
 ![[Pasted image 20241014114543.png]]
+
+---
 # T4 - Struttura di un SO
 # Stratificazione
 Un SO moderno è concepito per *strati* software successivi impilati uno sopra l'altro.
@@ -134,6 +136,8 @@ Tentativo di combinare il meglio dei Macro e dei Micro kernel. Funzionalità, pr
 - Windows, Plan 9, OS X
 ![[Pasted image 20241014153157.png|500]]
 ![[Pasted image 20241014153231.png]]
+
+---
 # T5 - Processi
 Il kernel di un SO deve saper gestire processi:
 **Multiprogrammati**: Più applicazioni in esecuzione contemporaneamente.
@@ -243,6 +247,8 @@ ls -lR / > out.txt 2>err.txt
 ![[Pasted image 20241017155510.png]]
 ## Rappresentazione PID, PGID, SID
 ![[Pasted image 20241017155550.png]]
+
+---
 # T6 - Scheduling e dispatching
 ## Caratterizzazione dei processi
 Durante la sua esecuzione, un processo si alterna in due fasi:
@@ -366,6 +372,8 @@ Si usa un piccolo trucco:
 - L'*Instruction Pointer* è caricato con l'ultimo valore presente sullo stack (l'indirizzo desiderato).
 La macro `switch_to()`, definita in `$LINUX/arch/x86/include/asm/switch_to.h` implementa questa variante.
 La funzione inizializzatrice è: `ret_from_fork()`.
+
+---
 # T7 - Algoritmi di scheduling
 Il kernel deve assegnare una risorsa ad $n$ entità che la vogliono accedere.
 Come vengono assegnate le richieste alle risorse?
@@ -579,6 +587,159 @@ Per bilanciare il carico della predilezione i processi vengono spostati (*migrat
 Attenzione a bilanciare troppo spesso, *il bilanciamento annulla i benefici della predilezione*.
 **Migrazione guidata**(*push migration*): un processo dedicato controlla periodicamente la lunghezza delle code. In caso di sbilanciamento, sposta i processi in modo da bilanciare il carico.
 **Migrazione spontanea**(*pull migration*): o scheduler sottrae un PCB ad una coda sovraccarica.
+
+---
+# T8 - File System
+## File: Rappresentazione e accesso
+Nei SO moderni le informazioni possono essere memorizzate in maniera strutturata e permanente su supporto secondario
+Un **file system** è una gerarchia di *directory* e *file*, ospitata su un dispositivo di memorizzazione secondaria.
+- **File**: sequenza di byte memorizzata su supporto secondario.
+	- struttura di controllo che memorizza le proprietà durevoli.
+	- insieme di blocchi di dati.
+Il **File Control Block** è la struttura che memorizza le proprietà durevoli di un file. Memorizza su disco:
+- Proprietario.
+- Date notevoli (creazione, ultimo accesso, modifica).
+- Dimensione.
+- Permessi di accesso.
+- Puntatori a blocchi di dati.
+Per recuperare questi metadati si usa:
+```c
+int stat(const char *path, struct sttat &buf);
+```
+In GNU/Linus, la chiamata `stat()` ritorna una struttura dati contenente i metadati di un file.
+### Estensioni
+I file possono essere classificati in *tipi*, in modo da assegnare ad essi una applicazione di default che li possa gestire. Il SO li riconosce attraverso una *estensione* e una analisi del contenuto del file.
+`<nome_file><separatore><estensione>`
+Il meccanismo più semplice di riconoscimento del tipo del file è la **associazione diretta**. Il SO legge l'estensione del file e gli associa automaticamente una applicazione adatta.
+Ciascuna applicazione gestisce una lista di estensioni gradite.
+- LibreOffice -> `.doc`, `.odt`, `.docx`
+Ciascun file è riconoscibile da una o più sequenze di byte (dette **magic number**) in offset strategici.
+- `.elf` contiene i caratteri 'E', 'L', 'F' nel secondo, terzo e quarto byte.
+I magic number sono salvati su un file locale detto **magic file**: `/usr/share/file/misc/magic`.
+Il comando `file` (UNIX, linea di comando) scandisce un file alla ricerca dei magic number, fino a quando non ne trova uno corretto.
+```bash
+file file.txt
+file.txt: ASCII text, with very long lines.
+```
+In GNU/Linux gli eseguibili sono associati ad un programma detto **caricatore**(**loader**).
+- carica in memoria le librerie necessarie all'esecuzione.
+- carica il programma.
+- controlla se il file inizia con una riga simile (detta **she-bang**):
+	- `#!/bin/bash` specifica l'interprete dello script.
+	- carica l'interprete.
+	- esegue l'interprete con argomento pari al nome dello script.
+## File: Organizzazione interna
+- Organizzazione **logica**: file acceduto per unità logiche (singoli byte, righe o record, indici).
+- Organizzazione **fisica**: impacchettamento delle unità logiche nei blocchi fissi del disco.
+### Impacchettamenot del file su disco
+L'unità **logica** del file è mappata sulla rappresentazione **fisica** del disco(**settore**). Nel caso degli hard disk, un settore è spesso lungo 512 byte.
+In un file, l'unità logica è quasi sempre di dimensione diversa rispetto al settore.
+## Organizzazione logica
+- Per **flussi di byte**: il file è visto come una sequenza di record logici di lunghezza pari ad 1(sequenza di byte). Non esiste una strutturazione; l'applicazione legge flussi di byte. È compito della applicazione dare un significato al flusso di byte.
+- Per **record logici**: in file è visto come una sequenza di record logici di lunghezza maggiore di 1. L'applicazione legge e scrive un certo numero di record logici.
+- Per **indice**: in file contiene una sequenza di record logici di lunghezza fissa. Ciascun record contiene un campo indice in una posizione fissa. L'albero è ordinato in base all'indice. Con una ricerca binaria sull'indice, si trova l'elemento $i$-mo in $O(\log n)$ passi ($n$=numero di record logici).
+	- **indice doppio**: In caso di cancellazioni ed inserimenti frequenti dei record logici, diventa molto costoso mantenere ordinato il file. Si usano due file:
+		- *indice*.
+		- file con *record logici*.
+	- **indice gerarchico**: Se il file indice cresce a dismisura, si adotta un indice multilivello.
+		- *file indice primario*: punta ad un file indice seocndario.
+		- *file indice secondario*: punta al record.
+## Accesso ai file
+- **sequenziale**: L'informazione contenuta nel file viene acceduta sequenzialmente, ossia un record dopo l'altro. Il modello considerato è quello di un *nastro*.
+- **diretto**: L'informazione contenuta nel file viene acceduta per singoli blocchi fisici, direttamente (casualmente). Modello di un *disco*.
+- **per indice**: L'informazione contenuta nel file viene acceduta per indice, casualmente. Modello di una **base di dati**.
+Solitamente
+- *accesso sequenziale* -> *organizzazione per flussi di byte*.
+- *accesso diretto* -> *organizzazione per record logici*.
+- *accesso per indice* -> *organizzazione per indice*.
+## I/O low-level e bufferizzato
+- **I/O diretto**(basso livello): le operazioni sono inviate direttamente al kernel.
+- **I/O bufferizzato**: le operazioni di I/O sono gestite da un buffer intermedio. Letture e scritture sono "ritardate" fino al riempirsi del buffer.
+## Buffering in GNU/Linux
+- **buffering applicativo**:
+	- usato dalle funzioni di libreria del C.
+	- Permette operazioni di I/O con blocchi di dati,
+	- Riduce chiamate di sistema → meno carico per il kernel.
+	- **nessun buffer**: ha dimensione nulla.
+	- **singola riga**: il buffer è considerato riempito quando raggiunge la sua massima dimensione o quando si incontra un carattere newline.
+	- **buffering completo**: il buffer è considerato riempito quando raggiunge la sua massima dimensione.
+- **buffer del kernel**:
+	- **Caching Letture**: memorizza dati già letti in RAM → risponde a richieste successive più velocemente.
+	- **Raggruppamento Scritture**: unisce più scritture in un'unica operazione (scrittura su disco più lenta) → riduce scritture frequenti e usura del disco.
+**Flushing** del buffer: svuotamento del buffer, trasferiemento dei dati temporaneamente memorizzati nel buffer applicativo verso il kernel o il dispositivo di destinazione.
+- **flush** svuotamento del buffer applicativo.
+- **sync** svuotamento del buffer dal kernel.
+## Directory
+È un file contenente coppie del tipo(nome, puntatore).
+Una directory può essere rappresentata mediante diversi modelli:
+- **A singolo livello**: estremamente scomodo nei sistemi multiutente.
+- **A due livelli**: esiste un completo isolamento fra utenti.
+- **Ad albero**: è scomodo condividere file fra utenti senza copiarli; è impossibile creare “collegamenti a file”.
+- **A grafo**: quello attualmente più utilizzato, il file system è modellato con un **grafo aciclico**:
+	- **vertici**: directory o file.
+	- **archi**: relazioni fra directory e file contenuti.
+	- **vertice radice**: rappresenta la directory radice del file system (UNIX: `/`, Windows: `C:\`).
+Il contenuto di un file può essere referenziato da due elementi di directory (**hard link**) distinti.
+![[Pasted image 20241105161621.png|250]]
+![[Pasted image 20241105162458.png|500]]
+Non è possibile introdurre un ciclo nel grafo.
+- Niente link a directory superiori (si creerebbe un ciclo infinito).
+- `cd directory` in una directory con ciclo stallo.
+Non è possibile creare un hard link ad un file in un altro file system.
+- File system diversi implementazioni diverse delle → directory.
+![[Pasted image 20241105162554.png|500]]
+**Grafo ciclico**: simile al precedente, in questo è possibile creare link in grado di chiudere cicli (noti con il nome di **soft link**).
+## Soft Link vs Hard Link
+**Soft Link (o Link Simbolico)**:
+- **Cross-File System**: può essere creato tra file system diversi.
+- **Riferimento Diretto**: punta al percorso del file di destinazione.
+- **File Mancante**: se il file di destinazione è assente (ad esempio su un supporto non inserito come un CD-ROM), il link appare rotto (colorato di rosso).
+- **Supporto Directory Superiori**: può puntare anche a directory superiori o ad altre directory e file.
+**Hard Link**:
+- **Stesso File System**: deve risiedere nello stesso file system del file di destinazione.
+- **Riferimento Indiretto**: punta direttamente all'inode del file, quindi rappresenta una copia “fisica” del file (condividendo lo stesso inode).
+- **Persistenza del File**: se l’originale viene eliminato, il file rimane accessibile tramite l'hard link.
+- **Non Supporta Directory**: non può essere creato per le directory, solo per file.
+### Gestione cicli infiniti
+**Scenario:** il comando `find` scandisce un sottoalbero di directory con un soft link alla directory di partenza. → Ciclo infinito. La gestione dei cicli infiniti è delegata alle applicazioni.
+```bash
+find /home/andreoli -name andreoli -follow
+```
+![[Pasted image 20241105163014.png|200]]
+### Cancellazione di file
+L'hard link di un file è un **conteggio di riferimento**. Il conteggio serve ad impedire la distruzione del contenuto di un file in presenza di utenti che ne usufruiscono. Quando si cancella un file, si decrementa di uno il conteggio degli hard link. Se il conteggio è zero, si stacca il contenuto del file dal suo FCB.
+## Implementazione delle directory
+1. **Hash Table + Simple List** (Usata nelle prime versioni di EXT3, EXT4):
+   - **Lista Semplice**: Contiene coppie `<nome file, puntatore FCB>` (File Control Block).
+   - **Tabella Hash**:
+     - **Chiave**: Un hash del nome del file.
+     - **Valore**: Un puntatore all’elemento corrispondente della lista.
+   - **Vantaggio**: Ricerca più veloce rispetto a una lista semplice, ma meno efficiente per directory di grandi dimensioni.
+2. **Binary Tree** (Usato nelle versioni attuali di EXT4):
+   - **Struttura ad Albero Binario**: Organizza i nomi dei file come hash, ordinati alfanumericamente.
+   - **Nodi Foglia**: Ogni nodo foglia contiene un puntatore al FCB, il quale gestisce i metadati e l’accesso al file.
+   - **Vantaggio**: Migliora l’efficienza della ricerca in directory molto grandi, riducendo i tempi di accesso grazie alla struttura ad albero.
+### Accesso alle directory
+Mediante un **descrittore di directory** simile al puntatore allo stream usato nell'I/O bufferizzato.
+È rappresentato dalla struttura `struct __dirstream` rinominata in `DIR` nella libreria del C.
+Si ottiene un puntatore a tale descrittore mediante la funzione di libreria `opendir()` che, analogamente a `fopen()`, apre una directory.
+## Montaggio e Smontaggio
+Un file system, prima di essere utilizzato deve essere associato ad un dispositivo di memorizzazione secondaria. deve essere agganciato ad un file system esistente, usando una directory come punto di attacco.
+- **File system mount** o **mount**.
+- La directory di aggancio prende il nome di **mount point**.
+### Opzioni di mount
+- **read-only**: solo lettura.
+- **sync**: le scritture sono sincrone.
+- **async**: le scritture sono asincrone.
+- **exec**: si permette l'esecuzione dei programmi.
+Il file system può essere staccato dal suo mount point tramite l'operazione di **unmount** (umount nel gergo UNIX), sostanzialmente l'inversa di mount.
+L'unmount è preceduto da un *flush* dei buffer del kernel.
+### Root file system
+Almeno un file system deve essere presente all'avvio del SO, affinché il mount degli altri file system sia sempre possibile. Tale file system prende il nome di **root file system** e contiene almeno il comando `init` per avviare i servizi della macchina.
+
+
+
+
 
 
 

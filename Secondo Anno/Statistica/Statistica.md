@@ -648,7 +648,7 @@ cat("total outcomes =", choose(length(Scard), 3), fill=TRUE)
 # Massa di probabilità e valore atteso
 ## Variabili casuali discrete
 In statistica e probabilità, una **variabile casuale** (o **variabile aleatoria**) è una funzione che associa a ciascun elemento di uno spazio campionario $S$ un numero reale. Le variabili casuali sono denotate con lettere maiuscole.
-La **funzione di massa di probabilità** (pmf) è una funzione associata a una variabile casuale discreta. Essa fornisce la probabilità che la variabile casuale assuma un determinato valore xx. La pmf di una variabile casuale XX è definita come:
+La **funzione di massa di probabilità** (pmf) è una funzione associata a una variabile casuale discreta. Essa fornisce la probabilità che la variabile casuale assuma un determinato valore $x$. La pmf di una variabile casuale $X$ è definita come:
 $$
 p(x) = P(X = x)
 $$
@@ -812,8 +812,8 @@ Bvalues <- 0:Bn
 Bmasses <- dbinom(Bvalues, Bn, Bp)
 
 pdf("Rfig10dbinom.pdf", width = 8, height = 5)
-plotPMF(Bvalues, Bmasses,
-        main=paste("Binomial p.m.f. with n =", Bn, "and p =", round(Bp, 4)))
+plotPMF(Bvalues, Bmasses, main=paste("Binomial p.m.f. with n =",
+		Bn, "and p =", round(Bp, 4)))
 dev.off()
 
 cbinom <- stepfun(Bvalues, c(0, pbinom(Bvalues, Bn, Bp)))
@@ -876,9 +876,9 @@ $$
 E[(X−\mu_{X})^{2} ]=Var(X)
 $$
 ## Varianza e Deviazione Standard come Misura della Variabilità
-La **varianza** di $X$, indicata come $Var(X)$, è data dall’attesa dello scarto quadratico:
+La **varianza** di $X$, indicata come $\text{Var}(X)$, è data dall’attesa dello scarto quadratico:
 $$
-Var(X) = E[(X - \mu_{X})^{2}]
+\text{Var}(X) = E[(X - \mu_{X})^{2}]
 $$
 La varianza misura quanto i ricavi di $X$ si discostano in media dalla loro media. La **deviazione standard** di $X, \sigma_{X} = \sqrt{ Var(X) }$, fornisce una misura della dispersione dei ricavi di $X$ attorno alla media nello stesso ordine di grandezza dei valori osservati.
 ## Teorema della Linearità della Media
@@ -893,7 +893,7 @@ E[X'] = E[X+c] = E[X] + c = \mu_{X} + c
 $$
 La **varianza**, invece, non cambia, perché la dispersione attorno alla media rimane la stessa:
 $$
-Var(X') = Var(X)
+\text{Var}(X') = \text{Var}(X)
 $$
 **Esempio**:
 Vediamo un esempio concreto con dei dati numerici per ogni concetto che abbiamo trattato. Immaginiamo di avere due ricavi giornalieri, $X$ e $Y$, di due prodotti in euro, osservati su un periodo di 5 giorni. I valori osservati per $X$ e $Y$ sono:
@@ -933,7 +933,7 @@ $$
 $$
 La **varianza** di $X$ si calcola come la media degli scarti quadratici:
 $$
-Var(X) = \frac{441+36+81+361+1}{5} = \frac{920}{5} = 184
+\text{Var}(X) = \frac{441+36+81+361+1}{5} = \frac{920}{5} = 184
 $$
 La **deviazione standard** di $X$ è la radice quadrata della varianza:
 $$
@@ -941,7 +941,7 @@ $$
 $$
 Analogamente, la **varianza** di $Y$ è:
 $$
-Var(Y) = \frac{256+1+196+81+36}{5} = \frac{570}{5} = 114
+\text{Var}(Y) = \frac{256+1+196+81+36}{5} = \frac{570}{5} = 114
 $$
 La **deviazione standard** di $Y$ è:
 $$
@@ -970,6 +970,72 @@ $$
 E[(X - \mu_{X})^{2}] = Var(X) = 184
 $$
 # Indipendenza e correlazione
+## Indipendenza e Correlazione tra Variabili Aleatorie
+**Indipendenza**: Due variabili aleatorie $( X )$ e $( Y )$ sono indipendenti se la probabilità congiunta si separa in prodotto di probabilità marginali:
+$$
+P(X = x \text{ e } Y = y) = P(X = x) \cdot P(Y = y)
+$$
+**Incorrelazione**: Se due variabili aleatorie sono indipendenti, allora sono anche incorrelate, il che significa che la covarianza tra $( X )$ e $( Y )$ è zero. Tuttavia, l'inverso non è vero: due variabili incorrelate non sono necessariamente indipendenti.
+#### Varianza della Somma di Due Variabili Aleatorie
+La **varianza** della somma di due variabili aleatorie $(X)$ e $(Y)$ è data da:
+$$
+\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y) + 2 \, \text{Cov}(X, Y)
+$$
+Se $(X)$ e $(Y)$ sono **indipendenti**, allora la covarianza è zero e la varianza della somma diventa:
+$$
+\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)
+$$
+**Esempio**: Supponiamo che $(X)$ e $(Y)$ siano il rendimento di due azioni indipendenti. Se $(X)$ ha una varianza di 4 e $(Y)$ ha una varianza di 9, allora:
+$$
+\text{Var}(X + Y) = 4 + 9 = 13
+$$
+## Covarianza
+La **covarianza** tra $(X)$ e $(Y)$ misura il grado di dipendenza lineare tra le due variabili:
+$$
+\text{Cov}(X, Y) = E[(X - E[X])(Y - E[Y])]
+$$
+$$
+\text{Cov}(X, Y) = E(XY) - E(X)E(Y)
+$$
+- $E[X]$ e $E[Y]$ sono i valori attesi (o medie) di $X$ e $Y$.
+- $E[(X - E[X])(Y - E[Y])]$ è l'atteso del prodotto delle deviazioni di $X$ e $Y$ dalle loro medie.
+- Se la covarianza è positiva, significa che le due variabili tendono a crescere insieme.
+- Se la covarianza è negativa, tendono a variare in senso opposto.
+**Esempio**: Se $(X)$ è la temperatura e $(Y)$ è il consumo di energia per il riscaldamento, potremmo aspettarci una covarianza negativa, perché un aumento della temperatura potrebbe portare a una riduzione del consumo di energia.
+#### Coefficiente di Correlazione Lineare
+Il **coefficiente di correlazione lineare** è una versione normalizzata della covarianza che assume valori tra -1 e 1:
+$$
+\rho_{X, Y} = \frac{\text{Cov}(X, Y)}{\sqrt{\text{Var}(X) \cdot \text{Var}(Y)}}
+$$
+Valori di $( \rho_{X, Y} )$ vicini a 1 indicano una forte correlazione positiva, valori vicini a -1 una forte correlazione negativa, e valori vicini a 0 indicano che non c’è relazione lineare.
+**Esempio**: Se $( \rho_{X, Y} = 0.8 )$, significa che $(X)$ e $(Y)$ sono fortemente correlati positivamente.
+#### Campioni Casuali e Legge dei Grandi Numeri
+La **Legge dei Grandi Numeri** afferma che, per un campione casuale di grande dimensione $( X_1, X_2, \ldots, X_n )$, la media campionaria tende a convergere alla media della popolazione:
+$$
+\frac{1}{n} \sum_{i=1}^n X_i \rightarrow E[X] \quad \text{quando } n \rightarrow \infty
+$$
+**Esempio**: Se lanciamo una moneta $( n )$ volte e contiamo il numero di teste, la proporzione di teste tende a $( 0.5 )$ al crescere di $( n )$, che è il valore atteso.
+### Esempio (Un portafoglio prudente)
+Un capitale di novemila euro è investito in due titoli finanziari i cui tassi di rendimento formano un vettore aleatorio $(X, Y)$. Il capitale è suddiviso in due terzi e un terzo, di modo che il portafoglio di investimento corrisponde al ricavo aleatorio:
+$$
+T = 6(1+X)+3(1+Y) = 9+6X+3Y = 9(1+W)
+$$
+in migliaia di euro, dove $W = \frac{2}{3}X+\frac{1}{3}Y$ è il tasso di rendimento del portafoglio e naturalmente abbiamo fissato un orizzonte temporale. Se valutiamo $E(X)=0.03 \ \& \ E(Y)=0.06$, troviamo per linearità:
+$$
+E(W) = E\left( \frac{2}{3}X +\frac{1}{3}Y \right) = \frac{2}{3}E(X) + \frac{1}{3}E(Y) = \frac{0.06+0.06}{3} = 0.04
+$$
+quindi $E(T)=9\{1+E(W)\}=9\times 1.04 = 9.360$ migliaia di euro; notiamo che $E(X) < E(W) < E(Y)$.
+Se valutiamo $Sd(X)=0.02, Sd(Y)=0.04 \ \& \ \text{Cov}(X,Y)=-0.0005$, con le proprietà della covarianza troviamo:
+$$
+\begin{align}
+\text{Var}(W) &= \text{Var}\left( \frac{2}{3}X + \frac{1}{3}Y \right) = \text{Cov}\left( \frac{2}{3}X + \frac{1}{3}Y, \frac{2}{3}X + \frac{1}{3}Y \right) \\
+&= \frac{4}{9}\text{Cov}(X,X) + \frac{2}{9}\text{Cov}(X,Y) + \frac{2}{9}\text{Cov}(Y,X) + \frac{1}{9}\text{Cov}(Y,Y) \\
+&= \frac{4}{9}\text{Var}(X) + \frac{4}{9}\text{Cov}(X,Y) + \frac{1}{9}\text{Var}(Y) \\
+&= \frac{4 \times 0.02^{2} - 4\times 0.0005 + 0.04^{2}}{9} = \frac{0.0012}{9} = \frac{1}{7500} \\
+&\Rightarrow Sd(W) = \sqrt{ \frac{1}{7500} } \simeq 0.011547
+\end{align}
+$$
+Quindi $Sd(T) = Sd(9(1+W))=9Sd(W)\simeq 0.104$ migliaia di euro; notiamo che $Sd(W) < Sd(X) < Sd(Y)$.
 ```r
 ## Title: Law of Large Numbers
 ## Author: Luca La Rocca
@@ -991,8 +1057,7 @@ cat("...an empirical mean equal to", mean(x),
 
 pdf("Rfig12indepdraws.pdf", width=8, height=5)
 plot(1:m, x, type="l", ylim=c(0, 12))
-title(main=paste("Independent draws from Binom(n=", n,",p=", round(p, 4), ")",
-                 sep=""))
+title(main=paste("Independent draws from Binom(n=", n,",p=", round(p, 4), ")", sep=""))
 dev.off()
 
 pdf("Rfig12runningmean.pdf", width=8, height=5)
