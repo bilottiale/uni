@@ -6,7 +6,6 @@ Una interazione tra due corpi può essere descritta in termini  di **due forze**
 - **Forza di gravità**: agente trad eu masse è la più debole.
 - **Forza elettromagnetica**: agente tra le particelle cariche.
 ### Forze "a contatto"
-
 ## Come si misura una forza?
 Appendendo masse diverse ad una molla otteniamo che l'allungamento della molla rappresenta la forza applicata.
 Le forze sono **grandezze vettoriali**.
@@ -19,7 +18,6 @@ Un **vettore** è una grandezza definita attraverso una intensità e una direzio
 - Rappresentazione grafica: $\nearrow$
 Uno **scalare** è una grandezza definita da un numero(la massa di un oggetto).
 - $m$
-
 # Cinematica
 ## Posizione e spostamento
 La **posizione** $r$ di un oggetto descrive la sua collocazione rispetto ad una *origine*.
@@ -42,8 +40,7 @@ $$
 $$
 In un grafico di posizione vs tempo la **velocità media** è rappresentata dalla pendenza della corda:
 ![[Pasted image 20241011172450.png|400]]
-Average velocity $= v_{av,x}=\frac{x_{2}-x_{1}}{t_{2}-t_{1}}$
-
+Average velocity $= v_{av,x}=\frac{x_{2}-x_{1}}{t_{2}-t_{1}}$.
 In un grafico di posizione vs tempo la **velocità istantanea** è rappresentata dalla pendenza della tangente alla curva $x(t)$ all'istante considerato:
 ![[Pasted image 20241011172733.png|400]]
 ## Accelerazione media e istantanea
@@ -70,7 +67,6 @@ $$
 F=\frac{GM_{1}M_{2}}{r^{2}}
 $$
 $r$ è la distanza tra le due masse $M_{1}$ e $M_{2}$ e $G=6.67\times 10^{-11}Nm^{2}/kg^{2}$.
-
 ![[Pasted image 20241013145758.png]]
 ### Il campo gravitazionale
 $$
@@ -131,7 +127,7 @@ $$
 ## Teorema dell'impulso
 *Se la risultante delle forze applicate al corpo è nulla la quantità di moto si conserva.*
 Per un sistema di particelle in cui le forze sono solo interne (cioè esercitate da particelle del sistema su altre particelle del sistema) la risultante delle forze applicate al corpo è nulla per la terza legge della dinamica e la quantità di *moto TOTALE* si conserva.
-# Moti 1D
+# Moti unidimensionali
 ## Moto rettilineo e uniforme
 Formule in notazione di Leibniz:
 - $v$ è costante ($a=0$ in ogni istante).

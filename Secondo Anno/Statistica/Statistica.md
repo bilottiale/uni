@@ -1,5 +1,4 @@
 # Basi della probabilità
-
 La probabilità si occupa di *fenomeni* <u>aleatori</u>, cioè di un *esperimento* i cui possibili risultati appartengono ad un insieme ben definito e dove l'esito non è <u>prevedibile</u>.
 Sia $S$ uno spazio campionario. Una probabilità valida soddisfa i seguenti **assiomi di probabilità**:
 1. Le probabilità sono numeri reali non negativi, cioè per tutti gli eventi $E, P(E)\geq 0$.
@@ -53,7 +52,6 @@ $E\cap F = \\{(2,4),(4,2)\\}$ e $P(E\cap F) = \frac{2}{36}$
 $P(E\cap F) = P(E) + P(F) - P(E\cap F) = \frac{5}{36} + \frac{11}{36} - \frac{2}{36} = \frac{14}{36}$
 $P(\overline{E}) = 1 - P(E) = \frac{31}{36}$
 \## Simulazioni con `sample`
-
 ``` r
 sample(x, size, replace = FALSE, prob = NULL)
 ```
@@ -648,6 +646,7 @@ cat("total outcomes =", choose(length(Scard), 3), fill=TRUE)
 # Massa di probabilità e valore atteso
 ## Variabili casuali discrete
 In statistica e probabilità, una **variabile casuale** (o **variabile aleatoria**) è una funzione che associa a ciascun elemento di uno spazio campionario $S$ un numero reale. Le variabili casuali sono denotate con lettere maiuscole.
+## Massa di probabilità
 La **funzione di massa di probabilità** (pmf) è una funzione associata a una variabile casuale discreta. Essa fornisce la probabilità che la variabile casuale assuma un determinato valore $x$. La pmf di una variabile casuale $X$ è definita come:
 $$
 p(x) = P(X = x)
@@ -690,7 +689,7 @@ ogni esito ha la stessa probabilità di $\frac{1}{8}$:
 $$
 P(X=2) = P(HHT) + P(HTH) + P(THH) = \frac{1}{8} + \frac{1}{8} + \frac{1}{8} = \frac{3}{8}
 $$
-## Valore previsto
+## Valore atteso per variabili discrete
 La definizione formale del valore atteso per una variabile casuale discreta $X$ con funzione di massa di probabilità (pmf) $p$ è:
 $$
 E[X] = \sum_{x}x \cdot p(x)
@@ -1014,6 +1013,10 @@ La **Legge dei Grandi Numeri** afferma che, per un campione casuale di grande di
 $$
 \frac{1}{n} \sum_{i=1}^n X_i \rightarrow E[X] \quad \text{quando } n \rightarrow \infty
 $$
+**Interpretazione**:
+- **Campione casuale**: Un campione di variabili casuali $(X_{1},X_{2},\dots,X_{n})$ è preso da una distribuzione di probabilità, dove ogni XiXi​ è una realizzazione casuale.
+- **Media campionaria**: La media dei valori osservati, che è $\frac{1}{2}\sum_{i=1}^{n}X_{i}$​, rappresenta una stima della media della popolazione.
+- **Convergenza**: La Legge dei Grandi Numeri ci dice che, man mano che aumentiamo il numero di osservazioni nn, la media campionaria si avvicinerà sempre più alla media teorica $E[X]$.
 **Esempio**: Se lanciamo una moneta $( n )$ volte e contiamo il numero di teste, la proporzione di teste tende a $( 0.5 )$ al crescere di $( n )$, che è il valore atteso.
 ### Esempio (Un portafoglio prudente)
 Un capitale di novemila euro è investito in due titoli finanziari i cui tassi di rendimento formano un vettore aleatorio $(X, Y)$. Il capitale è suddiviso in due terzi e un terzo, di modo che il portafoglio di investimento corrisponde al ricavo aleatorio:
@@ -1079,8 +1082,177 @@ cat("whereas the population mean is", (1-p)/p,
 plot(1:m, cumsum(2^(y+1))/1:m, type="l", ylab=expression(bar(x)))
 title(main=paste("Running mean from the St. Petersburg paradox"))
 ```
+# Altre variabili discrete di uso comune
+## Variabile di Poisson
+La **distribuzione di Poisson** è utilizzata per modellare il numero di eventi che si verificano in un intervallo di tempo o in un'area spaziale, quando gli eventi sono indipendenti e avvengono con una probabilità costante.
+#### Definizione
+Una variabile casuale $( X )$ segue una **distribuzione di Poisson** con parametro $( \lambda > 0 )$ se la sua funzione di probabilità è:
+$$
+P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \dots
+$$
+- $( \lambda )$ è il **parametro di Poisson**, che rappresenta sia la **media** che la **varianza** della distribuzione.
+- $( k )$ è il numero di eventi osservati.
+- $( e )$ è la base del logaritmo naturale.
+#### Caratteristiche
+- **Media**: $( E[X] = \lambda )$
+- **Varianza**: $( \text{Var}(X) = \lambda )$
+- **Distribuzione discreta**: $( X )$ può assumere valori interi non negativi (0, 1, 2, …).
+#### Condizioni d'uso
+La distribuzione di Poisson è applicabile per modellare:
+- Eventi che accadono in un intervallo di tempo o spazio fisso.
+- Eventi indipendenti tra loro.
+- Eventi con una probabilità costante di occorrenza.
+#### Esempio
+Se una biblioteca riceve in media 3 visitatori all'ora $( \lambda = 3 )$, la probabilità che ci siano esattamente 5 visitatori in un'ora è:
+$$
+P(X = 5) = \frac{3^5 e^{-3}}{5!}
+$$
+#### Relazione con la Binomiale
+La distribuzione di Poisson può approssimare una distribuzione binomiale quando il numero di prove è grande e la probabilità di successo in ogni prova è piccola, mantenendo costante il valore $( n \cdot p = \lambda )$.
+## Variabili Ipergeometriche
+La **distribuzione ipergeometrica** è utilizzata quando si selezionano campioni da una popolazione finita senza **sostituzione**. A differenza della distribuzione binomiale, che assume la selezione con sostituzione, la distribuzione ipergeometrica tiene conto che, con ogni estrazione, cambia la composizione della popolazione.
+#### Definizione
+Una variabile casuale $( X )$ segue una **distribuzione ipergeometrica** con i seguenti parametri:
+- $( N )$: la **dimensione della popolazione** (numero totale di oggetti).
+- $( K )$: il numero di **successi** (oggetti "di interesse", ad esempio, oggetti di un certo tipo).
+- $( n )$: la **dimensione del campione** (numero di oggetti estratti dalla popolazione).
+La funzione di probabilità della variabile casuale $( X )$, che rappresenta il numero di successi nel campione, è:
+$$
+P(X = k) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}
+$$
+- $\binom{K}{k}$ è il numero di modi in cui si possono scegliere $( k )$ successi dal totale $( K )$ successi.
+- $\binom{N-K}{n-k}$ è il numero di modi in cui si possono scegliere $( n-k )$ fallimenti dal totale di $( N-K )$ fallimenti.
+- $\binom{N}{n}$ è il numero totale di modi in cui si possono scegliere $( n )$ oggetti dalla popolazione di dimensione $( N )$.
+#### Caratteristiche
+- **Supporto**: $( X )$ può assumere valori interi da $( \max(0, n - (N - K)) )$ a $( \min(n, K) )$.
+- **Media**: $( E[X] = \frac{nK}{N} )$
+- **Varianza**: $( \text{Var}(X) = \frac{nK(N-K)(N-n)}{N^2(N-1)} )$
+#### Applicazioni
+La distribuzione ipergeometrica è utile in contesti in cui:
+- Si estraggono campioni **senza sostituzione** da una popolazione finita.
+- Si vuole calcolare la probabilità di ottenere un certo numero di successi (oggetti di interesse) in un campione estratto dalla popolazione.
+#### Esempio
+Supponiamo di avere una popolazione di 20 oggetti, di cui 8 sono di tipo "successo" e i restanti 12 sono di tipo "fallimento". Se estrai 5 oggetti senza sostituzione, la probabilità di ottenere esattamente 3 successi è:
+$$
+P(X = 3) = \frac{\binom{8}{3} \binom{12}{2}}{\binom{20}{5}}
+$$
+#### Confronto con la distribuzione binomiale
+La distribuzione ipergeometrica è simile alla distribuzione binomiale, ma differisce per il fatto che gli eventi non sono indipendenti, dato che il campione viene estratto senza sostituzione. La distribuzione binomiale può approssimare la distribuzione ipergeometrica quando il campione è molto piccolo rispetto alla popolazione, in modo che la differenza tra le estrazioni con e senza sostituzione sia trascurabile.
+## Variabili Binomiali Negative
+Le **variabili binomiali negative** sono utilizzate per modellare il numero di prove necessarie prima di ottenere un numero fisso di successi in un processo di Bernoulli. In altre parole, una variabile casuale binomiale negativa misura quante prove devono essere effettuate per ottenere $( r )$ successi, con una probabilità $( p )$ di successo in ogni prova.
+#### Definizione
+Una variabile casuale $( X )$ segue una **distribuzione binomiale negativa** con parametri $( r )$ (numero di successi) e $( p )$ (probabilità di successo in ogni prova) se la probabilità che $( X = k )$ (cioè, ottenere il $( r )$-esimo successo alla $( k )$-esima prova) è data da:
 
-
+$$
+P(X = k) = \binom{k-1}{r-1} p^r (1 - p)^{k - r}, \quad k = r, r+1, r+2, \dots
+$$
+- $\binom{k-1}{r-1}$ è il numero di modi in cui i $( r-1 )$ successi possono essere distribuiti tra le prime $( k-1 )$ prove.
+- $( p^r )$ è la probabilità di ottenere $( r )$ successi.
+- $(1 - p)^{k - r}$ è la probabilità di ottenere $( k - r )$ fallimenti.
+#### Caratteristiche
+- **Supporto**: $( X )$ assume valori interi $( k = r, r+1, r+2, \dots )$, cioè il numero di prove deve essere almeno uguale a $( r )$, poiché non è possibile ottenere $( r )$ successi in meno di $( r )$ prove.
+- **Media**: $( E[X] = \frac{r}{p} )$, cioè il numero medio di prove necessarie per ottenere $( r )$ successi.
+- **Varianza**: $( \text{Var}(X) = \frac{r(1 - p)}{p^2} )$, che dipende sia dal numero di successi desiderato che dalla probabilità di successo in ogni prova.
+#### Applicazioni
+La distribuzione binomiale negativa è utile quando si desidera modellare:
+- Il **numero di prove** necessarie per ottenere un numero specifico di successi.
+- Eventi che seguono un **processo di Bernoulli** (due possibili esiti, successo o fallimento).
+Alcuni esempi includono:
+- Il numero di lanci di una moneta necessari per ottenere 5 teste.
+- Il numero di tentativi necessari per ottenere 3 successi in un gioco o esperimento.
+#### Esempio
+Supponiamo di lanciare una moneta con probabilità di successo $( p = 0.5 )$ (ad esempio, ottenere "testa") e vogliamo sapere quante prove sono necessarie per ottenere 3 teste. Se $( X )$ rappresenta il numero di lanci necessari per ottenere 3 teste, allora $( X )$ segue una distribuzione binomiale negativa con parametri $( r = 3 )$ e $( p = 0.5 )$.
+La probabilità di ottenere il 3° successo al 6° lancio (cioè 2 teste nei primi 5 lanci e la 3ª testa nel 6° lancio) è:
+$$
+P(X = 6) = \binom{5}{2} (0.5)^3 (0.5)^3 = \binom{5}{2} (0.5)^6 = 10 \times \frac{1}{64} = \frac{10}{64} = \frac{5}{32}
+$$
+#### Relazione con la distribuzione geometrica
+La distribuzione binomiale negativa è una generalizzazione della **distribuzione geometrica**. La distribuzione geometrica è il caso particolare della binomiale negativa con $( r = 1 )$, cioè quando si cerca il numero di prove necessarie per ottenere il **primo** successo.
+# Densità di probabilità
+La **funzione di densità di probabilità** (PDF) è associata a una **variabile casuale continua** e descrive la probabilità che la variabile casuale assuma un valore all'interno di un intervallo. A differenza delle variabili casuali discrete, per cui si utilizza la funzione di massa di probabilità (PMF), la PDF si applica a variabili casuali continue.
+#### Definizione
+Per una variabile casuale continua $( X )$, la **funzione di densità di probabilità** $( f_X(x) )$ è definita in modo tale che la probabilità che $( X )$ assuma un valore in un intervallo $( [a, b] )$ è data dall'integrale della PDF su quell'intervallo:
+$$
+P(a \leq X \leq b) = \int_a^b f_X(x) \, dx
+$$
+Le proprietà principali della PDF sono:
+1. **Non negatività**: $( f_X(x) \geq 0 )$ per ogni $( x )$, cioè la densità di probabilità non può mai essere negativa.
+2. **Normalizzazione**: L'integrale della funzione di densità su tutto il dominio deve essere uguale a 1:
+   $$
+   \int_{-\infty}^{\infty} f_X(x) \, dx = 1
+   $$Questo assicura che la probabilità totale sia 1.
+#### Interpretazione
+La **PDF** non fornisce direttamente la probabilità che la variabile casuale $( X )$ assuma un valore specifico, ma la **probabilità** che $( X )$ si trovi in un intervallo $( [a, b] )$ è data dall'area sotto la curva della PDF tra $( a )$ e $( b )$.
+#### Esempi
+1. **Distribuzione Normale** (Gaussiana):
+   La distribuzione normale con media $( \mu )$ e varianza $( \sigma^2 )$ ha la funzione di densità di probabilità:
+   $$
+   f_X(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}
+   $$
+   È una delle distribuzioni più comuni in statistica e probabilità.
+2. **Distribuzione Esponenziale**:
+   La distribuzione esponenziale con parametro $( \lambda )$ ha la PDF:
+   $$
+   f_X(x) = \lambda e^{-\lambda x}, \quad x \geq 0
+   $$
+   Viene spesso utilizzata per modellare il tempo tra eventi in un processo di Poisson.
+3. **Distribuzione Uniforme**:
+   Una variabile casuale $( X )$ che segue una distribuzione uniforme nell'intervallo $( [a, b] )$ ha la PDF:
+4. $$
+   f_X(x) = \frac{1}{b - a}, \quad a \leq x \leq b
+   $$
+   In questo caso, la probabilità è distribuita uniformemente tra $( a )$ e $( b )$.
+## Valore Atteso per Variabili Casuali Continue
+Il **valore atteso** (o **media**) di una **variabile casuale continua** $( X )$ è una misura della posizione centrale della distribuzione della variabile. Rappresenta la media ponderata dei valori che $( X )$ può assumere, con i pesi dati dalla sua **funzione di densità di probabilità** (PDF).
+#### Definizione
+Per una variabile casuale continua $( X )$ con funzione di densità di probabilità $( f_X(x) )$, il **valore atteso** $( E[X] )$ è dato dall'integrale della variabile moltiplicata per la sua densità di probabilità:
+$$
+E[X] = \int_{-\infty}^{\infty} x \cdot f_X(x) \, dx
+$$
+- $( x )$ è il valore che $( X )$ può assumere.
+- $( f_X(x) )$ è la densità di probabilità di $( X )$, che descrive la probabilità di $( X )$ che assume valori in un intervallo infinitesimo.
+#### Caratteristiche
+1. **Sommatoria continua**: A differenza delle variabili discrete, dove si sommano le probabilità per ogni valore, per variabili continue si integra la densità di probabilità su tutto il dominio.
+2. **Media teorica**: Il valore atteso rappresenta il "centro di massa" della distribuzione e corrisponde alla media dei valori se l'esperimento venisse ripetuto infinite volte.
+#### Proprietà
+- Il valore atteso è **lineare**: Se $( a )$ e $( b )$ sono costanti, e $( X )$ è una variabile casuale continua, allora:
+  $$
+  E[aX + b] = aE[X] + b
+  $$
+#### Esempio
+Supponiamo che $( X )$ segua una distribuzione uniforme nell'intervallo $( [0, 1] )$, con densità $( f_X(x) = 1 )$ per $( x \in [0, 1] )$. Il valore atteso di $( X )$ è:
+$$
+E[X] = \int_0^1 x \cdot 1 \, dx = \frac{x^2}{2} \Bigg|_0^1 = \frac{1}{2}
+$$
+## Varianza e Deviazione Standard
+La **varianza** misura la dispersione di una variabile casuale rispetto al suo valore atteso (media). Indica quanto i valori di una variabile casuale si discostano dalla media. Per una variabile casuale $( X )$, la varianza è definita come:
+- **Per variabili continue**:
+  $$
+  \text{Var}(X) = E[(X - E[X])^2] = \int_{-\infty}^{\infty} (x - E[X])^2 \cdot f_X(x) \, dx
+  $$
+  - $( f_X(x) )$ è la funzione di densità di probabilità di $( X )$.
+La varianza è sempre positiva e il suo valore è espresso nelle stesse unità al quadrato della variabile casuale.
+### Deviazione Standard
+La **deviazione standard** è la radice quadrata della varianza e fornisce una misura della dispersione che ha le stesse unità della variabile casuale. La deviazione standard è spesso usata per interpretare quanto una variabile casuale si discosta in media dal suo valore atteso.
+$$
+\text{Deviazione Standard}(X) = \sqrt{\text{Var}(X)}
+$$
+#### Proprietà della Varianza
+1. **Varianza di una somma lineare**:
+   Se $( X )$ e $( Y )$ sono variabili casuali, e $( a )$ e $( b )$ sono costanti, allora:
+   $$
+   \text{Var}(aX + bY) = a^2 \cdot \text{Var}(X) + b^2 \cdot \text{Var}(Y)
+   $$
+   se $( X )$ e $( Y )$ sono indipendenti.
+2. **Varianza e Deviazione Standard di una Costante**:
+   La varianza di una costante $( c )$ è zero:
+   $$
+   \text{Var}(c) = 0
+   $$
+   La deviazione standard di una costante è anch'essa zero:
+   $$
+   \text{Deviazione Standard}(c) = 0
+   $$
 
 
 
