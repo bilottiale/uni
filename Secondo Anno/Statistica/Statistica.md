@@ -1,30 +1,27 @@
-# Basi della probabilità
-La probabilità si occupa di *fenomeni* <u>aleatori</u>, cioè di un *esperimento* i cui possibili risultati appartengono ad un insieme ben definito e dove l'esito non è <u>prevedibile</u>.
-Sia $S$ uno spazio campionario. Una probabilità valida soddisfa i seguenti **assiomi di probabilità**:
-1. Le probabilità sono numeri reali non negativi, cioè per tutti gli eventi $E, P(E)\geq 0$.
-2. La probabilità dello spazio campione è $1, P(S) = 1$.
-3. Le probabilità sono numerabilmente additive: se $UN\_{1},UN\_{2},\dots$ sono disgiunti a due a due, allora
+# Basi della Probabilità
+- La probabilità si occupa di **fenomeni aleatori**: esperimenti con risultati appartenenti a un insieme ben definito, ma non prevedibili.
+- Dato uno **spazio campionario** $( S )$, una probabilità valida soddisfa i **tre assiomi di probabilità**:
+  1. Le probabilità sono reali e non negative: $( P(E) \geq 0 )$ per ogni evento $( E )$.
+  2. La probabilità dell'intero spazio campione è 1: $( P(S) = 1 )$.
+  3. **Additività numerabile**: se $( A_1, A_2, \dots )$ sono eventi disgiunti, allora:
 $$
-P\left( \bigcup_{n=1}^{\infty}A_{n} \right) = \sum_{n=1}^{\infty} P(A_{n})
+P\left( \bigcup_{n=1}^{\infty} A_{n} \right) = \sum_{n=1}^{\infty} P(A_{n})
 $$
-**Teorema 2.1**
-Siano $A$ e $B$ eventi dello spazio campionato $S$.
-1. $P(\emptyset) = 0$
-2. Se $A$ e $B$ sono disgiunti ($\cup$), allora $P(A\cup B) = P(A) + P(B)$
-3. Se $A \subset B$, allora $P(A) \leq P(B)$
-4. $0 \leq P(A) \leq 1$
-5. $P(A) = 1 - P(\overline{A})$
-6. $P(A - B) = P(A) - P(A\cap B)$
-7. $P(A\cup B) = P(A) + P(B) - P(A\cap B)$
-**Esempio**:
-Laniamo un dado, che probabilità ho che esca una determinata faccia?
-Usiamo il punto 3.
-$$
-P(\{1\}) + P(\{2\}) + P(\{3\}) + P(\{4\}) + P(\{5\}) + P(\{6\}) = P(\{1,2,3,4,5,6\})
-$$
-Tutte le probabilità sono uguali e la loro somma è $=1$, la probabilità che esca una determinata faccia è $\frac{1}{6}$.
-**Esempio 2.8**:
-Supponiamo che i dadi invece siano due, lo spazio campionato $S$ è dato da:
+### Teorema 2.1: Proprietà delle Probabilità
+- Siano $( A )$ e $( B )$ eventi dello spazio campionario $( S )$.
+  1. $( P(\emptyset) = 0 )$
+  2. Se $( A )$ e $( B )$ sono disgiunti, $( P(A \cup B) = P(A) + P(B) )$
+  3. Se $( A \subset B )$, allora $( P(A) \leq P(B) )$
+  4. $( 0 \leq P(A) \leq 1 )$
+  5. $( P(A) = 1 - P(\overline{A}) )$
+  6. $( P(A - B) = P(A) - P(A \cap B) )$
+  7. $( P(A \cup B) = P(A) + P(B) - P(A \cap B) )$
+**Esempio 1: Lancio di un Dado**
+- **Problema**: Qual è la probabilità che esca una determinata faccia?
+  - Sappiamo che $( P(\{1\}) + P(\{2\}) + P(\{3\}) + P(\{4\}) + P(\{5\}) + P(\{6\}) = 1 )$.
+  - Poiché tutte le probabilità sono uguali, la probabilità di ottenere una determinata faccia è $( \frac{1}{6} )$.
+**Esempio 2.8: Lancio di Due Dadi**
+- **Spazio campione** $( S )$ contiene tutte le combinazioni possibili:
 $$
 S= \left(\begin{matrix}
 (1,1),(1,2),(1,3),(1,4),(1,5),(1,6) \\
@@ -35,30 +32,31 @@ S= \left(\begin{matrix}
 (6,1),(6,2),(6,3),(6,4),(6,5),(6,6)
 \end{matrix} \right)
 $$
-Gli eventi dove "la somma dei due dadi è $6$" è rappresentata da:
+  - **Evento $( E )$**: Somma dei due dadi è $( 6 )$, quindi $( E = \{(1,5),(2,4),(3,3),(4,2),(5,1)\} )$.
+    - Probabilità di $( E )$: $( P(E) = \frac{|E|}{|S|} = \frac{5}{36} )$.
+  - **Evento $( F )$**: Almeno uno dei due dadi è $( 2 )$:
 $$
-E = \{(1,5),(2,4),(3,3),(4,2),(5,1)\}
+F = \{(2,1),(2,2),\dots,(6,2)\}
 $$
-La probabilità che la somma dei due dadi sia $6$ è data da:
+    - Probabilità di $( F )$: $( P(F) = \frac{11}{36} )$.
+  - **Intersezione $( E \cap F )$**: Eventi comuni a $( E )$ e $( F )$, $( E \cap F = \{(2,4),(4,2)\} )$.
+    - Probabilità di $( E \cap F )$: $( P(E \cap F) = \frac{2}{36} )$.
+  - **Probabilità di $( E \cup F )$**:
 $$
-P(E) = \frac{|E|}{|S|} = \frac{5}{36}
+P(E \cup F) = P(E) + P(F) - P(E \cap F) = \frac{5}{36} + \frac{11}{36} - \frac{2}{36} = \frac{14}{36}
 $$
-Sia $F$ l'evento "almeno uno dei due dadi è $2$", l'evento è rappresentato da:
+  - **Complemento di $( E )$**:
 $$
-F= \{(2,1),(2,2),(2,3),(2,4),(2,5),(2,6),(1,2),(3,2),(4,2),(5,2),(6,2)\}
+P(\overline{E}) = 1 - P(E) = \frac{31}{36}
 $$
-La probabilità di $F$ è: $P(F) = \frac{11}{36}$
-$E\cap F = \\{(2,4),(4,2)\\}$ e $P(E\cap F) = \frac{2}{36}$
-$P(E\cap F) = P(E) + P(F) - P(E\cap F) = \frac{5}{36} + \frac{11}{36} - \frac{2}{36} = \frac{14}{36}$
-$P(\overline{E}) = 1 - P(E) = \frac{31}{36}$
-\## Simulazioni con `sample`
+## Simulazioni con `sample`
 ``` r
 sample(x, size, replace = FALSE, prob = NULL)
 ```
-`x` il vettore di elementi dal quale si sta campionando.
-`size` il numero di campioni che si voglio ottenere.
-`replace` se si stanno usando rimpiazzi o meno.
-`prob` un vettore di probabilità o pesi, associato a `x`.
+- `x` il vettore di elementi dal quale si sta campionando.
+- `size` il numero di campioni che si voglio ottenere.
+- `replace` se si stanno usando rimpiazzi o meno.
+- `prob` un vettore di probabilità o pesi, associato a `x`.
 Per ottenere due numeri casuali tra 1 e 10:
 ``` r
 sample(x = 1:10, size=2)
@@ -147,356 +145,144 @@ Per simulazioni complesse, seguiamo un flusso:
 3. Ripeto l'esperimento un grande numero di volte e memorizzo il risultato:
 - `event <- replicate(10000, { ESPERIMENTO })`
 4. Calcolo la probabilità usando `mean`
-# Probabilità condizionata
-Dato uno spazio di probabilità $(S, \digamma, \mathbb{P})$ e due eventi $E, H \in \digamma$ con $\mathbb{P}(H) > 0$, si dice *probabilità condizionata* di $E$ dato $H$ la quantità
+# Probabilità Condizionata
+- Data uno spazio di probabilità $( (S, \mathcal{F}, \mathbb{P}) )$ e due eventi $( E, H \in \mathcal{F} )$ con $( \mathbb{P}(H) > 0 )$, la **probabilità condizionata** di $( E )$ dato $( H )$ è definita come:
 $$
-\mathbb{P}(E|H) = \frac{P(E\cap H)}{H}
+\mathbb{P}(E|H) = \frac{\mathbb{P}(E \cap H)}{\mathbb{P}(H)}
 $$
-che esprime il grado di fiducia dell'osservatore nel verificarsi di $E$ *supponendo che si verifichi $H$*. 
-Supponiamo di lanciare due dadi e uno di essi cade dal tavolo dove non puoi vederlo, mentre l'altro mostra un 4. Vorremmo aggiornare le probabilità associate alla somma dei due dadi in base a queste informazioni. La nuova probabilità che la somma dei dadi sia 2 sarebbe 0, la nuova probabilità che la somma dei dadi sia 5 sarebbe 1/6 perché questa è solo la probabilità che il dado che non possiamo vedere sia un "1" e la nuova probabilità che la somma dei dadi sia 7 sarebbe anche 1/6.
-Formalmente abbiamo la seguente definizione:
-Sia $A$ e $B$ eventi in uno spazio campionario $S$, con $P(B)\neq 0$, la *probabilità condizionale* che $A$ dato $B$ sia:
-$$P(A|B) = \frac{P(A\cap B)}{P(B)}
+  Questa quantità rappresenta la probabilità che $( E )$ si verifichi supponendo che si sia verificato $( H )$.
+#### Esempi di Probabilità Condizionata
+1. **Lancio di Due Dadi**:
+   - Supponiamo di sapere che la somma dei due dadi è 8 e vogliamo calcolare la probabilità che entrambi mostrino 4.
+     - **Eventi**:
+       - $( A = \{(4,4)\} )$: entrambi i dadi mostrano 4.
+       - $( B = \{(2,6), (3,5), (4,4), (5,3), (6,2)\} )$: eventi in cui la somma è 8.
 $$
-Leggiamo $P(A|B)$ come "la probabilità di $A$ dato $B$".
-### Valutazioni classiche
-**Esempio 2.19**:
-Lanciamo 2 dadi, con quale probabilità entrambe i dadi sono danno 4, sapendo che la loro somma è 8?
-$A = \{(4,4)\}$
-$B= \{(2,6),(3,5),(4,4),(5,3),(6,2)\}$
+P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{1/36}{5/36} = \frac{1}{5}
 $$
-P(A|B) = P(A \cap B) / P(B) = \frac{1/36}{5/36} = 1/5
+#### Probabilità Condizionata Uniforme
+- **Esempio**: Rotazione di uno Spinner simmetrico.
+  - Calcoliamo la probabilità che lo spinner si fermi in un angolo compreso tra $( -\frac{\pi}{4} )$ e $( \frac{\pi}{3} )$, sapendo che l'angolo è positivo.
 $$
-Invece quale è la probabilità che la somma dei dadi sia 8 sapendo che entrambe i dadi danno 4?
-$A = \{(4,4)\}$
-$B= \{(4,4)\}$
+\mathbb{P}\left( \left[ -\frac{\pi}{4}, \frac{\pi}{3} \right] | \left[ 0, \frac{\pi}{2} \right] \right) = \frac{\frac{\pi}{3} - 0}{\frac{\pi}{2} - 0} = \frac{2}{3}
 $$
-P(A|B) = P(B \cap A) / P(A) = \frac{1/36}{1/36} = 1
+#### Valutazioni Frequentiste
+- In probabilità frequentista, la probabilità condizionata è la **frequenza relativa** degli eventi in osservazioni precedenti.
+  - **Esempio**: Lancio di un dado truccato.
+    - Sia $( A )$ l'evento "punteggio primo" (\{2, 3, 5\}) e $( B )$ l'evento "punteggio pari" (\{2, 4, 6\}).
+    - Calcoliamo $( \mathbb{P}(A|B) )$ sulla base delle frequenze osservate:
 $$
-Quindi:
-1. $P((A \cap B)|B) = P(A|B)$
-2. $P(A\cup B|B) = 1$
-### Valutazioni uniformi
-**Esempio**: Rotazione di uno spinner
-Facciamo ruotare velocemente uno spinner simmetrico imperniato su un goniometro e ne osserviamo l’angolo di arresto in $]-\frac{\frac{\pi}{2},\pi}{2}]$. Con quale probabilità l’angolo di arresto dello spinner sarà compreso tra $-\frac{\pi}{4} e \frac{\pi}{3}$ (estremi inclusi) supponendo che sia positivo?
-Notiamo preliminarmente che le valutazioni uniformi sono diffuse e quindi è *inessenziale* l’inclusione o meno degli estremi nell’intervallo di cui si calcola la probabilità e in quello al quale si condiziona.
-Prendiamo $]a,b] = ]-\frac{\pi}{2}, \frac{\pi}{2}]$ e con $\mathbb{P}$ *uniforme* troviamo:
-$$
-\mathbb{P}\left( \left[ -\frac{\pi}{4},\frac{\pi}{3} \right] | \left[ 0, \frac{\pi}{2} \right] \right) = \frac{\frac{\pi}{3}-0}{\frac{\pi}{2}-0} = \frac{2}{3}
-$$
-visto che $\left[ -\frac{\pi}{4}, \frac{\pi}{3} \right] \cap \left[0, \frac{\pi}{2}\right]= [0, \frac{\pi}{3}]$.
-In questo caso $\mathbb{P}\left( \left[ -\frac{\pi}{4},\frac{\pi}{3} \right] | \left[ 0, \frac{\pi}{2} \right] \right) > \mathbb{P}\left( \left[ -\frac{\pi}{4}, \frac{\pi}{3} \right] \right)$ perché:
-$$
-\mathbb{P}\left( \left[ -\frac{\pi}{4},\frac{\pi}{3} \right] \right) = \frac{\frac{\pi}{3}-\left( -\frac{\pi}{4} \right)}{\frac{\pi}{2}- \left( -\frac{\pi}{2} \right)} = \frac{\frac{7\pi}{12}}{\pi} = \frac{7}{12} < \frac{8}{12} = \frac{2}{3}
-$$
-### Valutazioni frequentiste
-se le probabilità degli eventi sono frequenze relative di realizzazione in precedenti ripetizioni del fenomeno:
-$$
-\mathbb{P}(E|H) = \frac{k_{E\cap H}}{k_{H}}, \quad E \in \digamma
-$$
-**Essempio**:
-Lanciamo un dado a sei facce caricato per ottenere 6 con cui, in una sequenza di lanci precedenti, abbiamo ottenuto settantanove volte 6, cinque volte 5, tre volte 4, sette volte 3, cinque volte 2 e una volta 1. Quanto valuteremo la probabilità che un punteggio pari sia primo?
-Prendiamo $S = \{1, 2, 3, 4, 5, 6\}, \digamma = \wp(S)$ e $\mathbb{P}$ specificata da:
-$$
-\begin{align}
-& \mathbb{P}\{1\}=0.01 \quad \mathbb{P}\{2\}=0.05 \quad \mathbb{P}\{3\} = 0.07\\
-&\mathbb{P}\{4\} = 0.03 \quad \mathbb{P}\{5\} = 0.05 \quad \mathbb{P}\{6\} = 0.79
-\end{align}
-$$
-senza considerazioni di simmetria. Posto $A = \text{"primo"} = \{2,3,5\}$ e $B = \text{"pari"} = \{2,4,6\}$, troviamo per la probabilità richiesta:
-$$
-\mathbb{P}(A|B) = \frac{k_{A\cap B}}{k_{B}} = \frac{k_{2}}{k_{2,4,6}} = \frac{5}{5+3+79} = \frac{5}{87} \backsimeq 0.057 = 5.7\%
+\mathbb{P}(A|B) = \frac{k_{A \cap B}}{k_B} = \frac{5}{5 + 3 + 79} = \frac{5}{87} \approx 0.057 \, (5.7\%)
 $$
 # Eventi indipendenti
-In uno spazio di probabilità $(S, \digamma, \mathbb{P})$, due eventi $E, F \in \digamma$ si dicono *stocasticamente indipendenti* sotto $\mathbb{P}$ o semplicemente *indipendenti* quando vale la fattorizzazione:
+Due eventi $( E, F \in \digamma )$ in uno spazio di probabilità $( (S, \digamma, \mathbb{P}) )$ sono *indipendenti* sotto $( \mathbb{P} )$ se:
 $$
 \mathbb{P}(E \cap F) = \mathbb{P}(E)\mathbb{P}(F)
 $$
-Può accadere in due modi:
-- **banalmente** per $\mathbb{P}(E)=0$ o $\mathbb{P}(F)=0$
-	- perché allora $\mathbb{P}(E \cap F) \leq min\{\mathbb{P}(E),\mathbb{P}(F)\}$ per monotonia e quindi necessariamente $\mathbb{P}(E \cap F)=0$
-- **significativamente** con:
-$$
-\begin{align}
-\mathbb{P}(E|F) \quad &= \quad \mathbb{P}(E) \\
-\mathbb{P(F|E)} \quad &= \quad \mathbb{P}(F)
-\end{align}
-$$
-se $min\{\mathbb{P}(E), \mathbb{P}(F)\}>0$.
-Scriveremo
-$$
-E \unicode{x2AEB} F
-$$
-per indicare che $E$ ed $F$ sono *indipendenti*, più precisamente
-$$
-E \unicode{x2AEB}_{\mathbb{F}} F
-$$
-per ricordare il ruolo di $\mathbb{P}$.
-Altrimenti scriveremo $E \not\unicode{x2AEB} F$ se $E$ ed $F$ sono *dipendenti*.
-In particolare:
-- $E$ ed $F$ sono *favorevolmente dipendenti* (sotto $\mathbb{P}$) quando
-$$
-\mathbb{P}(E\cap F) > \mathbb{P}(E)\mathbb{P}(F)
-$$
-cioè $\mathbb{P}(E|F)>\mathbb{P}(E)$ e $\mathbb{P}(F|E)>\mathbb{P}(F)$ nel caso significativo;
-- $E$ ed $F$ sono *sfavorevolmente dipendenti* (sotto $\mathbb{P}$) quando
-$$
-\mathbb{P}(E\cap F) < \mathbb{P}(E)\mathbb{P}(F)
-$$
-cioè $\mathbb{P}(E|F)<\mathbb{P}(E)$ e $\mathbb{P}(F|E)<\mathbb{P}(F)$ nel caso significativo;
-**Esempio**:
-Lanciamo un ordinario dado a sei facce e ne osserviamo il punteggio. Gli eventi $A = \text{"primi"}$ e $B = \text{"pari"}$ sono indipendenti?
-Presa $\mathbb{P}$ classica su tutte le parti di $S = \{1,2,3,4,5,6\}$:
-$$
-\begin{align}
-\mathbb{P}(A) &= \mathbb{P}\{2,3,5\} = \frac{3}{6} = \frac{1}{2} \\
-\mathbb{P}(B) &= \mathbb{P}\{2,4,6\} = \frac{3}{6} = \frac{1}{2} \\
-\mathbb{P}(A \cap B) &= \mathbb{P}\{2\} = \frac{1}{6} < \frac{1}{4} = \frac{1}{2} \times \frac{1}{2}
-\end{align}
-$$
-quindi $A \not\unicode{x2AEB} B$, in particolare $A$ e $B$ sono *sfavorevolmente dipendenti*.
-Tuttavia $A$ e $B$ sono *logicamente indipendenti*, dal momento che che i loro quattro costituenti sono tutti non vuoti:
-$$
-\overline{A} \cap \overline{B} = \{1\}, \overline{A} \cap B = \{4,6\} , A\cap \overline{B} = \{3,5\}, A \cap B = \{2\}
-$$
-## Invarianza per negazione dell’indipendenza tra due eventi
-$$
-E \unicode{x2AEB} F \Rightarrow E \unicode{x2AEB} \overline{F} 
-$$
-Dimostrazione:
-$$
-\begin{align}
-\mathbb{P}(E \cap \overline{F}) &= \mathbb{P}(E) - \mathbb{P}(E \cap F) \\
-&= \mathbb{P}(E) - \mathbb{P}(E) - \mathbb{P}(F) \\
-&= \mathbb{P}(E)\{1-\mathbb{P}(F)\} \\
-&= \mathbb{P}(E)\mathbb{P}(\overline{F})
-\end{align}
-$$
-Vale anche il viceversa, perché $\overline{\overline{F}} = F$, quindi:
-$$
-E \unicode{x2AEB} F \iff E \unicode{x2AEB} \overline{F} \iff \overline{E} \unicode{x2AEB} \overline{F} \iff \overline{E} \unicode{x2AEB} F 
-$$
-$\unicode{x2AEB}$ è una *relazione simmetrica*, quindi affermare che $E$ ed $F$ sono indipendenti sotto $\mathbb{P}$ corrisponde ad affermare che $\mathbb{P}$ si fattorizza su tutti i costituenti di $E$ ed $F$.
-**Si noti la differenza**: nel caso del dado equilibrato abbiamo scoperto che “pari” e “centrale” sono eventi indipendenti; nel caso della coppia abbiamo *imposto* che $F_{1}$ e $F_{2}$ siano indipendenti (ed equiprobabili).
-Una differenza analoga a quella che passa tra *calcolare* $\mathbb{P}(E|H)$ a partire da $\mathbb{P}(E\cap H)$e *assegnare* $\mathbb{P}(E|H)$ per specificare $\mathbb{P}(E\cap H)$, supponendo che $\mathbb{P}(H)>0$.
-**Esempio**:
-Una coppia ha due figli. Sappiamo che almeno una è femmina. Con quale probabilità sono due femmine? Troviamo subito
-$$
-\begin{align}
-\mathbb{P}(F_{1}\cup F_{2}) &= \mathbb{P}(F_{1}) + (\overline{F_{1}}\cap F_{2}) = \frac{1}{2} + \frac{1}{4} = \frac{3}{4} \\
-\mathbb{P}(F_{1}\cap F_{1}|F_{1}\cup F_{2}) &= \frac{\mathbb{P}(F_{1}\cap F_{2})}{\mathbb{P}(F_{1}\cup F_{2})} = \frac{1/4}{3/4} =\frac{1}{3}\dots
-\end{align}
-$$
-dunque $\mathbb{P}(F_{1}\cap F_{2}|F_{1}\cup F_{2}) = \frac{1}{3} \neq \frac{1}{2} = \mathbb{P}(F_{1}|F_{2}) = \mathbb{P}(F_{2}|F_{1})!$
-Per comprendere questo paradossoa ragioniamo su come sappiamo che almeno una figlia è femmina e ipotizziamo di averla incontrata, introducendo la partizione
-$$
-\begin{align}
-H &= \text{"incontro figlia femmina"} \\
-\overline{H}  &= \text{"incontro figlio maschio"}
-\end{align}
-$$
-nel diagramma di Venn (in modo tale che $F_{1} \cap F_{2} \subset H\subset F_{1}\cup F_{2}$).
-Supponiamo:
-$$
-\mathbb{P}(H|\overline{F_{1}}\cap F_{2}) = p = \mathbb{P}(H\cap F_{1}\cap F_{2}) \quad \text{ con } \quad 0 < p < 1
-$$
-Troviamo
-$$
-\begin{align}
-\mathbb{P}(F_{1}\cap F_{2}|H) &= \frac{\mathbb{P}(F_{1}\cap F_{2}\cap H)}{\mathbb{P}(H)} \\
-&= \frac{\mathbb{P}(F_{1}\cap F_{2})}{\mathbb{P}(H|\overline{F_{1}}\cap F_{2})\mathbb{P}(\overline{F_{1}}\cap F_{2}) + \mathbb{P}(F_{1}\cap F_{2}) + \mathbb{P}(H|F_{1}\cap \overline{F_{2}})\mathbb{P}(F_{1}\cap \overline{F_{2}})} \\
-&= \frac{1/4}{p \frac{1}{4}+\frac{1}{4}+p \frac{1}{4}} = \frac{1}{1+2p} = \begin{cases} 1 &\text{se } p \to 0 \\ \frac{1}{2} &\text{se } p \to \frac{1}{2} \\ \frac{1}{3} &\text{se } p \to 1 \end{cases}
-\end{align} 
-$$
-
---- 
-Specificare $\mathbb{P}$ sui costituenti $E$ ed $F$ supponendoli indipendenti è sempre possibile, ma non sempre (pienamente) appropriato.
-Fare diversamente richiede di valutare tipo e forza della dipendenza:
-$$
-\mathbb{P}(E \cap F) = \textcolor{red}{d}\mathbb{P}(E)\mathbb{P}(F)
-$$
-con dipendenza sfavorevole per $d < 1$ e favorevole per $d > 1$; il *fattore di dipendenza* $d$ va scelto garantendo la coerenza di $\mathbb{P}$, cioé:
-$$
-max \left\{ 0, \frac{1}{\mathbb{P}(E)} + \frac{1}{\mathbb{P}(F)} - \frac{1}{\mathbb{P}(E)\mathbb{P}(F)} \right\} < d < min \left\{ \frac{1}{\mathbb{P}(E)}, \frac{1}{\mathbb{P}(F)} \right\}.
-$$
-Diremo che $E$ ed $F$ sono *stocasticamente indipendenti* in modo sostanziale quando:
-$$
-E \unicode{x2AEB} F \text{ con } 0 < \mathbb{P}(E), \mathbb{P}(F) < 1
-$$
-**Esempio**: interruttori elettrici in serie
-Un circuito elettrico è formato da due interruttori *uno di seguito all’altro*: fa passare corrente quando *entrambi* gli interruttori sono chiusi. Supponiamo che (in un dato istante) ciascun interruttore sia chiuso con probabilità $p = 0.8$ indipendentemente dall’altro interruttore. Con quale probabilità (in tale istante) passerà corrente nel circuito?
-Posto $C_{i} = \text{ "i-esimo interruttore chiuso"}, i = 1,2$, in un diagramma di Venn, assegnamo $\mathbb{P}$ su $\digamma = \omega (C_{1},C_{2})$ con $C_{1} \unicode{x2AEB} C_{2}$ e $\mathbb{P}(C_{1})=\mathbb{P}(C_{2})=p$. Per l’evento di interesse $\color{yellow}C_{1} \cap C_{2}$ troviamo:
-$$
-\mathbb{P}(C_{1}\cap C_{2}) = \mathbb{P}(C_{1})\mathbb{P}(C_{2}) = p^{2} 
-$$
-e quindi $\mathbb{P}(C_{1}\cap C_{2}) = (0.8)^{2} = 0.64 < 0.8$.
-**Esempio**: interruttori elettrici in parallelo
-Un circuito elettrico è formato da due interruttori *uno di fianco all’altro*: fa passare corrente quando *almeno uno* degli interruttori è chiuso. Supponiamo che (in un dato istante) ciascun interruttore sia chiuso con probabilità $p = 0.8$ indipendentemente dall’altro interruttore. Con quale probabilità (in tale istante) passerà corrente nel circuito?
-Probabilità che l'interruttore sia **aperto**: $1 - p = 1- 0.8 = 0.2$
-$\mathbb{P}(\text{nessun interruttore chiuso}) = (0.2)^{2} = 0.04$
-La probabilità che **almeno uno degli interruttori sia chiuso** (e quindi che passi corrente) è il complementare di questa probabilità:
-$$
-\mathbb{P}(\text{passa corrente}) = 1 - \mathbb{P}(\text{nessun interruttore chiuso}) = 1- 0.04 = 0.96
-$$
-## Simulare la probabilità condizionata
-**Esempio 2.27**
-Lanciamo 2 dadi. Si stima la probabilità condizionata che la somma dei dadi sia almeno 10, dato che almeno uno dei dadi è un 6.
-Per prima cosa, stimiamo la probabilità che la somma dei dadi sia almeno 10 _e_ che almeno uno dei dadi sia 6.
+**Casi di indipendenza:**
+1. **Indipendenza banale:** quando $( \mathbb{P}(E) = 0 )$ o $( \mathbb{P}(F) = 0 )$.
+   - Per monotonia, $( \mathbb{P}(E \cap F) = 0 )$.
+2. **Indipendenza significativa:** quando $( \mathbb{P}(E) > 0 )$ e $( \mathbb{P}(F) > 0 )$, e si ha:
+   $$
+   \mathbb{P}(E|F) = \mathbb{P}(E) \quad \text{e} \quad \mathbb{P}(F|E) = \mathbb{P}(F)
+   $$
+**Notazioni:**
+- $( E \unicode{x2AEB} F )$: indica indipendenza tra $( E )$ e $( F )$.
+- $( E \unicode{x2AEB}_{\mathbb{F}} F )$: indica indipendenza rispetto a una probabilità $( \mathbb{P} )$.
+- $( E \not\unicode{x2AEB} F )$: indica dipendenza tra $( E )$ e $( F )$.
+**Tipi di dipendenza:**
+- **Dipendenza favorevole:** $( \mathbb{P}(E \cap F) > \mathbb{P}(E)\mathbb{P}(F) )$.
+- **Dipendenza sfavorevole:** $( \mathbb{P}(E \cap F) < \mathbb{P}(E)\mathbb{P}(F) )$.
+**Esempio: Lancio di un dado:**
+Eventi $( A )$ ("primi") e $( B )$ ("pari"):
+- $( \mathbb{P}(A) = \frac{1}{2} )$, $( \mathbb{P}(B) = \frac{1}{2} )$.
+- $( \mathbb{P}(A \cap B) = \frac{1}{6} < \frac{1}{4} )$ ⟹ $( A \not\unicode{x2AEB} B )$ (dipendenza sfavorevole).
+## Invarianza per negazione
+- Se $( E \unicode{x2AEB} F )$, allora $( E \unicode{x2AEB} \overline{F} )$ e viceversa.
+- Indipendenza tra due eventi è una relazione simmetrica.
+ **Esempi di circuiti elettrici:**
+- **Serie:** corrente passa se entrambi gli interruttori sono chiusi.
+  - $( \mathbb{P}(C_1 \cap C_2) = p^2 )$.
+- **Parallelo:** corrente passa se almeno un interruttore è chiuso.
+  - $( \mathbb{P}(\text{corrente}) = 1 - (1 - p)^2 )$.
+### Simulazione in R per la probabilità condizionata
+Calcolo della probabilità condizionata per due dadi:
+1. Stima di $( \mathbb{P}(A \cap B) )$ con simulazione.
+2. Stima di $( \mathbb{P}(B) )$.
+3. Probabilità condizionata: $( \mathbb{P}(A | B) = \mathbb{P}(A \cap B) / \mathbb{P}(B) )$.
 ```r
+# Stima della probabilità che la somma dei dadi sia almeno 10 e almeno uno dei dadi sia un 6
 eventAB <- replicate(10000, {
   dieRoll <- sample(1:6, 2, replace = TRUE)
   (sum(dieRoll) >= 10) && (6 %in% dieRoll)
 })
 probAB <- mean(eventAB)
-```
-Successivamente, stimiamo la probabilità che almeno uno dei dadi sia un 6.
-```r
+
+# Stima della probabilità che almeno uno dei dadi sia un 6
 eventB <- replicate(10000, {
-  die_roll <- sample(1:6, 2, replace = TRUE)
-  6 %in% die_roll
+  dieRoll <- sample(1:6, 2, replace = TRUE)
+  6 %in% dieRoll
 })
 probB <- mean(eventB)
+
+# Calcolo della probabilità condizionata
+conditional_prob <- probAB / probB
+conditional_prob
 ```
-Infine, prendiamo il quoziente.
-```r
-probAB / probB
-```
-	## [1] 0.4560601
-La risposta è:
-$$
-\mathbb{P}(A \cap B) / \mathbb{P}(B) = \frac{5/36}{11/36} = \frac{5}{11} \approx 0.4545
-$$
 # Formula di Bayes
-Siano $H$ e $E$ due eventi con probabilità non nulle. La [[Statistica#Probabilità condizionata|probabilità condizionata]] di $H$ rispetto a $E$ è uguale al prodotto tra la probabilità condizionata di $E$ rispetto a $H$ e la probabilità di $H$, tutto fratto la probabilità di $E$:
-**Formula di Bayes**
-$H = \text{"ipotesi"}$
-$E = \text{"evidenza"}$
+La **formula di Bayes** permette di calcolare la probabilità di un'ipotesi $( H )$ (ad esempio, una condizione medica) alla luce di un'evidenza $( E )$ osservata (come un risultato positivo al test). Viene formulata così:
 $$
-\mathbb{P}(H|E) = \frac{\mathbb{P}(E|H) \cdot \mathbb{P}(H)}{\mathbb{P}(E)} \text{ con } \mathbb{P}(H), \mathbb{P}(E) \neq 0
+\mathbb{P}(H|E) = \frac{\mathbb{P}(E|H) \cdot \mathbb{P}(H)}{\mathbb{P}(E)}
 $$
-**Esempio**: 20178 US midterm elections
-Sappiamo chea nelle elezioni intermedie statunitensi del 2018 il *44%* dei votanti era Republican, il *46%* dei votanti era Gun Owner e il *61%* dei Gun Owner era Republican.
-*Quale percentuale dei Republican era Gun Owner?*
-Prendiamo un diagramma di Venn con $R = \text{"Republican"}$ e $G = \text{"Gun Ownder"}$, calcoliamo:
+- $( \mathbb{P}(H|E) )$: probabilità dell'ipotesi dato l'evidenza,
+- $( \mathbb{P}(E|H) )$: probabilità dell'evidenza se l'ipotesi è vera,
+- $( \mathbb{P}(H) )$: probabilità a priori dell'ipotesi,
+- $( \mathbb{P}(E) )$: probabilità complessiva dell'evidenza.
+**Esempi:**
+1. **Elezioni USA 2018**: 
+   - Si vuole calcolare la probabilità che un elettore Republican sia un Gun Owner.
+   - Dati: $( \mathbb{P}(R) = 0.44 )$, $( \mathbb{P}(G) = 0.46 )$, $( \mathbb{P}(R|G) = 0.61 )$.
+   - Calcolo: $( \mathbb{P}(G|R) = \frac{\mathbb{P}(R|G) \cdot \mathbb{P}(G)}{\mathbb{P}(R)} \approx 0.64 = 64\% )$.
+2. **Screening per una malattia rara**:
+   - Calcolo della probabilità che un amico sia malato dopo un test positivo.
+   - Dati: $( \mathbb{P}(M) = 0.02 )$, $( \mathbb{P}(T|M) = 0.999 )$, $( \mathbb{P}(\overline{T}|\overline{M}) = 0.975 )$.
+   - Si trova che $( \mathbb{P}(M|T) \approx 0.45 = 45\% )$, quindi la probabilità di malattia aumenta ma non è definitiva.
+3. **Correzione automatica**:
+   - L'utente digita “cartello”; si valutano tre ipotesi: "castello", "cartello" e "martello".
+   - Le probabilità a posteriori vengono calcolate con la formula di Bayes estesa a tre ipotesi, ottenendo che l'ipotesi "cartello" è la più probabile.
+### Formula di Bayes con $( k )$ Spiegazioni
+Per $( k )$ ipotesi, si generalizza la formula così:
 $$
-\mathbb{P}(G|R) = \frac{\mathbb{P}(R|G)\mathbb{P}(G)}{\mathbb{P}(R)} = \frac{0.61 \times 0.46}{0.44} \backsimeq 0.64 = 64\%
+\mathbb{P}(H_{i}|E) = \frac{\mathbb{P}(E|H_{i}) \cdot \mathbb{P}(H_{i})}{\sum_{j=1}^{k} \mathbb{P}(E|H_{j}) \cdot \mathbb{P}(H_{j})} \quad \text{per ogni } i = 1, \dots, k
 $$
-**Esempio**: campagna di sceening
-Nell’ambito di una campagna di screening che mira a identificare precocemente una malattia rara, della quale sappiamo che colpisce il *2%* della popolazione, un nostro amico è risultato positivo al test.
-Il test funziona correttamente sul *99.9%* dei soggetti malati e sul *97.5%* dei soggetti sani. Rattristati, ma determinati a valutare razionalmente, ci chiediamo quale sia la probabilità che il nostro amico sia malato.
-Prendiamo un diagramma di Venn con $M = \text{"soggetto malato"}$ e $T = \text{"test positivo"}$, riassumiamo i dati:
+Questa versione è utile in applicazioni come il riconoscimento automatico e la diagnosi differenziale, dove si confrontano più ipotesi.
+# Probabilità basata sui Conteggi
+La probabilità di un evento $E$ in uno spazio campionario finito $S$ si calcola come:
 $$
-\begin{align}
-\mathbb{P}(M) &= 0.02 && \text{probabilità di matattia} \\
-\mathbb{P}(T|M) &= 0.999 && \text{verosimiglianza dell’ipotesi di malattia} \\
-\mathbb{P}(\overline{T}|\overline{M}) &= 0.975 && \text{verosimiglianza dell’ipotesi di salute} 
-\end{align}
+P(E)=\frac{|E|}{|S|}
 $$
-troviamo la *probabilità iniziale* di salute con l'inverso di $M$:
-$$
-\mathbb{P}(\overline{M}) = 1 - \mathbb{P}(M) = 1 - 0.02 = 0.98 = 98\%
-$$
-Siamo interessati alla *probabilità finale* di malattia $\mathbb{P}(M|T)$ o alla *probabilità finale* di salute $\mathbb{P}(\overline{M}|T) = 1 - \mathbb{P}(M|T)$:
-$$
-\begin{align}
-\mathbb{P}(M|T) &= \frac{\mathbb{P}(T|M)\mathbb{P(M)}}{\mathbb{P}(T|M)\mathbb{P}(M)\mathbb{P}(T|\overline{M})\mathbb{P}(\overline{M})} \\
-&= \frac{0.999 \times 0.02}{0.999 \times 0.02 \times 0.025 \times 0.98} \\
-&= \frac{1998}{4448} \backsimeq 0.45 = 45\%
-\end{align}
-$$
-di modo che è ancora più probabile che il nostro amico sia sano! Come si concilia questo risultato con le ottime prestazioni del test?
-La rarità della malattia attenua la verosimiglianza $\mathbb{P}(T|M)$ e amplifica la verosimiglianza $\mathbb{P}(T|\overline{M})$.
-Il test fornisce comunque un segnale forte: la probabilità di malattia *passa dal 2% al 45%* e ciò suggerisce un approfondimento clinico.
-## Con due spiegazioni
-La formula di Bayes per due spiegazioni si può scrivere come:
-$$
-\frac{\mathbb{P}(H|E)}{\mathbb{P}(\overline{H}|E)} = \frac{\mathbb{P}(E|H)}{\mathbb{P}(E|\overline{H})} \times \frac{\mathbb{P}(H)}{\mathbb{P}(\overline{H})}
-$$
-che chiamiamo *formula di Bayes sulla scala dei pronoscici*: il membro di sinistra è il *pronostico finale* (posterior odds) di $H$, il primo fattore nel membri di destra è il *rapporto di verosimiglianza* (likelihood ratio) tra $H$ e $\overline{H}$, il secondo fattore nel membro di destra è il *pronostico iniziale* (prior odds) di $H$.
-Ogni probabilità $p \in ]0,1[$ corrisponde a un pronostico $r = p/(1-p)$ e si può scrivere come $p = r/(1+r)$ dove $r \in \mathbb{R}^{*}_{+} = \{x \in\mathbb{R} | x > 0\}$.
-A partire da $\mathbb{P}(M)/\mathbb{P}(\overline{M}) = 2/98 = 1/49 \backsimeq 0.0204$ e $\mathbb{P}(T|M)/\mathbb{P}(T|\overline{M}) = 999/25 \backsimeq 40.0$ troviamo:
-$$
-\frac{\mathbb{P}(H|E)}{\mathbb{P}(\overline{H}|E)} = \frac{999}{25} \times \frac{1}{49} \backsimeq 40 \times 0.0204 = 0.816
-$$
-con la formula di Bayes sulla scala dei prnostici e confermiamo che $\mathbb{P}(H|E) = 0.816/(1 + 0.816) = 1/1.816 \backsimeq 0.45 = 45\%$.
-Notiamo la separazione tra il segnale nei dati e le informazioni iniziali nella fattorizzazione sulla scala dei pronostici:
-- Il *segnale nei dati* è rappresentato dal fattore $999/25 \simeq 40$;
-- Le *informazioni iniziali* sono rappresentate dal fattore $1/49 \simeq 0.0204$.
-## Con più spiegazioni
-**Esempio**: correzione automatica
-L’utente di un computer ha digitato la parola “cartello”. Supponiamo che questa sia la manifestazione della sua volontà di digitare una tra le parole “castello”, “cartello” o “martello”.
-$E = \text{"digita cartello"}$
-$H_{1} = \text{"vuole castello"}$
-$H_{1} = \text{"vuole cartello"}$
-$H_{3} = \text{"vuole martello"}$
-$$
-\mathbb{P}(H_{2}|E) = \frac{\mathbb{P}(E|H_{2})\mathbb{P}(H_{2})}{\mathbb{P}(E)}
-$$
-![[Pasted image 20241023174520.png|250]]
-$$
-\mathbb{P}(E) = \mathbb{P}(E\cap H_{1}) + \mathbb{P}(E \cap H_{2}) + \mathbb{P}(E \cap H_{3})
-$$
-Per la regola delle probabilità totali:
-$$
-\mathbb{P}(E) = \mathbb{P}(E|H_{1})\mathbb{P}(H_{1}) + \mathbb{P}(E|M_{2})\mathbb{P}(H_{2}) + \mathbb{P}(E|H_{3})\mathbb{P}(H_{3})
-$$
-Dove: (valutazione frequentistica)
-$$
-\begin{align}
-\mathbb{P}(H_{1}) &= \frac{153}{175} \quad \text{castello} \\
-\mathbb{P}(H_{2}) &= \frac{9}{175} \quad \text{cartello} \\
-\mathbb{P}(H_{3}) &= \frac{13}{175} \quad \text{martello}
-\end{align}
-$$
-$\mathbb{P}(H_{1})+\mathbb{P}(H_{2})+\mathbb{P}(H_{3}) = \frac{175}{175} = 1$
-(superficiale) Valutazione soggettiva
-$$
-\begin{align}
-\mathbb{P}(E|H_{1}) &= 0.01 &&\text{"r" vicina a "s"}\\
-\mathbb{P}(E|H_{2}) &= 0.95 &&\text{senza errori}\\
-\mathbb{P}(E|H_{3}) &= 0.001 &&\text{"m" lontana da "c"}
-\end{align}
-$$
-$$
-\mathbb{P}(H_{2}|E) = \frac{\frac{9}{175} \cdot \frac{95}{100}}{\frac{153}{175}\cdot \frac{1}{100} + \frac{9}{175} \cdot \frac{95}{100} + \frac{13}{175} \cdot \frac{1}{1000}} \approxeq 0.847
-$$
-$$
-\mathbb{P}(H_{1}|E) = \dots = 0.152
-$$
-$$
-\mathbb{P}(H_{3}|E) = \dots = 0.001
-$$
-Quindi la formula di Bayes per *tre spiegazioni*:
-$$
-\begin{gather}
-\mathbb{P}(H_{i}|E) \propto \mathbb{P}(E|H_{i})\mathbb{P}(H_{i}) \\
-\text{posterioir} \propto \text{likelihood} \times \text{prior}
-\end{gather}
-$$
-### Formula di Bayes con $k$ spiegazioni
-$$
-\mathbb{P}(H_{i}|E) = \frac{\mathbb{P}(E|H_{i})\mathbb{P}(H_{i})}{\sum_{i=1}^{k} \mathbb{P}(E|H_{i})\mathbb{P}(H_{i})} \quad i = 1,\dots,k
-$$
-# Conteggi
-Prendiamo uno spazio campionario $S$ costituito da eventi $E$, ricordiamo che $\mathbb{P}(E) = \frac{|E|}{|S|}$.
-**Regola del prodotto**:
-Se esistono $m$ modi di fare qualcosa, e per ognuno di questi $m$ modi ci sono $n$ modi per fare un'altra cosa, allora ci sono un massimo $m \times n$ modi per fare entrambe le cose.
+dove $∣E∣$ è il numero di risultati favorevoli e $∣S∣$ è il numero totale di risultati possibili.
+## Regola del prodotto:
+Se esistono $m$ modi di fare qualcosa e $n$ modi per fare un'altra cosa, il numero di modi per fare entrambe le cose è $m \times n$.
 **Combinazioni**:
-Il numero di modi di scegliere $k$ oggetti distinti da un insieme di $n$ oggetti:
+Il numero di modi di scegliere $k$ oggetti distinti da un insieme di $n$ oggetti è dato dal coefficiente binomiale:
 $$
 \dbinom{n}{k} = \frac{n!}{k!(n-k)!}
 $$
-$\dbinom{n}{k}$ in `R`:
+In `R`:
 ```r
 choose(n,k)
 ```
 **Esempio**:
-Lanciamo una moneta 10 volte, la regola del prodotto ci dice che si sono $2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 2^{10} = 1024$ possibili risultati.
+Lanciamo una moneta 10 volte, la regola del prodotto ci dice che si sono $2^{10} = 1024$ possibili risultati.
 Sia $E$ l'evento "abbiamo ottenuto esattamente 3 volte testa" (HHHTTTTTTT or TTTHTHTTHT, ...). Quale è la probabilità di $E$? $P(E) =$
 $$
 |E| = \dbinom{10}{3} = \frac{10 \times 9 \times 8}{3\times 2 \times 1} = 120
 $$
-quindi $P(E) = \frac{120}{1024} \approx 0.117$.
+quindi:
+$$
+P(E) = \frac{120}{1024} \approx 0.117
+$$
 ```r
 event <- replicate(10000, {
   flips <- sample(c("H", "T"), 10, replace = TRUE)
@@ -505,10 +291,7 @@ event <- replicate(10000, {
 })
 mean(event)
 ```
-```
-## [1] 0.1211
-```
-
+	## [1] 0.1211
 ```r
 ## Title: Counting
 ## Author: Luca La Rocca
@@ -645,9 +428,9 @@ cat("total outcomes =", choose(length(Scard), 3), fill=TRUE)
 ```
 # Massa di probabilità e valore atteso
 ## Variabili casuali discrete
-In statistica e probabilità, una **variabile casuale** (o **variabile aleatoria**) è una funzione che associa a ciascun elemento di uno spazio campionario $S$ un numero reale. Le variabili casuali sono denotate con lettere maiuscole.
-## Massa di probabilità
-La **funzione di massa di probabilità** (pmf) è una funzione associata a una variabile casuale discreta. Essa fornisce la probabilità che la variabile casuale assuma un determinato valore $x$. La pmf di una variabile casuale $X$ è definita come:
+Una variabile casuale $X$ è una funzione che associa a ciascun risultato di uno spazio campionario $S$ un numero reale,  rappresentando quantitativamente l'esisto di un fenomeno aleatorio.
+## Funzione di Massa di probabilità
+La **funzione di massa di probabilità** (pmf) $p(x)$ di una variabile casuale discreta $X$ assegna a ogni valore $x$ la probabilità che $X$ assuma qual valore:
 $$
 p(x) = P(X = x)
 $$
@@ -690,15 +473,15 @@ $$
 P(X=2) = P(HHT) + P(HTH) + P(THH) = \frac{1}{8} + \frac{1}{8} + \frac{1}{8} = \frac{3}{8}
 $$
 ## Valore atteso per variabili discrete
-La definizione formale del valore atteso per una variabile casuale discreta $X$ con funzione di massa di probabilità (pmf) $p$ è:
+Il **valore atteso** di una variabile casuale discreta $X$, con funzione di massa di probabilità $p$, è:
 $$
 E[X] = \sum_{x}x \cdot p(x)
 $$
-dove la somma è presa su tutti i valori possibili della variabile casuale $X$, a condizione che questa somma esista.
+Questa somma pondera ogni valore $x$ di $X$ con al sua probabilità $p(x)$, fornendo una misura media degli esiti attesi.
 **Teorema 3.2** La **Legge dei Grandi Numeri**
-La Legge dei Grandi Numeri afferma che la media di $n$ osservazioni di una variabile casuale $X$ converge al valore atteso $E[X]$ quanto $n \to \infty$, assumendo che $E[X]$ sia definito:
+La **Legge dei Grandi Numeri** afferma che la media di $n$ osservazioni di $X$ converge al valore atteso $E[X]$ quando $n$ tende a infinito:
 $$
-\text{Se } n \to \infty, \quad \frac{1}{n}\sum_{i=1}^{n} X_{i} \to E[X]
+\text{Per } n \to \infty, \quad \frac{1}{n}\sum_{i=1}^{n} X_{i} \to E[X]
 $$
 dove $X_{i}$ è il valore osservato della variabile casuale nella $i$-esima osservazione.
 **Esempio 3.9**
@@ -707,54 +490,47 @@ Usando la simulazione, determiniamo il valore atteso di un rotolo di dado. Ecco 
 rolls <- sample(1:6, 30, replace = TRUE)
 rolls
 ```
-```
-##  [1] 3 3 3 3 1 5 1 2 2 3 3 6 5 1 1 6 6 5 2 6 5 2 5 2 6 1 3 6 6 5
-```
+	##  [1] 3 3 3 3 1 5 1 2 2 3 3 6 5 1 1 6 6 5 2 6 5 2 5 2 6 1 3 6 6 5
 ```r
 mean(rolls)
 ```
-```
-## [1] 3.6
-```
+	## [1] 3.6
 # Variabili Casuali Binomiali e Geometriche
 Sono modelli comuni e utili per molte situazioni reali. Entrambe coinvolgono esperimenti chiamati **prove di Bernoulli**.
 # !TODO per esame
 ## Prove di Bernoulli
-Una **prova di Bernoulli** è un esperimento che può risultare in due esiti distinti, "successo" e "fallimento". La probabilità di un successo è rappresentata con $p$, mentre la probabilità di fallimento è quindi:
-$$
-1-p
-$$
+Una **prova di Bernoulli** è un esperimento con due esiti distinti, "successo" con probabilità $p$ e "fallimento" con probabilità $1-p$.
 ## Variabili Casuali Binomiali
-È utilizzata per contare il numero di successi in un numero fisso di prove di Bernoulli. La variabile casuale $X$ che rappresenta il numero di successi in $n$ prove di Bernoulli ([[Statistica#Schemi di Bernoulli finiti|finite]]).
+Le variabili binomiali contano il numero di successi in un numero finito $n$ di prove di Bernoulli indipendenti, ciascuna con la stessa probabilità di successo $p$.
 ### Schemi di Bernoulli finiti
-Un **schema di Bernoulli finito** consiste in un numero fisso di prove $n$, ciascuna con una probabilità di successo $p$ e una probabilità di fallimento $1−p$. Questo schema è descritto dalla variabile casuale binomiale $X$, che rappresenta il numero di successi in $n$ prove.
+Un **schema di Bernoulli finito** descrive un processo con un numero fisso di prove. La variabile casuale $X$ rappresenta il numero di successi in $n$ prove, e segue una **distribuzione binomiale**:
 $$
 P(X=k) = \dbinom{n}{k} p^{k} (1-p)^{n-k}, \quad k=0,1,\dots,n
 $$
-- $\dbinom{n}{k}$ *variabile binomiale*: rappresenta il numero di modi in cui possono verificarsi $k$ successi in $n$ prove.
+- $\dbinom{n}{k}$ *variabile binomiale*: rappresenta il numero di modi in cui possono ottenere $k$ successi su $n$ prove.
 - $k$ è il numero di successi (con $k = 0,1,2,\dots,n)$.
 - $p$ è la probabilità di successo in ogni prova.
 A volte si scrive $X \sim Binom(n,p)$, $X$ segue una **distribuzione binomiale** con parametri $n$ e $p$:
 - $n$: numero prove di Bernoulli;
 - $p$: **probabilità di successo** in ogni prova.
 **Teorema 3.4**:
-Sia $X$ una variabile binomiale casuale, con $n$ prove e $p$ probabilità di successo, allora:
+Se $X \sim Binom(n,p)$, allora il valore atteso di $X$ è:
 $$
 E[X] = np
 $$
 ## Variabili Casuali Geometriche
-Conta il numero di prove di Bernoulli fino al primo successo. Se $Y$ rappresenta il numero di prove fino al primo successo ([[Statistica#Schemi di Bernoulli infiniti|Schemi di Bermoulli infiniti]]).
+Le variabili geometriche contano il numero di prove di Bernoulli necessarie fino al primo successo.
 ### Schemi di Bernoulli infiniti
-Un **schema di Bernoulli infinito** prevede un numero potenzialmente *infinito* di prove. In questo schema, si continua a eseguire prove di Bernoulli fino a quando non si ottiene il primo successo. La variabile casuale che descrive il numero di prove necessarie fino al primo successo segue una distribuzione geometrica.
+Uno **schema di Bernoulli infinito** si basa su un numero indefinito di prove, eseguite finché non si ottiene il primo successo. La variabile casuale $Y$ che rappresenta il numero di prove fino al primo successo segue una **distribuzione geometrica**:
 $$
 P(Y=k) = (1-p)^{k-1}p, \quad k=1,2,3,\dots 
 $$
 - $p$  è la probabilità di successo in ciascuna prova.
-- $(1-p)^{x}$ *variabile geometrica*: appresenta la probabilità di ottenere $x$ fallimenti prima di un successo.
+- $(1-p)^{k-1}$ *variabile geometrica*: appresenta la probabilità di ottenere $k-1$ fallimenti prima del primo successo.
 **Teorema 3.6**:
-Sia $X$ una variabile geometrica casuale, con $p$ probabilità di successo, allora:
+Se $Y \sim Geom(p)$, allora il valore atteso di $Y$ è:
 $$
-E[X] = \frac{(1-p)}{p}
+E[X] = \frac{1}{p}
 $$
 ```r
 ## Title: Binomial and geometric variables
@@ -861,36 +637,36 @@ dev.off()
 ```
 # Trasformazioni e variabilità
 ## Scarti quadratici e media
-Consideriamo $\mu_{X} = E[X]$ e $\mu_{Y} = E[Y]$, le medie attese dei ricavi per i due prodotti. Gli scarti quadratici dai valori attesi per ciascuna variabile sono dati da:
+Gli **scarti quadratici** rappresentano la distanza tra un valore osservato e il valore medio (o atteso) di una variabile aleatoria. Vengono utilizzati per misurare la dispersione dei valori rispetto alla loro media, ed essendo elevati al quadrato, eliminano i segni negativi. Gli scarti quadratici di $X$ e $Y$ rispetto alle loro medie $\mu_{X}$ e $\mu_{Y}$​ sono:
 $$
 (X-\mu_{X})^{2} \quad \text{e} \quad (Y - \mu_{Y})^{2}  
 $$
-Queste espressioni rappresentano la distanza al quadrato tra il ricavo osservato e il suo valore medio. Questi scarti quadratici servono a misurare la dispersione o variabilità attorno alla media senza cancellare gli effetti di valori estremi (perché il quadrato elimina i segni negativi).
+Questi valori servono per calcolare la **varianza** e altre misure di dispersione.'
 ## Trasformazioni di Variabili Aleatorie
-Gli scarti quadratici sono anche esempi di **trasformazioni** delle variabili aleatorie $X$ e $Y$, in cui la funzione $g(X) = (X - \mu_{X})^{2}$ è applicata a $X$ e produce una nuova variabile aleatoria, $g(X)$, che rappresenta lo scarto quadratico.
-Queste trasformazioni possono essere utili in contesti statistici per valutare la distanza dal valore medio. Analogamente, altre trasformazioni come il valore assoluto $∣X−\mu_{X}∣$ possono essere utili in altre situazioni per ridurre la sensibilità ai valori estremi.
+Lei **trasformazioni** di una variabile aleatoria come $g(X) = (X - \mu_{X})^{2}$ o $∣X−\mu_{X}∣$ è sono utili per analizzare la **dispersione** o per ridurre l'influenza dei valori estremi. Applicando una funzione a una variabile aleatoria, otteniamo una nuova variabile aleatoria, come nel caso della trasformazione degli scarti quadratici, che misura quanto i valori si discostano dalla media.
 ## Legge dello Statistico Inconsapevole
-La **legge dello statistico inconsapevole** afferma che per calcolare l'attesa di una funzione di una variabile aleatoria, basta la distribuzione di quella variabile e non serve conoscere esplicitamente la funzione. Per esempio, se vogliamo trovare l’attesa di $(X - \mu_{X})^{2}$, non serve calcolare ogni valore di $(X - \mu_{X})^{2}$ ma è sufficiente conoscere la distribuzione di $X$ e applicare:
+La **legge dello statistico inconsapevole** ci dice che per calcolare l'attesa di una funzione di una variabile aleatoria, non dobbiamo calcolare esplicitamente i valori della funzione, possiamo usare direttamente la distribuzione della variabile aleatoria:
 $$
 E[(X−\mu_{X})^{2} ]=Var(X)
 $$
+Quindi, possiamo determinare il valore atteso degli scarti quadratici (che definiscono la varianza) senza dover calcolare ogni singolo scarto.
 ## Varianza e Deviazione Standard come Misura della Variabilità
-La **varianza** di $X$, indicata come $\text{Var}(X)$, è data dall’attesa dello scarto quadratico:
+La **varianza** di una variabile aleatoria $X$ è definita come l'attesa degli scarti quadratici:
 $$
 \text{Var}(X) = E[(X - \mu_{X})^{2}]
 $$
-La varianza misura quanto i ricavi di $X$ si discostano in media dalla loro media. La **deviazione standard** di $X, \sigma_{X} = \sqrt{ Var(X) }$, fornisce una misura della dispersione dei ricavi di $X$ attorno alla media nello stesso ordine di grandezza dei valori osservati.
+La **deviazione standard** $\sigma_{X} = \sqrt{ Var(X) }$, fornisce una misura della dispersione dei ricavi di $X$ attorno alla media nello stesso ordine di grandezza dei valori osservati.
 ## Teorema della Linearità della Media
-Se consideriamo una combinazione lineare di due variabili aleatorie $X$ e $Y$, ad esempio $Z = aX+bY$, dove $a$ e $b$ sono costanti, possiamo calcolare la media di $Z$ usando la **linearità dell'attesa**:
+Se $Z = aX+bY$, dove $a$ e $b$ sono costanti, la media di $Z$ può essere calcolata come la somma delle media di $X$ e $Y$, pesate dai rispettivi coefficienti:
 $$
 E[Z] = E[aX+bY] = aE[X] + bE[Y] = a\mu_{X} + b\mu_{Y}
 $$
 ## Invarianza per Traslazione
-Se aggiungiamo una costante $c$ alla variabile aleatoria $X$ per ottenere $X' = X+c$, a media di $X'$ è semplicemente traslata di $c$:
+Se aggiungiamo una costante $c$ alla variabile aleatoria $X$, ottenendo una nuova variabile $X' = X+c$, la media di $X'$ sarà traslata traslata di $c$:
 $$
 E[X'] = E[X+c] = E[X] + c = \mu_{X} + c
 $$
-La **varianza**, invece, non cambia, perché la dispersione attorno alla media rimane la stessa:
+La **varianza**, invece, non cambia, perché aggiungere una costante non influisce sulla dispersione attorno alla media:
 $$
 \text{Var}(X') = \text{Var}(X)
 $$
@@ -946,8 +722,8 @@ La **deviazione standard** di $Y$ è:
 $$
 \sigma_{Y} = \sqrt{ 114 } \approx 10.68
 $$
----
-Consideriamo ora una combinazione lineare dei due ricavi, per esempio $Z = 2X + 3Y$. Per trovare la media di $Z$, usiamo la **linearità della media**:
+## Combinazione lineare
+Per una combinazione lineare $Z = 2X + 3Y$. Per trovare la media di $Z$, usiamo la **linearità della media**:
 $$
 E[Z] = E[2X + 3Y] = 2E[X] + 3E[Y]
 $$
@@ -955,90 +731,97 @@ Sostituendo i valori delle medie trovate:
 $$
 E[Z] = 2\times141+3\times116=282+348=630
 $$
-Immaginiamo di aggiungere una costante di $c = 10$ euro al ricavo giornaliero di $X$ per ogni giorno. Questo ci dà una nuova variabile aleatoria $X' = X + 10$.
-La media di $X'$ sarà:
+Se aggiungiamo una costante $c = 10$ a $X$ la una nuova variabile aleatoria $X' = X + 10$ avrà:
 $$
 E[X'] = E[X + 10] = E[X] + 10 = 141 + 10 = 151
 $$
-La **varianza** di $X′$, invece, resta invariata, poiché aggiungere una costante non cambia la dispersione:
+La **varianza** di $X′$, invece, resta invariata:
 $$
 Var(X') = Var(X) = 184
 $$
-La **legge dello statistico inconsapevole** ci permette di calcolare l’attesa di una trasformazione di $X$ usando solo la distribuzione di $X$. Per esempio, se vogliamo calcolare l’attesa dello scarto quadratico $E[(X - \mu_{X})^{2}]$, possiamo notare che questa non è altro che la **varianza** di $X$. Pertanto, anche senza calcolare esplicitamente ogni scarto, sappiamo che:
-$$
-E[(X - \mu_{X})^{2}] = Var(X) = 184
-$$
 # Indipendenza e correlazione
 ## Indipendenza e Correlazione tra Variabili Aleatorie
-**Indipendenza**: Due variabili aleatorie $( X )$ e $( Y )$ sono indipendenti se la probabilità congiunta si separa in prodotto di probabilità marginali:
+- **Indipendenza**: Due variabili aleatorie $X$ e $Y$ sono **indipendenti** se la probabilità congiunta si separa come prodotto delle probabilità marginali:
 $$
 P(X = x \text{ e } Y = y) = P(X = x) \cdot P(Y = y)
 $$
-**Incorrelazione**: Se due variabili aleatorie sono indipendenti, allora sono anche incorrelate, il che significa che la covarianza tra $( X )$ e $( Y )$ è zero. Tuttavia, l'inverso non è vero: due variabili incorrelate non sono necessariamente indipendenti.
-#### Varianza della Somma di Due Variabili Aleatorie
-La **varianza** della somma di due variabili aleatorie $(X)$ e $(Y)$ è data da:
+Questa definizione implica che la realizzazione di una variabile aleatoria non ha alcuna influenza sulla realizzazione dell'altra.
+
+- **Incorrelazione**: Se due variabili aleatorie sono **indipendenti**, allora sono anche **incorrelate**. Questo significa che la loro covarianza è zero:
+$$
+Cov(X, Y) = 0
+$$
+L'inverso non è vero: due variabili aleatorie possono essere **incorrelate** senza essere indipendenti. In altre parole, la covarianza può essere zero anche quando le variabili sono dipendenti, ma non correlati linearmente.
+## Varianza della Somma di Due Variabili Aleatorie
+La **varianza** della somma di due variabili aleatorie $X$ e $Y$ è data da:
 $$
 \text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y) + 2 \, \text{Cov}(X, Y)
 $$
-Se $(X)$ e $(Y)$ sono **indipendenti**, allora la covarianza è zero e la varianza della somma diventa:
+Se $X$ e $Y$ sono **indipendenti**, allora la covarianza è zero e la varianza della somma si semplifica a:
 $$
 \text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)
 $$
-**Esempio**: Supponiamo che $(X)$ e $(Y)$ siano il rendimento di due azioni indipendenti. Se $(X)$ ha una varianza di 4 e $(Y)$ ha una varianza di 9, allora:
+**Esempio**: Supponiamo che $X$ e $Y$  rappresentino i rendimenti di due azioni indipendenti. Se $Var(X) = 4$ e $Var(Y)=9$, allora:
 $$
 \text{Var}(X + Y) = 4 + 9 = 13
 $$
 ## Covarianza
-La **covarianza** tra $(X)$ e $(Y)$ misura il grado di dipendenza lineare tra le due variabili:
+La **covarianza** tra $X$ e $Y$ misura il grado di dipendenza lineare tra le due variabili:
 $$
-\text{Cov}(X, Y) = E[(X - E[X])(Y - E[Y])]
-$$
-$$
-\text{Cov}(X, Y) = E(XY) - E(X)E(Y)
+\text{Cov}(X, Y) = E[(X - E[X])(Y - E[Y])] = E(XY) - E(X)E(Y)
 $$
 - $E[X]$ e $E[Y]$ sono i valori attesi (o medie) di $X$ e $Y$.
 - $E[(X - E[X])(Y - E[Y])]$ è l'atteso del prodotto delle deviazioni di $X$ e $Y$ dalle loro medie.
-- Se la covarianza è positiva, significa che le due variabili tendono a crescere insieme.
-- Se la covarianza è negativa, tendono a variare in senso opposto.
-**Esempio**: Se $(X)$ è la temperatura e $(Y)$ è il consumo di energia per il riscaldamento, potremmo aspettarci una covarianza negativa, perché un aumento della temperatura potrebbe portare a una riduzione del consumo di energia.
-#### Coefficiente di Correlazione Lineare
-Il **coefficiente di correlazione lineare** è una versione normalizzata della covarianza che assume valori tra -1 e 1:
+- Se $Cov(X,Y) > 0$, significa che $X$ e $Y$ tendono a crescere insieme.
+- Se $Cov(X,Y) < 0$, significa che $X$ e $Y$ tendono a variare in direzioni opposte.
+## Coefficiente di Correlazione Lineare
+Il **coefficiente di correlazione lineare** è una versione normalizzata della covarianza, che assume valori tra -1 e 1:
 $$
 \rho_{X, Y} = \frac{\text{Cov}(X, Y)}{\sqrt{\text{Var}(X) \cdot \text{Var}(Y)}}
 $$
-Valori di $( \rho_{X, Y} )$ vicini a 1 indicano una forte correlazione positiva, valori vicini a -1 una forte correlazione negativa, e valori vicini a 0 indicano che non c’è relazione lineare.
-**Esempio**: Se $( \rho_{X, Y} = 0.8 )$, significa che $(X)$ e $(Y)$ sono fortemente correlati positivamente.
-#### Campioni Casuali e Legge dei Grandi Numeri
+- Un valore di $\rho_{X,Y}$ vicino a 1 indica una forte correlazione positiva.
+- Un valore di $\rho_{X,Y}$ vicini a -1 indica una forte correlazione negativa.
+- Un valore di $\rho_{X,Y}$ vicini a 0 indica che non c'è relazione lineare.
+**Esempio:**
+Se $\rho_{X,Y}=0.8$, significa che $X$ e $Y$ sono fortemente correlati positivamente.
+## Campioni Casuali e Legge dei Grandi Numeri
 La **Legge dei Grandi Numeri** afferma che, per un campione casuale di grande dimensione $( X_1, X_2, \ldots, X_n )$, la media campionaria tende a convergere alla media della popolazione:
 $$
 \frac{1}{n} \sum_{i=1}^n X_i \rightarrow E[X] \quad \text{quando } n \rightarrow \infty
 $$
-**Interpretazione**:
 - **Campione casuale**: Un campione di variabili casuali $(X_{1},X_{2},\dots,X_{n})$ è preso da una distribuzione di probabilità, dove ogni XiXi​ è una realizzazione casuale.
-- **Media campionaria**: La media dei valori osservati, che è $\frac{1}{2}\sum_{i=1}^{n}X_{i}$​, rappresenta una stima della media della popolazione.
-- **Convergenza**: La Legge dei Grandi Numeri ci dice che, man mano che aumentiamo il numero di osservazioni nn, la media campionaria si avvicinerà sempre più alla media teorica $E[X]$.
-**Esempio**: Se lanciamo una moneta $( n )$ volte e contiamo il numero di teste, la proporzione di teste tende a $( 0.5 )$ al crescere di $( n )$, che è il valore atteso.
-### Esempio (Un portafoglio prudente)
-Un capitale di novemila euro è investito in due titoli finanziari i cui tassi di rendimento formano un vettore aleatorio $(X, Y)$. Il capitale è suddiviso in due terzi e un terzo, di modo che il portafoglio di investimento corrisponde al ricavo aleatorio:
+- **Media campionaria**: è la media dei valori osservati nel campione, e rappresenta una stima della media della popolazione.
+- La **convergenza** implica che man mano che aumentiamo il numero di osservazioni, la media campionaria si avvicina sempre più alla media teorica $E[X]$.
+**Esempio**: Se lanciamo una moneta $n$ volte e contiamo il numero di teste, la proporzione di teste tende a $0.5$ al crescere di $n$, che è il valore atteso.
+#### Esempio (Un portafoglio prudente)
+Supponiamo di avere un capitale di 9.000 euro investito in due titoli finanziari i cui tassi di rendimento sono $X$ e $Y$. Il capitale è suddiviso in due terzi e un terzo, con il portafoglio di investimento dato da:
 $$
 T = 6(1+X)+3(1+Y) = 9+6X+3Y = 9(1+W)
 $$
-in migliaia di euro, dove $W = \frac{2}{3}X+\frac{1}{3}Y$ è il tasso di rendimento del portafoglio e naturalmente abbiamo fissato un orizzonte temporale. Se valutiamo $E(X)=0.03 \ \& \ E(Y)=0.06$, troviamo per linearità:
+dove $W = \frac{2}{3}X+\frac{1}{3}Y$ è il tasso di rendimento del portafoglio. Se $E(X)=0.03$ e $E(Y)=0.06$, possiamo calcolare la media del tasso di rendimento del portafoglio:
 $$
-E(W) = E\left( \frac{2}{3}X +\frac{1}{3}Y \right) = \frac{2}{3}E(X) + \frac{1}{3}E(Y) = \frac{0.06+0.06}{3} = 0.04
+E(W) = \frac{2}{3}E(X) + \frac{1}{3}E(Y) = \frac{0.06+0.06}{3} = 0.04
 $$
-quindi $E(T)=9\{1+E(W)\}=9\times 1.04 = 9.360$ migliaia di euro; notiamo che $E(X) < E(W) < E(Y)$.
-Se valutiamo $Sd(X)=0.02, Sd(Y)=0.04 \ \& \ \text{Cov}(X,Y)=-0.0005$, con le proprietà della covarianza troviamo:
+quindi
 $$
-\begin{align}
-\text{Var}(W) &= \text{Var}\left( \frac{2}{3}X + \frac{1}{3}Y \right) = \text{Cov}\left( \frac{2}{3}X + \frac{1}{3}Y, \frac{2}{3}X + \frac{1}{3}Y \right) \\
-&= \frac{4}{9}\text{Cov}(X,X) + \frac{2}{9}\text{Cov}(X,Y) + \frac{2}{9}\text{Cov}(Y,X) + \frac{1}{9}\text{Cov}(Y,Y) \\
-&= \frac{4}{9}\text{Var}(X) + \frac{4}{9}\text{Cov}(X,Y) + \frac{1}{9}\text{Var}(Y) \\
-&= \frac{4 \times 0.02^{2} - 4\times 0.0005 + 0.04^{2}}{9} = \frac{0.0012}{9} = \frac{1}{7500} \\
-&\Rightarrow Sd(W) = \sqrt{ \frac{1}{7500} } \simeq 0.011547
-\end{align}
+E(T)=9\{1+E(W)\}=9\times 1.04 = 9.360 \ \text{migliaia di euro}
 $$
-Quindi $Sd(T) = Sd(9(1+W))=9Sd(W)\simeq 0.104$ migliaia di euro; notiamo che $Sd(W) < Sd(X) < Sd(Y)$.
+Per calcolare la varianza e la deviazione standard del portafoglio, considerando che $Var(X) = 0.02^{2}, \ Var(Y) = 0.04^{2}$ e $Cov(X,Y) = -0.0005$, troviamo:
+$$
+\begin{gather}
+Var(W) = \frac{4}{9}Var(X)+\frac{4}{9}Cov(X,Y)+\frac{1}{9}Var(Y) \\
+Var(W) = \frac{4 \times 0.02^{2} + 4 \times (-0.0005) + 0.04^{2}}{9} = \frac{0.0012}{9} = \frac{1}{7500}
+\end{gather}
+$$
+Quindi:
+$$
+Sd(W) = \sqrt{ \frac{1}{7500} } \approx 0.011547
+$$
+La deviazione standard del portafoglio è:
+$$
+Sd(T) = 9 \times Sd(W) \approx 0.104 \text{ migliaia di euro}
+$$
+In questo esempio, abbiamo visto che $Sd(W) < Sd(X) < Sd(Y)$.
 ```r
 ## Title: Law of Large Numbers
 ## Author: Luca La Rocca
@@ -1169,7 +952,7 @@ $$
 #### Relazione con la distribuzione geometrica
 La distribuzione binomiale negativa è una generalizzazione della **distribuzione geometrica**. La distribuzione geometrica è il caso particolare della binomiale negativa con $( r = 1 )$, cioè quando si cerca il numero di prove necessarie per ottenere il **primo** successo.
 # Densità di probabilità
-La **funzione di densità di probabilità** (PDF) è associata a una **variabile casuale continua** e descrive la probabilità che la variabile casuale assuma un valore all'interno di un intervallo. A differenza delle variabili casuali discrete, per cui si utilizza la funzione di massa di probabilità (PMF), la PDF si applica a variabili casuali continue.
+La **funzione di densità di probabilità** (PDF) è associata a una **variabile casuale continua** e descrive la probabilità che la variabile casuale assuma un valore all'interno di un intervallo. A differenza delle variabili casuali discrete, per cui si utilizza la funzione di massa di probabilità (PMF), la PDF si applica a **variabili casuali continue**.
 #### Definizione
 Per una variabile casuale continua $( X )$, la **funzione di densità di probabilità** $( f_X(x) )$ è definita in modo tale che la probabilità che $( X )$ assuma un valore in un intervallo $( [a, b] )$ è data dall'integrale della PDF su quell'intervallo:
 $$
@@ -1202,7 +985,7 @@ La **PDF** non fornisce direttamente la probabilità che la variabile casuale $(
    f_X(x) = \frac{1}{b - a}, \quad a \leq x \leq b
    $$
    In questo caso, la probabilità è distribuita uniformemente tra $( a )$ e $( b )$.
-## Valore Atteso per Variabili Casuali Continue
+## Variabili Casuali Continue
 Il **valore atteso** (o **media**) di una **variabile casuale continua** $( X )$ è una misura della posizione centrale della distribuzione della variabile. Rappresenta la media ponderata dei valori che $( X )$ può assumere, con i pesi dati dalla sua **funzione di densità di probabilità** (PDF).
 #### Definizione
 Per una variabile casuale continua $( X )$ con funzione di densità di probabilità $( f_X(x) )$, il **valore atteso** $( E[X] )$ è dato dall'integrale della variabile moltiplicata per la sua densità di probabilità:
