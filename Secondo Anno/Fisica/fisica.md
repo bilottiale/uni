@@ -923,12 +923,12 @@ La **Legge di Gauss per il magnetismo** afferma che non esistono monopoli magnet
 $$
 \oint_{\partial V} \mathbf{B} \cdot d\mathbf{A} = 0
 $$
-- $\oint_{\partial V}$ integrale di superficie chiusa.
 - $\mathbf{B}$ campo magnetico.
 - $d\mathbf{A}$ vettore area infinitesimale.
+- L'integrale di superficie chiusa è nullo, indicando che non esistono sorgenti isolate di campo magnetico.
 ## Forza magnetica su una carica puntiforme (forza di Lorentz)
 La **forza di Lorentz** è la forza esercitata su una carica elettrica *in movimento* all'interno di un campo elettrico e/o magnetico. È un concetto fondamentale nella fisica dell'elettromagnetismo.
-**Forza di Lorentz**
+**Forza di Lorentz:**
 $$
 F_{B} = q(v \times B)
 $$
@@ -939,7 +939,7 @@ $$
 - $\times$ denota il prodotto vettoriale.
 #### Comportamento della Forza di Lorentz
 - **Direzione**: La forza magnetica è sempre perpendicolare sia alla velocità della carica sia alla direzione del campo magnetico. Ciò significa che la forza non compie lavoro sulla carica, cambiando solo la sua direzione e non la sua energia cinetica.
-- **Caso di una Carica in Movimento**: Se una carica si muove in una direzione perpendicolare a un campo magnetico, la forza magnetica raggiunge il suo massimo valore:
+- **Caso di una Carica in Movimento**: Se una carica si muove in una direzione perpendicolare a un campo magnetico, la forza magnetica raggiunge il suo massimo:
 $$
 F_{B} = qvB
 $$
