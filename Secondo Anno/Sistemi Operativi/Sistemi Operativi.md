@@ -736,6 +736,192 @@ Il file system può essere staccato dal suo mount point tramite l'operazione di 
 L'unmount è preceduto da un *flush* dei buffer del kernel.
 ### Root file system
 Almeno un file system deve essere presente all'avvio del SO, affinché il mount degli altri file system sia sempre possibile. Tale file system prende il nome di **root file system** e contiene almeno il comando `init` per avviare i servizi della macchina.
+# T9 -  Implementazione File System
+# Preparazione di un dispositivo
+La **formattazione a basso livello** è una procedura mediante la quale il dispositivo è preparato al primo uso (creazione di un *file system*).
+La superficie del dispositivo è marcata in **settori**, la più piccola porzione indirizzabile dalla testina del dispositivo (in un HDD 512byte).
+- **Preambolo**: marcatura indicante l'inizio di un settore (usato dalla testina per sincronizzarsi).
+- **Error Correcting Code (ECC)**: codice per la correzione automatica di errori.
+- **Intersector gap**: separazione fra settori.
+## Partizionamento
+Il disco può essere diviso in zone dette **partizioni**, ciascuna delle quali può ospitare:
+- *file system*
+- *swap partition*
+- *raw partition*
+![[Pasted image 20241116161718.png|350]]
+**Pro**:
+- **Limitazione dello spazio** a disposizione: si può impedire che i file di log riempiano il file system di root, confinandoli in una partizione separata.
+- **Memoria virtuale**: implementazione di un'area di swap.
+**Contro**:
+- Le partizioni non posso essere modificate facilmente.
+- Sono in chiaro, sempre.
+## Volumi
+Un **volume fisico** è una partizione di un disco rigido usabile per i volumi, il contenuto è organizzato come una sequenza di *blocchi fisici*.
+![[Pasted image 20241116161953.png|350]]
+Un **grupo di volumi** è la totalità dei blocchi fisici offerti dai volumi fisici.
+Un **volume logico** è un insieme di *blocchi logici* del gruppo di appartenenza.
+![[Pasted image 20241116162115.png|350]]
+Il **superblocco** è il primo blocco di un *file system*, contiene metadati fondamentali del *file system*.
+La **formattazione ad alto livello** è la procedura con la quale si inizializza un *file system* su una partizione o volume logico.
+# Allocazione dei blocchi
+**Scenario**:
+- **Problema**: diversi processi vogliono scrivere sul disco contemporaneamente.
+- SO:
+	- Alloca i blocchi del *file system* per le operazioni di scrittura.
+	- **Obiettivi**:
+		1. Usare lo spazio libero in modo efficiente.
+		2. Garantire un accesso veloce ai file:
+			- Blocchi logicamente vicini dovrebbero essere fisicamente vicini sul disco.
+Se il blocco è di dimensione piccola, un processo che scrive file grandi rischia di richiedere tanti blocchi, potenzialmente sparpagliati sul disco. In seguito a creazioni e cancellazioni di file, i blocchi liberi risultano disposti “a gruviera”. Si ha una **frammentazione esterna**.
+Come vengono assegnati quindi i blocchi?
+- **Assegnazione contigua**:
+	- In blocchi *fisicamente contigui* sul disco.
+	- Quando un file deve essere salvato, il SO cerca uno spazio libero sufficiente.
+	- L'intero file viene scritto in un'unica area contigua di blocchi.
+	- **Pro**:
+		- Accesso rapido, ideale per file che devono essere letti e/o scritti in sequenza.
+	- **Contro**:
+		- *Frammentazione esterna*: con il tempo, blocchi contigui sufficientemente grandi possono non essere disponibili.
+			- Si può risolvere tramite *estensioni* del volume, ma rimane il problema dello spazio.
+		- *Rigidità*: file di dimensioni variabile possono richiedere spostamenti costosi.
+- **Assegnazione concatenata**:
+	- Ogni blocco memorizza un *puntatore* al successivo.
+	- I blocchi non devono essere fisicamente contigui.
+	- **Pro**:
+		- *Niente frammentazione esterna*: qualsiasi blocco libero può essere usato.
+		- *Adattabilità*: ideale per file di dimensione dinamica.
+	- **Contro**:
+		- *Prestazioni inferiori*: ci vuole tempo per "collegare" i vari blocchi.
+		- *Fragilità*: un errore in un puntatore può interrompere l'intera catena.
+		- *Overhead dei puntatori*: parte dello spazio è riservato per memorizzare i puntatori.
+	- **Varianti**:
+		- **Cluster**: gruppo di blocchi contigui, il *file system* alloca un **cluster**, in modo da diminuire il numero di puntatori richiesto per collegare il file (rischio frammentazione interna).
+		- **FAT**: variante dell'assegnazione concatenata. All'inizio di ciascuna partizione viene riservato uno spazio per contenere una tabella di allocazione dei file (**File Allocation Table, FAT**). Ciascun blocco del disco è rappresentato da un numero intero univoco, detto indice. La FAT è acceduta attraverso gli indici e contiene indici.
+			- **Contro**:
+				- Richiede un accesso alla FAT per ogni blocco letto/scritto.
+**Blocchi indice multipli**:
+- **Schema concatenato**:
+	- Il blocco indice ha una piccola intestazione nella quale sono riportati:
+		- nome del file.
+		- i primi 100 blocchi del disco.
+	- L'ultimo elemento è `NULL` o il puntatore ad un altro blocco indice.
+- **Indice a più livelli**:
+	- Si usa un blocco indice di primo livello.
+	- Gli elementi del blocco indice di primo livello puntano a blocchi indice di secondo livello.
+	- Gli elementi del blocco indice di secondo livello puntano ai blocchi dei file.
+- **Schema concatenato**:
+	- A ciascun file è assegnato un blocco descrittore, noto con il nome di **inode**.
+		- FCB del file.
+		- **Puntatori 1-12**: puntatori diretti (**blocchi diretti**).
+		- **Puntatore 13**: puntatore a puntatore di blocchi (**blocco indiretto singolo**).
+		- **Puntatore 14**: puntatore a puntatore a puntatore di blocchi (**blocco indiretto doppio**).
+		- **Puntatore 15**: puntatore a puntatore a puntatore a puntatore di blocchi (**blocco indiretto triplo**).
+	- Per file piccoli, l'accesso è $O(1)$ tramite i blocchi diretti.
+	- Per file più grandi, l'accesso è $O(\log(n))$ nel numero di blocchi del file.
+	- Dimensione massima decisamente più grande.
+- **Assegnazione indicizzata**:
+	- Ogni file ha un **blocco indice** che memorizza gli indirizzi di tutti i blocchi dati.
+	- Accesso diretto tramite il blocco indice.
+	- **Pro**:
+		- *Efficienza*: accesso diretto ai blocchi senza seguire puntatori.
+		- *Flessibilità*: blocchi non contigui e supporto per file di dimensioni variabili.
+		- *Robustezza*: la perdita di un blocco non compromette l'intero file.
+	- **Contro**:
+		- *Limite dimensioni file*:
+			- Limitato dal numero di puntatori che un blocco indice può contenere.
+		- *Dimensione del blocco indice critica*.
+			- Troppo piccolo: non sufficiente per file grandi.
+			- Troppo grande frammentazione interna.
+# Gestione dello spazio libero
+**Problema**: Lo spazio di memorizzazione secondario, è limitato. È necessario tenere traccia dei blocchi liberi per garantire un'allocazione efficiente e prevenire lo spreco di spazio.
+Per rappresentare un elenco di blocchi liberi si possono usare:
+- **Bitmap**
+- **Liste concatenate**
+- **Raggruppamenti**
+- **Conteggi**
+## Bitmap
+Ciascun blocco del disco viene rappresentato tramite un bit:
+- `0` $\to$ blocco allocato.
+- `1` $\to$ blocco libero.
+**Costante `BIT_PER_PAROLA`**: dimensione di una parole (32 o 64 bit).
+**Parametro `i`**: indice del bit `i`-esimo.
+**Vettore\[n\]**: vettore di $n$ parole di lunghezza `BIT_PER_PAROLA`.
+**Bit**: valore effettivo del bit `i`-esimo.
+**Operazioni**:
+- `offset_parola` = `i/BIT_PER_PAROLA`;
+- `offset_bit` = `i%BIT_PER_PAROLA`;
+- `bit_i` = `parola_con_bit&(2^{offset_bit})`;
+I processori moderni hanno istruzioni per individuare in un colpo di clock il primo bit imposto ad 1 in una parola di 16, 32, 64 bit:
+- ISA x86_64: istruzioni `bsf`, `bsr`.
+## Lista concatenata
+I blocchi liberi sono tutti collegati fra loro, tramite puntatori posti all'interno di ciascun blocco.
+Ogni blocco libero contiene un **puntatore** al blocco successivo libero.
+**Pro**:
+- Soluzione più semplice, non c'è bisogno di memorizzare una struttura complessa per tutti i blocchi, solo quelli liberi.
+**Contro**:
+- Meno efficiente, accesso sequenziale.
+## Raggruppamento
+I blocchi liberi sono raggruppati in **blocchi contigui**, e un gruppo contiene un puntatore a un altro gruppo.
+## Conteggio
+I blocchi liberi sono raggruppati in **blocchi contigui**. Ogni gruppo contiene un numero di blocchi liberi consecutivi, insieme al **conteggio** del numero di blocchi liberi nel gruppo.
+- L'uso dei puntatori per blocco comporta uno spreco di spazio.
+# Efficienza
+Il termine "efficienza" indica la capacità di svolgere compiti con il minimo sforzo.
+Nel *file system* si intende:
+- Uso "compatto" dello spazio del disco.
+- Rappresentazione di file grandi con il minimo dispendio di metadati.
+Gli **inode** sono impacchettati all'inizio del disco, vicino al superblocco. In modo da portare in memoria un numero consistente di inode.
+## Metadati dei file
+**Timestamp**: accesso al file, critici per alcune applicazioni.
+Ad ogni accesso cambia, vanno aggiornati:
+- Lettura blocco FCB da disco.
+- Modifica metadati.
+- Scrittura blocco FCB.
+Se un file è acceduto frequentemente, si ha una palese inefficienza di uso del disco.
+**Soluzione**: si mantiene una copia del FCB in memoria centrale e si aggiorna il FCB su disco periodicamente.
+# Prestazioni
+Indica la capacità di svolgere compiti al massimo della propria capacità.
+Nel contesto dei *file system* si intende:
+- Aumento della velocità delle operazioni di I/O.
+- Applicazione del concetto di gerarchia di memoria.
+## Scritture sincrone e asincrone
+- **Scritture sincrone**:
+	- Nell'ordine in cui il gestore del file system le riceve.
+	- La scrittura avviene il prima possibile, senza buffering.
+- **Scritture asincrone**:
+	- I dati sono memorizzati in un buffer intermedio.
+	- Si ritorna subito al processo chiamante.
+	- Il SO decide quando svuotare il buffer su disco.
+	- **Pro**:
+		- Il SO sceglie il momento della scrittura più adatto per ridurre i movimenti della testina del disco.
+		- `write()` diventa velocissima.
+	- **Contro**:
+		- Se la macchina va in crash, si perdono i dati.
+		- Se i metadati sono stati aggiornati, si verifica una grave inconsistenza nel file.
+# Sicurezza
+- Mantenere un sistema in uno stato consistente.
+- Impedire agli utenti un uso malizioso del sistema.
+**Controllo di consistenza**: Ciascun file system ha un applicativo per il controllo ed il mantenimento della consistenza dei metadati e dei blocchi:
+- In Linux: suite di programmi `fsck.nome_fs`, `fsck.ext4, `fsck.vfat`, ...
+Operazioni di `fsck`:
+- **Controllo consistenza**
+- **Riparazione**
+# Journal
+Il file system è arricchito con un file speciale (detto journal), gestito come un **buffer circolare**.
+Il journal ha le funzioni di un diario: il file system ci annota:
+- ogni inizio di transazione.
+- ogni operazione di ogni transazione.
+Periodicamente, il SO applica le operazioni annotate nel journal in modalità circolare.
+Al termine della sincronizzazione su disco, si rimuovono dal journal:
+- annotazione di inizio transazione.
+- le annotazioni delle operazioni completate.
+In caso di crash il *journal* contiene alcune operazioni relative a diverse transazioni.
+Le operazioni non marcate come complete non sono state scritte su disco.
+Il SO se ne accorge (attraverso il **controllo di consistenza**) ed applica tutte le operazioni non marcate come complete, nell'ordine in cui sono scritte nel log.
+**Pro**:
+- La robustezza del file system aumenta.
+- Aumentano le prestazioni sull'aggiornamento dei metadati: le scritture sincrone sui metadati sono rimpiazzate da scritture asincrone sul journal.
+
 
 
 
