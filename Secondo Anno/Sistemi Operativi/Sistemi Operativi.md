@@ -72,8 +72,7 @@ Se si è usata l'istruzione `sysenter` per entrare in kernel mode, si usa ora l'
 ## La libreria del C
 Linux usa una libreria wrapper per facilitare l'accesso ai servizi del kernel: la libreria del C (**GNU C Library**).
 ![[Pasted image 20241014114543.png]]
-
----
+***
 # T4 - Struttura di un SO
 # Stratificazione
 Un SO moderno è concepito per *strati* software successivi impilati uno sopra l'altro.
@@ -136,8 +135,7 @@ Tentativo di combinare il meglio dei Macro e dei Micro kernel. Funzionalità, pr
 - Windows, Plan 9, OS X
 ![[Pasted image 20241014153157.png|500]]
 ![[Pasted image 20241014153231.png]]
-
----
+***
 # T5 - Processi
 Il kernel di un SO deve saper gestire processi:
 **Multiprogrammati**: Più applicazioni in esecuzione contemporaneamente.
@@ -247,8 +245,7 @@ ls -lR / > out.txt 2>err.txt
 ![[Pasted image 20241017155510.png]]
 ## Rappresentazione PID, PGID, SID
 ![[Pasted image 20241017155550.png]]
-
----
+***
 # T6 - Scheduling e dispatching
 ## Caratterizzazione dei processi
 Durante la sua esecuzione, un processo si alterna in due fasi:
@@ -372,8 +369,7 @@ Si usa un piccolo trucco:
 - L'*Instruction Pointer* è caricato con l'ultimo valore presente sullo stack (l'indirizzo desiderato).
 La macro `switch_to()`, definita in `$LINUX/arch/x86/include/asm/switch_to.h` implementa questa variante.
 La funzione inizializzatrice è: `ret_from_fork()`.
-
----
+***
 # T7 - Algoritmi di scheduling
 Il kernel deve assegnare una risorsa ad $n$ entità che la vogliono accedere.
 Come vengono assegnate le richieste alle risorse?
@@ -587,8 +583,7 @@ Per bilanciare il carico della predilezione i processi vengono spostati (*migrat
 Attenzione a bilanciare troppo spesso, *il bilanciamento annulla i benefici della predilezione*.
 **Migrazione guidata**(*push migration*): un processo dedicato controlla periodicamente la lunghezza delle code. In caso di sbilanciamento, sposta i processi in modo da bilanciare il carico.
 **Migrazione spontanea**(*pull migration*): o scheduler sottrae un PCB ad una coda sovraccarica.
-
----
+***
 # T8 - File System
 ## File: Rappresentazione e accesso
 Nei SO moderni le informazioni possono essere memorizzate in maniera strutturata e permanente su supporto secondario
@@ -736,6 +731,7 @@ Il file system può essere staccato dal suo mount point tramite l'operazione di 
 L'unmount è preceduto da un *flush* dei buffer del kernel.
 ### Root file system
 Almeno un file system deve essere presente all'avvio del SO, affinché il mount degli altri file system sia sempre possibile. Tale file system prende il nome di **root file system** e contiene almeno il comando `init` per avviare i servizi della macchina.
+***
 # T9 -  Implementazione File System
 # Preparazione di un dispositivo
 La **formattazione a basso livello** è una procedura mediante la quale il dispositivo è preparato al primo uso (creazione di un *file system*).
