@@ -32,37 +32,37 @@ Tutto ciò che non è kernel o sistema di base.
 Una applicazione (di base e non) richiede un servizio al kernel. Il kernel elabora la risposta e la fornisce alla applicazione.
 # User Mode e Kernel mode
 **User Mode**:
-- Una applicazione esegue i suoi calcoli con privilegi ridotti.
+- L'applicazione esegue i calcoli senza accesso diretto alle risorse critiche del sistema, con privilegi ridotti.
 - Non può alterare la memoria di altre applicazioni o del kernel.
 - Non può eseguire istruzioni assembly legate all'I/O.
-- Protezione contro usi maliziosi o sbadati.
 **Kernel Mode**:
-- Quando una applicazione richiede un servizio del kernel, i suoi privilegi sono elevati al massimo rango.
-- Esegue la porzione di codice del kernel corrispettiva al servizio richiesto, al termine del servizio, ritorna in user mode.
+- **Elevazione dei privilegi**:
+	- Quando un'applicazione richiede un servizio del kernel, i privilegi aumentano al massimo livello.
+	- Terminato il servizio torna in **User Mode**.
 # User Space e Kernel Space
 **User Space**:
-- Insieme di tutti gli indirizzi di memoria accessibili ad una applicazione.
+- Insieme di indirizzi di memoria accessibili ad una applicazione.
 **Kernel Space**:
-- Insieme di tutti gli indirizzi di memoria accessibili al kernel.
+- Insieme di indirizzi di memoria accessibili al kernel.
 ### Livelli di privilegio nelle CPU Intel
 ![[Pasted image 20241014113049.png|350]]
 **Ring 0**: kernel mode.
 **Ring 3**: user mode.
 # Chiamata di sistema
 È l'unico meccanismo con cui una applicazione può richiedere un servizio al kernel.
-- Salvataggio registri.
-- Commuta user -> kernel.
-- Esegue una funzione di servizio.
-- Copia opzionalmente dati in memoria utente.
-- Commuta kernel -> user.
-- Ripristino registri ed esecuzione programma.
+1. Salvataggio registri.
+2. Commutazione user -> kernel.
+3. Esegue una funzione di servizio.
+4. Copia opzionalmente dati in memoria utente.
+5. Commuta kernel -> user.
+6. Ripristino registri ed esecuzione programma.
 ## Passaggio di parametri
 Una chiamata di sistema accetta al più sei parametri.
 Se ne servono di più, occorre usare un parametro come puntatore ad una struttura dati.
 Il passaggio dei parametri avviene tramite registri.
 Il registro **eax** contiene sempre un identificatore numerico della chiamata di sistema.
 ### Ingresso in Kernel Mode
-- **Fino a Pentium**: Si è usata una interruzione software (*trap*), precisamente la 128 (*int $0x80*).
+- **Fino a Pentium**: Si è usata una interruzione software (*trap*), precisamente la 128 (*int 0x80*).
 - **Da Pentium 2**: Si usa l'istruzione assembly `sysenter`, ben più performante della eccezione.
 Ora si esegue la una funzione di servizio kernel `system_call()`. Per invocare la vera e propria funzione di servizio, che ha solitamente il prefisso `sys_`.
 Se ad esempio si invoca la chiamata di sistema `getpid()`, da qualche parte nel kernel esiste una funzione `sys_getpid()`.
@@ -736,14 +736,14 @@ Almeno un file system deve essere presente all'avvio del SO, affinché il mount 
 # Preparazione di un dispositivo
 La **formattazione a basso livello** è una procedura mediante la quale il dispositivo è preparato al primo uso (creazione di un *file system*).
 La superficie del dispositivo è marcata in **settori**, la più piccola porzione indirizzabile dalla testina del dispositivo (in un HDD 512byte).
-- **Preambolo**: marcatura indicante l'inizio di un settore (usato dalla testina per sincronizzarsi).
+- **Preambolo**: marcatura indicante l'inizio di un settore(usato dalla testina per sincronizzarsi).
 - **Error Correcting Code (ECC)**: codice per la correzione automatica di errori.
 - **Intersector gap**: separazione fra settori.
 ## Partizionamento
 Il disco può essere diviso in zone dette **partizioni**, ciascuna delle quali può ospitare:
-- *file system*
-- *swap partition*
-- *raw partition*
+- *file system*: ospita dati strutturati secondo un formato specifico.
+- *swap partition*: spazio dedicato alla memoria virtuale per il SO.
+- *raw partition*: area non formattata utilizzata da applicazioni per accesso ai dati.
 ![[Pasted image 20241116161718.png|350]]
 **Pro**:
 - **Limitazione dello spazio** a disposizione: si può impedire che i file di log riempiano il file system di root, confinandoli in una partizione separata.
@@ -830,7 +830,7 @@ Come vengono assegnati quindi i blocchi?
 			- Troppo grande frammentazione interna.
 # Gestione dello spazio libero
 **Problema**: Lo spazio di memorizzazione secondario, è limitato. È necessario tenere traccia dei blocchi liberi per garantire un'allocazione efficiente e prevenire lo spreco di spazio.
-Per rappresentare un elenco di blocchi liberi si possono usare:
+Rappresentazione dei Blocchi Liberi:
 - **Bitmap**
 - **Liste concatenate**
 - **Raggruppamenti**
@@ -840,7 +840,7 @@ Ciascun blocco del disco viene rappresentato tramite un bit:
 - `0` $\to$ blocco allocato.
 - `1` $\to$ blocco libero.
 **Costante `BIT_PER_PAROLA`**: dimensione di una parole (32 o 64 bit).
-**Parametro `i`**: indice del bit `i`-esimo.
+**Indice `i`**: identifica il blocco.
 **Vettore\[n\]**: vettore di $n$ parole di lunghezza `BIT_PER_PAROLA`.
 **Bit**: valore effettivo del bit `i`-esimo.
 **Operazioni**:
@@ -850,73 +850,134 @@ Ciascun blocco del disco viene rappresentato tramite un bit:
 I processori moderni hanno istruzioni per individuare in un colpo di clock il primo bit imposto ad 1 in una parola di 16, 32, 64 bit:
 - ISA x86_64: istruzioni `bsf`, `bsr`.
 ## Lista concatenata
-I blocchi liberi sono tutti collegati fra loro, tramite puntatori posti all'interno di ciascun blocco.
-Ogni blocco libero contiene un **puntatore** al blocco successivo libero.
+I blocchi liberi sono collegati fra loro ogni blocco libero contiene un **puntatore** al blocco successivo libero.
 **Pro**:
-- Soluzione più semplice, non c'è bisogno di memorizzare una struttura complessa per tutti i blocchi, solo quelli liberi.
+- Struttura semplice, non c'è bisogno di memorizzare una struttura complessa per tutti i blocchi, solo quelli liberi.
 **Contro**:
-- Meno efficiente, accesso sequenziale.
+- Accesso sequenziale, meno efficiente.
 ## Raggruppamento
-I blocchi liberi sono raggruppati in **blocchi contigui**, e un gruppo contiene un puntatore a un altro gruppo.
+I blocchi liberi sono raggruppati in **blocchi contigui**, ogni blocco punta al successivo.
 ## Conteggio
-I blocchi liberi sono raggruppati in **blocchi contigui**. Ogni gruppo contiene un numero di blocchi liberi consecutivi, insieme al **conteggio** del numero di blocchi liberi nel gruppo.
-- L'uso dei puntatori per blocco comporta uno spreco di spazio.
+I blocchi liberi sono **contigui**. Ogni gruppo memorizza:
+- **Numero** di blocchi liberi consecutivi.
+- **Puntatore** al prossimo gruppo.
 # Efficienza
 Il termine "efficienza" indica la capacità di svolgere compiti con il minimo sforzo.
 Nel *file system* si intende:
 - Uso "compatto" dello spazio del disco.
 - Rappresentazione di file grandi con il minimo dispendio di metadati.
-Gli **inode** sono impacchettati all'inizio del disco, vicino al superblocco. In modo da portare in memoria un numero consistente di inode.
+Gli **inode** sono impacchettati all'inizio del disco, vicino al superblocco. Facilitando il caricamento in memoria di molti inode.
 ## Metadati dei file
 **Timestamp**: accesso al file, critici per alcune applicazioni.
 Ad ogni accesso cambia, vanno aggiornati:
 - Lettura blocco FCB da disco.
 - Modifica metadati.
-- Scrittura blocco FCB.
+- Scrittura blocco FCB aggiornato.
 Se un file è acceduto frequentemente, si ha una palese inefficienza di uso del disco.
 **Soluzione**: si mantiene una copia del FCB in memoria centrale e si aggiorna il FCB su disco periodicamente.
 # Prestazioni
-Indica la capacità di svolgere compiti al massimo della propria capacità.
+La capacità di svolgere compiti al massimo della propria capacità.
 Nel contesto dei *file system* si intende:
 - Aumento della velocità delle operazioni di I/O.
 - Applicazione del concetto di gerarchia di memoria.
 ## Scritture sincrone e asincrone
 - **Scritture sincrone**:
-	- Nell'ordine in cui il gestore del file system le riceve.
-	- La scrittura avviene il prima possibile, senza buffering.
+	- Eseguite *immediatamente*, nell'ordine in cui sono ricevute.
+	- Non utilizzano buffer intermedi.
+	- **Pro**: garantiscono consistenza immediata.
+	- **Contro**: lente, ogni operazione aspetta il completamento fisico sul disco.
 - **Scritture asincrone**:
-	- I dati sono memorizzati in un buffer intermedio.
-	- Si ritorna subito al processo chiamante.
-	- Il SO decide quando svuotare il buffer su disco.
+	- Utilizzano un **buffer intermedio** pr memorizzare temporaneamente i dati.
+	- Il controllo ritorna subito al processo chiamante, senza attendere che i dati siano scritti sul disco.
 	- **Pro**:
-		- Il SO sceglie il momento della scrittura più adatto per ridurre i movimenti della testina del disco.
-		- `write()` diventa velocissima.
+		- Aumento delle prestazioni: il SO può ottimizzare la scrittura scegliendo momenti più efficienti (riduzione dei movimenti della testina).
+		- `write()` diventa veloce.
 	- **Contro**:
-		- Se la macchina va in crash, si perdono i dati.
-		- Se i metadati sono stati aggiornati, si verifica una grave inconsistenza nel file.
+		- Rischio di *perdita di dati* in caso di crash.
+		- Se i metadati sono stati aggiornati, ma non i dati, posso verificarsi gravi inconsistenze.
 # Sicurezza
-- Mantenere un sistema in uno stato consistente.
-- Impedire agli utenti un uso malizioso del sistema.
-**Controllo di consistenza**: Ciascun file system ha un applicativo per il controllo ed il mantenimento della consistenza dei metadati e dei blocchi:
-- In Linux: suite di programmi `fsck.nome_fs`, `fsck.ext4, `fsck.vfat`, ...
+- Mantenere un sistema in uno stato *consistente*.
+- Impedire agli utenti un *uso malizioso* del sistema.
+**Controllo di consistenza**:  applicazione progettata per verificare e mantenere la coerenza di metadati e blocchi:
+- In Linux: `fsck.nome_fs`, `fsck.ext4, `fsck.vfat`, ...
 Operazioni di `fsck`:
-- **Controllo consistenza**
-- **Riparazione**
+- **Controllo consistenza**: verifica l'integrità dei metadati e blocchi.
+- **Riparazione**: corregge eventuali problemi riscontrati.
 # Journal
-Il file system è arricchito con un file speciale (detto journal), gestito come un **buffer circolare**.
-Il journal ha le funzioni di un diario: il file system ci annota:
-- ogni inizio di transazione.
-- ogni operazione di ogni transazione.
-Periodicamente, il SO applica le operazioni annotate nel journal in modalità circolare.
-Al termine della sincronizzazione su disco, si rimuovono dal journal:
-- annotazione di inizio transazione.
-- le annotazioni delle operazioni completate.
-In caso di crash il *journal* contiene alcune operazioni relative a diverse transazioni.
-Le operazioni non marcate come complete non sono state scritte su disco.
-Il SO se ne accorge (attraverso il **controllo di consistenza**) ed applica tutte le operazioni non marcate come complete, nell'ordine in cui sono scritte nel log.
-**Pro**:
-- La robustezza del file system aumenta.
-- Aumentano le prestazioni sull'aggiornamento dei metadati: le scritture sincrone sui metadati sono rimpiazzate da scritture asincrone sul journal.
+Il file system è arricchito con un file speciale(detto **journal**), gestito come un **buffer circolare**.
+1. **Annotazioni**:
+	- Ogni inizio di transazione.
+	- Ogni operazione di ogni transazione.
+2. **Sincronizzazione**:
+	- Periodicamente il SO applica le modifiche annotate dal file system.
+	- Operazioni completate e inizio transazione vengono rimosse.
+3. **Crash-case**:
+	- Le operazioni non marcate come completate vengono applicate al disco seguendo l'ordine del journal(**controllo di consistenza**).
+	- Garantisce la consistenza del file system.
+***
+# T10 - VFS
+# Virtual File System
+Il **Virtual File System** è un sottosistema del kernel. In Linux è implementato in tutti i file di primo livello contenuti nella directory `$LINUX/fs`.
+Fornisce una visione omogenea, gerarchica, del contenuto informativo indipendente dai dispositivi.
+- Periferiche hardware locali.
+- Periferiche hardware remote.
+- Kernel.
+Si supponga di avere mount point con nomi direttamente associabili alle periferiche.
+Windows:
+- Primo disco SATA: "`C:\`".
+- Secondo disco SATA: "`D:\`".
+- Terzo disco SATA: "`E:\`".
+Si scriva un'applicazione che fa riferimento a file contenuti in "`D:`". Si scambino di posto il secondo e terzo disco.
+- L'applicazione non accede più ai file.
+![[Pasted image 20241118154943.png|500]]
+Il VFS **decompone il percorso** di un file nelle sue componenti(*path lookup*) ed individua i dispositivi in cui queste si trovano. **Gestisce i descrittori di file** rappresentati i file aperti dall'applicazione.
+## Struct inode
+Nei sistemi UNIX il FCB è rappresentato da una struttura detta **inode**.
+In `EXT4` l'*inode* è definito come: `struct ext4_inode` in `$LINUX/fs/ext4/ext4.h`.
+File system diversi possono avere *inode* in formato diverso. Per tale motivo il VFS definisce un unico formato di *inode*, valido per tutti i file system: `struct inode`, definita nel file: `$LINUX/include/fs.h` creata al primo uso di un file e mantenuta in RAM perché l'analisi di un percorso è frequente e dispendiosa.
+### Struct file
+`struct file` rappresenta il file aperto `$LINUX/include/fs.h` contenente:
+- Puntatore all'*inode* del VFS.
+- Posizione nel file.
+- Modalità di apertura.
+- File Path
+- Puntatori alle operazioni possibili sul file.
+### Struct dentry
+`struct dentry` rappresenta un elemento del percorso di un file: `$LINUX/include/dcache.h`:
+- Il file `/bin/vi` è composto da due *dentry*:
+	- `/bin`(directory)
+	- `vi`(file)
+La prima volta che xil kernel scandisce tale percorso, costruisce le due dentry e le inserisce in un albero in memoria centrale (**dentry cache**).
+Con la cache il path lookup si riduce ad una navigazione di un albero binario in RAM. (`vfs_path_lookup(`).
+### Struct file_operations
+`struct file_operations` è un array di puntatori a funzione rappresentante le operazioni possibili su un file(`$LINUX/include/fs.h`). Occupa una intera linea di cache hardware per un accesso fulmineo.
+# Directory Tree
+## Filesystem Hierarchy Standard
+Le direcotry del file system di root sono organizzate secondo uno standard: **Filesystem Hierarchy Standard**(FHS).
+![[Pasted image 20241118161813.png|500]]
+- `/bin` contiene i comandi di un sistema di base testuale.
+- `/sbin` contiene i comandi di amministrazione nonché `init`che avvia i servizi.
+- `/boot` contiene i dati relativi al processo di boot: kernel .iso, boot loader config.
+- `/dev` contiene i file speciali di dispositivo(comunicazione a basso livello con le periferiche avviene attraverso questi file).
+- `/etc` contiene la configurazione di sistema dei software installati.
+- `/home` contiene gli spazi di lavoro degli utenti.
+- `/lib` contiene le librerie necessarie all'avvio del sistema.
+- `/mnt` è il mount point classico, obsoleto sostituito da `/media`.
+- `/opt` contiene un root file system destinato a software di terze parti non free e binario.
+- `/proc` contiene informazioni statiche sulle risorse hw/sw generate dal kernel.
+- `/root` contiene lo spazio di lavoro dell'utente root(admin).
+- `/run` è un file system in RAM. Contiene temp files di un servizio.
+	- gli script di avvio e terminazione di Apache2 (un Web server) devono sapere se il server è attivo oppure no e, nel caso, che PID ha.
+- `/tmp` è un file system in RAM. Contenente file temporanei delle applicazioni e scarti.
+- `/usr` contiene un root file system per i software.
+	- `/usr/local`
+- `/var` contiene file il cui contenuto è supposto a crescere nel tempo(logs, ...).
+# Virtual File System
+- **Clonazione dei dischi**: `dd if=/dev/sda of=/fev/sdb` effettua una copia blocco per blocco del disco identificato da `/dev/sda` in `/dev/sdb`.
+- **Masterizzazione di CD**: `dd if=img.iso of=/dev/cdrw` effettua una copia blocco per blocco di `img.iso` nel CD nell'unità `/dev/cdrw`.
+- **Analisi partizione**: `strings /dev/sda2` legge la partizione `/dev/sda2` ed estrae le sequenze di valori indentificati.
+- **Visione di un terminale**: `watch -n 1 fold -w 80 /dev/vcs2` stampa ogni secondo la schermata del terminale (`tty2`).
+- **Statistiche di un processo**: per un proceso p(PID) il kernel crea la dir `/proc/p` contenente informazioni statistiche.
 
 
 
