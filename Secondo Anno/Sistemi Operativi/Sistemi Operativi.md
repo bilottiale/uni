@@ -902,7 +902,7 @@ Nel contesto dei *file system* si intende:
 - In Linux: `fsck.nome_fs`, `fsck.ext4, `fsck.vfat`, ...
 Operazioni di `fsck`:
 - **Controllo consistenza**: verifica l'integrità dei metadati e blocchi.
-- **Riparazione**: corregge eventuali problemi riscontrati.
+- **Riparazione**: corregge eventuali problemi riscontrati. 
 # Journal
 Il file system è arricchito con un file speciale(detto **journal**), gestito come un **buffer circolare**.
 1. **Annotazioni**:
@@ -917,11 +917,9 @@ Il file system è arricchito con un file speciale(detto **journal**), gestito co
 ***
 # T10 - VFS
 # Virtual File System
-Il **Virtual File System** è un sottosistema del kernel. In Linux è implementato in tutti i file di primo livello contenuti nella directory `$LINUX/fs`.
-Fornisce una visione omogenea, gerarchica, del contenuto informativo indipendente dai dispositivi.
-- Periferiche hardware locali.
-- Periferiche hardware remote.
-- Kernel.
+Il **Virtual File System** è un sottosistema del kernel Linux, offre una rappresentazione uniforme e gerarchica dei file e delle periferiche, indipendentemente dalla loro posizione.
+- In Linux sono i file di primo livello in :`$LINUX/fs`.
+Separa la logica del file system dall'hardware, offrendo agli utenti un unico modello di accesso.
 Si supponga di avere mount point con nomi direttamente associabili alle periferiche.
 Windows:
 - Primo disco SATA: "`C:\`".
@@ -930,9 +928,10 @@ Windows:
 Si scriva un'applicazione che fa riferimento a file contenuti in "`D:`". Si scambino di posto il secondo e terzo disco.
 - L'applicazione non accede più ai file.
 ![[Pasted image 20241118154943.png|500]]
-Il VFS **decompone il percorso** di un file nelle sue componenti(*path lookup*) ed individua i dispositivi in cui queste si trovano. **Gestisce i descrittori di file** rappresentati i file aperti dall'applicazione.
+- **Path lookup**: scompone il percorso di un file per individuare i dispositivi sottostanti.
+- **Gestione descrittori di file**: mappa i file aperti dalle applicazioni su strutture di dati kernel.
 ## Struct inode
-Nei sistemi UNIX il FCB è rappresentato da una struttura detta **inode**.
+Nei sistemi UNIX rappresenta il FCB, una struttura detta **inode**.
 In `EXT4` l'*inode* è definito come: `struct ext4_inode` in `$LINUX/fs/ext4/ext4.h`.
 File system diversi possono avere *inode* in formato diverso. Per tale motivo il VFS definisce un unico formato di *inode*, valido per tutti i file system: `struct inode`, definita nel file: `$LINUX/include/fs.h` creata al primo uso di un file e mantenuta in RAM perché l'analisi di un percorso è frequente e dispendiosa.
 ### Struct file
@@ -953,34 +952,53 @@ Con la cache il path lookup si riduce ad una navigazione di un albero binario in
 `struct file_operations` è un array di puntatori a funzione rappresentante le operazioni possibili su un file(`$LINUX/include/fs.h`). Occupa una intera linea di cache hardware per un accesso fulmineo.
 # Directory Tree
 ## Filesystem Hierarchy Standard
-Le direcotry del file system di root sono organizzate secondo uno standard: **Filesystem Hierarchy Standard**(FHS).
+Le directory del file system di root sono organizzate secondo uno standard: **Filesystem Hierarchy Standard**(FHS).
 ![[Pasted image 20241118161813.png|500]]
-- `/bin` contiene i comandi di un sistema di base testuale.
-- `/sbin` contiene i comandi di amministrazione nonché `init`che avvia i servizi.
-- `/boot` contiene i dati relativi al processo di boot: kernel .iso, boot loader config.
-- `/dev` contiene i file speciali di dispositivo(comunicazione a basso livello con le periferiche avviene attraverso questi file).
-- `/etc` contiene la configurazione di sistema dei software installati.
-- `/home` contiene gli spazi di lavoro degli utenti.
-- `/lib` contiene le librerie necessarie all'avvio del sistema.
-- `/mnt` è il mount point classico, obsoleto sostituito da `/media`.
-- `/opt` contiene un root file system destinato a software di terze parti non free e binario.
-- `/proc` contiene informazioni statiche sulle risorse hw/sw generate dal kernel.
-- `/root` contiene lo spazio di lavoro dell'utente root(admin).
-- `/run` è un file system in RAM. Contiene temp files di un servizio.
-	- gli script di avvio e terminazione di Apache2 (un Web server) devono sapere se il server è attivo oppure no e, nel caso, che PID ha.
-- `/tmp` è un file system in RAM. Contenente file temporanei delle applicazioni e scarti.
-- `/usr` contiene un root file system per i software.
-	- `/usr/local`
-- `/var` contiene file il cui contenuto è supposto a crescere nel tempo(logs, ...).
-# Virtual File System
-- **Clonazione dei dischi**: `dd if=/dev/sda of=/fev/sdb` effettua una copia blocco per blocco del disco identificato da `/dev/sda` in `/dev/sdb`.
-- **Masterizzazione di CD**: `dd if=img.iso of=/dev/cdrw` effettua una copia blocco per blocco di `img.iso` nel CD nell'unità `/dev/cdrw`.
-- **Analisi partizione**: `strings /dev/sda2` legge la partizione `/dev/sda2` ed estrae le sequenze di valori indentificati.
-- **Visione di un terminale**: `watch -n 1 fold -w 80 /dev/vcs2` stampa ogni secondo la schermata del terminale (`tty2`).
-- **Statistiche di un processo**: per un proceso p(PID) il kernel crea la dir `/proc/p` contenente informazioni statistiche.
+Definisce la struttura delle directory nei sistemi, specificando la funzione di ciascuna di esse.
 
-
-
+| **Directory**    | **Descrizione**                                                                                 |
+| ---------------- | ----------------------------------------------------------------------------------------------- |
+| **`/bin`**       | Comandi base per il sistema operativo in modalità testuale (es. `ls`, `cp`, `mv`).              |
+| **`/sbin`**      | Comandi di amministrazione (es. `fsck`, `reboot`) e il programma `init`, che avvia i servizi.   |
+| **`/boot`**      | File per l'avvio del sistema (kernel, configurazioni del bootloader).                           |
+| **`/dev`**       | File speciali per dispositivi hardware (comunicazione con periferiche).                         |
+| **`/etc`**       | Configurazioni di sistema e software (es. `passwd`, `fstab`).                                   |
+| **`/home`**      | Directory personali degli utenti, con i loro file e configurazioni locali.                      |
+| **`/lib`**       | Librerie condivise necessarie per l'avvio del sistema (es. `libc.so`).                          |
+| **`/mnt`**       | Mount point obsoleto (sostituito da `/media` per dispositivi rimovibili).                       |
+| **`/opt`**       | Software di terze parti, non open-source o distribuito in formato binario.                      |
+| **`/proc`**      | Informazioni sul sistema generate dal kernel in tempo reale (processi, memoria, ecc.).          |
+| **`/root`**      | Spazio personale dell'utente `root` (amministratore di sistema).                                |
+| **`/run`**       | File temporanei in RAM, utili per la gestione dei processi (es. PID di servizi come `apache2`). |
+| **`/tmp`**       | File temporanei in RAM, eliminati al riavvio.                                                   |
+| **`/usr`**       | File di sistema, librerie e applicazioni installate dall'utente.                                |
+| **`/usr/local`** | Software personalizzato, compilato o installato manualmente dall'amministratore.                |
+| **`/var`**       | File di registro e directory che crescono nel tempo (log, spool, cache).                        |
+### Usi comuni del Virtual File System (VFS)
+1. **Clonazione dischi**: 
+   ```bash
+   dd if=/dev/sda of=/dev/sdb
+   ```
+   - Copia blocco per blocco il contenuto di `/dev/sda` su `/dev/sdb`.
+2. **Masterizzazione CD**: 
+   ```bash
+   dd if=img.iso of=/dev/cdrw
+   ```
+   - Scrive l'immagine `img.iso` su un CD nell'unità `/dev/cdrw`.
+3. **Analisi partizioni**:
+   ```bash
+   strings /dev/sda2
+   ```
+   - Estrae le sequenze di caratteri leggibili dalla partizione `/dev/sda2`.
+4. **Visione terminale**: 
+   ```bash
+   watch -n 1 fold -w 80 /dev/vcs2
+   ```
+   - Mostra ogni secondo la schermata del terminale (`tty2`).
+5. **Statistiche di un processo**:
+   - Per ogni processo attivo, il kernel crea una directory `/proc/[PID]`, dove:
+     - `[PID]`: identificativo del processo.
+     - Contenuto: informazioni su memoria, CPU, I/O e altri parametri statistici.
 
 
 
