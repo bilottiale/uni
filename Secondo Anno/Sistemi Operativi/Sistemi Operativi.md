@@ -999,6 +999,74 @@ Definisce la struttura delle directory nei sistemi, specificando la funzione di 
    - Per ogni processo attivo, il kernel crea una directory `/proc/[PID]`, dove:
      - `[PID]`: identificativo del processo.
      - Contenuto: informazioni su memoria, CPU, I/O e altri parametri statistici.
+# T-11
+# Sistemi monoprogrammati
+**Scenario**: i processi hanno bisogno di memoria che venga fornita in modo:
+- *Efficiente*: sprecando meno risorse possibile.
+- *Performante*: nel modo più veloce possibile.
+- *Sicura*: processi diversi sono isolati fra loro.
+da SO.
+Lo sviluppatore può gestire la **memoria**: un gigantesco vettore di byte, ciascuno dotato di un indirizzo. La memoria contiene:
+- *Istruzioni*.
+- *Dati*.
+Nei **sistemi monoprogrammati** solo un processo può risiedere in memoria e prende il controllo dell'intera macchina.
+- **contro**:
+	- Un solo processo può essere in esecuzione in ogni istante.
+	- Il programma deve contenere i device driver delle periferiche per la macchina.
+# Sistemi multiprogrammati
+La memoria principale è suddivisa in **partizioni** di grandezza fissa.
+Ogni partizione ha una coda di ingresso per i programmi.
+I programmi vengono assegnati alla partizione più piccola disponibile.
+![[Pasted image 20241121160625.png|350]]
+**Contro**:
+- **Frammentazione interna**: Ogni programma occupa una intera partizione a prescindere dalla sua dimensione. Se le code piccole sono intasate, un programma piccolo può occupare una partizione grande.
+- **Frammentazione esterna**: La dimensione di un programma può essere più grande di una qualunque partizione esistente, anche se la memoria libera disponibile nel complesso lo permetterebbe.
+- **Limitazione grado di multiprogrammazione**: Nessuna partizione disponibile $\to$ niente esecuzione.
+## Partizionamento dinamico
+Numero e dimensione delle partizioni sono dinamici. Ogni programma riceve solo la memoria necessaria.
+**Pro**:
+- Frammentazione interna limitata.
+**Contro**:
+- Problema di spazio contiguo insufficiente per grandi programmi.
+## Swap
+Si usa un disco di appoggio(**backing store** o **swap**) per riversare su disco(**swap out**) la memoria di un programma:
+- che intralcia il caricamento di uno più importante.
+- che deve bloccarsi per un I/O.
+Quando è riattivato, il programma è riportato in memoria centrale (**swap in**) previo eventuale swap out di un altro programma.
+![[Pasted image 20241121161307.png]]
+**Pro**:
+- La frammentazione esterna non impedisce più l'avvio di un programma.
+**Contro**:
+- Operazioni lente (copia e lettura da disco).
+# Allocazione di memoria
+## Allocazione statica
+La memoria è dichiarata e allocata interamente a tempo di caricamento.
+Non permette espansioni dinamiche.
+## Allocazione dinamica
+Un programma può richiedere memoria aggiuntiva a runtime.
+### Problema
+Che cosa succede se l'allocazione invade la zona di un altro programma?
+### Soluzioni
+- $P_{1}$ è bloccato e spostato in una partizione abbastanza grande per contenerlo. Se tale partizione non esiste, $P_{1}$ è ucciso.
+![[Pasted image 20241121162352.png|350]]
+- $P_{2}$ è bloccato e spostato in area di swap per favorire l'espansione dinamica della memoria di $P_{1}$.
+![[Pasted image 20241121162512.png|350]]
+# Organizzazione interna
+La memoria è suddivisa in:
+- *Codice*
+- *Dati*
+	1. variabili(statiche) dichiarate a livello di compilazione
+	2. memoria dinamnica(**heap**)
+- *Stack*: per record di attivazione e variabili locali.
+Tali parti devono trovare posto nella partizione del processo.
+![[Pasted image 20241121162847.png|305]]
+## Problemi di collisione heap $\iff$ stack
+**Stack $\to$ Heap**: corruzione dei dati nell'heap.
+**Heap $\to$ Stack**: gli ultimi record di attivazione sono sovrascritti con valori provenienti dall'heap $\to$ Sovrascrittura di record di attivazione (_buffer overflow_), che può portare all'esecuzione di codice arbitrario.
+
+
+
+
 
 
 
