@@ -1,6 +1,5 @@
 public class Main {
     public static void main(String[] args) {
-
         long startTime = System.nanoTime();
         
         // rubrica1
@@ -37,6 +36,8 @@ public class Main {
         long DTime1 = endTime - startTime;
         System.out.println("Tempo impiegato: " + DTime1 + " nanosecondi");
         startTime = System.nanoTime();
+
+        System.out.println();
 
         // rubrica2
         RubricaList rubrica2 = new RubricaList();
