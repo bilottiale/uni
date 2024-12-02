@@ -2,12 +2,12 @@ package model;
 
 public class Laboratorio extends Aula {
     private boolean pc;
-    private boolean proiettore;
+    private boolean preseElettriche;
 
-    public Laboratorio(int id, int capienza, String tipoAula, boolean pc, boolean proiettore) {
+    public Laboratorio(int id, int capienza, String tipoAula, boolean pc, boolean preseElettriche) {
         super(id, capienza, tipoAula);
         this.pc = pc;
-        this.proiettore = proiettore;
+        this.preseElettriche = preseElettriche;
     }
 
     // Getters
@@ -15,8 +15,8 @@ public class Laboratorio extends Aula {
         return pc;
     }
 
-    public boolean hasProiettore() {
-        return proiettore;
+    public boolean haspreseElettriche() {
+        return preseElettriche;
     }
 
     // Setters
@@ -24,13 +24,13 @@ public class Laboratorio extends Aula {
         this.pc = pc;
     }
 
-    public void setProiettore(boolean proiettore) {
-        this.proiettore = proiettore;
+    public void setpreseElettriche(boolean preseElettriche) {
+        this.preseElettriche = preseElettriche;
     }
 
     @Override
     public String toString() {
         return "Laboratorio " + getIdAula() + ", capienza=" + getCapienza() + ", tipoAula='" + getTipoAula() + '\'' +
-                ", pc=" + pc + ", proiettore=" + proiettore;
+                ", pc=" + pc + ", prese elettriche=" + preseElettriche;
     }
 }
