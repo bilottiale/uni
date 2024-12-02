@@ -1,0 +1,6 @@
+id,capacita,tipo,accessorio1,accessorio2
+1,300,Didattica,true,true
+2,600,Laboratorio,true,true
+3,100,Didattica,true,true
+4,200,Laboratorio,true,false
+5,400,Didattica,false,false

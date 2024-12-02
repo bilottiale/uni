@@ -1063,6 +1063,747 @@ Tali parti devono trovare posto nella partizione del processo.
 ## Problemi di collisione heap $\iff$ stack
 **Stack $\to$ Heap**: corruzione dei dati nell'heap.
 **Heap $\to$ Stack**: gli ultimi record di attivazione sono sovrascritti con valori provenienti dall'heap $\to$ Sovrascrittura di record di attivazione (_buffer overflow_), che può portare all'esecuzione di codice arbitrario.
+***
+# T-12 Supporto alla memoria
+## Problemi nella gestione della memoria
+
+1. **Memoria contigua**: Necessità di collocare un processo in una porzione di memoria fisica continua.
+2. **Swap mirato**: Possibilità di spostare solo porzioni specifiche della memoria di un processo.
+3. **Distanza tra heap e stack**: Necessità di mantenerli separati per evitare conflitti.
+4. **Protezione della memoria**: Impedire a un programma di accedere alla memoria di un altro programma.
+5. **Buffer overflow**: Limitare gli effetti di problemi di sovrascrittura di memoria.
+## Soluzioni proposte
+1. **Illusione di esclusività**:
+    - Far credere a ogni processo di essere l'unico nella memoria centrale.
+    - Elimina problemi di sovrapposizione e gestione delle partizioni.
+2. **Blocchi di memoria piccoli**:
+    - Riduce la frammentazione esterna.
+3. **Schemi di indirizzamento multipli**:
+    - **Indirizzi virtuali**: Simulano zone di memoria contigue, eliminando la frammentazione esterna.
+    - **Indirizzi fisici**: Utilizzati per accedere effettivamente al chip RAM.
+    - Mappatura efficiente tra indirizzi virtuali e fisici, con supporto allo swap su disco.
+### Supporto hardware
+1. **Segmentazione** (dall'8086):
+    - La memoria di un processo è suddivisa in segmenti per **codice**, **dati** e **stack**.
+    - Ogni segmento ha il proprio intervallo di indirizzi e permessi di accesso.
+2. **Paginazione** (dall'80386):
+    - La memoria è vista come una collezione di piccoli blocchi (tipicamente da 4 KB).
+    - Ogni blocco ha il proprio intervallo di indirizzi e permessi.
+Questi meccanismi costituiscono la base del sottosistema di memoria virtuale nei sistemi operativi moderni.
+### Schema degli indirizzi
+1. **Indirizzo logico**:
+    - Generato dalla CPU e processato dall'unità di segmentazione.
+2. **Indirizzo lineare**:
+    - Prodotto dell'unità di segmentazione e processato dall'unità di paginazione.
+3. **Indirizzo fisico**:
+    - Prodotto dell'unità di paginazione e usato per accedere ai dati nella RAM.
+Esempio:
+- Salto a `jmp 0058:FFEC` genera:
+    - **Indirizzo logico**: `0058:FFEC`
+    - **Indirizzo lineare**: `0x9121C`
+    - **Indirizzo fisico**: `0x4000021C`
+### Modalità operative
+1. **Real Mode**:
+    - Pre-80286: Sempre attiva.
+    - 80286 e superiori: Utilizzata nella fase iniziale di avvio.
+2. **Protected Mode**:
+    - Attivata sui processori 80286 e successivi impostando il bit *PE* del registro di controllo `CR0` a 1.
+# Segmentazione
+La **segmentazione** è una tecnica di gestione della memoria usata nei sistemi operativi per organizzare lo spazio di memoria in segmenti logici di dimensioni variabili. È progettata per riflettere meglio la struttura logica di un programma(ad esempio, separando il codice, i dati e lo stack). A differenza della **paginazione**, che divide la memoria in blocchi di dimensioni fisse, la segmentazione permette segmenti di dimensioni diverse, legati alla logica del programma.
+Un indirizzo logico assume la forma: **SELECTOR:OFFSET**
+- **Selector**: indice nella tabella dei segmenti.
+- **Offset**: posizione relativa all'interno del segmento.
+## Registri di segmento
+Il *selector* è salvato in un *registro di segmento*(segment register). Esempio: 8086:
+- **CS**(Code Segment): contiene il selettore del segmento per il segmento di codice.
+- **DS**(Data Segment): contiene il selettore del segmento per il segmento dati.
+- **SS**(Stack Segment): contiene il selettore del segmento per il segmento dello stack.
+- **ES**(Extra Segment): contiene il selettore di un segmento “extra”, impostabile dall'utente.
+## Registri puntatore
+L'*offset* di alcuni indirizzi notevoli è salvato in un *registro puntatore* o *indice*(pointer o index register). Esempio: 8086:
+- **SP**(Stack Pointer): contiene l'offset dell'indirizzo cima dello stack.
+- **BP**(Base Pointer): contiene l'offset dell'indirizzo del record di attivazione corrente.
+- **IP**(Instruction Pointer): contiene l'offset dell'indirizzo della prossima istruzione da eseguire.
+- **SI, DI**(Source, Destination Index): contengono offset variabili per l'implementazione di cicli.
+![[Pasted image 20241129173855.png|500]]
+## Limitazioni real mode
+1. **Bus degli indirizzi a 20 bit**:
+    - L'8086 può gestire al massimo **2²⁰ byte = 1 MB di memoria**.
+2. **Dimensione massima di un segmento**:
+    - Ogni segmento è limitato a **64 KB**.
+3. **Assenza di privilegi**:
+    - Non ci sono livelli di protezione per isolare processi o segmenti di memoria.
+4. **Necessità di un'estensione**:
+    - Per superare queste limitazioni, si è sviluppata la **Protected Mode**, retrocompatibile con il Real Mode.
+## Descrittore di segmento(80286)
+- Struttura dati di **8 byte** nella modalità protetta, descrive un segmento.
+- Contiene:
+    1. **Base**: indirizzo lineare a **32 bit**, indica l'inizio del segmento.
+    2. **Limite**: offset a **20 bit**, specifica la lunghezza del segmento.
+    3. **DPL** (Descriptor Privilege Level): livello di privilegio minimo richiesto per accedere al segmento:
+        - **0**: kernel mode (massimo privilegio).
+        - **3**: user mode (minimo privilegio).
+Il formato è una **estensione retrocompatibile** con il vecchio schema a 20 bit (Real Mode).
+### Tabelle dei descrittori
+1. **Global Descriptor Table (GDT)**:
+    - Contiene descrittori di segmenti di interesse globale.
+    - Può includere descrittori delle Local Descriptor Table (LDT).
+2. **Local Descriptor Table (LDT)**:
+    - Contiene i descrittori specifici di un processo (es. codice, dati, stack).
+### Registri associati alle tabelle
+1. **GDTR** (Global Descriptor Table Register):
+    - Memorizza l’indirizzo iniziale della GDT.
+2. **LDTR** (Local Descriptor Table Register):
+    - Memorizza l’indirizzo iniziale della LDT del processo corrente.
+### Istruzioni per gestire i registri
+- **`lgdt` / `sgdt`**:
+    - `lgdt`: carica un indirizzo nel GDTR.
+    - `sgdt`: salva il contenuto di GDTR in un altro registro.
+- **`lldt` / `sldt`**:
+    - `lldt`: carica un indirizzo nel LDTR.
+    - `sldt`: salva il contenuto di LDTR in un altro registro.
+- Queste istruzioni sono eseguibili solo in **ring 0** (kernel mode).
+## Inizializzazione delle GDT
+- All'avvio del kernel durante il boot:
+    ```
+    go_to_protected_mode()
+    ```
+    - File di riferimento:
+        ```
+        $LINUX/arch/x86/boot/pm.c
+        ```
+    - Cosa fa?
+        - Attiva la **modalità protetta**.
+        - Inizializza il **vettore delle interruzioni**.
+### Inizializzazione della LDT (Local Descriptor Table)
+- Quando avviene?:
+    1. Alla **creazione di un processo** (`fork()`):
+        - Attraverso la funzione `dup_mm()`.
+    2. Al **caricamento di un'immagine** (`execve()`):
+        - Attraverso la funzione `bprm_mm_init()`.
+- Si usa una **funzione architettura-dipendente**:
+    ```
+    init_new_context()
+    ```
+    - File di riferimento:
+        ```
+        $LINUX/arch/x86/kernel/ldt.c
+        ```
+### Il selettore di segmento (80286)
+Punta a un descrittore di segmento nella **GDT** o **LDT**.
+- **Organizzazione**: Struttura di 2 byte.
+    - Campi del selettore:
+        - **Indice** (13 bit):
+            - Identificatore del segmento (fino a **8192 segmenti**).
+        - **TI** (Table Indicator, 1 bit):
+            - Indica la tabella in cui si trova il segmento:
+                - `0`: **GDT**.
+                - `1`: **LDT**.
+        - **RPL** (Requestor Privilege Level, 2 bit):
+            - Privilegio richiesto per accedere al segmento (**0-3**).
+        - **CPL** (Current Privilege Level):
+            - Privilegio con cui il codice sta eseguendo.
+## Traduzione degli indirizzi in protected mode
+1. **Lettura del Segment Selector**:
+    - Il processore legge il **segment selector** da una costante o da un registro di segmento (es. **CS**, **DS**).
+2. **Controllo dei privilegi**:
+    - Si verificano i privilegi di accesso, confrontando il **CPL** (Current Privilege Level) con il **DPL** (Descriptor Privilege Level) del descrittore di segmento.
+3. **Identificazione della tabella**:
+    - Tramite il bit **TI** (Table Indicator) si determina se il descrittore si trova nella **GDT** o nella **LDT**.
+4. **Individuazione dell'indirizzo del descrittore**:
+    - Si calcola l'indirizzo del descrittore di segmento usando l'indirizzo base del registro **GDTR** e l'indice del segmento:
+        ```
+        Indirizzo descrittore = GDTR + indice * 8
+        ```
+5. **Estrazione dell'indirizzo base**:
+    - Una volta individuato il descrittore, si estrae l'**indirizzo base** (che è parte del descrittore di segmento).
+6. **Calcolo dell'indirizzo lineare**:
+    - Si somma l'**offset** (fornito dal codice o dal registro puntatore) all'indirizzo base per ottenere l'**indirizzo lineare**:
+        ```
+        Indirizzo lineare = Indirizzo base + offset
+        ```
+7. **Fine del processo**:
+    - Nell'**80286**, l'indirizzo lineare coincide con l'indirizzo **fisico** (poiché non è presente la paginazione).
+![[Pasted image 20241129175803.png|500]]
+## Livelli di privilegio
+I privilegi di esecuzione sono un meccanismo di difesa da istruzioni/accessi alla memoria illegali causati da: malfunzionamenti hardware. comportamenti maliziosi.
+La CPU è dotata di 4 modi di utilizzo, disposti “ad anello”:
+- **Ring 3**: applicazioni utente.
+- **Ring 2**: device driver.
+- **Ring 1**: device driver, hypervisor.
+- **Ring 0**: device driver e basso livello SO (kernel)
+![[Pasted image 20241129175947.png|500]]
+## Algoritmo di controllo dei privilegi
+1. Si estrae il *CPL* dal selettore di segmento in *CS*.
+2. Si estrae il *RPL* dal selettore del segmento dati nel registro di segmento opportuno (DS, ES, …).
+3. Si identifica il descrittore di segmento usando il campo index del selettore di segmento.
+4. Si estrae il *DPL* dal descrittore di segmento.
+5. Si calcola il privilegio più debole fra codice in esecuzione e privilegio di richiesta:
+	1. `max(CPL, RPL)`.
+6. Se DPL $\geq$ `max(CPL, RPL)`, l'accesso viene garantito.
+7. Altrimenti, viene generata una eccezione del tipo **General Protection Fault**.
+![[Pasted image 20241129180202.png|500]]
+### Estensioni introdotte nell'80386
+1. **Registri a 32 bit**
+2. **Descrittore di segmento**:
+    - Il **descrittore di segmento** viene modificato per supportare segmenti di **dimensione massima maggiore** (da 1MB a **4GB**).
+    - Introduzione del **registro base a 32 bit** per indirizzare segmenti più grandi.
+    - Il **flag G** (Granularity) indica che se impostato a **1**, il limite del segmento è moltiplicato per 4096 (la dimensione di una pagina), estendendo la dimensione massima del segmento da 1MB a 4GB.
+3. **Due nuovi segmenti FS e GS**:
+	- Programmabili dall'utente.
+4. **Paginazione**:
+    - L'indirizzo lineare non coincide più con l'indirizzo fisico, ma viene passato all'**unità di paginazione** per la mappatura in memoria.
+### Schema del descrittore di segmento (80386, 32 bit):
+![[Pasted image 20241129181041.png|500]]
+### Modifiche introdotte nell'architettura x86_64
+1. **Registri a 64 bit**:
+    - Registri **tutti a 64 bit**, ampliando significativamente la capacità di memoria e la potenza di elaborazione.
+2. **No segmentazione**:
+    - Nella modalità di indirizzamento **default** (long mode), **la segmentazione viene disabilitata**. I registri di segmento (**CS, DS, ES, SS**) hanno:
+        - **Base = 0** e **Limite = 2⁶⁴**, che consente di indirizzare tutta la memoria.
+3. **Modalità di compatibilità(legacy mode)**:
+    - Quando il processore è in modalità compatibilità(per supportare software a 32 bit), si comporta come un **x86_32**, mantenendo il modello di segmentazione tradizionale.
+4. **Vantaggi**:
+    - L'architettura **x86_64** elimina le complessità della segmentazione, riducendo la necessità di descrittori di segmento e migliorando l'efficienza nell'accesso alla memoria.
+## Flat memory model(Linux, x86_32)
+Il **modello piatto di memoria**(flat memory model) è una tecnica che riduce l'uso della segmentazione, mappando l'intero spazio di memoria in un singolo segmento continuo.
+In Linux (x86, 32 bit) viene fatto definendo quattro segmenti sovrapposti che coprono l'intero spazio di indirizzamento a 4GB(0-4GB), evitando la segmentazione complessa.
+### Segmenti nel Flat Memory Model:
+
+| **Nome**      | **Tipo**            | **Base** | **Limite** | **DPL** |
+| ------------- | ------------------- | -------- | ---------- | ------- |
+| `__KERNEL_CS` | Kernel code segment | 0        | 4GB        | 0       |
+| `__KERNEL_DS` | Kernel data segment | 0        | 4GB        | 0       |
+| `__USER_CS`   | User code segment   | 0        | 4GB        | 3       |
+| `__USER_DS`   | User data segment   | 0        | 4GB        | 3       |
+### Impostazione del Flat Memory Model in Linux:
+1. **Definizione delle macro**: Le macro per la configurazione dei segmenti sono definite in:
+    ```
+    $LINUX/include/asm/segment.h
+    ```
+2. **Fasi dell'impostazione**:
+    - **Avvio del kernel**: In questa fase, vengono inizializzati i registri di segmento per il kernel.
+    - **Chiamata di sistema**: Durante l'esecuzione di chiamate di sistema, vengono gestiti i segmenti per il kernel e per l'utente.
+    - **Copia dati tra kernel e applicazione**: Quando un'applicazione passa dati al kernel o viceversa, i segmenti vengono aggiornati di conseguenza.
+    - **Clonazione di un processo**: Quando un processo viene duplicato (ad esempio, con `fork()`), la configurazione dei segmenti viene adattata per il nuovo processo.
+I dettagli sui segmenti nel sistema Linux (x86, x86_64) possono essere trovati tramite il comando:
+```
+cd $LINUX/arch/x86
+grep -nrHE “__KERNEL_(C|D)S” *
+```
+# Paginazione: Supporto Hardware
+La **paginazione** è un meccanismo di gestione della memoria introdotto con l'architettura 80386, che consente di trattare la memoria come una serie di piccoli blocchi contigui e di dimensione fissa, migliorando l'efficienza nell'allocazione e gestione della memoria.
+### Obiettivo della Paginazione:
+Lo scopo principale della paginazione è mappare gli **indirizzi logici** (o lineari) in **indirizzi fisici**, creando una relazione tra lo spazio di memoria virtuale e quello fisico.
+- **Indirizzi lineari (logici)**: Rappresentano lo spazio di memoria che il processore vede come un blocco contiguo.
+- **Indirizzi fisici**: Rappresentano la memoria reale, che potrebbe non essere contigua a causa di limitazioni fisiche o gestione dinamica della memoria.
+**Problema**:
+**Mappare ogni singolo indirizzo lineare in un indirizzo fisico** è molto dispendioso in termini di tempo e risorse, soprattutto per grandi spazi di memoria.
+### Frame e Pagine:
+- **Pagine**: Lo spazio di indirizzamento **lineare** (virtuale) è suddiviso in blocchi di dimensione fissa chiamati **pagine**.
+	- Non troppo piccola e non troppo grande, è di **4KB**.
+- **Frame**: Lo spazio di indirizzamento **fisico** è suddiviso in blocchi di uguale dimensione chiamati **frame**.
+Il **problema della paginazione** si riduce a mappare una **pagina** in un **frame**. Essendo le dimensioni di pagine e frame uguali, la mappatura diventa più semplice e meno costosa rispetto a una mappatura puntuale di ogni singolo indirizzo.
+**Benefici**:
+- **Semplificazione**: Poiché avviene tra blocchi di memoria di dimensione fissa (pagine e frame), la complessità e il costo computazionale della gestione della memoria si riducono.
+- **Flessibilità**: Permette una gestione dinamica della memoria, supportando la **memoria virtuale**, in cui i processi possono utilizzare più memoria di quella effettivamente disponibile, tramite la paginazione e l'uso di dispositivi di memoria secondaria (come il disco).
+![[Pasted image 20241129182809.png|500]]
+## Memory Management Unit
+La mappatura fra pagine e frame è ottenuta attraverso un circuito integrato nel processore, la **Memory Management Unit (MMU)**.
+La *Memory Management Unit* gestisce la **tabella delle pagine(page table)**. Indicizzata tramite una porzione dell'indirizzo logico. L'elemento i contiene una struttura dati descrivente il frame associato alla pagina $i$.
+![[Pasted image 20241129183215.png|350]]
+### Schema ideale di base
+![[Pasted image 20241129183312.png|500]]
+### Problema della Dimensione della Tabella delle Pagine
+Nel sistema di paginazione, la **tabella delle pagine** è un elemento cruciale per la mappatura tra gli indirizzi logici e fisici. Tuttavia, la sua dimensione può essere un problema, soprattutto in architetture con grandi spazi di indirizzamento.
+- La tabella delle pagine contiene una voce per ogni **pagina** di memoria. Se si considera una memoria indirizzabile di 4GB con pagine di 4KB, il numero di voci nella tabella delle pagine sarebbe $2^{20}$ (1 milione di voci).
+- Ogni voce della tabella può occupare almeno 4 byte (in un sistema a 32 bit), portando la **dimensione totale della tabella** a **4MB** (4 byte × $2^{20}$ voci).
+Nel **1985**, quando è stato introdotto l'80386, una tabella delle pagine di 4MB era **troppo grande** per essere gestita direttamente dal processore, sia in termini di **memoria hardware** che di **prestazioni**.
+### Soluzione: Memorizzare la Tabella delle Pagine in RAM
+Per risolvere il problema della dimensione della tabella delle pagine, si è deciso di **memorizzare la tabella in RAM** anziché cercare di cablarla direttamente nell'hardware del processore. In questo modo, la tabella non deve occupare spazio fisico nel chip, ma viene comunque utilizzata dal processore per la traduzione degli indirizzi.
+- La tabella delle pagine viene **caricata in memoria RAM** e il **processore utilizza un registro di controllo** per accedere ad essa.
+- **Registro CR3**: Nei processori Intel, l'indirizzo fisico iniziale della tabella delle pagine viene **salvato nel registro di controllo CR3**. Il **registro CR3** punta all'indirizzo base della tabella delle pagine in memoria, permettendo al processore di accedervi per ottenere la mappatura tra gli indirizzi logici e fisici.
+Con questa soluzione, la tabella delle pagine può essere gestita in modo dinamico senza doverla integrare direttamente nell'hardware del processore, riducendo il costo in termini di spazio e di complessità.
+![[Pasted image 20241130105406.png|500]]
+## Rappresentazione della Pagina in Linux
+In Linux, la rappresentazione di un elemento della **tabella delle pagine** (mappatura tra pagina logica e frame fisico) utilizza un **tipo di dato opaco** chiamato `pte_t`.
+- **Tipo opaco `pte_t`**: È una rappresentazione astratta e dipende dall'architettura della CPU.
+- Per l'architettura **x86_64**, è spesso un `unsigned long`, incapsulato in una struttura `pteval_t`.
+- **Definizioni specifiche**: Variano a seconda dell'architettura. Per x86_64, la definizione si trova in:
+    - `$LINUX/arch/x86/include/pgtable_64_types.h`.
+## Gestione dei Frame Fisici (Allocazione e Deallocazione)
+Linux fornisce strumenti per gestire i **frame fisici** (blocchi di memoria fisica corrispondenti alle pagine logiche).
+- **`get_page()`**: Ottiene un frame fisico libero.
+- **`free_page()`**: Restituisce un frame fisico al sistema.
+- **`alloc_pages()` e `free_pages()`**: Permettono di allocare/deallocare **blocchi di $2^{n}$ frame**.
+Queste funzioni sono definite in:
+- `$LINUX/include/linux/gfp.h`.
+## Problema: Accesso Inefficiente alla Memoria
+Con la **tabella delle pagine** in RAM, ogni accesso alla memoria logica richiede due operazioni:
+1. **Accesso alla tabella delle pagine**: Per ottenere l'indirizzo fisico corrispondente a quello logico.
+2. **Accesso alla memoria fisica**: Per leggere/scrivere i dati.
+Questo introduce un **overhead significativo**, raddoppiando il numero di accessi alla memoria.
+## Soluzione: Translation Lookaside Buffer (TLB)
+Per migliorare le prestazioni, si utilizza una **cache hardware** chiamata **Translation Lookaside Buffer (TLB)**.
+- Il TLB è una **memoria associativa hardware** progettata per memorizzare le traduzioni di indirizzi più utilizzate (le porzioni "calde" della tabella delle pagine).
+- **Velocità**: Il TLB opera a velocità comparabili a quelle dei registri della CPU (pochi nanosecondi).
+#### **Processo**:
+1. Quando si traduce un indirizzo lineare in fisico, si effettua un **lookup** nel TLB.
+2. **Se la traduzione è presente**:
+    - Si ottiene l'indirizzo fisico direttamente.
+3. **Se la traduzione non è presente**:
+    - Si accede alla tabella delle pagine in RAM.
+    - Si aggiorna il TLB con la nuova traduzione per utilizzi futuri.
+Questo approccio riduce drasticamente il numero di accessi alla RAM, migliorando le prestazioni della memoria virtuale.
+### TLB hit e TBL miss
+- **TLB Hit**: L'indirizzo logico richiesto è presente nel **TLB** → Traduzione immediata, **accesso veloce** (pochi nanosecondi).
+- **TLB Miss**: L'indirizzo non è nel **TLB** → Si accede alla **tabella delle pagine** in RAM per la traduzione, poi si aggiorna il TLB → **Accesso più lento**.
+- **TLB Hit Ratio**: Percentuale di accessi alla memoria con **TLB Hit** rispetto al totale degli accessi.
+    - Valore alto = **prestazioni migliori**, perché si evita il costo di accedere alla tabella delle pagine in RAM.
+![[Pasted image 20241130111256.png|500]]
+### TLB: Wiring Down e Flushing
+1. **Wiring Down**:
+    - Alcune pagine di memoria rimangono sempre in RAM e le loro associazioni nel TLB sono **permanenti**.
+    - Queste chiavi non vengono rimosse quando il TLB è pieno.
+2. **Indirizzi Lineari Simili per Processi Diversi**:
+    - Ogni processo ha una propria tabella delle pagine.
+    - Processi diversi possono usare lo stesso indirizzo lineare, mappato a indirizzi fisici distinti.
+    - Questo semplifica la gestione degli indirizzi da parte del compilatore.
+3. **Problema: Aggiornamento del TLB**:
+    - Senza aggiornare il TLB durante un cambio di contesto, un processo potrebbe accedere ai dati o codice di un altro.
+4. **Soluzione: TLB Flushing**:
+    - Ad ogni cambio di contesto, il **TLB viene azzerato** per evitare errori.
+    - **Svantaggio**: il flushing globale riduce le prestazioni a causa della perdita delle chiavi cache.
+### Address Space Identifier
+1. **Address Space Identifier (ASI)**:
+    - È una chiave che identifica univocamente un processo nella macchina.
+    - Permette di invalidare il **TLB** selettivamente per un singolo processo anziché globalmente.
+    - Questo migliora notevolmente le **prestazioni** durante il flushing.
+2. **Aggiornamento del TLB su Intel**:
+    - Nei processori Intel, l'**inserimento di nuove chiavi** nel TLB avviene completamente in **hardware** durante la mappatura pagina-frame.
+    - Il kernel si occupa solo del **flushing** (es. funzione `flush_tlb()` in x86-64).
+3. **Problema: Dimensione della Tabella**:
+    - Con spazi di indirizzamento logico ampi (es. 32 o 64 bit), le tabelle delle pagine diventano **enormi**.
+    - Esempio a 32 bit:
+        - Dimensione pagina: 4 KB.
+        - Tabella per processo: **4 MB** di memoria.
+4. **Soluzione: Paginazione Gerarchica**:
+    - Si adotta una **struttura gerarchica** per le tabelle delle pagine:
+        - La tabella principale punta a **sotto-tabelle** più piccole.
+        - Le sotto-tabelle mappano direttamente ai frame fisici.
+    - Questo schema riduce l'occupazione di memoria e richiede una **riprogettazione degli indirizzi logici**.
+### Il nuovo formato degli indirizzi logici
+Il nuovo **indirizzo lineare** è suddiviso in tre parti:
+1. **Numero primario di pagina (p1)**:
+    - Rappresenta l'indice nella **tabella delle pagine principale**.
+    - Identifica la sotto-tabella che contiene il mapping desiderato.
+2. **Numero secondario di pagina (p2)**:
+    - Indice alla **tabella delle pagine secondaria**, specifica l'elemento all'interno della sotto-tabella.
+3. **Offset di pagina (d)**:
+    - Indica la posizione precisa del dato **all'interno della pagina** mappata.
+![[Pasted image 20241130112833.png|350]]
+![[Pasted image 20241130112927.png|500]]
+## Physical Address Extension(PAE)
+L'**estensione sull'indirizzamento fisico** consente a processori Intel a 32 bit di gestire fino a **64GB di RAM**, grazie a una paginazione a tre livelli.
+### Caratteristiche:
+1. **Mappatura a 36 bit**:
+    - Indirizzi fisici fino a **64GB**.
+    - Lo spazio logico rimane a **32 bit**, ma viene suddiviso in blocchi di massimo 4GB.
+2. **Dimensione configurabile della pagina**:
+    - **4KB** o **2MB**.
+3. **Protezione di esecuzione**:
+    - Possibilità di marcare una pagina come **non eseguibile**, migliorando la sicurezza.
+4. **Attivazione**:
+    - Impostare il **bit 5 del registro CR4** a **1**.
+### Formato dell'indirizzo lineare con PAE
+Un indirizzo lineare utilizza i 32 bit disponibili per rappresentare i 36 bit dell'indirizzo fisico, suddiviso in:
+1. **Page Directory Pointer Table (p1)**:
+    - Punta alla **tabella principale**, che contiene riferimenti alle directory delle pagine.
+2. **Page Directory (p2)**:
+    - Punta alla **directory specifica** per individuare la tabella delle pagine corretta.
+3. **Page Table (p3)**:
+    - Contiene il mapping diretto alla pagina fisica.
+4. **Offset (d)**:
+    - Specifica la posizione esatta **all'interno della pagina**.
+![[Pasted image 20241130113815.png|350]]
+![[Pasted image 20241130113851.png|500]]
+## Paginazione a quattro livelli
+I processori a 64 bit (architettura x86-64) gestiscono un vasto spazio di indirizzamento grazie alla **paginazione a quattro livelli**, estendendo lo schema a tre livelli con l'aggiunta di una **Page Map Level 4 Table (PML4)**.
+1. **Spazi di indirizzamento**:
+    - **Virtuale**: **48 bit** (fino a **256TB**).
+    - **Fisico**: **40 bit** (fino a **1TB**).
+2. **Struttura a quattro livelli**:
+    - Organizza lo spazio virtuale suddividendo l'indirizzo in più livelli di tabelle.
+    - Ogni livello riduce gradualmente lo spazio indirizzato fino a individuare il frame fisico corretto.
+### Formato dell'indirizzo lineare (48 bit)
+Un indirizzo virtuale è suddiviso in:
+1. **Page Map Level 4 Table (PML4, p1)**:
+    - Puntatore alla tabella di livello più alto.
+2. **Page Directory Pointer Table (PDPT, p2)**:
+    - Puntatore alla directory delle directory delle pagine.
+3. **Page Directory (p3)**:
+    - Puntatore alla directory specifica.
+4. **Page Table (p4)**:
+    - Puntatore alla tabella finale che mappa i frame fisici.
+5. **Offset (d)**:
+    - Specifica la posizione all'interno della pagina.
+![[Pasted image 20241130114455.png|500]]
+## Paginazione a quattro livelli in Linux
+Linux supporta sia la **paginazione a tre livelli** (PAE) sia la **paginazione a quattro livelli** (utilizzata in modalità long mode su architetture x86-64). La struttura gerarchica a quattro livelli consente di gestire efficientemente lo spazio di indirizzamento virtuale e fisico esteso.
+### Struttura delle tabelle di paginazione
+1. **Page Global Directory (PGD)**:
+    - Contiene **512 elementi**, ciascuno puntatore alla **Page Upper Directory (PUD)**.
+2. **Page Upper Directory (PUD)**:
+    - Contiene **512 elementi**, ciascuno puntatore alla **Page Middle Directory (PMD)**.
+    - Presente **solo nella paginazione a quattro livelli**.
+3. **Page Middle Directory (PMD)**:
+    - Contiene **512 elementi**, ciascuno puntatore alla **Page Table Entry (PTE)**.
+4. **Page Table Entry (PTE)**:
+    - Contiene **512 elementi**, ciascuno mappa un frame fisico.
+5. **Offset**:
+    - Specifica una posizione all'interno della pagina (da 0 a 4KB).
+![[Pasted image 20241130114905.png|350]]
+### Rappresentazione degli elementi
+- Gli elementi delle tabelle di paginazione sono rappresentati come **unsigned long**, incapsulati in strutture specifiche.
+    - **PGD**: `pgdval_t`.
+    - **PUD**: `pudval_t`.
+    - **PMD**: `pmdval_t`.
+    - **PTE**: `pteval_t`.
+Questi tipi di dato opachi sono definiti in **`$LINUX/arch/x86/include/asm/pgtable_64_types.h`**.  
+Ogni valore contiene:
+1. **Puntatore** alla tabella successiva.
+2. **Informazioni di stato** (come permessi di accesso e flag di utilizzo).
+## PTE (Page Table Entry)
+Il **Page Table Entry (PTE)** contiene informazioni cruciali per la gestione della memoria virtuale. I campi principali sono:
+1. **P (Present)**:
+    - **1**: Il frame è presente in memoria RAM.
+    - **0**: Il frame non è presente in RAM (può essere su disco, in swap).
+2. **R/W (Read/Write)**:
+    - **1**: Il frame è accessibile in modalità lettura/scrittura (read-write).
+    - **0**: Il frame è accessibile solo in lettura (read-only).
+3. **U/S (User/Supervisor)**:
+    - **1**: Accesso permesso con CPL (Current Privilege Level) da 0 a 3 (modo utente o supervisore).
+    - **0**: Accesso permesso solo con CPL 0-2 (modo supervisore).
+4. **PWT (Page-level Write Through)**:
+    - **1**: La CPU usa la modalità "write-through" per la cache, i dati vengono scritti direttamente in memoria.
+    - **0**: La CPU usa la modalità "write-back", i dati vengono scritti in cache prima di essere scritti in memoria.
+5. **PCD (Page-level Cache Disable)**:
+    - **1**: Disabilita la cache della CPU per la pagina, impedendo che i dati vengano memorizzati nella cache.
+    - **0**: La pagina è cacheable dalla CPU.
+6. **A (Accessed)**:
+    - **1**: La pagina è stata accessibile per la prima volta (indicata come "acceduta").
+    - **0**: La pagina non è stata più acceduta da molto tempo.
+7. **D (Dirty)**:
+    - **1**: Il frame è stato modificato rispetto al suo stato originale (è "sporco").
+    - **0**: Il frame non è stato modificato (è "pulito").
+8. **G (Global Page)**:
+    - **1**: La pagina è marcata come globale, quindi non viene distrutta da un cambiamento di contesto.
+    - **0**: La pagina può essere eliminata durante un cambio di contesto.
+9. **NX (No eXecute)**:
+    - **1**: La pagina è marcata come non eseguibile, impedendo l'esecuzione di codice da quella pagina (utile per la protezione contro malware).
+    - **0**: La pagina è eseguibile.
+    - **Nota**: Il flag NX è disponibile solo in modalità PAE (Physical Address Extension) compatibile.
+## Gestione delle tabelle PGD, PUD, PMD e PTE in Linux
+1. **PGD (Page Global Directory)**:
+    - La **PGD** è un array di tipo **pgd_t** e viene memorizzata nel descrittore di memoria di un processo (**struct mm_struct**).
+    - **Funzioni di allocazione e deallocazione**:
+        - **pgd_alloc()**: Alloca una nuova PGD, che consiste in un frame fisico di 4KB contenente 512 elementi da 64 bit (un puntatore a una tabella di secondo livello).
+        - **pgd_free()**: Dealloca una PGD.
+    - Definite in `$LINUX/arch/x86/mm/pgtable.c`.
+2. **PUD (Page Upper Directory), PMD (Page Middle Directory), PTE (Page Table Entry)**:
+    - La gestione delle tabelle **PUD**, **PMD** e **PTE** avviene con funzioni simili a quelle della PGD.
+        - **PUD**: Gestito da **pud_alloc()** e **pud_free()**.
+        - **PMD**: Gestito da **pmd_alloc()** e **pmd_free()**.
+        - **PTE**: Gestito da **__pte_alloc()** e **pte_free()**.
+    - Definite in `$LINUX/include/linux/mm.h` e `$LINUX/mm/memory.c`.
+### Modifica delle tabelle di paginazione in Linux
+Le tabelle di paginazione (PGD, PUD, PMD, PTE) contengono elementi che non solo mappano gli indirizzi ma anche mantengono uno stato interno (come i permessi di accesso, la presenza del frame in memoria, ecc.). In Linux, per modificare questi elementi vengono utilizzate funzioni specifiche, spesso definite nel file **`$LINUX/arch/x86/include/asm/pgtable.h`**.
+- **Funzioni per PGD**:
+    - **`native_set_pgd()`**: Imposta un elemento della PGD. Utilizzata per modificare il puntatore alla tabella di secondo livello.
+    - **`native_clear_pgd()`**: Pulisce un elemento della PGD, rimuovendo l'associazione tra la PGD e la tabella di secondo livello.
+- **Funzioni per PTE (Page Table Entry)**:
+    - **`mk_pte()`**: Imposta l'indirizzo fisico di un frame in un elemento della PTE. Questa funzione è usata per aggiornare un'entrata nella tabella delle pagine (PTE) con l'indirizzo fisico di un frame, settando i bit di controllo come "presente" e "accesso read-write" o "read-only".
+## Flag di Stato del Frame Fisico
+Nel kernel Linux, oltre ai flag di stato utilizzati nelle tabelle delle pagine (come **Present**, **Read/Write**, ecc.), anche i **frame fisici** (ovvero le pagine fisiche di memoria) possiedono flag di stato che indicano il loro stato all'interno del sistema di memoria virtuale. Questi flag sono memorizzati nel campo `flags` della struttura **`struct page`**, che rappresenta un singolo frame fisico.
+### Tipi di Flag nella Struttura `struct page`
+Ogni frame fisico ha una serie di flag che possono indicare vari stati, come ad esempio:
+- **PG_referenced**: Indica se il frame è stato referenziato.
+- **PG_uptodate**: Indica se i dati nel frame sono aggiornati.
+- **PG_dirty**: Indica se i dati nel frame sono stati modificati.
+I flag sono definiti in una **enum** chiamata `pageflags`, contenente vari valori che rappresentano differenti stati del frame fisico. Il file che gestisce questi flag è **`$LINUX/include/linux/page-flags.h`**.
+### Modello di Funzione per la Gestione dei Flag
+Per gestire i flag associati ai frame fisici, il kernel Linux definisce una serie di **macro parametriche**. Queste macro creano delle funzioni che permettono di leggere, modificare o testare i flag in modo generico, senza dover scrivere codice ripetitivo.
+Esempio di modello di funzione:
+```c
+#define TESTPAGEFLAG(uname, lname) \
+static inline int Page##uname(const struct page *page) \
+{ \
+    return test_bit(PG_##lname, &page->flags); \
+}
+```
+In questo esempio, il modello `TESTPAGEFLAG` definisce una funzione che testa un flag (ad esempio `PG_dirty`) nel campo `flags` della struttura `page`. Gli argomenti `uname` e `lname` sono utilizzati per generare il nome della funzione e il nome del flag.
+### Esempio di Invocazione del Modello
+Per il flag **PG_dirty**, il modello genera una funzione come segue:
+```c
+TESTPAGEFLAG(Dirty, dirty)
+```
+Il preprocessore genera il seguente codice:
+```c
+static inline int PageDirty(const struct page *page) 
+{ 
+    return test_bit(PG_dirty, &page->flags); 
+}
+```
+Questa funzione può quindi essere utilizzata per verificare se il flag `PG_dirty` è impostato su un determinato frame fisico.
+- **Ricerca delle Funzioni**: Le funzioni generate tramite questi modelli (ad esempio `PageDirty()`, `SetPageDirty()`, `ClearPageDirty()`, ecc.) **non sono facilmente individuabili** con una semplice ricerca `grep`. È necessario investigare più a fondo nel codice e comprendere i modelli di funzione utilizzati per la loro generazione.
+- **Funzioni per Modificare i Flag**: Oltre alle funzioni di test come `PageDirty()`, sono definite anche funzioni per modificare i flag, come `SetPageDirty()` per impostare il flag o `ClearPageDirty()` per resettarlo.
+# Paginazione: Supporto alla Protezione
+In Linux, la protezione della memoria viene gestita principalmente a livello di **paginazione**, piuttosto che attraverso la segmentazione, grazie al **flat memory model**.
+## Flat Memory Model e Paginazione
+Nel **flat memory model**, tutti gli indirizzi virtuali sono trattati come se appartenessero a un unico spazio di memoria lineare, senza la necessità di segmenti distinti come accade in altri modelli di memoria. La segmentazione, quindi, non viene più utilizzata per la protezione della memoria nei processi. Invece, la protezione dell'accesso alla memoria è implementata direttamente nel sistema di **paginazione**.
+### Bit di Protezione nella Paginazione
+I bit di protezione sono aggiunti agli **elementi delle tabelle delle pagine** per definire le operazioni consentite su ciascun frame di memoria. I principali bit di protezione includono:
+- **Read/Write**: Specifica se un frame di memoria può essere letto e/o scritto.
+- **U/S (User/Supervisor)**: Determina se l'accesso è permesso da un livello utente (CPL 3) o solo da un livello kernel (CPL 0-2).
+- **NX (No Execute)**: Indica se il codice in un frame di memoria può essere eseguito o meno (utilizzato per prevenire l'esecuzione di codice da parti di memoria non eseguibili).
+Quando un processo tenta di eseguire un'operazione che non è compatibile con i permessi associati al frame di memoria, il **processore** segnala l'anomalia al **kernel**, impedendo l'operazione.
+### General Protection Fault
+Se un processo tenta di eseguire un'operazione illegale, come un accesso fuori dai limiti di memoria o l'esecuzione di codice non eseguibile, il processore genera un **General Protection Fault**. Questo errore segnala una violazione dei permessi di accesso alla memoria.
+Il kernel gestisce l'eccezione con un **handler** `do_general_protection()`, che può svolgere diverse operazioni in base alla natura dell'accesso illecito:
+- Se l'accesso illegale è stato fatto dal **kernel**, il sistema si blocca.
+- Se l'accesso illecito è stato fatto da un **processo utente**, il processo viene terminato con un **segnale 11** (che corrisponde a un **segmentation fault** o **SIGSEGV**), che indica un errore di accesso alla memoria.
+# Paginazione: Supporto alla Memoria Vituale
+La gestione della memoria virtuale in un sistema operativo come Linux si basa su un insieme di bit di stato all'interno delle tabelle delle pagine. Questi bit permettono di tracciare l'associazione delle pagine virtuali a frame fisici, di gestire l'allocazione dinamica della memoria e di rilevare errori come le violazioni di accesso a pagine non valide.
+## Bit di Validità
+Ogni elemento della tabella delle pagine è associato a un **bit di validità** che indica se la pagina virtuale è associata a un frame fisico o meno. Il **bit "Present"** nelle tabelle delle pagine viene utilizzato per determinare se la pagina è valida o meno. Ad ogni accesso, il processore verifica la validità della pagina:
+- Se la pagina non è valida, il **processore segnala l'anomalia al kernel**, generando una **Page Fault**.
+## Page Fault
+Quando il processore accede a una pagina non valida, si verifica una **Page Fault**, un'eccezione che segnala il tentativo di accesso a una pagina che non è attualmente mappata in memoria. Il **handler** per la page fault, `do_page_fault()`, esegue le seguenti operazioni:
+- Memorizza l'indirizzo dell'accesso invalido (contenuto nel registro CR2).
+- Verifica se l'indirizzo è all'interno dello spazio di indirizzamento di un processo:
+    - Se l'indirizzo non è valido, verifica se l'accesso è stato effettuato dal **kernel** (in tal caso causa un crash del sistema).
+    - Se l'indirizzo è valido per un processo utente, si associa la pagina a un **frame fisico**.
+### Associazione della Pagina al Frame
+Per associare una pagina a un frame fisico, la funzione `handle_mm_fault()` aggiorna le tabelle di paginazione e invoca altre funzioni come `handle_pte_fault()` per gestire la mappatura. La funzione che gestisce l'allocazione dinamica di memoria è **`do_anonymous_page()`**, mentre per caricare un blocco da disco si utilizza **`do_linear_fault()`**.
+## Bit di Lock
+Per alcune pagine che devono rimanere permanentemente associate a un frame fisico (come nel caso di memoria condivisa o pagine di I/O), si usa un **bit di lock**:
+- **Bit "Global"** nelle tabelle delle pagine e il flag **"PG_mlocked"** nella struct `page` indicano che una pagina è associata permanentemente a un frame fisico.
+    - Se il bit è **1**, l'associazione è permanente e non può essere interrotta.
+    - Se il bit è **0**, l'associazione può essere rimossa dal kernel per permettere la riallocazione del frame.
+## Bit di Modifica
+Il bit di **modifica** (Dirty) in una tabella delle pagine viene utilizzato per tracciare se una pagina caricata da disco è stata modificata rispetto al suo stato originale:
+- **Bit "Dirty"** nelle tabelle e il flag **"PG_dirty"** nella struct `page` vengono impostati a **1** quando una pagina è stata modificata. In questo caso, la pagina deve essere **sincronizzata su disco** prima che venga sostituita o rimossa.
+- Se il bit è **0**, la pagina non è stata modificata e non necessita di essere salvata su disco.
+***
+# T-13 Gestione memoria processi
+## Riassunto dei Meccanismi di Gestione della Memoria
+I meccanismi di gestione della memoria che sono emersi come vincenti per il funzionamento di un sistema operativo moderno sono i seguenti:
+1. **Modello di Memoria Flat**: In questo modello, la memoria non è segmentata, ma trattata come un unico blocco continuo. Questo semplifica l'accesso e la gestione della memoria, eliminando la necessità di segmenti separati per dati e codice.
+2. **Spazio di Indirizzamento Partizionato Dinamicamente**: Lo spazio di indirizzamento di ogni processo viene suddiviso dinamicamente in segmenti o pagine. In questo modo, la memoria può essere gestita in modo più flessibile e l'allocazione di memoria può essere ottimizzata.
+3. **Allocazione Dinamica della Memoria**: La memoria viene allocata dinamicamente a ciascun processo durante la sua esecuzione, riducendo il rischio di allocare inutilmente grandi quantità di memoria che non sono subito necessarie.
+4. **Separazione degli Spazi degli Indirizzi Kernel e User**: Il sistema operativo isola lo spazio di memoria riservato al kernel da quello utilizzato dai processi utente. Questo impedisce ai processi utente di accedere direttamente alla memoria del kernel, garantendo la protezione della memoria.
+5. **Paginazione della Memoria**: La memoria virtuale viene gestita tramite il sistema di paginazione, in cui la memoria virtuale è suddivisa in pagine di dimensioni fisse. Le pagine sono mappate su frame fisici in modo flessibile, migliorando l'efficienza nell'uso della memoria.
+6. **Associazione Ritardata delle Pagine ai Frame Fisici**: Le pagine virtuali non vengono necessariamente caricate in memoria immediatamente. Solo quando una pagina è effettivamente richiesta dal programma (ad esempio, tramite una page fault), essa viene mappata a un frame fisico. Questo meccanismo permette di risparmiare memoria e migliorare l'efficienza.
+## Problema: Allocazione Completa
+Un problema che emerge quando si cerca di implementare una gestione della memoria efficiente è l'**allocazione completa**. In un approccio semplice, si potrebbe pensare che caricare completamente un programma in memoria non appena viene eseguito sia un approccio naturale. Tuttavia, questo porterebbe a un'inefficienza enorme:
+- Se un programma viene caricato completamente in memoria, si esaurirebbe rapidamente la memoria principale, specialmente in ambienti con molte applicazioni in esecuzione.
+- Quando la memoria si esaurisce, le nuove applicazioni non possono partire, riducendo drasticamente il grado di multiprogrammazione, ovvero il numero di processi che possono essere eseguiti contemporaneamente.
+Per evitare questa inefficienza, è necessario adottare un approccio che supporti la **memoria virtuale** e la **paginazione**, consentendo di caricare in memoria solo le pagine necessarie per l'esecuzione del programma in quel momento. Questo approccio consente di ottimizzare l'uso della memoria disponibile e aumentare l'efficienza del sistema.
+### Esempio: LibreOffice
+Quando si carica un'applicazione grande come **LibreOffice**, si rischia di trasferire in memoria un enorme quantitativo di dati, che può risultare inefficiente. Un esempio pratico di come calcolare la memoria richiesta da LibreOffice su Linux è:
+- Usando il comando `pmap $(pgrep soffice.bin)`, si possono sommare i valori della seconda colonna per ottenere il totale della memoria in KB consumata dal processo.
+### La Domanda Esistenziale: Serve davvero tutta quella qemoria?
+Quando si carica un'applicazione come LibreOffice, si deve chiedere se è davvero necessario caricare tutto in memoria subito:
+- **Tutto il codice di LibreOffice viene eseguito subito?**
+- **Tutti i font sono usati immediatamente?**
+- **Tutti i menu e le funzionalità vengono invocati al primo avvio?**
+Molti dei dati caricati potrebbero essere inutilizzati in fase iniziale. Quindi, caricare tutto in memoria fin dall'inizio è inefficiente. Molti dati potrebbero essere caricati solo quando effettivamente necessari, attraverso il cosiddetto **caricamento pigro (lazy loading)**.
+### Esempio di Allocazioni Grandi
+Un altro esempio riguarda le applicazioni che richiedono grandi allocazioni di memoria, come **macchine virtuali** o **videogiochi**. Ad esempio, una macchina virtuale potrebbe richiedere 2 GB di memoria:
+- **Tutta quella memoria è usata subito o a breve?**
+- **Cosa fare se l'allocazione eccede la memoria fisica disponibile?**
+Il rischio è che la memoria venga prenotata ma non utilizzata tutta subito, portando a inefficienze. Se l'allocazione eccede la memoria fisica disponibile, il sistema deve decidere come gestirla senza bloccare il processo, ad esempio con la **memoria virtuale**.
+### La Soluzione: Caricamento Pigro (Lazy Loading)
+Il caricamento pigro è un approccio in cui il sistema carica in memoria solo le porzioni necessarie di un programma, anziché tutto il programma in una volta. L'idea è la seguente:
+1. **Associazione di Aree di Indirizzi Lineari alle Componenti**: Il kernel associa aree di indirizzi lineari alle diverse componenti di un'applicazione (es. codice del programma, dati, librerie, stack).
+2. **Associazione dei File a Quelle Aree**: I file relativi all'applicazione (es. il file eseguibile `soffice.bin` e le librerie come `libc.so.6`) vengono associati alle aree di indirizzo, ma non vengono caricati completamente in memoria.
+3. **Caricamento a Richiesta**: Quando la CPU accede a una parte del programma (ad esempio, una funzione specifica o un dato), il sistema carica in memoria **solo quella parte**, tramite **page fault**.
+### È Possibile Implementarlo in Modo Efficiente?
+Il caricamento pigro può essere implementato in modo efficiente sfruttando meccanismi hardware supportati dai processori Intel, come descritto precedentemente:
+- **Bit delle PTE (Page Table Entry)**: Ogni PTE contiene informazioni sullo stato di validità delle pagine. Se una pagina non è valida, si genera un **page fault**.
+- **Page Fault**: Quando si verifica un page fault, il sistema può associare una pagina a un frame fisico, caricandola dalla memoria secondaria (ad esempio, disco) a quello fisico in memoria centrale. In questo modo, si caricano in memoria solo le pagine effettivamente utilizzate.
+### Vantaggi del Caricamento Pigro
+1. **Efficienza della Memoria**: Si carica in memoria solo ciò che è necessario per l'esecuzione immediata dell'applicazione, risparmiando risorse.
+2. **Riduzione del Consumo di Memoria**: Riduce il consumo di memoria fisica, soprattutto in applicazioni di grandi dimensioni come LibreOffice, evitando di caricare porzioni di codice o dati che non vengono utilizzati subito.
+3. **Supporto alla Virtualizzazione**: Questo approccio è particolarmente utile in scenari di virtualizzazione (macchine virtuali), dove vengono richieste grandi allocazioni di memoria, ma solo una parte di essa viene utilizzata in un dato momento.
+# Memoria virtuale
+Il sistema di **memoria virtuale** è una estensione della *paginazione*:
+L'idea è quella di legare una *pagina* a:
+- un frame fisico(paginazione base).
+- oppure un **blocco di file**.
+- oppure un **blocco del disco**.
+Così:
+- alcune porzioni della memoria di un processo sono caricate in memoria, mentre altre no.
+- alcune porzioni della memoria di un processo possono essere inserite in swap, mentre altre no.
+![[Pasted image 20241130170957.png|500]]
+## Spazio di indirizzamento lineare
+Lo **spazio di indirizzamento lineare** di un processo rappresenta l'intervallo di indirizzi che il processo può utilizzare per accedere alla memoria. Questo spazio è una rappresentazione astratta della memoria, che permette al processo di lavorare come se avesse un'area di memoria dedicata e continua, indipendentemente dalla disposizione fisica della memoria stessa.
+1. **Sequenza di indirizzi lineari**:
+    - Ogni processo dispone di un **intervallo continuo di indirizzi**, detto spazio di indirizzamento.
+    - Questi indirizzi sono **virtuali** e vengono tradotti dal kernel e dall'hardware (MMU - Memory Management Unit) in indirizzi fisici.
+2. **Organizzazione in segmenti**:
+    - Lo spazio è diviso in aree di memoria contigue, ognuna delle quali ha uno scopo specifico:
+        - **Segmento codice**: contiene il codice eseguibile del programma.
+        - **Segmento dati**: per variabili globali, dati statici, ecc.
+        - **Heap**: utilizzato per la memoria dinamica (malloc, new).
+        - **Stack**: utilizzato per le chiamate di funzione e le variabili locali.
+3. **Gestione pigra (lazy)**:
+    - Solo le parti di memoria effettivamente necessarie vengono caricate o allocate.
+    - Le aree non usate rimangono non allocate, riducendo il consumo di memoria fisica.
+    - Meccanismi come i **page fault** permettono di caricare dinamicamente le porzioni richieste.
+![[Pasted image 20241130171348.png|500]]
+## Descrittore di memoria
+1. **Posizione del descrittore di memoria**:
+    - Ogni processo in Linux ha una struttura `task_struct` che descrive tutte le sue caratteristiche principali.
+    - Il campo `mm` all'interno di `task_struct` contiene un puntatore a una struttura `mm_struct`, che è il **descrittore di memoria** del processo.
+2. **Struttura `mm_struct`**:
+    - Definita nel file `mm_types.h`.
+    - Contiene informazioni dettagliate sullo spazio di indirizzamento del processo, organizzate per segmento (testo, dati, heap, stack, ecc.).
+### Campi principali di `mm_struct`
+
+|Campo|Descrizione|
+|---|---|
+|**start_stack**|Indirizzo iniziale dello stack del processo.|
+|**mmap_base**|Indirizzo iniziale dell'area `mmap`, utilizzata per il mapping di file e librerie.|
+|**start_brk**|Indirizzo iniziale dell'heap, utilizzato per allocazioni dinamiche (`malloc`).|
+|**brk**|Indirizzo corrente di fine dell'heap (variabile, in base alle allocazioni).|
+|**start_data**|Indirizzo iniziale del segmento dati (dati globali e statici del programma).|
+|**end_data**|Indirizzo finale del segmento dati.|
+|**start_code**|Indirizzo iniziale del segmento testo (codice eseguibile).|
+|**end_code**|Indirizzo finale del segmento testo.|
+## Mappatura di memoria
+In Linux, la gestione delle aree di memoria di un processo avviene tramite un approccio **pigro** e flessibile, che associa dinamicamente le aree di memoria a file, frame fisici, o blocchi di swap solo quando necessario. Di seguito una panoramica dettagliata del funzionamento.
+1. **Mappatura Pigra**:
+    - Le singole pagine di un'area possono puntare a:
+        - Un **blocco di disco** (file-backed).
+        - Un **frame fisico** (anonymous mapping).
+        - Un **blocco di swap**.
+        - **Nulla** (pagina non ancora mappata).
+2. **Associazione On-Demand**:
+    
+    - L'associazione avviene solo quando la CPU genera un indirizzo lineare che appartiene all'area e tenta di accedervi (page fault).
+### Aree di Memoria File-Backed
+1. **Definizione**:
+    - Un'area si dice **file-backed** quando il suo contenuto è associato a un file su disco.
+2. **Campo `vm_file`**:
+    - La struttura `vm_area_struct` contiene un campo `vm_file`, un puntatore alla struttura **`file`** che rappresenta il file associato.
+3. **Gestione delle Operazioni**:
+    - Le operazioni di mappatura variano in base al file system. Si utilizza la struttura **`vm_operations_struct`**, che contiene i puntatori alle funzioni per:
+        - Creazione della mappa.
+        - Distruzione della mappa.
+        - Gestione dei page fault.
+4. **Page Fault Handler**:
+    - In caso di page fault, il kernel invoca la funzione `fault()` definita nella struttura `vm_operations_struct` tramite il puntatore `vm_ops` della `vm_area_struct`.
+### Aree di Memoria Anonime
+1. **Definizione**:
+    - Un'area si dice **anonima** quando il suo contenuto non è associato a un file su disco, ma direttamente a frame fisici.
+2. **Campo `anon_vma`**:
+    - La `vm_area_struct` contiene un campo `anon_vma`, un puntatore alla struttura **`anon_vma`** che rappresenta i frame fisici mappati.
+### Permessi di Accesso
+1. **Tipologie di Permessi**:
+    - **`VM_READ`**: Lettura.
+    - **`VM_WRITE`**: Scrittura.
+    - **`VM_EXEC`**: Esecuzione.
+2. **Campo `vm_flags`**:
+    - I permessi sono memorizzati nel campo `vm_flags` della `vm_area_struct` e vengono utilizzati dal kernel per verificare le operazioni richieste dagli utenti.
+### Collegamento delle Aree di Memoria
+- In passato, le `vm_area_struct` erano collegate tramite liste doppie (`vm_next`, `vm_prev`).
+- **Limite**: La ricerca di un'area richiedeva una scansione lineare, risultando inefficiente.
+- Oggi, le `vm_area_struct` sono organizzate in **alberi rosso-neri** ordinati in base all'indirizzo iniziale (`vm_start`).
+- **Vantaggi**:
+    - Efficienza: La ricerca di un'area è logaritmica rispetto al numero totale di aree.
+- **Implementazione**:
+    - Ogni nodo dell'albero contiene una `struct rb_node`.
+    - La `vm_area_struct` include un campo `vm_rb` di tipo `struct rb_node` per l'inserimento nell'albero.
+    - La radice dell'albero è memorizzata nel campo `mm_rb` della `mm_struct`.
+
+|**Tipo di Area**|**Campo Associato**|**Gestione**|
+|---|---|---|
+|File-Backed|`vm_file`|Mappata a un file su disco.|
+|Anonymous|`anon_vma`|Mappata a frame fisici in RAM.|
+|Permessi|`vm_flags`|Lettura, Scrittura, Esecuzione.|
+|Collegamento|`vm_rb` (rb_node)|Albero rosso-nero per lookup rapido.|
+![[Pasted image 20241201120853.png|500]]
+## Gestione aree di memoria
+Linux offre diverse funzionalità per gestire dinamicamente le aree di memoria nei processi. Ogni operazione è implementata utilizzando strutture come **alberi rosso-neri** e **liste collegate**, rendendo il sistema efficiente e flessibile.
+### Individuazione di un'Area di Memoria
+- **Scopo**: Identificare l'area di memoria contenente (o vicina a) un dato indirizzo lineare.
+- **Esempio d'uso**: Controlli di accesso.
+- **Funzione**: `find_vma()`
+    - Scandisce l'albero rosso-nero puntato da `mm_rb`.
+    - Restituisce la `vm_area_struct` associata all'indirizzo o quella più vicina.
+- **File**: `$LINUX/mm/mmap.c`.
+### Individuazione di un'Area Libera
+- **Scopo**: Trovare uno spazio libero per allocare una nuova area di memoria.
+- **Esempi**:
+    - Esecuzione di una nuova immagine.
+    - Creazione manuale di mappe anonime.
+- **Funzione**: `get_unmapped_area()`
+    - Scandisce l'albero rosso-nero per identificare un intervallo di indirizzi non occupato.
+- **File**: `$LINUX/mm/mmap.c`.
+### Creazione di un'Area di Memoria
+- **Scopo**: Creare una nuova area di memoria.
+- **Funzione**: `insert_memory_region()`
+    - Inserisce la nuova area sia nella lista collegata, sia nell'albero rosso-nero.
+- **Responsabile**:
+    - **Kernel**: Per scopi interni.
+    - **Utente**: Tramite la chiamata di sistema `mmap()`.
+- **File**: `$LINUX/mm/mmap.c`.
+### Distruzione di un'Area di Memoria
+- **Scopo**: Rimuovere un'area di memoria.
+- **Funzione**: `do_munmap()`
+    - Aggiorna sia la lista collegata sia l'albero rosso-nero.
+- **Responsabile**:
+    - **Kernel**: Per necessità interne.
+    - **Utente**: Con la chiamata di sistema `munmap()`.
+- **File**: `$LINUX/mm/mmap.c`.
+### Spostamento di un'Area di Memoria
+- **Scopo**: Evitare sovrapposizioni di aree in caso di espansione.
+    - Ad esempio, se un'area cresce e collide con un'altra, può essere spostata in un'altra posizione.
+- **Funzione**: `mremap()`
+    - Permette anche l'estensione di un'area (spostando un estremo).
+- **File**: `$LINUX/mm/mremap.c`.
+### Memory Locking di un'Area
+- **Scopo**: Impedire che un'area venga inserita in swap.
+    - Gli accessi saranno sempre effettuati dalla memoria centrale, garantendo velocità.
+- **Funzioni**:
+    - `mlock()`: Blocca l'area in memoria, impostando il flag `VM_LOCKED`.
+    - `munlock()`: Rimuove il blocco.
+- **Attenzione**:
+    - Un utilizzo eccessivo può ridurre la memoria centrale disponibile per altre operazioni.
+
+|**Operazione**|**Funzione**|**Descrizione**|**File**|
+|---|---|---|---|
+|Individuazione area|`find_vma()`|Trova l'area che contiene un indirizzo.|`$LINUX/mm/mmap.c`|
+|Ricerca area libera|`get_unmapped_area()`|Trova un'area libera per nuove allocazioni.|`$LINUX/mm/mmap.c`|
+|Creazione area|`insert_memory_region()`|Crea e inserisce un'area in liste e alberi.|`$LINUX/mm/mmap.c`|
+|Distruzione area|`do_munmap()`|Rimuove un'area di memoria.|`$LINUX/mm/mmap.c`|
+|Spostamento area|`mremap()`|Sposta un'area o ne estende un estremo.|`$LINUX/mm/mremap.c`|
+|Blocco in memoria|`mlock()` / `munlock()`|Blocca/sblocca un'area in memoria per evitare che venga spostata in swap.|`$LINUX/include/linux/mm.h`|
+# Paginazione su richiesta
+La **paginazione su richiesta** (_demand paging_) è una tecnica che gestisce in modo efficiente lo spazio di indirizzamento di un processo caricando in memoria centrale solo le pagine effettivamente richieste durante l'esecuzione. Questo meccanismo si basa su una gestione pigra delle aree di memoria, evitando di allocare o caricare preventivamente tutte le risorse di un processo.
+La paginazione su richiesta richiede uno **sforzo congiunto** di diversi livelli del sistema:
+1. **Hardware**:
+    - **Page fault**: Interruzioni generate quando un processo accede a una pagina non presente in memoria.
+    - **Bit di accesso e validità**: Utilizzati per determinare lo stato delle pagine (presente/non presente, lettura/scrittura/esecuzione).
+2. **Kernel**:
+    - **Gestione delle aree di memoria**: Il kernel utilizza strutture dati come `mm_struct` e `vm_area_struct` per rappresentare lo spazio di indirizzamento e le aree di memoria.
+    - **Page fault handler**: Gestisce le eccezioni, carica le pagine richieste, aggiorna le tabelle delle pagine e, se necessario, utilizza lo swap.
+3. **Librerie di sistema**:
+    - **Caricamento del programma**: Preparano lo spazio di indirizzamento lineare mappando le risorse necessarie (codice, dati, stack).
+    - **Creazione di nuove aree di memoria**: Tramite chiamate di sistema come `mmap()` per aree anonime o file-backed.
+
+
 
 
 

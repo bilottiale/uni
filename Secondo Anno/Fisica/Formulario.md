@@ -6,7 +6,11 @@ $$
 \text{Masssa della Terra} = M_{T} = 5.974 \cdot 10^{24} kg \\
 \text{Massa della Luna} = M_{L} = 7.348 \cdot 10^{22} kg \\
 \text{Raggio della Luna} = R_{L} = 1.738 \cdot 10^{6} m \\
-\text{Distanza Terra-Luna} = R_{TL} = 3.844 \cdot 10^{8} m
+\text{Distanza Terra-Luna} = R_{TL} = 3.844 \cdot 10^{8} m \\
+\text{Costante dielettrica del vuoto} = \varepsilon_{0} = 8.85 \cdot 10^{-12} \frac{F_{\text{araday}}}{m} \\
+\text{Carica elettrone} = -e = - 1.6 \times 10^{-19}C  \\
+\text{Carica protone} = e = + 1.6 \times 10^{-19}C \\
+\text{Costante di Coulomb} = k_{e} = 8.99 \times 10^{9} \frac{N \cdot m^{2}}{C^{2}}
 \end{gather}
 $$
 ## Fattori di conversione
@@ -16,7 +20,7 @@ $$
 1 \ inch(pollice) = 2.54 cm \\
 \text{radianti} \to \text{gradi} = g° = \frac{r^{rad}\times 180°}{\pi} \\
 \text{gradi} \to \text{radianti} = r^{rad} = \frac{g° \times \pi}{180°} \\
-
+\text{1 eV(elettrovolt)} \to \text{Joule(lavoro)} = 1eV = 1.6 \times 10^{-19}J 
 \end{gather}
 $$
 ## Cinematica
@@ -152,8 +156,22 @@ $$
 \text{Energia cinetica} = E_{cinetica} = \frac{1}{2}mv^{2}
 \end{gather}
 $$
-## 
-
+## Elettrostaticità
+$$
+\begin{gather}
+\text{Legge di Coulomb} = F = k\frac{|q_{1}\cdot q_{2}|}{r^{2} } \\
+\text{Campo elettrico generato da una carica puntiforme} = E = k\frac{|q|}{r^{2} } \\
+\text{Forza elettrica su una carica} = F = q \cdot E \\
+\text{Energia potenziale elettrica} = U = k\frac{q_{1}\cdot q_{2}}{r} \\
+\text{Potenziale elettrico} = V = k\frac{q}{r} \\
+\text{Capacità di un condensatore} = C = \varepsilon_{0} \frac{A_{\text{rea}}}{d_{\text{istanza}}} \\
+\text{Energia immagazzinata in un condensatore} = U = \frac{1}{2}CV_{(\Delta \text{potenziale)}}^{2} \\
+\text{Densità potenziale di carica} = \sigma = \frac{Q_{\text{carica tot}}}{A_{\text{rea}}} \\
+\text{Differenza di potenziale} = \Delta V = \frac{\Delta U_{\text{lavoro compiuto}}}{q} \\
+\text{Potenza elettrica} = P = \frac{E}{t} \\
+\text{Energia trasferica} = E = Q_{\text{carica}} \cdot V_{\text{tensione}}
+\end{gather}
+$$
 
 
 

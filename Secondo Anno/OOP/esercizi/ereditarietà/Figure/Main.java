@@ -1,4 +1,4 @@
-public class TestFigure {
+public class Main {
   public static void main(String[] args) {
     Figura[] figure = new Figura[5];
 

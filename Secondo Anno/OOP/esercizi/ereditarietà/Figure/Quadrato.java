@@ -4,12 +4,18 @@ public class Quadrato extends Rettangolo {
     super(lato, lato);
   }
 
+  // setters
+  public void setLato(double lato) {
+    setBase(lato);
+    setAltezza(lato);
+  }
+
   public double getLato() {
     return getBase();
   }
 
-  public void setLato(double lato) {
-    setBase(lato);
-    setAltezza(lato);
+  @Override
+  public double getArea() {
+    return getBase() * getBase();
   }
 }

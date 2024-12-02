@@ -12,8 +12,7 @@ All’inizio di un viaggio di 3 ore stai viaggiando verso nord a 192 km/h. Alla 
 - Disegnare i vettori velocità iniziale e finale.
 - Trovare il vettore $\Delta v$.
 - Qual è l’accelerazione media durante il viaggio?
-
-1.
+1. 
 ![[Pasted image 20241013142745.png|250]]
 2. Le componenti sono:
 $$
@@ -226,7 +225,7 @@ t=\frac{30m}{v_{cane}-v_{coniglio}}=6s
 $$
 3. ![[Pasted image 20241013164825.png|250]]
 ### Moto rettilineo con accelerazione costante
-Si supponga di dover disegnare un sistema di air-bag che possa proteggere il guidatore nel caso di un urto frontale alla velocità di $100 Km/h$. Stimare quanto rapidamente si deve gonfiare l’air-bag per proteggere efficacemente il guidatore. Supporre che, in conseguenza dell’urto, l’auto si accartocci di $1 m$.
+Si supponga di dover disegnare un sistema di air-bag che possa proteggere il guidatore nel caso di un urto frontale alla velocità di $100 km/h$. Stimare quanto rapidamente si deve gonfiare l’air-bag per proteggere efficacemente il guidatore. Supporre che, in conseguenza dell’urto, l’auto si accartocci di $1 m$.
 $$
 \begin{align}
 v_{i} = &100km/h = \frac{10^{2}\times10^{3}}{3.6\times 10^{3}} \frac{m}{s} = 0.28 \times 10^{2}m/s \\

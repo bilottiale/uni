@@ -26,6 +26,11 @@ public class TriangoloRettangolo extends Triangolo {
   }
 
   @Override
+  public double getPerimetro() {
+    return base + altezza + Math.sqrt(base * base + altezza * altezza);
+  }
+
+  @Override
   public double getArea() {
     return (base * altezza) / 2;
   }
