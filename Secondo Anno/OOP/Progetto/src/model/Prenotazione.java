@@ -10,6 +10,7 @@ public class Prenotazione {
     private LocalTime oraFine;
     private String nomePrenotante;
     private String motivazione;
+    
 
     // Costruttore che accetta LocalDate e LocalTime
     public Prenotazione(int idAula, LocalDate data, LocalTime oraInizio, LocalTime oraFine, String nomePrenotante, String motivazione) {

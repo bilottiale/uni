@@ -11,20 +11,20 @@ $$
 m
 $$
 Rappresentazione di un vettore:
-![[Pasted image 20241128140121.png|100]]
+![[Pasted image 20241128140121.png|50]]
 La lunghezza del segmento indica l'intensità del vettore.
 ### Somma di due vettori
 Per sommare Per sommare graficamente due vettori $A$ e $B$ bisogna disegnarli collocandoli “punta-coda”. Il risultato della somma $A+B$ è un vettore che punta dalla coda del primo vettore alla punta del secondo vettore.
-![[Pasted image 20241128140253.png|250]]
+![[Pasted image 20241128140253.png|200]]
 ### Prodotto di uno scalare per un vettore
 Moltiplicare o dividere un vettore per uno scalare equivale a moltiplicare o dividere il modulo del vettore per il valore assoluto dello scalare, lasciando invariata la direzione e il verso se lo scalare è positivo, invertendo il verso se lo scalare è negativo.
-![[Pasted image 20241128140402.png|250]]
+![[Pasted image 20241128140402.png|200]]
 ### Scomposizione di un vettore nelle sue componenti cartesiane
-![[Pasted image 20241128140547.png|500]]
+![[Pasted image 20241128140547.png|400]]
 **Esempio**:
 Il vettore $A$ ha modulo $5.00m$ e ha direzione orientata coincidente con quella dell'asse $x$ del riferimento cartesiano in figura. Il vettore $B$ ha modulo $3.00m$ e forma un angolo di $120°$ con l'asse $x$.
 - Calcolare $C = A + B$
-![[Pasted image 20241128140731.png|250]]
+![[Pasted image 20241128140731.png|200]]
 Sappiamo che:
 $$
 \begin{gather}
@@ -63,95 +63,38 @@ $$
 &\theta = \tan^{-1}(0.7429) = 36.6° \text{ rispetto all'asse }x 
 \end{align}
 $$
-![[Pasted image 20241128142301.png|500]]
-## Notazione di Leibnitz per le derivate e gli integrali
-Sia $y = f(x)$ una funzione reale dell’incognita reale $x$. Chiamiamo derivata prima della $f(x)$ la funzione:
-$$
-f'(x) = \lim_{ h \to 0 } \frac{f(x+h)-f(x)}{h}
-$$
-Nella notazione di Leibnitz la derivata si denota così:
-$$
-\frac{dy}{dx} = \frac{df}{dx}
-$$
-Per le derivate di ordine successivo:
-$$
-\begin{gather}
-f'' = f^{(2)} = \frac{d^{2}f}{dx^{2}} \\
-f''' = f^{(3)} = \frac{d^{3}f}{dx^{3}} \\
-\vdots \\
-f^{(n)} = \frac{d^{n}f}{dx^{n}} 
-\end{gather}
-$$
-Il concetto di differenziale e la notazione di Leibnitz vengono ripresi nella definizione matematica di integrale. Se $y=f(x)$ è una funzione reale definita nell’intervallo $(a,b)$ della variabile indipendente $x$ e suddiviso questo intervallo in n suddivisioni di ampiezza $\delta$:
-$$
-\begin{gather}
-\lim_{ \delta \to 0 } \sum_{i=0}^{n-1} f(x_{i})(x_{i+1}-x_{i}) = \int_{a}^{b} f(x) dx \\
-= F(b)-F(a) \text{ con } \frac{dF}{dx} = f(x) \\
-\int\frac{dF(x)}{dx} dx = \int dF(x) = F(x) + \text{costante}
-\end{gather}
-$$
-- $F(x)$ primitiva
-- $f(x)$ derivata
-## Posizione e spostamento
-La **posizione** $r$ di un oggetto descrive la sua collocazione rispetto ad una *origine*.
-$$
-\Delta r = r_{\text{finale}}-r_{\text{iniziale}}
-$$
-Lo **spostamento** rappresenta la variazione della posizione di un oggetto. Dipende solo dalle posizioni iniziale e finale.
-## Velocità
-La **velocità** è un vettore che misura quanto rapidamente e in quale direzione orientata un oggetto puntiforme si muove.
-*Velocità media*:
-$$
-v_{\text{media}}=\frac{\Delta r}{\Delta t}
-$$
-**Velocità istantanea = derivata temporale dello spostamento**
-$$
-\vec{v}=\lim_{ \Delta t \to 0 }\frac{\Delta \vec{s}}{\Delta t} = \frac{d\vec{s}}{dt}
-$$
-$$
-\vec{s} = \int \vec{v} \, dt
-$$
-In un grafico di posizione vs tempo la **velocità media** è rappresentata dalla pendenza della corda:
-![[Pasted image 20241011172450.png|400]]
-Velocità media $= v_{\text{media}}=\frac{x_{2}-x_{1}}{t_{2}-t_{1}}$.
-In un grafico di posizione vs tempo la **velocità istantanea** è rappresentata dalla pendenza della tangente alla curva $x(t)$ all'istante considerato:
-![[Pasted image 20241011172733.png|400]]
-## Accelerazione media e istantanea
-*Accelerazione media*:
-$$
-\vec{a}_{av} = \frac{\Delta \vec{v}}{\Delta t}
-$$
-*Accelerazione istantanea*:
-$$
-\vec{a} = \lim_{ \Delta t \to 0 } \frac{\Delta \vec{v}}{\Delta t} = \frac{d\vec{v}}{dt} = \frac{d^{2}\vec{s}}{dt^{2}}
-$$
-In coordinate cartesiane:
-$$
-a_{x} = \frac{dv_{x}}{dt} = \frac{d^{2}x}{dt^{2}} \quad a_{y} = \frac{dv_{y}}{dt} = \frac{d^{2}y}{dt^{2}} \quad a_{z} = \frac{dv_{z}}{dt} = \frac{d^{2}z}{dt^{2}}
-$$
-In generale il vettore $\vec{a}$ avrà una componente parallela alla traiettoria(*accelerazione tangenziale*) ed una componente perpendicolare alla traiettoria(*accelerazione normale*).
+![[Pasted image 20241128142301.png|400]]
 # Le forze
 **Come si misura una forza?**
 Per esempio con una bilancia a molla.
-Appendendo masse diverse ad una molla otteniamo che l’allungamento della molla  forza applicata(entro certi limiti di massa).
-![[Pasted image 20241128144504.png|150]]
+Appendendo masse diverse ad una molla otteniamo che l’allungamento della molla $\propto$ forza applicata(entro certi limiti di massa).
+![[Pasted image 20241128144504.png|100]]
 Le forze sono grandezze vettoriali.
-L’unità di misura della forza nel SI è il Newton ($N$).
+L’unità di misura della forza nel SI è il *Newton*($N$).
 ### Prima legge della dinamica (o principio di inerzia)
-Se un corpo puntiforme non è soggetto a forze o è soggetto a forze con risultante nulla, allora la sua velocità non cambia nel tempo.
+Un corpo in quiete rimane fermo se la somma delle forze che agiscono su di esso è nulla o nel caso in cui non agisca alcuna forza. Se il corpo è in movimento, continuerà a muoversi di moto rettilineo uniforme.
 **L'inerzia** è una misura della resistenza di un corpo a cambiamenti del suo stato di moto.
+### Seconda legge della dinamica (di Newton)
+La forza che agisce su un corpo è direttamente proporzionale alla massa del corpo e all’accelerazione, ha stessa direzione e verso.  
+Quindi, l’accelerazione è proporzionale alla forza e inversamente proporzionale alla massa.
+$$
+F = m \cdot a
+$$
 ### Terza legge della dinamica (o principio di azione e reazione)
-Quando due corpi interagiscono, le forze esercitate l'uno sull'altro sono sempre uguali in modulo e opposte in direzione orientata.
+Per ogni forza che un corpo A esercita su un altro corpo B, ne esiste un’altra uguale, in modulo e direzione, e contraria in verso, che B esercita su A.
+$$
+F_{AB} = -F_{AB}
+$$
 ## Diagramma di corpo libero
-![[Pasted image 20241128150153.png|500]]
+![[Pasted image 20241128150153.png|400]]
 # Forze a lungo raggio
 ## Gravità
 La gravità è la forza, sempre attrattiva, tra due masse. È una forza a lungo raggio: non è richiesto contatto tra i due corpi.
 $$
-F=\frac{GM_{1}M_{2}}{r^{2}}
+F = G \frac{M_{1}M_{2}}{r^{2}}
 $$
 $r$ è la distanza tra le due masse $M_{1}$ e $M_{2}$ e $G=6.67\times 10^{-11}Nm^{2}/kg^{2}$.
-![[Pasted image 20241013145758.png|500]]
+![[Pasted image 20241013145758.png|400]]
 **Esempio**:
 Qual è la forza di attrazione gravitazionale tra due persone di 50 Kg e 75 Kg ad una distanza di 50 cm?
 Sostituendo nella forza di gravità:
@@ -162,23 +105,19 @@ F = 1 \times 10^{-6}N
 \end{gather}
 $$
 **Esempio**:
-Il centro della Luna dista dal centro della Terra $3.9\times105 km$. La massa del Sole è di $2.0\times1030 kg$ e la massa della Terra è di $6.0\times1024 kg$. La distanza della Luna dal Sole è di $1.5\times108 km$. Si trovi il rapporto tra la forza esercitata sulla Luna dalla Terra e dal Sole.
-
+Il centro della Luna dista dal centro della Terra $3.9\times10^{5} km$. La massa del Sole è di $2.0\times10^{30} kg$ e la massa della Terra è di $6.0\times10^{24} kg$. La distanza della Luna dal Sole è di $1.5\times10^{8} km$. Si trovi il rapporto tra la forza esercitata sulla Luna dalla Terra e dal Sole.
 Facendo il rapporto tra le due forze coinvolte:
 $$
 \frac{F_{TL}}{F_{SL}}=\frac{m_{T}}{m_{S}} \frac{d^{2}_{LS}}{d^{2}_{TL}}=0,44
 $$
 **Il peso**:
-Sia $M_{E}$ la masse della Terra.
+Sia $M_{E}$ la masse della Terra $= 5.98 \times 10^{24 kg}$.
 $$
-F=(\frac{GM_{E}}{r^{2}})M_{2}
+F = \left(G \frac{M_{E}}{r^{2}}\right)M_{2}
 $$
 $F$ è la forza che la Terra esercita sulla massa $M_{2}$. Questa forza si chiama peso, $w$.
 $$
-w=(\frac{GM_{E}}{r^{2}})M_{2}=gM_{2}
-$$
-$$
-M_{E}=5.98\times 10^{24}kg
+w=\left(G \frac{M_{E}}{r^{2}}\right)M_{2} = gM_{2}
 $$
 $$
 r_{E}=6400km
@@ -193,19 +132,19 @@ Il peso è ridotto di circa $10\%$.
 $$
 g=\frac{F}{m}
 $$
-È la forza gravitazionale per unità di massa. Questa quantità si chiama intensità sul corpo gravitazionale o "accelerazione" dovuta alla gravità.
+È la forza gravitazionale per unità di massa. Questa quantità si chiama intensità sul corpo gravitazionale o "*accelerazione*" dovuta alla gravità.
 $g$ dipende solo dalla massa della Terra.
 Il peso dipende sia da $g$ che dalla massa "partner" dell'attrazione gravitazionale.
 **Esempio**:
 L’intensità del campo gravitazionale sulla Luna è circa $1/6$ di quello alla superficie della terra. Se $m$ and $w$ sono la massa e il peso di una persona sulla terra, quanto varranno le stesse quantità sulla luna?
 $$
-m,\frac{1}{6}w
+1m,\quad \frac{1}{6}w
 $$
 La massa non cambia, il peso sì.
 # Forze di contatto
 ## La forza normale
 Questa forza agisce in direzione perpendicolare alla superficie di contatto. 
-![[Pasted image 20241128151101.png|250]]![[Pasted image 20241128151217.png|250]]
+![[Pasted image 20241128151101.png|250]]![[Pasted image 20241128151217.png|153]]
 ## Attrito
 **È una forza di contatto parallela alla superficie di contatto tra due corpi.**
 - **Attrito statico**: impedisce agli oggetti di scivolare.
@@ -215,7 +154,6 @@ $$
 f_{s}\leq \mu_{s}N
 $$
 $\mu_{s}$ è il coefficiente di attrito **statico** ed $N$ è la forza normale.
-****
 ### Forza di attrito dinamico
 $$
 f_{k}=\mu_{k}N
@@ -230,7 +168,7 @@ $$
 &(2)\sum F_{x} = F- f_{S} = 0
 \end{align}
 $$
-![[Pasted image 20241013152859.png|250]]
+![[Pasted image 20241013152859.png|200]]
 Da $(2)$:
 $$
 F=f_{s}=\mu_{s}N \Longrightarrow \mu_{s} = \frac{F}{N}=0.48
@@ -250,13 +188,13 @@ $$
 È la forza trasmessa attraverso una fune da un estremo all’altro.
 Una fune ideale ha massa trascurabile non si deforma e mantiene la stessa tensione lungo tutta la lunghezza.
 **Esempio**:
-Una carrucola è appesa al soffitto attraverso una corda. Un blocco di massa $M$ è sospeso attraverso un’altra corda che scorre sulla carrucola ed è attaccata alla parete. La corda fissata alla parete forma con la parete stessa un angolo retto. Trascurando le masse delle corde e della carrucola calcolare la tensione della corda che sostiene a carrucola e l’angolo $\theta$.
-![[Pasted image 20241013154912.png|250]]![[Pasted image 20241013154935.png|200]]
+Una carrucola è appesa al soffitto attraverso una corda. Un blocco di massa $M$ è sospeso attraverso un’altra corda che scorre sulla carrucola ed è attaccata alla parete. La corda fissata alla parete forma con la parete stessa un angolo retto. Trascurando le masse delle corde e della carrucola calcolare la tensione della corda che sostiene la carrucola e l’angolo $\theta$.
+![[Pasted image 20241013154912.png|250]]![[Pasted image 20241013154935.png|196]]
 $$
 \sum F_{y}=T-w=0
 $$
 $$
-T=w=Mg
+T = w = mg
 $$
 Applicando la *seconda legge di Newton*:
 $$
@@ -274,7 +212,7 @@ In assenza di attrito la forza elastica genera un moto periodico.
 $$
 F=-kx
 $$
-![[Pasted image 20241013155355.png|400]]
+![[Pasted image 20241013155355.png|300]]
 ## Posizione e spostamento
 La **posizione** $r$ di un oggetto descrive la sua collocazione rispetto ad una *origine*.
 $$
@@ -295,10 +233,10 @@ $$
 \vec{s} = \int \vec{v} \, dt
 $$
 In un grafico di posizione vs tempo la **velocità media** è rappresentata dalla pendenza della corda:
-![[Pasted image 20241011172450.png|400]]
+![[Pasted image 20241011172450.png|300]]
 Velocità media $= v_{\text{media}}=\frac{x_{2}-x_{1}}{t_{2}-t_{1}}$.
 In un grafico di posizione vs tempo la **velocità istantanea** è rappresentata dalla pendenza della tangente alla curva $x(t)$ all'istante considerato:
-![[Pasted image 20241011172733.png|400]]
+![[Pasted image 20241011172733.png|300]]
 ## Notazione di Leibnitz per le derivate e gli integrali
 Sia $y = f(x)$ una funzione reale dell’incognita reale $x$. Chiamiamo derivata prima della $f(x)$ la funzione:
 $$
@@ -355,7 +293,7 @@ km/h a 45° a ovest della direzione nord.
 - Trovare il vettore $\Delta v$.
 - Qual è l’accelerazione media durante il viaggio?
 1. 
-![[Pasted image 20241013142745.png|250]]
+![[Pasted image 20241013142745.png|200]]
 2. Le componenti sono:
 $$
 \Delta v_{x}=v_{fx}-v_{ox}=-v_{f}\sin45°-0=-170km/h
@@ -434,7 +372,7 @@ $$
 (2) \quad &N-w=0 \quad \therefore N=w=mg
 \end{align}
 $$
-Da $(1)$: $-F_{k}=-\mu_{k}N=-\mu_{k}mg=ma$
+Da $(1)$: $-F_{k} =-\mu_{k}mg = ma$
 Risolvendo per $a$:
 $$
 a=-\mu_{k}g=-(0.3)(9.8m/s^{2})=-2.94m/s^{2}
@@ -443,7 +381,7 @@ $$
 ![[Pasted image 20241013162008.png|500]]
 **Esempio**:
 Il motore di una barca la fa muovere rispetto all’acqua di una velocità $v_{ba}=4.0m/s$, secondo la direzione perpendicolare alla corrente. Se la velocità dell’acqua rispetto alla riva è $v_{ar} =2.0 m/s$, quanto vale la velocità $v_{br}$ della barca rispetto alla riva? Se il fiume è largo $1800m$, quanto tempo impiega la barca per attraversarlo?
-![[Pasted image 20241013162157.png|300]]
+![[Pasted image 20241013162157.png|250]]
 1. Rispetto alla riva, la velocità della barca (vettore) ha due componenti:
 	- Una lungo $x$ ($v_{ar}$)
 	- Una lungo $y$ ($v_{ba}$)
@@ -457,7 +395,7 @@ Dalla trigonometria so che la tangente dell'angolo $\alpha$ è pari al rapporto 
 $$
 \tan \alpha=\frac{v_{ba}}{v_{ar}}=2
 $$
-da cui $\alpha=\arctan_{2}=63°$.
+da cui $\alpha=\tan^{-1} 2=63°$.
 3. La seconda parte del problema chiede: ‘se il fiume è largo $1800m$, quanto tempo impiega la barca per attraversarlo?’.
 Dalla velocità della barca si risale al tempo necessario per percorrere $1800 m$, infatti:
 $$
@@ -466,7 +404,7 @@ $$
 ## Quantità di moto
 La quantità vettoriale $p = mv$ è chiamata quantità di moto o “*momento lineare*”.
 La sua unità di misura è $kg \ m/s$.
-La *seconda legge della dinamica* per una particella di massa m costante si può scrivere in termini della quantità di moto:
+La *seconda legge della dinamica* per una particella di massa $m$ costante si può scrivere in termini della quantità di moto:
 $$
 \mathbf{F}=m\mathbf{a}=m \ \frac{\Delta \mathbf{v}}{\Delta t}= \frac{\Delta \mathbf{p}}{\Delta t}
 $$
@@ -485,7 +423,7 @@ $$
 \end{align}
 $$
 **Esempio**:
-Un cane che corre a $10 m/s$ è a $30 m$ dietro un coniglio che si muove a $5m/s$. Quando il cane raggiungerà il coniglio? Disegnare i diagrammi $x-t$ e $v-t$ per il moto del cane e del coniglio.
+Un cane che corre a $10 m/s$ è a $30 m$ dietro un coniglio che si muove a $5m/s$. Quando il cane raggiungerà il coniglio? Disegnare i diagrammi $x$-$t$ e $v$-$t$ per il moto del cane e del coniglio.
 ![[Pasted image 20241013164408.png|500]]
 1. Sia il moto del cane sia il moto del coniglio sono due moti rettilinei uniformi. Per cui le leggi orarie (spostamento in funzione del tempo) che descrivono i due moti sono dati da:
 $$
@@ -541,7 +479,7 @@ v_{f} = &0 \\
 \Delta x = &\frac{1}{2}\overline{a}\Delta t^{2}+v_{i}\Delta t=1m \\
 &\frac{1}{2} \frac{\Delta v}{\Delta t}\Delta t^{2}+v_{i}\Delta t = 1m \\
 &\left(\frac{1}{2}\Delta v+v_{i}\right)\Delta t=1m \\
-&\Delta t = \frac{1m}{\frac{1}{2}(v_{f}+v_{i})}= \frac{1m}{\frac{1}{2}v_{f}-\frac{1}{2}v_{i}+v_{i}} \\
+\Delta t &= \frac{1m}{\frac{1}{2}(v_{f}+v_{i})}= \frac{1m}{\frac{1}{2}v_{f}-\frac{1}{2}v_{i}+v_{i}} \\
 &=\frac{1m}{\frac{1}{2}(v_{f}+v_{i})}=\frac{1m}{\frac{1}{2}\cdot 0.28 \times 10^{2}} \\
 &=7.14 \times 10^{-2}s = 0.07s
 \end{align}
@@ -549,7 +487,7 @@ $$
 ## Caduta libera
 Un sasso è lanciato dalla cima di una collina. Trascurando la resistenza dell’aria solo la forza di gravità agisce sul sasso. Diciamo che iI sasso è in **caduta libera**.
 il diagramma di corpo libero del sasso è:
-![[Pasted image 20241013171752.png|200]]
+![[Pasted image 20241013171752.png|150]]
 Applicando la seconda legge di Newton:
 $$
 \begin{align}
@@ -583,14 +521,14 @@ $$
 ## Moto armonico semplice
 Un corpo si muove di **moto armonico semplice** quando al corpo è applicata una **forza di richiamo**, cioè una forza sempre diretta verso un *punto di equilibrio stabile*, **direttamente proporzionale allo spostamento** del corpo dalla posizione di equilibrio.
 Il moto di una massa su un piano orizzontale privo di attrito collegata ad una molla, trascurando la resistenza dell’aria, è un esempio di moto armonico semplice.
-![[Pasted image 20241013172151.png|300]]
+![[Pasted image 20241013172151.png|250]]
 Il modulo della forza esercitata sull’estremo libero della molla è:
 $$
 F_{x}=-kx
 $$
 $F_{x}$ è la forza di richiamo di questo moto.
 $x$ è la lunghezza dello spostamento e $k$ è la costante elastica; caratteristica della molla, le sua unità di misura sono $N/m$.
-Se la superficie d’appoggio è senza attrito:
+Se la superficie d’appoggio è senza attrito (legge di Hooke):
 $$
 \begin{align}
 &\sum F_{x}=-kx=ma_{x} \\
@@ -611,7 +549,7 @@ $$
 $$
 \omega = \sqrt{ \frac{k}{m} }
 $$
-![[Pasted image 20241013172744.png|500]]
+![[Pasted image 20241013172744.png|350]]
 $$
 \begin{align}
 &x(t)=A\cos \omega t \\
@@ -620,7 +558,7 @@ $$
 \end{align}
 $$
 Cosa significa $\omega=\sqrt{ \frac{k}{m} }$?
-Se $T$ è il tempo necessario una oscillazione completa ($T=$periodo) allora $\omega T=2\pi$ cioè:
+Se $T$ è il tempo necessario una oscillazione completa ($T=$ periodo) allora $\omega T=2\pi$ cioè:
 $$
 \omega=\frac{2\pi}{T}
 $$
@@ -630,10 +568,10 @@ Inoltre $A\omega=v_{max}$ e $A\omega^{2}=a_{max}$.
 La velocità si annulla agli estremi dell’oscillazione ed è massima quando il corpo passa per la posizione di equilibrio.
 ### Oscillazioni smorzate
 Quando l’attrito non è trascurabile l’ampiezza delle oscillazioni diminuisce nel tempo:
-![[Pasted image 20241013173206.png|500]]
+![[Pasted image 20241013173206.png|350]]
 ## Moto dei proiettili
 Un aereo vola alla quota di $1050 m$ alla velocità di $115 m/s$. Ad un certo istante lancia una cassa contenente generi di pronto soccorso. A quale distanza dal punto di lancio la cassa colpirà il suolo?
-![[Pasted image 20241013174440.png|500]]
+![[Pasted image 20241013174440.png|400]]
 # Moti 2d circolari
 **La variabile angolare**:
 $$
@@ -643,7 +581,7 @@ $$
 \end{gather}
 $$
 $\theta$ è misurato in *radianti*, è il rapporto tra due lunghezze.
-Gli angoli misurati in senso antiorario sono positivi.
+Gli angoli misurati in senso *antiorario* sono positivi.
 $2\pi$ radianti $= 360° = 1$ rotazione completa.
 Usando la variabile angolare il moto circolare si può descrivere con una sola *coordinata cinematica*.
 ![[diagram-20241016.svg#invert|400]]
@@ -673,7 +611,7 @@ $$
 Vale anche per i valori istantanei $v = r\omega$.
 ## Accelerazione
 La velocità di una particella che si muove su una traiettoria circolare è tangente alla traiettoria.
-Varia in modulo, direzione e verso, generando una accelerazione $\neq 0$.
+Varia in modulo, direzione e verso, generando una accelerazione $\neq 0$ e quindi deve essere soggetto ad una forza non nulla.
 L’accelerazione, in generale, ha una componente lungo la direzione tangente una componente lungo la direzione radiale.
 ![[diagram-20241016.svg#invert]]
 ## Moto circolare uniforme
@@ -691,8 +629,7 @@ $$
 \omega = \frac{2\pi}{T} = 2\pi f \quad \quad v = \omega r
 $$
 La *direzione* di $v$ cambia, quindi, $\Delta v \neq 0 \Rightarrow a\neq 0$. È quindi presente una forza $\neq 0$.
-## Accelerazione
-### Modulo
+## Accelerazione: modulo
 $$
 \frac{\Delta v}{v} \sim \frac{v\Delta t}{r} \rightarrow \frac{\Delta v}{\Delta t} \sim \frac{v^{2}}{r}
 $$
@@ -702,29 +639,49 @@ a_{r} = \frac{v^{2}}{r} = r\omega^{2} = \omega v
 $$
 ### Direzione orientata
 L’accelerazione istantanea in un moto circolare uniforme è diretta lungo la direzione radiale e orientata verso il centro della traiettoria circolare.
-![[Pasted image 20241016170359.png|350]]
+![[Pasted image 20241016170359.png|300]]
 ## Forza centripeta
 La forza che tiene il corpo in rotazione uniforme è, quindi, costante in modulo e diretta *verso il centro*, ed è chiamata **forza centripeta**.
+$$
+F_{c} = \frac{mv^{2}}{r}
+$$
+**Esempio**:
+Una palla di $150 g$ legata all’estremità di una corda rotea uniformemente lungo una circonferenza orizzontale di raggio $0.6 m$. La palla compie due rivoluzioni in un secondo.
+- Quanto valgono l’ accelerazione e la forza radiale?
+$$
+\begin{gather}
+a_{r} = \frac{v^{2}}{r} = \frac{(2\pi rf)^{2}}{r} = \frac{(2\pi \times 0.6 \times 2)^{2}}{ 0.6} = 94.8 \frac{m}{s^{2}} \\
+F_{r} = ma_{r} = 0.15 \times 94.8 = 14.37 N
+\end{gather}
+$$
+**Esempio**:
+Si supponga che il filo di guida usato nella figura sia lungo $14 m$ e sia capace di resistere alla tensione massima di $85 N$ senza rompersi. Quanto vale il modulo della velocità che un aeromodello di $0,90 Kg$ può avere?
+$$
+\begin{gather}
+F_{c} = \frac{mv^{2}}{r} \\
+v = \sqrt{ \frac{rF_{c}}{m} } = \sqrt{ \frac{14 \times 85}{0.90} } = 36 m/s
+\end{gather}
+$$
 # Lavoro ed energia
 ## Lavoro
-Quando una forza non nulla sposta un corpo viene compiuto **LAVORO**. Se la forza $F$ è costante e ha la direzione orientate dello spostamento:
+Quando una forza non nulla sposta un corpo viene compiuto **LAVORO**. Se la forza $F$ è costante e ha la direzione orientate dello spostamento $s$:
 $$
 W = Fs
 $$
-L’unità di misura della forza è il Joule ($J$).
+L’unità di misura della forza è il *Joule*($J$).
 $$
 1J = 1Nm = 1kg \ m^{2}/s^{2}  
 $$
 Il lavoro compiuto da una forza costante non parallela allo spostamento è definito come:
 $$
-W = Fs \ \cos \theta
+W = Fs \cdot \cos \theta
 $$
 Dove $F$ è l'intensità della forza, $s$ la lunghezza dello spostamento, e $\theta$ l'angolo tra $F$ e $s$.
 ![[Pasted image 20241022113529.png|500]]
 ### Prodotto scalare tra due vettori
 Il **prodotto scalare** di due vettori $a$ e $b$ è una grandezza scalare.
 $$
-\overrightarrow{a} \cdot \overrightarrow{b} = ab\cos \alpha
+\overrightarrow{a} \cdot \overrightarrow{b} = ab \cdot \cos \alpha
 $$
 In coordinate cartesiane:
 $$
@@ -739,12 +696,9 @@ In presenza di più forze $F = F_{1}+F_{2} + \dots + F_{n}$ il lavoro gode della
 $$
 L = L_{1}+L_{2}+L_{2}+\dots+L_{n}
 $$
-**Esercizio**:
-
-> [!NOTE] Esercizio
-> Una scatola di massa m viene trascinata a velocità costante su un piano privo di attrito. La forza applicata $F$ è parallela al piano. Calcolare il lavoro totale compiuto sulla scatola.
-
-Velocità costante, quindi accelerazione$a = 0$.
+**Esempio**:
+Una scatola di massa m viene trascinata a velocità costante su un piano privo di attrito. La forza applicata $F$ è parallela al piano. Calcolare il lavoro totale compiuto sulla scatola.
+Velocità costante, quindi accelerazione $a = 0$.
 ![[Pasted image 20241022115127.png|400]]
 Applico la seconda legge di Newton:
 $$
@@ -755,19 +709,19 @@ $$
 $$
 Il modulo di $F$ vale:
 $$
-F = mg \sin \theta
+F = mg \cdot \sin \theta
 $$
 La scatola percorre lungo la rampa una distanza $\Delta x$, il lavoro della forza $F$ è:
 $$
-W_{F} = F\Delta x\cos0° = mg\Delta x\sin \theta
+W_{F} = F\Delta x \cdot \cos0° = mg\Delta x \cdot \sin \theta
 $$
 Il lavoro della gravità è:
 $$
-W_{g} = w\Delta x\cos(\theta + 90°) = -mg\Delta x\sin \theta
+W_{g} = w\Delta x \cdot \cos(\theta + 90°) = -mg\Delta x \cdot \sin \theta
 $$
 Il lavoro della forza normale è:
 $$
-W_{N} = N\Delta x\cos90° = 0
+W_{N} = N\Delta x \cdot \cos90° = 0
 $$
 Il lavoro netto compiuto sulla scatola è:
 $$
@@ -777,9 +731,8 @@ W_{net} &= W_{F} + W_{g} + W_{N} \\
 &= 0
 \end{align}
 $$
-
-> [!NOTE] Esercizio
-> Qual è il lavoro totale sulla scatola dell’esercizio precedente se la scatola non è tirata a velocità costante?
+**Esempio**:
+Qual è il lavoro totale sulla scatola dell’esercizio precedente se la scatola non è tirata a velocità costante?
 
 $$
 \begin{align}
@@ -798,10 +751,8 @@ $$
 \int_{x_{1}}^{x_{2}} F(x) \cdot dx 
 $$
 Anche in questo caso il lavoro può essere calcolato determinando l’area delimitate dal grafico della forza applicata in funzione dello spostamento.
-
-> [!NOTE] Esercizio
-> Una molla ideale ha $k = 20,0 N/m$. Qual’è il lavoro compiuto da un agente esternoper deformare la molla di $0.40 m$ partendo dalla molla non deformata?
-
+**Esempio**:
+Una molla ideale ha $k = 20,0 N/m$. Qual’è il lavoro compiuto da un agente esterno per deformare la molla di $0.40 m$ partendo dalla molla non deformata?
 Usiamo l’interpretazione grafica dell’integrale:
 ![[Screenshot 2024-10-22 alle 12.10.11.png|300]]
 $$
@@ -834,23 +785,24 @@ W = \int_{i}^{f} dW = \int_{i}^{f} mvdv = m \int_{i}^{f} vdv = \frac{1}{2} mv_{f
 \end{gather}
 $$
 ## Lavoro e forza gravitazionale
+Il **lavoro** compiuto dalla forza gravitazionale quando un corpo si sposta verticalmente è dato da:
 $$
 W = mg \cdot |\Delta h| \cdot \cos \theta = (mg h_{f} - mg h_{i})
 $$
 ## Lavoro ed energia potenziale gravitazionale
+L'energia potenziale gravitazionale $U$ di un corpo è definita come:
 $$
-\begin{gather}
-W_{if} = -(E_{Pf}-E_{\Pi}) \\
-E_{P} = m \cdot g \cdot h
-\end{gather}
+U = m \cdot g \cdot h
 $$
 $m =$ massa, $g=$ forza di gravità e $h=$ altezza.
-
+Il lavoro compiuto dalla forza gravitazionale tra due posizioni è legato alla variazione di energia potenziale gravitazionale:
+$$
+W_{if} = -(U_{f}-U_{i}) = -\Delta U
+$$
 Una forza è **conservativa** quando il lavoro compiuto NON dipende dal particolare cammino seguito per andare dalla posizione iniziale a quella finale, ma solo dalla posizione iniziale e finale. Per questa categoria di forze:
 $$
 W_{cons} = -\Delta U
 $$
-Ci sono quindi diverse forme di energia potenziale.
 La forza gravitazionale è una forza conservativa. *Vicino* alla superficie della Terra:
 $$
 \Delta U_{g} = mg\Delta y
@@ -868,42 +820,46 @@ $$
 U(r) = - \frac{GM_{1}M_{2}}{r}
 $$
 dove $U(r=\infty)=0$.
-**La forza elastica è una forza conservativa**
+**La forza elastica è una forza conservativa**.
 ## Energia potenziale elastica
 Il lavoro della forza elastica, come quello della forza peso, *non dipende dalla traiettoria*,  ma solo dalla posizione iniziale e finale.
-Introducendo la funzione $U(x) = \left( \frac{1}{2} \right)kx^{2}$ il lavoro è dato da:
+Introducendo la funzione $U(x) = \frac{1}{2}kx^{2}$ il lavoro è dato da:
 $$
 L = \frac{1}{2} kx_{A}^{2} - \frac{1}{2}kx_{B}^{2}  = U(A) - U(B) = -\Delta U
 $$
-La funzione $U(x)$ è detta *energia potenziale elastica* ed è una grandezza scalare associata alla *posizione* in cui si trova il punto.
-La funzione $U(x)$ è definita a meno di una costante: se si pone $U(x) = \left( \frac{1}{2} \right) kx^{2}+c$ vale sempre la relazione $L = -\Delta U$.
-L’energia meccanica di una massa m collegata ad una molla è:
+La funzione $U(x)$ è detta *energia potenziale elastica* ed è una grandezza scalare associata alla *posizione* in cui si trova il punto, è definita a meno di una costante: se si pone $U(x) = \frac{1}{2} kx^{2}+c$ vale sempre la relazione $L = -\Delta U$.
+L’energia meccanica di una massa $m$ collegata ad una molla è:
 $$
 E(t) = K(t) + U(t) = \frac{1}{2} mv(t)^{2} + \frac{1}{2} kx(t)^{2}  
 $$
-Quando non ci sono forze di natura non conservativa l’energia meccanica di un sistema fisico si conserva, cioè:
+- $K(t) = \frac{1}{2}mv(t)^{2}$: energia cinetica.
+- $U(t) = \frac{1}{2}kx(t)^{2}$: energia potenziale elastica.
+Se non ci sono forze dissipative (es. attrito), l'energia meccanica totale $E$ si conserva:
 $$
 E_{i} = E_{f}
 $$
-equivalmente:
+equivale a:
 $$
 \Delta K = -\Delta U
 $$
 ## Potenza
-La potenza è il **tasso di trasferimento dell'energia**:
+La **potenza** è una misura della velocità con cui viene trasferita o convertita energia. Si può distinguere tra **potenza media** e **potenza istantanea**:
 $$
-\text{Potenza media} \ P_{av} = \frac{\Delta E}{\Delta}
+\begin{gather}
+\text{Potenza media} \ P_{av} = \frac{\Delta E}{\Delta t} \\ \\
+\text{Potenza istantanea} \ P = Fv \cdot \cos \theta
+\end{gather}
 $$
-$$
-\text{Potenza istantanea} \ P = Fv\cos \theta
-$$
-Unità di misura è il Watt. $1 Watt = 1J/s = 1W$.
+Unità di misura è il Watt. $1 W = 1J/s$.
 # Elettrostatica
 ## Conduttori e isolanti
-Un **conduttore**: formato da un materiale che consente alle cariche elettriche di muoversi attraverso esso in modo facile.
-Un **isolante**(o dielettrico) è formato da un materiale che non consente alle cariche elettriche di muoversi facilmente attraverso esso.
+- **Conduttore**: formato da un materiale che consente alle cariche elettriche di muoversi attraverso esso in modo facile.
+- **Isolante**(o dielettrico) è formato da un materiale che non consente alle cariche elettriche di muoversi facilmente attraverso esso.
 Ci sono due tipi di **carica elettrica**: *positiva* e *negativa*.
-L’unità elementare di carica è $$e = 1.602 \times 10^{-19}C$$
+L’unità elementare di carica è
+$$
+|e| = 1.602 \times 10^{-19}C
+$$
 La carica dell’elettrone è $-1e$.
 La carica del protone è $+1e$.
 La carica del neutrone è $0e$.
@@ -911,7 +867,7 @@ La carica elettrica è *conservativa*.
 Un oggetto può diventare **polarizzato** se le cariche al suo interno possono essere separate.
 ![[Pasted image 20241028093013.png|500]]
 ## Carica puntiforme e Legge di Coulomb
-Il modulo della forza tra due cariche puntiformi è:
+La **legge di Coulomb** descrive l'intensità della forza elettrica che agisce tra due cariche puntiformi. La legge afferma che:
 $$
 F = k \frac{|q_{1}||q_{2}|}{r^{2}}
 $$
@@ -919,18 +875,19 @@ dove $q_{1}$ e $q_{2}$ sono le cariche e $r$ è la distanza tra le due cariche.
 $$
 k = 8.99 \times 10^{9} Nm^{2}/C^{2}   
 $$
-dove $k = \frac{1}{4\pi\varepsilon_{0}}$ e $\varepsilon_{0} = 8.85 \times 10^{-12} \frac{C^{2}}{Nm^{2}}$, costante dielettrica. Inversamente
+dove $k = \frac{1}{4\pi\varepsilon_{0}}$ e $\varepsilon_{0} = 8.85 \times 10^{-12} \frac{C^{2}}{Nm^{2}}$, costante dielettrica nel vuoto.
+La costante dielettrica di un mezzo($\varepsilon$) la possiamo anche scrivere come:
 $$
-k = \varepsilon = \frac{1}{4\pi k}
+\varepsilon = \varepsilon_{r} \varepsilon_{0}
 $$
-La costante dielettrica di un mezzo($\varepsilon$) la possiamo anche scrivere come $\varepsilon = \varepsilon_{r} \varepsilon_{0}$, dove $\varepsilon_{r} = \frac{\varepsilon}{\varepsilon_{0}}$.
+- $\varepsilon_{r} = \frac{\varepsilon}{\varepsilon_{0}}$.
 La forza di Coulomb è radiale, si esplica lungo la direzione congiungente delle due cariche.
 ![[Pasted image 20241028095336.png|500]]
 **Esempio**:
 Qual’ è il rapporto tra la forza elettrica e quella gravitazionale tra un protone e un elettrone separati da $5.3 \times 10^{11}$m (il raggio di un atomo di idrogeno)?
 $$
 \begin{align}
-&F_{e} = k\frac{|q_{1}||q_{2}|}{r^{2}} && |q_{1}|=|q_{2}|=e = = 1.602 \times 10^{-19}C\\
+&F_{e} = k\frac{|q_{1}||q_{2}|}{r^{2}} && |q_{1}| = |q_{2}|= e = 1.602 \times 10^{-19}C\\
 &F_{g} = G\frac{m_{1}m_{2}}{r^{2}} && m_{1} = m_{p} = 1.67 \times 1^{-27}kg \\
 & && m_{2} = m_{e} = 9,11 \times 10^{-31}kg 
 \end{align}
@@ -940,7 +897,7 @@ $$
 \frac{F_{e}}{F_{g}} = \frac{k}{G}\frac{|q_{1}||q_{2}|}{m_{1}m_{2}} = \frac{k}{G}\frac{e^{2}}{m_{e}m_{p}} = 2.3 \times 10^{39} 
 $$
 ## Il campo elettrico
-Ricordiamo $F_{g} = m\mathbf{g}$ dove $\mathbf{g}$ è l'accelerazione di gravità.
+$F_{g} = m\mathbf{g}$ dove $\mathbf{g}$ è l'accelerazione di gravità.
 $$
 F_{e} = qE
 $$
@@ -951,7 +908,7 @@ E = \frac{F_{e}}{q} = k\frac{|Q|}{r^{2}}
 $$
 Il campo elettrico in un punto dello spazio si trova sommando tutti i campi elettrici presenti in quel punto:
 $$
-\mathbf{E}_{net} = \sum_{i} \mathbf{E}_{i} \quad \text{Attenzione! Il campo elettrico è un vettore!}
+E_{net} = \sum_{i} E_{i} \quad \text{Attenzione! Il campo elettrico è un vettore!}
 $$
 ## Linee di Campo Elettrico
 Le linee di campo elettrico sono un modo utile per rappresentare il modulo e la direzione di un campo elettrico nello spazio.
@@ -961,30 +918,45 @@ Le linee di campo elettrico sono un modo utile per rappresentare il modulo e la 
 4. Le linee di campo non si incrociano mai.
 ![[Pasted image 20241028103016.png|500]]
 ## Condensatore piano
-![[Pasted image 20241126110702.png|250]]
+Un **condensatore piano** è un dispositivo composto da due conduttori piani paralleli, separati da un dielettrico (un materiale isolante) o dal vuoto. La sua funzione è quella di accumulare carica elettrica ed energia nel campo elettrico generato tra le sue armature.
+![[Pasted image 20241126110702.png|150]]
 La *densità superficiale di carica* è:
 $$
 \sigma = \frac{|q|}{A}
 $$
 Come è fatto il campo dentro al condensatore?
 $$
-E = \frac{\sigma}{\varepsilon_{0}} = \frac{Q}{\varepsilon_{0}A}
+E = \frac{\sigma}{\varepsilon_{0}} = \frac{Q}{\varepsilon_{0}A} = \frac{V}{d}
 $$
-$\varepsilon_{0}$ la densità del materiale(in questo caso il vuoto).
-## Legge di Gauss
+- $\varepsilon_{0}$ la densità del materiale(in questo caso il vuoto).
+- $A$ l'area del condensatore.
+- $d$ la distanza.
+- $V$ la differenza di potenziale tra le armature.
+La *capacità* del condensatore è:
+$$
+C = \varepsilon \frac{A}{d}
+$$
+L'*energia accumulata* dal condensatore è:
+$$
+U = \frac{1}{2}CV^{2} 
+$$
+Una maggiore area $A$ aumenta la capacità.
+Una minore distanza $d$ tra le armature aumenta la capacità.
+La *densità di energia. nel campo* è:
+$$
+u = \frac{1}{2}\varepsilon E^{2}
+$$
+## Flusso e Teorema di Gauss
 ![[Pasted image 20241126111211.png|250]]
-$$
-\text{flux} = \Phi_{e} = E_{\perp}A = (E\cos \theta)A = \vec{E} \bullet \vec{A}
-$$
 Circonda una carica puntiforme $+Q$ con una sfera immaginaria.
 Le linee del campo $E$ escono dalla sfera.
-![[Pasted image 20241028103342.png|250]]
+![[Pasted image 20241028103342.png|200]]
 Il **flusso** è una quantità scalare correlate al numero di linee di campo che attraversano la superficie:
 $$
-\text{flux} = \Phi_{e} = E_{\perp}A = (E\cos \theta)A
+\text{flux} = \Phi_{E} = E_{\perp}A = EA \cdot \cos \theta
 $$
-$\text{flux} > 0$ quando le linee di campo escono dalla superficie.
-$\text{flux} < 0$ quando entrano nella superficie.
+$\Phi_{E} > 0$ quando le linee di campo escono dalla superficie.
+$\Phi_{E} < 0$ quando entrano nella superficie.
 **Esempio**:
 Trova il flusso del campo elettrico attraverso ciascuna faccia di una cubo di spigolo a immerso in un campo elettrico uniforme di intensità $E$.
 ![[Pasted image 20241028104313.png|250]]
@@ -993,29 +965,20 @@ Il cubo ha sei facce: le linee di campo entrano in una faccia ed escono attraver
 - Il flusso attraverso la faccia destra è $+EA$.
 - il flusso netto attraverso il cubo è *nullo*($-EA+EA = 0$).
 **Definizione**: il flusso attraverso una superficie chiusa dipende quindi dalla quantità di carica all’interno della superficie chiusa stessa.
-**Legge di Gauss**: verifica per il caso della carica puntiforme:
+Il **teorema di Gauss** mette in relazione il flusso del campo elettrico attraverso una superficie chiusa con la **carica totale racchiusa** all'interno della superficie. È espressa come:
 $$
-\Phi_{e} = \frac{Q_{inside}}{\varepsilon_{0}}
+\Phi_{E} = \frac{Q_{\text{inside}}}{\varepsilon_{0}}
 $$
 Esplicitando:
 $$
-\oint\vec{E} \cdot \vec{A}_{superficie} = \frac{Q}{\varepsilon_{0}}
-$$
-Calcolo dell’integrale a primo membro su una superficie sferica avente centro nella posizione della carica $Q$:
-$$
-\begin{gather}
-\int_{\text{sfera di raggio }R} \overrightarrow{E} \cdot d\overrightarrow{A} = \\ \\
-\frac{Q}{4\pi \varepsilon_{0}} \int_{\text{sfera di raggio }R} \frac{1}{r^{2}} dA = \\ \\
-\frac{Q}{4\pi \varepsilon_{0}} \frac{1}{R^{2}} \int_{\text{sfera di raggio }R} dA = \\ \\
-\frac{Q}{4\pi \varepsilon_{0}} \frac{1}{R^{2}} 4\pi R^{2} = \frac{Q}{\varepsilon_{0}} 
-\end{gather}
+\oint\vec{E} \cdot d\vec{A}_{superficie} = \frac{Q_{\text{inside}}}{\varepsilon_{0}} = \frac{Q}{4\pi\varepsilon_{0}r^{2}} = E(r) \cdot 4\pi r^{2}
 $$
 ## Calcolo del campo elettrico a partire dalla legge di Gauss
-Densità di carica:
+*Densità di carica*:
 $$
 \rho = \frac{Q}{V} = \frac{Q}{\frac{4}{3}\pi R^{3}} = \frac{3Q}{4\pi R^{3}}
 $$
-![[Pasted image 20241126113732.png|250]]
+![[Pasted image 20241126113732.png|150]]
 - Per $r < R$:
 $$
 \int_{\text{sfera di raggio }r} \overrightarrow{E} \cdot \overrightarrow{A}_{rea} = \frac{Q_{in}}{\varepsilon_{0}}
@@ -1052,8 +1015,8 @@ E(r) = \frac{Q}{4\pi \varepsilon_{0}r^{2}}
 \end{gather}
 $$
 ## Moto di una carica puntiforme in un campo elettrico uniforme
-Una regione di spazio in cui è presente un campo elettrico $E$ uniforme contiene una particella di carica $q>0$ e massa $m$.
-![[Pasted image 20241028110211.png|350]]
+Una regione di spazio in cui è presente un campo elettrico $E$ uniforme contiene una particella di carica $q>0$ di massa $m$.
+![[Pasted image 20241028110211.png|300]]
 Applica la seconda legge di Newton e risolviamo per l'accelerazione:
 $$
 \begin{align}
@@ -1064,7 +1027,7 @@ a &= \frac{q}{m} E
 $$
 **Esempio**:
 Qual è l’intensità del campo elettrico necessaria per mantenere un elettrone sospeso in aria?
-![[Pasted image 20241028110259.png|200]]
+![[Pasted image 20241028110259.png|150]]
 Seconda legge di Newton:
 $$
 \begin{align}
@@ -1085,9 +1048,9 @@ U_{e} = k \cdot \frac{Q \cdot q}{r}
 $$
 - $k$ è la costante di Coulomb ($8,99 \times 10^{9} Nm^{2}/C^{2}$).
 - $Q$ e $q$ le cariche in gioco.
-- $r$ la distanza tra le du cariche.
+- $r$ la distanza tra le due cariche.
 ## Potenziale elettrico (Volt)
-Il **potenziale elettrico** $V_{e}$​ in un punto dello spazio, generato da una distribuzione di cariche, è definito come l'energia potenziale elettrica $U_{e}$ di una carica $q$ in quel punto divisa per il valore della carica di prova stessa.
+Il **potenziale elettrico** $V_{e}$​ in un punto dello spazio, generato da una distribuzione di cariche, è definito come l'energia potenziale elettrica $U_{e}$ di una carica $q$ in quel punto divisa per il valore della carica stessa.
 $$
 V_{e} = \frac{U_{e}}{q}
 $$
@@ -1117,7 +1080,7 @@ Se $q_{1}$ e $q_{2}$ hanno lo stesso segno $\Delta U_{e} > 0$.
 - **Energia Potenziale Elettrica** ($U_{e}$​): Energia totale posseduta dalla carica $q$, calcolabile con $U_{e} = V_{e} \cdot q$.
 ## Sorgenti di f.e.m: la batteria
 ### Cariche in movimento in campi elettrostatici
-Quando solo froze elettriche agiscono su una carica, la sua energia meccanica totale si conserva.
+Quando solo forze elettriche agiscono su una carica, la sua energia meccanica totale si conserva.
 $$
 E_{i} = E_{f}
 $$
@@ -1138,7 +1101,7 @@ K_{f} - K_{i} &= U_{i} - U_{f} = -(U_{f} - U_{i}) \\
 \end{align}
 $$
 ## Relazioni tra $E$ e $V$
-![[Pasted image 20241126141844.png|250]]
+![[Pasted image 20241126141844.png|200]]
 Campo $E$ uniforme.
 $$
 \Delta V=\frac{\Delta U}{q} = -Ed \quad d\text{ è la distanza a cui si ha }\Delta V
@@ -1155,8 +1118,8 @@ Sono superfici in cui il potenziale elettrico è costante.
     - Non è necessario compiere lavoro per spostarsi su una superficie equipotenziale.
     - Perpendicolari alle linee del campo elettrico.
 # Condensatori
-Formato da due strati(armature $A$) conduttrici separate da uno strato isolante(dielettrico $d$).
-Un **condensatore** è un dispositivo progettato per **immagazzinare energia potenziale elettrica** accumulando cariche positive e negative sulle due armature. Una piastra accumula carica positiva ($+Q$) e l’altra accumula una carica uguale e opposta ($-Q$).
+Formato da due strati (armature $A$) conduttrici separate da uno strato isolante(dielettrico $d$).
+Un **condensatore** è un dispositivo progettato per **immagazzinare energia potenziale elettrica** (Joule) accumulando cariche positive e negative sulle due armature. Una piastra accumula carica positiva ($+Q$) e l’altra accumula una carica uguale e opposta ($-Q$).
 $$
 C = \frac{Q}{\Delta V}
 $$
@@ -1181,7 +1144,7 @@ $$
 \end{gather}
 $$
 - $C$ dipende solo dalla costante dielettrica dell'isolante e da fattori geometrici.
-**Esercizio:**
+**Esercizio**:
 Un condensatore a facce piane parallele ha una capacità di $1.20 \ nF$. Vi è una carica di $0.800 \mu C$ su ciascuna armatura.
 - Quale è la differenza di potenziale tra le armature?
 $$
@@ -1201,8 +1164,8 @@ se $d$ raddoppia, così fa la differenza di potenziale.
 Per aumentare la capacità di un condensatore , si può mettere un dielettrico tra le armature del condensatore.
 $$
 \begin{align}
-C = kC_{0} \\
-\text{dove } C_{0} = \frac{\varepsilon_{0}A}{d}
+&C = kC_{0} \\
+\text{dove } &C_{0} = \frac{\varepsilon_{0}A}{d}
 \end{align}
 $$
 $k$ è la costante dielettrica relativa$\left( k = \frac{\varepsilon}{\varepsilon_{0}} \right)$.
@@ -1228,22 +1191,22 @@ Quando il campo elettrico supera la rigidità dielettrica, il materiale si ioniz
 ![[Pasted image 20241126155023.png|500]]
 L'energia immagazzinata vale(Lavoro differenziale):
 $$
-dL = dQ^{*}\Delta V
+\Delta L = \Delta Q^{*}\Delta V
 $$
 - $\Delta V$ è la differenza di potenziale istantanea tra le piastre del condensatore.
-- $dQ^{*}$ l'incremento infinitesimale della carica.
+- $\Delta Q^{*}$ l'incremento infinitesimale della carica.
 **Espressione della differenza di potenziale**:
 $$
-dL = dQ^{*} \Delta V=dQ^{*} \frac{Q^{*}}{C}
+\Delta L = \Delta Q^{*} \Delta V = \Delta Q^{*} \frac{Q^{*}}{C}
 $$
 La carica massima $Q$ che si può trasferire sulla capacità si ottiene dalla legge dei condensatori: $Q=C\Delta V$. Il lavoro totale è quindi dato da:
 $$
-L = \int_{0}^{Q} dL = \frac{1}{C} \int_{0}^{Q} dQ^{*} Q^{*} = \frac{Q^{2}}{2C}
+L = \int_{0}^{Q} \Delta L = \frac{1}{C} \int_{0}^{Q} \Delta Q^{*} Q^{*} = \frac{Q^{2}}{2C}
 $$
 Dunque l'*energia potenziale*(immagazzinata) è:
 $$
 \begin{align}
-U&=\frac{1}{2}Q\Delta V \\
+U &= \frac{1}{2}Q\Delta V \\
 &\begin{rcases}
 =\frac{1}{2}C(\Delta V)^{2}\\
 =\frac{Q^{2}}{2C}\end{rcases} \text{si trovano usando }Q=C\Delta V \text{ e la prima relazione}
@@ -1282,7 +1245,6 @@ U = \frac{1}{2} \cdot (1.177 \times 10^{-10}F) \cdot (150V)^{2} \approx 1.3281 \
 $$
 # Correnti e circuiti elettrici
 La **corrente elettrica** è una misura della quantità di carica che passa attraverso un'area perpendicolare al flusso di carica.
-*Corrente*:
 $$
 I = \frac{\Delta q}{\Delta t}
 $$
@@ -1290,7 +1252,7 @@ $$
 - $\Delta q$ Quantità di carica elettrica trasferita, misurata in **coulomb**$(C)$.
 - $\Delta t$Intervallo di tempo, misurato in **secondi**$(s)$.
 La corrente di elettroni fluisce fino a che la differenza di potenziale non si annulla.
-![[Pasted image 20241126162012.png|250]]
+![[Pasted image 20241126162012.png|200]]
 Per convenzione si assume che la corrente sia trasportata da cariche positive. La direzione di scorrimento della corrente in un filo sarà opposta al reale flusso degli elettroni.
 #### Tipi di Corrente Elettrica
 1. **Corrente Continua (DC)**: Fluisce in una sola direzione (es. batterie).
@@ -1313,7 +1275,7 @@ $$
 \end{align}
 $$
 ## Descrizione Microscopica della correte in un Metallo
-Gli elettroni in un metallo hanno velocità di $\sim 10^{6}m/s$, ma la direzione del loro moto è casuale, quindi la loro velocità deriva $v_{drift}=0$.
+Gli elettroni in un metallo hanno velocità di $\sim 10^{6}m/s$, ma la direzione del loro moto è casuale, quindi la loro velocità di deriva $v_{drift}=0$.
 ![[Pasted image 20241126163634.png|250]]
 Solo quando le estremità del filo si trovano a potenziali diversi $(E\neq 0)$ ci sarà un flusso netto di elettroni lungo il filo $(v_{drift} \neq 0)$. Tipicamente, $v_{drift} < 1 mm/\sec$.
 ![[Pasted image 20241126163835.png|250]]
@@ -1339,7 +1301,7 @@ $$
 - $\rho$ è la *resistività* del materiale.
 - $L$ la lunghezza del conduttore.
 - $A$ l'area della sezione trasversale.
-Con $R \propto \rho$ un materiale è considerato un conduttore se $\rho$ è "piccolo" e isolante se $\rho$ è "grande".
+Con $R \propto \rho$ un materiale è considerato un conduttore se $\rho$ è "piccolo", isolante se $\rho$ è "grande".
 La resistività di un materiale dipende dalla sua temperatura:
 $$
 \rho = \rho_{0} (1 + \alpha(T-T_{0}))
@@ -1348,7 +1310,7 @@ dove $\rho_{0}$ è la resistività alla temperatura $T_{0}$, e $\alpha$ è il co
 Un materiale è un superconduttore se $\rho = 0$.
 ## Misurare Correnti e Voltaggi
 Le correnti si misurano con un *amperometro*.
-Un amperometro è posizionato in seria al componente circuitale di interesse.
+Un amperometro è posizionato in serie al componente circuitale di interesse.
 ![[Pasted image 20241126170519.png|500]]
 Un *voltmetro* si usa per misurare la caduta di potenziale su un elemento circuitale. Viene posizionato in parallelo al componente. Un voltmetro ha una resistenza interna elevata rispetto alle resistenza del circuito.
 ![[Pasted image 20241126170658.png|175]]
@@ -1582,11 +1544,11 @@ $$
 |\vec{c}| = |\vec{a}|\cdot |\vec{b}|\cdot \sin \theta
 $$
 ## Forza magnetica su una carica puntiforme(forza di Lorentz)
-La forza magnetica su una carica puntiforme è:
+La *forza magnetica* su una carica puntiforme è:
 $$
 F_{B} = q(v\times B)
 $$
-L'unità di misura del campo magnetico ($B$) è il Tesla ($1T = 1 n/Am$)
+L'unità di misura del campo magnetico($B$) è il Tesla($1T = 1 n/Am$).
 Il modulo di $F_{B}$ è:
 $$
 F_{B} = qB(v\sin \theta)
@@ -1816,7 +1778,7 @@ Il *flusso magnetico* è proporzionale al numero di linee del campo B che attrav
 $$
 \Phi_{B} = BA\cos \theta
 $$
-L'unità di misura del flusso magnetico è il *weber*: $1Wb = 1Tm^{2}$.
+L'unità di misura del flusso magnetico è il *Weber*: $1Wb = 1Tm^{2}$.
 - $A$ area della spira.
 **Esempio**:
 La spira in figura ha un'area di $0.1m^{2}$. Il campo magnetico è perpendicolare al piano della spira e ha una intensità costante di $0.2T$. Si trovi il flusso magnetico attraverso la spira.
@@ -1890,10 +1852,10 @@ $$
 |\varepsilon| = |-A\left( \frac{\Delta B}{\Delta t} \right)| = |(0.500m^{2})\left( \frac{0.00T-0.50T}{4.0\times 10^{-3}s} \right)|= 62.5V
 $$
 ## Autoinduzione
-L'autoinduzione è il fenomeno per cui una variazione di corrente in un circuito induce una forza elettromotrice (f.e.m.) nel circuito stesso, opponendosi alla variazione della corrente.
+L'autoinduzione è il fenomeno per cui una variazione di corrente in un circuito induce una *forza elettromotrice(f.e.m.)* nel circuito stesso, opponendosi alla variazione della corrente.
 **FEM indotta**:
 $$
-\varepsilon = -L \frac{\Delta I}{\Delta t}
+\varepsilon = -L \frac{\Delta I}{\Delta t} = -\frac{\Delta \Phi_{B}}{\Delta t} = B \cdot l \cdot v
 $$
 - $\varepsilon$ forza elettromotrice indotta.
 - $L$ induttanza del circuito in henry (H).
@@ -1903,7 +1865,7 @@ $$
 Abbiamo studiato il campo *elettrico prodotto* da una *carica ferma* (legge di Gauss dell’elettrostatica) e il campo elettrico(non conservativo) prodotto da un campo magnetico variabile nel tempo (legge di Faraday).
 La legge Ampère consente di calcolare il *campo magnetico* prodotto da una *corrente costante* nel tempo (magnetostatica), che chiameremo “corrente di conduzione”.
 Nel seguito esploreremo che caratteristiche hanno *i campi elettrico e magnetico* generati da *cariche accelerate*. Questo ambito di fenomeni richiede una modifica della legge di Ampère così come l’abbiamo formulata in magnetostatica.
-## Legge di Ampère-Maxwell
+## Legge di Ampere-Maxwell
 Consideriamo un lungo filo rettilineo di raggio $R$ percorso da una corrente continua $I$. Ad un certo punto il filo ha una interruzione. Le superfici di questa interruzione agiscono da piastre di un condensatore. Se la corrente scorre verso l’alto sulla faccia inferiore si accumulano cariche positive:
 $$
 \Delta Q(t) = I\Delta t
@@ -2085,9 +2047,6 @@ Gli esperimento mostrano che:
 ![[Pasted image 20241127201138.png|350]]
 3. La massima energia cinetica degli elettroni estratti dipende dalla frequenza(e NON dalla intensità) della luce incidente.
 4. Gli elettroni vengono emessi senza osservabile tempo di ritardo rispetto all'illuminazione, indipendentemente dall'intensità.
-## La previsione classica
-Secondo la teoria classica di Maxwell le onde EM trasportano energia e questa energia viene assorbita dagli elettroni del metallo quando esso viene illuminato. Maggiore è l'intensità della luce, maggiore è l'energia trasferita agli elettroni. Gli elettroni escono quando accumulano energia sufficiente dalla luce per sfuggire all'atomo a cui appartengono.
-Dunque, secondo la teoria classica, un fascio di luce sufficientemente intenso, a qualunque frequenza dovrebbe estrarre elettroni e l'energia cinetica degli elettroni estratti dovrebbe aumentare con l'intensità luminosa.
 # La nuova fisica
 ## L'ipotesi di Einstein
 La luce trasporta energia sotto forma di quanti di energia:
@@ -2163,39 +2122,103 @@ Un solido emette uno spettro continuo a causa delle transizioni elettroniche tra
 ![[Pasted image 20241128132940.png|250]]
 Un materiale è un *conduttore* se l'ultima banda piena a $T = 0$ lo è parzialmente, oppure se l'ultima banda piena si sovrappone alla prima vuota.
 ![[Pasted image 20241128133117.png|150]]![[Pasted image 20241128133145.png|150]]![[Pasted image 20241128133203.png|150]]
-Se invece gli elettroni del materiale riempiono completamente le bande in cui sono collocati, il materiale può essere o un *semiconduttore* o un *isolante*.
-## Semiconduttori
-I semiconduttori sono materiali con proprietà di conduzione elettrica intermedie tra i conduttori (come i metalli) e gli isolanti. Le loro caratteristiche derivano dalla struttura cristallina e dalla configurazione elettronica.
-### **Struttura Cristallina**
-- I semiconduttori hanno una **struttura cristallina regolare**, solitamente a reticolo cubico o diamantato.
-- Esempi comuni di semiconduttori includono il **silicio (Si)** e il **germanio (Ge)**.
-- Gli **elettroni di valenza** formano legami covalenti, conferendo stabilità alla struttura.
-- A temperatura ambiente, alcuni elettroni possono rompere i legami e diventare **elettroni di conduzione**, lasciando dietro di sé una **lacuna** (una carica positiva).
-### **Proprietà di Conduzione Intrinseca**
-- In un semiconduttore puro, la conduzione è dovuta esclusivamente al **movimento degli elettroni di conduzione** e delle **lacune**:
-    - Gli **elettroni** si muovono nel reticolo cristallino verso il polo positivo.
-    - Le **lacune** sembrano spostarsi in direzione opposta (movimento delle cariche positive).
-- La concentrazione di elettroni e lacune è determinata dalla temperatura:
-    - A **basse temperature**, pochi elettroni possono rompere i legami covalenti.
-    - A **temperature elevate**, più elettroni diventano di conduzione, aumentando la conducibilità.
-### **Drogaggio**
-Il drogaggio è un processo in cui si aggiungono impurità controllate al semiconduttore per modificarne le proprietà elettriche. Si distinguono due tipi principali:
-1. **Semiconduttori di tipo n** (elettroni come portatori maggioritari):
-    - Si aggiungono atomi a **5 elettroni di valenza** (es. fosforo, arsenico).
-    - Questi atomi donano un elettrone libero in più al reticolo cristallino.
-    - La concentrazione di elettroni è maggiore di quella delle lacune.
-2. **Semiconduttori di tipo p** (lacune come portatori maggioritari):
-    - Si aggiungono atomi a **3 elettroni di valenza** (es. boro, alluminio).
-    - Questi atomi creano lacune nel reticolo.
-    - La concentrazione di lacune è maggiore di quella degli elettroni.
-### **Caratteristiche principali**
-- **Band Gap:** I semiconduttori hanno un intervallo di energia (gap di banda) tra la banda di valenza e la banda di conduzione. Il silicio ha un gap di circa 1.1 eV.
-- **Conduttività controllabile:** Variando il drogaggio o la temperatura, si può modulare la conducibilità.
-- **Applicazioni tecnologiche:** Sono utilizzati in diodi, transistor, celle solari, LED, e molte altre applicazioni elettroniche.
-### **Confronto tra semiconduttori intrinseci e drogati**
+Quello che cambia è il *valore del Gap*. Negli *isolanti* $\sim 10eV$.
+Nei *semiconduttori*:
+- *Si*: $1.2eV$
+- *Ge*: $0.6eV$
+- *GaAs*: $1.4eV$
+Considerando che a $T = 20°C(300°K)KT \sim 25meV$ è facile intuire che solo pochi “fortunati” elettroni possono acquistare dal bagno termico energia sufficiente per attraversare la gap.
+## Elettroni e lacune
+![[Pasted image 20241205112817.png|350]]
+Un elettrone, per eccitazione termica, può acquistare energia sufficiente a liberarsi dal legame chimico tra gli atomi e, quindi, muoversi liberamente nel cristallo.
+Sull’atomo abbandonato dall’elettrone di valenza si determina una carica in eccesso positiva: la **lacuna**.
+In altri termini, un elettrone viene promosso dalla banda di valenza alla banda di conduzione, lasciando una lacuna in quest’ultima.
+![[Pasted image 20241205113012.png|200]]
+Sotto l’azione di un campo elettrico l’elettrone in banda di conduzione può muoversi liberamente.
+In banda di valenza gli elettroni che, sotto l’azione del campo elettrico, premono per muoversi, fanno muovere la lacuna in verso opposto. La lacuna viene accelerata dal campo proprio come una carica positiva.
+![[Pasted image 20241205113134.png|350]]
+## Isolanti - Conduttori - Semiconduttori
+Nei semiconduttori, a basse temperature la *banda di valenza è interamente piena e quella di conduzione è vuota*. Esse sono separate da un gap di energia vietata di larghezza $\Delta\varepsilon$ *confrontabile* con l’energia termica $k_{B}T$.
+A temperature ordinarie un certo numero di elettroni viene promosso in banda di conduzione.
+Così, nei semiconduttori (intrinseci) si ha una conducibilità, minore di quella dei metalli, dovuta a cariche sia negative (elettroni), che positive (lacune).
+## Stati donori e accettori
+Nel silicio (esempio, ma importante) ogni atomo ha quattro elettroni di valenza, che mette in condivisione con gli atomi vicini per completare il legame.
+- Se un atomo di silicio (gruppo IV) viene sostituito da uno di arsenico, che ha cinque elettroni esterni, cioè uno in più di quelli necessari al legame chimico, questo quinto elettrone è tenuto nel suo posto solo dalla attrazione coulombiana, molto più debole del legame chimico. La sua energia è di poco inferiore a quella della banda superiore (di conduzione). Così l’elettrone può facilmente lasciare il suo atomo e diventare un elettrone di conduzione. Lo stato dell’elettrone in eccesso attorno al suo atomo si dice stato **donore**.
+- Similmente, se un atomo di silicio viene sostituito da uno di boro, che ha tre elettroni esterni, cioè uno in meno di quelli necessari al legame chimico, si determina uno stato elettronico la cui energia è di poco superiore a quello della banda di valenza (per la repulsione coulombiana). Così un altro elettrone può facilmente lasciare il suo atomo e prendere il posto dell’elettrone mancante al legame, lasciando una lacuna libera di muoversi. Lo stato (vuoto) dell’elettrone mancante necessario al legame chimico si dice stato **accettore**.
+### Conducibilità vs temperatura
+- All’aumentare della temperatura, *nei metalli* il numero di elettroni, portatori della carica, è praticamente costante mentre aumenta l’agitazione termica del cristallo che comporta maggior attrito: la conducibilità diminuisce.
+- All’aumentare della temperatura, *nei semiconduttori* aumenta molto il numero di elettroni e/o lacune, termicamente eccitati nelle rispettive bande, portatori della carica, e questo effetto è dominante rispetto all’aumento dell’attrito prodotto dall’agitazione termica: la conducibilità aumenta.
+Il **drogaggio** aumenta di ordini di grandezza Le proprietà di conduzione dei semiconduttori.
+## Dispositivi a giunzione
+### La giunzione PN
+La **giunzione PN** è il risultato del contatto tra due materiali semiconduttori drogati in modo diverso:
+- **P (positivo)**: drogato con atomi accettori (es. boro, gruppo III), che introducono **lacune** come portatori di carica maggioritari.
+- **N (negativo)**: drogato con atomi donori (es. arsenico, gruppo V), che introducono **elettroni** come portatori di carica maggioritari.
+### Formazione della Giunzione:
+1. **Diffusione iniziale**:  
+    Quando i due materiali vengono messi a contatto:
+    - Gli **elettroni** dal lato N tendono a diffondersi verso il lato P, riempiendo le lacune.
+    - Le **lacune** dal lato P si spostano verso il lato N, catturando elettroni.
+2. **Regione di svuotamento (o depletion)**:
+    - Si forma una zona al confine tra P e N, **priva di portatori liberi**, chiamata **regione di svuotamento**.
+    - Gli ioni fissi lasciati dagli atomi dopanti (negativi nel lato P e positivi nel lato N) creano un **campo elettrico interno**.
+3. **Barriera di potenziale**:
+    - Il campo elettrico nella regione di svuotamento impedisce ulteriore diffusione di portatori di carica.
+    - La differenza di potenziale generata si chiama **barriera di potenziale** (tipicamente circa 0.7 V per il silicio).
+### Applicazioni:
+- **Diodi**: componenti elettronici basati sulla giunzione PN, permettono il passaggio di corrente in un solo verso.
+- **Fotodiodi e LED**: sfruttano il comportamento della giunzione PN per convertire luce in corrente (fotodiodi) o corrente in luce (LED).
+- **Transistor**: dispositivi più complessi che utilizzano più giunzioni PN per amplificare o commutare segnali.
+## Transistor a semiconduttore
+**Transistore bipolare a giunzione (BJT)**
+- **Bipolare** perché la corrente è dovuta a entrambi i tipi di carica (elettroni e lacune).
+- **Doppia giunzione (npn o pnp)**: ciascuna delle tre zone viene collegata ad un elettrodo metallico. Le regioni estreme della struttura vengono chiamate «emettitore» e «collettore». La zona interna alle due giunzioni prende il nome di «base».
+Due diodi accostati e 3 contatti: uno controlla la corrente che può passare tra gli altri due. Vediamo lo schema di funzionamento di un BJT npn.
+![[Pasted image 20241205115108.png|100]]
+![[Pasted image 20241205115133.png|400]]
+**Transistore a effetto di campo (MOS-fet)**
+- MOS-FET = Metal Oxide Semiconductor - Field Effect Transistor
+Il "corpo" (body) del transistor, è costituito da semiconduttore drogato, su cui viene depositato uno spessore di ossido isolante e uno strato di metallo (gate). Due terminali, detti source e drain, composti da semiconduttore, drogato però in maniera opposta al body, vengono creati alle estremità del dispositivo.
+![[Pasted image 20241205115259.png|200]]
+Dunque disponiamo di 4 terminali. Controllando la tensione applicata al gate è possibile regolare il flusso di corrente fra source e drain. Il transistore ad effetto di campo prende il nome dall’effetto fisico su cui è basato: **il controllo della conduzione nel canale avviene tramite l’applicazione di un campo elettrico al gate che funziona così come elettrodo di controllo**. La conduzione avviene tramite un solo tipo di portatori di carica (lacune o elettroni), perciò il FET prende anche il nome di transistore unipolare. La tecnologia di realizzazione dei FET più utilizzata è basata sulla struttura Metallo–Ossido–Semiconduttore, da cui il nome MOS-fet.
+Il passaggio di corrente dal drain al source è regolato dalla tensione applicata all’elettrodo di gate. L’esempio in figura mostra un transistore n-MOS. All’aumentare di una tensione positiva $V_{GS}$ tra il gate e il source si produce dapprima uno svuotamento di lacune nel substrato sottostante l’ossido, poi un progressivo arricchimento elettroni, che possono generare una corrente tra source e drain con l’applicazione di un opportuno potenziale $V_{SD}$.
+L’ossido di gate serve per impedire agli elettroni di uscire dal gate e sottrarre portatori alla corrente tra source e drain. Notate che trasversalmente alla direzione di conduzione elettrica si forma un condensatore, di cui l’ossido di gate costituisce l’isolante.
+## Optoelettronica
+### Fotoconduzione
+L’energia trasportata dalla luce è distribuita in quanti indivisibili, detti fotoni, di valore proporzionale alla frequenza dell’onda.
+$$
+E = hv
+$$
+Se su un semiconduttore si invia della luce di frequenza opportuna (energia dei fotoni maggiore del gap) elettroni vengono eccitati dalla banda di valenza a quella di conduzione. Così aumenta la conducibilità del materiale.
+### Fotodiodo
+Polarizzato in inversa, il diodo non conduce. Se arriva luce nella zona di carica spaziale, la luce crea coppie di elettroni e lacune. Le cariche vengono separate ed accelerate dal campo di giunzione verso i contatti e il diodo conduce, tanto più quanto più intensa è la luce.
+### Fototransistor
+Anche in questo caso la luce arriva nella zona di carica spaziale, cioè nella base, e, rispetto al fotodiodo, il suo effetto è aumentato dalla amplificazione del transistor.
+### Celle Fotovoltaiche
+Le celle fotovoltaiche trasformano energia luminosa in energia elettrica.
+La luce crea coppie di elettroni e lacune in una giunzione polarizzata in inversa e si comporta come un generatore di corrente che scorre in verso opposto a quella che circola nel diodo in polarizzazione diretta. Applicando un carico alla cella in esso circola una corrente $I = I_{s} - I_{d}$.
+In figura si vede che nella curva nel quarto quadrante la corrente e il potenziale hanno segno opposto. Questo significa che la potenza dissipata è negativa: le cariche, separate dal campo elettrico, generano una corrente che può essere usata da un utilizzatore esterno.
+![[Pasted image 20241205115705.png|350]]
+## Diodi emettitori di luce
+### LED (Light Emitting Diods)
+In una giunzione polarizzata in diretta cariche di segno opposto si annichilano nei pressi della giunzione. Se il diodo è di silicio o di germanio, l’energia liberata nella ricombinazione si trasforma in calore. Se invece il diodo è costruito con altri semiconduttori (es: GaP e molti altri composti binari) questa energia viene emessa sotto forma di luce alla frequenza data dal gap del semiconduttore.
+## Emissione spontanea e stimolata
+Quando un elettrone passa da uno stato di più alta energia a uno di energia minore in genere emette un fotone, cioè un pacchetto d’onde della frequenza corrispondente al salto di energia.
+![[Pasted image 20241205120057.png|500]]
+Questa transizione può avvenire spontaneamente o, se è già presente luce della giusta frequenza, può essere stimolata dall’onda presente.
+Nell’emissione stimolata il nuovo fotone è in perfetta coerenza con quello originale: stessa frequenza, stessa direzione, stessa fase.
+## Il laser
+La luce “normale” è formata dalla sovrapposizione di innumerevoli “pacchetti d’onda” disposti disordinatamente nello spazio.
+La luce laser è formata dalla sovrapposizione di innumerevoli “pacchetti d’onda” ottenuti con emissione stimolata, disposti ordinatamente nello spazio, tutti con la stessa direzione e frequenza e fasi coerenti.
+Quindi la luce laser è monocromatica (un solo colore = una sola frequenza) e fortemente collimata.
+### Laser a semiconduttore
+Per avere l’effetto LASER in un semiconduttore bisogna ottenere una situazione in cui siano presenti due livelli di energia, con molti più elettroni in quello superiore, cosicché la transizione di uno determini a cascata la transizione degli altri.
+Nel diodo laser esiste una giunzione polarizzata direttamente come nel LED. Facce piatte, parallele e lisce funzionano da specchi in modo da formare una cavità risonante che favorisce la cascata di ricombinazioni di elettroni e lacune, pompati dalla corrente.
 
-| Proprietà                        | Intrinseco                  | Drogato (tipo n o p)                              |
-| -------------------------------- | --------------------------- | ------------------------------------------------- |
-| **Portatori di carica**          | Elettroni e lacune (uguali) | Elettroni (tipo n) o lacune (tipo p) predominanti |
-| **Conduttività**                 | Bassa                       | Più alta, grazie al drogaggio                     |
-| **Dipendenza dalla temperatura** | Elevata                     | Minore rispetto agli intrinseci                   |
+
+
+
+
+
+
+

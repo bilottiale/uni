@@ -17,9 +17,8 @@ public class Main {
             System.out.println(a);
         }
 
-        // aggiungi prenotazione
-        // Prenotazione p = new Prenotazione(1, LocalDate.of(2023, 10, 1), LocalTime.of(9, 0), LocalTime.of(10, 0), "John Doe", "Meeting");
-        // CSVReader.aggiungiPrenotazione("./data/prenotazioni.csv", p);
+        // CheckPrenotazione p = new CheckPrenotazione();
+        // System.out.println(p.toString());
     }
 
     

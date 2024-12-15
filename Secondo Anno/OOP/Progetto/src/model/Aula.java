@@ -1,7 +1,7 @@
 package model;
 
 public abstract class Aula {
-    private int id;
+    public int id;
     private int capienza;
     private String tipoAula;
 

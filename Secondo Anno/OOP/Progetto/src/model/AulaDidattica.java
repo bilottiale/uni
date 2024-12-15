@@ -15,9 +15,17 @@ public class AulaDidattica extends Aula {
         return lavagna;
     }
 
+    public boolean hasProiettore() {
+        return proiettore;
+    }
+
     // Setters
     public void setLavagna(boolean lavagna) {
         this.lavagna = lavagna;
+    }
+
+    public void setProiettore(boolean proiettore) {
+        this.proiettore = proiettore;
     }
 
     @Override

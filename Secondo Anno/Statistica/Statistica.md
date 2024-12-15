@@ -961,29 +961,29 @@ $$
 Le proprietà principali della PDF sono:
 1. **Non negatività**: $( f_X(x) \geq 0 )$ per ogni $( x )$, cioè la densità di probabilità non può mai essere negativa.
 2. **Normalizzazione**: L'integrale della funzione di densità su tutto il dominio deve essere uguale a 1:
-   $$
-   \int_{-\infty}^{\infty} f_X(x) \, dx = 1
-   $$Questo assicura che la probabilità totale sia 1.
+$$
+\int_{-\infty}^{\infty} f_X(x) \, dx = 1
+$$Questo assicura che la probabilità totale sia 1.
 #### Interpretazione
 La **PDF** non fornisce direttamente la probabilità che la variabile casuale $( X )$ assuma un valore specifico, ma la **probabilità** che $( X )$ si trovi in un intervallo $( [a, b] )$ è data dall'area sotto la curva della PDF tra $( a )$ e $( b )$.
 #### Esempi
 1. **Distribuzione Normale** (Gaussiana):
    La distribuzione normale con media $( \mu )$ e varianza $( \sigma^2 )$ ha la funzione di densità di probabilità:
-   $$
-   f_X(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}
-   $$
+$$
+f_X(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}
+$$
    È una delle distribuzioni più comuni in statistica e probabilità.
 2. **Distribuzione Esponenziale**:
    La distribuzione esponenziale con parametro $( \lambda )$ ha la PDF:
-   $$
-   f_X(x) = \lambda e^{-\lambda x}, \quad x \geq 0
-   $$
+$$
+f_X(x) = \lambda e^{-\lambda x}, \quad x \geq 0
+$$
    Viene spesso utilizzata per modellare il tempo tra eventi in un processo di Poisson.
 3. **Distribuzione Uniforme**:
    Una variabile casuale $( X )$ che segue una distribuzione uniforme nell'intervallo $( [a, b] )$ ha la PDF:
-4. $$
-   f_X(x) = \frac{1}{b - a}, \quad a \leq x \leq b
-   $$
+$$
+f_X(x) = \frac{1}{b - a}, \quad a \leq x \leq b
+$$
    In questo caso, la probabilità è distribuita uniformemente tra $( a )$ e $( b )$.
 ## Variabili Casuali Continue
 Il **valore atteso** (o **media**) di una **variabile casuale continua** $( X )$ è una misura della posizione centrale della distribuzione della variabile. Rappresenta la media ponderata dei valori che $( X )$ può assumere, con i pesi dati dalla sua **funzione di densità di probabilità** (PDF).
@@ -999,9 +999,9 @@ $$
 2. **Media teorica**: Il valore atteso rappresenta il "centro di massa" della distribuzione e corrisponde alla media dei valori se l'esperimento venisse ripetuto infinite volte.
 #### Proprietà
 - Il valore atteso è **lineare**: Se $( a )$ e $( b )$ sono costanti, e $( X )$ è una variabile casuale continua, allora:
-  $$
-  E[aX + b] = aE[X] + b
-  $$
+$$
+E[aX + b] = aE[X] + b
+$$
 #### Esempio
 Supponiamo che $( X )$ segua una distribuzione uniforme nell'intervallo $( [0, 1] )$, con densità $( f_X(x) = 1 )$ per $( x \in [0, 1] )$. Il valore atteso di $( X )$ è:
 $$
@@ -1010,9 +1010,9 @@ $$
 ## Varianza e Deviazione Standard
 La **varianza** misura la dispersione di una variabile casuale rispetto al suo valore atteso (media). Indica quanto i valori di una variabile casuale si discostano dalla media. Per una variabile casuale $( X )$, la varianza è definita come:
 - **Per variabili continue**:
-  $$
-  \text{Var}(X) = E[(X - E[X])^2] = \int_{-\infty}^{\infty} (x - E[X])^2 \cdot f_X(x) \, dx
-  $$
+$$
+\text{Var}(X) = E[(X - E[X])^2] = \int_{-\infty}^{\infty} (x - E[X])^2 \cdot f_X(x) \, dx
+$$
   - $( f_X(x) )$ è la funzione di densità di probabilità di $( X )$.
 La varianza è sempre positiva e il suo valore è espresso nelle stesse unità al quadrato della variabile casuale.
 ### Deviazione Standard
@@ -1023,9 +1023,9 @@ $$
 #### Proprietà della Varianza
 1. **Varianza di una somma lineare**:
    Se $( X )$ e $( Y )$ sono variabili casuali, e $( a )$ e $( b )$ sono costanti, allora:
-   $$
-   \text{Var}(aX + bY) = a^2 \cdot \text{Var}(X) + b^2 \cdot \text{Var}(Y)
-   $$
+$$
+\text{Var}(aX + bY) = a^2 \cdot \text{Var}(X) + b^2 \cdot \text{Var}(Y)
+$$
    se $( X )$ e $( Y )$ sono indipendenti.
 2. **Varianza e Deviazione Standard di una Costante**:
    La varianza di una costante $( c )$ è zero:
@@ -1033,9 +1033,203 @@ $$
    \text{Var}(c) = 0
    $$
    La deviazione standard di una costante è anch'essa zero:
-   $$
-   \text{Deviazione Standard}(c) = 0
-   $$
+$$
+\text{Deviazione Standard}(c) = 0
+$$
+## Distribuzione normale standard
+La distribuzione normale è fondamentale in statistica per i seguenti motivi:
+1. **Central Limit Theorem (Teorema del Limite Centrale):** Molti fenomeni naturali e misurazioni possono essere modellati da distribuzioni normali perché rappresentano la somma di molti fattori indipendenti e piccoli.
+    - **Esempio:** L'altezza degli adulti può essere modellata come una normale, influenzata da fattori genetici ed ambientali.
+2. **Applicazioni pratiche:** Misure biometriche, punteggi di test, indicatori economici, errori di misura scientifici e variazioni nei processi di produzione sono spesso vicini a una distribuzione normale.
+### Forma Matematica della Distribuzione Normale
+$$
+h(x) = e^{-x^{2}} 
+$$
+Questa funzione produce una curva a forma di campana, ma **non è una distribuzione** perché non ha area unitaria sotto la curva. L'integrale di questa funzione è:
+$$
+\int_{-\infty}^{+\infty} e^{-x^{2}} dx = \sqrt{ \pi }
+$$
+Rescalando la funzione, si ottiene la densità di probabilità (pdf) della distribuzione normale standard:
+$$
+f(x) = \frac{1}{\sqrt{ 2\pi }}e^{-\frac{x^{2}}{2}} 
+$$
+**Proprietà della Normale Standard** $Z$:
+- Media $(\mu) = 0$
+- Deviazione standard $(\sigma) = 1$
+### Regola empirica
+Descrive la proporzione di dati che si trovano entro 1, 2 e 3 deviazioni standard dalla media:
+1. Circa il $68\%$ dei dati è entro $\mu \pm \sigma$
+2. Circa il $95\%$ dei dati è entro $\mu \pm 2\sigma$
+3. Circa il $99.7\%$ dei dati è entro $\mu \pm 3\sigma$
+### Distribuzione normale generica
+La distribuzione normale generica $X \sim Norm(\mu,\sigma)$ si ottiene trasformando una normale standard $Z$ con:
+$$
+X = \sigma Z + \mu
+$$
+- $\mu$: media(centro della distribuzione)
+- $\sigma$: deviazione standard(larghezza della curva)
+La pdf della distribuzione normale generica è:
+$$
+f(x) = \frac{1}{\sigma \sqrt{ 2\pi }}e^{\frac{1}{2}\left( \frac{x-\mu}{\sigma} \right)^{2}}
+$$
+### Calcoli con la Normale
+- `pnorm(x)`: calcola la probabilità cumulativa $P(Z \leq x)$.
+- `dnorm(x)`: calcola il valore della densità $f(x)$.
+- `rnorm(n)`: genera $n$ valori casuali da una normale.
+- `qnorm(p)`: calcola il quantile per una probabilità $p$.
+## Approssimazione normale al binomio
+La *distribuzione binomiale* $X \sim Binom(n,p)$ rappresenta la somma di $n$ prove di Bernoulli indipendenti con probabilità di successo $p$. Quando il numero di prove $n$ è grande, la distribuzione binomiale può essere approssimata da una distribuzione normale con la *stessa media* e *deviazione standard*.
+### Varianza e Deviazione Standard di una Variabile Binomiale
+Per $X \sim Binom(n,p)$:
+- La *media* è:
+$$
+\mu = E[X] = np
+$$
+- La *varianza* è:
+$$
+Var(X) = np(1.p)
+$$
+- La *derivazione standard* è:
+$$
+\sigma = \sqrt{ np(1-p) }
+$$
+Questi parametri definiscono completamente la distribuzione binomiale e permettono l'approssimazione normale.
+### Teorema 4.6: Approssimazione Normale
+Per $X \sim Binom(n,p)$, se $n$ è sufficientemente grande, possiamo approssimare $X$ con una variabile casuale normale $Y \sim \mathcal{N}(\mu,\sigma)$, dove:
+- $\mu = np$
+- $\sigma = \sqrt{ np(1-p) }$
+**Quando l'approssimazione è valida?**
+- $n$ deve essere grande.
+- $p$ non deve essere troppo vicino a $0$ o $1$. In genere si richiede che:
+$$
+np \geq 5 \quad \text{e} \quad n(1-p)\geq 5
+$$
+### Correzione per la continuità
+La distribuzione binomiale è discreta, mentre la normale è continua. Per migliorare l'approssimazione, si utilizza la **correzione per la continuità**:
+$$
+P(a \leq X \leq b) \approx P(a-0.5 \leq Y \leq b +0.5)
+$$
+Dove $Y \sim \mathcal{N}(np, \sqrt{ np(1-p) })$.
+**Esempio**:
+Supponiamo $X \sim Binom(n = 50, p = 0.4)$:
+1. Calcoliamo i parametri della normale:
+$$
+\mu = np = 50 \times 0.4 = 20, \quad \sigma = \sqrt{ np(1-p) } = \sqrt{ 50 \times 0.4 \times 0.6 } \approx 3.46
+$$
+2. Stimiamo $P(18 \leq X \leq 22)$ usando l'approssimazione normale:
+   - Correzione per la continuità: $P(17.5 \leq Y \leq 22.5)$
+   - Standardizziamo:
+$$
+Z_{1} = \frac{17.5-20}{3.46} \approx -0.72, \quad Z_{2}=\frac{22.5-20}{3.46} \approx 0.72
+$$
+   - Usando una tabelle della normale standard o una funzione come `pnorm` in R:
+$$
+P(17.5 \leq Y \leq 22.5) = P(z_{1}\leq Z\leq Z_{2}) = \Phi(0.72)-\Phi(-0.72) \approx 0.764
+$$
+## Variabili casuali uniformi ed esponenziali
+### Variabili casuali uniformi
+Le **variabili casuali uniformi** possono essere **discrete** o **continue**:
+1. *Uniforme discreta*: può assumere un numero finito di valori, tutti con probabilità uguale. Ad esempio:
+	1. **Dada**: Ogni numero tra 1 e 6 ha la stessa probabilità.
+	2. **Moneta**: Se assegniamo 1 alla testa e 0 alla croce, entrambi i valori sono equiprobabili.
+2. *Uniforme continua*: Può assumere qualsiasi valore in un intervallo continuo $[a,b]$. La probabilità è uniformemente distribuita su questo intervallo, con una **densità di probabilità (pdf)** data da:
+$$
+f(x) = 
+\begin{cases}
+\frac{1}{b-a} &\text{se } a\leq x\leq b, \\
+0 &\text{altrimenti.}
+\end{cases}
+$$
+**Proprietà principali**:
+- **Media $(E[X])$**: La media è il punto medio dell'intervallo, cioè:
+$$
+E[X] = \frac{a+b}{2}
+$$
+- **Varianza $(Var(X))$**: La varianza è proporzionale alla lunghezza dell'intervallo:
+$$
+Var(X) = \frac{(b-a)^{2}}{12}
+$$
+**Esempio**:
+Se scegliamo un numero casuale uniforme nell'intervallo $[0,10]$:
+- Qual è la probabilità che sia maggiore di $7$, sapendo che è maggiore di $6$? La variabile condizionata è uniforme su $[6,10]$. La probabilità è calcolata come:
+$$
+P(X>7|X>6) = \frac{\text{lunghezza intervallo}(7,10)}{\text{lunghezza intervallo}(6,10)} = \frac{3}{4}
+$$
+### Variabili casuali esponenziali
+Una variabile casuale esponenziale misura il **tempo di attesa fino al primo evento** in un processo di Poisson. È descritta da una densità di probabilità:
+$$
+f(x) = \lambda e^{-\lambda x}, \quad x>0 
+$$
+$\lambda$ è il *tasso* degli eventi(eventi per unità di tempo).
+**Proprietà principali**:
+- **Media $(E[X])$**: il tempo medio di attesa è l'inverso del tasso:
+$$
+E[X] = \frac{1}{\lambda}
+$$
+- **Varianza $(Var(X))$**:
+$$
+Var(X) = \frac{1}{\lambda^{2}}
+$$
+**Proprietà della memoria**:
+Le variabili esponenziali hanno la **proprietà di assenza di memoria**, ovvero:
+$$
+P(X > s + t | X > s) = P(X > t)
+$$
+Significa che il tempo di attesa per un evento non dipende dal tempo già trascorso.
+**Esempio**:
+Nel caso di una pioggia di meteore:
+- Se il tasso $\lambda$ è 5 meteore all'ora, quanto tempo dobbiamo aspettare mediamente per vedere la prima meteora?
+$$
+E[X] = \frac{1}{\lambda} = \frac{1}{5} = 0.2 \text{ ore(12 minuti)}
+$$
+![[Pasted image 20241210111354.png|500]]
+# Stima delle probabilità
+La simulazione permette di stimare la probabilità di eventi legati a variabili casuali attraverso tre passi fondamentali:
+1. **Campionamento**: si generano valori casuali dalla variabile distribuita secondo una data legge probabilistica (usando funzioni come `rnorm` per la normale, `runif` per l'uniforme, ecc.).
+2. **Valutazione dell'evento**: si calcola un vettore di valori TRUE/FALSE che indica se l'evento è verificato per ogni valore campionato.
+3. **Calcolo della proporzione**: si calcola la media dei valori TRUE per stimare la probabilità.
+**Esempio**:
+- Per stimare $P(Z > 1)$, dove $Z$ è normale standard $(N,(0,1)$, media $0$ e deviazione standard 1$)$:
+```r
+Z <- rnorm(10000)       # Genera 10.000 campioni
+mean(Z > 1)            # Stima la probabilità
+```
+	Risultato: circa 0.1588.
+- Per $P(Z^{2} > 1)$, si usa lo stesso principio:
+```r
+Z <- rnorm(10000)
+mean(Z^2 > 1)
+```
+	Risultato: circa 0.322.
+## Stima di distribuzioni discrete
+Per stimare la funzione di massa di probabilità (**pmf**) di una variabile discreta, si utilizza un approccio simile:
+
+1. Si genera un grande campione.
+2. Si calcola la frequenza di ogni valore.
+3. Si normalizzano le frequenze per ottenere le probabilità.
+
+#### **Esempio: Somma di due dadi**
+
+- Se lanciamo due dadi e sommiamo i risultati, la variabile XX rappresenta la somma. La pmf si stima con:
+```r
+X <- replicate(10000, { sum(sample(1:6, 2, replace = TRUE)) })
+proportions(table(X))  # Calcola la pmf
+```
+- La probabilità stimata che la somma sia 11 è 0.0562.
+È possibile visualizzare la pmf con un grafico:
+```r
+plot(proportions(table(X)), main = "Somma di due dadi", ylab = "Probabilità")
+```
+### Teorema del ballottaggio
+Il _teorema del ballottaggio_ (o _teorema di Bertrand_) è un risultato importante nella teoria della probabilità che riguarda il conteggio delle preferenze in un'elezione. Il teorema afferma che, dato un numero di voti a favore di due candidati (dove uno dei due ha più voti dell'altro), la probabilità che il candidato con il numero maggiore di voti sia sempre avanti durante il conteggio dei voti è determinata dalla differenza tra i voti. In altre parole, se uno dei due candidati ha pp voti e l'altro ha $q$ voti, con $p>q$, la probabilità che il candidato con $p$ voti sia sempre in vantaggio durante il conteggio è data da:
+$$
+\frac{p - q}{p + q}
+$$
+Questo teorema è stato formulato da Joseph Bertrand nel 1887, ed è utile per analizzare il comportamento delle elezioni, soprattutto in contesti in cui il conteggio dei voti avviene gradualmente. Bertrand e altri matematici, come Désiré André, hanno fornito diverse dimostrazioni di questo teorema, tra cui la riflessione e l'induzione matematica. Il teorema assume che ogni voto sia indipendente e che i voti siano distribuiti in modo casuale, senza influenze esterne.
+
+
+
+
 
 
 

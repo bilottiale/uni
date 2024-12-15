@@ -24,7 +24,7 @@ public class Laboratorio extends Aula {
         this.pc = pc;
     }
 
-    public void setpreseElettriche(boolean preseElettriche) {
+    public void setPreseElettriche(boolean preseElettriche) {
         this.preseElettriche = preseElettriche;
     }
 

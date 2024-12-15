@@ -1,177 +1,184 @@
-## Costanti
+## <center>Costanti</center>
 $$
 \begin{gather}
-\text{Accelerazione di gravità} = g = 9.81 \frac{m}{s^{2}} \\
+\text{Accelerazione di gravità} = g = 9.8 \frac{m}{s^{2}} \\
 \text{Costante gravitazionale} = G = 6.673 \cdot 10^{-11} \frac{Nm^{2}}{kg^{2}} \\
 \text{Masssa della Terra} = M_{T} = 5.974 \cdot 10^{24} kg \\
 \text{Massa della Luna} = M_{L} = 7.348 \cdot 10^{22} kg \\
 \text{Raggio della Luna} = R_{L} = 1.738 \cdot 10^{6} m \\
 \text{Distanza Terra-Luna} = R_{TL} = 3.844 \cdot 10^{8} m \\
 \text{Costante dielettrica del vuoto} = \varepsilon_{0} = 8.85 \cdot 10^{-12} \frac{F_{\text{araday}}}{m} \\
+\text{Permeabilità del vuoto} = \mu_{0} = 4\pi \cdot 10^{-7} \frac{N}{A^{2}}  \\
 \text{Carica elettrone} = -e = - 1.6 \times 10^{-19}C  \\
+\text{Massa elettrone} = 9.1 \times 10^{-31} Kg \\
 \text{Carica protone} = e = + 1.6 \times 10^{-19}C \\
-\text{Costante di Coulomb} = k_{e} = 8.99 \times 10^{9} \frac{N \cdot m^{2}}{C^{2}}
+\text{Massa protone} = 1.67 \times 10^{-27}Kg \\
+\text{Costante di Coulomb} = k_{e} = 9 \times 10^{9} \frac{N \cdot m^{2}}{C^{2}}
 \end{gather}
 $$
-## Fattori di conversione
+## <center>Fattori di conversione</center>
 $$
 \begin{gather}
-1 \ mile = 1609,34m \\
-1 \ inch(pollice) = 2.54 cm \\
 \text{radianti} \to \text{gradi} = g° = \frac{r^{rad}\times 180°}{\pi} \\
 \text{gradi} \to \text{radianti} = r^{rad} = \frac{g° \times \pi}{180°} \\
-\text{1 eV(elettrovolt)} \to \text{Joule(lavoro)} = 1eV = 1.6 \times 10^{-19}J 
+\text{1 eV(elettrovolt)} \to \text{Joule(lavoro)} = 1 \ eV = 1.6 \times 10^{-19}J 
 \end{gather}
 $$
-## Cinematica
+## <center>Cinematica</center>
 $$
 \begin{gather}
-\text{Velocità: }\vec{v} = \frac{\Delta \vec{v}}{\Delta t} \\
-\text{Accelerazione: } \vec{a} = \frac{\Delta \vec{v}}{\Delta t}
+\text{Velocità media: }\vec{v} = \frac{\Delta \vec{x}}{\Delta t} \\
+\text{Accelerazione: } \vec{a} = \frac{\Delta \vec{v}}{\Delta t} \\
+\text{Equazione del moto rettilineo uniforme: } x = x_{0} + vt \\
+\text{Equazione del moto rettilineo uniformemente accelerato: } \\
+v = v_{0} + at \quad x = x_{0} + v_{0}t+\frac{1}{2}at^{2} \quad v^{2} = v_{0}^{2} + 2a\Delta x \\
+\Delta v = a \cdot t
 \end{gather}
 $$
-## Moto uniformemente accelerato
+## <center>Moto circolare uniformemente accelerato</center>
 $$
 \begin{gather}
-v - v_{0} = a \cdot t \\
-x - x_{0} = v_{0} \cdot t + \frac{1}{2}at^{2} \\
-x - x_{0} = \frac{1}{2}(v_{0}+v_{x})t \\
-v_{x}^{2} - v_{0}^{2} = 2a(x - x_{0})
+a_{angolare} = \omega = \omega_{0} + a_{ang} t \\
+\text{Angolo percorso} = \theta = \omega_{0}t + \frac{1}{2}a_{ang}t \\
+\text{Relazione tra } \omega \text{ e }\theta = \omega^{2} = \omega_{0}^{2} + 2a_{ang}\theta \\
+v_{\tan} = v = \omega r \\
+a_{\tan} = a_{ang} r \\
+a_{cent} = \omega^{2} r \\
+a_{tot} = \sqrt{ a_{\tan}^{2} + a_{cent}^{2} }
 \end{gather}
 $$
-### Corpo in caduta libera
+## <center>Corpo in caduta libera</center>
 $$
 \begin{gather}
-v = \sqrt{ 2gh } \\
+\text{Velocità istantanea: } v = v_{0} - gt \\
+\text{Posizione verticale: } y = y_{0} + v_{0}t - \frac{1}{2} gt^{2} \\
+\text{Velocità in funzione della posizione: } v^{2} = v_{0}^{2}-2g \cdot (y-y_{0}) \\
+\text{Energia potenziale gravitazionale: } mgh \\
+\text{Tempo di caduta: } t = \sqrt{ \frac{2y_{0}}{g} } \\
+\text{Energia cinetica finale: } K = \frac{1}{2}mv^{2} \\
+v_{\text{finale}} = \sqrt{ 2gh } \\
 t = \sqrt{ \frac{2h}{g} }
 \end{gather}
 $$
-## Moto del proiettile
+## <center>Moto del proiettile</center>
 $$
 \begin{gather}
-y = x \cdot \tan \theta - \frac{g}{2v_{0}^{2}\cos^{2}\theta}x^{2} \\
-h_{max} = \frac{v_{0}^{2}\sin^{2}\theta}{2g} \\
-x_{max} = \frac{v_{0}^{2}\sin(2\theta)}{g}
+v_{0x} = v_{0} \cos \theta \\
+v_{0y} = v_{0} \sin \theta \\
+x(t) = v_{0x} t = (v_{0} \cos \theta) t \\
+y(t) = v_{0y} t = (v_{0} \sin \theta) t \\
+v_{y}(t) = v_{0y} - gt = (v_{0} \sin \theta) t - \frac{1}{2} gt \\
+t = \frac{2v_{0}\sin \theta}{g} \\
+x_{max} = v_{0x} \cdot \frac{2v_{0}\sin \theta}{g} = \frac{v_{0}^{2}\sin(2\theta)}{g} \\
+t_{max} = \frac{v_{0}\sin \theta}{g} \\
+h_{max} = \frac{(v_{0}\sin \theta)^{2}}{2g} = \frac{v_{0}^{2}\sin ^{2}\theta}{2g}
 \end{gather}
 $$
-## Moto circolare
+## <center>Moto circolare</center>
 $$
 \begin{gather}
-\text{Velocità angolare} = \omega = \frac{2\pi}{T} \\
-\text{Periodo} = T = \frac{2\pi}{\omega} \\
+\text{Velocità angolare} = \omega = \frac{2\pi}{T} = \frac{\Delta\theta}{\Delta t} = \frac{v}{r}\\
+\text{Periodo} = T = \frac{2\pi}{\omega} = \frac{2\pi r}{v} \\
+\text{Frequenza: } f = \frac{1}{T} = \frac{\omega}{2\pi} \\
+\text{Velocità lineare: } v = r \cdot \omega \\
 v_{tangenziale} = \omega r = \frac{2\pi r}{T}\\
-a_{centripeta} = \frac{v^{2}}{r} = \omega r^{2} \\
+a_{centripeta} = \frac{v^{2}}{r} = \omega^{2} r \\
+a_{tangenziale} = a_{t} = \frac{\Delta v}{\Delta t} = r \cdot a_{angolare}\\
+a_{tot} = \sqrt{ a_{c}^{2} + a_{t}^{2} } \\
+\text{Forza centripeta: } F_{c} = \frac{mv^{2}}{r} = m\omega^{2}r
 \end{gather}
 $$
-## Moto circolare uniformemente accelerato
+## <center>Forze, Lavoro ed Energia</center>
 $$
 \begin{gather}
-\Delta \text{velocità angolare} = \omega - \omega_{0} = a \cdot t \\
-\text{Spostamento angolare} = \theta - \theta_{0} = \omega_{0} \cdot t + \frac{1}{2}at^{2} \\
-\text{Relazione tra velocità angolare e posizione angolare} = \omega^{2} = \omega_{0}^{2}+2a(\theta-\theta_{0})
-\end{gather}
-$$
-## Moto curvilineo
-$$
-\begin{gather}
-\text{Accelerazione totale} = a = \sqrt{ a_{tang}^{2} + a_{centripeta}^{2} } = a_{T}\theta + a_{centripeta} \hat{r} = \frac{\Delta v}{\Delta t}\theta - \frac{v^{2}}{r}\hat{r} \\
-\text{Centro della traiettoria} = \hat{r}
-\end{gather}
-$$
-# Forze, Lavoro ed Energia
-$$
-\begin{gather}
+\text{Forza peso: } F_{g} = m \cdot g \approx 9.8 \frac{m}{s^{2}} \\
+\text{Forza di attrito: } F_{a} = \mu \cdot F_{N} \\
+\text{Forza elastica: } F = -k \cdot x \\
+\text{Lavoro: } W = \vec{F} \cdot \vec{s} = Fs\cos \theta \\
+\text{Energia cinetica: } E_{k} = \frac{1}{2}mv^{2} \\
+\text{Energia potenziale gravitazionale: } E_{p} = mgh \\
+\text{Conservazione dell'energia meccanica: } E_{\text{meccanica}} = E_{k} + E_{p} = \text{costante} \\
+\text{Principio di conservazione dell'energia: } E_{m,i} = E_{m,f}\\
 \text{Legge di Newton} = \vec{F} = m \vec{a} \\
-\text{Momento della forza} = \vec{\tau} = \vec{r} \times \vec{F} = |\vec{r}| |\vec{F}| \sin \theta \\
-\text{Vettore posizione dal punto di rotazione al punto di applicazione della forza} = \vec{r} \\
-\text{Vettore forza} = \vec{F} \\
-\text{Angolo tra } \vec{r} \text{ e } \vec{F} = \theta
-\end{gather}
-$$
-### Forze fondamentali
-$$
-\begin{gather}
-\text{Forza peso} = F_{g} = mg \\
-\text{Forza elastica} = F_{el} = -k(x-l_{0}) \\
-\text{Gravità} = \vec{F_{g}} = -G \frac{Mm}{r^{2}}\hat{r} \\
-\text{Elettrostaticità} = \vec{F_{e}} = \frac{1}{4\pi \varepsilon_{0}} \frac{q_{1}q_{2}}{r^{2}}\hat{r} \\
+\text{Gravità} = F_{g} = G \frac{m_{1}m_{2}}{r^{2}} \\
+\text{Elettrostaticità = legge di Coulomb} = \vec{F_{e}} = \frac{1}{4\pi \varepsilon_{0}} \frac{q_{1}q_{2}}{r^{2}}\hat{r} = k_{e}\frac{|q_{1}q_{2}|}{r^{2}} \\
 \text{Tensione di un filo con un corpo} = T = m \frac{v^{2}}{r} = F_{peso}\cos(\alpha) + F_{centripeta} \ (\text{qualsiasi punto}) \\
-\text{Tensione di un filo con due corpi} T = m_{1}a = \frac{m_{1}}{m_{1}+m_{2}}F \\
-\text{Forza centripeta} = F_{c} = ma_{c} = m\frac{v^{2}}{r} = m\omega^{2}r 
+\text{Tensione di un filo con due corpi} = T = m_{1}a = \frac{m_{1}}{m_{1}+m_{2}}F \\
+\text{Forza centripeta} = F_{c} = ma_{c} = m\frac{v^{2}}{r} = m\omega^{2}r \\
+\text{Potenza} = \frac{\Delta L}{\Delta t} = \vec{F} \cdot \vec{v} = \tau \omega \\
+\text{Elettrostatica} = U(r) = \frac{1}{4\pi\varepsilon_{0}} \cdot \frac{q_{1}q_{2}}{r}
 \end{gather}
 $$
-## Forze di attrito
+## <center>Forze di attrito</center>
 $$
 \begin{gather}
 \text{Statico} = |\vec{F_{S}}| \leq |\mu_{S}\vec{N}| \\
 \text{Dinamico} = \vec{F_{D}} = -\mu_{D}|\vec{N}|\hat{v}
 \end{gather}
 $$
-## Lavoro
+## <center>Elettrostaticità</center>
 $$
 \begin{gather}
-\text{Forza costante} = L = \vec{F} \cdot \vec{\Delta s} = F \times \Delta s \times \cos\theta \\
-\text{Forza elastica} = L = -\frac{1}{2}k(x_{f}-l_{0})^{2}+ \frac{1}{2}k (x_{i}-l_{0})^{2} \\
-\text{Forza peso} = L = -mgh \\
-\text{Gravità} = L = Gm_{1}m_{2}\cdot \left( \frac{1}{r_{f}} - \frac{1}{r_{i}} \right) \\
-\text{Elettrostatica} = L = \frac{q_{1}q_{2}}{4\pi\varepsilon_{0}} \cdot \left( \frac{1}{r_{i}} - \frac{1}{r_{f}} \right) \\
-\text{Potenza} = L = \frac{\Delta L}{\Delta t} = \vec{F} \cdot \vec{v} = \tau \omega
-\end{gather}
-$$
-## Energia
-$$
-\begin{gather}
-\text{Cinetica} = K = \frac{1}{2}mv^{2} \\
-\text{Rotazione} = K = \frac{1}{2}mv^{2}_{CM} + \frac{1}{2}I_{CM}\omega^{2} \\
-\text{Potenziale} = U = -L
-\end{gather}
-$$
-### En. potenziale forze fondamentali
-$$
-\begin{gather}
-\text{Forza peso} = U(h) = mgh \\
-\text{Forza elastica} = U(x) = \frac{1}{2}k(x-l_{0})^{2} \\
-\text{Gravità} = U(r) = -G\frac{m_{1}m_{2}}{r} \\
-\text{Elettrostatica} = U(r) = \frac{1}{4\pi\varepsilon_{0}} \cdot \frac{q_{1}q_{2}}{r}
-\end{gather}
-$$
-## Impulso e Momento Angolare
-$$
-\begin{gather}
-\text{Quantità di moto} = \vec{p} = m \vec{v} \\
-\text{Impulso} = \vec{J} = \vec{F} \Delta t = \Delta \vec{p} = m \Delta \vec{v} \\
-\text{Momento angolare} = \vec{L} = \vec{r} \times \vec{p} = \vec{r} \times m \vec{v} \\
-\text{Intorno ad un asse fisso} = |\vec{L}| = I_{asse} \cdot \omega
-\end{gather}
-$$
-## Moto armonico
-$$
-\begin{gather}
-\text{Posizione in funzione del tempo} = x(t) = A\cos(\omega t + t_{0}) \\
-\text{Velocità in funzione del tempo} = v(t) = -A\omega \sin(\omega t + t_{0}) \\
-\text{Accelerazione in funzione del tempo} = a(t) = -A\omega^{2} \cos(\omega t + t_{0}) = -\omega^{2}x(t) \\
-\text{Frequenza angolare e frequenza} = \omega = 2\pi f = \frac{2\pi}{T} \\
-\text{Energia totale del sistema} = E = \frac{1}{2}m\omega^{2}A^{2} \\
-\text{Energia potenziale} = E_{pot} = \frac{1}{2}kx^{2} \\
-\text{Energia cinetica} = E_{cinetica} = \frac{1}{2}mv^{2}
-\end{gather}
-$$
-## Elettrostaticità
-$$
-\begin{gather}
-\text{Legge di Coulomb} = F = k\frac{|q_{1}\cdot q_{2}|}{r^{2} } \\
-\text{Campo elettrico generato da una carica puntiforme} = E = k\frac{|q|}{r^{2} } \\
-\text{Forza elettrica su una carica} = F = q \cdot E \\
-\text{Energia potenziale elettrica} = U = k\frac{q_{1}\cdot q_{2}}{r} \\
-\text{Potenziale elettrico} = V = k\frac{q}{r} \\
-\text{Capacità di un condensatore} = C = \varepsilon_{0} \frac{A_{\text{rea}}}{d_{\text{istanza}}} \\
-\text{Energia immagazzinata in un condensatore} = U = \frac{1}{2}CV_{(\Delta \text{potenziale)}}^{2} \\
-\text{Densità potenziale di carica} = \sigma = \frac{Q_{\text{carica tot}}}{A_{\text{rea}}} \\
-\text{Differenza di potenziale} = \Delta V = \frac{\Delta U_{\text{lavoro compiuto}}}{q} \\
+\text{Forza elettrica su una carica} = F = |q| \cdot E \\
+\text{Legge di Coulomb} = F = \frac{1}{4\pi\varepsilon_{0}} \cdot \frac{|q_{1}\cdot q_{2}|}{r^{2}} \\
+\text{Campo elettrico generato da una carica puntiforme} = E = \frac{1}{4\pi\varepsilon_{0}} \cdot  \frac{|q|}{r^{2} } \\
+\text{Energia potenziale elettrica puntiforme: } U = \frac{1}{4\pi\varepsilon_{0}} \frac{q}{r} \\
+\text{Energia potenziale di una piastra uniformeme: } U = \frac{\sigma}{2\varepsilon_{0}} \cdot R \\
+\text{Energia potenziale tra due piastre: } U = - \frac{\sigma}{\varepsilon_{0}} \cdot R \\
+\text{Energia potenziale di un filo: } U = - \frac{1}{2\pi\varepsilon_{0}} \cdot \lambda \cdot \ln R \\
+\text{Densità potenziale di carica} = \sigma = \frac{|Q_{\text{carica tot}}|}{A_{\text{area}}} \\
+\text{Energia su una piastra: } E = \frac{\sigma}{2\varepsilon_{0}} \\
+\text{Potenziale elettrico: } U = \frac{1}{4\pi:30} \cdot \frac{q}{r} \\
+\text{Densità lineare di carica: } \lambda = \frac{|Q_{\text{carica tot}}|}{L} \\
+\text{Energia lungo un filo: } E = \frac{1}{2\pi\varepsilon_{0}} \cdot \frac{\lambda}{R} \\
+\text{Capacità di un conduttore: } C = \frac{Q}{V} \\
+\text{Capacità di un condensatore: } C = \frac{Q_{\text{carica su piastra positiva}}}{\Delta V_{\text{diff. pot. tra le piatre}}} \\
+\text{Energia immagazzinata in un condensatore: } U = \frac{1}{2}Q\cdot \Delta V = \frac{1}{2}CV^{2} = \frac{1}{2} \frac{Q^{2}}{C} \\
+\text{Densità di potenziale: } u = \frac{U_{\text{en. immagazzianta}}}{V_{\text{volume tra le piastre}}} = \frac{1}{2}\varepsilon_{0}\varepsilon_{r} \cdot E^{2} \\
+\text{Differenza di potenziale: } \Delta V = \frac{\Delta U_{\text{lavoro compiuto}}}{q} \\
 \text{Potenza elettrica} = P = \frac{E}{t} \\
 \text{Energia trasferica} = E = Q_{\text{carica}} \cdot V_{\text{tensione}}
 \end{gather}
 $$
+## <center>Correnti e circuiti</center>
+$$
+\begin{gather}
+\text{Corrente: } I = \frac{Q}{\Delta t} \\
+\text{Velocità di deriva: } v_{der} = \frac{I}{e\cdot n_{densità} \cdot A_{\text{sezione filo}}} \\
+\text{1 Legge di Ohm: } V = I \cdot R \\
+\text{2 Legge di Ohm: } R = \rho \frac{L}{A} \\
+\text{Potenza elettrica: } P = V \cdot I = I^{2} \cdot R = \frac{V^{2}}{R} \\
+\text{Prima legge di Kirchhoff(nodi): } \sum I_{\text{entranti}} = \sum I_{\text{uscenti}} \\
+\text{Seconda legge di Kirchhoff(maglie): } \sum V = 0 \\
+\text{Resistenze in serie: } R_{tot} = R_{1}+R_{2}+\dots+R_{n} \\
+\text{Resistenze in parallelo: } \frac{1}{R_{tot}} = (\frac{1}{R_{1}} + \frac{1}{R_{2}} + \dots + \frac{1}{R_{n}})^{-1}  \\
+\text{Capacità in serie: } \frac{1}{C_{tot}} = (\frac{1}{C_{1}} + \frac{1}{C_{2}} + \dots + \frac{1}{C_{n}})^{-1}  \\
+\text{Capacità in parallelo: } C_{tot} = C_{1}+C_{2}+\dots+C_{n} \\
+\text{Energia immagazzinata in un condensatore: } U = \frac{1}{2}C\cdot V^{2} \\
+\text{Effetto Joule: } Q = R\cdot I^{2}\cdot \Delta t
+\end{gather}
+$$
+## <center>Campi magnetici</center>
+$$
+\begin{gather}
 
-
-
+\text{Campo magnetico di un filo rettilineo infinito: } B = \frac{\mu_{0}I}{2\pi r} \\
+\text{Campo magnetico di una spira circolare: } B = \frac{\mu_{0}I}{2R_{\text{raggio spira}}} \\
+\text{Campo magnetico di un solenoide infinito: } B = \frac{\mu_{0}N_{\text{spire}}I}{L_{\text{lunghezza}}} \\
+\text{Forza del magnetico(forza di Lorentz): } \vec{F} = q(\vec{v} \times \vec{B}) \\
+\text{Forza su un filo percorso da corrente: } F = IL B \cdot \sin \theta \\
+\text{Forza di 2 correnti in fili paralleli: } F = \frac{\mu_{0}}{2\pi} \cdot \frac{I_{1}I_{2}}{d} \cdot L \\
+\text{Raggio moto elicoidale: } R = \frac{mv}{|q|B}\\
+\text{Periodo: } T = \frac{2\pi \cdot m}{|q|B} \\
+\text{Legge di Ampere: } \mu_{0} \cdot I_{tot} \\
+\text{Flusso magnetico: } \Phi_{B} = B \cdot A_{\text{area}} \cdot \cos \theta
+\end{gather}
+$$
+## <center>Induzione elettromagnetica</center>
+$$
+\begin{gather}
+\text{Legge di Faraday-Lenz: } \varepsilon = -\frac{\Delta \Phi_{B}}{\Delta t} = -A\frac{\Delta B}{\Delta t} \\
+\text{Induttanza(H)} = L \\
+\text{Autoinduzione: } \varepsilon = -L \frac{\Delta I}{\Delta t} = -\frac{\Delta \Phi_{B}}{\Delta t} = B \cdot l \cdot v
+\end{gather}
+$$
