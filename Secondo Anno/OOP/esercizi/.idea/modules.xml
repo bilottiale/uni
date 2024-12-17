@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ereditarietà/Automobili/Automobili.iml" filepath="$PROJECT_DIR$/ereditarietà/Automobili/Automobili.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Eser2/Eser2.iml" filepath="$PROJECT_DIR$/Eser2/Eser2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Eser3/Eser3.iml" filepath="$PROJECT_DIR$/Eser3/Eser3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Eser4/Eser4.iml" filepath="$PROJECT_DIR$/Eser4/Eser4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Eser5/Eser5.iml" filepath="$PROJECT_DIR$/Eser5/Eser5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Eser6/Eser6.iml" filepath="$PROJECT_DIR$/Eser6/Eser6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Eser7/Eser7.iml" filepath="$PROJECT_DIR$/Eser7/Eser7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ereditarietà/ereditarietà.iml" filepath="$PROJECT_DIR$/ereditarietà/ereditarietà.iml" />
+      <module fileurl="file://$PROJECT_DIR$/esercizi.iml" filepath="$PROJECT_DIR$/esercizi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rubrica/rubrica.iml" filepath="$PROJECT_DIR$/rubrica/rubrica.iml" />
+    </modules>
+  </component>
+</project>

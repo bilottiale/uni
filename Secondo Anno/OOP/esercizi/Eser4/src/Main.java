@@ -10,12 +10,10 @@ public class Main {
         // Comportamento polimorfico: il tipo di riferimento è L, ma l'oggetto è di tipo Lcache
         L lettorePolimorfico = new Lcache(dispositivo);
 
-        // Lettura dei valori
-        System.out.println("Lettura da lettoreBase: " + lettoreBase.read());
-        System.out.println("Lettura da lettoreCache: " + lettoreCache.read());
-        System.out.println("Lettura polimorfica: " + lettorePolimorfico.read());
+        System.out.println("Lettura da lettoreBase: " + lettoreBase.lettura());
+        System.out.println("Lettura da lettoreCache: " + lettoreCache.lettura());
+        System.out.println("Lettura polimorfica: " + lettorePolimorfico.lettura());
 
-        // Continuazione delle letture
-        System.out.println("Lettura successiva da lettorePolimorfico: " + lettorePolimorfico.read());
+        System.out.println("Lettura successiva da lettorePolimorfico: " + lettorePolimorfico.lettura());
     }
 }

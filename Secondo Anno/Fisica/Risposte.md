@@ -1,5 +1,5 @@
-1. **Velocità media**: La velocità media di un oggetto è definita come il rapporto tra lo spostamento totale e il tempo totale impiegato per percorrerlo. È una grandezza scalare che non tiene conto della variazione della velocità durante il moto. Si calcola come: $v_{media} = \frac{\Delta x}{\Delta t}$
-   **Velocità istantanea**: La velocità istantanea di un oggetto è la velocità in un determinato istante di tempo. È una grandezza vettoriale che dipende dalla variazione della posizione rispetto al tempo in un intervallo infinitesimo. Si può calcolare come il limite del rapporto tra lo spostamento e il tempo quando il tempo tende a zero: $v_{istantanea} = \lim_{ \Delta t \to 0 } \frac{\Delta x}{\Delta t}$
+1. **Velocità media**: La velocità media di un oggetto è definita come il rapporto tra lo spostamento totale e il tempo totale impiegato per percorrerlo. Si calcola come: $v_{media} = \frac{\Delta x}{\Delta t}$
+   **Velocità istantanea**: La velocità istantanea di un oggetto è la velocità in un determinato istante di tempo. Si può calcolare come: $v_{istantanea} = \lim_{ \Delta t \to 0 } \frac{\Delta x}{\Delta t}$
 2. X
 3. L'accelerazione di gravità, indicata con $g$, è l'accelerazione a cui sono soggetti gli oggetti in caduta libera sulla superficie terrestre a causa della forza gravitazionale esercitata dalla Terra. Questa accelerazione è **costante** in condizioni normali vicino alla superficie terrestre e indipendente dalla massa dell'oggetto. $g = 9.8m/s^{2}$, $g = \frac{GM}{R^{2}}$.
 4. Il **moto circolare uniforme** è un tipo di moto in cui un oggetto si muove lungo una **traiettoria circolare** con velocità di modulo **costante**. Anche se il valore della velocità non cambia, la direzione del vettore velocità cambia continuamente in quanto l'oggetto si muove lungo la circonferenza.
@@ -19,20 +19,20 @@ $$F = G \frac{m_{1}m_{2}}{r^{2}}$$
 11. L'**attrito** è una forza che si oppone al movimento relativo tra due superfici a contatto. Esistono diversi tipi di attrito, ma i principali sono:
 	1. **Attrito statico**: L'attrito che si verifica tra due superfici che non scivolano l'una sull'altra. La sua intensità è variabile e si adatta per mantenere il corpo in equilibrio, fino a un massimo che si chiama **forza di attrito statico massima** $F_{\text{statico max}}$​, che può essere descritta da: $F_{\text{statico max}} = \mu_{s}N$
 	2. **Attrito dinamico** (o cinetico): Si verifica quando le superfici sono in movimento relativo. La forza di attrito dinamico è generalmente inferiore rispetto a quella statica e viene descritta dalla formula: $F_{\text{dinamico}} = \mu_{K}N$
-12. Il **lavoro** ($L$) compiuto da una forza è una misura dell'energia trasferita da una forza che agisce su un corpo mentre questo si sposta. Il lavoro è definito come il prodotto scalare tra la forza e lo spostamento del corpo. La formula generale per il lavoro di una forza costante è:
+12. Il **lavoro** ($L$) compiuto da una forza è una misura dell'energia trasferita da una forza che agisce su un corpo mentre questo si sposta. Il lavoro è definito come il prodotto scalare tra la forza e lo spostamento del corpo:
 $$L = \vec{F} \cdot \vec{d} = F \cdot d \cdot \cos \theta$$
-13. $L = \Delta E_{k} = E_{k,f} - E_{k,i}$
+13. $L = \Delta E_{k} = E_{k,f} - E_{k,i}$: Il lavoro totale compiuto da una forza su un corpo è uguale alla variazione della sua energia cinetica.
 14. L'**energia potenziale gravitazionale** è l'energia che un oggetto possiede a causa della sua posizione in un campo gravitazionale. In altre parole, è l'energia immagazzinata in un corpo a causa della sua elevazione rispetto alla superficie terrestre o rispetto ad un altro corpo che esercita una forza gravitazionale.
 $$U = mgh$$
 15. Il principio di **conservazione dell'energia meccanica totale** afferma che, in un sistema fisico isolato, dove non agiscono forze esterne non conservative (come l'attrito o la resistenza dell'aria), l'energia meccanica totale si conserva nel tempo. Questo significa che la somma dell'**energia cinetica** e dell'**energia potenziale** di un corpo rimane costante durante il moto.
-$$E = K + U$$
+$$E = \Delta K + \Delta U$$
 16. X
-17. La **potenza** è una grandezza fisica che misura il **tasso di lavoro svolto** o il **tasso di trasferimento di energia** in un determinato intervallo di tempo. In altre parole, rappresenta la quantità di lavoro fatto (o di energia trasferita) in un'unità di tempo. $P = \frac{L}{\Delta t}$
-	1. La **potenza media** si riferisce alla potenza calcolata su un intervallo di tempo finito. È la **media** del tasso di lavoro compiuto in un determinato intervallo di tempo $\Delta t$. In altre parole, la potenza media è il lavoro totale compiuto diviso per il tempo totale in cui quel lavoro è stato eseguito.
+17. La **Potenza** è una grandezza fisica che misura il **tasso di lavoro svolto** o il **tasso di trasferimento di energia** in un determinato intervallo di tempo. In altre parole, rappresenta la quantità di lavoro fatto (o di energia trasferita) in un'unità di tempo. $P = \frac{L}{\Delta t}$
+	1. La **potenza media** è la media del tasso di lavoro compiuto in un determinato intervallo di tempo $\Delta t$. In altre parole, la potenza media è il lavoro totale compiuto diviso per il tempo totale in cui quel lavoro è stato eseguito:
 	    $P_{\text{media}} = \frac{\Delta L}{\Delta t}$
-	2. La **potenza istantanea** è la potenza in un preciso istante di tempo. Essa descrive il **tasso di variazione del lavoro** (o dell'energia) in un momento specifico. La potenza istantanea è una grandezza che può cambiare continuamente, in quanto dipende dalla velocità e dalla forza al momento in questione.
+	2. La **potenza istantanea** è la potenza in un preciso istante di tempo. Essa descrive il **tasso di variazione del lavoro** (o dell'energia) in un momento specifico:
 	   $P = F v \cos \theta$
-18. La **legge di Coulomb** descrive l'intensità della forza elettrica che agisce tra due cariche puntiformi. La legge afferma che:
+18. La **legge di Coulomb** descrive l'intensità della forza elettrica che agisce tra due cariche puntiformi:
 $$F = k_{e} \frac{|q_{1}q_{2}|}{r^{2}}$$
 19. Le **linee di campo elettrico** rappresentano la direzione e il verso del campo elettrico in ogni punto dello spazio. Esse sono un concetto visuale utile per comprendere come il campo elettrico si distribuisce attorno a una carica. Le linee di campo hanno le seguenti caratteristiche:
 	1. **Partono dalle cariche positive** e **arrivano verso le cariche negative**. In altre parole, le linee di campo si dirigono sempre lontano da una carica positiva e verso una carica negativa.
@@ -40,7 +40,7 @@ $$F = k_{e} \frac{|q_{1}q_{2}|}{r^{2}}$$
 	3. La densità delle linee di campo (cioè la distanza tra le linee) è proporzionale all'intensità del campo elettrico: più linee sono vicine, più il campo elettrico è forte.
 	4. Le linee di campo sono sempre **perpendicolari** alla superficie di un conduttore carico.
 20. Il **teorema di Gauss**, o **legge di Gauss**, è una formulazione fondamentale dell'elettrostatica che mette in relazione il **flusso del campo elettrico** attraverso una superficie chiusa con la carica elettrica totale racchiusa all'interno di quella superficie. Il teorema afferma che:
-$$\Phi_{E} = \frac{Q_{inside}}{\varepsilon_{0}}$$
+$$\Phi_{E} = \frac{Q_{in}}{\varepsilon_{0}}$$
 21. Le **superfici equipotenziali** sono superfici nello spazio in cui il **potenziale elettrico** è costante. In altre parole, in ogni punto di una superficie equipotenziale, il valore del potenziale elettrico è lo stesso. Queste superfici rappresentano aree in cui non si compie lavoro per spostare una carica di test, poiché la differenza di potenziale tra due punti della superficie è nulla.
 	1. **Perpendicularità tra il campo elettrico e le superfici equipotenziali**.
 	2. La direzione del campo elettrico in un punto è sempre orientata dal **potenziale più alto** verso il **potenziale più basso**.
@@ -53,18 +53,22 @@ $$V = I \cdot R$$
 26. Quando una **carica elettrica** si muove in un **campo magnetico**, essa sperimenta una forza chiamata **forza di Lorentz**, che agisce sulla carica in modo perpendicolare sia alla velocità della carica che alla direzione del campo magnetico.
 $$F = q(\vec{v} \times \vec{B})$$
 27. X
-28. La **legge della circuitazione di Ampère** afferma che l'integrale del campo magnetico $\vec{B}$ una curva chiusa è proporzionale alla corrente che attraversa la superficie delimitata dalla curva. Si esprime come:
+28. La **legge della circuitazione di Ampère** afferma che l'integrale del campo magnetico $\vec{B}$ su una curva chiusa è proporzionale alla corrente che attraversa la superficie delimitata dalla curva. Si esprime come:
 $$\oint_{C} \vec{B} \cdot d \vec{l} = \mu_{0}I$$
-29. L'unità di misura dell'**ampere**($A$), è definita operativamente come la corrente costante che, se mantenuta in due conduttori paralleli, di lunghezza infinita e posti a una distanza di 1 metro l'uno dall'altro nel vuoto, genera una forza tra di essi pari a:
+29. L'unità di misura dell'**ampere**($A$), è definita come la corrente costante che, se mantenuta in due conduttori paralleli, di lunghezza infinita e posti a una distanza di 1 metro l'uno dall'altro nel vuoto, genera una forza tra di essi pari a:
 $$2 \times 10^{-7} \frac{N}{m}$$
 30. La **legge di Faraday-Neumann-Lenz** descrive il fenomeno dell'induzione elettromagnetica, che si verifica quando un campo magnetico variabile nel tempo induce una corrente elettrica in un circuito chiuso. La legge si enuncia come segue: $\varepsilon$: forza elettromotrice(f.e.m):
 $$\varepsilon = - \frac{\Delta \Phi_{B}}{\Delta t}$$
+Un esempio comune di applicazione della legge di Faraday-Neumann-Lenz è il funzionamento di un **generatore elettrico**:
+1. **Descrizione**: In un generatore, una bobina ruota all'interno di un campo magnetico (o viceversa), facendo variare il flusso magnetico attraverso la bobina.
+2. **Risultato**: Questa variazione del flusso genera una forza elettromotrice indotta, che può essere utilizzata per alimentare un circuito elettrico.
+3. **Formula**: Se il flusso varia sinusoidalmente (ad esempio con un campo rotante), la forza elettromotrice sarà:$\varepsilon(t) = \varepsilon_{0}\sin(\omega t)$.
 31. Le **onde elettromagnetiche** sono onde che si propagano nel vuoto o in un mezzo materiale e sono composte da campi elettrici e magnetici che oscillano perpendicolarmente tra loro e perpendicolarmente alla direzione di propagazione dell'onda. Le principali caratteristiche delle onde elettromagnetiche sono:
-	1. **Natura trasversale**: Le onde elettromagnetiche sono onde trasversali, il che significa che le vibrazioni dei campi elettrici e magnetici avvengono perpendicolarmente alla direzione di propagazione dell'onda. Il campo elettrico oscilla in una direzione e il campo magnetico in una direzione perpendicolare a quella del campo elettrico e della direzione di propagazione.
+	1. **Natura trasversale**: Le onde elettromagnetiche sono onde trasversali, le vibrazioni dei campi elettrici e magnetici avvengono perpendicolarmente alla direzione di propagazione dell'onda.
 	2. **Velocità di propagazione**: La velocità di propagazione di un'onda elettromagnetica nel vuoto è una costante universale ed è pari alla velocità della luce, indicata con $c$, che è circa: $c \approx 3 \times 10^{8} m/s$.
 	3. **Frequenza e lunghezza d'onda**: Le onde elettromagnetiche sono caratterizzate dalla loro **frequenza** ($f$) e dalla **lunghezza d'onda** ($\lambda$), che sono inversamente proporzionali tra loro. La relazione che lega questi due parametri è: $c = f\lambda$
 	4. **Spettro elettromagnetico**: Le onde elettromagnetiche coprono un ampio intervallo di frequenze e lunghezze d'onda, formando lo **spettro elettromagnetico**.
-32. La legge di Ampère-Maxwell afferma che il **campo magnetico** in un punto è causato dalla **corrente elettrica** che passa attraverso quella regione e dalla **variazione temporale** di un campo elettrico. La prima parte della legge, $\mu_{0}\vec{J}$, è identica alla legge di Ampère e descrive come una corrente elettrica stabile (come quella che scorre in un filo) crea un campo magnetico attorno a sé. La seconda parte, $\mu_{0}\frac{\partial \vec{E}}{\partial t}$​, aggiunge una nuova componente, indicando che anche un **campo elettrico variabile nel tempo** genera un campo magnetico, anche in assenza di correnti elettriche.
+32. La legge di Ampère-Maxwell afferma che il **campo magnetico** in un punto è causato dalla **corrente elettrica** che passa attraverso quella regione e dalla **variazione temporale** di un campo elettrico:
 $$\oint_{C} \vec{B} \cdot d \vec{l} = \mu_{0}\left( I + \varepsilon_{0} \frac{\Delta \Phi_{E}}{\Delta t} \right)$$
 33. Le **onde elettromagnetiche** sono oscillazioni di campi elettrici e magnetici che si propagano nello spazio. Esse non necessitano di un mezzo materiale per propagarsi e possono viaggiare anche nel vuoto. Questo tipo di onda è la base di molti fenomeni fisici e tecnologie moderne, come la luce visibile, le microonde, le onde radio e i raggi X.
     **Come sono state confermate sperimentalmente le Onde Elettromagnetiche da Hertz**: Hertz utilizzò un **oscillatore elettrico** per produrre onde elettromagnetiche. Il dispositivo era costituito da un circuito oscillante che creava una **scarica elettrica ad alta frequenza** tra due elettrodi separati, generando onde elettromagnetiche.

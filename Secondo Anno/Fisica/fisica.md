@@ -2001,7 +2001,7 @@ Le due barre metalliche sono alimentate, alle estremità centrali, da una corren
 ## Rivelazione del campo elettrico dell’onda EM: l’antenna
 ![[Pasted image 20241127180711.png|500]]
 Il campo elettrico dell’onda EM si rivela mettendo in moto le cariche di una antenna allineata al campo elettrico dell’onda EM. Nell’antenna ricevente si genera così una corrente alternata.
-## Rivelazione del campo magnetico dell’ondaEM: la spira
+## Rivelazione del campo magnetico dell’onda EM: la spira
 **Come si misura un campo magnetico?**
 Con la legge di Faraday: il campo magnetico di una onda EM è rivelabile collocando una spira di material conduttore perpendicolarmente a $B$. Si genererà così un flusso di $B$ variabile nel tempo attraverso la spira e, di conseguenza, si misurerà una corrente indotta.
 ![[Pasted image 20241127180903.png|250]]
@@ -2055,7 +2055,7 @@ E = hf
 $$
 $h = 6.62607004 \times 10^{-34}Js$
 $f = 4.136\times 10^{-15}eVs$
-E attraverso l'interazione fotone-elettrone che spiega l'effetto fotoelettrico.
+Attraverso l'interazione fotone-elettrone che spiega l'effetto fotoelettrico.
 Se il fotone ha energia inferiore a quella di richiesta dall'atomo per liberare un elettrone non viene assorbito e l'elettrone non viene emesso.
 Se il fotone ha energia uguale o maggiore a quella richiesta dall'atomo per liberare un elettrone, si ha l'emissione di un elettrone a seguito dell'assorbimento del fotone.
 La massima energia cinetica dell'elettrone emesso risulta così essere data da:
