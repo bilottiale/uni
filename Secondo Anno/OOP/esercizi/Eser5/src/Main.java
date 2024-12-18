@@ -18,7 +18,7 @@ public class Main {
         // Navigatore con valori di default
         TF navigatore3 = new TF();
         double tempo4 = navigatore3.calcolaTempo(120); // 120 km, 60 km/h, traffico 0%
-        System.out.println("Tempo di percorrenza (default): " + tempo4 + " ore");
+        System.out.println("Tempo di percorrenza (default)!!: " + tempo4 + " ore");
 
         // Tentativo di impostare un tempo ulteriore non valido
         navigatore3.modificaTempoUlteriore(10.5); // Errore

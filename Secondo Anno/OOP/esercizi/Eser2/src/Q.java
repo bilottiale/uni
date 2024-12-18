@@ -12,7 +12,7 @@ public class Q extends R {
     public void modificaLati(int lato1, int lato2) {
         if (lato1 != lato2) {
             System.out.println("Error: For a square, both sides must be equal.");
-        } else if (lato1 >= 0) {
+        } else if (lato1 >= 0 && lato2 >= 0) {
             this.lunghezza = lato1;
             this.larghezza = lato2;
         } else {
