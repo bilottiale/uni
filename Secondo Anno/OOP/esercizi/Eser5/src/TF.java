@@ -1,11 +1,11 @@
 public class TF extends T {
-    private double percentualeTraffico; // Percentuale del tempo ulteriore dovuto al traffico
+    private double tempoUlteriore;
 
     // Costruttore che accetta velocità media e percentuale del traffico
-    public TF(double velocitaMedia, double percentualeTraffico) {
+    public TF(double velocitaMedia, double tempoUlteriore) {
         super(velocitaMedia);
-        if (percentualeTraffico >= 0) {
-            this.percentualeTraffico = percentualeTraffico;
+        if (tempoUlteriore >= 0) {
+            this.tempoUlteriore = tempoUlteriore;
         } else {
             throw new IllegalArgumentException("La percentuale del traffico deve essere non negativa.");
         }
@@ -13,29 +13,26 @@ public class TF extends T {
 
     // Costruttore che inizializza con valori di default: velocità 60 km/h e nessun traffico
     public TF() {
-        super();
-        this.percentualeTraffico = 0.0;
+        this(60, 0);
     }
 
     // Sovrascrive il metodo calcolaTempo per includere il traffico
     @Override
-    public double calcolaTempo(double distanza) {
-        double tempoBase = super.calcolaTempo(distanza); // Tempo senza traffico
-        double tempoConTraffico = tempoBase * (1 + percentualeTraffico / 100);
-        return tempoConTraffico;
+    public double calcolaTempo(int distanza) {
+        double tempo = super.calcolaTempo(distanza);
+        return tempo * (1 + tempoUlteriore/100);
     }
 
     // Metodo per modificare la percentuale di traffico
-    public void setPercentualeTraffico(double nuovaPercentuale) {
-        if (nuovaPercentuale >= 0) {
-            this.percentualeTraffico = nuovaPercentuale;
+    public void modificaTempoUlteriore(double nuovoTempoUlteriore) {
+        if(nuovoTempoUlteriore >= 0) {
+            this.tempoUlteriore = nuovoTempoUlteriore;
         } else {
-            throw new IllegalArgumentException("La percentuale del traffico deve essere non negativa.");
+            System.out.println("Tempo ulteriore non valido.");
         }
     }
 
-    // Metodo per ottenere la percentuale attuale del traffico
-    public double getPercentualeTraffico() {
-        return percentualeTraffico;
+    public double getTempoUlteriore() {
+        return tempoUlteriore;
     }
 }
