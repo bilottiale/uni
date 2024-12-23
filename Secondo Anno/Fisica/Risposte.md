@@ -108,12 +108,12 @@ $$\oint_{C} \vec{B} \cdot d \vec{l} = \mu_{0}\left( I + \varepsilon_{0} \frac{\D
 	Il **drogaggio** è un processo che consiste nell'introdurre piccole quantità di **impurità** (atomi di altri elementi) in un semiconduttore per modificarne le sue proprietà elettriche. Questo processo è cruciale per la creazione di dispositivi elettronici come transistor, diodi e circuiti integrati. Il drogaggio modifica la **concentrazione di portatori di carica** (elettroni e "buchi") nel materiale, migliorando la sua capacità di condurre elettricità.
 	Esistono due tipi principali di drogaggio:
 	1. **Drogaggio di tipo n (n-type)**:
-		- Si aggiungono atomi **donatori** (ad esempio, fosforo o arsenico) al semiconduttore di tipo **silicio**.
-		- Gli atomi donatori hanno **5 elettroni di valenza** (contro i 4 del silicio) e, quindi, cedono uno degli elettroni in eccesso alla banda di conduzione.
+		- Si aggiungono atomi **donatori**(ad esempio, fosforo o arsenico) al semiconduttore di tipo **silicio**.
+		- Gli atomi donatori hanno **5 elettroni di valenza**(contro i 4 del silicio) e, quindi, cedono uno degli elettroni in eccesso alla banda di conduzione.
 		- Questo **aumenta la concentrazione di elettroni liberi** nel materiale, rendendolo **più conduttivo**.
 		- Il **semiconduttore** drogato di tipo n ha quindi una **maggiore concentrazione di portatori negativi** (elettroni).
 	2. **Drogaggio di tipo p (p-type)**:
-		- Si aggiungono atomi **accettori** (ad esempio, boro) che hanno solo **3 elettroni di valenza** (meno di 4, come il silicio).
+		- Si aggiungono atomi **accettori**(ad esempio, boro) che hanno solo **3 elettroni di valenza** (meno di 4, come il silicio).
 		- Poiché manca un elettrone nella struttura atomica, si formano delle **"buchi"** nella banda di valenza, che si comportano come **portatori di carica positiva**.
 		- Questi "buchi" possono muoversi attraverso il materiale come se fossero cariche positive.
 		- Il **semiconduttore** drogato di tipo p ha quindi una **maggiore concentrazione di portatori positivi** (buchi).
