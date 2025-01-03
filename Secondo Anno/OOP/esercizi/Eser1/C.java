@@ -53,7 +53,7 @@ public class C {
     // Chiedere di sommare un altro valore
     System.out.print("Inserisci un altro valore da sommare al risultato: ");
     int altroValoreSomma = scanner.nextInt();
-    calcolatrice.addizione(altroValoreSomma);
+    dbffdbfbdfbdcalcolatrice.addizione(altroValoreSomma);
     System.out.println("Risultato finale: " + calcolatrice.leggiRisultato());
 
     scanner.close();
