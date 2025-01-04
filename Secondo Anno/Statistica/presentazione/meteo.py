@@ -21,8 +21,8 @@ for round_number in rounds_2024:
             print(f"Round {round_number}: Nessun dato meteo.")
             continue
 
-        # Estrai solo le colonne di interesse: Time, TrackTemp, Rainfall
-        weather_data = session.weather_data[['Time', 'TrackTemp', 'Rainfall']]
+        # Estrai solo le colonne di interesse e crea una copia esplicita
+        weather_data = session.weather_data[['Time', 'TrackTemp', 'Rainfall', 'Humidity']].copy()
 
         # Aggiungi la colonna con il nome del circuito (evento)
         weather_data['EventName'] = session.event['EventName']
@@ -39,8 +39,7 @@ if weather_data_list:
     final_weather_data = pd.concat(weather_data_list, ignore_index=True)
 
     # Esporta in un file CSV
-    final_weather_data.to_csv("meteo_con_evento_2024.csv", index=False)
-    print("Dati meteo esportati in 'meteo_con_evento_2024.csv'")
+    final_weather_data.to_csv("Meteo_last.csv", index=False)
+    print("Dati meteo esportati in 'Meteo_last.csv'")
 else:
     print("Nessun dato meteo da esportare.")
-
