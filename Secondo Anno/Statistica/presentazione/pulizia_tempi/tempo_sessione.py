@@ -1,56 +1,49 @@
 import fastf1
 import pandas as pd
 
-# Abilita la cache
-cache_dir = './fastf1_cache'  # Sostituisci con la tua directory
+# Enable cache
+cache_dir = './fastf1_cache'  # Update with your cache directory
 fastf1.Cache.enable_cache(cache_dir)
 
-# Lista degli eventi del calendario (puoi scegliere un anno specifico)
+# Load the session
 year = 2024
-schedule = fastf1.get_event_schedule(year)
+event_name = "Bahrain Grand Prix"
+session_type = "R"  # 'R' for Race
 
-# DataFrame per memorizzare tutti i dati
-all_weather_data = []
+session = fastf1.get_session(year, event_name, session_type)
+session.load()  # Load the session data
 
-# Loop attraverso gli eventi del calendario
-for _, event in schedule.iterrows():
-    try:
-        # Ottieni il nome e il tipo di evento
-        event_name = event['EventName']
-        session_type = 'R'  # 'R' per la gara (puoi cambiare a 'Q' o 'FP1' se necessario)
+# Access weather data
+weather_data = session.weather_data
 
-        print(f"Caricamento dati per {event_name} ({session_type})...")
+# Convert to a DataFrame for easier handling
+weather_df = pd.DataFrame({
+    'Time': weather_data['Time'],
+    'AirTemp': weather_data['AirTemp'],
+    'Humidity': weather_data['Humidity'],
+    'Pressure': weather_data['Pressure'],
+    'Rainfall': weather_data['Rainfall'],
+    'TrackTemp': weather_data['TrackTemp'],
+    'WindDirection': weather_data['WindDirection'],
+    'WindSpeed': weather_data['WindSpeed'],
+})
 
-        # Carica la sessione
-        session = fastf1.get_session(year, event_name, session_type)
-        session.load()
+# Save the weather data to a CSV (optional)
+weather_df.to_csv('weather_data.csv', index=False)
+print("Weather data saved successfully!")
 
-        # Estrai i dati meteo
-        weather_data = session.weather_data
+# Example: Merging weather data with lap times
+laps = session.laps  # Access lap data
+laps['LapTimeSeconds'] = laps['LapTime'].dt.total_seconds()  # Convert LapTime to seconds
 
-        # Aggiungi il nome dell'evento ai dati meteo
-        weather_df = pd.DataFrame({
-            'EventName': event_name,
-            'Time': weather_data['Time'],
-            'AirTemp': weather_data['AirTemp'],
-            'Humidity': weather_data['Humidity'],
-            'Pressure': weather_data['Pressure'],
-            'Rainfall': weather_data['Rainfall'],
-            'TrackTemp': weather_data['TrackTemp'],
-            'WindDirection': weather_data['WindDirection'],
-            'WindSpeed': weather_data['WindSpeed'],
-        })
+# Merge weather data with lap data by matching the closest timestamp
+laps_weather = pd.merge_asof(
+    laps.sort_values('Time'),
+    weather_df.sort_values('Time'),
+    on='Time',
+    direction='backward'
+)
 
-        # Aggiungi i dati al DataFrame generale
-        all_weather_data.append(weather_df)
-
-    except Exception as e:
-        print(f"Errore durante il caricamento dei dati per {event_name}: {e}")
-
-# Combina tutti i dati in un unico DataFrame
-all_weather_df = pd.concat(all_weather_data, ignore_index=True)
-
-# Salva i dati in un file CSV
-output_file = 'all_weather_data.csv'
-all_weather_df.to_csv(output_file, index=False)
-print(f"Dati meteo salvati con successo in {output_file}!")
+# Save the merged data (optional)
+laps_weather.to_csv('laps_with_weather.csv', index=False)
+print("Laps with weather data saved successfully!")
