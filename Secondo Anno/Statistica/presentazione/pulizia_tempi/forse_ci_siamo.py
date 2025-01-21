@@ -3,11 +3,11 @@ import pandas as pd
 import os
 
 # Abilita la cache per FastF1
-cache_dir = './fastf1_cache'  # Sostituisci con la tua directory
-fastf1.Cache.enable_cache(cache_dir)
+# cache_dir = './fastf1_cache'  # Sostituisci con la tua directory
+# fastf1.Cache.enable_cache(cache_dir)
 
 # Anno del calendario
-year = 2024
+year = 2021
 
 # Ottieni il calendario degli eventi
 schedule = fastf1.get_event_schedule(year)
