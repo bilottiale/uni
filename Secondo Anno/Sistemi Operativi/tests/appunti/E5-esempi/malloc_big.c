@@ -1,0 +1,56 @@
+/*
+ * malloc_big.c - allocazione di tanta
+ *                memoria via malloc()
+ *
+ * Si usa la funzione di libreria malloc() per allocare
+ * 256KB di memoria. Tale memoria dovrebbe essere presa
+ * dall'heap. Si verifica questa proprietà.
+ * Si scrive il carattere 'A' dentro l'area di memoria
+ * (a 5B di distanza dall'indirizzo iniziale) e si
+ * libera la memoria allocata.
+ * Si stampa il valore dell'heap prima, durante e dopo
+ * l'uso dell'area di memoria.
+ */
+
+#include <stdio.h> /* perror() */
+#include <stdlib.h> /* exit(), malloc(), free() */
+#include <unistd.h> /* sbrk() */
+
+int main (void)
+{
+	size_t size;
+	char *p;
+
+	/* Si stampa il valore del program break */
+	printf("Program break prima di malloc(): %p\n", sbrk(0));
+
+	/*
+	 * Si alloca dinamicamente un'area di memoria di 256KB.
+	 */
+	size = sizeof(char) * 1024 * 256;
+	if ((p = (char *)malloc(size)) == NULL) {
+		perror("malloc()");
+		exit(EXIT_FAILURE);
+	}
+
+	/* Si stampa il valore del program break */
+	printf("Program break dopo malloc(): %p\n", sbrk(0));
+
+	/* Si stampa l'indirizzo iniziale dell'area prenotata */
+	printf("p: %p\n", p);
+
+	/*
+	 * Si scrive il carattere 'A' a 5B di
+	 * distanza dall'indirizzo iniziale p.
+	 */
+	*(p + 4) = 'A';
+	printf("Contenuto di p + 4: %c\n", *(p + 4));
+
+	/* Si libera l'area di memoria allocata. */
+	free(p);
+
+	/* Si stampa il valore del program break */
+	printf("Program break dopo free(): %p\n", sbrk(0));
+
+	exit(EXIT_SUCCESS);
+}
