@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "AulaUtils",
+            "request": "launch",
+            "mainClass": "utils.AulaUtils",
+            "projectName": "ProgettoEsame_3518fffe"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "ProgettoEsame_3518fffe"
+        },
+        {
+            "type": "java",
+            "name": "Esegui App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "nomeDelTuoProgetto",
+            "vmArgs": "-cp lib/json-20250107.jar:bin"
+        }
+    ]
+}

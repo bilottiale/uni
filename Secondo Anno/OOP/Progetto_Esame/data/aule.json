@@ -1,0 +1,25 @@
+[
+  {
+    "n_aula": 1,
+    "capienza": 200,
+    "tipo": "LABORATORIO",
+    "accessori": []
+  },
+  {
+    "n_aula": 2,
+    "capienza": 100,
+    "tipo": "DIDATTICA",
+    "accessori": [
+      "LAVAGNA",
+      "PROIETTORE"
+    ]
+  },
+  {
+    "n_aula": 3,
+    "capienza": 100,
+    "tipo": "DIDATTICA",
+    "accessori": [
+      "PROIETTORE"
+    ]
+  }
+]

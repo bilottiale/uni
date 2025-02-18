@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compilazione Java",
+            "type": "shell",
+            "command": "javac",
+            "args": [
+                "-cp",
+                "lib/json-20250107.jar:src",
+                "-d",
+                "bin",
+                "src/**/*.java"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$javac"
+            ],
+            "detail": "Compilazione del progetto Java"
+        }
+    ]
+}

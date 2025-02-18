@@ -52,7 +52,7 @@ int main(void) {
 	 * Si scriva il valore 65 ('A') ad otto
 	 * byte di distanza dall'indirizzo iniziale
 	 */
-	*((char *)old_addr + 8) = 65;
+	*((char *)(old_addr + 32)) = 65;
 
 	/* Si stampi il valore della cella modificata */
 	printf("Carattere: %c\n", *((char *)old_addr + 8));
