@@ -55,13 +55,29 @@ public class MainView extends JFrame {
         this.fileManager = new FileManager();
         addSaveAndLoadButtons();
 
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 if (fileManager != null) {
                     fileManager.stopAutoSaving();
                 }
-                super.windowClosing(e);
+
+                int confirm = JOptionPane.showConfirmDialog(
+                        MainView.this,
+                        "Vuoi salvare le modifiche prima di chiudere?",
+                        "Conferma Uscita",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE
+                );
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    fileManager.savePrenotazioni(prenotazioni);
+                    dispose();
+                } else if (confirm == JOptionPane.NO_OPTION) {
+                    dispose();
+                }
             }
         });
 
@@ -322,6 +338,23 @@ public class MainView extends JFrame {
                     adjustSpinnerForAula(oraFineSpinner, newAula, (int) oraInizioSpinner.getValue());
                     adjustSpinnerBehavior(oraInizioSpinner, oraFineSpinner, newAula);
                 }
+            }
+        });
+
+        deleteButton.addActionListener(e -> {
+            int confirm = JOptionPane.showConfirmDialog(
+                    this,
+                    "Sei sicuro di voler eliminare questa prenotazione?",
+                    "Conferma Eliminazione",
+                    JOptionPane.YES_NO_OPTION
+            );
+            if (confirm == JOptionPane.YES_OPTION) {
+                prenotazioni.remove(existing);
+                updateTable();
+                // You might want to save here or inform the user that the change hasn't been saved yet
+                JOptionPane.showMessageDialog(this, "Prenotazione eliminata con successo.", "Eliminazione Completata", JOptionPane.INFORMATION_MESSAGE);
+                // Close the dialog after deletion
+                ((JDialog) SwingUtilities.getWindowAncestor((Component) e.getSource())).dispose();
             }
         });
 

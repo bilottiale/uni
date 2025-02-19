@@ -80,4 +80,12 @@ public class JsonUtils {
         }
         return false;
     }
+
+    public static boolean deletePrenotazione(List<Prenotazione> prenotazioni, Prenotazione prenotazioneToDelete) {
+        return prenotazioni.remove(prenotazioneToDelete);
+    }
+
+    public void saveAfterDeletion(String filePath, List<Prenotazione> prenotazioni) throws IOException {
+        scriviPrenotazioniSuJson(filePath, prenotazioni);
+    }
 }
