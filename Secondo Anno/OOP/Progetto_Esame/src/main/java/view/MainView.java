@@ -213,7 +213,7 @@ public class MainView extends JFrame {
     private Color getColorForBooking(String bookingDescription) {
         if (!colorMap.containsKey(bookingDescription)) {
             int hash = bookingDescription.hashCode();
-            float hue = (hash % 360) / 360.0f; // hash ->  hue (0-1 range Color.HSBtoRGB)
+            float hue = (hash % 360) / 360.0f; // hash -> hue (0-1 range Color.HSBtoRGB)
             colorMap.put(bookingDescription, Color.getHSBColor(hue, 0.8f, 0.8f));
         }
         return colorMap.get(bookingDescription);
@@ -275,33 +275,29 @@ public class MainView extends JFrame {
     }
 
     private Prenotazione showPrenotazioneDialog(Aula aula, LocalTime oraInizio, Prenotazione existing) {
-        // Create fields
         JTextField nomeField = new JTextField(existing != null ? existing.getNome() : "");
         JTextField motivazioneField = new JTextField(existing != null ? existing.getMotivazione() : "");
         JComboBox<String> aulaComboBox = new JComboBox<>(aule.stream().map(a -> "Aula " + a.getNumeroAula()).toArray(String[]::new));
-        aulaComboBox.setSelectedIndex(aule.indexOf(aula)); // Select existing classroom
+        aulaComboBox.setSelectedIndex(aule.indexOf(aula));
 
         JSpinner oraInizioSpinner = new JSpinner(new SpinnerNumberModel(oraInizio.getHour(), 8, 17, 1));
         JSpinner oraFineSpinner = getJSpinner(aula, oraInizio, existing);
 
-        // If there's an existing booking, set the time fields
         if (existing != null) {
             oraInizioSpinner.setValue(existing.getOraInizio().getHour());
             oraFineSpinner.setValue(existing.getOraFine().getHour());
         } else {
-            // Set default values for new bookings based on the initial aula type
             oraInizioSpinner.setValue(oraInizio.getHour());
             adjustSpinnerForAula(oraFineSpinner, aula, oraInizio.getHour());
         }
 
-        // Adjust spinner behavior based on Aula type
         adjustSpinnerBehavior(oraInizioSpinner, oraFineSpinner, aula);
 
         JPanel panel = new JPanel(new GridLayout(7, 2));
         panel.add(new JLabel("Nome:"));
         panel.add(nomeField);
         panel.add(new JLabel("Data:"));
-        panel.add(new JLabel((String) dateSelector.getSelectedItem())); // Show date
+        panel.add(new JLabel((String) dateSelector.getSelectedItem()));
         panel.add(new JLabel("Orario Inizio:"));
         panel.add(oraInizioSpinner);
         panel.add(new JLabel("Ora Fine:"));
@@ -312,11 +308,10 @@ public class MainView extends JFrame {
         panel.add(aulaComboBox);
 
         JButton deleteButton = new JButton("Elimina");
-        deleteButton.setVisible(existing != null); // Only show if we're modifying an existing booking
-        panel.add(new JLabel()); // Spacer
+        deleteButton.setVisible(existing != null);
+        panel.add(new JLabel());
         panel.add(deleteButton);
 
-        // Add an ItemListener to the aulaComboBox to adjust oraFineSpinner based on classroom type
         aulaComboBox.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 String selectedAulaText = (String) e.getItem();
@@ -325,7 +320,7 @@ public class MainView extends JFrame {
                 Aula newAula = aule.stream().filter(a -> a.getNumeroAula() == selectedAulaNumber).findFirst().orElse(null);
                 if (newAula != null) {
                     adjustSpinnerForAula(oraFineSpinner, newAula, (int) oraInizioSpinner.getValue());
-                    adjustSpinnerBehavior(oraInizioSpinner, oraFineSpinner, newAula); // Re-adjust spinner behavior
+                    adjustSpinnerBehavior(oraInizioSpinner, oraFineSpinner, newAula);
                 }
             }
         });
@@ -377,7 +372,7 @@ public class MainView extends JFrame {
                 int maxEnd = Math.min(newStart + 4, 18);
                 fineModel.setMinimum(newStart + 2);
                 fineModel.setMaximum(maxEnd);
-                fineModel.setValue(Math.max((int) fineModel.getValue(), newStart + 2)); // Ensure value is at least min
+                fineModel.setValue(Math.max((int) fineModel.getValue(), newStart + 2));
             });
 
             fineModel.setStepSize(2);

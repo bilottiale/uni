@@ -29,19 +29,17 @@ public class Prenotazione {
      * @throws IllegalArgumentException if the booking data does not pass validation.
      */
     public Prenotazione(int nAula, LocalDate data, LocalTime inizio, LocalTime fine, String nome, String motivazione) {
-        // Debug prints for checking input values
         System.out.println("Constructor - Nome: " + nome + ", Motivazione: " + motivazione);
         System.out.println("Constructor - Inizio: " + inizio + ", Fine: " + fine);
 
         this.nome = nome != null ? nome : "";
         this.motivazione = motivazione != null ? motivazione : "";
-        this.inizio = inizio; // Should not be null when passed
-        this.fine = fine;     // Should not be null when passed
+        this.inizio = inizio;
+        this.fine = fine;
         this.nAula = nAula;
         this.data = data;
 
         try {
-            // Set tipoAula here, inside the try block to catch any exceptions from getTipoAula
             this.tipoAula = getTipoAula(nAula);
             if (!validateBooking(nAula, data, inizio, fine)) {
                 throw new IllegalArgumentException(getValidationErrorMessage());
@@ -87,10 +85,9 @@ public class Prenotazione {
         } else if (tipoAula == Aula.TipoAula.LABORATORIO) {
             return durataOre == 2 || durataOre == 4;
         }
-        return false; // Unknown classroom type
+        return false;
     }
 
-    // Getters and Setters
     public int getnAula() {
         return nAula;
     }

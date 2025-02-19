@@ -39,7 +39,6 @@ public abstract class Aula {
         this.tipo = tipo;
     }
 
-    // Metodo astratto per ottenere gli accessori
     public abstract Object getAccessori();
 
     public String toJson() {

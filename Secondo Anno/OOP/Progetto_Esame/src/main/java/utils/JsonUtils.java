@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JsonUtils {
-    // Path to JSON files
     private static final String AULE_FILE_PATH = "data/aule.json";
     private static final String PRENOTAZIONI_FILE_PATH = "data/prenotazioni.json";
 
@@ -61,7 +60,6 @@ public class JsonUtils {
     }
 
     public static boolean valida(Prenotazione prenotazione) {
-        // Validation logic
         if (prenotazione.getNome().isEmpty() || prenotazione.getMotivazione().isEmpty()) {
             return false;
         }

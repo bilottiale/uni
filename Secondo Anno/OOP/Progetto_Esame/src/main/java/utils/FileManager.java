@@ -21,7 +21,6 @@ public class FileManager {
         this.jsonUtils = new JsonUtils();
         this.scheduler = Executors.newSingleThreadScheduledExecutor();
 
-        // Schedule a task to save to a temp file every 5 minutes
         scheduler.scheduleAtFixedRate(this::saveToTempFile, 0, 30, TimeUnit.SECONDS);
     }
 
@@ -31,7 +30,7 @@ public class FileManager {
      * @param prenotazioni The list of Prenotazione objects to save.
      */
     public void savePrenotazioni(List<Prenotazione> prenotazioni) {
-        this.currentPrenotazioni = prenotazioni; // Update the current prenotazioni for temp saving
+        this.currentPrenotazioni = prenotazioni;
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Salva prenotazioni");
         fileChooser.setFileFilter(new FileNameExtensionFilter("JSON files (*.json)", "json"));
@@ -71,7 +70,7 @@ public class FileManager {
             try {
                 List<Prenotazione> loadedPrenotazioni = JsonUtils.leggiPrenotazioniDaJson(fileToOpen.getAbsolutePath());
                 JOptionPane.showMessageDialog(null, "Prenotazioni caricate da " + fileToOpen.getName(), "Caricamento Completato", JOptionPane.INFORMATION_MESSAGE);
-                this.currentPrenotazioni = loadedPrenotazioni; // Update the current prenotazioni for temp saving
+                this.currentPrenotazioni = loadedPrenotazioni;
                 return loadedPrenotazioni;
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "Errore durante il caricamento: " + e.getMessage(), "Errore", JOptionPane.ERROR_MESSAGE);
@@ -80,7 +79,6 @@ public class FileManager {
         return null;
     }
 
-    // Method to save to a temporary file
     private void saveToTempFile() {
         if (currentPrenotazioni != null) {
             String tempFilePath = System.getProperty("java.io.tmpdir") + "prenotazioni_temp.json";
@@ -93,7 +91,6 @@ public class FileManager {
         }
     }
 
-    // Method to stop the scheduler when you're done
     public void stopAutoSaving() {
         scheduler.shutdown();
     }
