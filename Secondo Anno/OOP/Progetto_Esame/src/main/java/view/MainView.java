@@ -124,9 +124,7 @@ public class MainView extends JFrame implements Printable {
         JButton loadButton = new JButton("Carica Prenotazioni");
         JButton printButton = new JButton("Stampa Prenotazioni");
 
-        saveButton.addActionListener(e -> {
-            fileManager.savePrenotazioni(prenotazioni);
-        });
+        saveButton.addActionListener(e -> fileManager.savePrenotazioni(prenotazioni));
 
         loadButton.addActionListener(e -> {
             List<Prenotazione> loadedPrenotazioni = fileManager.loadPrenotazioni();
@@ -253,8 +251,6 @@ public class MainView extends JFrame implements Printable {
             }
         }
     }
-
-
 
     /**
      * Generates a unique color for a given booking description using its hash code.

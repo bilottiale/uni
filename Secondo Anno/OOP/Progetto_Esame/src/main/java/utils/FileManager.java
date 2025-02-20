@@ -12,22 +12,14 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Manages file operations for {@link Prenotazione} objects.
+ * Manages file operations for saving and loading {@link Prenotazione} objects.
  * Provides functionality to save bookings to a user-selected JSON file, load bookings from a file,
  * and automatically save the current state to a temporary file every 30 seconds.
  */
 public class FileManager {
-    /**
-     * The {@link JsonUtils} instance used for JSON operations.
-     */
+
     private final JsonUtils jsonUtils;
-    /**
-     * The {@link ScheduledExecutorService} used for periodic saving of bookings.
-     */
     private final ScheduledExecutorService scheduler;
-    /**
-     * The list of current bookings to save.
-     */
     private List<Prenotazione> currentPrenotazioni;
 
     /**
@@ -47,9 +39,9 @@ public class FileManager {
     /**
      * Saves the provided list of bookings to a user-selected JSON file.
      * <p>
-     * Opens a file chooser dialog for the user to select a save location. If the selected filename
-     * does not end with ".json", it appends the extension. Displays a success message upon
-     * successful save or an error message if an {@link IOException} occurs.
+     * Opens a file chooser dialog for the user to select a save location. If the selected file already exists,
+     * prompts the user to confirm overwriting it. If the filename does not end with ".json", appends the extension.
+     * Displays a success message upon successful save or an error message if an {@link IOException} occurs.
      * </p>
      *
      * @param prenotazioni The list of {@link Prenotazione} objects to save.
@@ -71,6 +63,20 @@ public class FileManager {
             String fileName = fileToSave.getName();
             if (!fileName.toLowerCase().endsWith(".json")) {
                 fileToSave = new File(fileToSave.getParentFile(), fileName + ".json");
+            }
+
+            // Check if file exists and prompt for overwrite confirmation
+            if (fileToSave.exists()) {
+                int confirm = JOptionPane.showConfirmDialog(
+                        null,
+                        "Il file " + fileToSave.getName() + " esiste già. Vuoi sovrascriverlo?",
+                        "Conferma Sovrascrittura",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE
+                );
+                if (confirm != JOptionPane.YES_OPTION) {
+                    return; // User chose not to overwrite, exit the method
+                }
             }
 
             try {
