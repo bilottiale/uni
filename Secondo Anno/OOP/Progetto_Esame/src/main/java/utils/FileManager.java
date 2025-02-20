@@ -11,12 +11,32 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Manages file operations for {@link Prenotazione} objects.
+ * Provides functionality to save bookings to a user-selected JSON file, load bookings from a file,
+ * and automatically save the current state to a temporary file every 30 seconds.
+ */
 public class FileManager {
-
+    /**
+     * The {@link JsonUtils} instance used for JSON operations.
+     */
     private final JsonUtils jsonUtils;
+    /**
+     * The {@link ScheduledExecutorService} used for periodic saving of bookings.
+     */
     private final ScheduledExecutorService scheduler;
+    /**
+     * The list of current bookings to save.
+     */
     private List<Prenotazione> currentPrenotazioni;
 
+    /**
+     * Constructs a new {@code FileManager} instance.
+     * <p>
+     * Initializes a {@link JsonUtils} instance for JSON operations and starts a scheduler
+     * to periodically save the current bookings to a temporary file every 30 seconds.
+     * </p>
+     */
     public FileManager() {
         this.jsonUtils = new JsonUtils();
         this.scheduler = Executors.newSingleThreadScheduledExecutor();
@@ -25,11 +45,20 @@ public class FileManager {
     }
 
     /**
-     * Saves the list of bookings to a user-selected JSON file.
+     * Saves the provided list of bookings to a user-selected JSON file.
+     * <p>
+     * Opens a file chooser dialog for the user to select a save location. If the selected filename
+     * does not end with ".json", it appends the extension. Displays a success message upon
+     * successful save or an error message if an {@link IOException} occurs.
+     * </p>
      *
-     * @param prenotazioni The list of Prenotazione objects to save.
+     * @param prenotazioni The list of {@link Prenotazione} objects to save.
+     * @throws IllegalArgumentException if the {@code prenotazioni} list is null.
      */
     public void savePrenotazioni(List<Prenotazione> prenotazioni) {
+        if (prenotazioni == null) {
+            throw new IllegalArgumentException("La lista delle prenotazioni non può essere null.");
+        }
         this.currentPrenotazioni = prenotazioni;
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Salva prenotazioni");
@@ -55,8 +84,14 @@ public class FileManager {
 
     /**
      * Loads bookings from a user-selected JSON file.
+     * <p>
+     * Opens a file chooser dialog for the user to select a file to load. Displays a success message
+     * upon successful load or an error message if an {@link IOException} occurs. Updates the
+     * internal state with the loaded bookings if successful.
+     * </p>
      *
-     * @return A List of Prenotazione objects from the file or null if loading was cancelled or failed.
+     * @return A {@code List} of {@link Prenotazione} objects loaded from the file,
+     *         or {@code null} if loading was cancelled or failed.
      */
     public List<Prenotazione> loadPrenotazioni() {
         JFileChooser fileChooser = new JFileChooser();
@@ -79,6 +114,14 @@ public class FileManager {
         return null;
     }
 
+    /**
+     * Automatically saves the current list of bookings to a temporary file every 30 seconds.
+     * <p>
+     * Uses the system's temporary directory to store the file as "prenotazioni_temp.json".
+     * Prints a success message to the console upon save or an error message to the error stream
+     * if an {@link IOException} occurs. Does nothing if no bookings are currently set.
+     * </p>
+     */
     private void saveToTempFile() {
         if (currentPrenotazioni != null) {
             String tempFilePath = System.getProperty("java.io.tmpdir") + "prenotazioni_temp.json";
@@ -91,6 +134,13 @@ public class FileManager {
         }
     }
 
+    /**
+     * Stops the scheduled auto-saving process.
+     * <p>
+     * Shuts down the {@link ScheduledExecutorService} used for periodic saving,
+     * preventing further automatic saves.
+     * </p>
+     */
     public void stopAutoSaving() {
         scheduler.shutdown();
     }

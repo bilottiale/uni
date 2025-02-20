@@ -1,0 +1,11 @@
+[
+  {
+    "nAula": 3,
+    "data": "2025-02-13",
+    "inizio": "10:00",
+    "fine": "18:00",
+    "nome": "Luigi Verdi",
+    "motivazione": "Esame di Matematica",
+    "tipoAula": "DIDATTICA"
+  }
+]

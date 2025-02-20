@@ -1,22 +1,17 @@
 package model;
 
-import java.util.EnumSet;
-import java.util.List;
-
+/**
+ * Represents the possible accessories available in a laboratory classroom ({@link Laboratorio}).
+ * These accessories indicate additional equipment or features that can be present in the laboratory.
+ */
 public enum AccessorioLaboratorio {
-    PC, PRESE;
+    /**
+     * A personal computer available in the laboratory.
+     */
+    PC,
 
-    public static EnumSet<AccessorioLaboratorio> fromStringList(List<String> accessoriList) {
-        EnumSet<AccessorioLaboratorio> accessori = EnumSet.noneOf(AccessorioLaboratorio.class);
-        if (accessoriList != null) {
-            for (String accessorio : accessoriList) {
-                if ("LAVAGNA".equalsIgnoreCase(accessorio)) {
-                    accessori.add(PC);
-                } else if ("PROIETTORE".equalsIgnoreCase(accessorio)) {
-                    accessori.add(PRESE);
-                }
-            }
-        }
-        return accessori;
-    }
+    /**
+     * Electrical outlets available for use in the laboratory.
+     */
+    PRESE
 }

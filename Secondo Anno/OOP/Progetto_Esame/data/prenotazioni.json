@@ -1,14 +1,5 @@
 [
   {
-    "nAula": 2,
-    "data": "2025-02-13",
-    "inizio": "10:00",
-    "fine": "18:00",
-    "nome": "Luigi Verdi",
-    "motivazione": "Esame di Matematica",
-    "tipoAula": "DIDATTICA"
-  },
-  {
     "nAula": 1,
     "data": "2025-02-12",
     "inizio": "13:00",
@@ -16,5 +7,14 @@
     "nome": "Mario Rossi",
     "motivazione": "Lezione di Informatica",
     "tipoAula": "LABORATORIO"
+  },
+  {
+    "nAula": 2,
+    "data": "2025-02-13",
+    "inizio": "10:00",
+    "fine": "18:00",
+    "nome": "Luigi Verdi",
+    "motivazione": "Esame di Matematica",
+    "tipoAula": "DIDATTICA"
   }
 ]

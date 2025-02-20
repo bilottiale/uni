@@ -7,26 +7,42 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+/**
+ * Represents a booking for a classroom, encapsulating details such as classroom number, date, time slot,
+ * booker's name, and booking motivation. Validates the booking based on classroom type and time constraints.
+ */
 public class Prenotazione {
-
-    private int nAula;
-    private LocalDate data;
-    private LocalTime inizio;
-    private LocalTime fine;
-    private String nome;
-    private String motivazione;
-    private final Aula.TipoAula tipoAula;
+    /** The unique identifier number of the classroom to book. */
+    private final int nAula;
+    /** The date of the booking. */
+    private final LocalDate data;
+    /** The start time of the booking. */
+    private final LocalTime inizio;
+    /** The end time of the booking. */
+    private final LocalTime fine;
+    /** The name of the person making the booking. */
+    private final String nome;
+    /** The reason or description for the booking. */
+    private final String motivazione;
+    /** The type of classroom associated with the booking. */
+    private final AulaInterface.TipoAula tipoAula;
 
     /**
-     * Constructor for Prenotazione class.
+     * Constructs a new {@code Prenotazione} instance with the specified booking details.
+     * <p>
+     * Initializes the booking with the provided parameters, ensuring that null values for {@code nome} and
+     * {@code motivazione} are replaced with empty strings. The classroom type is determined based on the
+     * classroom number, and the booking is validated against specific rules for didactic classrooms (1-8 hours)
+     * and laboratories (2 or 4 hours).
+     * </p>
      *
-     * @param nAula The classroom number for the booking.
+     * @param nAula The unique identifier number of the classroom to book.
      * @param data The date of the booking.
      * @param inizio The start time of the booking.
      * @param fine The end time of the booking.
-     * @param nome The name of the person making the booking.
-     * @param motivazione The reason or description for the booking.
-     * @throws IllegalArgumentException if the booking data does not pass validation.
+     * @param nome The name of the person making the booking, or {@code null} for an empty string.
+     * @param motivazione The reason or description for the booking, or {@code null} for an empty string.
+     * @throws IllegalArgumentException if the booking data fails validation or no classroom is found for the given number.
      */
     public Prenotazione(int nAula, LocalDate data, LocalTime inizio, LocalTime fine, String nome, String motivazione) {
         System.out.println("Constructor - Nome: " + nome + ", Motivazione: " + motivazione);
@@ -50,13 +66,13 @@ public class Prenotazione {
     }
 
     /**
-     * Validates the booking details.
+     * Validates the booking details based on classroom type and time constraints.
      *
      * @param nAula The classroom number.
-     * @param data The date of the booking.
+     * @param data The date of the booking (unused in current validation but included for future checks).
      * @param inizio The start time of the booking.
      * @param fine The end time of the booking.
-     * @return true if the booking details are valid, false otherwise.
+     * @return {@code true} if the booking details are valid according to classroom-specific rules, {@code false} otherwise.
      */
     private boolean validateBooking(int nAula, LocalDate data, LocalTime inizio, LocalTime fine) {
         if (inizio == null || fine == null) {
@@ -80,70 +96,67 @@ public class Prenotazione {
             return false;
         }
 
-        if (tipoAula == Aula.TipoAula.DIDATTICA) {
+        if (tipoAula == AulaInterface.TipoAula.DIDATTICA) {
             return durataOre <= 8;
-        } else if (tipoAula == Aula.TipoAula.LABORATORIO) {
+        } else if (tipoAula == AulaInterface.TipoAula.LABORATORIO) {
             return durataOre == 2 || durataOre == 4;
         }
         return false;
     }
 
-    public int getnAula() {
-        return nAula;
-    }
-
-    public void setnAula(int nAula) {
-        this.nAula = nAula;
-    }
-
+    /**
+     * Gets the date of the booking.
+     *
+     * @return The date of the booking.
+     */
     public LocalDate getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
-
+    /**
+     * Gets the start time of the booking.
+     *
+     * @return The start time of the booking.
+     */
     public LocalTime getOraInizio() {
         return inizio;
     }
 
-    public void setOraInizio(LocalTime inizio) {
-        this.inizio = inizio;
-    }
-
+    /**
+     * Gets the end time of the booking.
+     *
+     * @return The end time of the booking.
+     */
     public LocalTime getOraFine() {
         return fine;
     }
 
-    public void setFine(LocalTime fine) {
-        this.fine = fine;
-    }
-
+    /**
+     * Gets the name of the person making the booking.
+     *
+     * @return The name of the booker, never {@code null}.
+     */
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
+    /**
+     * Gets the reason or description for the booking.
+     *
+     * @return The motivation for the booking, never {@code null}.
+     */
     public String getMotivazione() {
         return motivazione;
     }
 
-    public void setMotivazione(String motivazione) {
-        this.motivazione = motivazione;
-    }
-
     /**
-     * Retrieves the Aula associated with this booking.
+     * Retrieves the classroom associated with this booking.
      *
-     * @return The Aula object or null if not found.
+     * @return The {@link AulaInterface} object representing the classroom, or {@code null} if not found.
      */
-    public Aula getAula() {
-        List<Aula> aule = JsonUtils.leggiAuleDaJson();
-        for (Aula aula : aule) {
+    public AulaInterface getAula() {
+        List<AulaInterface> aule = JsonUtils.leggiAuleDaJson();
+        for (AulaInterface aula : aule) {
             if (aula.getNumeroAula() == this.nAula) {
                 return aula;
             }
@@ -154,7 +167,7 @@ public class Prenotazione {
     /**
      * Gets a simple description of the booking.
      *
-     * @return A string combining name and motivation.
+     * @return A string combining the booker's name and motivation, separated by " - ".
      */
     public String getDescrizione() {
         return nome + " - " + motivazione;
@@ -163,13 +176,13 @@ public class Prenotazione {
     /**
      * Determines the type of classroom based on the classroom number.
      *
-     * @param nAula The classroom number.
-     * @return The type of the classroom.
-     * @throws IllegalArgumentException if no matching classroom is found.
+     * @param nAula The classroom number to look up.
+     * @return The {@link AulaInterface.TipoAula} of the classroom.
+     * @throws IllegalArgumentException if no classroom is found for the given number.
      */
-    public Aula.TipoAula getTipoAula(int nAula) {
-        List<Aula> aule = JsonUtils.leggiAuleDaJson();
-        for (Aula aula : aule) {
+    public AulaInterface.TipoAula getTipoAula(int nAula) {
+        List<AulaInterface> aule = JsonUtils.leggiAuleDaJson();
+        for (AulaInterface aula : aule) {
             if (aula.getNumeroAula() == nAula) {
                 return aula.getTipo();
             }
@@ -178,18 +191,9 @@ public class Prenotazione {
     }
 
     /**
-     * Checks if the booking is valid based on the current set parameters.
-     *
-     * @return true if the booking is valid, false otherwise.
-     */
-    public boolean isValid() {
-        return validateBooking(nAula, data, inizio, fine);
-    }
-
-    /**
      * Generates an error message based on which validation rule failed.
      *
-     * @return A string describing the validation error.
+     * @return A string describing the specific validation error encountered.
      */
     public String getValidationErrorMessage() {
         if (inizio == null || fine == null) {
@@ -208,11 +212,11 @@ public class Prenotazione {
         if (durataOre <= 0) {
             return "La durata della prenotazione deve essere maggiore di zero ore.";
         }
-        if (tipoAula == Aula.TipoAula.DIDATTICA) {
+        if (tipoAula == AulaInterface.TipoAula.DIDATTICA) {
             if (durataOre > 8) {
                 return "Un'Aula Didattica può essere prenotata da 1 a 8 ore.";
             }
-        } else if (tipoAula == Aula.TipoAula.LABORATORIO) {
+        } else if (tipoAula == AulaInterface.TipoAula.LABORATORIO) {
             if (durataOre != 2 && durataOre != 4) {
                 return "Un Laboratorio può essere prenotato solo per 2 ore o 4 ore consecutive.";
             }
@@ -221,9 +225,9 @@ public class Prenotazione {
     }
 
     /**
-     * Converts the Prenotazione to a JSON string representation.
+     * Converts the booking to a JSON string representation.
      *
-     * @return A JSON string representing the booking.
+     * @return A formatted JSON string representing the booking details.
      */
     public String toJson() {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -242,6 +246,11 @@ public class Prenotazione {
                 fine.format(timeFormatter), nome, motivazione);
     }
 
+    /**
+     * Returns a string representation of the booking in JSON format.
+     *
+     * @return The JSON string representation of the booking.
+     */
     @Override
     public String toString() {
         return toJson();

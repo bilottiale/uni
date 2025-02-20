@@ -1,22 +1,16 @@
 package model;
 
-import java.util.EnumSet;
-import java.util.List;
-
+/**
+ * Represents the possible accessories available in an ({@link AulaDidattica}).
+ */
 public enum AccessorioDidattica {
-    LAVAGNA, PROIETTORE;
+    /**
+     * A Whiteboard available in an AulaDidattica.
+     */
+    LAVAGNA,
 
-    public static EnumSet<AccessorioDidattica> fromStringList(List<String> accessoriList) {
-        EnumSet<AccessorioDidattica> accessori = EnumSet.noneOf(AccessorioDidattica.class);
-        if (accessoriList != null) {
-            for (String accessorio : accessoriList) {
-                if ("LAVAGNA".equalsIgnoreCase(accessorio)) {
-                    accessori.add(LAVAGNA);
-                } else if ("PROIETTORE".equalsIgnoreCase(accessorio)) {
-                    accessori.add(PROIETTORE);
-                }
-            }
-        }
-        return accessori;
-    }
+    /**
+     * A projector available in an AulaDidattica.
+     */
+    PROIETTORE
 }

@@ -1,7 +1,8 @@
 package view;
 
+import model.AulaInterface;
 import model.Prenotazione;
-import model.Aula;
+import utils.BookingRenderer;
 import utils.FileManager;
 import utils.JsonUtils;
 
@@ -12,24 +13,51 @@ import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.print.*;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class MainView extends JFrame {
+/**
+ * GUI for managing classroom bookings.
+ * <p>
+ * This class extends {@link JFrame} to provide a window displaying a table of bookings,
+ * with options to save, load, and print the bookings. It implements {@link Printable}
+ * to support printing the booking table. The interface allows users to view bookings by date,
+ * edit or add new bookings via double-click.
+ * </p>
+ */
+public class MainView extends JFrame implements Printable {
+    /** The table for displaying bookings. */
     private JTable table;
+    /** The combo box for selecting booking dates. */
     private JComboBox<String> dateSelector;
-    private List<Aula> aule;
+    /** The list of classrooms available for booking. */
+    private List<AulaInterface> aule;
+    /** The list of current bookings. */
     private List<Prenotazione> prenotazioni;
+    /** The file manager for handling saving and loading of bookings. */
     private FileManager fileManager;
-    private Map<String, Color> colorMap = new HashMap<>();
+    /** The map of booking descriptions to colors for cell rendering. */
+    private final Map<String, Color> colorMap = new HashMap<>();
 
+    /**
+     * Constructs a new {@code MainView} instance, initializing the GUI components and loading initial data.
+     * <p>
+     * Sets up the window with a table for bookings, a date selector, and buttons for saving, loading,
+     * and printing. Loads classroom data from a JSON file and attempts to load various {@link Prenotazione} data,
+     * falling back to an empty list if loading fails. Adds a window listener to prompt for saving
+     * before closing.
+     * </p>
+     */
     public MainView() {
         setTitle("Gestione Prenotazioni Aule");
         setSize(800, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLayout(new BorderLayout());
 
         aule = JsonUtils.leggiAuleDaJson();
@@ -54,8 +82,6 @@ public class MainView extends JFrame {
 
         this.fileManager = new FileManager();
         addSaveAndLoadButtons();
-
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -85,10 +111,18 @@ public class MainView extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Adds save, load, and print buttons to the panel of the interface.
+     * <p>
+     * Configures action listeners for each button: saving bookings to a file, loading bookings from a file,
+     * and printing the current table view.
+     * </p>
+     */
     private void addSaveAndLoadButtons() {
         JPanel buttonPanel = new JPanel();
         JButton saveButton = new JButton("Salva Prenotazioni");
         JButton loadButton = new JButton("Carica Prenotazioni");
+        JButton printButton = new JButton("Stampa Prenotazioni");
 
         saveButton.addActionListener(e -> {
             fileManager.savePrenotazioni(prenotazioni);
@@ -102,12 +136,20 @@ public class MainView extends JFrame {
             }
         });
 
+        printButton.addActionListener(e -> printTable());
+
         buttonPanel.add(saveButton);
         buttonPanel.add(loadButton);
+        buttonPanel.add(printButton);
 
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    /**
+     * Retrieves a sorted array of unique booking dates for the date selector.
+     *
+     * @return An array of {@code String} representing booking dates in "yyyy-MM-dd" format.
+     */
     private String[] getDateOptions() {
         return prenotazioni.stream()
                 .map(p -> p.getData().toString())
@@ -116,14 +158,36 @@ public class MainView extends JFrame {
                 .toArray(String[]::new);
     }
 
+    /**
+     * Updates the table with booking data for the selected date.
+     * <p>
+     * Constructs a table model with columns for each classroom (including type, capacity, and accessories)
+     * and rows for each hour from 8:00 to 18:00, filling in booking descriptions where applicable.
+     * </p>
+     */
     private void updateTable() {
         String selectedDateStr = (String) dateSelector.getSelectedItem();
         LocalDate selectedDate = LocalDate.parse(selectedDateStr);
         DefaultTableModel model = new DefaultTableModel();
 
         model.addColumn("Ora");
-        for (Aula aula : aule) {
-            model.addColumn("Aula " + aula.getNumeroAula());
+        for (AulaInterface aula : aule) {
+            String tipoAula = aula.getTipo().toString();
+            int capienza = aula.getCapienza();
+            List<Integer> accessoriList = aula.getAccessoriAsListInt();
+            StringBuilder accessoriStr = new StringBuilder();
+
+            if (aula.getTipo() == AulaInterface.TipoAula.DIDATTICA) {
+                accessoriStr.append("Lavagna: ").append(accessoriList.get(0) == 1 ? "Sì" : "No").append(", ");
+                accessoriStr.append("Proiettore: ").append(accessoriList.get(1) == 1 ? "Sì" : "No");
+            } else if (aula.getTipo() == AulaInterface.TipoAula.LABORATORIO) {
+                accessoriStr.append("PC: ").append(accessoriList.get(0) == 1 ? "Sì" : "No").append(", ");
+                accessoriStr.append("Prese: ").append(accessoriList.get(1) == 1 ? "Sì" : "No");
+            }
+
+            String columnHeader = String.format("Aula %d - %s - Capienza: %d - %s",
+                    aula.getNumeroAula(), tipoAula, capienza, accessoriStr.toString());
+            model.addColumn(columnHeader);
         }
 
         for (int hour = 8; hour <= 18; hour++) {
@@ -131,7 +195,7 @@ public class MainView extends JFrame {
             row[0] = hour + ":00";
 
             for (int j = 0; j < aule.size(); j++) {
-                Aula aula = aule.get(j);
+                AulaInterface aula = aule.get(j);
                 String cellContent = "";
 
                 for (Prenotazione p : prenotazioni) {
@@ -156,93 +220,71 @@ public class MainView extends JFrame {
         table.setDefaultRenderer(Object.class, new BookingRenderer());
     }
 
-    private static class BookingRenderer extends DefaultTableCellRenderer {
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            Component comp = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-
-            if (comp instanceof JComponent) {
-                ((JComponent) comp).setBorder(null);
-            }
-
-            if (column > 0 && value != null && !value.toString().isEmpty()) {
-                Color color = ((MainView) table.getRootPane().getParent()).getColorForBooking(value.toString());
-                comp.setBackground(color);
-
-                if (isPartOfLargerBooking(table, row, column)) {
-                    comp.setBackground(color.brighter());
-                }
-
-                if (isFirstCellOfBooking(table, row, column)) {
-                    assert comp instanceof JComponent;
-                    ((JComponent) comp).setBorder(BorderFactory.createMatteBorder(1, 1, 0, 0, comp.getBackground()));
-                } else if (isLastCellOfBooking(table, row, column)) {
-                    assert comp instanceof JComponent;
-                    ((JComponent) comp).setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, comp.getBackground()));
-                } else {
-                    assert comp instanceof JComponent;
-                    ((JComponent) comp).setBorder(null);
-                }
-
-                setText(getBookingText(table, value, row, column));
-            } else {
-                comp.setBackground(Color.WHITE);
-                setText(value != null ? value.toString() : "");
-            }
-
-            return comp;
+    @Override
+    public int print(Graphics g, PageFormat pf, int pageIndex) throws PrinterException {
+        if (pageIndex > 0) {
+            return NO_SUCH_PAGE; // Only one page
         }
 
-        private String getBookingText(JTable table, Object value, int row, int column) {
-            if (row == 0 || !value.equals(table.getValueAt(row - 1, column))) {
-                return value.toString();
-            }
-            return "";
-        }
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.translate(pf.getImageableX(), pf.getImageableY());
 
-        private boolean isPartOfLargerBooking(JTable table, int row, int column) {
-            Object value = table.getValueAt(row, column);
-            if (row + 1 < table.getRowCount() && value.equals(table.getValueAt(row + 1, column))) {
-                return true;
-            }
-            if (row > 0 && value.equals(table.getValueAt(row - 1, column))) {
-                return true;
-            }
-            return false;
-        }
+        table.print(g2d);
 
-        private boolean isFirstCellOfBooking(JTable table, int row, int column) {
-            if (row == 0 || !table.getValueAt(row - 1, column).equals(table.getValueAt(row, column))) {
-                return true;
-            }
-            return false;
-        }
+        return PAGE_EXISTS;
+    }
 
-        private boolean isLastCellOfBooking(JTable table, int row, int column) {
-            if (row + 1 >= table.getRowCount() || !table.getValueAt(row + 1, column).equals(table.getValueAt(row, column))) {
-                return true;
+    /**
+     * Initiates the printing process for the current booking table.
+     * <p>
+     * Opens a print dialog for user configuration. If confirmed, prints the table using the
+     * {@link Printable} implementation, displaying an error message if a {@link PrinterException} occurs.
+     * </p>
+     */
+    private void printTable() {
+        PrinterJob job = PrinterJob.getPrinterJob();
+        job.setPrintable(this);
+
+        if (job.printDialog()) {
+            try {
+                job.print();
+            } catch (PrinterException ex) {
+                JOptionPane.showMessageDialog(this, "Errore durante la stampa: " + ex.getMessage(), "Errore di Stampa", JOptionPane.ERROR_MESSAGE);
             }
-            return false;
         }
     }
 
-    private Color getColorForBooking(String bookingDescription) {
+
+
+    /**
+     * Generates a unique color for a given booking description using its hash code.
+     *
+     * @param bookingDescription The description of the booking (e.g., "Nome - Motivazione").
+     * @return A {@link Color} object derived from the booking description’s hash value.
+     */
+    public Color getColorForBooking(String bookingDescription) {
         if (!colorMap.containsKey(bookingDescription)) {
             int hash = bookingDescription.hashCode();
-            float hue = (hash % 360) / 360.0f; // hash -> hue (0-1 range Color.HSBtoRGB)
+            float hue = (hash % 360) / 360.0f; // Convert hash to hue (0-1 range for HSB)
             colorMap.put(bookingDescription, Color.getHSBColor(hue, 0.8f, 0.8f));
         }
         return colorMap.get(bookingDescription);
     }
 
+    /**
+     * Handles the editing or creation of a booking when a table cell is double-clicked.
+     *
+     * @param row The row index of the clicked cell.
+     * @param col The column index of the clicked cell, corresponding to a classroom.
+     */
     private void handleCellEdit(int row, int col) {
         String selectedDate = (String) dateSelector.getSelectedItem();
         LocalTime oraInizio = LocalTime.of(8 + row, 0);
-        Aula selectedAula = aule.get(col - 1);
+        AulaInterface selectedAula = aule.get(col - 1);
 
         Prenotazione existing = prenotazioni.stream()
                 .filter(p -> {
-                    Aula aula = p.getAula();
+                    AulaInterface aula = p.getAula();
                     return aula != null &&
                             aula.getNumeroAula() == selectedAula.getNumeroAula() &&
                             p.getData().equals(LocalDate.parse(selectedDate)) &&
@@ -275,6 +317,9 @@ public class MainView extends JFrame {
         }
     }
 
+    /**
+     * Sets up a double-click listener on the table to trigger booking editing or creation.
+     */
     private void setupTableClickListener() {
         table.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -282,7 +327,7 @@ public class MainView extends JFrame {
                 if (evt.getClickCount() == 2) {
                     int row = table.getSelectedRow();
                     int col = table.getSelectedColumn();
-                    if (row > 0 && col > 0) {
+                    if (row >= 0 && col > 0) { // Ensure valid row and avoid header column
                         handleCellEdit(row, col);
                     }
                 }
@@ -290,7 +335,20 @@ public class MainView extends JFrame {
         });
     }
 
-    private Prenotazione showPrenotazioneDialog(Aula aula, LocalTime oraInizio, Prenotazione existing) {
+    /**
+     * Displays a dialog for adding or editing a booking.
+     * <p>
+     * Shows a form with fields for name, date, start time, end time, motivation, and classroom selection.
+     * If editing an existing booking, pre-fills the fields and offers a delete option. Validates input
+     * and returns a new {@link Prenotazione} object if confirmed, or {@code null} if cancelled or invalid.
+     * </p>
+     *
+     * @param aula The {@link AulaInterface} representing the selected classroom.
+     * @param oraInizio The initial start time for the booking.
+     * @param existing The existing {@link Prenotazione} to edit, or {@code null} for a new booking.
+     * @return A new {@link Prenotazione} object if the dialog is confirmed, or {@code null} if cancelled or invalid.
+     */
+    private Prenotazione showPrenotazioneDialog(AulaInterface aula, LocalTime oraInizio, Prenotazione existing) {
         JTextField nomeField = new JTextField(existing != null ? existing.getNome() : "");
         JTextField motivazioneField = new JTextField(existing != null ? existing.getMotivazione() : "");
         JComboBox<String> aulaComboBox = new JComboBox<>(aule.stream().map(a -> "Aula " + a.getNumeroAula()).toArray(String[]::new));
@@ -333,7 +391,7 @@ public class MainView extends JFrame {
                 String selectedAulaText = (String) e.getItem();
                 int selectedAulaNumber = Integer.parseInt(selectedAulaText.split(" ")[1]);
 
-                Aula newAula = aule.stream().filter(a -> a.getNumeroAula() == selectedAulaNumber).findFirst().orElse(null);
+                AulaInterface newAula = aule.stream().filter(a -> a.getNumeroAula() == selectedAulaNumber).findFirst().orElse(null);
                 if (newAula != null) {
                     adjustSpinnerForAula(oraFineSpinner, newAula, (int) oraInizioSpinner.getValue());
                     adjustSpinnerBehavior(oraInizioSpinner, oraFineSpinner, newAula);
@@ -351,9 +409,7 @@ public class MainView extends JFrame {
             if (confirm == JOptionPane.YES_OPTION) {
                 prenotazioni.remove(existing);
                 updateTable();
-                // You might want to save here or inform the user that the change hasn't been saved yet
                 JOptionPane.showMessageDialog(this, "Prenotazione eliminata con successo.", "Eliminazione Completata", JOptionPane.INFORMATION_MESSAGE);
-                // Close the dialog after deletion
                 ((JDialog) SwingUtilities.getWindowAncestor((Component) e.getSource())).dispose();
             }
         });
@@ -392,11 +448,22 @@ public class MainView extends JFrame {
         return null;
     }
 
-    private void adjustSpinnerBehavior(JSpinner oraInizioSpinner, JSpinner oraFineSpinner, Aula aula) {
+    /**
+     * Adjusts the behavior of the start and end time spinners based on the classroom type.
+     * <p>
+     * Configures the step size, range, and constraints for didactic (1-hour steps, 1-8 hours) and
+     * laboratory (2-hour steps, 2 or 4 hours) classrooms.
+     * </p>
+     *
+     * @param oraInizioSpinner The {@link JSpinner} for the start time.
+     * @param oraFineSpinner The {@link JSpinner} for the end time.
+     * @param aula The {@link AulaInterface} representing the selected classroom.
+     */
+    private void adjustSpinnerBehavior(JSpinner oraInizioSpinner, JSpinner oraFineSpinner, AulaInterface aula) {
         SpinnerNumberModel inizioModel = (SpinnerNumberModel) oraInizioSpinner.getModel();
         SpinnerNumberModel fineModel = (SpinnerNumberModel) oraFineSpinner.getModel();
 
-        if (aula.getTipo() == Aula.TipoAula.LABORATORIO) {
+        if (aula.getTipo() == AulaInterface.TipoAula.LABORATORIO) {
             inizioModel.setStepSize(2);
             inizioModel.setMaximum(16);
             oraInizioSpinner.setEditor(new JSpinner.NumberEditor(oraInizioSpinner, "#"));
@@ -422,7 +489,7 @@ public class MainView extends JFrame {
                     fineModel.setValue(start + 2);
                 }
             });
-        } else if (aula.getTipo() == Aula.TipoAula.DIDATTICA) {
+        } else if (aula.getTipo() == AulaInterface.TipoAula.DIDATTICA) {
             inizioModel.setStepSize(1);
             inizioModel.setMinimum(8);
             inizioModel.setMaximum(17);
@@ -460,52 +527,36 @@ public class MainView extends JFrame {
         }
     }
 
-    private Prenotazione createPrenotazioneFromDialog(Aula aula, JSpinner oraInizioSpinner, JSpinner oraFineSpinner,
-                                                      JTextField nomeField, JTextField motivazioneField) {
-        String nome = nomeField.getText().trim();
-        String motivazione = motivazioneField.getText().trim();
-        int oraInizioValue = (int) oraInizioSpinner.getValue();
-        int oraFine = (int) oraFineSpinner.getValue();
-        String selectedDate = (String) dateSelector.getSelectedItem();
-
-        System.out.println("Nome: " + nome);
-        System.out.println("Motivazione: " + motivazione);
-
-        if (nome == null || nome.isEmpty() || motivazione == null || motivazione.isEmpty()) {
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Nome o motivazione non possono essere vuoti!",
-                    "Errore Prenotazione",
-                    JOptionPane.ERROR_MESSAGE
-            );
-            return null;
-        }
-
-        return new Prenotazione(
-                aula.getNumeroAula(),
-                LocalDate.parse(selectedDate),
-                LocalTime.of(oraInizioValue, 0),
-                LocalTime.of(oraFine, 0),
-                nome,
-                motivazione
-        );
-    }
-
-    private void adjustSpinnerForAula(JSpinner oraFineSpinner, Aula aula, int oraInizio) {
-        int maxEndHour = Math.min(oraInizio + (aula.getTipo() == Aula.TipoAula.LABORATORIO ? 4 : 8), 18);
-        int minEndHour = oraInizio + (aula.getTipo() == Aula.TipoAula.LABORATORIO ? 2 : 1);
+    /**
+     * Configures the end time spinner based on the classroom type and start time.
+     *
+     * @param oraFineSpinner The {@link JSpinner} for the end time.
+     * @param aula The {@link AulaInterface} representing the selected classroom.
+     * @param oraInizio The start time hour (8-17) used to set the range.
+     */
+    private void adjustSpinnerForAula(JSpinner oraFineSpinner, AulaInterface aula, int oraInizio) {
+        int maxEndHour = Math.min(oraInizio + (aula.getTipo() == AulaInterface.TipoAula.LABORATORIO ? 4 : 8), 18);
+        int minEndHour = oraInizio + (aula.getTipo() == AulaInterface.TipoAula.LABORATORIO ? 2 : 1);
 
         SpinnerNumberModel model = (SpinnerNumberModel) oraFineSpinner.getModel();
         model.setMinimum(minEndHour);
         model.setMaximum(maxEndHour);
-        model.setStepSize(aula.getTipo() == Aula.TipoAula.LABORATORIO ? 2 : 1);
+        model.setStepSize(aula.getTipo() == AulaInterface.TipoAula.LABORATORIO ? 2 : 1);
 
         if (model.getValue() == null || (int) model.getValue() < minEndHour) {
             model.setValue(minEndHour);
         }
     }
 
-    private static JSpinner getJSpinner(Aula aula, LocalTime oraInizio, Prenotazione existing) {
+    /**
+     * Creates and configures an end time spinner based on the classroom type and existing booking data.
+     *
+     * @param aula The {@link AulaInterface} representing the selected classroom.
+     * @param oraInizio The initial start time for the booking.
+     * @param existing The existing {@link Prenotazione} to pre-fill, or {@code null} for a new booking.
+     * @return A configured {@link JSpinner} for selecting the end time.
+     */
+    private static JSpinner getJSpinner(AulaInterface aula, LocalTime oraInizio, Prenotazione existing) {
         int maxEndHour = Math.min(oraInizio.getHour() + 8, 18);
         int minEndHour = oraInizio.getHour() + 1;
 
@@ -519,7 +570,7 @@ public class MainView extends JFrame {
         SpinnerNumberModel oraFineModel = new SpinnerNumberModel(
                 initialEndHour,
                 minEndHour, maxEndHour,
-                aula.getTipo() == Aula.TipoAula.DIDATTICA ? 1 : 2);
+                aula.getTipo() == AulaInterface.TipoAula.DIDATTICA ? 1 : 2);
         JSpinner oraFineSpinner = new JSpinner(oraFineModel);
         return oraFineSpinner;
     }
