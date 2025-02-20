@@ -18,8 +18,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class FileManager {
 
+    /** The utility class for JSON operations. */
     private final JsonUtils jsonUtils;
+    /** The scheduler for periodic saving of bookings. */
     private final ScheduledExecutorService scheduler;
+    /** The current list of bookings to save. */
     private List<Prenotazione> currentPrenotazioni;
 
     /**

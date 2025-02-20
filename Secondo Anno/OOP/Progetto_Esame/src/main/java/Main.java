@@ -1,5 +1,4 @@
 import view.MainView;
-
 import javax.swing.*;
 
 /**
