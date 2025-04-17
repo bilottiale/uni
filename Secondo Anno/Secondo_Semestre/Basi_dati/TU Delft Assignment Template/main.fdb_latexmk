@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1744658035.57115 "main.aux" "main.bbl" "main" 1744658036.89123 0
+["bibtex main"] 1744883559.02237 "main.aux" "main.bbl" "main" 1744883560.46552 0
   "./ref.bib" 1712302858 261 31f13b09e2c0031e001ca6efb985843d ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "main.aux" 1744658036.58005 1522 474099e5da35f215022dd588452bb3c9 "pdflatex"
+  "main.aux" 1744883560.17007 1522 471db7c768c95221936b91d271ed9387 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1744658035.66447 "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" "main.pdf" "main" 1744658036.89136 0
-  "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" 1712302858 2589 aaad79d85b054650608e65d67210bf01 ""
+["pdflatex"] 1744883559.20061 "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" "main.pdf" "main" 1744883560.46564 0
+  "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" 1744881816.40816 2586 f8a4f3d4b65a71bc86df38e29adef34a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/roboto/rbto_a4rth4.enc" 1576101225 3925 8837b773fb3216e5c7b021d1ecb65a28 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/roboto/rbto_j2bk2t.enc" 1576101225 3064 c158f9a176b31efb1d496e43b52c7efa ""
@@ -207,12 +207,12 @@
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
   "images/Logo_C_Positivo_Colore.png" 1712302858 68523 900ce901d0e3d43324eba00435a6810d ""
   "images/Sample graph.png" 1712302858 45278 183bb07ffcd4c1fce86b06ca4171d96a ""
-  "main.aux" 1744658036.58005 1522 474099e5da35f215022dd588452bb3c9 "pdflatex"
-  "main.bbl" 1744658035.66179 243 9e0d8f8221fcd59f8761ce20c2b183cc "bibtex main"
-  "main.out" 1744658036.58064 756 07e2e1caa626a1e5a73cbdbc4b69ced8 "pdflatex"
-  "main.tex" 1712302858 2589 aaad79d85b054650608e65d67210bf01 ""
-  "main.toc" 1744658036.58084 490 b1a8ada58ff4ea903285805c8b991e0d "pdflatex"
-  "titlepage.tex" 1712302858 2938 9e92f9ea35b4d2c0989e39200275a29f ""
+  "main.aux" 1744883560.17007 1522 471db7c768c95221936b91d271ed9387 "pdflatex"
+  "main.bbl" 1744883559.19775 243 9e0d8f8221fcd59f8761ce20c2b183cc "bibtex main"
+  "main.out" 1744883560.17073 756 17cede234750f0a01d0441483cf31425 "pdflatex"
+  "main.tex" 1744881816.40816 2586 f8a4f3d4b65a71bc86df38e29adef34a ""
+  "main.toc" 1744883560.17094 490 0b28dde8793f9a7eba70b760d9cfc79b "pdflatex"
+  "titlepage.tex" 1744883557.51689 2967 fc9d8790de447b6a82c96a4302868726 ""
   (generated)
   "main.aux"
   "main.log"
