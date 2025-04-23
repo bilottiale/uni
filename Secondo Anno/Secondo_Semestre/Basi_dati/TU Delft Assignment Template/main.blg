@@ -3,51 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: apalike.bst
 Database file #1: ref.bib
-Warning--string name "greenrail" is undefined
---line 2 of file ref.bib
-Warning--I didn't find a database entry for "exampleReference"
-Warning--to sort, need author or key in Greenrail
-Warning--empty author in Greenrail
-Warning--empty journal in Greenrail
 You've used 1 entry,
             1935 wiz_defined-function locations,
-            477 strings with 3735 characters,
-and the built_in function-call counts, 241 in all, are:
-= -- 19
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 21
-:= -- 40
+            475 strings with 3732 characters,
+and the built_in function-call counts, 252 in all, are:
+= -- 24
+> -- 7
+< -- 1
++ -- 2
+- -- 2
+* -- 15
+:= -- 54
 add.period$ -- 2
 call.type$ -- 1
 change.case$ -- 5
 chr.to.int$ -- 1
-cite$ -- 5
-duplicate$ -- 13
-empty$ -- 24
-format.name$ -- 0
+cite$ -- 1
+duplicate$ -- 10
+empty$ -- 16
+format.name$ -- 3
 if$ -- 44
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 1
+missing$ -- 0
 newline$ -- 7
-num.names$ -- 0
-pop$ -- 8
+num.names$ -- 3
+pop$ -- 6
 preamble$ -- 1
-purify$ -- 5
+purify$ -- 6
 quote$ -- 0
-skip$ -- 10
+skip$ -- 8
 stack$ -- 0
-substring$ -- 13
+substring$ -- 12
 swap$ -- 0
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 6
-warning$ -- 3
-while$ -- 0
+warning$ -- 0
+while$ -- 2
 width$ -- 0
-write$ -- 11
-(There were 5 warnings)
+write$ -- 12

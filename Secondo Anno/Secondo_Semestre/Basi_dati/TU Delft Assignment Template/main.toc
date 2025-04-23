@@ -1,4 +1,5 @@
-\babel@toc {english}{}\relax 
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
 \contentsline {section}{Introduzione}{2}{section*.1}%
 \contentsline {section}{\numberline {1}Definizione dei requisiti}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Vista Cliente}{2}{subsection.1.1}%
@@ -9,10 +10,5 @@
 \contentsline {subsection}{\numberline {2.1}Analisi requisiti e schema scheletro per il Cliente}{3}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Analisi requisiti e schema scheletro per il Produttore}{3}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Analisi requisiti e schema scheletro per l'Installatore}{4}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Analisi requisiti e schema scheletro per l'Amministratore}{4}{subsection.2.4}%
-\contentsline {section}{\numberline {3}Methodology}{4}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Subsection}{4}{subsection.3.1}%
-\contentsline {section}{\numberline {4}Results}{4}{section.4}%
-\contentsline {section}{\numberline {5}Discussion}{4}{section.5}%
-\contentsline {section}{References}{5}{section.5}%
-\contentsline {section}{\numberline {A}Additional graphs and data}{6}{appendix.A}%
+\contentsline {subsection}{\numberline {2.4}Analisi requisiti e schema scheletro per l'Amministratore}{5}{subsection.2.4}%
+\contentsline {section}{References}{6}{figure.caption.10}%

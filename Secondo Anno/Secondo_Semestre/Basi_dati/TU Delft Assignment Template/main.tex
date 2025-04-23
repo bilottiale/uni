@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage[english]{babel}
+\usepackage[italian]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
@@ -26,6 +26,7 @@
 \usepackage[labelfont=bf, labelsep=colon]{caption}
 \captionsetup[table]{name=Tabella, position=bottom}
 \captionsetup[figure]{name=Schema, position=bottom}
+
 
 \definecolor{tudelftdarkblue}{RGB}{0,0,0}
 \definecolor{tudelftcyan}{RGB}{209,65,36}
@@ -98,11 +99,13 @@ L’amministratore è una figura di gestione centrale, responsabile del coordina
     Installatore     & Soggetto che installa il prodotto                                                                                & -                                                       & Prodotto                                                                                                      \\ \hline
     Certificato      & \begin{tabular}[c]{@{}l@{}}Certificazione che attesta la\\ sostenibilità e sicurezza del\\ prodotto\end{tabular} & -                                                       & Prodotto                                                                                                      \\ \hline
     \end{tabular}
+    \caption{Glossario dei concetti del Cliente}
 \end{table}
 
 \begin{figure}[H]
-    \includegraphics[width=16cm]{images/diag_norm_usr.drawio.png}\\
-    \caption{Schema scheletro della vista dell'Utente}
+    \centering
+    \includegraphics[width=10cm]{images/cliente.drawio.png}\\
+    \caption{Schema scheletro della vista del Cliente}
 \end{figure}
 
 \subsection{Analisi requisiti e schema scheletro per il Produttore}
@@ -118,7 +121,14 @@ L’amministratore è una figura di gestione centrale, responsabile del coordina
     Materiale        & \begin{tabular}[c]{@{}l@{}}Materiale di cui si compone un\\ prodotto\end{tabular} & -          & Fornitore, Prodotto  \\ \hline
     Fornitore        & Soggetto che fornisce materiale                                                 & -          & Materiale            \\ \hline
     \end{tabular}
+    \caption{Glossario dei concetti del Produttore}
     \end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{images/produttore.drawio.png}\\
+    \caption{Schema scheletro della vista del Produttore}
+\end{figure}
 
 \subsection{Analisi requisiti e schema scheletro per l'Installatore}
 
@@ -132,11 +142,18 @@ L’amministratore è una figura di gestione centrale, responsabile del coordina
     Produttore       & Soggetto che realizza il prodotto                                                                       & -                                                        & Prodotto                                                                     \\ \hline
     Cliente          & \begin{tabular}[c]{@{}l@{}}Enti o aziende, pubblici o privati, \\  nel settore ferroviario\end{tabular} & \begin{tabular}[c]{@{}l@{}}Azienda, \\ Ente\end{tabular} & Prodotto                                                                     \\ \hline
     \end{tabular}
+    \caption{Glossario dei concetti dell'Installatore}
 \end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{images/installatore.drawio.png}\\
+    \caption{Schema scheletro della vista dell'Installatore}
+\end{figure}
 
 \subsection{Analisi requisiti e schema scheletro per l'Amministratore}
 
-\begin{table}[]
+\begin{table}[H]
     \begin{tabular}{|l|l|l|l|}
     \hline
     \textbf{Termine} & Descrizione                                                                                             & Sinonimi          & Collegamenti                                                                                \\ \hline
@@ -151,33 +168,40 @@ L’amministratore è una figura di gestione centrale, responsabile del coordina
     Materiale        & \begin{tabular}[c]{@{}l@{}}Materiale di cui si compone un\\ prodotto\end{tabular}                       & -                 & Prodotto, Fornitore                                                                         \\ \hline
     Fornitore        & Soggetto che fornisce materiale                                                                         & Azienda           & Materiale                                                                                   \\ \hline
     \end{tabular}
+    \caption{Glossario dei concetti dell'Amministratore}
 \end{table}
 
-\section{Methodology}
-This section has a subsection.
-\subsection{Subsection}
-This subsection contains \autoref{eq:1}.
-\begin{equation}
-\label{eq:1}
-    h(r) = \cfrac{Q}{2\pi T} \ln(\cfrac{r_i}{r_0})+h_0
-\end{equation}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{images/amministratore.drawio.png}\\
+    \caption{Schema scheletro della vista dell'Amministratore}
+\end{figure}
 
-\section{Results}
+% \section{Methodology}
+% This section has a subsection.
+% \subsection{Subsection}
+% This subsection contains \autoref{eq:1}.
+% \begin{equation}
+% \label{eq:1}
+%     h(r) = \cfrac{Q}{2\pi T} \ln(\cfrac{r_i}{r_0})+h_0
+% \end{equation}
 
-l
+% \section{Results}
 
-\section{Discussion}
+% l
 
-As shown in previous studies~\cite{exampleReference}, the proposed system has significant potential.
+% \section{Discussion}
+
+% As shown in previous studies, the proposed system has significant potential.
 
 \newpage
 \addcontentsline{toc}{section}{References}
 \bibliographystyle{apalike}
 \bibliography{ref}
 
-\newpage
-\appendix
-\section{Additional graphs and data}
+% \newpage
+% \appendix
+% \section{Additional graphs and data}
 
 \end{document}
 
