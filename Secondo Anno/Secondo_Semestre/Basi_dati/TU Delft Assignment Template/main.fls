@@ -291,6 +291,26 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/listings/listings.cfg
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/listings/listings.cfg
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/listings/listings.cfg
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/svg/svg.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/svg/svg.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/koma-script/scrbase.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/koma-script/scrbase.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/koma-script/scrlfile.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/koma-script/scrlfile.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/koma-script/scrlogo.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/koma-script/scrlogo.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tools/shellesc.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tools/shellesc.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/transparent/transparent.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/transparent/transparent.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/transparent/transparent-nometadata.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/transparent/transparent-nometadata.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/auxhook/auxhook.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/helvet.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/helvet.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/t1phv.fd
@@ -368,21 +388,18 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/helvetic/phvb8r.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/helvetic/phvr8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/helvetic/phvr8r.tfm
-INPUT ./images/Sample graph.png
-INPUT ./images/Sample graph.png
-INPUT ./images/Sample graph.png
-INPUT ./images/Sample graph.png
-INPUT ./images/Sample graph.png
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/helvetic/phvr8t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/helvetic/phvb8t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/helvetic/phvb8t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/helvetic/phvb8r.tfm
+INPUT ./images/diag_norm_usr.drawio.png
+INPUT ./images/diag_norm_usr.drawio.png
+INPUT ./images/diag_norm_usr.drawio.png
+INPUT ./images/diag_norm_usr.drawio.png
+INPUT ./images/diag_norm_usr.drawio.png
 INPUT ./main.bbl
 INPUT ./main.bbl
 INPUT main.bbl
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/helvetic/phvro8t.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/helvetic/phvro8t.vf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/helvetic/phvro8r.tfm
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out
@@ -394,4 +411,3 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb

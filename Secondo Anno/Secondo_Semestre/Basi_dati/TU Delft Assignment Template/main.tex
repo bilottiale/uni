@@ -21,6 +21,11 @@
 \usepackage{tikzpagenodes}
 \usepackage{booktabs}
 \usepackage{listings}
+\usepackage{svg}
+
+\usepackage[labelfont=bf, labelsep=colon]{caption}
+\captionsetup[table]{name=Tabella, position=bottom}
+\captionsetup[figure]{name=Schema, position=bottom}
 
 \definecolor{tudelftdarkblue}{RGB}{0,0,0}
 \definecolor{tudelftcyan}{RGB}{209,65,36}
@@ -41,14 +46,112 @@
 
 \addcontentsline{toc}{section}{Introduzione}
 \section*{Introduzione}
-Sample introduction text with a sample reference \cite{HussFarinotti2014}. Oh and here a sample figure with a sample caption, see \autoref{fig:random line}.
+\textbf{Greenrail\cite{Greenrail}} è un'azienda italiana, riconosciuta a livello internazionale come attore innovativo del settore ferroviario e come esempio di sviluppo industriale sostenibile secondo i principi dell'economia circolare.
+
+\noindent Greenrail realizza i propri prodotti con plastica e gomma riciclate. Le soluzioni proposte riducono vibrazioni e impatto ambientale, aumentano la durata delle infrastrutture e possono integrare tecnologie smart (es.\ sensori o pannelli solari).
+
+\section{Definizione dei requisiti}
+
+\subsection{Vista Cliente}
+I clienti della base dati di Greenrail rappresentano la parte finale della catena di valore, comprendono aziende e enti del settore delle infrastrutture ferroviarie. Questi possono essere gestori pubblici o privati di linee ferroviarie, imprese edili operanti su appalto pubblico, o società di progettazione infrastrutturale. I clienti devono fornire i seguenti dati: ragione sociale, tipologia (gestore, appaltatore, progettista, etc.), indirizzo (Paese, città, via, CAP), recapiti (telefono, email), codice fiscale e/o partita IVA.\\
+
+\noindent Dopo aver consultato il catalogo dei prodotti, i clienti hanno la possibillità di effettuare richieste d’ordine, scaricare schede tecniche delle traversine, specificare i requisiti di installazione (es.\ condizioni climatiche, peso supportato, durata stimata). Per ogni ordine viene creata una commessa contenente informazioni dettagliate sul tipo di traversina scelta (Standard, Solar, LinkBox), quantità, località di destinazione ed eventuali note operative.
+
+\noindent Il sistema tiene traccia dell'intera relazione cliente-azienda: dalle richieste iniziali di preventivo alle commesse in lavorazione, fino alla fase post-installazione. Ogni cliente ha accesso allo storico ordini e può essere associato a uno o più tecnici o partner logistici.
+
+\subsection{Vista Produttore}
+Il produttore rappresenta il personale tecnico addetto alla realizzazione fisica delle traversine nei centri di produzione. Ogni produttore ha un identificativo univoco, nome, cognome, qualifica, turno di lavoro, impianto di assegnazione e salario.
+
+\noindent Il sistema consente la tracciabilità delle attività di produzione: per ogni traversina, si registrano le specifiche (variano in base al modello), la data di produzione, i materiali utilizzati, il tecnico assegnato e il numero di serie delle traversine.
+
+\noindent I produttori devono poter visualizzare le specifiche tecniche richieste per ogni commessa, inclusi eventuali vincoli o personalizzazioni richieste dal cliente.
+
+\noindent È inoltre previsto un registro delle non conformità rilevate in fase di produzione.
+
+\subsection{Vista Installatore}
+L’installatore è il tecnico incaricato della posa in opera delle traversine lungo le tratte ferroviarie. Può coincidere con il produttore o essere una figura distinta. Ogni installatore ha un codice identificativo, nome, cognome, zona geografica di competenza, e calendario di interventi.\\
+
+\noindent Per ogni attività di installazione, il sistema deve registrare: numedi di serie delle traversine, località di installazione, data e durrata dell'installazione. Le installazioni sono sempre collegate a una specifica commessa cliente e devono rispettare i requisiti previsti.
+
+\noindent Il sistema deve permettere il monitoraggio degli interventi conclusi e programmati, e registrare note tecniche utili per valutazioni future.
+
+\subsection{Vista Amministratore}
+L’amministratore è una figura di gestione centrale, responsabile del coordinamento delle operazioni e delle relazioni tra clienti, produttori e installatori.\\
+
+\noindent L'amministratore gestisce tutte le entità presenti: clienti, ordini, commesse, produzione e installazione.
+
+\noindent L’amministratore può scrivere report su quantità prodotte/installate, sostenibilità dei materiali e conformità dei certificati.
+
+\noindent Inoltre, può intervenire per modificare dati errati, chiudere commesse, o aggiornare il catalogo prodotti.
+
+\section{Analisi e schema scheletro}
+\subsection{Analisi requisiti e schema scheletro per il Cliente}
+
+\begin{table}[H]
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    \textbf{Termine} & Descrizione                                                                                                      & Sinonimi                                                & Collagamenti                                                                                                  \\ \hline
+    Cliente          & \begin{tabular}[c]{@{}l@{}}Enti o aziende, pubblici o privati,\\ nel settore ferroviario\end{tabular}            & \begin{tabular}[c]{@{}l@{}}Azienda,\\ Ente\end{tabular} & Prodotto, Amministratore                                                                                      \\ \hline
+    Amministratore   & Coordinatore generale                                                                                            & Manager                                                 & Cliente, Prodotto                                                                                             \\ \hline
+    Prodotto         & Articolo venduto da Greenrail                                                                                    & Traversina                                              & \begin{tabular}[c]{@{}l@{}}Cliente, Amministratore,\\ Produttore, Installatore,\\ Certificazione\end{tabular} \\ \hline
+    Produttore       & Soggetta che realizza il prodotto                                                                                & -                                                       & Prodotto                                                                                                      \\ \hline
+    Installatore     & Soggetto che installa il prodotto                                                                                & -                                                       & Prodotto                                                                                                      \\ \hline
+    Certificato      & \begin{tabular}[c]{@{}l@{}}Certificazione che attesta la\\ sostenibilità e sicurezza del\\ prodotto\end{tabular} & -                                                       & Prodotto                                                                                                      \\ \hline
+    \end{tabular}
+\end{table}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.6\textwidth]{images/Sample graph.png}
-\caption{A graph of something.}
-\label{fig:random line}
+    \includegraphics[width=16cm]{images/diag_norm_usr.drawio.png}\\
+    \caption{Schema scheletro della vista dell'Utente}
 \end{figure}
+
+\subsection{Analisi requisiti e schema scheletro per il Produttore}
+
+\begin{table}[H]
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    \textbf{Termine} & Descrizione                                                                     & Sinonimi   & Collegamenti         \\ \hline
+    Produttore       & Soggetto che realizza il prodotto                                               & -          & Sede                 \\ \hline
+    Sede             & Luogo fisico                                                                    & Azienda    & Produttore           \\ \hline
+    Team             & Insieme di produttori                                                           & Squadra    & Produttore, Prodotto \\ \hline
+    Prodotto         & Articolo venduto da Greenrail                                                   & Traversina & Materiale, Team      \\ \hline
+    Materiale        & \begin{tabular}[c]{@{}l@{}}Materiale di cui si compone un\\ prodotto\end{tabular} & -          & Fornitore, Prodotto  \\ \hline
+    Fornitore        & Soggetto che fornisce materiale                                                 & -          & Materiale            \\ \hline
+    \end{tabular}
+    \end{table}
+
+\subsection{Analisi requisiti e schema scheletro per l'Installatore}
+
+\begin{table}[H]
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    \textbf{Termine} & Descrizione                                                                                             & Sinonimi                                                 & Collegamenti                                                                 \\ \hline
+    Installatore     & Soggetto che installa il prodotto                                                                       & -                                                        & Tratta, Prodotto                                                             \\ \hline
+    Tratta           & Luogo dell'installazione                                                                                & Luogo                                                    & Produttore                                                                   \\ \hline
+    Prodotto         & Articolo venduto da Greenrail                                                                           & Traversina                                               & \begin{tabular}[c]{@{}l@{}}Installatore, Produttore, \\ Cliente\end{tabular} \\ \hline
+    Produttore       & Soggetto che realizza il prodotto                                                                       & -                                                        & Prodotto                                                                     \\ \hline
+    Cliente          & \begin{tabular}[c]{@{}l@{}}Enti o aziende, pubblici o privati, \\  nel settore ferroviario\end{tabular} & \begin{tabular}[c]{@{}l@{}}Azienda, \\ Ente\end{tabular} & Prodotto                                                                     \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Analisi requisiti e schema scheletro per l'Amministratore}
+
+\begin{table}[]
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    \textbf{Termine} & Descrizione                                                                                             & Sinonimi          & Collegamenti                                                                                \\ \hline
+    Amministratore   & Coordinatore generale                                                                                   & Manager           & \begin{tabular}[c]{@{}l@{}}Report, Sede, Team, \\ Cliente\end{tabular}                      \\ \hline
+    Report           & Articolo riguardante Greenrail                                                                          & Notizia, Articolo & Amministratore                                                                              \\ \hline
+    Sede             & \begin{tabular}[c]{@{}l@{}}Struttura in cui vengono costruiti\\ i prodotti Greenrail\end{tabular}       & Azienda           & Amministratore                                                                              \\ \hline
+    Team             & Gruppo di persone                                                                                       & Squadra           & \begin{tabular}[c]{@{}l@{}}Amministratore, Produttori,\\ Installatori, Clienti\end{tabular} \\ \hline
+    Cliente          & \begin{tabular}[c]{@{}l@{}}Enti o aziende, pubblici o privati, \\  nel settore ferroviario\end{tabular} & \begin{tabular}[c]{@{}l@{}}Azienda, \\ Ente\end{tabular} & Prodotto                                                                     \\ \hline
+    Produttore       & Soggetto che realizza il prodotto                                                                       & -                 & Team, Installatori, Prodotto                                                                \\ \hline
+    Installatore     & Soggetto che installa il prodotto                                                                       & -                 & Cliente, Prodotto, Team, Produttori                                                         \\ \hline
+    Prodotto         & Articolo venduto da Greenrail                                                                           & Traversina        & \begin{tabular}[c]{@{}l@{}}Cliente, Installatore, Produttore,\\ Material\end{tabular}       \\ \hline
+    Materiale        & \begin{tabular}[c]{@{}l@{}}Materiale di cui si compone un\\ prodotto\end{tabular}                       & -                 & Prodotto, Fornitore                                                                         \\ \hline
+    Fornitore        & Soggetto che fornisce materiale                                                                         & Azienda           & Materiale                                                                                   \\ \hline
+    \end{tabular}
+\end{table}
 
 \section{Methodology}
 This section has a subsection.
@@ -56,13 +159,16 @@ This section has a subsection.
 This subsection contains \autoref{eq:1}.
 \begin{equation}
 \label{eq:1}
-    h(r) = \cfrac{Q}{2\pi T} ln(\cfrac{r_i}{r_0})+h_0
+    h(r) = \cfrac{Q}{2\pi T} \ln(\cfrac{r_i}{r_0})+h_0
 \end{equation}
 
 \section{Results}
 
+l
+
 \section{Discussion}
 
+As shown in previous studies~\cite{exampleReference}, the proposed system has significant potential.
 
 \newpage
 \addcontentsline{toc}{section}{References}
@@ -89,3 +195,4 @@ This subsection contains \autoref{eq:1}.
 \definecolor{lichtgroen}{RGB}{108, 194, 74}
 \definecolor{donkergroen}{RGB}{0, 155, 119}
 %You can use these to change the hyperlink colour or the colour of the header or whatever. Glück Auf!
+\end{itemize}hapter{Definizione e Analisi dei Requisiti}

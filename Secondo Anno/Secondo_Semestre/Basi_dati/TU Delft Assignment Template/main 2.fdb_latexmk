@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1745402765.82814 "main.aux" "main.bbl" "main" 1745402767.38133 0
-  "./ref.bib" 1745402765.62893 88 52531396f6ea4d86406302671f70afc0 ""
+["bibtex main"] 1745396931.10753 "main.aux" "main.bbl" "main" 1745396931.22568 2
+  "./ref.bib" 1745175742.62974 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "main.aux" 1745402767.05313 2876 432404e3ac0bacbc885420f8a8136409 "pdflatex"
+  "main.aux" 1745396931.10538 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1745402765.93924 "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" "main.pdf" "main" 1745402767.38147 0
-  "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" 1745402736.94577 15154 21559f2b84569122a36b2b7e5f4ed12a ""
+["pdflatex"] 1745396929.50687 "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" "main.pdf" "main" 1745396930.98421 0
+  "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" 1745396929.31356 5624 63611dd2650cab16f0d99caf2dd773e0 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/roboto/rbto_a4rth4.enc" 1576101225 3925 8837b773fb3216e5c7b021d1ecb65a28 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/roboto/rbto_j2bk2t.enc" 1576101225 3064 c158f9a176b31efb1d496e43b52c7efa ""
@@ -213,12 +213,12 @@
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
   "images/Logo_C_Positivo_Colore.png" 1712302858 68523 900ce901d0e3d43324eba00435a6810d ""
   "images/diag_norm_usr.drawio.png" 1745175936.61155 60966 ad764ea8046d14fcbd46416df064e06e ""
-  "main.aux" 1745402767.05313 2876 432404e3ac0bacbc885420f8a8136409 "pdflatex"
-  "main.bbl" 1745402765.93583 120 46d8de65ce4494607f71aff3b5a34d4e "bibtex main"
-  "main.out" 1745402767.05383 3086 817b735ddd690bc39afd18d377813cea "pdflatex"
-  "main.tex" 1745402736.94577 15154 21559f2b84569122a36b2b7e5f4ed12a ""
-  "main.toc" 1745402767.05403 1465 5642552de7e487ebffdabbb539854ae2 "pdflatex"
-  "titlepage.tex" 1745398347.97503 2967 fc9d8790de447b6a82c96a4302868726 ""
+  "main.aux" 1745396931.10538 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "main.bbl" 1745396931.22421 0 d41d8cd98f00b204e9800998ecf8427e "bibtex main"
+  "main.out" 0 -1 0 "pdflatex"
+  "main.tex" 1745396929.31356 5624 63611dd2650cab16f0d99caf2dd773e0 ""
+  "main.toc" 0 -1 0 "pdflatex"
+  "titlepage.tex" 1744883557.51689 2967 fc9d8790de447b6a82c96a4302868726 ""
   (generated)
   "main.aux"
   "main.log"
