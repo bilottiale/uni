@@ -1,0 +1,69 @@
+;; le seguenti procedure inizializzano l'ambiente per le "formiche
+;; potete "copiare ed incollare"
+;; la lettura delle procedure dovrebbe essere in realtà molto agevole
+
+
+patches-own [
+  feromone             ;; quantità di feromone nella patch
+  cibo                 ;; quantità di cibo nella patch (0, 1)
+  nido?                ;; vero se la patch compone il nido, falso altrimenti
+  odoreNido            ;; più è alto, più si è vicini al nido
+]
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+to setup-patches
+  ask patches
+  [ setup-nido
+    setup-cibo
+    ricolora-patch ]
+end
+
+to setup-nido  ;; patch procedure
+  ;; set nido? vero se la patch compone il nido, falso altrimenti
+  set nido? (distancexy 0 0) < 5
+  ;; spande l'odore del nido; più è alto, più si è vicini al nido
+  set odoreNido 200 - distancexy 0 0
+end
+
+to setup-cibo  ;; patch procedure
+  setup-cibo1
+  setup-cibo2
+  setup-cibo3
+end
+
+
+to setup-cibo1  ;; patch procedure
+  ;; setup della sorgente di cibo source sulla destra
+  if (distancexy (0.6 * max-pxcor) 0) < 5
+  [ set cibo 1 ]
+end
+
+to setup-cibo2  ;; patch procedure
+  ;; setup della sorgente di cibo source sulla sinistra, in basso
+  if (distancexy (-0.6 * max-pxcor) (-0.6 * max-pycor)) < 5
+  [ set cibo 1 ]
+end
+
+to setup-cibo3  ;; patch procedure
+  ;; setup della sorgente di cibo source sulla sinistra, in alto
+  if (distancexy (-0.8 * max-pxcor) (0.8 * max-pycor)) < 5
+  [ set cibo 1 ]
+end
+
+
+
+to ricolora-patch  ;; patch procedure
+  ;; dà il colore al nido ed alle sorgenti di cibo
+  ifelse nido?
+  [ set pcolor violet ]
+  [ ifelse cibo > 0
+    [ set pcolor yellow ]
+    ;; riscala il colore per mostrare bene la concentrazione di feromone
+    [ set pcolor scale-color green feromone 0.1 5 ]]
+end
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
