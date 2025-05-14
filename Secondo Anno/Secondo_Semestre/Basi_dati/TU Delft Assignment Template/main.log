@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.6)  23 APR 2025 20:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.6)  14 MAY 2025 16:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1222,7 +1222,7 @@ LaTeX Font Info:    Font shape `T1/RobotoSlab-TLF/m/n' aliased to
 (Font)              `T1/RobotoSlab-TLF/regular/n' on input line 41.
 LaTeX Font Info:    Font shape `T1/RobotoSlab-TLF/b/n' aliased to
 (Font)              `T1/RobotoSlab-TLF/bold/n' on input line 41.
-<images/Logo_C_Positivo_Colore.png, id=55, 1702.36pt x 632.3625pt>
+<images/Logo_C_Positivo_Colore.png, id=79, 1702.36pt x 632.3625pt>
 File: images/Logo_C_Positivo_Colore.png Graphic file (type png)
 <use images/Logo_C_Positivo_Colore.png>
 Package pdftex.def Info: images/Logo_C_Positivo_Colore.png  used on input line 52.
@@ -1260,12 +1260,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 80--81
 
 
 [2]
-<images/cliente.drawio.png, id=90, 603.25375pt x 362.35374pt>
+<images/cliente.drawio.png, id=120, 603.25375pt x 362.35374pt>
 File: images/cliente.drawio.png Graphic file (type png)
 <use images/cliente.drawio.png>
 Package pdftex.def Info: images/cliente.drawio.png  used on input line 107.
 (pdftex.def)             Requested size: 341.43306pt x 205.0841pt.
-<images/produttore.drawio.png, id=91, 442.65375pt x 362.35374pt>
+<images/produttore.drawio.png, id=121, 442.65375pt x 362.35374pt>
 File: images/produttore.drawio.png Graphic file (type png)
 <use images/produttore.drawio.png>
 Package pdftex.def Info: images/produttore.drawio.png  used on input line 129.
@@ -1273,7 +1273,7 @@ Package pdftex.def Info: images/produttore.drawio.png  used on input line 129.
 
 
 [3 <./images/cliente.drawio.png>]
-<images/installatore.drawio.png, id=100, 442.65375pt x 362.35374pt>
+<images/installatore.drawio.png, id=130, 442.65375pt x 362.35374pt>
 File: images/installatore.drawio.png Graphic file (type png)
 <use images/installatore.drawio.png>
 Package pdftex.def Info: images/installatore.drawio.png  used on input line 150.
@@ -1281,36 +1281,40 @@ Package pdftex.def Info: images/installatore.drawio.png  used on input line 150.
 
 
 [4 <./images/produttore.drawio.png> <./images/installatore.drawio.png>]
-<images/amministratore.drawio.png, id=110, 643.40375pt x 663.47874pt>
+<images/amministratore.drawio.png, id=140, 643.40375pt x 663.47874pt>
 File: images/amministratore.drawio.png Graphic file (type png)
 <use images/amministratore.drawio.png>
 Package pdftex.def Info: images/amministratore.drawio.png  used on input line 176.
 (pdftex.def)             Requested size: 369.88582pt x 381.43657pt.
 
 
-[5 <./images/amministratore.drawio.png>] (./main.bbl)
+[5 <./images/amministratore.drawio.png>]
 
-[6{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] (./main.aux)
+[6]
+
+[7] (./main.bbl)
+
+[8{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 7894E006AEDBB5C6FB4AEB1F31680048;2530.
+(rerunfilecheck)             Checksum: 3375A57EB6AE12A03B8ED40A418BF55E;3757.
  ) 
 Here is how much of TeX's memory you used:
- 27600 strings out of 473190
- 512559 string characters out of 5715801
- 936139 words of memory out of 5000000
- 50326 multiletter control sequences out of 15000+600000
+ 27643 strings out of 473190
+ 513013 string characters out of 5715801
+ 936135 words of memory out of 5000000
+ 50334 multiletter control sequences out of 15000+600000
  605926 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,14n,117p,675b,544s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,14n,117p,675b,563s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/google/roboto/RobotoSlab-Bold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/google/roboto/RobotoSlab-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (7 pages, 209338 bytes).
+Output written on main.pdf (9 pages, 214320 bytes).
 PDF statistics:
- 163 PDF objects out of 1000 (max. 8388607)
- 131 compressed objects within 2 object streams
- 29 named destinations out of 1000 (max. 500000)
- 134 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 237 PDF objects out of 1000 (max. 8388607)
+ 202 compressed objects within 3 object streams
+ 64 named destinations out of 1000 (max. 500000)
+ 182 words of extra memory for PDF output out of 10000 (max. 10000000)
 

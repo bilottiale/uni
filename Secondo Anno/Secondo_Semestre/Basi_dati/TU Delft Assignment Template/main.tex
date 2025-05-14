@@ -177,6 +177,67 @@ L’amministratore è una figura di gestione centrale, responsabile del coordina
     \caption{Schema scheletro della vista dell'Amministratore}
 \end{figure}
 
+\section{Progettazione ed integrazione delle viste}
+\subsection{Schemi E-R finali}
+\subsubsection{Schema E-R del Cliente}
+
+Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le modifiche:
+\begin{enumerate}
+    \item La relazione di Ordine diventa una entità, in quanto contiene informazioni aggiuntive rispetto a quelle del prodotto.
+    \item L'entità Ordine viene storicizzata in Presente e Passato.
+    \item Aggiunta l'istanza Modello da Prodotto per gestire i diversi modelli di traversina.
+    \item L'entità Cliente generalizza i clienti Privato e Pubblico.
+    \item Aggiunta l'entità Sede, generalizzazione di Sede Amministrativa e di Produzione in relazione con l'Amministratore.
+\end{enumerate}
+
+
+\subsubsection{Schema E-R del Produttore}
+Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le modifiche:
+\begin{enumerate}
+    \item Modifica dell'errata entità Produttore in Sede che generalizza i tipi di Sede Amministrativa e di Produzione.
+    \item Aggiunta entità Programma contente le informazioni relative alle attività del Produttore.
+    \item La relazione di Ordine diventa una entità, in quanto contiene informazioni aggiuntive rispetto a quelle del prodotto.
+    \item L'entità Ordine viene storicizzata in Presente e Passato.
+    \item Aggiunta l'istanza Modello da Prodotto per gestire i diversi modelli di traversina.
+    \item Aggiunta l'entità Componente, parte di un Modello, che generalizza un Componente Generico e Specifico.
+\end{enumerate}
+
+
+
+
+\subsubsection{Schema E-R dell'Installatore}
+Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le modifiche:
+\begin{enumerate}
+    \item L'entità Tratta generalizza i tipi di Tratta Passeggeri e Merci.
+    \item Come per la vista del Produttore, l'Installatore è parte di un Team.
+    \item Aggiunta entità Programma contente le informazioni relative alle attività dell'Installatore.
+    \item Aggiunta l'istanza Modello da Prodotto per gestire i diversi modelli di traversina.
+    \item L'entità Ordine viene storicizzata in Presente e Passato.
+    \item L'entità cliente generalizza i clienti Privato e Pubblico.
+\end{enumerate}
+
+
+
+
+
+\subsubsection{Schema E-R dell'Amministratore}
+Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le modifiche:
+\begin{enumerate}
+    \item L'entità Sede generalizza i tipi di Sede Amministrativa e di Produzione.
+    \item Aggiunta entità Dipendente che generalizza i tipi Amministratore e Operaio.
+    \item L'entità Operaio generalizza a sua volta i tipi Produttore e Installatore.
+    \item L'Amministratore gestisce Team e Ordine, non più Cliente.
+    \item Aggiunta l'entità Tratta che generalizza i tipi di Tratta Passeggeri e Merci.
+    \item L'entità Ordine viene storicizzata in Presente e Passato.
+    \item L'entità Cliente generalizza i clienti Privato e Pubblico.
+    \item Aggiunta entità Certificato che certifica la sostenibilità e sicurezza del prodotto.
+    \item Aggiunta l'istanza Modello da Prodotto per gestire i diversi modelli di traversina.
+    \item Aggiunta entità Componente, parte di un Modello, che generalizza un Componente Generico e Specifico.
+\end{enumerate}
+
+
+
+
 % \section{Methodology}
 % This section has a subsection.
 % \subsection{Subsection}
