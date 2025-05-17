@@ -190,6 +190,11 @@ Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le mo
     \item Aggiunta l'entità Sede, generalizzazione di Sede Amministrativa e di Produzione in relazione con l'Amministratore.
 \end{enumerate}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{images/rivisto_utente.drawio.png}\\
+    \caption{Schema E-R della vista del Cliente}
+\end{figure}
 
 \subsubsection{Schema E-R del Produttore}
 Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le modifiche:
@@ -202,8 +207,11 @@ Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le mo
     \item Aggiunta l'entità Componente, parte di un Modello, che generalizza un Componente Generico e Specifico.
 \end{enumerate}
 
-
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{images/rivisto_produttore.drawio.png}\\
+    \caption{Schema E-R della vista del Produttore}
+\end{figure}
 
 \subsubsection{Schema E-R dell'Installatore}
 Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le modifiche:
@@ -216,9 +224,11 @@ Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le mo
     \item L'entità cliente generalizza i clienti Privato e Pubblico.
 \end{enumerate}
 
-
-
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{images/rivisto_installatore.drawio.png}\\
+    \caption{Schema E-R della vista del Installatore}
+\end{figure}
 
 \subsubsection{Schema E-R dell'Amministratore}
 Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le modifiche:
@@ -235,7 +245,94 @@ Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le mo
     \item Aggiunta entità Componente, parte di un Modello, che generalizza un Componente Generico e Specifico.
 \end{enumerate}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=17cm]{images/rivisto_amministratore.drawio.png}\\
+    \caption{Schema E-R della vista del Amministratore}
+\end{figure}
 
+\newpage
+
+\subsection{Dizionario dei dati}
+\subsubsection{Dizionario dei dati per le entità}
+
+\begin{table}[H]
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Entità}         & \textbf{Descrizione}                                                                             & \textbf{Attributi}                                                                                                   & \textbf{Identificatore}                                              \\ \hline
+Cliente                 & \begin{tabular}[c]{@{}l@{}}Ente o azienda richiedente \\ un prodotto\end{tabular}                & \begin{tabular}[c]{@{}l@{}}Codice fiscale, Ragione sociale, \\ Partita IVA, Contatti\end{tabular}                    & Codice univoco                                                       \\ \hline
+Privato                 & Ente o azienda privata                                                                           & \begin{tabular}[c]{@{}l@{}}Codice fiscale, Ragione sociale, \\ Partita IVA, Contatti\end{tabular}                    & Partita IVA                                                          \\ \hline
+Pubblico                & Ente o azienda pubblica                                                                          & \begin{tabular}[c]{@{}l@{}}Codice fiscale, Ragione sociale, \\ Partita IVA, Contatti\end{tabular}                    & Indice PA                                                            \\ \hline
+Ordine                  & Ordine effettuato dal cliente                                                                    & \begin{tabular}[c]{@{}l@{}}ID\_Ordine, ID\_Prodotto, Quantità, \\ Prezzo, ID\_Cliente\end{tabular}                   & ID\_Ordine                                                           \\ \hline
+Ordine Presente         & \begin{tabular}[c]{@{}l@{}}Ordine presente effettuato dal \\ cliente\end{tabular}                &                                                                                                                      &                                                                      \\ \hline
+Ordine Passato          & \begin{tabular}[c]{@{}l@{}}Ordine passato effettuato dal \\ cliente\end{tabular}                 &                                                                                                                      &                                                                      \\ \hline
+Dipendente              & Impiegato dell'azienda                                                                           & \begin{tabular}[c]{@{}l@{}}Codice fiscale, Nome, Cognome, \\ Email, IBAN, Data di nascita, \\ Indirizzo\end{tabular} & Codice fiscale                                                       \\ \hline
+Amministratore          & Impiegato di grado più elevato                                                                   &                                                                                                                      &                                                                      \\ \hline
+Operaio                 & Lavoratore subordinato                                                                           &                                                                                                                      &                                                                      \\ \hline
+Report                  & Documento di informazione                                                                        & Data scrittura, Titolo, Contenuto                                                                                    & \begin{tabular}[c]{@{}l@{}}Titolo, Data\\ scrittura\end{tabular}     \\ \hline
+Sede                    & Struttura dell'azienda                                                                           & \begin{tabular}[c]{@{}l@{}}Numero dipendenti, Paese, \\ Indirizzo\end{tabular}                                       & Paese, Indirizzo                                                     \\ \hline
+Sede di Produzione      & Reparto di produzione                                                                            &                                                                                                                      &                                                                      \\ \hline
+Sede di Amministrazione & Reparto amministrativo                                                                           &                                                                                                                      &                                                                      \\ \hline
+Team                    & Squadra di lavoro                                                                                & ID\_Team, Numero membri                                                                                              & ID\_Team                                                             \\ \hline
+Installatore            & \begin{tabular}[c]{@{}l@{}}Addetto all'installazione del\\ prodotto\end{tabular}                 & \begin{tabular}[c]{@{}l@{}}ID\_Installatore, Sede, Nome, \\ Contatti\end{tabular}                                    & ID\_Installatore                                                     \\ \hline
+Produttore              & \begin{tabular}[c]{@{}l@{}}Addetto alla realizzazione del \\ prodotto\end{tabular}               & \begin{tabular}[c]{@{}l@{}}ID\_Produttore, Sede, Nome, \\ Contatti\end{tabular}                                      & ID\_Produttore                                                       \\ \hline
+Tratta                  & Percorso del treno                                                                               & \begin{tabular}[c]{@{}l@{}}Lunghezza tratta, Inizio tratta, \\ Fine tratta\end{tabular}                              & \begin{tabular}[c]{@{}l@{}}Inizio tratta,\\ Fine tratta\end{tabular} \\ \hline
+Tratta Passeggeri       & \begin{tabular}[c]{@{}l@{}}Percorso per treni addetti al \\ trasporto di passeggeri\end{tabular} &                                                                                                                      &                                                                      \\ \hline
+Tratta Merci            & \begin{tabular}[c]{@{}l@{}}Percorso per treni addetti al \\ trasporti di merci\end{tabular}      &                                                                                                                      &                                                                      \\ \hline
+Prodotto                & Oggetto prodotto dall'azienda                                                                    & ID\_Produttore, ID\_Installatore                                                                                     & Ordine                                                               \\ \hline
+Modello                 & Variante specifica del prodotto                                                                  & \begin{tabular}[c]{@{}l@{}}Codice, Velocità massima, Peso, \\ Dimensioni\end{tabular}                                & Codice                                                               \\ \hline
+Certificato             & \begin{tabular}[c]{@{}l@{}}Documento che attesta la\\ conformità ambientale\end{tabular}         & \begin{tabular}[c]{@{}l@{}}Codice, Descrizione, Ente \\ certificante\end{tabular}                                    & Codice                                                               \\ \hline
+Componente              & Parte del prodotto                                                                               & Nome, Dimensioni, Tipo, Peso                                                                                         & Nome                                                                 \\ \hline
+Componente Specifico    & \begin{tabular}[c]{@{}l@{}}Componente specifico di un\\ determinato modello\end{tabular}         &                                                                                                                      &                                                                      \\ \hline
+Componente Generico     & \begin{tabular}[c]{@{}l@{}}Componente presente in ogni \\ modello\end{tabular}                   &                                                                                                                      &                                                                      \\ \hline
+Materiale               & Materia prima per componenti                                                                     & Nome                                                                                                                 & Fornitore                                                            \\ \hline
+Fornitore               & Terzo che fornisce i materiali                                                                   & ID\_Fornitore, Nome, Contatti                                                                                        & ID\_Fornitore                                                        \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Dizionario dei dati per le relazioni}
+
+\begin{table}[H]
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Relazioni} & \textbf{Descrizione}                                                                                    & \textbf{Entità Coinvolte}                                                                   & \textbf{Attributi} \\ \hline
+Effettua           & Effettuare un ordine                                                                                    & \begin{tabular}[c]{@{}l@{}}Cliente (1,N)\\ Ordine (1,1)\end{tabular}                        & -                  \\ \hline
+Supervisiona       & Supervisione Team o Ordine                                                                              & \begin{tabular}[c]{@{}l@{}}Amministratore (1,N)\\ Team (1,N) / Ordine (1,N)\end{tabular}    & -                  \\ \hline
+Include            & Inclusione del prodotto nell'ordine                                                                     & \begin{tabular}[c]{@{}l@{}}Ordine (1,1)\\ Prodotto (1,1)\end{tabular}                       & -                  \\ \hline
+Scrive             & Scrittura report                                                                                        & \begin{tabular}[c]{@{}l@{}}Amministratore (1,N)\\ Report (1,1)\end{tabular}                 & -                  \\ \hline
+Lavora in          & Relazione tra dipendente e sede                                                                         & \begin{tabular}[c]{@{}l@{}}Dipendente (1,1)\\ Sede (1,N)\end{tabular}                       & -                  \\ \hline
+Lavora su          & \begin{tabular}[c]{@{}l@{}}Partecipazione a installazione su \\ una tratta\end{tabular}                 & \begin{tabular}[c]{@{}l@{}}Installatore (1,1)\\ Tratta (1,1)\end{tabular}                   & -                  \\ \hline
+Istanza P-I        & Associazione Prodotto - Installatore                                                                    & \begin{tabular}[c]{@{}l@{}}Operaio (1,1)\\ Produttore (1,1) / Installatore (1,1)\end{tabular} & -                  \\ \hline
+Composto da        & \begin{tabular}[c]{@{}l@{}}Relazione di composizione dei\\ team di installatori/produttori\end{tabular} & \begin{tabular}[c]{@{}l@{}}Team (1,1)\\ Installatore (1,1) / Produttore (1,1)\end{tabular}  & -                  \\ \hline
+Installa           & Installazione del prodotto                                                                              & \begin{tabular}[c]{@{}l@{}}Installatore (1,N)\\ Prodotto (1,1)\end{tabular}                 & Data installazione \\ \hline
+Produce            & Produzione del prodotto                                                                                 & \begin{tabular}[c]{@{}l@{}}Produttore (1,N)\\ Prodotto (1,1)\end{tabular}                   & -                  \\ \hline
+Certifica          & Certificazione del prodotto                                                                             & \begin{tabular}[c]{@{}l@{}}Prodotto (1,1)\\ Certificato (1,N)\end{tabular}                  & Data rilascio      \\ \hline
+Istanza P-M        & Associazione Prodotto - Modello                                                                         & \begin{tabular}[c]{@{}l@{}}Prodotto (1,1)\\ Modello (1,N)\end{tabular}                      & -                  \\ \hline
+Parte di           & Componente parte di un modello                                                                          & \begin{tabular}[c]{@{}l@{}}Modello (1,1)\\ Componente (1,N)\end{tabular}                    & -                  \\ \hline
+Composizione       & \begin{tabular}[c]{@{}l@{}}Relazione tra componente e \\ materiale\end{tabular}                         & \begin{tabular}[c]{@{}l@{}}Componente (1,N)\\ Materiale (1,N)\end{tabular}                  & -                  \\ \hline
+Fornitura          & Fornitura dei materiali                                                                                 & \begin{tabular}[c]{@{}l@{}}Materiale (1,1)\\ Fornitore (1,N)\end{tabular}                   & Quantità           \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Vincoli non esprimibili}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|}
+\hline
+\textbf{Vincoli non esprimibili}                                        \\ \hline
+Un ordine passato non può essere modificato.                            \\ \hline
+Un prodotto non può avere più di 1000 unità in magazzino.               \\ \hline
+Un Amministratore che supervisiona un Team deve far parte di quel Team. \\ \hline
+Un prodotto può essere installato solo su tratte compatibili.           \\ \hline
+Un certificato può essere rilasciato solo se il prodotto è stato installato\\
+e collaudato con esito positivo. \\ \hline
+La quantità totale di materiali usati in un ordine non deve superare\\
+la disponibilità in magazzino della sede fornitrice. \\ \hline
+Non si possono generare certificati se il numero di componenti del\\
+prodotto non corrisponde a quello previsto dal modello. \\ \hline
+\end{tabular}
+\end{table}
 
 
 % \section{Methodology}
