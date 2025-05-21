@@ -204,7 +204,7 @@ Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le mo
     \item La relazione di Ordine diventa una entità, in quanto contiene informazioni aggiuntive rispetto a quelle del prodotto.
     \item L'entità Ordine viene storicizzata in Presente e Passato.
     \item Aggiunta l'istanza Modello da Prodotto per gestire i diversi modelli di traversina.
-    \item Aggiunta l'entità Componente, parte di un Modello, che generalizza un Componente Generico e Specifico.
+    \item Aggiunta l'entità 'Componente', parte di un Modello, che generalizza un 'Componente' Generico e Specifico.
 \end{enumerate}
 
 \begin{figure}[H]
@@ -242,7 +242,7 @@ Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le mo
     \item L'entità Cliente generalizza i clienti Privato e Pubblico.
     \item Aggiunta entità Certificato che certifica la sostenibilità e sicurezza del prodotto.
     \item Aggiunta l'istanza Modello da Prodotto per gestire i diversi modelli di traversina.
-    \item Aggiunta entità Componente, parte di un Modello, che generalizza un Componente Generico e Specifico.
+    \item Aggiunta entità 'Componente', parte di un Modello, che generalizza un Componente Generico e Specifico.
 \end{enumerate}
 
 \begin{figure}[H]
@@ -308,8 +308,8 @@ Installa           & Installazione del prodotto                                 
 Produce            & Produzione del prodotto                                                                                 & \begin{tabular}[c]{@{}l@{}}Produttore (1,N)\\ Prodotto (1,1)\end{tabular}                   & -                  \\ \hline
 Certifica          & Certificazione del prodotto                                                                             & \begin{tabular}[c]{@{}l@{}}Prodotto (1,1)\\ Certificato (1,N)\end{tabular}                  & Data rilascio      \\ \hline
 Istanza P-M        & Associazione Prodotto - Modello                                                                         & \begin{tabular}[c]{@{}l@{}}Prodotto (1,1)\\ Modello (1,N)\end{tabular}                      & -                  \\ \hline
-Parte di           & Componente parte di un modello                                                                          & \begin{tabular}[c]{@{}l@{}}Modello (1,1)\\ Componente (1,N)\end{tabular}                    & -                  \\ \hline
-Composizione       & \begin{tabular}[c]{@{}l@{}}Relazione tra componente e \\ materiale\end{tabular}                         & \begin{tabular}[c]{@{}l@{}}Componente (1,N)\\ Materiale (1,N)\end{tabular}                  & -                  \\ \hline
+Parte di           & 'Componente' parte di un modello                                                                          & \begin{tabular}[c]{@{}l@{}}Modello (1,1)\\ 'Componente' (1,N)\end{tabular}                    & -                  \\ \hline
+Composizione       & \begin{tabular}[c]{@{}l@{}}Relazione tra componente e \\ materiale\end{tabular}                         & \begin{tabular}[c]{@{}l@{}}'Componente' (1,N)\\ Materiale (1,N)\end{tabular}                  & -                  \\ \hline
 Fornitura          & Fornitura dei materiali                                                                                 & \begin{tabular}[c]{@{}l@{}}Materiale (1,1)\\ Fornitore (1,N)\end{tabular}                   & Quantità           \\ \hline
 \end{tabular}
 \end{table}
@@ -333,6 +333,163 @@ Non si possono generare certificati se il numero di componenti del\\
 prodotto non corrisponde a quello previsto dal modello. \\ \hline
 \end{tabular}
 \end{table}
+
+\section{Progettazione Logica}
+\subsection{Ristrutturazione schema E-R}
+\subsubsection{modifiche}
+
+\subsubsection{Eliminazione delle generalizzazioni}
+\begin{enumerate}
+    \item L'entità 'Cliente' accorpa le entità 'Privato' e 'Pubblico' attaverso l'attributo 'Tipo' dato che gli accessi e operazioni tra queste entità sono gli stessi.
+    \item L'entità 'Ordine' accorpa le entità 'Ordine Presente' e 'Ordine Passato' attaverso l'attributo 'Stato' dato che gli accessi e operazioni tra queste entità sono gli stessi.
+    \item L'entità 'Sede' accorpa le entità 'Sede Amministrativa' e 'Sede di Produzione' attaverso l'attributo 'Tipo' dato che gli accessi e operazioni tra queste entità sono gli stessi.
+    \item L'entità 'Componente' accorpa le entità 'Componente Specifico' e 'Componente Generico' attaverso l'attributo 'Tipo' dato che gli accessi e operazioni tra queste entità sono gli stessi.
+    \item L'entità 'Dipendente' accorpa l'entità 'Operaio' dato che gli accessi e operazioni tra queste entità sono gli stessi. L'entità 'Amministratore' è stata mantenuta separata in quanto ha accessi e operazioni diverse rispetto agli altri dipendenti.
+    \item L'entità 'Tratta' accorpa le entità 'Tratta Passeggeri' e 'Tratta Merci' attaverso l'attributo 'Tipo' dato che gli accessi e operazioni tra queste entità sono gli stessi.
+\end{enumerate}
+
+\subsubsection{Partizionemaneto/accorpamento di entità e relationship}
+\begin{enumerate}
+    \item L'entità 'Team' accorpa la relationship 'Composto da' attraverso l'attributo 'Tipo'.
+\end{enumerate}
+
+\subsection{Carico applicativo}
+
+\begin{figure}[H]
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|l|l|}
+            \hline
+            \textbf{Concetto} & \textbf{Tipo} & \textbf{Volume} \\ \hline
+            Cliente           & E             & 10              \\ \hline
+            Ordine            & E             & 100             \\ \hline
+            Amministratore    & E             & 10              \\ \hline
+            Report            & E             & 5               \\ \hline
+            Team              & E             & 25              \\ \hline
+            Dipendente        & E             & 150             \\ \hline
+            Sede              & E             & 5               \\ \hline
+            Prodotto          & E             & 5000            \\ \hline
+            Installatore      & E             & 100             \\ \hline
+            Produttore        & E             & 250             \\ \hline
+            Tratta            & E             & 3               \\ \hline
+            Modello           & E             & 6               \\ \hline
+            Certificato       & E             & 5               \\ \hline
+            Componente        & E             & 100             \\ \hline
+            Materiale         & E             & 50              \\ \hline
+            Fornitore         & E             & 10              \\ \hline
+            Composizione      & R             & 12000           \\ \hline
+            Fornitura         & R             & 300             \\ \hline
+            Installazione     & R             & 1800            \\ \hline
+            Produzione        & R             & 1500            \\ \hline
+        \end{tabular}
+        \caption{Tabella dei volumi}
+    \end{table}
+\end{figure}
+
+Legenda:
+\begin{itemize}
+    \item E = Entità
+    \item R = Relazione
+\end{itemize}
+
+\begin{figure}[H]
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|l|l|l|}
+            \hline
+            & \textbf{Operazione}                                                                                   & \textbf{Tipo} & \textbf{Frequenza} \\ \hline
+            1  & \begin{tabular}[c]{@{}l@{}}Visualizza componenti di \\ un prodotto\end{tabular}                       & C             & $f=$ 10/mese            \\ \hline
+            2  & Inserimento nuovo prodotto                                                                            & I             & $f=$ 1/anno             \\ \hline
+            3  & Inserimento nuova tratta                                                                              & I             & $f=$ 2/anno             \\ \hline
+            4  & Inserimento nuovo cliente                                                                             & I             & $f=$ 1/anno             \\ \hline
+            5  & \begin{tabular}[c]{@{}l@{}}Visualizzazione prodotti  di \\ un ordine\end{tabular}                     & C             & $f=$ 10/giorno          \\ \hline
+            6  & \begin{tabular}[c]{@{}l@{}}Inserimento di un nuovo \\ componente\end{tabular}                         & I             & $f=$ 2/anno             \\ \hline
+            7  & Inserimento di un ordine                                                                              & I             & $f=$ 4/anno             \\ \hline
+            8  & \begin{tabular}[c]{@{}l@{}}Inserimento nuovo certificato \\ di un prodotto\end{tabular}               & I             & $f=$ 5/anno             \\ \hline
+            9  & Inserimento nuovo dipendente                                                                          & I             & $f=$ 1/mese             \\ \hline
+            10 & Inserimento nuova tratta                                                                              & I             & $f=$ 1/mese             \\ \hline
+            11 & Inserimento di un nuovo report                                                                        & I             & $f=$ 5/mese             \\ \hline
+            12 & Visualizzazione attributi cliente                                                                     & C             & $f=$ 10/mese            \\ \hline
+            13 & Inserimento nuovo team                                                                                & I             & $f=$ 10/mese            \\ \hline
+            14 & \begin{tabular}[c]{@{}l@{}}Aggiornamento attributi ordine \\ dato il suo Identificativo\end{tabular}  & A             & $f=$ 5/mese             \\ \hline
+            15 & \begin{tabular}[c]{@{}l@{}}Aggiornamento attributi Componente \\ dato il suo Codice\end{tabular}      & A             & $f=$ 10/mese            \\ \hline
+            16 & Inserimento nuovo Materiale                                                                           & I             & $f=$ 10/mese            \\ \hline
+            17 & Aggiornamento attributi Fornitore                                                                     & A             & $f=$ 10/mese            \\ \hline
+            18 & Inserimento nuova Sede                                                                                & I             & $f=$ 1/anno             \\ \hline
+            19 & \begin{tabular}[c]{@{}l@{}}Calcolo del numero dei dipendenti \\ in una sede\end{tabular}              & I             & $f=$ 10/giorno          \\ \hline
+            20 & \begin{tabular}[c]{@{}l@{}}Aggiornamento del prezzo di un \\ componente dato il suo Nome\end{tabular} & A             & $f=$ 10/mese            \\ \hline
+            21 & Eliminazione di un Cliente                                                                            & E             & $f=$ 1/anno             \\ \hline
+            22 & Visualizzazione attributi Dipendente                                                                  & C             & $f=$ 10/giorno          \\ \hline
+            23 & Visualizzazione attributi Fornitore                                                                   & C             & $f=$ 10/giorno          \\ \hline
+        \end{tabular}
+        \caption{Tabella delle operazioni}
+    \end{table}
+\end{figure}
+
+Legenda:
+\begin{itemize}
+    \item C = Consultazione
+    \item I = Inserimento
+    \item A = Aggiornamento
+    \item E = Eliminazione
+\end{itemize}
+
+\subsection{Valutazione dei costi dei dati derivati}
+
+\subsubsection{Valutazioni dei costi per il dato derivato 'Prezzo'}
+
+\subsubsection{Valutazioni dei costi per il dato derivato 'Peso'}
+
+\subsection{Traduzione dello schema E-R ristrutturato in modello relazionale}
+
+\newpage
+
+\textbf{Cliente}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+
+
+\textbf{Ordine}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+
+
+\textbf{Amministratore}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+
+
+\textbf{Report}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+
+
+\textbf{Sede}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+
+
+\textbf{Dipendente}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+
+
+\textbf{Team}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+
+
+\textbf{Tratta}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+
+
+\textbf{Installatore}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+
+
+\textbf{Produttore}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+
+
+\textbf{Prodotto}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+
+
+\textbf{Certificato}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+
+
+\textbf{Modello}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+
+
+\textbf{Componente}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+
+
+\textbf{Materiale}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+
+
+\textbf{Fornitore}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
 
 
 % \section{Methodology}

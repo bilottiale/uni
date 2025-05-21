@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.6)  14 MAY 2025 22:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.6)  21 MAY 2025 15:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1222,7 +1222,7 @@ LaTeX Font Info:    Font shape `T1/RobotoSlab-TLF/m/n' aliased to
 (Font)              `T1/RobotoSlab-TLF/regular/n' on input line 41.
 LaTeX Font Info:    Font shape `T1/RobotoSlab-TLF/b/n' aliased to
 (Font)              `T1/RobotoSlab-TLF/bold/n' on input line 41.
-<images/Logo_C_Positivo_Colore.png, id=95, 1702.36pt x 632.3625pt>
+<images/Logo_C_Positivo_Colore.png, id=134, 1702.36pt x 632.3625pt>
 File: images/Logo_C_Positivo_Colore.png Graphic file (type png)
 <use images/Logo_C_Positivo_Colore.png>
 Package pdftex.def Info: images/Logo_C_Positivo_Colore.png  used on input line 52.
@@ -1260,12 +1260,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 80--81
 
 
 [2]
-<images/cliente.drawio.png, id=140, 603.25375pt x 362.35374pt>
+<images/cliente.drawio.png, id=190, 603.25375pt x 362.35374pt>
 File: images/cliente.drawio.png Graphic file (type png)
 <use images/cliente.drawio.png>
 Package pdftex.def Info: images/cliente.drawio.png  used on input line 107.
 (pdftex.def)             Requested size: 341.43306pt x 205.0841pt.
-<images/produttore.drawio.png, id=141, 442.65375pt x 362.35374pt>
+<images/produttore.drawio.png, id=191, 442.65375pt x 362.35374pt>
 File: images/produttore.drawio.png Graphic file (type png)
 <use images/produttore.drawio.png>
 Package pdftex.def Info: images/produttore.drawio.png  used on input line 129.
@@ -1273,7 +1273,7 @@ Package pdftex.def Info: images/produttore.drawio.png  used on input line 129.
 
 
 [3 <./images/cliente.drawio.png>]
-<images/installatore.drawio.png, id=150, 442.65375pt x 362.35374pt>
+<images/installatore.drawio.png, id=200, 442.65375pt x 362.35374pt>
 File: images/installatore.drawio.png Graphic file (type png)
 <use images/installatore.drawio.png>
 Package pdftex.def Info: images/installatore.drawio.png  used on input line 150.
@@ -1281,7 +1281,7 @@ Package pdftex.def Info: images/installatore.drawio.png  used on input line 150.
 
 
 [4 <./images/produttore.drawio.png> <./images/installatore.drawio.png>]
-<images/amministratore.drawio.png, id=161, 643.40375pt x 663.47874pt>
+<images/amministratore.drawio.png, id=210, 643.40375pt x 663.47874pt>
 File: images/amministratore.drawio.png Graphic file (type png)
 <use images/amministratore.drawio.png>
 Package pdftex.def Info: images/amministratore.drawio.png  used on input line 176.
@@ -1289,7 +1289,7 @@ Package pdftex.def Info: images/amministratore.drawio.png  used on input line 17
 
 
 [5 <./images/amministratore.drawio.png>]
-<images/rivisto_utente.drawio.png, id=169, 1019.81pt x 904.37875pt>
+<images/rivisto_utente.drawio.png, id=218, 1019.81pt x 904.37875pt>
 File: images/rivisto_utente.drawio.png Graphic file (type png)
 <use images/rivisto_utente.drawio.png>
 Package pdftex.def Info: images/rivisto_utente.drawio.png  used on input line 195.
@@ -1297,12 +1297,12 @@ Package pdftex.def Info: images/rivisto_utente.drawio.png  used on input line 19
 
 
 [6 <./images/rivisto_utente.drawio.png>]
-<images/rivisto_produttore.drawio.png, id=185, 1008.76875pt x 944.52875pt>
+<images/rivisto_produttore.drawio.png, id=234, 1008.76875pt x 944.52875pt>
 File: images/rivisto_produttore.drawio.png Graphic file (type png)
 <use images/rivisto_produttore.drawio.png>
 Package pdftex.def Info: images/rivisto_produttore.drawio.png  used on input line 212.
 (pdftex.def)             Requested size: 426.79134pt x 399.61066pt.
-<images/rivisto_installatore.drawio.png, id=186, 1007.765pt x 627.34375pt>
+<images/rivisto_installatore.drawio.png, id=235, 1007.765pt x 627.34375pt>
 File: images/rivisto_installatore.drawio.png Graphic file (type png)
 <use images/rivisto_installatore.drawio.png>
 Package pdftex.def Info: images/rivisto_installatore.drawio.png  used on input line 229.
@@ -1310,7 +1310,7 @@ Package pdftex.def Info: images/rivisto_installatore.drawio.png  used on input l
 
 
 [7 <./images/rivisto_produttore.drawio.png>]
-<images/rivisto_amministratore.drawio.png, id=202, 1462.46375pt x 984.67876pt>
+<images/rivisto_amministratore.drawio.png, id=251, 1462.46375pt x 984.67876pt>
 File: images/rivisto_amministratore.drawio.png Graphic file (type png)
 <use images/rivisto_amministratore.drawio.png>
 Package pdftex.def Info: images/rivisto_amministratore.drawio.png  used on input line 250.
@@ -1333,29 +1333,119 @@ Overfull \hbox (14.47693pt too wide) in paragraph at lines 296--315
 
 [10]
 
-[11] (./main.bbl)
+[11]
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 391.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ts1phv.fd
+File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
+)
 
-[12{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] (./main.aux)
+[12]
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 450--451
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 453--454
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 456--457
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 459--460
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 462--463
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 465--466
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 468--469
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 471--472
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 474--475
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 477--478
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 480--481
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 483--484
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 486--487
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 489--490
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 492--493
+
+ []
+
+
+
+[14] (./main.bbl)
+
+[15{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 495E7E066A2B5EE50F4A413B46EA897E;4628.
+(rerunfilecheck)             Checksum: 989C519F649194EC23019A69834DA1CE;7183.
  ) 
 Here is how much of TeX's memory you used:
- 27690 strings out of 473190
- 514529 string characters out of 5715801
- 955149 words of memory out of 5000000
- 50366 multiletter control sequences out of 15000+600000
- 605926 words of font info for 62 fonts, out of 8000000 for 9000
+ 27759 strings out of 473190
+ 515539 string characters out of 5715801
+ 955156 words of memory out of 5000000
+ 50407 multiletter control sequences out of 15000+600000
+ 606239 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,14n,117p,675b,578s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/google/roboto/RobotoSlab-Bold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/google/roboto/RobotoSlab-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (13 pages, 512673 bytes).
+ 99i,16n,117p,675b,629s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/google/roboto/RobotoSlab-Bold.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/google/roboto/RobotoSlab-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on main.pdf (16 pages, 536992 bytes).
 PDF statistics:
- 293 PDF objects out of 1000 (max. 8388607)
- 246 compressed objects within 3 object streams
- 79 named destinations out of 1000 (max. 500000)
- 234 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 381 PDF objects out of 1000 (max. 8388607)
+ 326 compressed objects within 4 object streams
+ 103 named destinations out of 1000 (max. 500000)
+ 314 words of extra memory for PDF output out of 10000 (max. 10000000)
 
