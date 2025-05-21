@@ -61,7 +61,7 @@ I clienti della base dati di Greenrail rappresentano la parte finale della caten
 \noindent Il sistema tiene traccia dell'intera relazione cliente-azienda: dalle richieste iniziali di preventivo alle commesse in lavorazione, fino alla fase post-installazione. Ogni cliente ha accesso allo storico ordini e può essere associato a uno o più tecnici o partner logistici.
 
 \subsection{Vista Produttore}
-Il produttore rappresenta il personale tecnico addetto alla realizzazione fisica delle traversine nei centri di produzione. Ogni produttore ha un identificativo univoco, nome, cognome, qualifica, turno di lavoro, impianto di assegnazione e salario.
+Il Produttore rappresenta il personale tecnico addetto alla realizzazione fisica delle traversine nei centri di produzione. Ogni Produttore ha un identificativo univoco, nome, cognome, qualifica, turno di lavoro, impianto di assegnazione e salario.
 
 \noindent Il sistema consente la tracciabilità delle attività di produzione: per ogni traversina, si registrano le specifiche (variano in base al modello), la data di produzione, i materiali utilizzati, il tecnico assegnato e il numero di serie delle traversine.
 
@@ -70,18 +70,18 @@ Il produttore rappresenta il personale tecnico addetto alla realizzazione fisica
 \noindent È inoltre previsto un registro delle non conformità rilevate in fase di produzione.
 
 \subsection{Vista Installatore}
-L’installatore è il tecnico incaricato della posa in opera delle traversine lungo le tratte ferroviarie. Può coincidere con il produttore o essere una figura distinta. Ogni installatore ha un codice identificativo, nome, cognome, zona geografica di competenza, e calendario di interventi.\\
+L’Installatore è il tecnico incaricato della posa in opera delle traversine lungo le tratte ferroviarie. Può coincidere con il Produttore o essere una figura distinta. Ogni Installatore ha un codice identificativo, nome, cognome, zona geografica di competenza, e calendario di interventi.\\
 
 \noindent Per ogni attività di installazione, il sistema deve registrare: numedi di serie delle traversine, località di installazione, data e durrata dell'installazione. Le installazioni sono sempre collegate a una specifica commessa cliente e devono rispettare i requisiti previsti.
 
 \noindent Il sistema deve permettere il monitoraggio degli interventi conclusi e programmati, e registrare note tecniche utili per valutazioni future.
 
 \subsection{Vista Amministratore}
-L’amministratore è una figura di gestione centrale, responsabile del coordinamento delle operazioni e delle relazioni tra clienti, produttori e installatori.\\
+L’Amministratore è una figura di gestione centrale, responsabile del coordinamento delle operazioni e delle relazioni tra clienti, produttori e installatori.\\
 
-\noindent L'amministratore gestisce tutte le entità presenti: clienti, ordini, commesse, produzione e installazione.
+\noindent L'Amministratore gestisce tutte le entità presenti: clienti, ordini, commesse, produzione e installazione.
 
-\noindent L’amministratore può scrivere report su quantità prodotte/installate, sostenibilità dei materiali e conformità dei certificati.
+\noindent L’Amministratore può scrivere report su quantità prodotte/installate, sostenibilità dei materiali e conformità dei certificati.
 
 \noindent Inoltre, può intervenire per modificare dati errati, chiudere commesse, o aggiornare il catalogo prodotti.
 
@@ -335,8 +335,11 @@ prodotto non corrisponde a quello previsto dal modello. \\ \hline
 \end{table}
 
 \section{Progettazione Logica}
+
 \subsection{Ristrutturazione schema E-R}
-\subsubsection{modifiche}
+
+\subsubsection{Modifiche}
+Rinominazioni e modifiche di attributi e relazioni vari attributti, vedi schema finale.
 
 \subsubsection{Eliminazione delle generalizzazioni}
 \begin{enumerate}
@@ -361,24 +364,24 @@ prodotto non corrisponde a quello previsto dal modello. \\ \hline
         \begin{tabular}{|l|l|l|}
             \hline
             \textbf{Concetto} & \textbf{Tipo} & \textbf{Volume} \\ \hline
-            Cliente           & E             & 10              \\ \hline
-            Ordine            & E             & 100             \\ \hline
+            Cliente           & E             & 100              \\ \hline
+            Ordine            & E             & 1000             \\ \hline
             Amministratore    & E             & 10              \\ \hline
-            Report            & E             & 5               \\ \hline
+            Report            & E             & 50               \\ \hline
             Team              & E             & 25              \\ \hline
             Dipendente        & E             & 150             \\ \hline
             Sede              & E             & 5               \\ \hline
             Prodotto          & E             & 5000            \\ \hline
             Installatore      & E             & 100             \\ \hline
             Produttore        & E             & 250             \\ \hline
-            Tratta            & E             & 3               \\ \hline
-            Modello           & E             & 6               \\ \hline
+            Tratta            & E             & 5               \\ \hline
+            Modello           & E             & 5               \\ \hline
             Certificato       & E             & 5               \\ \hline
-            Componente        & E             & 100             \\ \hline
-            Materiale         & E             & 50              \\ \hline
-            Fornitore         & E             & 10              \\ \hline
-            Composizione      & R             & 12000           \\ \hline
-            Fornitura         & R             & 300             \\ \hline
+            Componente        & E             & 1000             \\ \hline
+            Materiale         & E             & 500              \\ \hline
+            Fornitore         & E             & 100              \\ \hline
+            Composizione      & R             & 2500           \\ \hline
+            Fornitura         & R             & 1000             \\ \hline
             Installazione     & R             & 1800            \\ \hline
             Produzione        & R             & 1500            \\ \hline
         \end{tabular}
@@ -393,38 +396,43 @@ Legenda:
 \end{itemize}
 
 \begin{figure}[H]
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{|l|l|l|l|}
-            \hline
-            & \textbf{Operazione}                                                                                   & \textbf{Tipo} & \textbf{Frequenza} \\ \hline
-            1  & \begin{tabular}[c]{@{}l@{}}Visualizza componenti di \\ un prodotto\end{tabular}                       & C             & $f=$ 10/mese            \\ \hline
-            2  & Inserimento nuovo prodotto                                                                            & I             & $f=$ 1/anno             \\ \hline
-            3  & Inserimento nuova tratta                                                                              & I             & $f=$ 2/anno             \\ \hline
-            4  & Inserimento nuovo cliente                                                                             & I             & $f=$ 1/anno             \\ \hline
-            5  & \begin{tabular}[c]{@{}l@{}}Visualizzazione prodotti  di \\ un ordine\end{tabular}                     & C             & $f=$ 10/giorno          \\ \hline
-            6  & \begin{tabular}[c]{@{}l@{}}Inserimento di un nuovo \\ componente\end{tabular}                         & I             & $f=$ 2/anno             \\ \hline
-            7  & Inserimento di un ordine                                                                              & I             & $f=$ 4/anno             \\ \hline
-            8  & \begin{tabular}[c]{@{}l@{}}Inserimento nuovo certificato \\ di un prodotto\end{tabular}               & I             & $f=$ 5/anno             \\ \hline
-            9  & Inserimento nuovo dipendente                                                                          & I             & $f=$ 1/mese             \\ \hline
-            10 & Inserimento nuova tratta                                                                              & I             & $f=$ 1/mese             \\ \hline
-            11 & Inserimento di un nuovo report                                                                        & I             & $f=$ 5/mese             \\ \hline
-            12 & Visualizzazione attributi cliente                                                                     & C             & $f=$ 10/mese            \\ \hline
-            13 & Inserimento nuovo team                                                                                & I             & $f=$ 10/mese            \\ \hline
-            14 & \begin{tabular}[c]{@{}l@{}}Aggiornamento attributi ordine \\ dato il suo Identificativo\end{tabular}  & A             & $f=$ 5/mese             \\ \hline
-            15 & \begin{tabular}[c]{@{}l@{}}Aggiornamento attributi Componente \\ dato il suo Codice\end{tabular}      & A             & $f=$ 10/mese            \\ \hline
-            16 & Inserimento nuovo Materiale                                                                           & I             & $f=$ 10/mese            \\ \hline
-            17 & Aggiornamento attributi Fornitore                                                                     & A             & $f=$ 10/mese            \\ \hline
-            18 & Inserimento nuova Sede                                                                                & I             & $f=$ 1/anno             \\ \hline
-            19 & \begin{tabular}[c]{@{}l@{}}Calcolo del numero dei dipendenti \\ in una sede\end{tabular}              & I             & $f=$ 10/giorno          \\ \hline
-            20 & \begin{tabular}[c]{@{}l@{}}Aggiornamento del prezzo di un \\ componente dato il suo Nome\end{tabular} & A             & $f=$ 10/mese            \\ \hline
-            21 & Eliminazione di un Cliente                                                                            & E             & $f=$ 1/anno             \\ \hline
-            22 & Visualizzazione attributi Dipendente                                                                  & C             & $f=$ 10/giorno          \\ \hline
-            23 & Visualizzazione attributi Fornitore                                                                   & C             & $f=$ 10/giorno          \\ \hline
-        \end{tabular}
-        \caption{Tabella delle operazioni}
-    \end{table}
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        \textbf{\#} & \textbf{Operazione} & \textbf{Tipo} & \textbf{Frequenza} \\
+        \hline
+        1  & Inserimento nuovo prodotto & I & 1/mese \\
+        2  & Visualizza componenti di un prodotto & C & 30/giorno \\
+        3  & Inserimento nuova tratta & I & 1/anno \\
+        4  & Inserimento nuovo cliente & I & 1/mese \\
+        5  & Visualizzazione prodotti di un ordine & C & 20/giorno \\
+        6  & Visualizzazione attributi Prodotto & C & 50/giorno \\
+        7  & Inserimento di un nuovo componente & I & 5/mese \\
+        8  & Inserimento di un ordine & I & 30/mese \\
+        9  & Inserimento nuovo certificato di un prodotto & I & 2/mese \\
+        10 & Inserimento nuovo dipendente & I & 1/mese \\
+        11 & Visualizzazione attributi Modello & C & 10/giorno \\
+        12 & Visualizzazione attributi Componente & C & 40/giorno \\
+        13 & Inserimento di un nuovo report & I & 2/mese \\
+        14 & Visualizzazione attributi cliente & C & 10/giorno \\
+        15 & Inserimento nuovo team & I & 3/mese \\
+        16 & Aggiornamento attributi ordine & A & 5/mese \\
+        17 & Aggiornamento attributi componente & A & 10/mese \\
+        18 & Inserimento nuovo materiale & I & 10/mese \\
+        19 & Aggiornamento attributi fornitore & A & 3/mese \\
+        20 & Inserimento nuova sede & I & 1/anno \\
+        21 & Calcolo numero dipendenti in una sede & C & 5/giorno \\
+        22 & Aggiornamento prezzo componente & A & 10/mese \\
+        23 & Eliminazione di un cliente & E & 1/anno \\
+        24 & Visualizzazione prezzo prodotto & C & 100/giorno \\
+        25 & Modifica prezzo componente & A & 5/mese \\
+        26 & Visualizzazione attributi dipendente & C & 10/giorno \\
+        27 & Visualizzazione attributi fornitore & C & 10/giorno \\
+        \hline
+    \end{tabular}
+    \caption{Tabella delle operazioni}
 \end{figure}
+
 
 Legenda:
 \begin{itemize}
@@ -435,63 +443,156 @@ Legenda:
 \end{itemize}
 
 \subsection{Valutazione dei costi dei dati derivati}
+Approssimiamo un mese = 30 giorni.
 
-\subsubsection{Valutazioni dei costi per il dato derivato 'Prezzo'}
+\newpage
 
-\subsubsection{Valutazioni dei costi per il dato derivato 'Peso'}
+\subsubsection{Valutazioni dei costi per il dato derivato 'Numero componenti di un prodotto'}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+        & \textbf{Concetto}                                                & \textbf{Accessi}                              & \textbf{Tipo}                                 \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}Operazione 1\\ 6 accessi in scrittura\\ 12 operazioni x 1/mese = 12 operazioni/mese\end{tabular}} & \begin{tabular}[c]{@{}l@{}}PRODOTTO \\ COMPOSIZIONE\end{tabular} & \begin{tabular}[c]{@{}l@{}}1\\ 5\end{tabular} & \begin{tabular}[c]{@{}l@{}}S\\ S\end{tabular} \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}Operazione 2\\ 1 accesso in lettura\\ 1 operazione x 30/giorno = 900 operazioni/mese\end{tabular}}    & PRODOTTO                                                         & 1                                             & L                                             \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}Operazione 7\\ 2 accessi in scrittura\\ 4 operazioni x 5/mese = 20 operazioni/mese\end{tabular}}   & \begin{tabular}[c]{@{}l@{}}COMPOSIZIONE \\ PRODOTTO\end{tabular} & \begin{tabular}[c]{@{}l@{}}1\\ 1\end{tabular} & \begin{tabular}[c]{@{}l@{}}S\\ S\end{tabular} \\ \hline
+\end{tabular}
+\caption{Con dato derivato}
+\end{table}
+
+Carico mensile $\approx 932\text{ accessi/mese}$.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        & \textbf{Concetto}                                                  & \textbf{Accessi}                              & \textbf{Tipo}                                 \\ \hline
+        \textbf{\begin{tabular}[c]{@{}l@{}}Operazione 1\\ 6 accessi in scrittura\\ 12 operazioni x 1/mese = 12 operazioni/mese\end{tabular}} & \begin{tabular}[c]{@{}l@{}}PRODOTTO \\ COMPOSIZIONE\end{tabular}   & \begin{tabular}[c]{@{}l@{}}1\\ 5\end{tabular} & \begin{tabular}[c]{@{}l@{}}S\\ S\end{tabular} \\ \hline
+        \textbf{\begin{tabular}[c]{@{}l@{}}Operazione 2\\ 5 accesso in lettura\\ 5 operazioni x 30/giorno = 4500 operazioni/mese\end{tabular}}   & \begin{tabular}[c]{@{}l@{}}COMPOSIZIONE \\ COMPONENTE\end{tabular} & \begin{tabular}[c]{@{}l@{}}5\\ 5\end{tabular} & \begin{tabular}[c]{@{}l@{}}L\\ L\end{tabular} \\ \hline
+        \textbf{\begin{tabular}[c]{@{}l@{}}Operazione 7\\ 1 accessi in scrittura\\ 2 operazioni x 5/mese = 10 operazioni/mese\end{tabular}}   & COMPOSIZIONE                                                       & 1                                             & S                                             \\ \hline
+    \end{tabular}
+    \caption{Senza dato derivato}
+\end{table}
+
+Carico mensile $\approx 4522\text{ accessi/mese}$.
+
+\textbf{Conviene mantenere il dato derivato.}
+
+\subsubsection{Valutazioni dei costi per il dato derivato 'Prezzo' dai componenti}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        & \textbf{Concetto}                                                              & \textbf{Accessi}                                  & \textbf{Tipo}                                     \\ \hline
+        \textbf{\begin{tabular}[c]{@{}l@{}}Operazione 1\\ 10 accessi in scrittura\\ 16 operazioni x 1/mese = 16 operazioni/mese\end{tabular}} & \begin{tabular}[c]{@{}l@{}}COMPONENTE \\ COMPOSIZIONE \\ PRODOTTO\end{tabular} & \begin{tabular}[c]{@{}l@{}}5\\ 5\\ 1\end{tabular} & \begin{tabular}[c]{@{}l@{}}L\\ S\\ S\end{tabular} \\ \hline
+        \textbf{\begin{tabular}[c]{@{}l@{}}Operazione 24\\ 1 accesso in lettura\\ 1 operazione x 100/giorno = 3000 operazioni/mese\end{tabular}}   & PRODOTTO                                                                       & 5                                                 & L                                                 \\ \hline
+        \textbf{\begin{tabular}[c]{@{}l@{}}Operazione 25\\ 2 accessi in scrittura\\ 4 operazioni x 5/mese = 20 operazioni/mese\end{tabular}}   & \begin{tabular}[c]{@{}l@{}}COMPONENTE \\ PRODOTTO\end{tabular}                 & \begin{tabular}[c]{@{}l@{}}1\\ 1\end{tabular}     & \begin{tabular}[c]{@{}l@{}}S\\ S\end{tabular}     \\ \hline
+    \end{tabular}
+    \caption{Con dato derivato}
+\end{table}
+
+Carico mensile $\approx 3036\text{ accessi/mese}$.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        & \textbf{Concetto}                                                  & \textbf{Accessi}                              & \textbf{Tipo}                                 \\ \hline
+        \textbf{\begin{tabular}[c]{@{}l@{}}Operazione 1\\ 6 accessi in scrittura\\ 12 operazioni x 1/mese = 12 operazioni/mese\end{tabular}}         & \begin{tabular}[c]{@{}l@{}}COMPOSIZIONE \\ PRODOTTO\end{tabular}   & \begin{tabular}[c]{@{}l@{}}5\\ 1\end{tabular} & \begin{tabular}[c]{@{}l@{}}S\\ S\end{tabular} \\ \hline
+        \textbf{\begin{tabular}[c]{@{}l@{}}Operazione 24\\ 10 accesso in lettura\\ 10 operazione x 100/giorno = 30000 operazioni/mese\end{tabular}} & \begin{tabular}[c]{@{}l@{}}COMPOSIZIONE \\ COMPONENTE\end{tabular} & \begin{tabular}[c]{@{}l@{}}5\\ 5\end{tabular} & \begin{tabular}[c]{@{}l@{}}L\\ L\end{tabular} \\ \hline
+        \textbf{\begin{tabular}[c]{@{}l@{}}Operazione 25\\ 2 accessi in scrittura\\ 4 operazioni x 5/mese = 20 operazioni/mese\end{tabular}}         & COMPOSIZIONE                                                       & 1                                             & S                                             \\ \hline
+    \end{tabular}
+    \caption{Senza dato derivato}
+\end{table}
+
+Carico mensile $\approx 30032\text{ accessi/mese}$.
+
+\textbf{NON conviene mantenere il dato derivato.}
 
 \subsection{Traduzione dello schema E-R ristrutturato in modello relazionale}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=24.25cm, angle=-90]{images/ristrutturato.drawio.pdf}
+    \caption{Schema E-R della vista del Amministratore}
+\end{figure}
 
 \newpage
 
 \textbf{Cliente}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
 
 
-\textbf{Ordine}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+\textbf{Ordine}(\underline{\text{ID\_Ordine}}, \text{Prezzo},\, \text{Quantità},\, \text{Stato},\, \text{Email},\, \text{Tipo}, \text{Prodotto})\\
+\indent\indent \textbf{FK}: ID\_Prodotto \textbf{REFERENCES} Prodotto\\
+\indent\indent \textbf{FK}: ID\_Cliente \textbf{REFERENCES} Cliente\\
 
 
 \textbf{Amministratore}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
 
 
-\textbf{Report}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+\textbf{Report}(\underline{\text{Data scrittura, Titolo}}, \text{Contenuto})\\
 
 
-\textbf{Sede}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+\textbf{Sede}(\underline{\text{Paese, CAP, Via, Civico}}, \text{Tipo}, \text{Numero dipendenti})\\
 
 
-\textbf{Dipendente}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+\textbf{Dipendente}(\underline{\text{Codice fiscale}}, \text{Nome}, \text{Cognome}, \text{IBAN}, \text{Data di nascita}, \text{Email}, \text{Via}, \text{CAP}, \text{Civico})\\
 
 
-\textbf{Team}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+\textbf{Team}(\underline{\text{Referente, Amministratore, Sede}}, \text{Numero membri})\\
+\indent\indent \textbf{FK}: Amministratore \textbf{REFERENCES} Amministratore\\
+\indent\indent \textbf{FK}: Sede \textbf{REFERENCES} Sede\\
 
 
-\textbf{Tratta}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+\textbf{Tratta}(\underline{\text{Inizio tratta, Fine tratta}}, \text{Lunghezza tratta}, \text{Tipo})\\
 
 
-\textbf{Installatore}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+\textbf{Installatore}(\underline{\text{ID\_Installatore}}, \text{Nome}, \text{Email}, \text{Telefono})\\
 
 
-\textbf{Produttore}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+\textbf{Produttore}(\underline{\text{Nome, Sede}}, \text{Telefono}, \text{Email})\\
+\indent\indent \textbf{FK}: Sede \textbf{REFERENCES} Sede\\
 
 
-\textbf{Prodotto}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+\textbf{Prodotto}(\underline{\text{Ordine}}, \text{Installatore}, \text{Produttore})\\
+\indent\indent \textbf{FK}: Ordine \textbf{REFERENCES} Ordine\\
+\indent\indent \textbf{FK}: Installatore \textbf{REFERENCES} Installatore\\
+\indent\indent \textbf{FK}: Produttore \textbf{REFERENCES} Produttore\\
 
 
-\textbf{Certificato}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+\textbf{Certificato}(\underline{\text{Codice}}, \text{Descrizione}, \text{Ente certificante})\\
 
 
-\textbf{Modello}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+\textbf{Modello}(\underline{\text{Codice}}, \text{Velocità massima}, \text{Peso}, \text{Dimensioni})\\
 
 
-\textbf{Componente}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+\textbf{Componente}(\underline{\text{Nome}}, \text{Peso}, \text{Tipo}, \text{Dimensioni}, \text{Prezzo})\\
 
 
-\textbf{Materiale}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+\textbf{Materiale}(\underline{\text{Nome, Fornitore}}, \text{Prezzo})\\
+\indent\indent \textbf{FK}: Fornitore \textbf{REFERENCES} Fornitore\\
 
 
-\textbf{Fornitore}(\underline{\text{ID\_Cliente}}, \text{Ragione sociale}, \text{Codice fiscale}, \text{Telefono}, \text{Email}, \text{Tipo})\\
+\textbf{Fornitore}(\underline{\text{Nome, Sede}}, \text{Email}, \text{Telefono})\\
+\indent\indent \textbf{FK}: Sede \textbf{REFERENCES} Sede\\
 
+\textbf{Installa}(\underline{\text{Installatore, Prodotto}}, \text{Data installazione})\\
+\indent\indent \textbf{FK}: Installatore \textbf{REFERENCES} Installatore\\
+\indent\indent \textbf{FK}: Prodotto \textbf{REFERENCES} Prodotto\\
 
+\textbf{Certifica}(\underline{\text{Certificato, Prodotto}}, \text{Data rilascio})\\
+\indent\indent \textbf{FK}: Certificato \textbf{REFERENCES} Certificato\\
+\indent\indent \textbf{FK}: Prodotto \textbf{REFERENCES} Prodotto\\
+
+\textbf{Fornitura}(\underline{\text{Fornitore, Materiale}}, \text{Quantità})\\
+\indent\indent \textbf{FK}: Fornitore \textbf{REFERENCES} Fornitore\\
+\indent\indent \textbf{FK}: Materiale \textbf{REFERENCES} Materiale\\
+
+\textbf{Composizione}(\underline{\text{Modello, Componente}}, \text{Numero componenti})\\
+\indent\indent \textbf{FK}: Fornitore \textbf{REFERENCES} Fornitore\\
+\indent\indent \textbf{FK}: Materiale \textbf{REFERENCES} Materiale\\
 % \section{Methodology}
 % This section has a subsection.
 % \subsection{Subsection}

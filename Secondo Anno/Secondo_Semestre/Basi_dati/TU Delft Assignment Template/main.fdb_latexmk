@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1747835329.49902 "main.aux" "main.bbl" "main" 1747835331.52439 0
+["bibtex main"] 1747859335.8756 "main.aux" "main.bbl" "main" 1747860558.36355 0
   "./ref.bib" 1745431831.19918 127 3c4e3dc2db32c37220042eba376134b0 ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "main.aux" 1747835331.2294 7196 a15aa281eb376ef25031794bd3b7d8e6 "pdflatex"
+  "main.aux" 1747860558.00386 7955 d73ab5cefd42f5fccb01f14097aa7104 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1747835329.59795 "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" "main.pdf" "main" 1747835331.52453 0
-  "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" 1747835327.28938 44630 371586dd577740b45c0374b0cdc9958a ""
+["pdflatex"] 1747860556.19338 "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" "main.pdf" "main" 1747860558.3637 0
+  "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" 1747860555.94468 49127 8c0352dfeefa55b1727add4245ef84d3 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/roboto/rbto_a4rth4.enc" 1576101225 3925 8837b773fb3216e5c7b021d1ecb65a28 ""
@@ -30,8 +30,8 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/google/roboto/RobotoSlab-Bold.pfb" 1576101225 200125 0e01486be9ac1d0d374fd1b76a04365b ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/google/roboto/RobotoSlab-Regular.pfb" 1576101225 193341 2240cca5aff87697a331a61b8da1d827 ""
-  "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb" 1215737283 169201 9ebf99020dde51a5086e186761a34e8f ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb" 1136849748 35941 f27169cc74234d5bd5e4cca5abafaabb ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb" 1136849748 44648 23115b2a545ebfe2c526c3ca99db8b95 ""
@@ -220,15 +220,16 @@
   "images/cliente.drawio.png" 1745426497.81131 33030 683a9766fd7c3ca6d9db8d55b86e25f3 ""
   "images/installatore.drawio.png" 1745426557.50959 26240 93e624d8b97378eec62030e6175cbd3e ""
   "images/produttore.drawio.png" 1745426523.2894 30446 fb6fc1972ba7d20998918fd566293bc0 ""
+  "images/ristrutturato.drawio.pdf" 1747860025.48146 99653 00e4b7b170fbd766400c494427620e18 ""
   "images/rivisto_amministratore.drawio.png" 1747252952.75085 410877 fd2572be73161650f9b315e2b0bfb4b1 ""
   "images/rivisto_installatore.drawio.png" 1747252407.08895 197196 d7e8f4ce40d6fe1fd6e1dcfa65adea01 ""
   "images/rivisto_produttore.drawio.png" 1747252396.43407 243868 2020e40edc14113cebe8ab78e3aebccd ""
   "images/rivisto_utente.drawio.png" 1747252427.21457 248144 5671101d2ecf24f6f0386de581d5861e ""
-  "main.aux" 1747835331.2294 7196 a15aa281eb376ef25031794bd3b7d8e6 "pdflatex"
-  "main.bbl" 1747835329.59453 164 4fa65d035ea67148b91c9d74275cec81 "bibtex main"
-  "main.out" 1747835331.23056 7183 989c519f649194ec23019a69834da1ce "pdflatex"
-  "main.tex" 1747835327.28938 44630 371586dd577740b45c0374b0cdc9958a ""
-  "main.toc" 1747835331.23085 3222 baa0f900254fef5624cd25aa69633ef2 "pdflatex"
+  "main.aux" 1747860558.00386 7955 d73ab5cefd42f5fccb01f14097aa7104 "pdflatex"
+  "main.bbl" 1747859335.9748 164 4fa65d035ea67148b91c9d74275cec81 "bibtex main"
+  "main.out" 1747860558.00501 7419 3dc0a5ef1f2918fb3e3c40e767332529 "pdflatex"
+  "main.tex" 1747860555.94468 49127 8c0352dfeefa55b1727add4245ef84d3 ""
+  "main.toc" 1747860558.00533 3268 22755cecd8cdfb923e4a46db57d6ee80 "pdflatex"
   "titlepage.tex" 1745426326.09788 2965 7a6972d14ea8ad6dd2fe770f7fcd7195 ""
   (generated)
   "main.aux"
