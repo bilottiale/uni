@@ -1,0 +1,1475 @@
+<org.simbrain.network.interfaces.RootNetwork>
+  <time>0.0</time>
+  <timeStep>0.01</timeStep>
+  <clampWeights>false</clampWeights>
+  <clampNeurons>false</clampNeurons>
+  <timeType>DISCRETE</timeType>
+  <updateMethod class="org.simbrain.network.interfaces.RootNetwork$UpdateMethod">BUFFERED</updateMethod>
+  <textList>
+    <org.simbrain.network.interfaces.NetworkTextObject>
+      <parent reference="../../.."/>
+      <x>297.0857481632858</x>
+      <y>176.50839854319813</y>
+      <text>Original by
+Daniel Linarez</text>
+      <fontName>Helvetica</fontName>
+      <fontSize>12</fontSize>
+      <italic>false</italic>
+      <bold>false</bold>
+    </org.simbrain.network.interfaces.NetworkTextObject>
+  </textList>
+  <prioritySortedNeuronList/>
+  <priorityComparator>
+    <outer-class reference="../.."/>
+  </priorityComparator>
+  <networkIdGenerator>
+    <rootName>Network</rootName>
+    <index>1</index>
+  </networkIdGenerator>
+  <neuronIdGenerator>
+    <rootName>Neuron</rootName>
+    <index>42</index>
+  </neuronIdGenerator>
+  <synapseIdGenerator>
+    <rootName>Synapse</rootName>
+    <index>70</index>
+  </synapseIdGenerator>
+  <groupIdGenerator>
+    <rootName>Group</rootName>
+    <index>1</index>
+  </groupIdGenerator>
+  <rootNetwork reference=".."/>
+  <id>FinalProjectNetwork</id>
+  <neuronList>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.SigmoidalNeuron">
+        <type class="org.simbrain.network.neurons.SigmoidalNeuron$SigmoidType">LOGISTIC</type>
+        <bias>0.0</bias>
+        <slope>1.0</slope>
+        <noiseGenerator>
+          <distributionIndex>0</distributionIndex>
+          <upperBound>1.0</upperBound>
+          <lowerBound>-1.0</lowerBound>
+          <mean>0.5</mean>
+          <standardDeviation>0.5</standardDeviation>
+          <clipping>true</clipping>
+          <randomGenerator serialization="custom">
+            <java.util.Random>
+              <default>
+                <seed>63802449155343</seed>
+                <nextNextGaussian>0.0</nextNextGaussian>
+                <haveNextNextGaussian>false</haveNextNextGaussian>
+              </default>
+            </java.util.Random>
+          </randomGenerator>
+        </noiseGenerator>
+        <addNoise>false</addNoise>
+      </updateRule>
+      <id>Neuron_21</id>
+      <label>HOUSE</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>0.1</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>106.84051231398826</x>
+      <y>183.49008533371483</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.SigmoidalNeuron">
+        <type class="org.simbrain.network.neurons.SigmoidalNeuron$SigmoidType" reference="../../../org.simbrain.network.interfaces.Neuron/updateRule/type"/>
+        <bias>0.0</bias>
+        <slope>1.0</slope>
+        <noiseGenerator>
+          <distributionIndex>0</distributionIndex>
+          <upperBound>1.0</upperBound>
+          <lowerBound>-1.0</lowerBound>
+          <mean>0.5</mean>
+          <standardDeviation>0.5</standardDeviation>
+          <clipping>true</clipping>
+          <randomGenerator serialization="custom">
+            <java.util.Random>
+              <default>
+                <seed>63802449199175</seed>
+                <nextNextGaussian>0.0</nextNextGaussian>
+                <haveNextNextGaussian>false</haveNextNextGaussian>
+              </default>
+            </java.util.Random>
+          </randomGenerator>
+        </noiseGenerator>
+        <addNoise>false</addNoise>
+      </updateRule>
+      <id>Neuron_22</id>
+      <label>RED</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>0.1</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>-107.97545738374208</x>
+      <y>183.49008533371483</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.SigmoidalNeuron">
+        <type class="org.simbrain.network.neurons.SigmoidalNeuron$SigmoidType" reference="../../../org.simbrain.network.interfaces.Neuron/updateRule/type"/>
+        <bias>0.0</bias>
+        <slope>1.0</slope>
+        <noiseGenerator>
+          <distributionIndex>0</distributionIndex>
+          <upperBound>1.0</upperBound>
+          <lowerBound>-1.0</lowerBound>
+          <mean>0.5</mean>
+          <standardDeviation>0.5</standardDeviation>
+          <clipping>true</clipping>
+          <randomGenerator serialization="custom">
+            <java.util.Random>
+              <default>
+                <seed>63802449228818</seed>
+                <nextNextGaussian>0.0</nextNextGaussian>
+                <haveNextNextGaussian>false</haveNextNextGaussian>
+              </default>
+            </java.util.Random>
+          </randomGenerator>
+        </noiseGenerator>
+        <addNoise>false</addNoise>
+      </updateRule>
+      <id>Neuron_23</id>
+      <label>SPIDER</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>0.1</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>44.71639502762557</x>
+      <y>183.49008533371483</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.SigmoidalNeuron">
+        <type class="org.simbrain.network.neurons.SigmoidalNeuron$SigmoidType" reference="../../../org.simbrain.network.interfaces.Neuron/updateRule/type"/>
+        <bias>0.0</bias>
+        <slope>1.0</slope>
+        <noiseGenerator>
+          <distributionIndex>0</distributionIndex>
+          <upperBound>1.0</upperBound>
+          <lowerBound>-1.0</lowerBound>
+          <mean>0.5</mean>
+          <standardDeviation>0.5</standardDeviation>
+          <clipping>true</clipping>
+          <randomGenerator serialization="custom">
+            <java.util.Random>
+              <default>
+                <seed>63802449318646</seed>
+                <nextNextGaussian>0.0</nextNextGaussian>
+                <haveNextNextGaussian>false</haveNextNextGaussian>
+              </default>
+            </java.util.Random>
+          </randomGenerator>
+        </noiseGenerator>
+        <addNoise>false</addNoise>
+      </updateRule>
+      <id>Neuron_24</id>
+      <label>MONSTER</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>0.1</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>174.2898508696017</x>
+      <y>183.49008533371483</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.SigmoidalNeuron">
+        <type class="org.simbrain.network.neurons.SigmoidalNeuron$SigmoidType" reference="../../../org.simbrain.network.interfaces.Neuron/updateRule/type"/>
+        <bias>0.0</bias>
+        <slope>1.0</slope>
+        <noiseGenerator>
+          <distributionIndex>0</distributionIndex>
+          <upperBound>1.0</upperBound>
+          <lowerBound>-1.0</lowerBound>
+          <mean>0.5</mean>
+          <standardDeviation>0.5</standardDeviation>
+          <clipping>true</clipping>
+          <randomGenerator serialization="custom">
+            <java.util.Random>
+              <default>
+                <seed>63802449255291</seed>
+                <nextNextGaussian>0.0</nextNextGaussian>
+                <haveNextNextGaussian>false</haveNextNextGaussian>
+              </default>
+            </java.util.Random>
+          </randomGenerator>
+        </noiseGenerator>
+        <addNoise>false</addNoise>
+      </updateRule>
+      <id>Neuron_25</id>
+      <label>GREEN</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>0.1</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>-41.75410887816479</x>
+      <y>183.49008533371483</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.SigmoidalNeuron">
+        <type class="org.simbrain.network.neurons.SigmoidalNeuron$SigmoidType" reference="../../../org.simbrain.network.interfaces.Neuron/updateRule/type"/>
+        <bias>-4.0</bias>
+        <slope>1.0</slope>
+        <noiseGenerator>
+          <distributionIndex>0</distributionIndex>
+          <upperBound>1.0</upperBound>
+          <lowerBound>-1.0</lowerBound>
+          <mean>0.5</mean>
+          <standardDeviation>0.5</standardDeviation>
+          <clipping>true</clipping>
+          <randomGenerator serialization="custom">
+            <java.util.Random>
+              <default>
+                <seed>63822286239722</seed>
+                <nextNextGaussian>0.0</nextNextGaussian>
+                <haveNextNextGaussian>false</haveNextNextGaussian>
+              </default>
+            </java.util.Random>
+          </randomGenerator>
+        </noiseGenerator>
+        <addNoise>false</addNoise>
+      </updateRule>
+      <id>Neuron_26</id>
+      <label>H5</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>0.1</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>174.39506977186807</x>
+      <y>301.6890796416587</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.SigmoidalNeuron">
+        <type class="org.simbrain.network.neurons.SigmoidalNeuron$SigmoidType" reference="../../../org.simbrain.network.interfaces.Neuron/updateRule/type"/>
+        <bias>-4.0</bias>
+        <slope>1.0</slope>
+        <noiseGenerator>
+          <distributionIndex>0</distributionIndex>
+          <upperBound>1.0</upperBound>
+          <lowerBound>-1.0</lowerBound>
+          <mean>0.5</mean>
+          <standardDeviation>0.5</standardDeviation>
+          <clipping>true</clipping>
+          <randomGenerator serialization="custom">
+            <java.util.Random>
+              <default>
+                <seed>63877164525158</seed>
+                <nextNextGaussian>0.0</nextNextGaussian>
+                <haveNextNextGaussian>false</haveNextNextGaussian>
+              </default>
+            </java.util.Random>
+          </randomGenerator>
+        </noiseGenerator>
+        <addNoise>false</addNoise>
+      </updateRule>
+      <id>Neuron_27</id>
+      <label>H2</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>0.1</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>-125.23293732324447</x>
+      <y>301.6890796416587</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.SigmoidalNeuron">
+        <type class="org.simbrain.network.neurons.SigmoidalNeuron$SigmoidType" reference="../../../org.simbrain.network.interfaces.Neuron/updateRule/type"/>
+        <bias>-4.0</bias>
+        <slope>1.0</slope>
+        <noiseGenerator>
+          <distributionIndex>0</distributionIndex>
+          <upperBound>1.0</upperBound>
+          <lowerBound>-1.0</lowerBound>
+          <mean>0.5</mean>
+          <standardDeviation>0.5</standardDeviation>
+          <clipping>true</clipping>
+          <randomGenerator serialization="custom">
+            <java.util.Random>
+              <default>
+                <seed>63854126655148</seed>
+                <nextNextGaussian>0.0</nextNextGaussian>
+                <haveNextNextGaussian>false</haveNextNextGaussian>
+              </default>
+            </java.util.Random>
+          </randomGenerator>
+        </noiseGenerator>
+        <addNoise>false</addNoise>
+      </updateRule>
+      <id>Neuron_28</id>
+      <label>H3</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>0.1</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>68.85843756771906</x>
+      <y>301.6890796416587</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.SigmoidalNeuron">
+        <type class="org.simbrain.network.neurons.SigmoidalNeuron$SigmoidType" reference="../../../org.simbrain.network.interfaces.Neuron/updateRule/type"/>
+        <bias>-4.0</bias>
+        <slope>1.0</slope>
+        <noiseGenerator>
+          <distributionIndex>0</distributionIndex>
+          <upperBound>1.0</upperBound>
+          <lowerBound>-1.0</lowerBound>
+          <mean>0.5</mean>
+          <standardDeviation>0.5</standardDeviation>
+          <clipping>true</clipping>
+          <randomGenerator serialization="custom">
+            <java.util.Random>
+              <default>
+                <seed>63874325278185</seed>
+                <nextNextGaussian>0.0</nextNextGaussian>
+                <haveNextNextGaussian>false</haveNextNextGaussian>
+              </default>
+            </java.util.Random>
+          </randomGenerator>
+        </noiseGenerator>
+        <addNoise>false</addNoise>
+      </updateRule>
+      <id>Neuron_29</id>
+      <label>H4</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>0.1</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>118.46604889960608</x>
+      <y>301.6890796416587</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.SigmoidalNeuron">
+        <type class="org.simbrain.network.neurons.SigmoidalNeuron$SigmoidType" reference="../../../org.simbrain.network.interfaces.Neuron/updateRule/type"/>
+        <bias>-4.0</bias>
+        <slope>1.0</slope>
+        <noiseGenerator>
+          <distributionIndex>0</distributionIndex>
+          <upperBound>1.0</upperBound>
+          <lowerBound>-1.0</lowerBound>
+          <mean>0.5</mean>
+          <standardDeviation>0.5</standardDeviation>
+          <clipping>true</clipping>
+          <randomGenerator serialization="custom">
+            <java.util.Random>
+              <default>
+                <seed>63936314326680</seed>
+                <nextNextGaussian>0.0</nextNextGaussian>
+                <haveNextNextGaussian>false</haveNextNextGaussian>
+              </default>
+            </java.util.Random>
+          </randomGenerator>
+        </noiseGenerator>
+        <addNoise>false</addNoise>
+      </updateRule>
+      <id>Neuron_30</id>
+      <label>H1</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>0.1</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>-170.97549514323728</x>
+      <y>301.6890796416587</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.SigmoidalNeuron">
+        <type class="org.simbrain.network.neurons.SigmoidalNeuron$SigmoidType" reference="../../../org.simbrain.network.interfaces.Neuron/updateRule/type"/>
+        <bias>-4.0</bias>
+        <slope>1.0</slope>
+        <noiseGenerator>
+          <distributionIndex>0</distributionIndex>
+          <upperBound>1.0</upperBound>
+          <lowerBound>-1.0</lowerBound>
+          <mean>0.5</mean>
+          <standardDeviation>0.5</standardDeviation>
+          <clipping>true</clipping>
+          <randomGenerator serialization="custom">
+            <java.util.Random>
+              <default>
+                <seed>63830186126632</seed>
+                <nextNextGaussian>0.0</nextNextGaussian>
+                <haveNextNextGaussian>false</haveNextNextGaussian>
+              </default>
+            </java.util.Random>
+          </randomGenerator>
+        </noiseGenerator>
+        <addNoise>false</addNoise>
+      </updateRule>
+      <id>Neuron_31</id>
+      <label>H6</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>0.1</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>225.48635068974508</x>
+      <y>301.6890796416587</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.ClampedNeuron"/>
+      <id>Neuron_33</id>
+      <label>&quot;RED&quot;</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>1.0</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>-173.41889488246247</x>
+      <y>444.578324024366</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.ClampedNeuron"/>
+      <id>Neuron_34</id>
+      <label>color type</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>1.0</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>120.31188259332548</x>
+      <y>444.578324024366</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.ClampedNeuron"/>
+      <id>Neuron_35</id>
+      <label>color</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>1.0</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>69.66905876230078</x>
+      <y>444.578324024366</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.ClampedNeuron"/>
+      <id>Neuron_36</id>
+      <label>Color Naming</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>1.0</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>-63.20182155675616</x>
+      <y>444.578324024366</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.ClampedNeuron"/>
+      <id>Neuron_37</id>
+      <label>Word Reading</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>1.0</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>11.483396787797917</x>
+      <y>444.578324024366</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.ClampedNeuron"/>
+      <id>Neuron_38</id>
+      <label>Threat Monitoring</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>1.0</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>287.1844243225942</x>
+      <y>444.578324024366</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.ClampedNeuron"/>
+      <id>Neuron_39</id>
+      <label>Emotion</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>1.0</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>177.3435397887016</x>
+      <y>443.9488697707605</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.ClampedNeuron"/>
+      <id>Neuron_40</id>
+      <label>Size</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>1.0</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>225.84327104640536</x>
+      <y>444.578324024366</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+    <org.simbrain.network.interfaces.Neuron>
+      <updateRule class="org.simbrain.network.neurons.ClampedNeuron"/>
+      <id>Neuron_41</id>
+      <label>&quot;GREEN&quot;</label>
+      <activation>0.0</activation>
+      <lowerBound>0.0</lowerBound>
+      <upperBound>1.0</upperBound>
+      <increment>1.0</increment>
+      <buffer>0.0</buffer>
+      <inputValue>0.0</inputValue>
+      <parent class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <x>-123.4188948824626</x>
+      <y>445.8823004189144</y>
+      <clamped>false</clamped>
+      <targetValue>0.0</targetValue>
+      <updatePriority>0</updatePriority>
+    </org.simbrain.network.interfaces.Neuron>
+  </neuronList>
+  <synapseList>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[10]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[2]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_14</id>
+      <strength>5.46</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[10]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[5]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_15</id>
+      <strength>-2.12</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[7]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[2]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_16</id>
+      <strength>-2.03</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[7]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[5]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_17</id>
+      <strength>5.84</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[8]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[2]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_18</id>
+      <strength>-2.25</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[8]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[5]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_19</id>
+      <strength>7.51</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[8]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[4]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_20</id>
+      <strength>-2.5</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[9]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[2]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_21</id>
+      <strength>7.54</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[6]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[5]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_22</id>
+      <strength>-2.1</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[6]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[3]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_23</id>
+      <strength>7.37</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[6]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_24</id>
+      <strength>-6.63</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[6]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[4]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_25</id>
+      <strength>5.71</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[11]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[4]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_26</id>
+      <strength>5.99</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[11]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_27</id>
+      <strength>7.44</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[11]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[3]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_28</id>
+      <strength>-6.5</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[11]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[5]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_29</id>
+      <strength>-2.17</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[12]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[10]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_30</id>
+      <strength>2.55</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[12]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[7]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_31</id>
+      <strength>-2.51</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[20]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[10]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_32</id>
+      <strength>-2.52</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[20]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[7]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_33</id>
+      <strength>2.63</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[15]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[10]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_34</id>
+      <strength>3.7</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[15]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[7]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_35</id>
+      <strength>3.84</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[15]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[8]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_36</id>
+      <strength>3.75</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[15]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[9]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_37</id>
+      <strength>4.27</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[16]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[8]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_38</id>
+      <strength>3.92</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[16]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[9]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_39</id>
+      <strength>3.62</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[16]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[6]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_40</id>
+      <strength>3.94</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[16]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[11]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_41</id>
+      <strength>3.91</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[14]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[8]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_42</id>
+      <strength>2.45</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[13]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[8]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_43</id>
+      <strength>-4.65</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[13]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[9]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_44</id>
+      <strength>3.33</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[18]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[6]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_45</id>
+      <strength>5.55</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[19]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[11]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_46</id>
+      <strength>5.9</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[17]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[6]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_47</id>
+      <strength>3.5</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[17]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[8]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_48</id>
+      <strength>-0.02</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[18]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[8]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_49</id>
+      <strength>-0.45</strength>
+      <increment>0.1</increment>
+      <upperBound>1.0</upperBound>
+      <lowerBound>0.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[19]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[8]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_50</id>
+      <strength>1.0</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[17]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[9]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_51</id>
+      <strength>-0.1</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[14]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[9]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_52</id>
+      <strength>0.17</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[18]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[9]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_53</id>
+      <strength>0.19</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[19]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[9]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_54</id>
+      <strength>0.07</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[14]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[6]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_55</id>
+      <strength>-0.94</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[13]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[6]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_56</id>
+      <strength>-0.33</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[19]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[6]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_57</id>
+      <strength>-0.16</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[17]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[11]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_58</id>
+      <strength>1.36</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[14]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[11]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_59</id>
+      <strength>-0.96</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[13]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[11]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_60</id>
+      <strength>-0.034</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[18]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[11]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_61</id>
+      <strength>1.04</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[6]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[2]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_62</id>
+      <strength>-1.38</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[11]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[2]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_63</id>
+      <strength>1.0</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[9]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[5]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_64</id>
+      <strength>-1.2</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[8]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[3]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_65</id>
+      <strength>0.26</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[9]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[3]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_66</id>
+      <strength>-0.71</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[8]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_67</id>
+      <strength>0.7</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[9]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_68</id>
+      <strength>-0.58</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+    <org.simbrain.network.interfaces.Synapse>
+      <parentNetwork class="org.simbrain.network.interfaces.RootNetwork" reference="../../.."/>
+      <source reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[9]"/>
+      <target reference="../../../neuronList/org.simbrain.network.interfaces.Neuron[4]"/>
+      <learningRule class="org.simbrain.network.synapses.ClampedSynapse">
+        <clipped>false</clipped>
+      </learningRule>
+      <id>Synapse_69</id>
+      <strength>-0.97</strength>
+      <increment>1.0</increment>
+      <upperBound>10.0</upperBound>
+      <lowerBound>-10.0</lowerBound>
+      <delay>0</delay>
+      <sendWeightedInput>true</sendWeightedInput>
+    </org.simbrain.network.interfaces.Synapse>
+  </synapseList>
+  <networkList/>
+  <groupList/>
+  <timeStep defined-in="org.simbrain.network.interfaces.Network">0.2</timeStep>
+  <roundOffActivationValues>false</roundOffActivationValues>
+  <precision>0</precision>
+  <updatePriority>0</updatePriority>
+</org.simbrain.network.interfaces.RootNetwork>
