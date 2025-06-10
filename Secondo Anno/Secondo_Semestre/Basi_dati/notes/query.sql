@@ -1,10 +1,8 @@
-TRV-CEM-2600X300X250-HS-2024
-
-- TRV = tipo prodotto (traversina)
-- PLA = materiale
-- 2600X300X250 = dimensioni
-- HS = high speed (MR merci, UR uso urbano)
-- 2024 = anno di produzione
+----------------------- ENUM -----------------------
+CREATE TYPE stato_ordine AS ENUM ('ordineto', 'in produzione', 'installazione', 'validato');
+CREATE TYPE tipo_cliente AS ENUM ('pubblico', 'privato');
+CREATE TYPE tipo_modello AS ENUM ('GR 260', 'GR 240', 'GR 230', 'GR 190', 'GR B 70', 'GR B 70CH');
+CREATE TYPE tipo_tratta AS ENUM ('merci', 'urbana');
 
 ----------------------- INSERT -----------------------
 
@@ -24,9 +22,17 @@ SELECT * FROM modello;
 -- Cliente
 INSERT INTO public.cliente (id, tipo, rag_soc, cod_fis, email, telefono) VALUES
 (1, 'pubblico', 'Trenitalia S.p.A.', 'TRNITL1234567890', 'info@trenitalia.it', '0647891234'),
-(2, 'privato', 'Logistica Verde SRL', 'LGVSRL9876543210', 'info@logverde.it', '0591234567');
+(2, 'privato', 'Logistica Verde SRL', 'LGVSRL9876543210', 'info@logverde.it', '0591234567'),
+(3, 'privato', 'Italo Spa', '9876543210ABCDEF', 'ordini@italo.it', '0643219876');
 
 SELECT * FROM cliente;
+
+-- Ordine
+INSERT INTO ordine (id, cliente, prezzo, "quantità", stato, id_amministratore) VALUES
+(1, 'Trenitalia S.p.A.', 10000, 100, 'ordinato', 'amm01'),
+(2, 'Italo Spa', 8000, 80, 'in produzione', 'amm02');
+
+SELECT * FROM ordine;
 
 -- Amministratore
 INSERT INTO public.amministratore (id_amministratore, nome, cognome, email, telefono) VALUES
@@ -66,6 +72,17 @@ INSERT INTO public.prodotto (modello_id, anno_prod, cf_dipendente) VALUES
 (3, 2024, 'BNCLRA88B55F205X');
 
 SELECT * FROM prodotto;
+
+-- Report
+INSERT INTO public.report (titolo, contenuto, id_amministratore)
+VALUES (
+    'Report produzione 2024',
+    'Produzione completata con successo per i modelli GR 260 e GR 240. Nessun difetto rilevato.',
+    'amm01'
+);
+
+SELECT * FROM report;
+
 
 ----------------------- TRIGGER -----------------------
 
@@ -112,23 +129,33 @@ EXECUTE FUNCTION check_quantita_composizione();
 CREATE OR REPLACE FUNCTION aggiorna_n_dipendenti()
 RETURNS TRIGGER AS $$
 BEGIN
-  UPDATE sede
-  SET n_dipendenti = COALESCE(n_dipendenti, 0) + 1
-  WHERE paese = NEW.sede_paese
-    AND via = NEW.sede_via
-    AND civico = NEW.sede_civico
-    AND "CAP" = NEW."sede_CAP"::integer;
-  RETURN NEW;
+  -- Aggiorna il conteggio dopo INSERT
+  IF TG_OP = 'INSERT' THEN
+    UPDATE sede
+    SET n_dipendenti = n_dipendenti + 1
+    WHERE paese = NEW.sede_paese AND via = NEW.sede_via AND civico = NEW.sede_civico AND "CAP" = NEW."sede_CAP";
+  END IF;
+
+  -- Aggiorna il conteggio dopo DELETE
+  IF TG_OP = 'DELETE' THEN
+    UPDATE sede
+    SET n_dipendenti = n_dipendenti - 1
+    WHERE paese = OLD.sede_paese AND via = OLD.sede_via AND civico = OLD.sede_civico AND "CAP" = OLD."sede_CAP";
+  END IF;
+
+  RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
--- Cre il trigger collegato
-DROP TRIGGER IF EXISTS trg_aggiorna_dipendenti ON dipendente;
 
-CREATE TRIGGER trg_aggiorna_dipendenti
-AFTER INSERT ON dipendente
+-- Crea il trigger collegato
+DROP TRIGGER IF EXISTS trigger_aggiorna_n_dipendenti ON composizione;
+
+CREATE TRIGGER trigger_aggiorna_n_dipendenti
+AFTER INSERT OR DELETE ON dipendente
 FOR EACH ROW
 EXECUTE FUNCTION aggiorna_n_dipendenti();
+
 
 ----------------------- VISTE -----------------------
 
