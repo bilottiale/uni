@@ -1,12 +1,12 @@
 # Fdb version 4
-["bibtex main"] 0 "main.aux" "main.bbl" "main" 1748034451.3881 -1
+["bibtex main"] 0 "main.aux" "main.bbl" "main" 1749757343.665 -1
   "main.aux" 0 -1 0 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1748034448.70317 "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" "out/main.pdf" "main" 1748034451.38814 0
-  "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" 1748034445.56431 49126 b512a267004d2fb13ad8b24431e4bc06 ""
+["pdflatex"] 1749757341.53604 "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" "out/main.pdf" "main" 1749757343.66504 0
+  "/Users/alessandrobilotti/Desktop/uni/Secondo Anno/Secondo_Semestre/Basi_dati/TU Delft Assignment Template/main.tex" 1749757341.11125 50085 0b2bd729a6c69b28ad26086b7ef09c66 ""
   "/Users/alessandrobilotti/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk" 1748033912.76576 20008 64eebfa75ec112b70ef6aa7feee721ef ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025basic/texmf-dist/fonts/enc/dvips/roboto/rbto_a4rth4.enc" 1576101225 3925 8837b773fb3216e5c7b021d1ecb65a28 ""
@@ -205,6 +205,7 @@
   "/usr/local/texlive/2025basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1748034442 336617 d92366dbbee61ed475da0774dd03a93f ""
   "/usr/local/texlive/2025basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1748033798 2896538 1609ae31c87347448903f12294027aac ""
   "/usr/local/texlive/2025basic/texmf.cnf" 1741448314 628 81d1ada0f601fb1ffa62f1323192d946 ""
+  "images/DBMS.png" 1749656121.24292 603235 4c7b1d5af6db9b1903f85262a49f4303 ""
   "images/Logo_C_Positivo_Colore.png" 1712302858 68523 900ce901d0e3d43324eba00435a6810d ""
   "images/amministratore.drawio.png" 1745426580.87443 61430 6e450c03cdda9df09347606152311758 ""
   "images/cliente.drawio.png" 1745426497.81131 33030 683a9766fd7c3ca6d9db8d55b86e25f3 ""
@@ -216,10 +217,10 @@
   "images/rivisto_produttore.drawio.png" 1747252396.43407 243868 2020e40edc14113cebe8ab78e3aebccd ""
   "images/rivisto_utente.drawio.png" 1747252427.21457 248144 5671101d2ecf24f6f0386de581d5861e ""
   "main.bbl" 1748034123.70518 164 4fa65d035ea67148b91c9d74275cec81 "bibtex main"
-  "main.tex" 1748034445.56431 49126 b512a267004d2fb13ad8b24431e4bc06 ""
-  "out/main.aux" 1748034451.17492 7955 d73ab5cefd42f5fccb01f14097aa7104 "pdflatex"
-  "out/main.out" 1748034451.17677 7419 3dc0a5ef1f2918fb3e3c40e767332529 "pdflatex"
-  "out/main.toc" 1748034451.17851 3268 22755cecd8cdfb923e4a46db57d6ee80 "pdflatex"
+  "main.tex" 1749757341.11125 50085 0b2bd729a6c69b28ad26086b7ef09c66 ""
+  "out/main.aux" 1749757343.54715 8206 39a4d73d8668a33453093f7457ed6ba8 "pdflatex"
+  "out/main.out" 1749757343.54837 7566 d8699eb28f4cc1d04661a4c6a0786b50 "pdflatex"
+  "out/main.toc" 1749757343.54865 3345 46c2960e57759596e9da20262ab3deb9 "pdflatex"
   "titlepage.tex" 1745426326.09788 2965 7a6972d14ea8ad6dd2fe770f7fcd7195 ""
   (generated)
   "out/main.aux"

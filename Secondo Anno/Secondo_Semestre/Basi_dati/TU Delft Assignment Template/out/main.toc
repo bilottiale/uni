@@ -31,4 +31,5 @@
 \contentsline {subsubsection}{\numberline {4.3.1}Valutazioni dei costi per il dato derivato 'Numero componenti di un prodotto'}{14}{subsubsection.4.3.1}%
 \contentsline {subsubsection}{\numberline {4.3.2}Valutazioni dei costi per il dato derivato 'Prezzo' dai componenti}{14}{subsubsection.4.3.2}%
 \contentsline {subsection}{\numberline {4.4}Traduzione dello schema E-R ristrutturato in modello relazionale}{16}{subsection.4.4}%
-\contentsline {section}{References}{18}{figure.caption.25}%
+\contentsline {section}{\numberline {5}Implementazione DBMS}{18}{section.5}%
+\contentsline {section}{References}{20}{figure.caption.26}%

@@ -1,198 +1,129 @@
-TRV-CEM-2600X300X250-HS-2024
+Buongiorno, sono Bilotti Alessandro e in questo video presenterò il progetto di database realizzato per il corso di base di dati.
 
-- TRV = tipo prodotto (traversina)
-- PLA = materiale
-- 2600X300X250 = dimensioni
-- HS = high speed (MR merci, UR uso urbano)
-- 2024 = anno di produzione
+"Il progetto consiste nello sviluppo completo di un sistema relazionale per la gestione della produzione, installazione, gestione ordini e altro per GreenRail, azienda che produce traversine per le ferrovie.
 
------------------------ INSERT -----------------------
 
--- Modello
-INSERT INTO public.modello
-(nome, carico_assi, v_max, tipo_cem, peso, lunghezza, larghezza, altezza)
-VALUES
-('GR 260',    25, 250, 'C50/60', 390, 2600, 320, 266),
-('GR 240',    25, 250, 'C50/60', 340, 2400, 320, 266),
-('GR 230',    25, 250, 'C50/60', 270, 2300, 320, 225),
-('GR 190',    15, 250, 'C50/60', 240, 1900, 320, 224),
-('GR B 70',   25, 250, 'C50/60', 280, 2600, 317, 253),
-('GR B 70CH', 25, 250, 'C50/60', 280, 2600, 317, 253);
+CLIENTI E ORDINI:
+cliente: contiene le informazioni identificative dei clienti, pubblici o privati (tipo_cliente è un ENUM). La chiave primaria è composta da rag_soc e id per garantire univocità e storicizzazione.
 
-SELECT * FROM modello;
+ordine: collega i clienti con gli ordini. Ogni ordine ha una quantità, un prezzo e uno stato definito da un ENUM (stato_ordine: es. "ordinato", "in produzione", "installato", ecc.).
 
--- Cliente
-INSERT INTO public.cliente (id, tipo, rag_soc, cod_fis, email, telefono) VALUES
-(1, 'pubblico', 'Trenitalia S.p.A.', 'TRNITL1234567890', 'info@trenitalia.it', '0647891234'),
-(2, 'privato', 'Logistica Verde SRL', 'LGVSRL9876543210', 'info@logverde.it', '0591234567');
+id_amministratore: indica quale amministratore ha gestito l’ordine.
 
-SELECT * FROM cliente;
+[comment]: <> (separare ordini dai clienti permette di avere uno storico degli ordini associati a più amministratori (svolgono funzione di controllo))
 
--- Amministratore
-INSERT INTO public.amministratore (id_amministratore, nome, cognome, email, telefono) VALUES
-('amm01', 'Laura', 'Rossi', 'laura.rossi@greenrail.com', '3281122334'),
-('amm02', 'Marco', 'Verdi', 'marco.verdi@greenrail.com', '3299988776');
+PRODUZIONE E CERTIFICAZIONE
+modello: contiene le specifiche tecniche di ogni modello di prodotto, come dimensioni, carico assi e tipo di cemento.
 
-SELECT * FROM amministratore;
+prodotto: istanze fisiche dei modelli. Ogni prodotto ha un sku generato automaticamente da un trigger.
 
--- Sede
-INSERT INTO public.sede (paese, via, civico, "CAP", n_dipendenti) VALUES
-('Italia', 'Via Milano', '10', 20100, 5),
-('Italia', 'Via Roma', '22A', 40100, 3);
+produzione: rappresenta la registrazione della produzione effettuata da un dipendente su un determinato prodotto.
 
-SELECT * FROM sede;
+certificazione: ogni prodotto può avere un certificato rilasciato da un ente certificante, con data di rilascio e scadenza.
 
--- Team
-INSERT INTO public.team (id, nome, id_amministratore) VALUES
-(1, 'Squadra 1', 'amm01'),
-(2, 'Squadra 2', 'amm02');
+[comment]: <> (questa struttura consente di separare la progettazione (del modello singolo), dalla produzione reale (prodotto generico))
 
-SELECT * FROM team;
+INSTALLZIONE E TRATTE
+tratta: definisce un segmento geografico (inizio/fine) di linea ferroviaria, con il tipo (tipo_tratta: urbana o merci).
 
--- Dipendente
-INSERT INTO public.dipendente (
-  codice_fiscale, nome, cognome, email, telefono, ruolo, id_team,
-  sede_paese, sede_via, sede_civico, "sede_CAP"
-) VALUES
-('RSSMRA90A01F205X', 'Mario', 'Rossi', 'mario.rossi@greenrail.com', '3331234567', 'installatore', 1, 'Italia', 'Via Milano', '10', 20100),
-('BNCLRA88B55F205X', 'Lara', 'Bianchi', 'lara.bianchi@greenrail.com', '3347654321', 'produttore', 2, 'Italia', 'Via Roma', '22A', 40100);
+installazione: collega un prodotto installato a una tratta, indicando il dipendente che l’ha eseguita e la data.
 
-SELECT * FROM dipendente
+[comment]: <> (modellare in modo esplicito le tratte e le installazioni permette la tracciabilità geografica)
 
--- Prodotto
-INSERT INTO public.prodotto (modello_id, anno_prod, cf_dipendente) VALUES
-(1, 2023, 'BNCLRA88B55F205X'),
-(2, 2023, 'BNCLRA88B55F205X'),
-(3, 2024, 'BNCLRA88B55F205X');
+COMPONENTI E MATERIALI
+componente: componenti fisici usati per comporre un modello (es. ruote, assi, blocchi).
 
-SELECT * FROM prodotto;
+materiale: materie prime fornite da un fornitore.
 
------------------------ TRIGGER -----------------------
+componente_materiale: relazione molti-a-molti che indica quali materiali compongono un dato componente.
 
--- Generazione SKU
--- Crea la funzione di trigger
-CREATE OR REPLACE FUNCTION genera_sku()
-RETURNS TRIGGER AS $$
-BEGIN
-  NEW.sku := 'TRV-' || NEW.modello_id::text || '-' || NEW.anno_prod::text;
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
+composizione: dice quali componenti e in che quantità compongono un modello.
 
--- Crea il trigger collegato alla tabella prodotto
-DROP TRIGGER IF EXISTS trg_genera_sku ON prodotto;
+[comment]: <> (separando componenti dai materiali possiamo gestire sia il costo che la tracciabilità delle singole risorse)
 
-CREATE TRIGGER trg_genera_sku
-BEFORE INSERT ON prodotto
-FOR EACH ROW
-EXECUTE FUNCTION genera_sku();
+STRUTTURA AZIENDALE
+dipendente: identifica ogni lavoratore, con ruolo (es. "installatore", "produttore") e sede.
 
--- Check qty > 0
--- Crea la funzione di trigger
-CREATE OR REPLACE FUNCTION check_quantita_composizione()
-RETURNS TRIGGER AS $$
-BEGIN
-  IF NEW."quantità" <= 0 THEN
-    RAISE EXCEPTION 'La quantità deve essere maggiore di zero';
-  END IF;
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
+sede: ogni dipendente è associato a una sede, utile anche per aggiornare il numero di dipendenti automaticamente tramite trigger.
 
--- Crea il trigger collegato
-DROP TRIGGER IF EXISTS trg_check_quantita_composizione ON composizione;
+team: organizzazione in gruppi di lavoro, ciascuno sotto un amministratore.
 
-CREATE TRIGGER trg_check_quantita_composizione
-BEFORE INSERT OR UPDATE ON composizione
-FOR EACH ROW
-EXECUTE FUNCTION check_quantita_composizione();
+amministratore: utenti che possono gestire ordini, report e supervisione.
 
--- Aggiorna n dipendenti
--- Crea la funzione di trigger
-CREATE OR REPLACE FUNCTION aggiorna_n_dipendenti()
-RETURNS TRIGGER AS $$
-BEGIN
-  UPDATE sede
-  SET n_dipendenti = COALESCE(n_dipendenti, 0) + 1
-  WHERE paese = NEW.sede_paese
-    AND via = NEW.sede_via
-    AND civico = NEW.sede_civico
-    AND "CAP" = NEW."sede_CAP"::integer;
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
+[comment]: <> (pre tracciare i vari dipendenti, che, in team, lavorano sui prodotti)
 
--- Cre il trigger collegato
-DROP TRIGGER IF EXISTS trg_aggiorna_dipendenti ON dipendente;
+Ora vediamo come implementare il tutto tramite SQL
 
-CREATE TRIGGER trg_aggiorna_dipendenti
-AFTER INSERT ON dipendente
-FOR EACH ROW
-EXECUTE FUNCTION aggiorna_n_dipendenti();
 
------------------------ VISTE -----------------------
+------------------------- VISTE ------------------------------
+Le viste sono “finestre virtuali” sul database: sono query salvate che ci permettono
+di accedere a dati "complessi" in modo semplice e strutturato, come se fossero tabelle.
+Ci semplificano le interrogazioni.
 
--- Prodotti dettagliati
-CREATE OR REPLACE VIEW vista_prodotti_dettagliati AS
-SELECT
-  p.id AS prodotto_id,
-  p.sku,
-  p.anno_prod,
-  m.nome AS nome_modello,
-  m.lunghezza,
-  m.larghezza,
-  m.altezza,
-  d.nome AS nome_dipendente,
-  d.cognome AS cognome_dipendente
-FROM prodotto p
+vista_prodotti_dettagliati: mostra informazioni unendo le tabelle prodotto + modello + dipendente
+
+vista_ordini_clienti: Unisce ordine + cliente + amministratore
+
+vista_produzione_dipendente: unisce produzione e dati del dipendente
+
+vista_materiali_per_componente: per la tracciabilità materiali
+
+vista_installazioni_per_tratta: collega tratte e installazioni
+
+
+
+
+
+Query:
+SELECT 
+    p.id AS prodotto_id,
+    m.nome AS modello,
+    c.nome_comp AS componente,
+    comp."quantità"
+FROM 
+    prodotto p
 JOIN modello m ON p.modello_id = m.id
-LEFT JOIN dipendente d ON p.cf_dipendente = d.codice_fiscale;
+JOIN composizione comp ON p.id = comp.prodotto_id
+JOIN componente c ON comp.nome_comp = c.nome_comp;
 
-SELECT * FROM vista_prodotti_dettagliati;
+- JOIN su 3 tabelle
 
--- Ordini clienti
-CREATE OR REPLACE VIEW vista_ordini_clienti AS
-SELECT
-  o.id AS id_ordine,
-  c.rag_soc AS cliente,
-  o."quantità",
-  o.prezzo,
-  o.stato,
-  a.nome AS amministratore,
-  a.cognome AS cognome_amministratore
-FROM ordine o
+--------------------------------------------------------
+
+SELECT 
+    o.id AS ordine_id,
+    o.stato,
+    c.rag_soc,
+    c.tipo,
+    o."quantità",
+    o.prezzo
+FROM 
+    ordine o
 JOIN cliente c ON o.cliente = c.rag_soc
-LEFT JOIN amministratore a ON o.id_amministratore = a.id_amministratore;
+WHERE 
+    c.tipo = 'pubblico';
 
-SELECT * FROM vista_ordini_clienti;
+- Tipo ENUM
+- Filtro condizionale
 
--- Materiali per componente
-CREATE OR REPLACE VIEW vista_materiali_per_componente AS
-SELECT
-  cm.nome_comp AS componente,
-  cm.nome_mat AS materiale,
-  cm."quantità",
-  m.prezzo,
-  f.nome AS fornitore
-FROM componente_materiale cm
-JOIN materiale m ON cm.nome_mat = m.nome
-JOIN fornitore f ON m.fornitore = f.id;
+----------------------------------------------------------
 
-SELECT * FROM vista_materiali_per_componente;
+SELECT 
+    cm.nome_mat AS materiale,
+    SUM(comp."quantità" * cm."quantità") AS totale_materiale
+FROM 
+    composizione comp
+JOIN componente_materiale cm ON comp.nome_comp = cm.nome_comp
+WHERE 
+    comp.prodotto_id = 1
+GROUP BY 
+    cm.nome_mat;
 
--- Installazioni per tratta
-CREATE OR REPLACE VIEW vista_installazioni_per_tratta AS
-SELECT
-  i.prodotto_id,
-  t.inizio_tratta,
-  t.fine_tratta,
-  i.data_installazione,
-  d.nome AS installatore,
-  d.cognome AS cognome_installatore
-FROM installazione i
-JOIN tratta t ON i.inizio_tratta = t.inizio_tratta AND i.fine_tratta = t.fine_tratta
-LEFT JOIN dipendente d ON i.cf_dipendente = d.codice_fiscale;
+- Usa JOIN con moltiplicazione tra quantità di componenti e materiale per ottenere fabbisogno totale.
+- Uso di GROUP BY e SUM
 
-SELECT * FROM vista_installazioni_per_tratta;
+TRIGGER QUANTITà (prodotto) -> prova quantità negativa
 
-END;
+trigger genera sku
+
+

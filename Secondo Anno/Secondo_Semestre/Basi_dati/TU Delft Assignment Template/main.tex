@@ -593,6 +593,36 @@ Carico mensile $\approx 30032\text{ accessi/mese}$.
 \textbf{Composizione}(\underline{\text{Modello, Componente}}, \text{Numero componenti})\\
 \indent\indent \textbf{FK}: Fornitore \textbf{REFERENCES} Fornitore\\
 \indent\indent \textbf{FK}: Materiale \textbf{REFERENCES} Materiale\\
+
+
+\section{Implementazione DBMS}
+Durante la fase di implementazione sono state effettuate delle modifiche rispetto allo schema E-R ristrutturato per ottimizzare la gestione dei dati e meglio rappresentare il
+sistema.
+
+Le modifiche principali sono state:
+\begin{enumerate}
+    \item Rimosse le tabelle:
+    \begin{enumerate}
+        \item \textbf{Produttore}: dipendente generalizza;
+        \item \textbf{Installtore}: dipendente generalizza;
+    \end{enumerate}
+
+    \item Aggiunte le tabelle:
+    \begin{enumerate}
+        \item \textbf{componente\_materiale}: per rappresentare la relazione tra i componenti e i materiali utilizzati nella loro produzione;
+    \end{enumerate}
+\end{enumerate}
+
+\noindent Sono anche state aggiornate le proprietà di diverse tabelle, come si può osservare nel nuovo schema DBMS.
+
+\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=23cm, angle=-90]{images/DBMS.png}
+    \caption{Schema DBMS}
+\end{figure}
+
+
 % \section{Methodology}
 % This section has a subsection.
 % \subsection{Subsection}
