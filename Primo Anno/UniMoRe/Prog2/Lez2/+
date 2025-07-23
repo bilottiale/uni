@@ -1,0 +1,5 @@
+helloworld: helloworld.c
+	$(CC) $(CFLAGS) -o $@ $^
+	CC=gcc
+	CFLAG=-Wall -g
+	helloworld.c: helloworld.h
