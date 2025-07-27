@@ -40,6 +40,11 @@ run-pointers: $(POINTERS_EXE)
 run-pointers-no-color: $(POINTERS_EXE)
 	NO_COLOR=1 ./$(POINTERS_EXE)
 
+# Save output to file
+save-pointers-output: $(POINTERS_EXE)
+	NO_COLOR=1 ./$(POINTERS_EXE) > guida_puntatori.txt
+	@echo "Output salvato in guida_puntatori.txt"
+
 # Run func program
 run-func: $(FUNC_EXE)
 	./$(FUNC_EXE)
@@ -75,6 +80,7 @@ help:
 	@echo "  release              - Build with optimization flags"
 	@echo "  run-pointers         - Build and run pointers program"
 	@echo "  run-pointers-no-color- Build and run pointers program without colors"
+	@echo "  save-pointers-output - Save pointers output to file"
 	@echo "  run-func             - Build and run func program"
 	@echo "  run                  - Build and run all programs"
 	@echo "  clean                - Remove built executables and debug symbols"
@@ -83,4 +89,4 @@ help:
 	@echo "  help                 - Show this help message"
 
 # Declare phony targets
-.PHONY: all debug release run-pointers run-pointers-no-color run-func run clean rebuild valgrind-pointers help
+.PHONY: all debug release run-pointers run-pointers-no-color save-pointers-output run-func run clean rebuild valgrind-pointers help

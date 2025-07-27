@@ -1,0 +1,293 @@
+[1m[4m[37m=== GUIDA COMPLETA AI PUNTATORI IN C ===[0m
+[1m[37mUna dimostrazione esaustiva di tutti i concetti sui puntatori
+[0m[1m[34m
+=== Dimostrazione scambio manuale con puntatori ===[0m
+[33mValori iniziali: [32mprimo=10, secondo=20
+[0m[33mDopo scambio manuale: [32mprimo=20, secondo=10
+[0m[1m[31m
+=== Dimostrazione scambio inefficace (pass-by-value) ===[0m
+[33mPrima della chiamata: [32mx=100, y=200
+[0m[36m  Inside scambio_inefficace - before swap: x=100, y=200
+[0m[36m  Inside scambio_inefficace - after swap: x=200, y=100
+[0m[33mDopo la chiamata: [32mx=100, y=200
+[0m[31m[1mNota: i valori non sono cambiati!
+[0m[1m[32m
+=== Dimostrazione scambio efficace (con puntatori) ===[0m
+[33mPrima della chiamata: [32mx=300, y=400
+[0m[36m  Inside scambio_con_puntatori - before swap: *x=300, *y=400
+[0m[36m  Inside scambio_con_puntatori - after swap: *x=400, *y=300
+[0m[33mDopo la chiamata: [32mx=400, y=300
+[0m[32m[1mNota: i valori sono stati scambiati!
+[0m[1m[35m
+=== Dimostrazione aritmetica dei puntatori ===[0m
+[33mArray: [0m[32m5 [0m[32m15 [0m[32m25 [0m[32m35 [0m[32m45 [0m
+[33mAccesso tramite puntatori:
+[0m[36m  *(ptr + 0) = [32m5 [34m(indirizzo: 0x16fb0e610)
+[0m[36m  *(ptr + 1) = [32m15 [34m(indirizzo: 0x16fb0e614)
+[0m[36m  *(ptr + 2) = [32m25 [34m(indirizzo: 0x16fb0e618)
+[0m[36m  *(ptr + 3) = [32m35 [34m(indirizzo: 0x16fb0e61c)
+[0m[36m  *(ptr + 4) = [32m45 [34m(indirizzo: 0x16fb0e620)
+[0m[33m
+Operazioni di aritmetica dei puntatori:
+[0m[36m  ptr = 0x16fb0e610 (primo elemento)
+[0m[36m  ptr + 1 = 0x16fb0e614 (secondo elemento)
+[0m[36m  ptr + 4 = 0x16fb0e620 (ultimo elemento)
+[0m[36m  Differenza in byte: 4
+[0m[1m[36m
+=== Tipi di puntatori e loro dimensioni ===[0m
+[33mVariabili e loro puntatori:
+[0m[36m  char c = 'A' (indirizzo: 0x16fb0e62f, dimensione: 1 bytes)
+[0m[36m  int i = 42 (indirizzo: 0x16fb0e628, dimensione: 4 bytes)
+[0m[36m  float f = 3.14 (indirizzo: 0x16fb0e624, dimensione: 4 bytes)
+[0m[36m  double d = 2.718 (indirizzo: 0x16fb0e618, dimensione: 8 bytes)
+[0m[36m  long l = 1000000 (indirizzo: 0x16fb0e610, dimensione: 8 bytes)
+[0m[33m
+Dimensioni dei puntatori:
+[0m[32m  sizeof(char*) = 8 bytes
+[0m[32m  sizeof(int*) = 8 bytes
+[0m[32m  sizeof(float*) = 8 bytes
+[0m[32m  sizeof(double*) = 8 bytes
+[0m[32m  sizeof(long*) = 8 bytes
+[0m[31m[1m  Nota: Tutti i puntatori hanno la stessa dimensione!
+[0m[1m[36m
+=== Relazione tra array e puntatori ===[0m
+[33mArray: {10, 20, 30, 40, 50}
+[0m[33mEquivalenze importanti:
+[0m[36m  array == &array[0]: VERO
+[0m[36m  array == ptr: VERO
+[0m[33m
+Diversi modi per accedere agli elementi:
+[0m[32m  Elemento 0:
+[0m[36m    array[0] = 10
+[0m[36m    *(array + 0) = 10
+[0m[36m    ptr[0] = 10
+[0m[36m    *(ptr + 0) = 10
+[0m[32m  Elemento 1:
+[0m[36m    array[1] = 20
+[0m[36m    *(array + 1) = 20
+[0m[36m    ptr[1] = 20
+[0m[36m    *(ptr + 1) = 20
+[0m[32m  Elemento 2:
+[0m[36m    array[2] = 30
+[0m[36m    *(array + 2) = 30
+[0m[36m    ptr[2] = 30
+[0m[36m    *(ptr + 2) = 30
+[0m[32m  Elemento 3:
+[0m[36m    array[3] = 40
+[0m[36m    *(array + 3) = 40
+[0m[36m    ptr[3] = 40
+[0m[36m    *(ptr + 3) = 40
+[0m[32m  Elemento 4:
+[0m[36m    array[4] = 50
+[0m[36m    *(array + 4) = 50
+[0m[36m    ptr[4] = 50
+[0m[36m    *(ptr + 4) = 50
+[0m[33m
+Differenza importante:
+[0m[31m  sizeof(array) = 20 (dimensione totale)
+[0m[31m  sizeof(ptr) = 8 (dimensione del puntatore)
+[0m[1m[33m
+=== Puntatori void (puntatori generici) ===[0m
+[36mPuntatore void che punta a int: 0x16fb0e62c
+[0m[32mValore (cast a int*): 100
+[0m[36mPuntatore void che punta a float: 0x16fb0e628
+[0m[32mValore (cast a float*): 25.5
+[0m[36mPuntatore void che punta a char: 0x16fb0e627
+[0m[32mValore (cast a char*): 'X'
+[0m[31m[1mNota: I puntatori void devono essere castati prima dell'uso!
+[0m[1m[32m
+=== Puntatori doppi (puntatori a puntatori) ===[0m
+[33mGerarchia dei puntatori:
+[0m[36m  valore = 777 (indirizzo: 0x16fb0e62c)
+[0m[36m  ptr = 0x16fb0e62c (punta a valore, indirizzo di ptr: 0x16fb0e620)
+[0m[36m  ptr_ptr = 0x16fb0e620 (punta a ptr, indirizzo di ptr_ptr: 0x16fb0e618)
+[0m[33m
+Accesso ai valori:
+[0m[32m  valore = 777
+[0m[32m  *ptr = 777
+[0m[32m  **ptr_ptr = 777
+[0m[33m
+Dopo modifica tramite **ptr_ptr = 999:
+[0m[32m  valore = 999
+[0m[32m  *ptr = 999
+[0m[32m  **ptr_ptr = 999
+[0m[1m[34m
+=== Modifica dei puntatori stessi ===[0m
+[33mSituazione iniziale:
+[0m[32m  a = 10, b = 20
+[0m[32m  ptr punta a: 10 (indirizzo: 0x16fb0e62c)
+[0m[33m
+Chiamata modifica_puntatore(&ptr, &b):
+[0m[36m  Prima: *ptr punta a 0x16fb0e62c
+[0m[36m  Dopo: *ptr punta a 0x16fb0e628
+[0m[33mDopo la modifica:
+[0m[32m  ptr ora punta a: 20 (indirizzo: 0x16fb0e628)
+[0m[1m[33m
+=== Puntatori const e puntatori a const ===[0m
+[33m1. Puntatore a const (const int *ptr):
+[0m[32m   Valore: 10
+[0m[32m   Dopo cambio puntatore: 20
+[0m[33m
+2. Puntatore const (int * const ptr):
+[0m[32m   Valore: 10
+[0m[32m   Dopo modifica valore: 25
+[0m[33m
+3. Puntatore const a const (const int * const ptr):
+[0m[32m   Valore: 25
+[0m[31m[1m
+Riepilogo:
+[0m[36m  const int *ptr     - puntatore a costante
+[0m[36m  int * const ptr    - puntatore costante
+[0m[36m  const int * const  - puntatore costante a costante
+[0m[1m[31m
+=== Allocazione dinamica della memoria ===[0m
+[33mAllocato un int:
+[0m[32m  Valore: 42, Indirizzo: 0x11cf04120
+[0m[33m
+Array dinamico allocato:
+[0m[32m  array_dinamico[0] = 10 (indirizzo: 0x11cf04130)
+[0m[32m  array_dinamico[1] = 20 (indirizzo: 0x11cf04134)
+[0m[32m  array_dinamico[2] = 30 (indirizzo: 0x11cf04138)
+[0m[32m  array_dinamico[3] = 40 (indirizzo: 0x11cf0413c)
+[0m[32m  array_dinamico[4] = 50 (indirizzo: 0x11cf04140)
+[0m[33m
+Array dopo riallocazione (realloc):
+[0m[32m  array_dinamico[0] = 10
+[0m[32m  array_dinamico[1] = 20
+[0m[32m  array_dinamico[2] = 30
+[0m[32m  array_dinamico[3] = 40
+[0m[32m  array_dinamico[4] = 50
+[0m[32m  array_dinamico[5] = 60
+[0m[32m  array_dinamico[6] = 70
+[0m[32m  array_dinamico[7] = 80
+[0m[33m
+Array allocato con calloc (inizializzato a zero):
+[0m[32m  array_zero[0] = 0
+[0m[32m  array_zero[1] = 0
+[0m[32m  array_zero[2] = 0
+[0m[31m[1m
+Memoria liberata con free()!
+[0m[1m[35m
+=== Puntatori a funzioni ===[0m
+[33mOperazioni matematiche tramite puntatori a funzione:
+[0m[32m  somma(5, 3) = 8
+[0m[32m  sottrazione(5, 3) = 2
+[0m[32m  moltiplicazione(5, 3) = 15
+[0m[33m
+Array di puntatori a funzione:
+[0m[32m  somma(10, 4) = 14
+[0m[32m  sottrazione(10, 4) = 6
+[0m[32m  moltiplicazione(10, 4) = 40
+[0m[1m[34m
+=== Strutture e puntatori ===[0m
+[33mAccesso ai membri di una struttura:
+[0m[32m  Accesso diretto: studente1.id = 1
+[0m[32m  Accesso tramite puntatore: (*ptr_studente).id = 1
+[0m[32m  Accesso con operatore freccia: ptr_studente->id = 1
+[0m[33m
+Modifica tramite puntatore:
+[0m[32m  Dopo modifica: ID=2, Nome=Luigi Verdi, Voto=9.0
+[0m[33m
+Struttura allocata dinamicamente:
+[0m[32m  ID=3, Nome=Anna Bianchi, Voto=7.5
+[0m[33m
+Array di strutture:
+[0m[32m  Studente 1: Marco (voto: 8.0)
+[0m[32m  Studente 2: Sara (voto: 9.5)
+[0m[32m  Studente 3: Luca (voto: 7.0)
+[0m[1m[35m
+=== Liste collegate (concetto base) ===[0m
+[33mLista collegata creata:
+[0m[36mLista: 10 -> 20 -> 30 -> NULL
+[0m[33mIndirizzi dei nodi:
+[0m[32m  nodo1: 0x11cf04120 (dato: 10, punta a: 0x11cf04130)
+[0m[32m  nodo2: 0x11cf04130 (dato: 20, punta a: 0x11cf04140)
+[0m[32m  nodo3: 0x11cf04140 (dato: 30, punta a: 0x0)
+[0m[33mMemoria della lista liberata
+[0m[1m[36m
+=== Stringhe e puntatori ===[0m
+[33mDichiarazioni di stringhe:
+[0m[32m  char str[] = "Hello" (array modificabile)
+[0m[32m  char *str = "Hello" (puntatore a letterale)
+[0m[33m
+Contenuto delle stringhe:
+[0m[36m  stringa1: Hello World (indirizzo: 0x16fb0e618)
+[0m[36m  stringa2: Hello World (indirizzo: 0x1002f4096)
+[0m[36m  stringa3: Ciao Mondo (indirizzo: 0x16fb0e5e6)
+[0m[33m
+Dopo modifica stringa1[0] = 'h':
+[0m[36m  stringa1: hello World
+[0m[33m
+Attraversamento carattere per carattere:
+[0m[32m  [0]: 'h' (ASCII: 104)
+[0m[32m  [1]: 'e' (ASCII: 101)
+[0m[32m  [2]: 'l' (ASCII: 108)
+[0m[32m  [3]: 'l' (ASCII: 108)
+[0m[32m  [4]: 'o' (ASCII: 111)
+[0m[32m  [5]: ' ' (ASCII: 32)
+[0m[32m  [6]: 'W' (ASCII: 87)
+[0m[32m  [7]: 'o' (ASCII: 111)
+[0m[32m  [8]: 'r' (ASCII: 114)
+[0m[32m  [9]: 'l' (ASCII: 108)
+[0m[32m  [10]: 'd' (ASCII: 100)
+[0m[33m
+Stringa allocata dinamicamente: Dinamica
+[0m[1m[32m
+=== Array multidimensionali e puntatori ===[0m
+[33mMatrice 3x4:
+[0m[36m  Riga 0: [32m 1 [32m 2 [32m 3 [32m 4 
+[0m[36m  Riga 1: [32m 5 [32m 6 [32m 7 [32m 8 
+[0m[36m  Riga 2: [32m 9 [32m10 [32m11 [32m12 
+[0m[33m
+Diversi modi di accesso:
+[0m[32m  matrice[1][2] = 7
+[0m[32m  *(*(matrice + 1) + 2) = 7
+[0m[32m  (*(matrice + 1))[2] = 7
+[0m[33m
+Accesso tramite puntatore a riga:
+[0m[32m  ptr_riga[0] = 5
+[0m[32m  ptr_riga[1] = 6
+[0m[32m  ptr_riga[2] = 7
+[0m[32m  ptr_riga[3] = 8
+[0m[33m
+Array di puntatori a stringhe:
+[0m[32m  nomi[0] = Alice (lunghezza: 5)
+[0m[32m  nomi[1] = Bob (lunghezza: 3)
+[0m[32m  nomi[2] = Charlie (lunghezza: 7)
+[0m[32m  nomi[3] = Diana (lunghezza: 5)
+[0m[1m[31m
+=== Errori comuni con i puntatori ===[0m
+[33m1. Puntatore non inizializzato:
+[0m[31m   int *ptr; // PERICOLOSO: contiene garbage
+[0m[32m   Soluzione: int *ptr = NULL;
+[0m[33m
+2. Dereferenziazione di puntatore NULL:
+[0m[31m   if (ptr != NULL) *ptr = 10; // SEMPRE controllare!
+[0m[32m   Puntatore NULL - operazione sicura evitata
+[0m[33m
+3. Memory leak (perdita di memoria):
+[0m[32m   Allocato: 100
+[0m[32m   Memoria liberata correttamente
+[0m[33m
+4. Uso dopo free (dangling pointer):
+[0m[31m   free(ptr); *ptr = 20; // ERRORE!
+[0m[32m   Soluzione: ptr = NULL; dopo free()
+[0m[33m
+5. Buffer overflow:
+[0m[32m   Accesso sicuro: ptr[0] = 1, ptr[1] = 2, ptr[2] = 3
+[0m[31m   Accesso non sicuro: ptr[10] potrebbe causare crash!
+[0m[1m[4m[37m
+=== FINE GUIDA COMPLETA ===[0m
+[1m[32mOra conosci TUTTO sui puntatori in C! 🎉
+[0m[1m[36mHai imparato:
+[0m[33m• Puntatori base e aritmetica
+[0m[33m• Puntatori a diversi tipi di dati
+[0m[33m• Puntatori void e puntatori doppi
+[0m[33m• Puntatori const e a const
+[0m[33m• Allocazione dinamica della memoria
+[0m[33m• Puntatori a funzioni
+[0m[33m• Strutture e liste collegate
+[0m[33m• Stringhe e array multidimensionali
+[0m[33m• Come evitare errori comuni
+[0m[1m[37mSei pronto per progetti avanzati in C! 💪
+[0m
