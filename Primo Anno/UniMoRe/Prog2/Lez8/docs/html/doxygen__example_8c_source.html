@@ -1,0 +1,474 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Doxygen Example - Prog2:  File sorgente doxygen_example.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Doxygen Example - Prog2<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Esempio completo di documentazione C con Doxygen</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('doxygen__example_8c_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Caricamento in corso...</div>
+<div class="SRStatus" id="Searching">Ricerca in corso...</div>
+<div class="SRStatus" id="NoMatches">Nessun risultato</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">doxygen_example.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="doxygen__example_8c.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// ANSI Color codes per output colorato</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">   19</a></span><span class="preprocessor">#define RESET   &quot;\033[0m&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="doxygen__example_8c.html#a8d23feea868a983c8c2b661e1e16972f">   20</a></span><span class="preprocessor">#define RED     &quot;\033[31m&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="doxygen__example_8c.html#acfbc006ea433ad708fdee3e82996e721">   21</a></span><span class="preprocessor">#define GREEN   &quot;\033[32m&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="doxygen__example_8c.html#abf681265909adf3d3e8116c93c0ba179">   22</a></span><span class="preprocessor">#define YELLOW  &quot;\033[33m&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="doxygen__example_8c.html#a79d10e672abb49ad63eeaa8aaef57c38">   23</a></span><span class="preprocessor">#define BLUE    &quot;\033[34m&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="doxygen__example_8c.html#a6f699060902f800f12aaae150f3a708e">   24</a></span><span class="preprocessor">#define MAGENTA &quot;\033[35m&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="doxygen__example_8c.html#ad243f93c16bc4c1d3e0a13b84421d760">   25</a></span><span class="preprocessor">#define CYAN    &quot;\033[36m&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="doxygen__example_8c.html#a87b537f5fa5c109d3c05c13d6b18f382">   26</a></span><span class="preprocessor">#define WHITE   &quot;\033[37m&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="doxygen__example_8c.html#a26cdbb1a00213c810caccf21cd33a631">   27</a></span><span class="preprocessor">#define BOLD    &quot;\033[1m&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span></div>
+<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="group__MathFunctions.html#gacd135a31658df6e10dd1070e21c35810">   56</a></span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code hl_function" href="group__MathFunctions.html#gacd135a31658df6e10dd1070e21c35810">factorial</a>(<span class="keywordtype">int</span> n) {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">if</span> (n &lt;= 0) {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> result = 1;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt;= n; i++) {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        result *= (<span class="keywordtype">unsigned</span> long)i;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
+</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span></div>
+<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="group__MathFunctions.html#ga9ac738cb3ea0c6b069a6a38016699491">   92</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="group__MathFunctions.html#ga9ac738cb3ea0c6b069a6a38016699491">power</a>(<span class="keywordtype">double</span> base, <span class="keywordtype">int</span> exponent) {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">if</span> (exponent == 0) {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordflow">return</span> 1.0;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    }</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">if</span> (exponent &lt; 0) {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">return</span> 1.0 / <a class="code hl_function" href="group__MathFunctions.html#ga9ac738cb3ea0c6b069a6a38016699491">power</a>(base, -exponent);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    }</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">double</span> result = 1.0;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordtype">double</span> current_power = base;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">while</span> (exponent &gt; 0) {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">if</span> (exponent % 2 == 1) {</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            result *= current_power;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        current_power *= current_power;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        exponent /= 2;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    }</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>}</div>
+</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> <span class="comment">// Fine gruppo MathFunctions</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span></div>
+<div class="foldopen" id="foldopen00130" data-start="{" data-end="};">
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="structStringInfo.html">  130</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="structStringInfo.html#a922b41ee32916ff18eef51b77d9348c3">  131</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structStringInfo.html#a922b41ee32916ff18eef51b77d9348c3">length</a>;          </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="structStringInfo.html#a648cc69b934c11ba5510d2b51b46bbf5">  132</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structStringInfo.html#a648cc69b934c11ba5510d2b51b46bbf5">word_count</a>;      </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="structStringInfo.html#a62f5de7882aa93d1642701bf2b2c7bd9">  133</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structStringInfo.html#a62f5de7882aa93d1642701bf2b2c7bd9">vowel_count</a>;     </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="structStringInfo.html#a21ed341ae23918bfaf75bf86790c3d5e">  134</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structStringInfo.html#a21ed341ae23918bfaf75bf86790c3d5e">consonant_count</a>; </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="structStringInfo.html#a3acebd20234afaab018603d139f006e0">  135</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structStringInfo.html#a3acebd20234afaab018603d139f006e0">first_char</a>;        </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="structStringInfo.html#af564ee6608b1783ce1bc4f2852a1d27a">  136</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structStringInfo.html#af564ee6608b1783ce1bc4f2852a1d27a">last_char</a>;         </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>} <a class="code hl_struct" href="structStringInfo.html">StringInfo</a>;</div>
+</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span></div>
+<div class="foldopen" id="foldopen00169" data-start="{" data-end="}">
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="group__StringFunctions.html#ga0e4de50a3311e7189f6a68be89e0db1e">  169</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="group__StringFunctions.html#ga0e4de50a3311e7189f6a68be89e0db1e">analyze_string</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <a class="code hl_struct" href="structStringInfo.html">StringInfo</a> *info) {</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keywordflow">if</span> (str == NULL || info == NULL) {</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    }</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="comment">// Inizializza la struttura</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    memset(info, 0, <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structStringInfo.html">StringInfo</a>));</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    info-&gt;<a class="code hl_variable" href="structStringInfo.html#a922b41ee32916ff18eef51b77d9348c3">length</a> = strlen(str);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="keywordflow">if</span> (info-&gt;<a class="code hl_variable" href="structStringInfo.html#a922b41ee32916ff18eef51b77d9348c3">length</a> == 0) {</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    }</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    info-&gt;<a class="code hl_variable" href="structStringInfo.html#a3acebd20234afaab018603d139f006e0">first_char</a> = str[0];</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    info-&gt;<a class="code hl_variable" href="structStringInfo.html#af564ee6608b1783ce1bc4f2852a1d27a">last_char</a> = str[info-&gt;<a class="code hl_variable" href="structStringInfo.html#a922b41ee32916ff18eef51b77d9348c3">length</a> - 1];</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keywordtype">int</span> in_word = 0;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; info-&gt;<a class="code hl_variable" href="structStringInfo.html#a922b41ee32916ff18eef51b77d9348c3">length</a>; i++) {</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="keywordtype">char</span> c = str[i];</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="comment">// Conta parole</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        <span class="keywordflow">if</span> (c != <span class="charliteral">&#39; &#39;</span> &amp;&amp; c != <span class="charliteral">&#39;\t&#39;</span> &amp;&amp; c != <span class="charliteral">&#39;\n&#39;</span>) {</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            <span class="keywordflow">if</span> (!in_word) {</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                info-&gt;<a class="code hl_variable" href="structStringInfo.html#a648cc69b934c11ba5510d2b51b46bbf5">word_count</a>++;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                in_word = 1;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            }</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            in_word = 0;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        }</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        <span class="comment">// Conta vocali e consonanti</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="keywordflow">if</span> ((c &gt;= <span class="charliteral">&#39;a&#39;</span> &amp;&amp; c &lt;= <span class="charliteral">&#39;z&#39;</span>) || (c &gt;= <span class="charliteral">&#39;A&#39;</span> &amp;&amp; c &lt;= <span class="charliteral">&#39;Z&#39;</span>)) {</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>            <span class="keywordtype">char</span> lower_c = (c &gt;= <span class="charliteral">&#39;A&#39;</span> &amp;&amp; c &lt;= <span class="charliteral">&#39;Z&#39;</span>) ? c + (<span class="charliteral">&#39;a&#39;</span> - <span class="charliteral">&#39;A&#39;</span>) : c;</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>            <span class="keywordflow">if</span> (lower_c == <span class="charliteral">&#39;a&#39;</span> || lower_c == <span class="charliteral">&#39;e&#39;</span> || lower_c == <span class="charliteral">&#39;i&#39;</span> || </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>                lower_c == <span class="charliteral">&#39;o&#39;</span> || lower_c == <span class="charliteral">&#39;u&#39;</span>) {</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>                info-&gt;<a class="code hl_variable" href="structStringInfo.html#a62f5de7882aa93d1642701bf2b2c7bd9">vowel_count</a>++;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>                info-&gt;<a class="code hl_variable" href="structStringInfo.html#a21ed341ae23918bfaf75bf86790c3d5e">consonant_count</a>++;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>            }</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        }</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    }</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    </div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>}</div>
+</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> <span class="comment">// Fine gruppo StringFunctions</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span></div>
+<div class="foldopen" id="foldopen00227" data-start="{" data-end="};">
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno"><a class="line" href="group__ArrayFunctions.html#gad9be72f666a31b4318bbc8e8a16a9472">  227</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno"><a class="line" href="group__ArrayFunctions.html#ggad9be72f666a31b4318bbc8e8a16a9472a35cb4c8640a823da9718e5cd29d211ea">  228</a></span>    <a class="code hl_enumvalue" href="group__ArrayFunctions.html#ggad9be72f666a31b4318bbc8e8a16a9472a35cb4c8640a823da9718e5cd29d211ea">ASCENDING</a>,  </div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno"><a class="line" href="group__ArrayFunctions.html#ggad9be72f666a31b4318bbc8e8a16a9472acee234b4fc0ed1e29e965d79cfe252a6">  229</a></span>    <a class="code hl_enumvalue" href="group__ArrayFunctions.html#ggad9be72f666a31b4318bbc8e8a16a9472acee234b4fc0ed1e29e965d79cfe252a6">DESCENDING</a>  </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>} <a class="code hl_enumeration" href="group__ArrayFunctions.html#gad9be72f666a31b4318bbc8e8a16a9472">SortOrder</a>;</div>
+</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span></div>
+<div class="foldopen" id="foldopen00262" data-start="{" data-end="}">
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno"><a class="line" href="group__ArrayFunctions.html#gab968f2ccfae7cbeb2a09f2525aac67b2">  262</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group__ArrayFunctions.html#gab968f2ccfae7cbeb2a09f2525aac67b2">bubble_sort</a>(<span class="keywordtype">int</span> arr[], <span class="keywordtype">size_t</span> size, <a class="code hl_enumeration" href="group__ArrayFunctions.html#gad9be72f666a31b4318bbc8e8a16a9472">SortOrder</a> order) {</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    <span class="keywordflow">if</span> (arr == NULL || size &lt;= 1) {</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    }</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; size - 1; i++) {</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        <span class="keywordtype">int</span> swapped = 0;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        </div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; size - i - 1; j++) {</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>            <span class="keywordtype">int</span> should_swap = 0;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>            </div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>            <span class="keywordflow">if</span> (order == <a class="code hl_enumvalue" href="group__ArrayFunctions.html#ggad9be72f666a31b4318bbc8e8a16a9472a35cb4c8640a823da9718e5cd29d211ea">ASCENDING</a>) {</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>                should_swap = (arr[j] &gt; arr[j + 1]);</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>                should_swap = (arr[j] &lt; arr[j + 1]);</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>            }</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>            </div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>            <span class="keywordflow">if</span> (should_swap) {</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>                <span class="comment">// Scambia gli elementi</span></div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>                <span class="keywordtype">int</span> temp = arr[j];</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>                arr[j] = arr[j + 1];</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>                arr[j + 1] = temp;</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>                swapped = 1;</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>            }</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        }</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        </div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        <span class="comment">// Se non ci sono stati scambi, l&#39;array è già ordinato</span></div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        <span class="keywordflow">if</span> (!swapped) {</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        }</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    }</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>}</div>
+</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span></div>
+<div class="foldopen" id="foldopen00320" data-start="{" data-end="}">
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno"><a class="line" href="group__ArrayFunctions.html#ga648082220e2f25845bae8800e274a1c9">  320</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="group__ArrayFunctions.html#ga648082220e2f25845bae8800e274a1c9">binary_search</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> arr[], <span class="keywordtype">size_t</span> size, <span class="keywordtype">int</span> target) {</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    <span class="keywordflow">if</span> (arr == NULL || size == 0) {</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    }</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    </div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>    <span class="keywordtype">int</span> left = 0;</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>    <span class="keywordtype">int</span> right = (int)size - 1;</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    </div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    <span class="keywordflow">while</span> (left &lt;= right) {</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        <span class="keywordtype">int</span> mid = left + (right - left) / 2;</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>        </div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        <span class="keywordflow">if</span> (arr[mid] == target) {</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>            <span class="keywordflow">return</span> mid;</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (arr[mid] &lt; target) {</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>            left = mid + 1;</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>            right = mid - 1;</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>        }</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>    }</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    </div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    <span class="keywordflow">return</span> -1; <span class="comment">// Elemento non trovato</span></div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>}</div>
+</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span> <span class="comment">// Fine gruppo ArrayFunctions</span></div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span></div>
+<div class="foldopen" id="foldopen00349" data-start="{" data-end="}">
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno"><a class="line" href="doxygen__example_8c.html#a33c3b3f64d6aafe835fabec2e028661f">  349</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="doxygen__example_8c.html#a33c3b3f64d6aafe835fabec2e028661f">print_separator</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *title) {</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#a26cdbb1a00213c810caccf21cd33a631">BOLD</a> <a class="code hl_define" href="doxygen__example_8c.html#ad243f93c16bc4c1d3e0a13b84421d760">CYAN</a> <span class="stringliteral">&quot;\n==================================================\n&quot;</span>);</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>    printf(<span class="stringliteral">&quot;  %s\n&quot;</span>, title);</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>    printf(<span class="stringliteral">&quot;==================================================&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a> <span class="stringliteral">&quot;\n\n&quot;</span>);</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>}</div>
+</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span></div>
+<div class="foldopen" id="foldopen00361" data-start="{" data-end="}">
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno"><a class="line" href="doxygen__example_8c.html#a98f1d63c81ef82ab1997a46d250b0427">  361</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="doxygen__example_8c.html#a98f1d63c81ef82ab1997a46d250b0427">demo_math_functions</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>    <a class="code hl_function" href="doxygen__example_8c.html#a33c3b3f64d6aafe835fabec2e028661f">print_separator</a>(<span class="stringliteral">&quot;DEMO: FUNZIONI MATEMATICHE&quot;</span>);</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    </div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#abf681265909adf3d3e8116c93c0ba179">YELLOW</a> <span class="stringliteral">&quot;🧮 Test delle funzioni matematiche:\n\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>    </div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    <span class="comment">// Test factorial</span></div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#acfbc006ea433ad708fdee3e82996e721">GREEN</a> <span class="stringliteral">&quot;Fattoriali:\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt;= 10; i++) {</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> fact = <a class="code hl_function" href="group__MathFunctions.html#gacd135a31658df6e10dd1070e21c35810">factorial</a>(i);</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>        printf(<span class="stringliteral">&quot;  %d! = %lu\n&quot;</span>, i, fact);</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    }</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>    </div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>    <span class="comment">// Test power</span></div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#acfbc006ea433ad708fdee3e82996e721">GREEN</a> <span class="stringliteral">&quot;\nPotenze:\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>    printf(<span class="stringliteral">&quot;  2^10 = %.0f\n&quot;</span>, <a class="code hl_function" href="group__MathFunctions.html#ga9ac738cb3ea0c6b069a6a38016699491">power</a>(2.0, 10));</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    printf(<span class="stringliteral">&quot;  3^4 = %.0f\n&quot;</span>, <a class="code hl_function" href="group__MathFunctions.html#ga9ac738cb3ea0c6b069a6a38016699491">power</a>(3.0, 4));</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    printf(<span class="stringliteral">&quot;  5^0 = %.0f\n&quot;</span>, <a class="code hl_function" href="group__MathFunctions.html#ga9ac738cb3ea0c6b069a6a38016699491">power</a>(5.0, 0));</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    printf(<span class="stringliteral">&quot;  2^(-3) = %.6f\n&quot;</span>, <a class="code hl_function" href="group__MathFunctions.html#ga9ac738cb3ea0c6b069a6a38016699491">power</a>(2.0, -3));</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>}</div>
+</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span></div>
+<div class="foldopen" id="foldopen00384" data-start="{" data-end="}">
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno"><a class="line" href="doxygen__example_8c.html#a56fabededf90d04d358ff4e9e35ce87b">  384</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="doxygen__example_8c.html#a56fabededf90d04d358ff4e9e35ce87b">demo_string_functions</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    <a class="code hl_function" href="doxygen__example_8c.html#a33c3b3f64d6aafe835fabec2e028661f">print_separator</a>(<span class="stringliteral">&quot;DEMO: FUNZIONI PER STRINGHE&quot;</span>);</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>    </div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#abf681265909adf3d3e8116c93c0ba179">YELLOW</a> <span class="stringliteral">&quot;📝 Test di analisi delle stringhe:\n\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>    </div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *test_strings[] = {</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>        <span class="stringliteral">&quot;Hello World&quot;</span>,</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>        <span class="stringliteral">&quot;Programmazione in C&quot;</span>,</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>        <span class="stringliteral">&quot;Doxygen documentation example&quot;</span>,</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>        <span class="stringliteral">&quot;123 Test! #Special@Characters&quot;</span>,</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>        <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>    };</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>    </div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>    <span class="keywordtype">size_t</span> num_strings = <span class="keyword">sizeof</span>(test_strings) / <span class="keyword">sizeof</span>(test_strings[0]);</div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>    </div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; num_strings; i++) {</div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>        <a class="code hl_struct" href="structStringInfo.html">StringInfo</a> info;</div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>        </div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>        printf(<a class="code hl_define" href="doxygen__example_8c.html#ad243f93c16bc4c1d3e0a13b84421d760">CYAN</a> <span class="stringliteral">&quot;Stringa: \&quot;%s\&quot;\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>, test_strings[i]);</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>        </div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="group__StringFunctions.html#ga0e4de50a3311e7189f6a68be89e0db1e">analyze_string</a>(test_strings[i], &amp;info) == 0) {</div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>            printf(<span class="stringliteral">&quot;  Lunghezza: %zu caratteri\n&quot;</span>, info.<a class="code hl_variable" href="structStringInfo.html#a922b41ee32916ff18eef51b77d9348c3">length</a>);</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>            printf(<span class="stringliteral">&quot;  Parole: %zu\n&quot;</span>, info.<a class="code hl_variable" href="structStringInfo.html#a648cc69b934c11ba5510d2b51b46bbf5">word_count</a>);</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>            printf(<span class="stringliteral">&quot;  Vocali: %zu\n&quot;</span>, info.<a class="code hl_variable" href="structStringInfo.html#a62f5de7882aa93d1642701bf2b2c7bd9">vowel_count</a>);</div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>            printf(<span class="stringliteral">&quot;  Consonanti: %zu\n&quot;</span>, info.<a class="code hl_variable" href="structStringInfo.html#a21ed341ae23918bfaf75bf86790c3d5e">consonant_count</a>);</div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>            <span class="keywordflow">if</span> (info.<a class="code hl_variable" href="structStringInfo.html#a922b41ee32916ff18eef51b77d9348c3">length</a> &gt; 0) {</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>                printf(<span class="stringliteral">&quot;  Primo carattere: &#39;%c&#39;\n&quot;</span>, info.<a class="code hl_variable" href="structStringInfo.html#a3acebd20234afaab018603d139f006e0">first_char</a>);</div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>                printf(<span class="stringliteral">&quot;  Ultimo carattere: &#39;%c&#39;\n&quot;</span>, info.<a class="code hl_variable" href="structStringInfo.html#af564ee6608b1783ce1bc4f2852a1d27a">last_char</a>);</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>            }</div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>            printf(<a class="code hl_define" href="doxygen__example_8c.html#a8d23feea868a983c8c2b661e1e16972f">RED</a> <span class="stringliteral">&quot;  Errore nell&#39;analisi!\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>        }</div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>        printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>    }</div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>}</div>
+</div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span></div>
+<div class="foldopen" id="foldopen00423" data-start="{" data-end="}">
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno"><a class="line" href="doxygen__example_8c.html#a83257f2670997c11a93065b30da8a0eb">  423</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="doxygen__example_8c.html#a83257f2670997c11a93065b30da8a0eb">demo_array_functions</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>    <a class="code hl_function" href="doxygen__example_8c.html#a33c3b3f64d6aafe835fabec2e028661f">print_separator</a>(<span class="stringliteral">&quot;DEMO: FUNZIONI PER ARRAY&quot;</span>);</div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>    </div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#abf681265909adf3d3e8116c93c0ba179">YELLOW</a> <span class="stringliteral">&quot;🔢 Test di ordinamento e ricerca:\n\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>    </div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>    <span class="keywordtype">int</span> numbers[] = {64, 34, 25, 12, 22, 11, 90, 5, 77, 30};</div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>    <span class="keywordtype">size_t</span> size = <span class="keyword">sizeof</span>(numbers) / <span class="keyword">sizeof</span>(numbers[0]);</div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>    </div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#ad243f93c16bc4c1d3e0a13b84421d760">CYAN</a> <span class="stringliteral">&quot;Array originale:\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>    printf(<span class="stringliteral">&quot;[ &quot;</span>);</div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; size; i++) {</div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>        printf(<span class="stringliteral">&quot;%d &quot;</span>, numbers[i]);</div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>    }</div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>    printf(<span class="stringliteral">&quot;]\n\n&quot;</span>);</div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>    </div>
+<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>    <span class="comment">// Test ordinamento crescente</span></div>
+<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>    <span class="keywordtype">int</span> ascending_copy[10];</div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>    memcpy(ascending_copy, numbers, <span class="keyword">sizeof</span>(numbers));</div>
+<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>    <a class="code hl_function" href="group__ArrayFunctions.html#gab968f2ccfae7cbeb2a09f2525aac67b2">bubble_sort</a>(ascending_copy, size, <a class="code hl_enumvalue" href="group__ArrayFunctions.html#ggad9be72f666a31b4318bbc8e8a16a9472a35cb4c8640a823da9718e5cd29d211ea">ASCENDING</a>);</div>
+<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>    </div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#acfbc006ea433ad708fdee3e82996e721">GREEN</a> <span class="stringliteral">&quot;Ordinamento crescente:\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span>    printf(<span class="stringliteral">&quot;[ &quot;</span>);</div>
+<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; size; i++) {</div>
+<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>        printf(<span class="stringliteral">&quot;%d &quot;</span>, ascending_copy[i]);</div>
+<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>    }</div>
+<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>    printf(<span class="stringliteral">&quot;]\n\n&quot;</span>);</div>
+<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span>    </div>
+<div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span>    <span class="comment">// Test ordinamento decrescente</span></div>
+<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>    <span class="keywordtype">int</span> descending_copy[10];</div>
+<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>    memcpy(descending_copy, numbers, <span class="keyword">sizeof</span>(numbers));</div>
+<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>    <a class="code hl_function" href="group__ArrayFunctions.html#gab968f2ccfae7cbeb2a09f2525aac67b2">bubble_sort</a>(descending_copy, size, <a class="code hl_enumvalue" href="group__ArrayFunctions.html#ggad9be72f666a31b4318bbc8e8a16a9472acee234b4fc0ed1e29e965d79cfe252a6">DESCENDING</a>);</div>
+<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>    </div>
+<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#acfbc006ea433ad708fdee3e82996e721">GREEN</a> <span class="stringliteral">&quot;Ordinamento decrescente:\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>    printf(<span class="stringliteral">&quot;[ &quot;</span>);</div>
+<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; size; i++) {</div>
+<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>        printf(<span class="stringliteral">&quot;%d &quot;</span>, descending_copy[i]);</div>
+<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>    }</div>
+<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>    printf(<span class="stringliteral">&quot;]\n\n&quot;</span>);</div>
+<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span>    </div>
+<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>    <span class="comment">// Test ricerca binaria</span></div>
+<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#a6f699060902f800f12aaae150f3a708e">MAGENTA</a> <span class="stringliteral">&quot;Test ricerca binaria nell&#39;array ordinato:\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span>    <span class="keywordtype">int</span> search_values[] = {25, 90, 100, 5};</div>
+<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span>    <span class="keywordtype">size_t</span> search_count = <span class="keyword">sizeof</span>(search_values) / <span class="keyword">sizeof</span>(search_values[0]);</div>
+<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span>    </div>
+<div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; search_count; i++) {</div>
+<div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span>        <span class="keywordtype">int</span> target = search_values[i];</div>
+<div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span>        <span class="keywordtype">int</span> index = <a class="code hl_function" href="group__ArrayFunctions.html#ga648082220e2f25845bae8800e274a1c9">binary_search</a>(ascending_copy, size, target);</div>
+<div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span>        </div>
+<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span>        <span class="keywordflow">if</span> (index != -1) {</div>
+<div class="line"><a id="l00472" name="l00472"></a><span class="lineno">  472</span>            printf(<span class="stringliteral">&quot;  %d trovato all&#39;indice %d\n&quot;</span>, target, index);</div>
+<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span>            printf(<span class="stringliteral">&quot;  %d non trovato\n&quot;</span>, target);</div>
+<div class="line"><a id="l00475" name="l00475"></a><span class="lineno">  475</span>        }</div>
+<div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span>    }</div>
+<div class="line"><a id="l00477" name="l00477"></a><span class="lineno">  477</span>}</div>
+</div>
+<div class="line"><a id="l00478" name="l00478"></a><span class="lineno">  478</span></div>
+<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span></div>
+<div class="foldopen" id="foldopen00526" data-start="{" data-end="}">
+<div class="line"><a id="l00526" name="l00526"></a><span class="lineno"><a class="line" href="doxygen__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe">  526</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="doxygen__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#a26cdbb1a00213c810caccf21cd33a631">BOLD</a> <a class="code hl_define" href="doxygen__example_8c.html#a87b537f5fa5c109d3c05c13d6b18f382">WHITE</a> <span class="stringliteral">&quot;🎯 ESEMPIO COMPLETO DI DOCUMENTAZIONE DOXYGEN 🎯\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#a87b537f5fa5c109d3c05c13d6b18f382">WHITE</a> <span class="stringliteral">&quot;Questo programma dimostra come documentare il codice C con Doxygen\n\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>    </div>
+<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>    <a class="code hl_function" href="doxygen__example_8c.html#a98f1d63c81ef82ab1997a46d250b0427">demo_math_functions</a>();</div>
+<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>    <a class="code hl_function" href="doxygen__example_8c.html#a56fabededf90d04d358ff4e9e35ce87b">demo_string_functions</a>();</div>
+<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>    <a class="code hl_function" href="doxygen__example_8c.html#a83257f2670997c11a93065b30da8a0eb">demo_array_functions</a>();</div>
+<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span>    </div>
+<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>    <a class="code hl_function" href="doxygen__example_8c.html#a33c3b3f64d6aafe835fabec2e028661f">print_separator</a>(<span class="stringliteral">&quot;CONCLUSIONE&quot;</span>);</div>
+<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>    </div>
+<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#a26cdbb1a00213c810caccf21cd33a631">BOLD</a> <a class="code hl_define" href="doxygen__example_8c.html#acfbc006ea433ad708fdee3e82996e721">GREEN</a> <span class="stringliteral">&quot;✅ Tutti i test completati!\n\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#abf681265909adf3d3e8116c93c0ba179">YELLOW</a> <span class="stringliteral">&quot;📚 Per generare la documentazione HTML:\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#ad243f93c16bc4c1d3e0a13b84421d760">CYAN</a> <span class="stringliteral">&quot;   1. Installa Doxygen: brew install doxygen (macOS)\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#ad243f93c16bc4c1d3e0a13b84421d760">CYAN</a> <span class="stringliteral">&quot;   2. Genera Doxyfile: doxygen -g\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#ad243f93c16bc4c1d3e0a13b84421d760">CYAN</a> <span class="stringliteral">&quot;   3. Genera docs: doxygen Doxyfile\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#ad243f93c16bc4c1d3e0a13b84421d760">CYAN</a> <span class="stringliteral">&quot;   4. Apri html/index.html nel browser\n\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>    </div>
+<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span>    printf(<a class="code hl_define" href="doxygen__example_8c.html#a26cdbb1a00213c810caccf21cd33a631">BOLD</a> <a class="code hl_define" href="doxygen__example_8c.html#a6f699060902f800f12aaae150f3a708e">MAGENTA</a> <span class="stringliteral">&quot;🎉 Documentazione professionale pronta! 🎉\n&quot;</span> <a class="code hl_define" href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a>);</div>
+<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span>    </div>
+<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span>}</div>
+</div>
+<div class="ttc" id="adoxygen__example_8c_html_a26cdbb1a00213c810caccf21cd33a631"><div class="ttname"><a href="doxygen__example_8c.html#a26cdbb1a00213c810caccf21cd33a631">BOLD</a></div><div class="ttdeci">#define BOLD</div><div class="ttdef"><b>Definition</b> <a href="#l00027">doxygen_example.c:27</a></div></div>
+<div class="ttc" id="adoxygen__example_8c_html_a33c3b3f64d6aafe835fabec2e028661f"><div class="ttname"><a href="doxygen__example_8c.html#a33c3b3f64d6aafe835fabec2e028661f">print_separator</a></div><div class="ttdeci">void print_separator(const char *title)</div><div class="ttdoc">Stampa un separatore colorato.</div><div class="ttdef"><b>Definition</b> <a href="#l00349">doxygen_example.c:349</a></div></div>
+<div class="ttc" id="adoxygen__example_8c_html_a56fabededf90d04d358ff4e9e35ce87b"><div class="ttname"><a href="doxygen__example_8c.html#a56fabededf90d04d358ff4e9e35ce87b">demo_string_functions</a></div><div class="ttdeci">void demo_string_functions(void)</div><div class="ttdoc">Dimostra l&#39;uso delle funzioni per stringhe.</div><div class="ttdef"><b>Definition</b> <a href="#l00384">doxygen_example.c:384</a></div></div>
+<div class="ttc" id="adoxygen__example_8c_html_a6f699060902f800f12aaae150f3a708e"><div class="ttname"><a href="doxygen__example_8c.html#a6f699060902f800f12aaae150f3a708e">MAGENTA</a></div><div class="ttdeci">#define MAGENTA</div><div class="ttdef"><b>Definition</b> <a href="#l00024">doxygen_example.c:24</a></div></div>
+<div class="ttc" id="adoxygen__example_8c_html_a83257f2670997c11a93065b30da8a0eb"><div class="ttname"><a href="doxygen__example_8c.html#a83257f2670997c11a93065b30da8a0eb">demo_array_functions</a></div><div class="ttdeci">void demo_array_functions(void)</div><div class="ttdoc">Dimostra l&#39;uso delle funzioni per array.</div><div class="ttdef"><b>Definition</b> <a href="#l00423">doxygen_example.c:423</a></div></div>
+<div class="ttc" id="adoxygen__example_8c_html_a840291bc02cba5474a4cb46a9b9566fe"><div class="ttname"><a href="doxygen__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a></div><div class="ttdeci">int main(void)</div><div class="ttdoc">Funzione principale del programma.</div><div class="ttdef"><b>Definition</b> <a href="#l00526">doxygen_example.c:526</a></div></div>
+<div class="ttc" id="adoxygen__example_8c_html_a87b537f5fa5c109d3c05c13d6b18f382"><div class="ttname"><a href="doxygen__example_8c.html#a87b537f5fa5c109d3c05c13d6b18f382">WHITE</a></div><div class="ttdeci">#define WHITE</div><div class="ttdef"><b>Definition</b> <a href="#l00026">doxygen_example.c:26</a></div></div>
+<div class="ttc" id="adoxygen__example_8c_html_a8d23feea868a983c8c2b661e1e16972f"><div class="ttname"><a href="doxygen__example_8c.html#a8d23feea868a983c8c2b661e1e16972f">RED</a></div><div class="ttdeci">#define RED</div><div class="ttdef"><b>Definition</b> <a href="#l00020">doxygen_example.c:20</a></div></div>
+<div class="ttc" id="adoxygen__example_8c_html_a98f1d63c81ef82ab1997a46d250b0427"><div class="ttname"><a href="doxygen__example_8c.html#a98f1d63c81ef82ab1997a46d250b0427">demo_math_functions</a></div><div class="ttdeci">void demo_math_functions(void)</div><div class="ttdoc">Dimostra l&#39;uso delle funzioni matematiche.</div><div class="ttdef"><b>Definition</b> <a href="#l00361">doxygen_example.c:361</a></div></div>
+<div class="ttc" id="adoxygen__example_8c_html_ab702106cf3b3e96750b6845ded4e0299"><div class="ttname"><a href="doxygen__example_8c.html#ab702106cf3b3e96750b6845ded4e0299">RESET</a></div><div class="ttdeci">#define RESET</div><div class="ttdef"><b>Definition</b> <a href="#l00019">doxygen_example.c:19</a></div></div>
+<div class="ttc" id="adoxygen__example_8c_html_abf681265909adf3d3e8116c93c0ba179"><div class="ttname"><a href="doxygen__example_8c.html#abf681265909adf3d3e8116c93c0ba179">YELLOW</a></div><div class="ttdeci">#define YELLOW</div><div class="ttdef"><b>Definition</b> <a href="#l00022">doxygen_example.c:22</a></div></div>
+<div class="ttc" id="adoxygen__example_8c_html_acfbc006ea433ad708fdee3e82996e721"><div class="ttname"><a href="doxygen__example_8c.html#acfbc006ea433ad708fdee3e82996e721">GREEN</a></div><div class="ttdeci">#define GREEN</div><div class="ttdef"><b>Definition</b> <a href="#l00021">doxygen_example.c:21</a></div></div>
+<div class="ttc" id="adoxygen__example_8c_html_ad243f93c16bc4c1d3e0a13b84421d760"><div class="ttname"><a href="doxygen__example_8c.html#ad243f93c16bc4c1d3e0a13b84421d760">CYAN</a></div><div class="ttdeci">#define CYAN</div><div class="ttdef"><b>Definition</b> <a href="#l00025">doxygen_example.c:25</a></div></div>
+<div class="ttc" id="agroup__ArrayFunctions_html_ga648082220e2f25845bae8800e274a1c9"><div class="ttname"><a href="group__ArrayFunctions.html#ga648082220e2f25845bae8800e274a1c9">binary_search</a></div><div class="ttdeci">int binary_search(const int arr[], size_t size, int target)</div><div class="ttdoc">Cerca un elemento in un array ordinato usando ricerca binaria.</div><div class="ttdef"><b>Definition</b> <a href="#l00320">doxygen_example.c:320</a></div></div>
+<div class="ttc" id="agroup__ArrayFunctions_html_gab968f2ccfae7cbeb2a09f2525aac67b2"><div class="ttname"><a href="group__ArrayFunctions.html#gab968f2ccfae7cbeb2a09f2525aac67b2">bubble_sort</a></div><div class="ttdeci">void bubble_sort(int arr[], size_t size, SortOrder order)</div><div class="ttdoc">Ordina un array di interi usando l&#39;algoritmo Bubble Sort.</div><div class="ttdef"><b>Definition</b> <a href="#l00262">doxygen_example.c:262</a></div></div>
+<div class="ttc" id="agroup__ArrayFunctions_html_gad9be72f666a31b4318bbc8e8a16a9472"><div class="ttname"><a href="group__ArrayFunctions.html#gad9be72f666a31b4318bbc8e8a16a9472">SortOrder</a></div><div class="ttdeci">SortOrder</div><div class="ttdoc">Enumerazione per specificare l&#39;ordine di ordinamento.</div><div class="ttdef"><b>Definition</b> <a href="#l00227">doxygen_example.c:227</a></div></div>
+<div class="ttc" id="agroup__ArrayFunctions_html_ggad9be72f666a31b4318bbc8e8a16a9472a35cb4c8640a823da9718e5cd29d211ea"><div class="ttname"><a href="group__ArrayFunctions.html#ggad9be72f666a31b4318bbc8e8a16a9472a35cb4c8640a823da9718e5cd29d211ea">ASCENDING</a></div><div class="ttdeci">@ ASCENDING</div><div class="ttdoc">Ordinamento crescente.</div><div class="ttdef"><b>Definition</b> <a href="#l00228">doxygen_example.c:228</a></div></div>
+<div class="ttc" id="agroup__ArrayFunctions_html_ggad9be72f666a31b4318bbc8e8a16a9472acee234b4fc0ed1e29e965d79cfe252a6"><div class="ttname"><a href="group__ArrayFunctions.html#ggad9be72f666a31b4318bbc8e8a16a9472acee234b4fc0ed1e29e965d79cfe252a6">DESCENDING</a></div><div class="ttdeci">@ DESCENDING</div><div class="ttdoc">Ordinamento decrescente.</div><div class="ttdef"><b>Definition</b> <a href="#l00229">doxygen_example.c:229</a></div></div>
+<div class="ttc" id="agroup__MathFunctions_html_ga9ac738cb3ea0c6b069a6a38016699491"><div class="ttname"><a href="group__MathFunctions.html#ga9ac738cb3ea0c6b069a6a38016699491">power</a></div><div class="ttdeci">double power(double base, int exponent)</div><div class="ttdoc">Calcola la potenza di un numero.</div><div class="ttdef"><b>Definition</b> <a href="#l00092">doxygen_example.c:92</a></div></div>
+<div class="ttc" id="agroup__MathFunctions_html_gacd135a31658df6e10dd1070e21c35810"><div class="ttname"><a href="group__MathFunctions.html#gacd135a31658df6e10dd1070e21c35810">factorial</a></div><div class="ttdeci">unsigned long factorial(int n)</div><div class="ttdoc">Calcola il fattoriale di un numero.</div><div class="ttdef"><b>Definition</b> <a href="#l00056">doxygen_example.c:56</a></div></div>
+<div class="ttc" id="agroup__StringFunctions_html_ga0e4de50a3311e7189f6a68be89e0db1e"><div class="ttname"><a href="group__StringFunctions.html#ga0e4de50a3311e7189f6a68be89e0db1e">analyze_string</a></div><div class="ttdeci">int analyze_string(const char *str, StringInfo *info)</div><div class="ttdoc">Analizza una stringa e restituisce informazioni dettagliate.</div><div class="ttdef"><b>Definition</b> <a href="#l00169">doxygen_example.c:169</a></div></div>
+<div class="ttc" id="astructStringInfo_html"><div class="ttname"><a href="structStringInfo.html">StringInfo</a></div><div class="ttdoc">Struttura che contiene informazioni su una stringa.</div><div class="ttdef"><b>Definition</b> <a href="#l00130">doxygen_example.c:130</a></div></div>
+<div class="ttc" id="astructStringInfo_html_a21ed341ae23918bfaf75bf86790c3d5e"><div class="ttname"><a href="structStringInfo.html#a21ed341ae23918bfaf75bf86790c3d5e">StringInfo::consonant_count</a></div><div class="ttdeci">size_t consonant_count</div><div class="ttdoc">Numero di consonanti.</div><div class="ttdef"><b>Definition</b> <a href="#l00134">doxygen_example.c:134</a></div></div>
+<div class="ttc" id="astructStringInfo_html_a3acebd20234afaab018603d139f006e0"><div class="ttname"><a href="structStringInfo.html#a3acebd20234afaab018603d139f006e0">StringInfo::first_char</a></div><div class="ttdeci">char first_char</div><div class="ttdoc">Primo carattere.</div><div class="ttdef"><b>Definition</b> <a href="#l00135">doxygen_example.c:135</a></div></div>
+<div class="ttc" id="astructStringInfo_html_a62f5de7882aa93d1642701bf2b2c7bd9"><div class="ttname"><a href="structStringInfo.html#a62f5de7882aa93d1642701bf2b2c7bd9">StringInfo::vowel_count</a></div><div class="ttdeci">size_t vowel_count</div><div class="ttdoc">Numero di vocali.</div><div class="ttdef"><b>Definition</b> <a href="#l00133">doxygen_example.c:133</a></div></div>
+<div class="ttc" id="astructStringInfo_html_a648cc69b934c11ba5510d2b51b46bbf5"><div class="ttname"><a href="structStringInfo.html#a648cc69b934c11ba5510d2b51b46bbf5">StringInfo::word_count</a></div><div class="ttdeci">size_t word_count</div><div class="ttdoc">Numero di parole.</div><div class="ttdef"><b>Definition</b> <a href="#l00132">doxygen_example.c:132</a></div></div>
+<div class="ttc" id="astructStringInfo_html_a922b41ee32916ff18eef51b77d9348c3"><div class="ttname"><a href="structStringInfo.html#a922b41ee32916ff18eef51b77d9348c3">StringInfo::length</a></div><div class="ttdeci">size_t length</div><div class="ttdoc">Lunghezza della stringa.</div><div class="ttdef"><b>Definition</b> <a href="#l00131">doxygen_example.c:131</a></div></div>
+<div class="ttc" id="astructStringInfo_html_af564ee6608b1783ce1bc4f2852a1d27a"><div class="ttname"><a href="structStringInfo.html#af564ee6608b1783ce1bc4f2852a1d27a">StringInfo::last_char</a></div><div class="ttdeci">char last_char</div><div class="ttdoc">Ultimo carattere.</div><div class="ttdef"><b>Definition</b> <a href="#l00136">doxygen_example.c:136</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="doxygen__example_8c.html">doxygen_example.c</a></li>
+    <li class="footer">Generato da <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

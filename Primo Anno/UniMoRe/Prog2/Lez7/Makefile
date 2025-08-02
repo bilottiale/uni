@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -std=c99 -g -O2
 LDFLAGS = 
 
 # Definizione dei target (programmi eseguibili)  
-TARGETS = dynamic_alloc matrix void_pointer stringhe esercizi_stringhe esercizi_p2 esercizi_p3
+TARGETS = dynamic_alloc matrix void_pointer stringhe esercizi_stringhe esercizi_p2 esercizi_p3 esercizi_p4
 
 # Colori per output
 RED = \033[0;31m
@@ -125,6 +125,13 @@ run-esercizi-p3: esercizi_p3
 	./esercizi_p3
 	@echo "$(CYAN)================================================$(NC)"
 
+# Target per eseguire esercizi_p4
+run-esercizi-p4: esercizi_p4
+	@echo "$(MAGENTA)🚀 Eseguendo esercizi_p4...$(NC)"
+	@echo "$(CYAN)================================================$(NC)"
+	./esercizi_p4
+	@echo "$(CYAN)================================================$(NC)"
+
 # Target per eseguire tutti i programmi
 run-all: $(TARGETS)
 	@echo "$(WHITE)🎯 Esecuzione di tutti i programmi:$(NC)"
@@ -142,6 +149,31 @@ run-all: $(TARGETS)
 	@echo "$(MAGENTA)🚀 3. Eseguendo void_pointer...$(NC)"
 	@echo "$(CYAN)================================================$(NC)"
 	./void_pointer
+	@echo "$(CYAN)================================================$(NC)"
+	@echo ""
+	@echo "$(MAGENTA)🚀 4. Eseguendo stringhe...$(NC)"
+	@echo "$(CYAN)================================================$(NC)"
+	./stringhe
+	@echo "$(CYAN)================================================$(NC)"
+	@echo ""
+	@echo "$(MAGENTA)🚀 5. Eseguendo esercizi_stringhe...$(NC)"
+	@echo "$(CYAN)================================================$(NC)"
+	./esercizi_stringhe
+	@echo "$(CYAN)================================================$(NC)"
+	@echo ""
+	@echo "$(MAGENTA)🚀 6. Eseguendo esercizi_p2...$(NC)"
+	@echo "$(CYAN)================================================$(NC)"
+	./esercizi_p2
+	@echo "$(CYAN)================================================$(NC)"
+	@echo ""
+	@echo "$(MAGENTA)🚀 7. Eseguendo esercizi_p3...$(NC)"
+	@echo "$(CYAN)================================================$(NC)"
+	./esercizi_p3
+	@echo "$(CYAN)================================================$(NC)"
+	@echo ""
+	@echo "$(MAGENTA)🚀 8. Eseguendo esercizi_p4...$(NC)"
+	@echo "$(CYAN)================================================$(NC)"
+	./esercizi_p4
 	@echo "$(CYAN)================================================$(NC)"
 	@echo ""
 	@echo "$(GREEN)✓ Tutti i programmi eseguiti!$(NC)"
@@ -170,6 +202,10 @@ debug-esercizi-p2: esercizi_p2
 debug-esercizi-p3: esercizi_p3
 	@echo "$(YELLOW)🐛 Avvio debug di esercizi_p3 con gdb...$(NC)"
 	gdb ./esercizi_p3
+
+debug-esercizi-p4: esercizi_p4
+	@echo "$(YELLOW)🐛 Avvio debug di esercizi_p4 con gdb...$(NC)"
+	gdb ./esercizi_p4
 
 # Target per memory check con valgrind (se disponibile)
 # Memory check targets
@@ -249,6 +285,19 @@ memcheck-esercizi-p3: esercizi_p3
 		echo "$(CYAN)Eseguendo con AddressSanitizer:$(NC)"; \
 		./esercizi_p3_asan; \
 		rm -f esercizi_p3_asan; \
+	fi
+
+memcheck-esercizi-p4: esercizi_p4
+	@echo "$(YELLOW)🔍 Memory check di esercizi_p4...$(NC)"
+	@if command -v valgrind >/dev/null 2>&1; then \
+		echo "$(CYAN)Using Valgrind:$(NC)"; \
+		valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./esercizi_p4; \
+	else \
+		echo "$(YELLOW)Valgrind non disponibile. Compilando con AddressSanitizer...$(NC)"; \
+		gcc -Wall -Wextra -std=c99 -g -fsanitize=address -fno-omit-frame-pointer -o esercizi_p4_asan esercizi_p4.c; \
+		echo "$(CYAN)Eseguendo con AddressSanitizer:$(NC)"; \
+		./esercizi_p4_asan; \
+		rm -f esercizi_p4_asan; \
 	fi
 
 # Target per memory check di tutti i programmi
@@ -405,6 +454,7 @@ help:
 	@echo "  $(GREEN)esercizi_stringhe$(NC) - Compila solo esercizi_stringhe"
 	@echo "  $(GREEN)esercizi_p2$(NC)      - Compila solo esercizi_p2"
 	@echo "  $(GREEN)esercizi_p3$(NC)      - Compila solo esercizi_p3"
+	@echo "  $(GREEN)esercizi_p4$(NC)      - Compila solo esercizi_p4"
 	@echo ""
 	@echo "$(CYAN)ESECUZIONE:$(NC)"
 	@echo "  $(GREEN)run-dynamic$(NC)      - Esegue dynamic_alloc"
@@ -413,6 +463,7 @@ help:
 	@echo "  $(GREEN)run-esercizi-stringhe$(NC) - Esegue esercizi_stringhe"
 	@echo "  $(GREEN)run-esercizi-p2$(NC)  - Esegue esercizi_p2"
 	@echo "  $(GREEN)run-esercizi-p3$(NC)  - Esegue esercizi_p3"
+	@echo "  $(GREEN)run-esercizi-p4$(NC)  - Esegue esercizi_p4"
 	@echo "  $(GREEN)run-all$(NC)          - Esegue tutti i programmi"
 	@echo ""
 	@echo "$(CYAN)DEBUG E ANALISI:$(NC)"
@@ -422,6 +473,7 @@ help:
 	@echo "  $(GREEN)debug-esercizi-stringhe$(NC) - Debug esercizi_stringhe con gdb"
 	@echo "  $(GREEN)debug-esercizi-p2$(NC) - Debug esercizi_p2 con gdb"
 	@echo "  $(GREEN)debug-esercizi-p3$(NC) - Debug esercizi_p3 con gdb"
+	@echo "  $(GREEN)debug-esercizi-p4$(NC) - Debug esercizi_p4 con gdb"
 	@echo ""
 	@echo "$(CYAN)ANALISI MEMORIA:$(NC)"
 	@echo "  $(GREEN)memcheck-dynamic$(NC) - Analisi memoria dynamic_alloc (Valgrind/AddressSanitizer)"
@@ -430,6 +482,7 @@ help:
 	@echo "  $(GREEN)memcheck-esercizi-stringhe$(NC) - Analisi memoria esercizi_stringhe (Valgrind/AddressSanitizer)"
 	@echo "  $(GREEN)memcheck-esercizi-p2$(NC) - Analisi memoria esercizi_p2 (Valgrind/AddressSanitizer)"
 	@echo "  $(GREEN)memcheck-esercizi-p3$(NC) - Analisi memoria esercizi_p3 (Valgrind/AddressSanitizer)"
+	@echo "  $(GREEN)memcheck-esercizi-p4$(NC) - Analisi memoria esercizi_p4 (Valgrind/AddressSanitizer)"
 	@echo "  $(GREEN)memcheck-all$(NC)     - Memory check di tutti i programmi"
 	@echo "  $(GREEN)memcheck-info$(NC)    - Informazioni sui tools di memory checking"
 	@echo "  $(GREEN)check-syntax$(NC)     - Controllo sintattico"
@@ -442,4 +495,4 @@ help:
 	@echo "  $(GREEN)help$(NC)             - Mostra questa guida"
 
 # Dichiarazione target non-file
-.PHONY: all clean distclean run-dynamic run-matrix run-stringhe run-esercizi-stringhe run-esercizi-p2 run-esercizi-p3 run-all debug-dynamic debug-matrix debug-stringhe debug-esercizi-stringhe debug-esercizi-p2 debug-esercizi-p3 memcheck-dynamic memcheck-matrix memcheck-stringhe memcheck-esercizi-stringhe memcheck-esercizi-p2 memcheck-esercizi-p3 memcheck-all memcheck-info info stats check-syntax backup install-deps-mac help
+.PHONY: all clean distclean run-dynamic run-matrix run-stringhe run-esercizi-stringhe run-esercizi-p2 run-esercizi-p3 run-esercizi-p4 run-all debug-dynamic debug-matrix debug-stringhe debug-esercizi-stringhe debug-esercizi-p2 debug-esercizi-p3 debug-esercizi-p4 memcheck-dynamic memcheck-matrix memcheck-stringhe memcheck-esercizi-stringhe memcheck-esercizi-p2 memcheck-esercizi-p3 memcheck-esercizi-p4 memcheck-all memcheck-info info stats check-syntax backup install-deps-mac help

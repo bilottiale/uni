@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['calculate_5fsquare_0',['CALCULATE_SQUARE',['../group__DoxygenExamples.html#ga5d8171e400312375f052425b4e865b0c',1,'doxygen_cheatsheet.h']]],
+  ['callbackfunction_1',['CallbackFunction',['../group__DoxygenExamples.html#ga03420a75b29365d136a01dfc9329da85',1,'doxygen_cheatsheet.h']]],
+  ['caratteristiche_20principali_2',['Caratteristiche Principali',['../index.html#features',1,'']]],
+  ['changelog_3',['Changelog',['../group__DoxygenExamples.html',1,'']]],
+  ['char_5fvalue_4',['char_value',['../unionDataUnion.html#a49441b4dda3162ba2963fd6c40afba06',1,'DataUnion']]],
+  ['cheat_20sheet_20completo_5',['Doxygen Cheat Sheet Completo',['../index.html',1,'']]],
+  ['cleanup_5fsystem_6',['cleanup_system',['../group__UtilityFunctions.html#gad4aece8dd0a065856b0e7a7a027fa0c3',1,'doxygen_cheatsheet.h']]],
+  ['comandi_20makefile_7',['🛠️ Comandi Makefile',['..//Users/alessandrobilotti/Desktop/uni/Primo Anno/UniMoRe/Prog2/Lez8/README.md#autotoc_md18',1,'']]],
+  ['compilazione_8',['Compilazione',['../group__DoxygenExamples.html#compilation',1,'']]],
+  ['compilazione_9',['Errori di compilazione',['..//Users/alessandrobilotti/Desktop/uni/Primo Anno/UniMoRe/Prog2/Lez8/README.md#autotoc_md39',1,'']]],
+  ['compilazione_20e_20esecuzione_10',['Compilazione e Esecuzione',['..//Users/alessandrobilotti/Desktop/uni/Primo Anno/UniMoRe/Prog2/Lez8/README.md#autotoc_md19',1,'']]],
+  ['compilazione_20ed_20esecuzione_11',['1. Compilazione ed Esecuzione',['..//Users/alessandrobilotti/Desktop/uni/Primo Anno/UniMoRe/Prog2/Lez8/README.md#autotoc_md3',1,'']]],
+  ['completo_12',['Doxygen Cheat Sheet Completo',['../index.html',1,'']]],
+  ['configurazione_20doxygen_13',['🔧 Configurazione Doxygen',['..//Users/alessandrobilotti/Desktop/uni/Primo Anno/UniMoRe/Prog2/Lez8/README.md#autotoc_md23',1,'']]],
+  ['consonant_5fcount_14',['consonant_count',['../structStringInfo.html#a21ed341ae23918bfaf75bf86790c3d5e',1,'StringInfo']]],
+  ['contenuto_20del_20progetto_15',['📋 Contenuto del Progetto',['..//Users/alessandrobilotti/Desktop/uni/Primo Anno/UniMoRe/Prog2/Lez8/README.md#autotoc_md6',1,'']]],
+  ['cosa_20evitare_16',['Cosa Evitare',['../index.html#donts',1,'❌ Cosa Evitare'],['..//Users/alessandrobilotti/Desktop/uni/Primo Anno/UniMoRe/Prog2/Lez8/README.md#autotoc_md31',1,'❌ Cosa Evitare']]],
+  ['cosa_20fare_17',['Cosa Fare',['../index.html#dos',1,'✅ Cosa Fare'],['..//Users/alessandrobilotti/Desktop/uni/Primo Anno/UniMoRe/Prog2/Lez8/README.md#autotoc_md30',1,'✅ Cosa Fare']]],
+  ['cose_20da_20fare_18',['Elenco delle cose da fare',['../todo.html',1,'']]],
+  ['cross_5freference_5fexample_19',['cross_reference_example',['../doxygen__cheatsheet_8h.html#a3626e860c720d8793a2deba8afe05e16',1,'doxygen_cheatsheet.h']]],
+  ['css_20personalizzato_20',['CSS Personalizzato',['..//Users/alessandrobilotti/Desktop/uni/Primo Anno/UniMoRe/Prog2/Lez8/README.md#autotoc_md28',1,'']]],
+  ['cyan_21',['CYAN',['../doxygen__example_8c.html#ad243f93c16bc4c1d3e0a13b84421d760',1,'doxygen_example.c']]]
+];

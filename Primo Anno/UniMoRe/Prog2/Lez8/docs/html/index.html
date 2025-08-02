@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Doxygen Example - Prog2: Doxygen Cheat Sheet Completo</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Doxygen Example - Prog2<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Esempio completo di documentazione C con Doxygen</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('index.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Caricamento in corso...</div>
+<div class="SRStatus" id="Searching">Ricerca in corso...</div>
+<div class="SRStatus" id="NoMatches">Nessun risultato</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Doxygen Cheat Sheet Completo </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>per descrizioni concise**  </p>
+<h1 class="doxsection"><a class="anchor" id="intro"></a>
+Introduzione</h1>
+<p>Questo progetto fornisce una guida completa e pratica per utilizzare <b>Doxygen</b> nella documentazione del codice C. Include esempi di tutti i principali tag e funzionalità.</p>
+<h1 class="doxsection"><a class="anchor" id="features"></a>
+Caratteristiche Principali</h1>
+<ul>
+<li>✅ <b>Documentazione completa</b> di funzioni, strutture, enum</li>
+<li>✅ <b>Organizzazione in gruppi</b> logici</li>
+<li>✅ <b>Esempi di codice</b> integrati</li>
+<li>✅ <b>Riferimenti incrociati</b> automatici</li>
+<li>✅ <b>Tag speciali</b> per note, warning, todo</li>
+<li>✅ <b>Pagine personalizzate</b> e changelog</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="quick_start"></a>
+Quick Start</h1>
+<h2 class="doxsection"><a class="anchor" id="step1"></a>
+1. Installazione</h2>
+<p>Su macOS: </p><div class="fragment"><div class="line">brew install doxygen</div>
+</div><!-- fragment --><p>Su Ubuntu/Debian: </p><div class="fragment"><div class="line">sudo apt-get install doxygen</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="step2"></a>
+2. Generazione Documentazione</h2>
+<div class="fragment"><div class="line">doxygen -g                    # Genera Doxyfile</div>
+<div class="line">doxygen Doxyfile             # Genera documentazione</div>
+<div class="line">open html/index.html         # Apre nel browser</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="examples"></a>
+Esempi Pratici</h1>
+<h2 class="doxsection"><a class="anchor" id="basic_function"></a>
+Funzione Base</h2>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> add(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b) {</div>
+<div class="line">    <span class="keywordflow">return</span> a + b;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="struct_example"></a>
+Struttura</h2>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line">    <span class="keywordtype">double</span> width;   </div>
+<div class="line">    <span class="keywordtype">double</span> height;  </div>
+<div class="line">} Rectangle;</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="best_practices"></a>
+Best Practices</h1>
+<h2 class="doxsection"><a class="anchor" id="dos"></a>
+✅ Cosa Fare</h2>
+<ol type="1">
+<li><b>Documenta tutte le API pubbliche</b></li>
+<li>**Usa3. **Includi esempi con <div class="fragment"><div class="line">/</div>
+</div><!-- fragment -->**</li>
+<li><b>Organizza in gruppi logici</b></li>
+<li><b>Specifica parametri e valori di ritorno</b></li>
+<li>**Aggiungi <dl class="section warning"><dt>Avvertimento</dt><dd>per limitazioni**</dd></dl>
+</li>
+</ol>
+<h2 class="doxsection"><a class="anchor" id="donts"></a>
+❌ Cosa Evitare</h2>
+<ol type="1">
+<li><b>Non documentare funzioni interne</b></li>
+<li><b>Non duplicare informazioni ovvie</b></li>
+<li><b>Non dimenticare di aggiornare la documentazione</b></li>
+<li><b>Non usare HTML direttamente (preferisci Markdown)</b></li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="tags_reference"></a>
+Riferimento Tag</h1>
+<h2 class="doxsection"><a class="anchor" id="basic_tags"></a>
+Tag Base</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Tag  </th><th class="markdownTableHeadNone">Descrizione  </th><th class="markdownTableHeadNone">Esempio  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><p class="starttd"></p>
+<p class="endtd"></p>
+</td><td class="markdownTableBodyNone">Descrizione breve  </td><td class="markdownTableBodyNone"><span class="tt">@brief Calcola la somma</span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">&lt;/td&gt;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+</td><td class="markdownTableBodyNone">Parametro funzione  </td><td class="markdownTableBodyNone"><span class="tt">@param x Il primo numero</span>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><dl class="section return"><dt>Restituisce</dt><dd></dd></dl>
+</td><td class="markdownTableBodyNone">Valore di ritorno  </td><td class="markdownTableBodyNone"><span class="tt">@return La somma</span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><dl class="retval"><dt>Valori di ritorno</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">&lt;/td&gt;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+</td><td class="markdownTableBodyNone">Valore specifico  </td><td class="markdownTableBodyNone"><span class="tt">@retval 0 Successo</span>  </td></tr>
+</table>
+<h2 class="doxsection"><a class="anchor" id="special_tags"></a>
+Tag Speciali</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Tag  </th><th class="markdownTableHeadNone">Descrizione  </th><th class="markdownTableHeadNone">Uso  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><dl class="section note"><dt>Nota</dt><dd></dd></dl>
+</td><td class="markdownTableBodyNone">Nota importante  </td><td class="markdownTableBodyNone">Informazioni aggiuntive  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><dl class="section warning"><dt>Avvertimento</dt><dd></dd></dl>
+</td><td class="markdownTableBodyNone">Avvertimento  </td><td class="markdownTableBodyNone">Limitazioni o pericoli  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Da fare</a></b></dt><dd></dd></dl>
+</td><td class="markdownTableBodyNone">Da implementare  </td><td class="markdownTableBodyNone">Funzionalità future  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000003">Bug</a></b></dt><dd></dd></dl>
+</td><td class="markdownTableBodyNone">Bug noto  </td><td class="markdownTableBodyNone">Problemi esistenti  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><dl class="section see"><dt>Si veda anche</dt><dd></dd></dl>
+</td><td class="markdownTableBodyNone">Riferimento  </td><td class="markdownTableBodyNone">Collegamenti ad altro  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><dl class="section since"><dt>A partire da</dt><dd></dd></dl>
+</td><td class="markdownTableBodyNone">Dalla versione  </td><td class="markdownTableBodyNone">Tracciamento versioni  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">Deprecato</a></b></dt><dd></dd></dl>
+</td><td class="markdownTableBodyNone">Obsoleto  </td><td class="markdownTableBodyNone">Funzioni deprecate  </td></tr>
+</table>
+<h1 class="doxsection"><a class="anchor" id="advanced"></a>
+Funzionalità Avanzate</h1>
+<h2 class="doxsection"><a class="anchor" id="groups"></a>
+Gruppi e Moduli</h2>
+<p>Organizza il codice in gruppi logici: </p><div class="fragment"><div class="line"></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Funzioni del gruppo...</span></div>
+<div class="line"></div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="custom_pages"></a>
+Pagine Personalizzate</h2>
+<p>Crea pagine di documentazione aggiuntive: </p><div class="fragment"><div class="line"></div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="resources"></a>
+Risorse Utili</h1>
+<ul>
+<li><a href="https://www.doxygen.nl/manual/">Documentazione Ufficiale Doxygen</a></li>
+<li><a href="https://www.doxygen.nl/manual/markdown.html">Markdown in Doxygen</a></li>
+<li><a href="https://github.com/doxygen/doxygen/tree/master/examples">Esempi Avanzati</a></li>
+</ul>
+<dl class="section author"><dt>Autore</dt><dd>Alessandro Bilotti </dd></dl>
+<dl class="section version"><dt>Versione</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>2 agosto 2025 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>MIT License </dd></dl>
+</div></div><!-- PageDoc -->
+<a href="doxygen_crawl.html"></a>
+</div><!-- doc-content -->
+</div><!-- contents -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generato da <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>
