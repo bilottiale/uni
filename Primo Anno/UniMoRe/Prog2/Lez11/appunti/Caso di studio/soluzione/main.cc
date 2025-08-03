@@ -80,15 +80,12 @@ void update(parola *&II, char *fileName, int &n)
 			{
 				temp[i] = II[i];
 			}
-			II = new parola[n];
-			for (int i = 0; i < n - 1; i++)
-			{
-				II[i] = temp[i];
-			}
-			strcpy(II[i].p, word);
-			II[i].n_doc = 1;
-			II[i].l = NULL;
-			II[i].l = insert_elem(II[i].l, new_elem(id));
+			delete[] II;  // Libera la memoria del vecchio array
+			II = temp;    // Assegna il nuovo array
+			strcpy(II[n-1].p, word);
+			II[n-1].n_doc = 1;
+			II[n-1].l = NULL;
+			II[n-1].l = insert_elem(II[n-1].l, new_elem(id));
 		}
 	}
 }
