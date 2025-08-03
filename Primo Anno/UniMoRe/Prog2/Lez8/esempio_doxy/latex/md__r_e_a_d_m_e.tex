@@ -1,0 +1,162 @@
+\chapter{Esempio Doxygen Standard -\/ Doxyfile senza modifiche }
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{Esempio Doxygen Standard -\/ Doxyfile senza modifiche@{Esempio Doxygen Standard -\/ Doxyfile senza modifiche}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+
+
+Questo esempio dimostra l\textquotesingle{}uso di {\bfseries{Doxygen}} con la configurazione standard generata da {\ttfamily doxygen -\/g}, senza alcuna modifica.\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{📁 File presenti}{📁 File presenti}}\label{md__r_e_a_d_m_e_autotoc_md1}
+
+\begin{DoxyItemize}
+\item {\ttfamily \doxylink{esempio__semplice_8c}{esempio\+\_\+semplice.\+c}} -\/ Programma C di esempio con documentazione Doxygen
+\item {\ttfamily Doxyfile} -\/ File di configurazione standard generato da {\ttfamily doxygen -\/g}
+\item {\ttfamily Makefile} -\/ Makefile semplice per compilazione e generazione docs
+\item {\ttfamily html/} -\/ Documentazione HTML generata (dopo {\ttfamily make docs})
+\item {\ttfamily latex/} -\/ Documentazione La\+TeX generata (dopo {\ttfamily make docs})
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{🚀 Come utilizzare}{🚀 Come utilizzare}}\label{md__r_e_a_d_m_e_autotoc_md2}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{\texorpdfstring{1. Compilazione ed esecuzione}{1. Compilazione ed esecuzione}}\label{md__r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ \ \ \ \ \ \ \ \ \ \#\ Compila\ il\ programma}
+\DoxyCodeLine{make\ run\ \ \ \ \ \ \#\ Esegue\ il\ programma}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsection{\texorpdfstring{2. Generazione documentazione}{2. Generazione documentazione}}\label{md__r_e_a_d_m_e_autotoc_md4}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ docs\ \ \ \ \ \#\ Genera\ documentazione\ HTML\ e\ LaTeX}
+\DoxyCodeLine{make\ open\ \ \ \ \ \#\ Genera\ e\ apre\ la\ documentazione\ nel\ browser}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysubsection{\texorpdfstring{3. Pulizia}{3. Pulizia}}\label{md__r_e_a_d_m_e_autotoc_md5}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ clean\ \ \ \ \#\ Rimuove\ eseguibili\ e\ documentazione}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysection{\texorpdfstring{📋 Configurazione Doxyfile Standard}{📋 Configurazione Doxyfile Standard}}\label{md__r_e_a_d_m_e_autotoc_md6}
+Il file {\ttfamily Doxyfile} è stato generato con\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{doxygen\ -\/g}
+
+\end{DoxyCode}
+
+
+{\bfseries{Configurazioni predefinite più importanti\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily PROJECT\+\_\+\+NAME = "{}\+My Project"{}}
+\item {\ttfamily OUTPUT\+\_\+\+DIRECTORY = "{}"{} (directory corrente)}
+\item {\ttfamily INPUT = . (directory corrente)}
+\item {\ttfamily RECURSIVE = NO}
+\item {\ttfamily EXTRACT\+\_\+\+ALL = NO}
+\item {\ttfamily GENERATE\+\_\+\+HTML = YES}
+\item {\ttfamily GENERATE\+\_\+\+LATEX = YES}
+\item {\ttfamily SOURCE\+\_\+\+BROWSER = NO}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysection{\texorpdfstring{🔍 Cosa viene documentato}{🔍 Cosa viene documentato}}\label{md__r_e_a_d_m_e_autotoc_md7}
+Con la configurazione standard, Doxygen documenta\+:
+\begin{DoxyItemize}
+\item ✅ Funzioni con commenti {\ttfamily /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \texorpdfstring{$\ast$}{*}/}
+\item ✅ File con tag {\ttfamily @file}
+\item ❌ Funzioni senza documentazione (EXTRACT\+\_\+\+ALL = NO)
+\item ❌ Codice sorgente navigabile (SOURCE\+\_\+\+BROWSER = NO)
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysection{\texorpdfstring{📚 Documentazione generata}{📚 Documentazione generata}}\label{md__r_e_a_d_m_e_autotoc_md8}
+La documentazione include\+:
+\begin{DoxyItemize}
+\item {\bfseries{html/index.\+html}} -\/ Pagina principale
+\item {\bfseries{html/files.\+html}} -\/ Lista dei file
+\item {\bfseries{html/globals.\+html}} -\/ Lista delle funzioni globali
+\item {\bfseries{html/esempio\+\_\+\+\_\+semplice\+\_\+8c.\+html}} -\/ Documentazione del file
+\item {\bfseries{latex/}} -\/ Versione La\+TeX (per PDF)
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysection{\texorpdfstring{🆚 Differenze con configurazione personalizzata}{🆚 Differenze con configurazione personalizzata}}\label{md__r_e_a_d_m_e_autotoc_md9}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Caratteristica  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Standard  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Personalizzata  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Caratteristica  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Standard  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Personalizzata  }\\\cline{1-3}
+\endhead
+Nome progetto  &"{}\+My Project"{}  &Personalizzabile  \\\cline{1-3}
+Estrazione codice  &Solo documentato  &Tutto (EXTRACT\+\_\+\+ALL)  \\\cline{1-3}
+Browser codice  &Disabilitato  &Abilitato  \\\cline{1-3}
+Lingua  &Inglese  &Configurabile  \\\cline{1-3}
+Output  &HTML + La\+TeX  &Solo HTML  \\\cline{1-3}
+Ricerca  &Disabilitata  &Abilitata  \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysection{\texorpdfstring{🎯 Quando usare la configurazione standard}{🎯 Quando usare la configurazione standard}}\label{md__r_e_a_d_m_e_autotoc_md10}
+{\bfseries{✅ Usa la configurazione standard quando\+:}}
+\begin{DoxyItemize}
+\item Hai un progetto semplice
+\item Vuoi solo documentare le API pubbliche
+\item Non hai bisogno di personalizzazioni
+\item Vuoi iniziare velocemente
+\end{DoxyItemize}
+
+{\bfseries{❌ Personalizza quando\+:}}
+\begin{DoxyItemize}
+\item Hai un progetto complesso
+\item Vuoi documentare tutto il codice
+\item Hai bisogno di funzionalità avanzate
+\item Vuoi un aspetto personalizzato
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysection{\texorpdfstring{📖 Esempio di documentazione}{📖 Esempio di documentazione}}\label{md__r_e_a_d_m_e_autotoc_md11}
+Il file {\ttfamily \doxylink{esempio__semplice_8c}{esempio\+\_\+semplice.\+c}} mostra\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{esempio__semplice_8c_ad449c2894ea191de9b8c34564355ca2f}{somma}}(\textcolor{keywordtype}{int}\ a,\ \textcolor{keywordtype}{int}\ b)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ a\ +\ b;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysection{\texorpdfstring{🛠️ Personalizzazioni possibili}{🛠️ Personalizzazioni possibili}}\label{md__r_e_a_d_m_e_autotoc_md12}
+Per personalizzare il Doxyfile\+:
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Cambia nome progetto\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{PROJECT\_NAME\ =\ "{}Il\ Mio\ Progetto"{}}
+
+\end{DoxyCode}
+
+\item {\bfseries{Estrai tutto il codice\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{EXTRACT\_ALL\ =\ YES}
+
+\end{DoxyCode}
+
+\item {\bfseries{Abilita browser codice\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{SOURCE\_BROWSER\ =\ YES}
+
+\end{DoxyCode}
+
+\item {\bfseries{Cambia lingua\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{OUTPUT\_LANGUAGE\ =\ Italian}
+
+\end{DoxyCode}
+
+\item {\bfseries{Disabilita La\+TeX\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GENERATE\_LATEX\ =\ NO}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysection{\texorpdfstring{📚 Confronto con esempio completo}{📚 Confronto con esempio completo}}\label{md__r_e_a_d_m_e_autotoc_md13}
+Nella cartella {\ttfamily ../} (Lez8) trovi un esempio completo con\+:
+\begin{DoxyItemize}
+\item Doxyfile personalizzato
+\item Esempi avanzati di documentazione
+\item Makefile con più funzionalità
+\item Cheat sheet completo
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+{\bfseries{Esempio creato per dimostrare l\textquotesingle{}uso base di Doxygen}} ~\newline
+ Data\+: 2 agosto 2025 
