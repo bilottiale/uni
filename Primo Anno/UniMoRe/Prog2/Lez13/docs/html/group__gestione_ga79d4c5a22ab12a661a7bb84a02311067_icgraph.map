@@ -1,0 +1,8 @@
+<map id="search" name="search">
+<area shape="rect" id="Node000001" title="Cerca un elemento con un valore specifico nella lista." alt="" coords="220,31,280,56"/>
+<area shape="rect" id="Node000002" href="$group__interfaccia.html#ga9493d4142c2d4ccf989c7e19ea42d042" title="Cancella tutti gli elementi con un valore specifico dalla lista." alt="" coords="103,5,172,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,36,172,29,173,23,206,31"/>
+<area shape="rect" id="Node000003" href="$gestione__lista__doppia__doc_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Funzione principale del programma." alt="" coords="5,31,55,56"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="205,46,55,46,55,41,205,41"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="88,32,55,40,54,35,87,27"/>
+</map>

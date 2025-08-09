@@ -1,0 +1,7 @@
+<map id="search" name="search">
+<area shape="rect" id="Node000001" title="Cerca un elemento con un valore specifico nella lista." alt="" coords="5,31,66,56"/>
+<area shape="rect" id="Node000002" href="$group__primitive.html#ga715dbc121f59dc41f5ffadaf7478f961" title="Restituisce il contenuto informativo di un elemento." alt="" coords="114,5,163,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,34,98,25,99,30,66,39"/>
+<area shape="rect" id="Node000003" href="$group__primitive.html#ga5b6a1f6fecd8fc74a45c077ae9bf8716" title="Restituisce il puntatore al prossimo elemento." alt="" coords="119,55,158,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="66,48,105,57,104,62,65,53"/>
+</map>

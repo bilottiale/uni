@@ -1,0 +1,29 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title="Funzione principale del programma." alt="" coords="5,104,55,130"/>
+<area shape="rect" id="Node000002" href="$group__interfaccia.html#ga9493d4142c2d4ccf989c7e19ea42d042" title="Cancella tutti gli elementi con un valore specifico dalla lista." alt="" coords="103,53,172,79"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="54,103,94,84,96,89,56,108"/>
+<area shape="rect" id="Node000005" href="$group__gestione.html#ga79d4c5a22ab12a661a7bb84a02311067" title="Cerca un elemento con un valore specifico nella lista." alt="" coords="236,104,297,130"/>
+<area shape="poly" id="edge13_Node000001_Node000005" title=" " alt="" coords="55,114,221,114,221,120,55,120"/>
+<area shape="rect" id="Node000008" href="$group__interfaccia.html#gaba343a4829444e8e5e2837f2a1976b49" title="Crea una nuova lista con n elementi inseriti dall&#39;utente." alt="" coords="103,205,173,231"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="47,128,105,184,113,193,110,196,101,188,43,132"/>
+<area shape="rect" id="Node000010" href="$group__interfaccia.html#ga39ea728044f9c736cb22be57e9fc16c9" title="Permette la navigazione bidirezionale a partire da un elemento." alt="" coords="237,55,296,80"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="37,102,62,68,80,51,102,38,133,30,166,31,197,37,225,46,223,51,196,42,165,36,134,36,104,43,83,56,66,72,41,105"/>
+<area shape="rect" id="Node000011" href="$group__interfaccia.html#ga5e26f4bd8c73a203f75b1243c1011790" title="Stampa tutti gli elementi della lista con informazioni di debug." alt="" coords="222,153,311,179"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="56,119,208,151,207,157,55,124"/>
+<area shape="rect" id="Node000003" href="$group__gestione.html#gaa078cd7a67139b3780555bd5b9551938" title="Rimuove un elemento specifico dalla lista." alt="" coords="221,5,312,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="172,51,215,34,217,39,174,56"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="173,77,223,97,221,102,171,82"/>
+<area shape="rect" id="Node000004" href="$group__primitive.html#ga6e7f548790d097d12b74faaf3dda1d18" title="Restituisce il puntatore all&#39;elemento precedente." alt="" coords="362,31,408,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="313,25,347,33,346,38,312,30"/>
+<area shape="rect" id="Node000006" href="$group__primitive.html#ga715dbc121f59dc41f5ffadaf7478f961" title="Restituisce il contenuto informativo di un elemento." alt="" coords="360,80,410,106"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="297,108,345,98,346,103,298,113"/>
+<area shape="rect" id="Node000007" href="$group__primitive.html#ga5b6a1f6fecd8fc74a45c077ae9bf8716" title="Restituisce il puntatore al prossimo elemento." alt="" coords="366,129,404,155"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="298,121,351,132,350,138,297,126"/>
+<area shape="rect" id="Node000009" href="$group__gestione.html#ga9401a70af33fb357eef32ef1a58ba979" title="Inserisce un nuovo elemento in testa alla lista." alt="" coords="222,205,311,231"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="174,216,207,216,207,221,174,221"/>
+<area shape="poly" id="edge11_Node000010_Node000004" title=" " alt="" coords="296,59,346,49,347,54,297,64"/>
+<area shape="poly" id="edge10_Node000010_Node000006" title=" " alt="" coords="297,71,345,82,344,87,296,76"/>
+<area shape="poly" id="edge12_Node000010_Node000007" title=" " alt="" coords="295,79,314,89,356,118,353,122,311,94,293,83"/>
+<area shape="poly" id="edge15_Node000011_Node000006" title=" " alt="" coords="293,150,311,140,352,112,355,117,314,144,295,155"/>
+<area shape="poly" id="edge16_Node000011_Node000007" title=" " alt="" coords="311,155,350,146,351,152,312,160"/>
+</map>

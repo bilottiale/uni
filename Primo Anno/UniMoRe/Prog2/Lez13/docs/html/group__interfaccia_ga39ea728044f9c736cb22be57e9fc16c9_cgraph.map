@@ -1,0 +1,9 @@
+<map id="naviga" name="naviga">
+<area shape="rect" id="Node000001" title="Permette la navigazione bidirezionale a partire da un elemento." alt="" coords="5,55,65,80"/>
+<area shape="rect" id="Node000002" href="$group__primitive.html#ga715dbc121f59dc41f5ffadaf7478f961" title="Restituisce il contenuto informativo di un elemento." alt="" coords="113,5,162,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="62,52,97,34,100,39,65,56"/>
+<area shape="rect" id="Node000003" href="$group__primitive.html#ga6e7f548790d097d12b74faaf3dda1d18" title="Restituisce il puntatore all&#39;elemento precedente." alt="" coords="114,55,160,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="65,65,98,65,98,70,65,70"/>
+<area shape="rect" id="Node000004" href="$group__primitive.html#ga5b6a1f6fecd8fc74a45c077ae9bf8716" title="Restituisce il puntatore al prossimo elemento." alt="" coords="118,104,157,130"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="65,79,105,99,103,103,62,83"/>
+</map>

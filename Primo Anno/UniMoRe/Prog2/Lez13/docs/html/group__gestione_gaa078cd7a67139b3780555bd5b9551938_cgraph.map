@@ -1,0 +1,5 @@
+<map id="delete_elem" name="delete_elem">
+<area shape="rect" id="Node000001" title="Rimuove un elemento specifico dalla lista." alt="" coords="5,5,97,31"/>
+<area shape="rect" id="Node000002" href="$group__primitive.html#ga6e7f548790d097d12b74faaf3dda1d18" title="Restituisce il puntatore all&#39;elemento precedente." alt="" coords="145,5,191,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,16,129,16,129,21,97,21"/>
+</map>

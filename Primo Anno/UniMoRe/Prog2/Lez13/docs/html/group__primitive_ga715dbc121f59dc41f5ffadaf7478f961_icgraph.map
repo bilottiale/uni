@@ -1,0 +1,16 @@
+<map id="head" name="head">
+<area shape="rect" id="Node000001" title="Restituisce il contenuto informativo di un elemento." alt="" coords="356,95,406,120"/>
+<area shape="rect" id="Node000002" href="$group__interfaccia.html#ga39ea728044f9c736cb22be57e9fc16c9" title="Permette la navigazione bidirezionale a partire da un elemento." alt="" coords="108,5,167,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="341,96,166,31,168,26,343,91"/>
+<area shape="rect" id="Node000004" href="$group__gestione.html#ga79d4c5a22ab12a661a7bb84a02311067" title="Cerca un elemento con un valore specifico nella lista." alt="" coords="234,95,294,120"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="341,110,295,110,295,105,341,105"/>
+<area shape="rect" id="Node000006" href="$group__interfaccia.html#ga5e26f4bd8c73a203f75b1243c1011790" title="Stampa tutti gli elementi della lista con informazioni di debug." alt="" coords="220,144,308,170"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="343,126,298,146,295,141,341,121"/>
+<area shape="rect" id="Node000003" href="$gestione__lista__doppia__doc_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Funzione principale del programma." alt="" coords="5,81,55,107"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="107,42,51,83,48,79,104,38"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="218,102,172,97,55,96,55,90,172,92,219,97"/>
+<area shape="rect" id="Node000005" href="$group__interfaccia.html#ga9493d4142c2d4ccf989c7e19ea42d042" title="Cancella tutti gli elementi con un valore specifico dalla lista." alt="" coords="103,107,172,132"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="219,114,173,119,172,114,218,109"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="87,110,54,102,55,97,88,105"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="204,163,154,159,102,147,69,130,44,110,47,106,72,126,104,142,154,154,204,157"/>
+</map>

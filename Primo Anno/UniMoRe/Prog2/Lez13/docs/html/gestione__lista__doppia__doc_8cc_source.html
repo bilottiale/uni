@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Gestione Liste Doppie:  File sorgente gestione_lista_doppia_doc.cc</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Gestione Liste Doppie<span id="projectnumber">&#160;v1.0</span>
+   </div>
+   <div id="projectbrief">Sistema completo per la gestione di liste doppie con interfaccia interattiva</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('gestione__lista__doppia__doc_8cc_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Caricamento in corso...</div>
+<div class="SRStatus" id="Searching">Ricerca in corso...</div>
+<div class="SRStatus" id="NoMatches">Nessun risultato</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">gestione_lista_doppia_doc.cc</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="gestione__lista__doppia__doc_8cc.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span></div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structelem.html">   29</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structelem.html">elem</a></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structelem.html#a28ce831d7c20bff0de26fba89fe9a69f">   31</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structelem.html#a28ce831d7c20bff0de26fba89fe9a69f">inf</a>[51];    </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structelem.html#a5676f3bc339c6078388c93534e0ddbb2">   32</a></span>    <a class="code hl_struct" href="structelem.html">elem</a> *<a class="code hl_variable" href="structelem.html#a5676f3bc339c6078388c93534e0ddbb2">pun</a>;       </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structelem.html#a9d914201f1b505801ec2c812ca6e8630">   33</a></span>    <a class="code hl_struct" href="structelem.html">elem</a> *<a class="code hl_variable" href="structelem.html#a9d914201f1b505801ec2c812ca6e8630">prev</a>;      </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>};</div>
+</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">   43</a></span><span class="keyword">typedef</span> <a class="code hl_struct" href="structelem.html">elem</a> *<a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="group__primitive.html#ga715dbc121f59dc41f5ffadaf7478f961">   57</a></span><span class="keywordtype">char</span> *<a class="code hl_function" href="group__primitive.html#ga715dbc121f59dc41f5ffadaf7478f961">head</a>(<a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> p) { <span class="keywordflow">return</span> p-&gt;<a class="code hl_variable" href="structelem.html#a28ce831d7c20bff0de26fba89fe9a69f">inf</a>; }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="group__primitive.html#ga5b6a1f6fecd8fc74a45c077ae9bf8716">   65</a></span><a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> <a class="code hl_function" href="group__primitive.html#ga5b6a1f6fecd8fc74a45c077ae9bf8716">tail</a>(<a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> p) { <span class="keywordflow">return</span> p-&gt;<a class="code hl_variable" href="structelem.html#a5676f3bc339c6078388c93534e0ddbb2">pun</a>; }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="group__primitive.html#ga6e7f548790d097d12b74faaf3dda1d18">   73</a></span><a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> <a class="code hl_function" href="group__primitive.html#ga6e7f548790d097d12b74faaf3dda1d18">prev</a>(<a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> p) { <span class="keywordflow">return</span> p-&gt;<a class="code hl_variable" href="structelem.html#a9d914201f1b505801ec2c812ca6e8630">prev</a>; }</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> <span class="comment">// end of primitive group</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span></div>
+<div class="foldopen" id="foldopen00105" data-start="{" data-end="}">
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="group__gestione.html#ga9401a70af33fb357eef32ef1a58ba979">  105</a></span><a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> <a class="code hl_function" href="group__gestione.html#ga9401a70af33fb357eef32ef1a58ba979">insert_elem</a>(<a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> l, <a class="code hl_struct" href="structelem.html">elem</a> *e)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>{</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    e-&gt;<a class="code hl_variable" href="structelem.html#a5676f3bc339c6078388c93534e0ddbb2">pun</a> = l;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordflow">if</span> (l != NULL)</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        l-&gt;<a class="code hl_variable" href="structelem.html#a9d914201f1b505801ec2c812ca6e8630">prev</a> = e;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    e-&gt;<a class="code hl_variable" href="structelem.html#a9d914201f1b505801ec2c812ca6e8630">prev</a> = NULL;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordflow">return</span> e;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>}</div>
+</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span></div>
+<div class="foldopen" id="foldopen00126" data-start="{" data-end="}">
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="group__gestione.html#gaa078cd7a67139b3780555bd5b9551938">  126</a></span><a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> <a class="code hl_function" href="group__gestione.html#gaa078cd7a67139b3780555bd5b9551938">delete_elem</a>(<a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> l, <a class="code hl_struct" href="structelem.html">elem</a> *e)</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>{</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordflow">if</span> (l == e)</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        l = e-&gt;<a class="code hl_variable" href="structelem.html#a5676f3bc339c6078388c93534e0ddbb2">pun</a>; <span class="comment">// e è la testa della lista</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordflow">else</span>            <span class="comment">// e non è la testa della lista</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        (e-&gt;<a class="code hl_variable" href="structelem.html#a9d914201f1b505801ec2c812ca6e8630">prev</a>)-&gt;pun = e-&gt;<a class="code hl_variable" href="structelem.html#a5676f3bc339c6078388c93534e0ddbb2">pun</a>;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordflow">if</span> (e-&gt;<a class="code hl_variable" href="structelem.html#a5676f3bc339c6078388c93534e0ddbb2">pun</a> != NULL)</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        (e-&gt;<a class="code hl_variable" href="structelem.html#a5676f3bc339c6078388c93534e0ddbb2">pun</a>)-&gt;<a class="code hl_function" href="group__primitive.html#ga6e7f548790d097d12b74faaf3dda1d18">prev</a> = e-&gt;<a class="code hl_variable" href="structelem.html#a9d914201f1b505801ec2c812ca6e8630">prev</a>;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keyword">delete</span> e;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordflow">return</span> l;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>}</div>
+</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span></div>
+<div class="foldopen" id="foldopen00147" data-start="{" data-end="}">
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="group__gestione.html#ga79d4c5a22ab12a661a7bb84a02311067">  147</a></span><a class="code hl_struct" href="structelem.html">elem</a> *<a class="code hl_function" href="group__gestione.html#ga79d4c5a22ab12a661a7bb84a02311067">search</a>(<a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> l, <span class="keywordtype">char</span> *v)</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>{</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordflow">while</span> (l != NULL)</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keywordflow">if</span> (strcmp(<a class="code hl_function" href="group__primitive.html#ga715dbc121f59dc41f5ffadaf7478f961">head</a>(l), v) == 0)</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>            <span class="keywordflow">return</span> l;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            l = <a class="code hl_function" href="group__primitive.html#ga5b6a1f6fecd8fc74a45c077ae9bf8716">tail</a>(l);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>}</div>
+</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> <span class="comment">// end of gestione group</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span></div>
+<div class="foldopen" id="foldopen00177" data-start="{" data-end="}">
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno"><a class="line" href="group__interfaccia.html#ga5e26f4bd8c73a203f75b1243c1011790">  177</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group__interfaccia.html#ga5e26f4bd8c73a203f75b1243c1011790">stampalista</a>(<a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> p)</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>{</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    cout &lt;&lt; <span class="stringliteral">&quot;[&quot;</span>;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordflow">while</span> (p != NULL)</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    {</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        cout &lt;&lt; <a class="code hl_function" href="group__primitive.html#ga715dbc121f59dc41f5ffadaf7478f961">head</a>(p) &lt;&lt; <span class="stringliteral">&quot; &quot;</span>; <span class="comment">// stampa valore</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        cout &lt;&lt; <span class="stringliteral">&quot;(p: &quot;</span> &lt;&lt; p &lt;&lt; <span class="stringliteral">&quot; succ:&quot;</span> &lt;&lt; p-&gt;<a class="code hl_variable" href="structelem.html#a5676f3bc339c6078388c93534e0ddbb2">pun</a> &lt;&lt; <span class="stringliteral">&quot; prev:&quot;</span> &lt;&lt; p-&gt;<a class="code hl_variable" href="structelem.html#a9d914201f1b505801ec2c812ca6e8630">prev</a> &lt;&lt; <span class="stringliteral">&quot;)&quot;</span>;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        p = <a class="code hl_function" href="group__primitive.html#ga5b6a1f6fecd8fc74a45c077ae9bf8716">tail</a>(p); <span class="comment">// spostamento sul prossimo elemento</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    }</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    cout &lt;&lt; <span class="stringliteral">&quot;]&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>}</div>
+</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span></div>
+<div class="foldopen" id="foldopen00217" data-start="{" data-end="}">
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno"><a class="line" href="group__interfaccia.html#gaba343a4829444e8e5e2837f2a1976b49">  217</a></span><a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> <a class="code hl_function" href="group__interfaccia.html#gaba343a4829444e8e5e2837f2a1976b49">crealista</a>(<span class="keywordtype">int</span> n)</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>{</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    <a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> testa = NULL;</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt;= n; i++)</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    {</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <a class="code hl_struct" href="structelem.html">elem</a> *p = <span class="keyword">new</span> <a class="code hl_struct" href="structelem.html">elem</a>;</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        cout &lt;&lt; <span class="stringliteral">&quot;URL &quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;: &quot;</span>;</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        cin &gt;&gt; p-&gt;<a class="code hl_variable" href="structelem.html#a28ce831d7c20bff0de26fba89fe9a69f">inf</a>;</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        p-&gt;<a class="code hl_variable" href="structelem.html#a5676f3bc339c6078388c93534e0ddbb2">pun</a> = p-&gt;<a class="code hl_variable" href="structelem.html#a9d914201f1b505801ec2c812ca6e8630">prev</a> = NULL;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        testa = <a class="code hl_function" href="group__gestione.html#ga9401a70af33fb357eef32ef1a58ba979">insert_elem</a>(testa, p);</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    }</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <span class="keywordflow">return</span> testa;</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>}</div>
+</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span></div>
+<div class="foldopen" id="foldopen00241" data-start="{" data-end="}">
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno"><a class="line" href="group__interfaccia.html#ga9493d4142c2d4ccf989c7e19ea42d042">  241</a></span><a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> <a class="code hl_function" href="group__interfaccia.html#ga9493d4142c2d4ccf989c7e19ea42d042">cancella</a>(<a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> l, <span class="keywordtype">char</span> *v)</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>{</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <a class="code hl_struct" href="structelem.html">elem</a> *e;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    <span class="keywordflow">while</span> ((e = <a class="code hl_function" href="group__gestione.html#ga79d4c5a22ab12a661a7bb84a02311067">search</a>(l, v)) != NULL)</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    {</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        cout &lt;&lt; <span class="stringliteral">&quot;Cancello un elemento con valore &quot;</span> &lt;&lt; v &lt;&lt; endl;</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        l = <a class="code hl_function" href="group__gestione.html#gaa078cd7a67139b3780555bd5b9551938">delete_elem</a>(l, e);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    }</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    cout &lt;&lt; <span class="stringliteral">&quot;Fine cancellazione!!&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <span class="keywordflow">return</span> l;</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>}</div>
+</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span></div>
+<div class="foldopen" id="foldopen00277" data-start="{" data-end="}">
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno"><a class="line" href="group__interfaccia.html#ga39ea728044f9c736cb22be57e9fc16c9">  277</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group__interfaccia.html#ga39ea728044f9c736cb22be57e9fc16c9">naviga</a>(<a class="code hl_struct" href="structelem.html">elem</a> *e)</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>{</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    <span class="keywordtype">char</span> scelta;</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    cout &lt;&lt; <span class="stringliteral">&quot;Trovato!!&quot;</span>;</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    <span class="keywordflow">do</span></div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    {</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        cout &lt;&lt; <span class="stringliteral">&quot;Cosa vuoi fare (B per backward,F per forward, S per stop)&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        cin &gt;&gt; scelta;</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        <span class="keywordflow">if</span> (scelta == <span class="charliteral">&#39;F&#39;</span> &amp;&amp; <a class="code hl_function" href="group__primitive.html#ga5b6a1f6fecd8fc74a45c077ae9bf8716">tail</a>(e) != NULL)</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        {</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>            cout &lt;&lt; <a class="code hl_function" href="group__primitive.html#ga715dbc121f59dc41f5ffadaf7478f961">head</a>(<a class="code hl_function" href="group__primitive.html#ga5b6a1f6fecd8fc74a45c077ae9bf8716">tail</a>(e)) &lt;&lt; endl;</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>            e = <a class="code hl_function" href="group__primitive.html#ga5b6a1f6fecd8fc74a45c077ae9bf8716">tail</a>(e);</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        }</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (scelta == <span class="charliteral">&#39;B&#39;</span> &amp;&amp; <a class="code hl_function" href="group__primitive.html#ga6e7f548790d097d12b74faaf3dda1d18">prev</a>(e) != NULL)</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        {</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>            cout &lt;&lt; <a class="code hl_function" href="group__primitive.html#ga715dbc121f59dc41f5ffadaf7478f961">head</a>(<a class="code hl_function" href="group__primitive.html#ga6e7f548790d097d12b74faaf3dda1d18">prev</a>(e)) &lt;&lt; endl;</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>            e = <a class="code hl_function" href="group__primitive.html#ga6e7f548790d097d12b74faaf3dda1d18">prev</a>(e);</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        }</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>            cout &lt;&lt; <span class="stringliteral">&quot;Elemento non esistente!!&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    } <span class="keywordflow">while</span> (scelta != <span class="charliteral">&#39;S&#39;</span>);</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>}</div>
+</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span> <span class="comment">// end of interfaccia group</span></div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span></div>
+<div class="foldopen" id="foldopen00341" data-start="{" data-end="}">
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno"><a class="line" href="gestione__lista__doppia__doc_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">  341</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="gestione__lista__doppia__doc_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>{</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    <span class="keywordtype">int</span> n;</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    <span class="keywordtype">char</span> v[51];</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    <span class="keywordtype">int</span> scelta;</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    <a class="code hl_typedef" href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a> testa = NULL;</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    <a class="code hl_struct" href="structelem.html">elem</a> *ris;</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span> </div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>    <span class="keywordflow">do</span></div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>    {</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>        cout &lt;&lt; <span class="stringliteral">&quot;Cosa vuoi fare?&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>        cout &lt;&lt; <span class="stringliteral">&quot;1: creare una lista&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>        cout &lt;&lt; <span class="stringliteral">&quot;2:cancellare valori dalla lista&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>        cout &lt;&lt; <span class="stringliteral">&quot;3: stampare la lista&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>        cout &lt;&lt; <span class="stringliteral">&quot;4:cercare valori nella lista&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>        cout &lt;&lt; <span class="stringliteral">&quot;5:esci&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        cin &gt;&gt; scelta;</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        <span class="keywordflow">switch</span> (scelta)</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        {</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        <span class="keywordflow">case</span> 1:</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>            cout &lt;&lt; <span class="stringliteral">&quot;Inserire il numero di elementi da inserire nella lista&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>            cin &gt;&gt; n;</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>            testa = <a class="code hl_function" href="group__interfaccia.html#gaba343a4829444e8e5e2837f2a1976b49">crealista</a>(n);</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>        <span class="keywordflow">case</span> 2:</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>            cout &lt;&lt; <span class="stringliteral">&quot;Inserire il valore da cancellare:&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>            cin &gt;&gt; v;</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>            testa = <a class="code hl_function" href="group__interfaccia.html#ga9493d4142c2d4ccf989c7e19ea42d042">cancella</a>(testa, v);</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>        <span class="keywordflow">case</span> 3:</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>            <a class="code hl_function" href="group__interfaccia.html#ga5e26f4bd8c73a203f75b1243c1011790">stampalista</a>(testa);</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>        <span class="keywordflow">case</span> 4:</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>            cout &lt;&lt; <span class="stringliteral">&quot;Valore da cercare&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>            cin &gt;&gt; v;</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>            ris = <a class="code hl_function" href="group__gestione.html#ga79d4c5a22ab12a661a7bb84a02311067">search</a>(testa, v);</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>            <span class="keywordflow">if</span> (ris != NULL)</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>                <a class="code hl_function" href="group__interfaccia.html#ga39ea728044f9c736cb22be57e9fc16c9">naviga</a>(ris);</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>                cout &lt;&lt; <span class="stringliteral">&quot;Valore non presente&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>        <span class="keywordflow">case</span> 5:</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>            cout &lt;&lt; <span class="stringliteral">&quot;Ciao, ciao!!&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>        }</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    } <span class="keywordflow">while</span> (scelta != 5);</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>}</div>
+</div>
+<div class="ttc" id="agestione__lista__doppia__doc_8cc_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="gestione__lista__doppia__doc_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdoc">Funzione principale del programma.</div><div class="ttdef"><b>Definition</b> <a href="#l00341">gestione_lista_doppia_doc.cc:341</a></div></div>
+<div class="ttc" id="agestione__lista__doppia__doc_8cc_html_afa96fc24e07dc68ec8fa77eadb5c5f7c"><div class="ttname"><a href="gestione__lista__doppia__doc_8cc.html#afa96fc24e07dc68ec8fa77eadb5c5f7c">lista</a></div><div class="ttdeci">elem * lista</div><div class="ttdoc">Tipo di dato per rappresentare una lista doppia.</div><div class="ttdef"><b>Definition</b> <a href="#l00043">gestione_lista_doppia_doc.cc:43</a></div></div>
+<div class="ttc" id="agroup__gestione_html_ga79d4c5a22ab12a661a7bb84a02311067"><div class="ttname"><a href="group__gestione.html#ga79d4c5a22ab12a661a7bb84a02311067">search</a></div><div class="ttdeci">elem * search(lista l, char *v)</div><div class="ttdoc">Cerca un elemento con un valore specifico nella lista.</div><div class="ttdef"><b>Definition</b> <a href="#l00147">gestione_lista_doppia_doc.cc:147</a></div></div>
+<div class="ttc" id="agroup__gestione_html_ga9401a70af33fb357eef32ef1a58ba979"><div class="ttname"><a href="group__gestione.html#ga9401a70af33fb357eef32ef1a58ba979">insert_elem</a></div><div class="ttdeci">lista insert_elem(lista l, elem *e)</div><div class="ttdoc">Inserisce un nuovo elemento in testa alla lista.</div><div class="ttdef"><b>Definition</b> <a href="#l00105">gestione_lista_doppia_doc.cc:105</a></div></div>
+<div class="ttc" id="agroup__gestione_html_gaa078cd7a67139b3780555bd5b9551938"><div class="ttname"><a href="group__gestione.html#gaa078cd7a67139b3780555bd5b9551938">delete_elem</a></div><div class="ttdeci">lista delete_elem(lista l, elem *e)</div><div class="ttdoc">Rimuove un elemento specifico dalla lista.</div><div class="ttdef"><b>Definition</b> <a href="#l00126">gestione_lista_doppia_doc.cc:126</a></div></div>
+<div class="ttc" id="agroup__interfaccia_html_ga39ea728044f9c736cb22be57e9fc16c9"><div class="ttname"><a href="group__interfaccia.html#ga39ea728044f9c736cb22be57e9fc16c9">naviga</a></div><div class="ttdeci">void naviga(elem *e)</div><div class="ttdoc">Permette la navigazione bidirezionale a partire da un elemento.</div><div class="ttdef"><b>Definition</b> <a href="#l00277">gestione_lista_doppia_doc.cc:277</a></div></div>
+<div class="ttc" id="agroup__interfaccia_html_ga5e26f4bd8c73a203f75b1243c1011790"><div class="ttname"><a href="group__interfaccia.html#ga5e26f4bd8c73a203f75b1243c1011790">stampalista</a></div><div class="ttdeci">void stampalista(lista p)</div><div class="ttdoc">Stampa tutti gli elementi della lista con informazioni di debug.</div><div class="ttdef"><b>Definition</b> <a href="#l00177">gestione_lista_doppia_doc.cc:177</a></div></div>
+<div class="ttc" id="agroup__interfaccia_html_ga9493d4142c2d4ccf989c7e19ea42d042"><div class="ttname"><a href="group__interfaccia.html#ga9493d4142c2d4ccf989c7e19ea42d042">cancella</a></div><div class="ttdeci">lista cancella(lista l, char *v)</div><div class="ttdoc">Cancella tutti gli elementi con un valore specifico dalla lista.</div><div class="ttdef"><b>Definition</b> <a href="#l00241">gestione_lista_doppia_doc.cc:241</a></div></div>
+<div class="ttc" id="agroup__interfaccia_html_gaba343a4829444e8e5e2837f2a1976b49"><div class="ttname"><a href="group__interfaccia.html#gaba343a4829444e8e5e2837f2a1976b49">crealista</a></div><div class="ttdeci">lista crealista(int n)</div><div class="ttdoc">Crea una nuova lista con n elementi inseriti dall&#39;utente.</div><div class="ttdef"><b>Definition</b> <a href="#l00217">gestione_lista_doppia_doc.cc:217</a></div></div>
+<div class="ttc" id="agroup__primitive_html_ga5b6a1f6fecd8fc74a45c077ae9bf8716"><div class="ttname"><a href="group__primitive.html#ga5b6a1f6fecd8fc74a45c077ae9bf8716">tail</a></div><div class="ttdeci">lista tail(lista p)</div><div class="ttdoc">Restituisce il puntatore al prossimo elemento.</div><div class="ttdef"><b>Definition</b> <a href="#l00065">gestione_lista_doppia_doc.cc:65</a></div></div>
+<div class="ttc" id="agroup__primitive_html_ga6e7f548790d097d12b74faaf3dda1d18"><div class="ttname"><a href="group__primitive.html#ga6e7f548790d097d12b74faaf3dda1d18">prev</a></div><div class="ttdeci">lista prev(lista p)</div><div class="ttdoc">Restituisce il puntatore all&#39;elemento precedente.</div><div class="ttdef"><b>Definition</b> <a href="#l00073">gestione_lista_doppia_doc.cc:73</a></div></div>
+<div class="ttc" id="agroup__primitive_html_ga715dbc121f59dc41f5ffadaf7478f961"><div class="ttname"><a href="group__primitive.html#ga715dbc121f59dc41f5ffadaf7478f961">head</a></div><div class="ttdeci">char * head(lista p)</div><div class="ttdoc">Restituisce il contenuto informativo di un elemento.</div><div class="ttdef"><b>Definition</b> <a href="#l00057">gestione_lista_doppia_doc.cc:57</a></div></div>
+<div class="ttc" id="astructelem_html"><div class="ttname"><a href="structelem.html">elem</a></div><div class="ttdoc">Struttura che rappresenta un elemento della lista doppia.</div><div class="ttdef"><b>Definition</b> <a href="#l00029">gestione_lista_doppia_doc.cc:30</a></div></div>
+<div class="ttc" id="astructelem_html_a28ce831d7c20bff0de26fba89fe9a69f"><div class="ttname"><a href="structelem.html#a28ce831d7c20bff0de26fba89fe9a69f">elem::inf</a></div><div class="ttdeci">char inf[51]</div><div class="ttdoc">Campo informativo dell&#39;elemento (URL o stringa)</div><div class="ttdef"><b>Definition</b> <a href="#l00031">gestione_lista_doppia_doc.cc:31</a></div></div>
+<div class="ttc" id="astructelem_html_a5676f3bc339c6078388c93534e0ddbb2"><div class="ttname"><a href="structelem.html#a5676f3bc339c6078388c93534e0ddbb2">elem::pun</a></div><div class="ttdeci">elem * pun</div><div class="ttdoc">Puntatore al prossimo elemento (successore)</div><div class="ttdef"><b>Definition</b> <a href="#l00032">gestione_lista_doppia_doc.cc:32</a></div></div>
+<div class="ttc" id="astructelem_html_a9d914201f1b505801ec2c812ca6e8630"><div class="ttname"><a href="structelem.html#a9d914201f1b505801ec2c812ca6e8630">elem::prev</a></div><div class="ttdeci">elem * prev</div><div class="ttdoc">Puntatore all&#39;elemento precedente (predecessore)</div><div class="ttdef"><b>Definition</b> <a href="#l00033">gestione_lista_doppia_doc.cc:33</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="gestione__lista__doppia__doc_8cc.html">gestione_lista_doppia_doc.cc</a></li>
+    <li class="footer">Generato da <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

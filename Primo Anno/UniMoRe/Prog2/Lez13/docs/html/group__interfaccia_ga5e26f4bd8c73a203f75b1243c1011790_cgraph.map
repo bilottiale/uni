@@ -1,0 +1,7 @@
+<map id="stampalista" name="stampalista">
+<area shape="rect" id="Node000001" title="Stampa tutti gli elementi della lista con informazioni di debug." alt="" coords="5,31,94,56"/>
+<area shape="rect" id="Node000002" href="$group__primitive.html#ga715dbc121f59dc41f5ffadaf7478f961" title="Restituisce il contenuto informativo di un elemento." alt="" coords="142,5,191,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,31,126,24,127,29,95,37"/>
+<area shape="rect" id="Node000003" href="$group__primitive.html#ga5b6a1f6fecd8fc74a45c077ae9bf8716" title="Restituisce il puntatore al prossimo elemento." alt="" coords="147,55,186,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="95,50,132,58,131,63,93,55"/>
+</map>

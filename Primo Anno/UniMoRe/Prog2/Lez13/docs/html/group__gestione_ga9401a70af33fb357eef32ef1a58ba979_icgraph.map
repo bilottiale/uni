@@ -1,0 +1,7 @@
+<map id="insert_elem" name="insert_elem">
+<area shape="rect" id="Node000001" title="Inserisce un nuovo elemento in testa alla lista." alt="" coords="221,5,309,31"/>
+<area shape="rect" id="Node000002" href="$group__interfaccia.html#gaba343a4829444e8e5e2837f2a1976b49" title="Crea una nuova lista con n elementi inseriti dall&#39;utente." alt="" coords="103,5,173,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,21,173,21,173,16,205,16"/>
+<area shape="rect" id="Node000003" href="$gestione__lista__doppia__doc_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Funzione principale del programma." alt="" coords="5,5,55,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="87,21,55,21,55,16,87,16"/>
+</map>

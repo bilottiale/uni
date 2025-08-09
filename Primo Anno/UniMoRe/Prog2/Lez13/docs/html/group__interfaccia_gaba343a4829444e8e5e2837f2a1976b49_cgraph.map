@@ -1,0 +1,5 @@
+<map id="crealista" name="crealista">
+<area shape="rect" id="Node000001" title="Crea una nuova lista con n elementi inseriti dall&#39;utente." alt="" coords="5,5,76,31"/>
+<area shape="rect" id="Node000002" href="$group__gestione.html#ga9401a70af33fb357eef32ef1a58ba979" title="Inserisce un nuovo elemento in testa alla lista." alt="" coords="124,5,212,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,16,108,16,108,21,76,21"/>
+</map>
