@@ -1,0 +1,176 @@
+
+02-stampa.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <stampa>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	89 7d fc             	mov    %edi,-0x4(%rbp)
+   f:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 16 <stampa+0x16>
+  16:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 1d <stampa+0x1d>
+  1d:	e8 00 00 00 00       	callq  22 <stampa+0x22>
+  22:	48 89 c2             	mov    %rax,%rdx
+  25:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  28:	89 c6                	mov    %eax,%esi
+  2a:	48 89 d7             	mov    %rdx,%rdi
+  2d:	e8 00 00 00 00       	callq  32 <stampa+0x32>
+  32:	48 89 c2             	mov    %rax,%rdx
+  35:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 3c <stampa+0x3c>
+  3c:	48 89 c6             	mov    %rax,%rsi
+  3f:	48 89 d7             	mov    %rdx,%rdi
+  42:	e8 00 00 00 00       	callq  47 <stampa+0x47>
+  47:	90                   	nop
+  48:	c9                   	leaveq 
+  49:	c3                   	retq   
+
+000000000000004a <_Z41__static_initialization_and_destruction_0ii>:
+  4a:	f3 0f 1e fa          	endbr64 
+  4e:	55                   	push   %rbp
+  4f:	48 89 e5             	mov    %rsp,%rbp
+  52:	48 83 ec 10          	sub    $0x10,%rsp
+  56:	89 7d fc             	mov    %edi,-0x4(%rbp)
+  59:	89 75 f8             	mov    %esi,-0x8(%rbp)
+  5c:	83 7d fc 01          	cmpl   $0x1,-0x4(%rbp)
+  60:	75 32                	jne    94 <_Z41__static_initialization_and_destruction_0ii+0x4a>
+  62:	81 7d f8 ff ff 00 00 	cmpl   $0xffff,-0x8(%rbp)
+  69:	75 29                	jne    94 <_Z41__static_initialization_and_destruction_0ii+0x4a>
+  6b:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 72 <_Z41__static_initialization_and_destruction_0ii+0x28>
+  72:	e8 00 00 00 00       	callq  77 <_Z41__static_initialization_and_destruction_0ii+0x2d>
+  77:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 7e <_Z41__static_initialization_and_destruction_0ii+0x34>
+  7e:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 85 <_Z41__static_initialization_and_destruction_0ii+0x3b>
+  85:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 8c <_Z41__static_initialization_and_destruction_0ii+0x42>
+  8c:	48 89 c7             	mov    %rax,%rdi
+  8f:	e8 00 00 00 00       	callq  94 <_Z41__static_initialization_and_destruction_0ii+0x4a>
+  94:	90                   	nop
+  95:	c9                   	leaveq 
+  96:	c3                   	retq   
+
+0000000000000097 <_GLOBAL__sub_I_stampa>:
+  97:	f3 0f 1e fa          	endbr64 
+  9b:	55                   	push   %rbp
+  9c:	48 89 e5             	mov    %rsp,%rbp
+  9f:	be ff ff 00 00       	mov    $0xffff,%esi
+  a4:	bf 01 00 00 00       	mov    $0x1,%edi
+  a9:	e8 9c ff ff ff       	callq  4a <_Z41__static_initialization_and_destruction_0ii>
+  ae:	5d                   	pop    %rbp
+  af:	c3                   	retq   
+
+Disassembly of section .bss:
+
+0000000000000000 <_ZStL8__ioinit>:
+	...
+
+Disassembly of section .rodata:
+
+0000000000000000 <_ZStL19piecewise_construct>:
+   0:	00 48 65             	add    %cl,0x65(%rax)
+   3:	6c                   	insb   (%dx),%es:(%rdi)
+   4:	6c                   	insb   (%dx),%es:(%rdi)
+   5:	6f                   	outsl  %ds:(%rsi),(%dx)
+   6:	20 57 6f             	and    %dl,0x6f(%rdi)
+   9:	72 6c                	jb     77 <_Z41__static_initialization_and_destruction_0ii+0x2d>
+   b:	64 21 20             	and    %esp,%fs:(%rax)
+   e:	61                   	(bad)  
+   f:	20 69 73             	and    %ch,0x73(%rcx)
+  12:	20 00                	and    %al,(%rax)
+
+Disassembly of section .init_array:
+
+0000000000000000 <.init_array>:
+	...
+
+Disassembly of section .comment:
+
+0000000000000000 <.comment>:
+   0:	00 47 43             	add    %al,0x43(%rdi)
+   3:	43 3a 20             	rex.XB cmp (%r8),%spl
+   6:	28 55 62             	sub    %dl,0x62(%rbp)
+   9:	75 6e                	jne    79 <_Z41__static_initialization_and_destruction_0ii+0x2f>
+   b:	74 75                	je     82 <_Z41__static_initialization_and_destruction_0ii+0x38>
+   d:	20 39                	and    %bh,(%rcx)
+   f:	2e 34 2e             	cs xor $0x2e,%al
+  12:	30 2d 31 75 62 75    	xor    %ch,0x75627531(%rip)        # 75627549 <_GLOBAL__sub_I_stampa+0x756274b2>
+  18:	6e                   	outsb  %ds:(%rsi),(%dx)
+  19:	74 75                	je     90 <_Z41__static_initialization_and_destruction_0ii+0x46>
+  1b:	31 7e 32             	xor    %edi,0x32(%rsi)
+  1e:	30 2e                	xor    %ch,(%rsi)
+  20:	30 34 2e             	xor    %dh,(%rsi,%rbp,1)
+  23:	31 29                	xor    %ebp,(%rcx)
+  25:	20 39                	and    %bh,(%rcx)
+  27:	2e 34 2e             	cs xor $0x2e,%al
+  2a:	30 00                	xor    %al,(%rax)
+
+Disassembly of section .note.gnu.property:
+
+0000000000000000 <.note.gnu.property>:
+   0:	04 00                	add    $0x0,%al
+   2:	00 00                	add    %al,(%rax)
+   4:	10 00                	adc    %al,(%rax)
+   6:	00 00                	add    %al,(%rax)
+   8:	05 00 00 00 47       	add    $0x47000000,%eax
+   d:	4e 55                	rex.WRX push %rbp
+   f:	00 02                	add    %al,(%rdx)
+  11:	00 00                	add    %al,(%rax)
+  13:	c0 04 00 00          	rolb   $0x0,(%rax,%rax,1)
+  17:	00 03                	add    %al,(%rbx)
+  19:	00 00                	add    %al,(%rax)
+  1b:	00 00                	add    %al,(%rax)
+  1d:	00 00                	add    %al,(%rax)
+	...
+
+Disassembly of section .eh_frame:
+
+0000000000000000 <.eh_frame>:
+   0:	14 00                	adc    $0x0,%al
+   2:	00 00                	add    %al,(%rax)
+   4:	00 00                	add    %al,(%rax)
+   6:	00 00                	add    %al,(%rax)
+   8:	01 7a 52             	add    %edi,0x52(%rdx)
+   b:	00 01                	add    %al,(%rcx)
+   d:	78 10                	js     1f <.eh_frame+0x1f>
+   f:	01 1b                	add    %ebx,(%rbx)
+  11:	0c 07                	or     $0x7,%al
+  13:	08 90 01 00 00 1c    	or     %dl,0x1c000001(%rax)
+  19:	00 00                	add    %al,(%rax)
+  1b:	00 1c 00             	add    %bl,(%rax,%rax,1)
+  1e:	00 00                	add    %al,(%rax)
+  20:	00 00                	add    %al,(%rax)
+  22:	00 00                	add    %al,(%rax)
+  24:	4a 00 00             	rex.WX add %al,(%rax)
+  27:	00 00                	add    %al,(%rax)
+  29:	45 0e                	rex.RB (bad) 
+  2b:	10 86 02 43 0d 06    	adc    %al,0x60d4302(%rsi)
+  31:	02 41 0c             	add    0xc(%rcx),%al
+  34:	07                   	(bad)  
+  35:	08 00                	or     %al,(%rax)
+  37:	00 1c 00             	add    %bl,(%rax,%rax,1)
+  3a:	00 00                	add    %al,(%rax)
+  3c:	3c 00                	cmp    $0x0,%al
+  3e:	00 00                	add    %al,(%rax)
+  40:	00 00                	add    %al,(%rax)
+  42:	00 00                	add    %al,(%rax)
+  44:	4d 00 00             	rex.WRB add %r8b,(%r8)
+  47:	00 00                	add    %al,(%rax)
+  49:	45 0e                	rex.RB (bad) 
+  4b:	10 86 02 43 0d 06    	adc    %al,0x60d4302(%rsi)
+  51:	02 44 0c 07          	add    0x7(%rsp,%rcx,1),%al
+  55:	08 00                	or     %al,(%rax)
+  57:	00 1c 00             	add    %bl,(%rax,%rax,1)
+  5a:	00 00                	add    %al,(%rax)
+  5c:	5c                   	pop    %rsp
+  5d:	00 00                	add    %al,(%rax)
+  5f:	00 00                	add    %al,(%rax)
+  61:	00 00                	add    %al,(%rax)
+  63:	00 19                	add    %bl,(%rcx)
+  65:	00 00                	add    %al,(%rax)
+  67:	00 00                	add    %al,(%rax)
+  69:	45 0e                	rex.RB (bad) 
+  6b:	10 86 02 43 0d 06    	adc    %al,0x60d4302(%rsi)
+  71:	50                   	push   %rax
+  72:	0c 07                	or     $0x7,%al
+  74:	08 00                	or     %al,(%rax)
+	...
