@@ -3,19 +3,24 @@
  */
 #include <iostream>
 
-using namespace std ;
+using namespace std;
 
 #define X
 
 int main()
 {
 #ifdef X
-    cout<<"Macro X definita"<<endl ;
+    cout << "Macro X definita" << endl;
 #else
-    cout<<"Macro X non definita"<<endl ;
-    cout<<"Se X non è definita vi sarà un errore di sintassi perchè manca il ; "<<endl
-    cout<<"Altrimenti nessun errore,perché questa parte di codice non è "
-	<<"compilata affatto" <<endl ;
+    cout << "Macro X non definita" << endl;
+    cout << "Se X non ï¿½ definita vi sarï¿½ un errore di sintassi perchï¿½ manca il ; " << endl cout << "Altrimenti nessun errore,perchï¿½ questa parte di codice non ï¿½ "
+         << "compilata affatto" << endl;
 #endif
-    return 0 ;
+
+#ifdef Y
+    cout << "Macro Y definita" << endl;
+#else
+    cout << "Macro Y non definita" << endl;
+#endif
+    return 0;
 }
