@@ -1,13 +1,9 @@
 /*
- * main.cc
- *
- *  Created on: 21 mag 2018
- *      Author: federica
+ * main_fixed.cc - Versione corretta con input robusto
  */
 
-#define DEBUG
-
 #include <iostream>
+#include <limits>
 using namespace std;
 
 #include "tipo.h"
@@ -31,27 +27,41 @@ void print_BST(bst b)
 		print_BST(get_right(b));
 }
 
+void clearInputBuffer() {
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
+
 int main()
 {
 	bst t = NULL;
 	int continua;
 	int k;
-	char i[30];
+	char i[100];  // Buffer più grande
+
+	cout << "🌳 BST PRINT - Binary Search Tree" << endl;
+	cout << "=================================" << endl;
 
 	do
 	{
 		cout << "\nInserisci valore di chiave (intero): ";
-		cin >> k;
+		while (!(cin >> k)) {
+			cout << "❌ Errore: inserisci un numero intero valido: ";
+			clearInputBuffer();
+		}
+		
 		cout << "Inserisci valore informativo (stringa): ";
-		cin >> i;
+		cin >> i;  // Leggiamo come una singola parola
 		
 		bnode *b = bst_newNode(k, i);
-		cout << "Nodo creato: " << b << " chiave=" << get_key(b) << " valore='" << get_value(b) << "'" << endl;
+		cout << "✅ Nodo creato - Chiave: " << get_key(b) << ", Valore: '" << get_value(b) << "'" << endl;
 		bst_insert(t, b);
 		
 		cout << "Per terminare digitare 0, per continuare altro valore: ";
-		cin >> continua;
-		cout << "Valore inserito per continuare: " << continua << endl;
+		while (!(cin >> continua)) {
+			cout << "❌ Errore: inserisci 0 per terminare o altro numero per continuare: ";
+			clearInputBuffer();
+		}
 		
 	} while (continua != 0);
 	
@@ -60,8 +70,9 @@ int main()
 	if (t != NULL) {
 		print_BST(t);
 	} else {
-		cout << "Albero vuoto!" << endl;
+		cout << "❌ Albero vuoto!" << endl;
 	}
 	
+	cout << "\n✅ Programma terminato." << endl;
 	return 0;
 }

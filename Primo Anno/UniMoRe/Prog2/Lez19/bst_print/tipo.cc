@@ -26,7 +26,7 @@ int compare(tipo_inf s1, tipo_inf s2)
 
 void copy(tipo_inf &dest, tipo_inf source)
 {
-  dest = new char[strlen(source)];
+  dest = new char[strlen(source) + 1];  // +1 per il terminatore
   strcpy(dest, source);
 }
 
