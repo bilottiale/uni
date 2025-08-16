@@ -1,0 +1,173 @@
+# Makefile per Esercizio 1: Gestione Persone con File Binario
+# Autore: Alessandro Bilotti
+# Data: 11 agosto 2025
+
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c99 -pedantic
+DEBUG_FLAGS = -g -DDEBUG
+RELEASE_FLAGS = -O2 -DNDEBUG
+
+# File
+MAIN_SRC = inserisci_persona.c
+TEST_SRC = test_inserisci_persona.c
+MAIN_EXE = inserisci_persona
+TEST_EXE = test_inserisci_persona
+DATA_FILE = people.dat
+
+# Target predefinito
+all: $(MAIN_EXE) $(TEST_EXE)
+
+# Compilazione programma principale
+$(MAIN_EXE): $(MAIN_SRC)
+	@echo "🔨 Compilazione programma principale..."
+	$(CC) $(CFLAGS) $(RELEASE_FLAGS) -o $@ $<
+	@echo "✅ $(MAIN_EXE) compilato con successo!"
+
+# Compilazione programma di test
+$(TEST_EXE): $(TEST_SRC)
+	@echo "🔨 Compilazione programma di test..."
+	$(CC) $(CFLAGS) $(RELEASE_FLAGS) -o $@ $<
+	@echo "✅ $(TEST_EXE) compilato con successo!"
+
+# Versione debug
+debug: $(MAIN_SRC)
+	@echo "🐛 Compilazione in modalità debug..."
+	$(CC) $(CFLAGS) $(DEBUG_FLAGS) -o $(MAIN_EXE)_debug $(MAIN_SRC)
+	@echo "✅ $(MAIN_EXE)_debug compilato!"
+
+# Test completo
+test: $(TEST_EXE)
+	@echo "🧪 Esecuzione test automatico..."
+	./$(TEST_EXE)
+	@echo ""
+	@echo "📊 Verifica file creato:"
+	@ls -la $(DATA_FILE) 2>/dev/null || echo "❌ File $(DATA_FILE) non trovato"
+
+# Esecuzione programma principale
+run: $(MAIN_EXE)
+	@echo "🚀 Esecuzione programma principale..."
+	./$(MAIN_EXE)
+
+# Esecuzione con dati di test
+run-test: test
+	@echo ""
+	@echo "🎯 Ora puoi eseguire './$(MAIN_EXE)' per gestire il file popolato!"
+
+# Controllo sintassi
+check:
+	@echo "🔍 Controllo sintassi file sorgenti..."
+	$(CC) $(CFLAGS) -fsyntax-only $(MAIN_SRC)
+	$(CC) $(CFLAGS) -fsyntax-only $(TEST_SRC)
+	@echo "✅ Sintassi corretta!"
+
+# Analisi file binario
+analyze: $(DATA_FILE)
+	@echo "🔍 ANALISI FILE BINARIO $(DATA_FILE)"
+	@echo "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "="
+	@echo "📏 Dimensione file: $$(wc -c < $(DATA_FILE) 2>/dev/null || echo '0') bytes"
+	@echo "📊 Dimensione record: 68 bytes (teorica)"
+	@echo "👥 Numero record: $$(echo "$$(wc -c < $(DATA_FILE) 2>/dev/null || echo '0') / 68" | bc 2>/dev/null || echo '0')"
+	@echo "🕒 Ultima modifica: $$(stat -f '%Sm' $(DATA_FILE) 2>/dev/null || echo 'N/A')"
+	@echo ""
+	@echo "💡 Per vedere il contenuto usa './$(MAIN_EXE)' opzione 2"
+
+# Backup del file dati
+backup: $(DATA_FILE)
+	@echo "💾 Creazione backup di $(DATA_FILE)..."
+	@TIMESTAMP=$$(date +%Y%m%d_%H%M%S); \
+	cp $(DATA_FILE) $(DATA_FILE).backup_$$TIMESTAMP; \
+	echo "✅ Backup creato: $(DATA_FILE).backup_$$TIMESTAMP"
+
+# Ripristino backup più recente
+restore:
+	@echo "🔄 Ripristino backup più recente..."
+	@LATEST=$$(ls -1t $(DATA_FILE).backup_* 2>/dev/null | head -1); \
+	if [ -n "$$LATEST" ]; then \
+		cp "$$LATEST" $(DATA_FILE); \
+		echo "✅ Ripristinato da: $$LATEST"; \
+	else \
+		echo "❌ Nessun backup trovato"; \
+	fi
+
+# Confronto dimensioni testo vs binario
+compare-size: $(TEST_EXE)
+	@echo "📊 CONFRONTO DIMENSIONI: TESTO vs BINARIO"
+	@echo "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "="
+	@./$(TEST_EXE) > /dev/null 2>&1 || true
+	@if [ -f $(DATA_FILE) ]; then \
+		BIN_SIZE=$$(wc -c < $(DATA_FILE)); \
+		echo "💾 File binario: $$BIN_SIZE bytes"; \
+		echo "📝 File testo (stimato): $$(echo "$$BIN_SIZE * 2" | bc) bytes"; \
+		echo "⚡ Risparmio: ~50%"; \
+	else \
+		echo "❌ Esegui prima 'make test' per creare il file"; \
+	fi
+
+# Informazioni sul progetto
+info:
+	@echo "📋 INFORMAZIONI PROGETTO"
+	@echo "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "="
+	@echo "🎯 Esercizio: Gestione Persone con File Binario"
+	@echo "📁 File sorgenti:"
+	@echo "   • $(MAIN_SRC) - Programma principale interattivo"
+	@echo "   • $(TEST_SRC) - Generazione dati di test"
+	@echo "📊 Struttura record:"
+	@echo "   • cognome:     char[31] = 31 bytes"
+	@echo "   • nome:        char[31] = 31 bytes"
+	@echo "   • sesso:       char     = 1 byte"
+	@echo "   • anno_nascita: int     = 4 bytes"
+	@echo "   • TOTALE:               = 67 bytes + padding"
+	@echo "💾 File dati: $(DATA_FILE)"
+	@echo ""
+	@echo "🚀 Comandi utili:"
+	@echo "   make test      - Crea file con dati di esempio"
+	@echo "   make run       - Esegue programma interattivo"
+	@echo "   make analyze   - Analizza file binario"
+	@echo "   make backup    - Crea backup del file dati"
+
+# Pulizia file generati
+clean:
+	@echo "🧹 Pulizia file generati..."
+	rm -f $(MAIN_EXE) $(TEST_EXE) $(MAIN_EXE)_debug
+	@echo "✅ Eseguibili rimossi!"
+
+# Pulizia completa (include file dati)
+clean-all: clean
+	@echo "🧹 Pulizia completa..."
+	rm -f $(DATA_FILE) $(DATA_FILE).backup_*
+	@echo "✅ File dati e backup rimossi!"
+
+# Aiuto
+help:
+	@echo "🎯 MAKEFILE - GESTIONE PERSONE CON FILE BINARIO"
+	@echo "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "=" "="
+	@echo ""
+	@echo "📋 TARGET PRINCIPALI:"
+	@echo "   make all         - Compila tutto"
+	@echo "   make test        - Crea file di test con dati esempio"
+	@echo "   make run         - Esegue programma interattivo"
+	@echo "   make run-test    - Test + esecuzione"
+	@echo ""
+	@echo "🔧 SVILUPPO:"
+	@echo "   make debug       - Compila in modalità debug"
+	@echo "   make check       - Controllo sintassi"
+	@echo "   make clean       - Rimuove eseguibili"
+	@echo "   make clean-all   - Rimuove tutto (anche dati)"
+	@echo ""
+	@echo "📊 ANALISI:"
+	@echo "   make analyze     - Analizza file binario"
+	@echo "   make compare-size - Confronta dimensioni testo/binario"
+	@echo "   make info        - Informazioni progetto"
+	@echo ""
+	@echo "💾 GESTIONE DATI:"
+	@echo "   make backup      - Backup file dati"
+	@echo "   make restore     - Ripristina backup più recente"
+
+# Verifica che il file dati esista
+$(DATA_FILE):
+	@echo "❌ File $(DATA_FILE) non trovato!"
+	@echo "💡 Esegui 'make test' per creare dati di esempio"
+	@exit 1
+
+# Target sempre eseguibili
+.PHONY: all debug test run run-test check analyze backup restore compare-size info clean clean-all help
