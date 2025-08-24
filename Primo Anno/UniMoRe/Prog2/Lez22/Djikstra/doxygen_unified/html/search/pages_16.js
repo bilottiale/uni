@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['safety_0',['Thread Safety',['../note_implementative.html#thread_safety',1,'']]],
+  ['sezioni_20speciali_1',['Sezioni Speciali',['../md__2Users_2alessandrobilotti_2Desktop_2uni_2Primo_01Anno_2UniMoRe_2Prog2_2Lez20_2grafo_2DOCUMENTAZIONE__COMPLETA.html#autotoc_md84',1,'✅ <b>Sezioni Speciali</b>'],['../md__2Users_2alessandrobilotti_2Desktop_2uni_2Primo_01Anno_2UniMoRe_2Prog2_2Lez20_2grafo_2README__DOCS.html#autotoc_md157',1,'📊 <b>Sezioni Speciali</b>']]],
+  ['somma_20dei_20pesi_2',['Somma dei Pesi',['../esempi.html#somma_pesi',1,'']]],
+  ['spaziale_3',['Spaziale',['..//Users/alessandrobilotti/Desktop/uni/Primo Anno/UniMoRe/Prog2/Lez20/grafo/README.md#autotoc_md135',1,'📊 <b>Complessità Spaziale</b>'],['../complessita.html#complessita_spaziale',1,'Complessità Spaziale']]],
+  ['speciali_4',['Speciali',['../md__2Users_2alessandrobilotti_2Desktop_2uni_2Primo_01Anno_2UniMoRe_2Prog2_2Lez20_2grafo_2DOCUMENTAZIONE__COMPLETA.html#autotoc_md84',1,'✅ <b>Sezioni Speciali</b>'],['../md__2Users_2alessandrobilotti_2Desktop_2uni_2Primo_01Anno_2UniMoRe_2Prog2_2Lez20_2grafo_2README__DOCS.html#autotoc_md157',1,'📊 <b>Sezioni Speciali</b>']]],
+  ['specifico_5',['🔍 &lt;b&gt;Ricerca di un Arco Specifico&lt;/b&gt;',['..//Users/alessandrobilotti/Desktop/uni/Primo Anno/UniMoRe/Prog2/Lez20/grafo/README.md#autotoc_md131',1,'']]],
+  ['stampa_20risultati_6',['&lt;b&gt;6. Stampa Risultati&lt;/b&gt;',['../index.html#autotoc_md29',1,'']]],
+  ['statistiche_20generate_7',['📊 &lt;b&gt;Statistiche Generate&lt;/b&gt;',['../md__2Users_2alessandrobilotti_2Desktop_2uni_2Primo_01Anno_2UniMoRe_2Prog2_2Lez20_2grafo_2DOCUMENTAZIONE__COMPLETA.html#autotoc_md90',1,'']]],
+  ['stile_20professionale_8',['✅ &lt;b&gt;Stile Professionale&lt;/b&gt;',['../md__2Users_2alessandrobilotti_2Desktop_2uni_2Primo_01Anno_2UniMoRe_2Prog2_2Lez20_2grafo_2README__DOCS.html#autotoc_md160',1,'']]],
+  ['struttura_20dati_9',['&lt;b&gt;Struttura Dati&lt;/b&gt;',['../index.html#autotoc_md32',1,'']]],
+  ['struttura_20del_20progetto_10',['Struttura del Progetto',['../md_README__UNIFIED.html#autotoc_md52',1,'📋 Struttura del Progetto'],['../md_README.html#autotoc_md46',1,'Struttura del Progetto']]],
+  ['struttura_20output_11',['📂 Struttura Output',['../md__2Users_2alessandrobilotti_2Desktop_2uni_2Primo_01Anno_2UniMoRe_2Prog2_2Lez20_2grafo_2README__DOCS.html#autotoc_md162',1,'']]],
+  ['struttura_20principale_20del_20grafo_12',['🌐 &lt;span class=&quot;tt&quot;&gt;graph&lt;/span&gt; - Struttura Principale del Grafo',['..//Users/alessandrobilotti/Desktop/uni/Primo Anno/UniMoRe/Prog2/Lez20/grafo/README.md#autotoc_md113',1,'']]],
+  ['strutture_20dati_13',['Strutture Dati',['../md__2Users_2alessandrobilotti_2Desktop_2uni_2Primo_01Anno_2UniMoRe_2Prog2_2Lez20_2grafo_2DOCUMENTAZIONE__COMPLETA.html#autotoc_md94',1,'🏗️ <b>Strutture Dati</b>'],['../md__2Users_2alessandrobilotti_2Desktop_2uni_2Primo_01Anno_2UniMoRe_2Prog2_2Lez20_2grafo_2README__DOCS.html#autotoc_md155',1,'🏗️ <b>Strutture Dati</b>'],['..//Users/alessandrobilotti/Desktop/uni/Primo Anno/UniMoRe/Prog2/Lez20/grafo/README.md#autotoc_md109',1,'🏗️ Strutture Dati'],['../index.html#autotoc_md40',1,'<b>3. Algoritmi e Strutture Dati</b>']]],
+  ['strutture_20dati_20dettagliate_14',['✅ &lt;b&gt;Strutture Dati Dettagliate&lt;/b&gt;',['../md__2Users_2alessandrobilotti_2Desktop_2uni_2Primo_01Anno_2UniMoRe_2Prog2_2Lez20_2grafo_2DOCUMENTAZIONE__COMPLETA.html#autotoc_md82',1,'']]],
+  ['strutture_20e_20tipi_15',['📋 &lt;b&gt;Strutture e Tipi&lt;/b&gt;',['../md__2Users_2alessandrobilotti_2Desktop_2uni_2Primo_01Anno_2UniMoRe_2Prog2_2Lez20_2grafo_2README__DOCS.html#autotoc_md165',1,'']]],
+  ['studenti_16',['👨‍🎓 &lt;b&gt;Per Studenti&lt;/b&gt;',['../md__2Users_2alessandrobilotti_2Desktop_2uni_2Primo_01Anno_2UniMoRe_2Prog2_2Lez20_2grafo_2DOCUMENTAZIONE__COMPLETA.html#autotoc_md98',1,'']]],
+  ['studio_17',['🔍 &lt;b&gt;Miglioramenti Possibili (Studio)&lt;/b&gt;',['../index.html#autotoc_md43',1,'']]],
+  ['studio_20universitario_18',['Studio Universitario',['../index.html',1,'Documentazione Completa per Studio Universitario'],['../dijkstra_8h.html#studio',1,'Guida per lo Studio Universitario']]],
+  ['su_20tutti_20i_20nodi_19',['🔄 &lt;b&gt;Iterazione su Tutti i Nodi&lt;/b&gt;',['..//Users/alessandrobilotti/Desktop/uni/Primo Anno/UniMoRe/Prog2/Lez20/grafo/README.md#autotoc_md130',1,'']]],
+  ['successo_20',['🎉 Documentazione Creata con Successo!',['../md__2Users_2alessandrobilotti_2Desktop_2uni_2Primo_01Anno_2UniMoRe_2Prog2_2Lez20_2grafo_2DOCUMENTAZIONE__COMPLETA.html#autotoc_md76',1,'']]],
+  ['supporto_21',['Supporto',['../md__2Users_2alessandrobilotti_2Desktop_2uni_2Primo_01Anno_2UniMoRe_2Prog2_2Lez20_2grafo_2README__DOCS.html#autotoc_md180',1,'📞 Supporto'],['../md_README__UNIFIED.html#autotoc_md54',1,'Modulo Grafo (Supporto)']]],
+  ['svantaggi_22',['Svantaggi',['../complessita.html#svantaggi',1,'Svantaggi'],['../complessita.html#vantaggi_svantaggi',1,'Vantaggi e Svantaggi']]],
+  ['sviluppatori_23',['💼 &lt;b&gt;Per Sviluppatori&lt;/b&gt;',['../md__2Users_2alessandrobilotti_2Desktop_2uni_2Primo_01Anno_2UniMoRe_2Prog2_2Lez20_2grafo_2DOCUMENTAZIONE__COMPLETA.html#autotoc_md100',1,'']]]
+];
