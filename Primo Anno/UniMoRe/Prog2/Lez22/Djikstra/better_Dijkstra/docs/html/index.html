@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Algoritmo di Dijkstra - Versione Migliorata: 🎓 Algoritmo di Dijkstra - Versione Migliorata per Studio Universitario</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Algoritmo di Dijkstra - Versione Migliorata<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Implementazione avanzata con std::priority_queue, RAII e gestione errori</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('index.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Caricamento in corso...</div>
+<div class="SRStatus" id="Searching">Ricerca in corso...</div>
+<div class="SRStatus" id="NoMatches">Nessun risultato</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">🎓 Algoritmo di Dijkstra - Versione Migliorata per Studio Universitario </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+📋 Panoramica</h1>
+<p>Questa directory contiene una <b>versione avanzata e migliorata</b> dell'algoritmo di Dijkstra, progettata specificamente per lo studio universitario. L'implementazione dimostra le migliori pratiche di programmazione C++ e tecniche di ottimizzazione.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+🚀 Miglioramenti Implementati</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+1. 📊 <b>std::priority_queue</b> invece di lista personalizzata</h2>
+<ul>
+<li><b>Prima</b>: Coda a priorità custom con complessità O(n) per inserimento/estrazione</li>
+<li><b>Ora</b>: <span class="tt">std::priority_queue</span> con complessità <b>O(log n)</b></li>
+<li><b>Vantaggi</b>: Codice più efficiente, robusto e standard</li>
+</ul>
+<div class="fragment"><div class="line"><span class="comment">// Prima (inefficiente)</span></div>
+<div class="line">codap enqueue(codap q, <span class="keywordtype">int</span> nodo, <span class="keywordtype">float</span> priorita);  <span class="comment">// O(n)</span></div>
+<div class="line"><span class="keywordtype">int</span> dequeue(codap&amp; q);                              <span class="comment">// O(1)</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Ora (efficiente)</span></div>
+<div class="line">std::priority_queue&lt;DistanceNodePair, </div>
+<div class="line">                   std::vector&lt;DistanceNodePair&gt;, </div>
+<div class="line">                   std::greater&lt;DistanceNodePair&gt;&gt; pq;  <span class="comment">// O(log n) per tutto</span></div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
+2. 🧹 <b>Gestione automatica della memoria</b> (RAII)</h2>
+<ul>
+<li><b>Prima</b>: Allocazione manuale con rischio di memory leak</li>
+<li><b>Ora</b>: RAII (Resource Acquisition Is Initialization) con <span class="tt">std::vector</span></li>
+<li><b>Vantaggi</b>: Nessun memory leak, gestione automatica delle risorse</li>
+</ul>
+<div class="fragment"><div class="line"><span class="comment">// Prima (rischio memory leak)</span></div>
+<div class="line"><span class="keywordtype">float</span>* distanze = <span class="keyword">new</span> <span class="keywordtype">float</span>[n];  <span class="comment">// Manuale</span></div>
+<div class="line"><span class="keywordtype">int</span>* predecessori = <span class="keyword">new</span> <span class="keywordtype">int</span>[n];   <span class="comment">// Manuale</span></div>
+<div class="line"><span class="comment">// ... dimenticanza di delete[] ❌</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Ora (sicuro)</span></div>
+<div class="line">std::vector&lt;float&gt; distances_;    <span class="comment">// Automatico ✅</span></div>
+<div class="line">std::vector&lt;int&gt; predecessors_;   <span class="comment">// Automatico ✅</span></div>
+<div class="line"><span class="comment">// Deallocazione automatica nel distruttore</span></div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+3. 🚦 <b>Gestione errori completa</b></h2>
+<ul>
+<li><b>Prima</b>: Controlli limitati o assenti</li>
+<li><b>Ora</b>: Validazione completa di input, file e stato</li>
+<li><b>Vantaggi</b>: Robustezza, debugging facilitato, user experience migliore</li>
+</ul>
+<div class="fragment"><div class="line"><span class="keyword">enum class</span> <a class="code hl_enumeration" href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cba">DijkstraError</a> {</div>
+<div class="line">    <a class="code hl_enumvalue" href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cbaad0749aaba8b833466dfcbb0428e4f89c">SUCCESS</a> = 0,</div>
+<div class="line">    <a class="code hl_enumvalue" href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cbaac5d60a79c2438ac6f3574aff5e41a610">INVALID_SOURCE</a> = -1,</div>
+<div class="line">    <a class="code hl_enumvalue" href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cbaa135adc56c880ab2e0553e59e2ef57e2e">NEGATIVE_EDGE</a> = -2,</div>
+<div class="line">    <a class="code hl_enumvalue" href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cbaaae34ef6a1ce718288b090db5f54793cf">MEMORY_ERROR</a> = -3,</div>
+<div class="line">    <a class="code hl_enumvalue" href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cbaacd54d99c8efb3c2db794197045f5b83c">FILE_NOT_FOUND</a> = -4,</div>
+<div class="line">    <a class="code hl_enumvalue" href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cbaa252d8e34178da47f2208605a66051241">INVALID_FORMAT</a> = -5,</div>
+<div class="line">    <a class="code hl_enumvalue" href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cbaa4138ba61391cde04006a66045c6de8eb">EMPTY_GRAPH</a> = -6</div>
+<div class="line">};</div>
+<div class="ttc" id="abetter__dijkstra_8h_html_abb8319303972e8177ba25f0310282cba"><div class="ttname"><a href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cba">DijkstraError</a></div><div class="ttdeci">DijkstraError</div><div class="ttdoc">Codici di errore per l&#39;algoritmo di Dijkstra migliorato.</div><div class="ttdef"><b>Definition</b> <a href="better__dijkstra_8h_source.html#l00062">better_dijkstra.h:62</a></div></div>
+<div class="ttc" id="abetter__dijkstra_8h_html_abb8319303972e8177ba25f0310282cbaa135adc56c880ab2e0553e59e2ef57e2e"><div class="ttname"><a href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cbaa135adc56c880ab2e0553e59e2ef57e2e">DijkstraError::NEGATIVE_EDGE</a></div><div class="ttdeci">@ NEGATIVE_EDGE</div><div class="ttdoc">Rilevato arco con peso negativo.</div><div class="ttdef"><b>Definition</b> <a href="better__dijkstra_8h_source.html#l00065">better_dijkstra.h:65</a></div></div>
+<div class="ttc" id="abetter__dijkstra_8h_html_abb8319303972e8177ba25f0310282cbaa252d8e34178da47f2208605a66051241"><div class="ttname"><a href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cbaa252d8e34178da47f2208605a66051241">DijkstraError::INVALID_FORMAT</a></div><div class="ttdeci">@ INVALID_FORMAT</div><div class="ttdoc">Formato file non valido.</div><div class="ttdef"><b>Definition</b> <a href="better__dijkstra_8h_source.html#l00068">better_dijkstra.h:68</a></div></div>
+<div class="ttc" id="abetter__dijkstra_8h_html_abb8319303972e8177ba25f0310282cbaa4138ba61391cde04006a66045c6de8eb"><div class="ttname"><a href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cbaa4138ba61391cde04006a66045c6de8eb">DijkstraError::EMPTY_GRAPH</a></div><div class="ttdeci">@ EMPTY_GRAPH</div><div class="ttdoc">Grafo vuoto o non inizializzato.</div><div class="ttdef"><b>Definition</b> <a href="better__dijkstra_8h_source.html#l00069">better_dijkstra.h:69</a></div></div>
+<div class="ttc" id="abetter__dijkstra_8h_html_abb8319303972e8177ba25f0310282cbaaae34ef6a1ce718288b090db5f54793cf"><div class="ttname"><a href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cbaaae34ef6a1ce718288b090db5f54793cf">DijkstraError::MEMORY_ERROR</a></div><div class="ttdeci">@ MEMORY_ERROR</div><div class="ttdoc">Errore di allocazione memoria.</div><div class="ttdef"><b>Definition</b> <a href="better__dijkstra_8h_source.html#l00066">better_dijkstra.h:66</a></div></div>
+<div class="ttc" id="abetter__dijkstra_8h_html_abb8319303972e8177ba25f0310282cbaac5d60a79c2438ac6f3574aff5e41a610"><div class="ttname"><a href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cbaac5d60a79c2438ac6f3574aff5e41a610">DijkstraError::INVALID_SOURCE</a></div><div class="ttdeci">@ INVALID_SOURCE</div><div class="ttdoc">Nodo sorgente non valido (fuori range)</div><div class="ttdef"><b>Definition</b> <a href="better__dijkstra_8h_source.html#l00064">better_dijkstra.h:64</a></div></div>
+<div class="ttc" id="abetter__dijkstra_8h_html_abb8319303972e8177ba25f0310282cbaacd54d99c8efb3c2db794197045f5b83c"><div class="ttname"><a href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cbaacd54d99c8efb3c2db794197045f5b83c">DijkstraError::FILE_NOT_FOUND</a></div><div class="ttdeci">@ FILE_NOT_FOUND</div><div class="ttdoc">File di input non trovato.</div><div class="ttdef"><b>Definition</b> <a href="better__dijkstra_8h_source.html#l00067">better_dijkstra.h:67</a></div></div>
+<div class="ttc" id="abetter__dijkstra_8h_html_abb8319303972e8177ba25f0310282cbaad0749aaba8b833466dfcbb0428e4f89c"><div class="ttname"><a href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cbaad0749aaba8b833466dfcbb0428e4f89c">DijkstraError::SUCCESS</a></div><div class="ttdeci">@ SUCCESS</div><div class="ttdoc">Esecuzione completata con successo.</div><div class="ttdef"><b>Definition</b> <a href="better__dijkstra_8h_source.html#l00063">better_dijkstra.h:63</a></div></div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+4. 🧩 <b>Programmazione orientata agli oggetti</b></h2>
+<ul>
+<li><b>Prima</b>: Variabili globali e funzioni sparse</li>
+<li><b>Ora</b>: Classe <span class="tt">DijkstraSolver</span> con incapsulamento completo</li>
+<li><b>Vantaggi</b>: Codice organizzato, riusabile, manutenibile</li>
+</ul>
+<div class="fragment"><div class="line"><span class="keyword">class </span><a class="code hl_class" href="class_dijkstra_solver.html">DijkstraSolver</a> {</div>
+<div class="line"><span class="keyword">private</span>:</div>
+<div class="line">    <span class="keyword">const</span> grafo&amp; graph_;</div>
+<div class="line">    std::vector&lt;float&gt; distances_;</div>
+<div class="line">    std::vector&lt;int&gt; predecessors_;</div>
+<div class="line">    <span class="keywordtype">bool</span> computed_;</div>
+<div class="line">    </div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <a class="code hl_enumeration" href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cba">DijkstraError</a> <a class="code hl_function" href="class_dijkstra_solver.html#a0530094ff2b472cd61ae0c434d242991">computePaths</a>(<span class="keywordtype">int</span> source);</div>
+<div class="line">    <span class="keywordtype">float</span> <a class="code hl_function" href="class_dijkstra_solver.html#a20f6b913f55a3709f2b934500c899b5e">getDistance</a>(<span class="keywordtype">int</span> target) <span class="keyword">const</span>;</div>
+<div class="line">    std::vector&lt;int&gt; <a class="code hl_function" href="class_dijkstra_solver.html#a98e1ac64ec4b2753485b57bb00da14c8">getPath</a>(<span class="keywordtype">int</span> target) <span class="keyword">const</span>;</div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code hl_function" href="class_dijkstra_solver.html#a646e23da81edd3088d9b4cd8b7a5e9b2">printResults</a>() <span class="keyword">const</span>;</div>
+<div class="line">};</div>
+<div class="ttc" id="aclass_dijkstra_solver_html"><div class="ttname"><a href="class_dijkstra_solver.html">DijkstraSolver</a></div><div class="ttdoc">Classe per il solver dell&#39;algoritmo di Dijkstra migliorato.</div><div class="ttdef"><b>Definition</b> <a href="better__dijkstra_8h_source.html#l00100">better_dijkstra.h:100</a></div></div>
+<div class="ttc" id="aclass_dijkstra_solver_html_a0530094ff2b472cd61ae0c434d242991"><div class="ttname"><a href="class_dijkstra_solver.html#a0530094ff2b472cd61ae0c434d242991">DijkstraSolver::computePaths</a></div><div class="ttdeci">DijkstraError computePaths(int source)</div><div class="ttdoc">Esegue l&#39;algoritmo di Dijkstra con gestione errori completa.</div><div class="ttdef"><b>Definition</b> <a href="better__dijkstra_8cc_source.html#l00042">better_dijkstra.cc:42</a></div></div>
+<div class="ttc" id="aclass_dijkstra_solver_html_a20f6b913f55a3709f2b934500c899b5e"><div class="ttname"><a href="class_dijkstra_solver.html#a20f6b913f55a3709f2b934500c899b5e">DijkstraSolver::getDistance</a></div><div class="ttdeci">float getDistance(int target) const</div><div class="ttdoc">Ottiene la distanza minima verso un nodo target.</div><div class="ttdef"><b>Definition</b> <a href="better__dijkstra_8cc_source.html#l00148">better_dijkstra.cc:148</a></div></div>
+<div class="ttc" id="aclass_dijkstra_solver_html_a646e23da81edd3088d9b4cd8b7a5e9b2"><div class="ttname"><a href="class_dijkstra_solver.html#a646e23da81edd3088d9b4cd8b7a5e9b2">DijkstraSolver::printResults</a></div><div class="ttdeci">void printResults() const</div><div class="ttdoc">Stampa i risultati in formato tabellare leggibile.</div><div class="ttdef"><b>Definition</b> <a href="better__dijkstra_8cc_source.html#l00195">better_dijkstra.cc:195</a></div></div>
+<div class="ttc" id="aclass_dijkstra_solver_html_a98e1ac64ec4b2753485b57bb00da14c8"><div class="ttname"><a href="class_dijkstra_solver.html#a98e1ac64ec4b2753485b57bb00da14c8">DijkstraSolver::getPath</a></div><div class="ttdeci">std::vector&lt; int &gt; getPath(int target) const</div><div class="ttdoc">Ricostruisce il percorso minimo verso un nodo target.</div><div class="ttdef"><b>Definition</b> <a href="better__dijkstra_8cc_source.html#l00162">better_dijkstra.cc:162</a></div></div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+5. 📝 <b>Documentazione Doxygen estesa</b></h2>
+<ul>
+<li><b>Prima</b>: Commenti minimi</li>
+<li><b>Ora</b>: Documentazione completa con esempi, complessità e teoria</li>
+<li><b>Vantaggi</b>: Apprendimento facilitato, riferimento completo</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+🛠️ Compilazione e Utilizzo</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+Compilazione</h2>
+<div class="fragment"><div class="line">cd better_Dijkstra</div>
+<div class="line">make                    # Compilazione standard</div>
+<div class="line">make debug             # Versione debug</div>
+<div class="line">make info              # Mostra i miglioramenti</div>
+<div class="line">make help              # Aiuto comandi</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+Esecuzione</h2>
+<div class="fragment"><div class="line">./better_dijkstra [file_grafo]</div>
+<div class="line">./better_dijkstra ../file-grafo/graph1.w</div>
+<div class="line">make test              # Test automatico</div>
+<div class="line">make test-interactive  # Test interattivo</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+Analisi memoria</h2>
+<div class="fragment"><div class="line">make valgrind          # Controllo memory leak (se disponibile)</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+📊 Confronto Prestazioni</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Aspetto  </th><th class="markdownTableHeadNone">Versione Base  </th><th class="markdownTableHeadNone">Versione Migliorata  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Complessità temporale</b>  </td><td class="markdownTableBodyNone">O((V+E)²)  </td><td class="markdownTableBodyNone"><b>O((V+E) log V)</b>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>Gestione memoria</b>  </td><td class="markdownTableBodyNone">Manuale (rischio leak)  </td><td class="markdownTableBodyNone"><b>Automatica (RAII)</b>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Gestione errori</b>  </td><td class="markdownTableBodyNone">Limitata  </td><td class="markdownTableBodyNone"><b>Completa</b>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>Manutenibilità</b>  </td><td class="markdownTableBodyNone">Bassa  </td><td class="markdownTableBodyNone"><b>Alta</b>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Riusabilità</b>  </td><td class="markdownTableBodyNone">Limitata  </td><td class="markdownTableBodyNone"><b>Eccellente</b>  </td></tr>
+</table>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+🎯 Caratteristiche Didattiche</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+Concetti di Programmazione Dimostrati</h2>
+<ol type="1">
+<li><b>RAII (Resource Acquisition Is Initialization)</b><ul>
+<li>Gestione automatica delle risorse</li>
+<li>Prevenzione memory leak</li>
+<li>Exception safety</li>
+</ul>
+</li>
+<li><b>Template e STL</b><ul>
+<li><span class="tt">std::priority_queue</span></li>
+<li><span class="tt">std::vector</span></li>
+<li><span class="tt">std::pair</span></li>
+</ul>
+</li>
+<li><b>Gestione eccezioni</b><ul>
+<li><span class="tt">try-catch</span> blocks</li>
+<li>Exception safety</li>
+<li>Error codes vs exceptions</li>
+</ul>
+</li>
+<li><b>Programmazione OOP</b><ul>
+<li>Incapsulamento</li>
+<li>Information hiding</li>
+<li>Interfacce pulite</li>
+</ul>
+</li>
+<li><b>Algoritmi e strutture dati</b><ul>
+<li>Min-heap</li>
+<li>Lazy deletion</li>
+<li>Ottimizzazioni per grafi sparsi</li>
+</ul>
+</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
+🔍 Tecniche di Ottimizzazione</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
+Lazy Deletion nella Priority Queue</h2>
+<p>Invece di aggiornare le priorità (operazione costosa), inseriamo multiple copie:</p>
+<div class="fragment"><div class="line"><span class="comment">// Rilassamento semplificato</span></div>
+<div class="line"><span class="keywordflow">if</span> (new_distance &lt; distances_[v]) {</div>
+<div class="line">    distances_[v] = new_distance;</div>
+<div class="line">    pq.push(std::make_pair(new_distance, v));  <span class="comment">// Nuova copia</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Nel ciclo principale</span></div>
+<div class="line"><span class="keywordflow">if</span> (current_distance &gt; distances_[u]) {</div>
+<div class="line">    <span class="keywordflow">continue</span>;  <span class="comment">// Ignora copia obsoleta</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
+Gestione efficiente della memoria</h2>
+<div class="fragment"><div class="line"><span class="comment">// Allocazione automatica nel costruttore</span></div>
+<div class="line"><a class="code hl_class" href="class_dijkstra_solver.html">DijkstraSolver</a>(<span class="keyword">const</span> grafo&amp; g) : graph_(g) {</div>
+<div class="line">    distances_.resize(g.dim);     <span class="comment">// RAII</span></div>
+<div class="line">    predecessors_.resize(g.dim);  <span class="comment">// RAII</span></div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// Deallocazione automatica nel distruttore (default)</span></div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
+📚 File Contenuti</h1>
+<ul>
+<li><b><span class="tt">better_dijkstra.h</span></b>: Header con dichiarazioni complete</li>
+<li><b><span class="tt">better_dijkstra.cc</span></b>: Implementazione con commenti didattici</li>
+<li><b><span class="tt">main.cc</span></b>: Programma di test e dimostrazione</li>
+<li><b><span class="tt">Makefile</span></b>: Build system con regole avanzate</li>
+<li><b><span class="tt">README.md</span></b>: Questa documentazione</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
+🎓 Utilizzo per Studio</h1>
+<p>Questa implementazione è ideale per:</p>
+<ol type="1">
+<li><b>Comprendere l'algoritmo di Dijkstra</b> attraverso codice ben documentato</li>
+<li><b>Imparare le best practice</b> di programmazione C++</li>
+<li><b>Vedere tecniche di ottimizzazione</b> in azione</li>
+<li><b>Confrontare approcci</b> (procedurale vs OOP)</li>
+<li><b>Analizzare la complessità</b> computazionale</li>
+</ol>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+🔗 Dipendenze</h1>
+<ul>
+<li><b>Modulo grafo</b>: <span class="tt">../../../Lez20/grafo/</span></li>
+<li><b>Compilatore</b>: C++17 o superiore</li>
+<li><b>Librerie</b>: STL standard</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+📖 Riferimenti Teorici</h1>
+<ul>
+<li><b>Algoritmo di Dijkstra</b>: E. W. Dijkstra (1959)</li>
+<li><b>Priority Queue</b>: Implementazione con heap binario</li>
+<li><b>RAII</b>: Bjarne Stroustrup, "The C++ Programming Language"</li>
+<li><b>Exception Safety</b>: Herb Sutter, "Exceptional C++"</li>
+</ul>
+<hr  />
+<p><b>💡 Suggerimento per lo studio</b>: Confronta questa implementazione con quella base per comprendere l'evoluzione del codice e l'importanza delle best practice nella programmazione moderna. </p>
+</div></div><!-- PageDoc -->
+<a href="doxygen_crawl.html"></a>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generato <span class="timestamp"></span> per Algoritmo di Dijkstra - Versione Migliorata da <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

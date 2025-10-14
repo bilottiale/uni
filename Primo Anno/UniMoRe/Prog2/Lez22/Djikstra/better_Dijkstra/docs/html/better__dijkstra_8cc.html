@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Algoritmo di Dijkstra - Versione Migliorata: Riferimenti per il file better_dijkstra.cc</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Algoritmo di Dijkstra - Versione Migliorata<span id="projectnumber">&#160;2.0</span>
+   </div>
+   <div id="projectbrief">Implementazione avanzata con std::priority_queue, RAII e gestione errori</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Cerca',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('better__dijkstra_8cc.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Caricamento in corso...</div>
+<div class="SRStatus" id="Searching">Ricerca in corso...</div>
+<div class="SRStatus" id="NoMatches">Nessun risultato</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Riferimenti per il file better_dijkstra.cc</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implementazione della versione migliorata dell'algoritmo di Dijkstra.  
+<a href="#details">Continua...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="better__dijkstra_8h_source.html">better_dijkstra.h</a>&quot;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;iomanip&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+</div>
+<p><a href="better__dijkstra_8cc_source.html">Vai al codice sorgente di questo file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funzioni</h2></td></tr>
+<tr class="memitem:a96e6f6897482b27dc3e203f9d3a7af24" id="r_a96e6f6897482b27dc3e203f9d3a7af24"><td class="memItemLeft" align="right" valign="top"><a class="el" href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cba">DijkstraError</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96e6f6897482b27dc3e203f9d3a7af24">loadGraphFromFile</a> (const std::string &amp;filename, graph &amp;g)</td></tr>
+<tr class="memdesc:a96e6f6897482b27dc3e203f9d3a7af24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carica un grafo da file con gestione errori completa.  <br /></td></tr>
+<tr class="memitem:ae5f31670632714d01e15fe0826d04d74" id="r_ae5f31670632714d01e15fe0826d04d74"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5f31670632714d01e15fe0826d04d74">demonstrateBetterDijkstra</a> (int argc, char *argv[])</td></tr>
+<tr class="memdesc:ae5f31670632714d01e15fe0826d04d74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione main di esempio per testare l'implementazione migliorata.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrizione dettagliata</h2>
+<div class="textblock"><p>Implementazione della versione migliorata dell'algoritmo di Dijkstra. </p>
+<p>Questo file contiene l'implementazione completa della classe <a class="el" href="class_dijkstra_solver.html" title="Classe per il solver dell&#39;algoritmo di Dijkstra migliorato.">DijkstraSolver</a> con tutti i miglioramenti richiesti per lo studio universitario.</p>
+<dl class="section author"><dt>Autore</dt><dd>Progetto Programmazione 2 - UniMoRe (Versione Migliorata) </dd></dl>
+<dl class="section version"><dt>Versione</dt><dd>2.0 - Versione Studio Avanzato </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>2025 </dd></dl>
+
+<p class="definition">Definizione nel file <a class="el" href="better__dijkstra_8cc_source.html">better_dijkstra.cc</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentazione delle funzioni</h2>
+<a id="ae5f31670632714d01e15fe0826d04d74" name="ae5f31670632714d01e15fe0826d04d74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5f31670632714d01e15fe0826d04d74">&#9670;&#160;</a></span>demonstrateBetterDijkstra()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int demonstrateBetterDijkstra </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>argc</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>[]&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funzione main di esempio per testare l'implementazione migliorata. </p>
+<p>Dimostra l'utilizzo completo della classe <a class="el" href="class_dijkstra_solver.html" title="Classe per il solver dell&#39;algoritmo di Dijkstra migliorato.">DijkstraSolver</a> con:</p><ul>
+<li>Caricamento grafo da file</li>
+<li>Gestione errori</li>
+<li>Esecuzione algoritmo</li>
+<li>Visualizzazione risultati</li>
+<li>Estrazione percorsi specifici</li>
+</ul>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>Numero argomenti command line </td></tr>
+    <tr><td class="paramname">argv</td><td>Array argomenti command line </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Restituisce</dt><dd>0 se successo, codice errore altrimenti </dd></dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="better__dijkstra_8cc_source.html#l00371">371</a> del file <a class="el" href="better__dijkstra_8cc_source.html">better_dijkstra.cc</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="better__dijkstra_8cc_source.html#l00042">DijkstraSolver::computePaths()</a>, <a class="el" href="better__dijkstra_8cc_source.html#l00286">DijkstraSolver::errorToString()</a>, <a class="el" href="better__dijkstra_8cc_source.html#l00162">DijkstraSolver::getPath()</a>, <a class="el" href="better__dijkstra_8cc_source.html#l00311">loadGraphFromFile()</a>, <a class="el" href="better__dijkstra_8cc_source.html#l00229">DijkstraSolver::printPath()</a>, <a class="el" href="better__dijkstra_8cc_source.html#l00195">DijkstraSolver::printResults()</a>, e <a class="el" href="better__dijkstra_8h_source.html#l00063">SUCCESS</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="main_8cc_source.html#l00036">main()</a>.</p>
+
+</div>
+</div>
+<a id="a96e6f6897482b27dc3e203f9d3a7af24" name="a96e6f6897482b27dc3e203f9d3a7af24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96e6f6897482b27dc3e203f9d3a7af24">&#9670;&#160;</a></span>loadGraphFromFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cba">DijkstraError</a> loadGraphFromFile </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>filename</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">graph &amp;</td>          <td class="paramname"><span class="paramname"><em>g</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Carica un grafo da file con gestione errori completa. </p>
+<p>Funzione utility che carica un grafo da un file di testo, gestendo tutti i possibili errori (file non trovato, formato errato, etc.).</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+Formato file atteso:</h3>
+<div class="fragment"><div class="line">numero_nodi</div>
+<div class="line">nodo1 nodo2 peso</div>
+<div class="line">nodo3 nodo4 peso</div>
+<div class="line">...</div>
+</div><!-- fragment --><dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Nome del file da caricare </td></tr>
+    <tr><td class="paramname">g</td><td>Riferimento al grafo da popolare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="better__dijkstra_8h.html#abb8319303972e8177ba25f0310282cbaad0749aaba8b833466dfcbb0428e4f89c" title="Esecuzione completata con successo.">DijkstraError::SUCCESS</a> se caricamento ok, altrimenti errore</dd></dl>
+<dl class="exception"><dt>Eccezioni</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>Per errori critici di I/O </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definizione alla linea <a class="el" href="better__dijkstra_8cc_source.html#l00311">311</a> del file <a class="el" href="better__dijkstra_8cc_source.html">better_dijkstra.cc</a>.</p>
+
+<p class="reference">Referenzia <a class="el" href="better__dijkstra_8h_source.html#l00067">FILE_NOT_FOUND</a>, <a class="el" href="better__dijkstra_8h_source.html#l00068">INVALID_FORMAT</a>, <a class="el" href="better__dijkstra_8h_source.html#l00065">NEGATIVE_EDGE</a>, e <a class="el" href="better__dijkstra_8h_source.html#l00063">SUCCESS</a>.</p>
+
+<p class="reference">Referenziato da <a class="el" href="better__dijkstra_8cc_source.html#l00371">demonstrateBetterDijkstra()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="better__dijkstra_8cc.html">better_dijkstra.cc</a></li>
+    <li class="footer">Generato <span class="timestamp"></span> per Algoritmo di Dijkstra - Versione Migliorata da <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>
