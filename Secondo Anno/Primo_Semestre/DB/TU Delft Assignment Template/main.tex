@@ -1,0 +1,181 @@
+\documentclass{article}
+\usepackage[italian]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=tudelftblue]{hyperref} %sets hyperlink colour
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{roboto} % for Roboto Slab font
+\usepackage{float}
+\usepackage{titling} 
+\usepackage{blindtext}\usepackage{titlesec}
+\usepackage[square,sort,comma,numbers]{natbib}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{sectsty}
+\usepackage{amsmath}
+\usepackage{tikzpagenodes}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage[normalem]{ulem}
+% \usepackage[normalem]{ulem}
+% \useunder{\uline}{\ul}{}
+% \usepackage{lscape}
+% \usepackage{longtable}
+\useunder{\uline}{\ul}{}
+\definecolor{tudelftdarkblue}{RGB}{0,0,0}
+\definecolor{tudelftcyan}{RGB}{209,65,36}
+\definecolor{tudelftblue}{RGB}{99, 102, 106}
+\geometry{a4paper, margin=2cm}
+\allsectionsfont{\color{black}} %sets colour for all headers
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\sectionfont{\fontfamily{RobotoSlab-TLF}\selectfont}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\input{titlepage}
+
+%%% Create a table of contents
+\tableofcontents
+\newpage
+
+\addcontentsline{toc}{section}{Introduzione}
+\section*{Introduzione}
+LifeScience è un sistema informativo progettato per supportare le attività di un laboratorio di ricerca biotecnologica attraverso la gestione strutturata di esperimenti, campioni, protocolli operativi e misurazioni scientifiche. L’obiettivo del progetto è quello di fornire una piattaforma dati affidabile che permetta di organizzare, tracciare e analizzare l’intero ciclo sperimentale, dalla preparazione dei campioni all’acquisizione dei risultati.\newline
+Il database consente di modellare i principali processi di un laboratorio moderno: la definizione di protocolli standardizzati, la registrazione dettagliata delle fasi sperimentali, l’utilizzo della strumentazione, il controllo dello stock dei reagenti e la gestione delle relazioni tra ricercatori, progetti scientifici ed esperimenti. La struttura del sistema è pensata per garantire integrità dei dati, riproducibilità degli esperimenti \cite{iso20387} e possibilità di analisi aggregata delle informazioni raccolte.\newline
+\newline\noindent  LifeScience si pone quindi come un’infrastruttura essenziale per attività biotecnologiche orientate alla qualità, alla tracciabilità e alla gestione efficiente del workflow sperimentale.\newline
+
+\section{Definizione dei requisiti}
+\subsection{Vista Ricercatore}
+La vista del Ricercatore descrive le esigenze informative dell’utente che conduce attività sperimentali all’interno del laboratorio. Il ricercatore deve poter creare nuovi esperimenti, associarli ai progetti scientifici in corso e selezionare i protocolli operativi appropriati. Inoltre necessita di registrare l’utilizzo dei campioni, di consultare lo storico delle attività svolte e di verificare quali protocolli siano già stati applicati.\newline
+I concetti informativi principali della vista includono Ricercatore, Esperimento, Progetto Scientifico, Protocollo e Campione. È richiesto che i campioni siano collegati alle misurazioni prodotte durante le attività sperimentali, mentre i protocolli devono poter essere consultati come procedure standardizzate. Sono inoltre previste relazioni di tipo part-of tra Campione e Misurazione e relazioni di tipo instance-of tra diverse tipologie di protocolli.\newline
+La vista deve garantire che l’utente sia in grado di definire un nuovo esperimento, collegarlo a un progetto, consultare i protocolli disponibili, aggiornare le informazioni sui campioni utilizzati e accedere allo storico complessivo delle attività svolte nel laboratorio.
+
+\subsection{Vista Laboratorio}
+La vista del Laboratorio si concentra sulle esigenze del Tecnico di laboratorio e del Responsabile di struttura (istanze di Ricercatore). Essa comprende la gestione delle risorse materiali, come strumenti, reagenti e fornitori. Il laboratorio deve poter monitorare la disponibilità dei reagenti, registrare i lotti e le date di scadenza, gestire le scorte e assicurare che gli strumenti siano funzionanti attraverso la registrazione di interventi di manutenzione, in conformità ai requisiti di qualità e tracciabilità definiti dallo standard ISO 20387 \cite{iso20387}.\newline
+I concetti coinvolti comprendono Laboratorio, Strumentazione, Reagente, Fornitore, StockReagenti e Manutenzione. Le scorte di reagenti costituiscono una parte del laboratorio e devono includere informazioni sulla quantità disponibile e sulle caratteristiche dei lotti. Le relazioni instance-of permettono di rappresentare specifici reagenti, mentre le gerarchie consentono di classificare le diverse tipologie di materiali, come buffer, enzimi o antibiotici.\newline
+Questa vista deve quindi garantire la tracciabilità dell’inventario, la gestione dei fornitori, la registrazione e il monitoraggio della manutenzione degli strumenti e la possibilità di verificare la disponibilità delle risorse necessarie allo svolgimento degli esperimenti.
+
+\subsection{Vista Esperimento}
+
+La vista Esperimento rappresenta nel dettaglio la struttura interna delle attività scientifiche. Ogni esperimento deve poter essere scomposto in più fasi operative, ognuna delle quali produce misurazioni sui campioni analizzati. Il ricercatore deve quindi avere la possibilità di descrivere la sequenza delle fasi, registrare le misurazioni ottenute, specificare i parametri misurati e indicare quale strumentazione è stata utilizzata.\newline
+I concetti informativi coinvolti comprendono Esperimento, Fase Sperimentale, Misurazione, Parametro Misurato, Campione e Strumentazione. La relazione part-of tra Esperimento e Fase Sperimentale assicura la scomposizione del processo in unità elementari, mentre la relazione part-of tra Fase Sperimentale e Misurazione permette di tracciare l’origine dei dati raccolti. Sono anche presenti relazioni instance-of per parametri specifici.\newline
+La vista deve permettere la definizione completa delle fasi, la registrazione delle misurazioni associate ai campioni, l’indicazione dei parametri rilevati e la tracciabilità dell’utilizzo della strumentazione durante il flusso sperimentale.
+
+\section{Analisi requisiti e schema scheletro}
+\subsection{Analisi requisiti e schema scheletro per il Ricercatore}
+
+\begin{table}[H]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Termine}     & \textbf{Descrizione}                                                                                                                                & \textbf{Sinonimi}                                             & \textbf{Collegamenti}                                                       \\ \hline
+Ricercatore          & \begin{tabular}[c]{@{}l@{}}Utente che esegue esperimenti,\\ registra dati, consulta protocolli\end{tabular}                                         & Operatore                                                     & \begin{tabular}[c]{@{}l@{}}Laboratorio,\\ Esperimento\end{tabular}          \\ \hline
+Esperimento          & \begin{tabular}[c]{@{}l@{}}Attività scientifica che raccoglie\\ campioni e risultati\end{tabular}                                                   & Test, Prova                                                   & \begin{tabular}[c]{@{}l@{}}Ricercatore,\\ Progetto Scientifico\end{tabular} \\ \hline
+Progetto Scientifico & \begin{tabular}[c]{@{}l@{}}Insieme di esperimenti con obiettivo\\ comune\end{tabular}                                                               & Progetto                                                      & Esperimento                                                                 \\ \hline
+Campione             & \begin{tabular}[c]{@{}l@{}}Materiale sul quale vengono effettuate\\ misurazioni durante un Esperimento di\\ certo Progetto Scientifico\end{tabular} & \begin{tabular}[c]{@{}l@{}}Esemplare\end{tabular} & \begin{tabular}[c]{@{}l@{}}Esperimento,\\ Misurazione\end{tabular}          \\ \hline
+Laboratorio          & \begin{tabular}[c]{@{}l@{}}Struttura nella quale vengono svolti\\ esperimenti e maneggiati Campioni\end{tabular}                                    & -                                                             & \begin{tabular}[c]{@{}l@{}}Esperimento,\\ Ricercatore\end{tabular}          \\ \hline
+Misurazione          & Dato ottenuto dall'analisi di un Campione                                                                                                           & Dato                                                          & Campione                                                                    \\ \hline
+Protocollo           & \begin{tabular}[c]{@{}l@{}}Procedura standard da seguire durante\\ un esperimento\end{tabular}                                                      & Procedura                                                     & Esperimento                                                                 \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+% immagiene schema ricercatore
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/RICERCATORE.png}
+    \caption{Schema scheletro per la vista Ricercatore}
+    \label{fig:schema_ricercatore}
+\end{figure}
+
+% ------------------------------------------------ %
+
+\subsection{Analisi requisiti e schema scheletro per l'Esperimento}
+
+\begin{table}[H]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Termine}   & \textbf{Descrizione}                                                                                                                                & \textbf{Sinonimi}                                             & \textbf{Collegamenti}                                                   \\ \hline
+Esperimento        & \begin{tabular}[c]{@{}l@{}}Attività scientifica che raccoglie\\ campioni e risultati\end{tabular}                                                   & Test, Prova                                                   & \begin{tabular}[c]{@{}l@{}}Fase Sperimentale,\\ Campione\end{tabular} \\ \hline
+Misurazione        & Dato ottenuto dall'analisi di un Campione                                                                                                           & Dato                                                          & \begin{tabular}[c]{@{}l@{}}Campione,\\ Parametro Misurato\end{tabular} \\ \hline
+Campione           & \begin{tabular}[c]{@{}l@{}}Materiale sul quale vengono effettuate\\ misurazioni durante un Esperimento.\\ \end{tabular}                             & \begin{tabular}[c]{@{}l@{}}Esemplare\end{tabular} & \begin{tabular}[c]{@{}l@{}}Misurazione,\\ Esperimento\end{tabular}      \\ \hline
+Strumentazione     & \begin{tabular}[c]{@{}l@{}}Apparecchiatura utilizzata durante le fasi\\ di un Esperimento\end{tabular}                                              & Dispositivo                                                   & Fase Sperimentale                                                       \\ \hline
+Parametro Misurato & Tipo di valore misurato                                                                                                                             & Variabile                                                     & Misurazione                                                             \\ \hline
+Fase Sperimentale  & \begin{tabular}[c]{@{}l@{}}Fase dell'Esperimento nella quale si produce\\ una Misurazione\end{tabular}                                              & Fase, Attività                                                & \begin{tabular}[c]{@{}l@{}}Misurazione,\\ Strumentazione,\\ Esperimento\end{tabular}   \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+% immagiene schema esperimento
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/ESPERIMENTO.png}
+    \caption{Schema scheletro per la vista Esperimento}
+    \label{fig:schema_ricercatore}
+\end{figure}
+
+\subsection{Analisi requisiti e schema scheletro per il Laboratorio}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicxkk
+\begin{table}[H]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Termine} & \textbf{Descrizione}                                                                                                                         & \textbf{Sinonimi}                                              & \textbf{Collegamenti}                                               \\ \hline
+Laboratorio      & \begin{tabular}[c]{@{}l@{}}Struttura scientifica in cui sono presenti risorse, \\ strumenti e materiali necessari alle attività\end{tabular} & -                                                              & \begin{tabular}[c]{@{}l@{}}Strumentazione, \\ Stock\end{tabular}    \\ \hline
+Strumentazione   & \begin{tabular}[c]{@{}l@{}}Insieme degli strumenti presenti nel Laboratorio, \\ soggetti a manutenzione\end{tabular}                         & Dispositivo                                                    & \begin{tabular}[c]{@{}l@{}}Laboratorio,\\ Manutenzione\end{tabular} \\ \hline
+Reagente         & \begin{tabular}[c]{@{}l@{}}Materiale chimico o biologico conservato e gestito \\ dal Laboratorio\end{tabular}                                & \begin{tabular}[c]{@{}l@{}}Sostanza,\\ Materiale\end{tabular}  & Stock, Fornitore                                                    \\ \hline
+Stock            & Quantità e lotti di Reagenti disponibili nel Laboratorio                                                                                     & Magazzino                                                      & \begin{tabular}[c]{@{}l@{}}Laboratorio,\\ Reagente\end{tabular}     \\ \hline
+Fornitore        & Fornitore di un Reagente o Campione                                                                                                          & Distributore                                                   & Reagente                                                            \\ \hline
+Manutenzione     & \begin{tabular}[c]{@{}l@{}}Intervento tecnico effettuato sulla Strumentazione \\ per garantirne il corretto funzionamento\end{tabular}       & \begin{tabular}[c]{@{}l@{}}Revisione,\\ Controllo\end{tabular} & Strumentazione                                                      \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+% immagiene schema labora
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/LABORATORIO.png}
+    \caption{Schema scheletro per la vista Laboratorio}
+    \label{fig:schema_ricercatore}
+\end{figure}
+
+\newpage
+\addcontentsline{toc}{section}{Bibliografia}
+\bibliographystyle{apalike}
+\bibliography{ref}
+
+\newpage
+\appendix
+
+\end{document}
+
+
+
+
+
+
+%All other official TU Delft colours
+\definecolor{donkerblauw}{RGB}{12, 35, 64}
+\definecolor{turkoois}{RGB}{0, 184, 200}
+\definecolor{blauw}{RGB}{0, 118, 194}
+\definecolor{paars}{RGB}{111, 29, 119}
+\definecolor{roze}{RGB}{239, 96, 163}
+\definecolor{framboos}{RGB}{165, 0, 52}
+\definecolor{rood}{RGB}{224, 60, 49}
+\definecolor{oranje}{RGB}{237, 104, 66}
+\definecolor{geel}{RGB}{255, 184, 28}
+\definecolor{lichtgroen}{RGB}{108, 194, 74}
+\definecolor{donkergroen}{RGB}{0, 155, 119}
+%You can use these to change the hyperlink colour or the colour of the header or whatever. Glück Auf!
