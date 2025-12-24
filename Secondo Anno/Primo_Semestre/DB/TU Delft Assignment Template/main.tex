@@ -1,19 +1,19 @@
 \documentclass{article}
 \usepackage[italian]{babel}
-\usepackage[utf8x]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage[colorinlistoftodos]{todonotes}
-\usepackage[colorlinks=true, allcolors=tudelftblue]{hyperref} %sets hyperlink colour
+\usepackage[colorlinks=true, allcolors=tudelftblue]{hyperref}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{xcolor}
-\usepackage{roboto} % for Roboto Slab font
+\usepackage{roboto}
 \usepackage{float}
-\usepackage{titling} 
-\usepackage{blindtext}\usepackage{titlesec}
+\usepackage{titling}
+\usepackage{blindtext}
+\usepackage{titlesec}
 \usepackage[square,sort,comma,numbers]{natbib}
-\usepackage[colorinlistoftodos]{todonotes}
 \usepackage{tikz}
 \usepackage{geometry}
 \usepackage{sectsty}
@@ -22,49 +22,57 @@
 \usepackage{booktabs}
 \usepackage{listings}
 \usepackage[normalem]{ulem}
-% \usepackage[normalem]{ulem}
-% \useunder{\uline}{\ul}{}
-% \usepackage{lscape}
-% \usepackage{longtable}
+\usepackage{longtable}
+
 \useunder{\uline}{\ul}{}
+
 \definecolor{tudelftdarkblue}{RGB}{0,0,0}
 \definecolor{tudelftcyan}{RGB}{209,65,36}
 \definecolor{tudelftblue}{RGB}{99, 102, 106}
+
 \geometry{a4paper, margin=2cm}
-\allsectionsfont{\color{black}} %sets colour for all headers
+\allsectionsfont{\color{black}}
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 \sectionfont{\fontfamily{RobotoSlab-TLF}\selectfont}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
 \input{titlepage}
 
-%%% Create a table of contents
+%%% Indice
 \tableofcontents
 \newpage
 
 \addcontentsline{toc}{section}{Introduzione}
 \section*{Introduzione}
-LifeScience è un sistema informativo progettato per supportare le attività di un laboratorio di ricerca biotecnologica attraverso la gestione strutturata di esperimenti, campioni, protocolli operativi e misurazioni scientifiche. L’obiettivo del progetto è quello di fornire una piattaforma dati affidabile che permetta di organizzare, tracciare e analizzare l’intero ciclo sperimentale, dalla preparazione dei campioni all’acquisizione dei risultati.\newline
-Il database consente di modellare i principali processi di un laboratorio moderno: la definizione di protocolli standardizzati, la registrazione dettagliata delle fasi sperimentali, l’utilizzo della strumentazione, il controllo dello stock dei reagenti e la gestione delle relazioni tra ricercatori, progetti scientifici ed esperimenti. La struttura del sistema è pensata per garantire integrità dei dati, riproducibilità degli esperimenti \cite{iso20387} e possibilità di analisi aggregata delle informazioni raccolte.\newline
-\newline\noindent  LifeScience si pone quindi come un’infrastruttura essenziale per attività biotecnologiche orientate alla qualità, alla tracciabilità e alla gestione efficiente del workflow sperimentale.\newline
+LifeScience è un sistema informativo progettato per supportare le attività di un laboratorio di ricerca biotecnologica attraverso la gestione strutturata di esperimenti, campioni, protocolli operativi e misurazioni scientifiche. L’obiettivo del progetto è quello di fornire una piattaforma dati affidabile che permetta di organizzare, tracciare e analizzare l’intero ciclo sperimentale, dalla preparazione dei campioni all’acquisizione dei risultati.
+
+Il database consente di modellare i principali processi di un laboratorio moderno: la definizione di protocolli standardizzati, la registrazione dettagliata delle fasi sperimentali, l’utilizzo della strumentazione, il controllo dello stock dei reagenti e la gestione delle relazioni tra ricercatori, progetti scientifici ed esperimenti. La struttura del sistema è pensata per garantire integrità dei dati, riproducibilità degli esperimenti \cite{iso20387} e possibilità di analisi aggregata delle informazioni raccolte.
+
+LifeScience si pone quindi come un’infrastruttura essenziale per attività biotecnologiche orientate alla qualità, alla tracciabilità e alla gestione efficiente del workflow sperimentale.
 
 \section{Definizione dei requisiti}
 \subsection{Vista Ricercatore}
-La vista del Ricercatore descrive le esigenze informative dell’utente che conduce attività sperimentali all’interno del laboratorio. Il ricercatore deve poter creare nuovi esperimenti, associarli ai progetti scientifici in corso e selezionare i protocolli operativi appropriati. Inoltre necessita di registrare l’utilizzo dei campioni, di consultare lo storico delle attività svolte e di verificare quali protocolli siano già stati applicati.\newline
-I concetti informativi principali della vista includono Ricercatore, Esperimento, Progetto Scientifico, Protocollo e Campione. È richiesto che i campioni siano collegati alle misurazioni prodotte durante le attività sperimentali, mentre i protocolli devono poter essere consultati come procedure standardizzate. Sono inoltre previste relazioni di tipo part-of tra Campione e Misurazione e relazioni di tipo instance-of tra diverse tipologie di protocolli.\newline
+La vista del Ricercatore descrive le esigenze informative dell’utente che conduce attività sperimentali all’interno del laboratorio. Il ricercatore deve poter creare nuovi esperimenti, associarli ai progetti scientifici in corso e selezionare i protocolli operativi appropriati. Inoltre necessita di registrare l’utilizzo dei campioni, di consultare lo storico delle attività svolte e di verificare quali protocolli siano già stati applicati.
+
+I concetti informativi principali della vista includono Ricercatore, Esperimento, Progetto Scientifico, Protocollo e Campione. È richiesto che i campioni siano collegati alle misurazioni prodotte durante le attività sperimentali, mentre i protocolli devono poter essere consultati come procedure standardizzate. Sono inoltre previste relazioni di tipo part-of tra Campione e Misurazione e relazioni di tipo instance-of tra diverse tipologie di protocolli.
+
 La vista deve garantire che l’utente sia in grado di definire un nuovo esperimento, collegarlo a un progetto, consultare i protocolli disponibili, aggiornare le informazioni sui campioni utilizzati e accedere allo storico complessivo delle attività svolte nel laboratorio.
 
 \subsection{Vista Laboratorio}
-La vista del Laboratorio si concentra sulle esigenze del Tecnico di laboratorio e del Responsabile di struttura (istanze di Ricercatore). Essa comprende la gestione delle risorse materiali, come strumenti, reagenti e fornitori. Il laboratorio deve poter monitorare la disponibilità dei reagenti, registrare i lotti e le date di scadenza, gestire le scorte e assicurare che gli strumenti siano funzionanti attraverso la registrazione di interventi di manutenzione, in conformità ai requisiti di qualità e tracciabilità definiti dallo standard ISO 20387 \cite{iso20387}.\newline
-I concetti coinvolti comprendono Laboratorio, Strumentazione, Reagente, Fornitore, StockReagenti e Manutenzione. Le scorte di reagenti costituiscono una parte del laboratorio e devono includere informazioni sulla quantità disponibile e sulle caratteristiche dei lotti. Le relazioni instance-of permettono di rappresentare specifici reagenti, mentre le gerarchie consentono di classificare le diverse tipologie di materiali, come buffer, enzimi o antibiotici.\newline
+La vista del Laboratorio si concentra sulle esigenze del Tecnico di laboratorio e del Responsabile di struttura (istanze di Ricercatore). Essa comprende la gestione delle risorse materiali, come strumenti, reagenti e fornitori. Il laboratorio deve poter monitorare la disponibilità dei reagenti, registrare i lotti e le date di scadenza, gestire le scorte e assicurare che gli strumenti siano funzionanti attraverso la registrazione di interventi di manutenzione, in conformità ai requisiti di qualità e tracciabilità definiti dallo standard ISO 20387 \cite{iso20387}.
+
+I concetti coinvolti comprendono Laboratorio, Strumentazione, Reagente, Fornitore, StockReagenti e Manutenzione. Le scorte di reagenti costituiscono una parte del laboratorio e devono includere informazioni sulla quantità disponibile e sulle caratteristiche dei lotti. Le relazioni instance-of permettono di rappresentare specifici reagenti, mentre le gerarchie consentono di classificare le diverse tipologie di materiali, come buffer, enzimi o antibiotici.
+
 Questa vista deve quindi garantire la tracciabilità dell’inventario, la gestione dei fornitori, la registrazione e il monitoraggio della manutenzione degli strumenti e la possibilità di verificare la disponibilità delle risorse necessarie allo svolgimento degli esperimenti.
 
 \subsection{Vista Esperimento}
+La vista Esperimento rappresenta nel dettaglio la struttura interna delle attività scientifiche. Ogni esperimento deve poter essere scomposto in più fasi operative, ognuna delle quali produce misurazioni sui campioni analizzati. Il ricercatore deve quindi avere la possibilità di descrivere la sequenza delle fasi, registrare le misurazioni ottenute, specificare i parametri misurati e indicare quale strumentazione è stata utilizzata.
 
-La vista Esperimento rappresenta nel dettaglio la struttura interna delle attività scientifiche. Ogni esperimento deve poter essere scomposto in più fasi operative, ognuna delle quali produce misurazioni sui campioni analizzati. Il ricercatore deve quindi avere la possibilità di descrivere la sequenza delle fasi, registrare le misurazioni ottenute, specificare i parametri misurati e indicare quale strumentazione è stata utilizzata.\newline
-I concetti informativi coinvolti comprendono Esperimento, Fase Sperimentale, Misurazione, Parametro Misurato, Campione e Strumentazione. La relazione part-of tra Esperimento e Fase Sperimentale assicura la scomposizione del processo in unità elementari, mentre la relazione part-of tra Fase Sperimentale e Misurazione permette di tracciare l’origine dei dati raccolti. Sono anche presenti relazioni instance-of per parametri specifici.\newline
+I concetti informativi coinvolti comprendono Esperimento, Fase Sperimentale, Misurazione, Parametro Misurato, Campione e Strumentazione. La relazione part-of tra Esperimento e Fase Sperimentale assicura la scomposizione del processo in unità elementari, mentre la relazione part-of tra Fase Sperimentale e Misurazione permette di tracciare l’origine dei dati raccolti. Sono anche presenti relazioni instance-of per parametri specifici.
+
 La vista deve permettere la definizione completa delle fasi, la registrazione delle misurazioni associate ai campioni, l’indicazione dei parametri rilevati e la tracciabilità dell’utilizzo della strumentazione durante il flusso sperimentale.
 
 \section{Analisi requisiti e schema scheletro}
@@ -75,19 +83,18 @@ La vista deve permettere la definizione completa delle fasi, la registrazione de
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{|l|l|l|l|}
 \hline
-\textbf{Termine}     & \textbf{Descrizione}                                                                                                                                & \textbf{Sinonimi}                                             & \textbf{Collegamenti}                                                       \\ \hline
-Ricercatore          & \begin{tabular}[c]{@{}l@{}}Utente che esegue esperimenti,\\ registra dati, consulta protocolli\end{tabular}                                         & Operatore                                                     & \begin{tabular}[c]{@{}l@{}}Laboratorio,\\ Esperimento\end{tabular}          \\ \hline
-Esperimento          & \begin{tabular}[c]{@{}l@{}}Attività scientifica che raccoglie\\ campioni e risultati\end{tabular}                                                   & Test, Prova                                                   & \begin{tabular}[c]{@{}l@{}}Ricercatore,\\ Progetto Scientifico\end{tabular} \\ \hline
-Progetto Scientifico & \begin{tabular}[c]{@{}l@{}}Insieme di esperimenti con obiettivo\\ comune\end{tabular}                                                               & Progetto                                                      & Esperimento                                                                 \\ \hline
-Campione             & \begin{tabular}[c]{@{}l@{}}Materiale sul quale vengono effettuate\\ misurazioni durante un Esperimento di\\ certo Progetto Scientifico\end{tabular} & \begin{tabular}[c]{@{}l@{}}Esemplare\end{tabular} & \begin{tabular}[c]{@{}l@{}}Esperimento,\\ Misurazione\end{tabular}          \\ \hline
-Laboratorio          & \begin{tabular}[c]{@{}l@{}}Struttura nella quale vengono svolti\\ esperimenti e maneggiati Campioni\end{tabular}                                    & -                                                             & \begin{tabular}[c]{@{}l@{}}Esperimento,\\ Ricercatore\end{tabular}          \\ \hline
-Misurazione          & Dato ottenuto dall'analisi di un Campione                                                                                                           & Dato                                                          & Campione                                                                    \\ \hline
-Protocollo           & \begin{tabular}[c]{@{}l@{}}Procedura standard da seguire durante\\ un esperimento\end{tabular}                                                      & Procedura                                                     & Esperimento                                                                 \\ \hline
+\textbf{Termine} & \textbf{Descrizione} & \textbf{Sinonimi} & \textbf{Collegamenti} \\ \hline
+Ricercatore & \begin{tabular}[c]{@{}l@{}}Utente che esegue esperimenti,\\ registra dati, consulta protocolli\end{tabular} & Operatore & \begin{tabular}[c]{@{}l@{}}Laboratorio,\\ Esperimento\end{tabular} \\ \hline
+Esperimento & \begin{tabular}[c]{@{}l@{}}Attività scientifica che raccoglie\\ campioni e risultati\end{tabular} & Test, Prova & \begin{tabular}[c]{@{}l@{}}Ricercatore,\\ Progetto Scientifico\end{tabular} \\ \hline
+Progetto Scientifico & \begin{tabular}[c]{@{}l@{}}Insieme di esperimenti con obiettivo\\ comune\end{tabular} & Progetto & Esperimento \\ \hline
+Campione & \begin{tabular}[c]{@{}l@{}}Materiale sul quale vengono effettuate\\ misurazioni durante un Esperimento di\\ certo Progetto Scientifico\end{tabular} & Esemplare & \begin{tabular}[c]{@{}l@{}}Esperimento,\\ Misurazione\end{tabular} \\ \hline
+Laboratorio & \begin{tabular}[c]{@{}l@{}}Struttura nella quale vengono svolti\\ esperimenti e maneggiati Campioni\end{tabular} & - & \begin{tabular}[c]{@{}l@{}}Esperimento,\\ Ricercatore\end{tabular} \\ \hline
+Misurazione & Dato ottenuto dall'analisi di un Campione & Dato & Campione \\ \hline
+Protocollo & \begin{tabular}[c]{@{}l@{}}Procedura standard da seguire durante\\ un esperimento\end{tabular} & Procedura & Esperimento \\ \hline
 \end{tabular}%
 }
 \end{table}
 
-% immagiene schema ricercatore
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{images/RICERCATORE.png}
@@ -104,52 +111,487 @@ Protocollo           & \begin{tabular}[c]{@{}l@{}}Procedura standard da seguire 
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{|l|l|l|l|}
 \hline
-\textbf{Termine}   & \textbf{Descrizione}                                                                                                                                & \textbf{Sinonimi}                                             & \textbf{Collegamenti}                                                   \\ \hline
-Esperimento        & \begin{tabular}[c]{@{}l@{}}Attività scientifica che raccoglie\\ campioni e risultati\end{tabular}                                                   & Test, Prova                                                   & \begin{tabular}[c]{@{}l@{}}Fase Sperimentale,\\ Campione\end{tabular} \\ \hline
-Misurazione        & Dato ottenuto dall'analisi di un Campione                                                                                                           & Dato                                                          & \begin{tabular}[c]{@{}l@{}}Campione,\\ Parametro Misurato\end{tabular} \\ \hline
-Campione           & \begin{tabular}[c]{@{}l@{}}Materiale sul quale vengono effettuate\\ misurazioni durante un Esperimento.\\ \end{tabular}                             & \begin{tabular}[c]{@{}l@{}}Esemplare\end{tabular} & \begin{tabular}[c]{@{}l@{}}Misurazione,\\ Esperimento\end{tabular}      \\ \hline
-Strumentazione     & \begin{tabular}[c]{@{}l@{}}Apparecchiatura utilizzata durante le fasi\\ di un Esperimento\end{tabular}                                              & Dispositivo                                                   & Fase Sperimentale                                                       \\ \hline
-Parametro Misurato & Tipo di valore misurato                                                                                                                             & Variabile                                                     & Misurazione                                                             \\ \hline
-Fase Sperimentale  & \begin{tabular}[c]{@{}l@{}}Fase dell'Esperimento nella quale si produce\\ una Misurazione\end{tabular}                                              & Fase, Attività                                                & \begin{tabular}[c]{@{}l@{}}Misurazione,\\ Strumentazione,\\ Esperimento\end{tabular}   \\ \hline
+\textbf{Termine} & \textbf{Descrizione} & \textbf{Sinonimi} & \textbf{Collegamenti} \\ \hline
+Esperimento & \begin{tabular}[c]{@{}l@{}}Attività scientifica che raccoglie\\ campioni e risultati\end{tabular} & Test, Prova & \begin{tabular}[c]{@{}l@{}}Fase Sperimentale,\\ Campione\end{tabular} \\ \hline
+Misurazione & Dato ottenuto dall'analisi di un Campione & Dato & \begin{tabular}[c]{@{}l@{}}Campione,\\ Parametro Misurato\end{tabular} \\ \hline
+Campione & \begin{tabular}[c]{@{}l@{}}Materiale sul quale vengono effettuate\\ misurazioni durante un Esperimento.\end{tabular} & Esemplare & \begin{tabular}[c]{@{}l@{}}Misurazione,\\ Esperimento\end{tabular} \\ \hline
+Strumentazione & \begin{tabular}[c]{@{}l@{}}Apparecchiatura utilizzata durante le fasi\\ di un Esperimento\end{tabular} & Dispositivo & Fase Sperimentale \\ \hline
+Parametro Misurato & Tipo di valore misurato & Variabile & Misurazione \\ \hline
+Fase Sperimentale & \begin{tabular}[c]{@{}l@{}}Fase dell'Esperimento nella quale si produce\\ una Misurazione\end{tabular} & Fase, Attività & \begin{tabular}[c]{@{}l@{}}Misurazione,\\ Strumentazione,\\ Esperimento\end{tabular} \\ \hline
 \end{tabular}%
 }
 \end{table}
 
-% immagiene schema esperimento
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{images/ESPERIMENTO.png}
     \caption{Schema scheletro per la vista Esperimento}
-    \label{fig:schema_ricercatore}
+    \label{fig:schema_esperimento}
 \end{figure}
 
 \subsection{Analisi requisiti e schema scheletro per il Laboratorio}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicxkk
 \begin{table}[H]
 \centering
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{|l|l|l|l|}
 \hline
-\textbf{Termine} & \textbf{Descrizione}                                                                                                                         & \textbf{Sinonimi}                                              & \textbf{Collegamenti}                                               \\ \hline
-Laboratorio      & \begin{tabular}[c]{@{}l@{}}Struttura scientifica in cui sono presenti risorse, \\ strumenti e materiali necessari alle attività\end{tabular} & -                                                              & \begin{tabular}[c]{@{}l@{}}Strumentazione, \\ Stock\end{tabular}    \\ \hline
-Strumentazione   & \begin{tabular}[c]{@{}l@{}}Insieme degli strumenti presenti nel Laboratorio, \\ soggetti a manutenzione\end{tabular}                         & Dispositivo                                                    & \begin{tabular}[c]{@{}l@{}}Laboratorio,\\ Manutenzione\end{tabular} \\ \hline
-Reagente         & \begin{tabular}[c]{@{}l@{}}Materiale chimico o biologico conservato e gestito \\ dal Laboratorio\end{tabular}                                & \begin{tabular}[c]{@{}l@{}}Sostanza,\\ Materiale\end{tabular}  & Stock, Fornitore                                                    \\ \hline
-Stock            & Quantità e lotti di Reagenti disponibili nel Laboratorio                                                                                     & Magazzino                                                      & \begin{tabular}[c]{@{}l@{}}Laboratorio,\\ Reagente\end{tabular}     \\ \hline
-Fornitore        & Fornitore di un Reagente o Campione                                                                                                          & Distributore                                                   & Reagente                                                            \\ \hline
-Manutenzione     & \begin{tabular}[c]{@{}l@{}}Intervento tecnico effettuato sulla Strumentazione \\ per garantirne il corretto funzionamento\end{tabular}       & \begin{tabular}[c]{@{}l@{}}Revisione,\\ Controllo\end{tabular} & Strumentazione                                                      \\ \hline
+\textbf{Termine} & \textbf{Descrizione} & \textbf{Sinonimi} & \textbf{Collegamenti} \\ \hline
+Laboratorio & \begin{tabular}[c]{@{}l@{}}Struttura scientifica in cui sono presenti risorse, \\ strumenti e materiali necessari alle attività\end{tabular} & - & \begin{tabular}[c]{@{}l@{}}Strumentazione, \\ Stock\end{tabular} \\ \hline
+Strumentazione & \begin{tabular}[c]{@{}l@{}}Insieme degli strumenti presenti nel Laboratorio, \\ soggetti a manutenzione\end{tabular} & Dispositivo & \begin{tabular}[c]{@{}l@{}}Laboratorio,\\ Manutenzione\end{tabular} \\ \hline
+Reagente & \begin{tabular}[c]{@{}l@{}}Materiale chimico o biologico conservato e gestito \\ dal Laboratorio\end{tabular} & \begin{tabular}[c]{@{}l@{}}Sostanza,\\ Materiale\end{tabular} & Stock, Fornitore \\ \hline
+Stock & Quantità e lotti di Reagenti disponibili nel Laboratorio & Magazzino & \begin{tabular}[c]{@{}l@{}}Laboratorio,\\ Reagente\end{tabular} \\ \hline
+Fornitore & Fornitore di un Reagente o Campione & Distributore & Reagente \\ \hline
+Manutenzione & \begin{tabular}[c]{@{}l@{}}Intervento tecnico effettuato sulla Strumentazione \\ per garantirne il corretto funzionamento\end{tabular} & \begin{tabular}[c]{@{}l@{}}Revisione,\\ Controllo\end{tabular} & Strumentazione \\ \hline
 \end{tabular}%
 }
 \end{table}
 
-% immagiene schema labora
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{images/LABORATORIO.png}
     \caption{Schema scheletro per la vista Laboratorio}
-    \label{fig:schema_ricercatore}
+    \label{fig:schema_laboratorio}
 \end{figure}
+
+\newpage
+
+\section{Progettazione ed integrazione delle viste}
+\subsection{Schemi E-R finali}
+
+\subsubsection{Schema E-R Ricercatore}
+Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le seguenti modifiche e integrazioni per garantire la completezza informativa e la coerenza logica del database:
+
+\begin{enumerate}
+    \item \textbf{Generalizzazione del Ricercatore}: L'entità \textit{Ricercatore} è stata strutturata in una gerarchia che generalizza le figure di \textit{Responsabile} e \textit{Operativo}, permettendo quindi di distinguere i ruoli di supervisione da quelli esecutivi.
+    \item \textbf{Tracciabilità dell'Origine}: È stata aggiunta l'entità \textit{Soggetto} (es. paziente o organismo modello), legata al \textit{Campione} tramite la relazione \textit{Fornisce}. Fondamentale per tracciare la provenienza biologica del materiale analizzato.
+    \item \textbf{Risoluzione dei Risultati Sperimentali}: La relazione tra esperimento e risultati è stata raffinata introducendo l'entità \textit{Misurazione}. Questa è collegata sia all'\textit{Esperimento} (relazione \textit{Genera}) sia allo specifico \textit{Campione} a cui il dato si riferisce, garantendo l'integrità del dato scientifico.
+    \item \textbf{Output della Ricerca}: Aggiunta l'entità \textit{Pubblicazione}, collegata al \textit{Progetto Scientifico} tramite la relazione \textit{Deriva}, per registrare i prodotti bibliografici ottenuti grazie ai finanziamenti del progetto.
+    \item \textbf{Gestione Anagrafica}: Sono stati esplicitati gli attributi compositi \textit{Indirizzo} (per il Laboratorio) e \textit{Contatti} (per il Ricercatore) per una gestione realistica dei recapiti.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/RICERCATORE_rivisitato.png}
+    \caption{Schema E-R della vista del Ricercatore}
+    \label{fig:er_ricercatore}
+\end{figure}
+
+\subsubsection{Schema E-R Esperimento}
+Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le seguenti modifiche e integrazioni per garantire la completezza informativa e la coerenza logica del database:
+
+\begin{enumerate}
+    \item \textbf{Decomposizione in Fasi Operative}: L'entità \textit{Esperimento} è stata scomposta nell'entità debole \textit{Fase Sperimentale} tramite la relazione identificante \textit{Composto Da}. Questo assicura che ogni attività sia tracciata nella sua sequenza precisa.
+    \item \textbf{Aggancio delle Risorse}: La \textit{Fase Sperimentale} è diventata il nodo di consumo delle risorse. È stata modellata la relazione molti-a-molti \textit{Utilizza} con la \textit{Strumentazione} e la relazione \textit{Consuma} con l'\textit{Entità Reagente}, permettendo il calcolo dei costi e lo scarico preciso del magazzino.
+    \item \textbf{Gestione della Qualità}: È stata introdotta l'entità \textit{Manutenzione}, legata alla \textit{Strumentazione} tramite la relazione \textit{Sottoposta A}. Soddisfando l'esigenza di certificazione della strumentazione.
+    \item \textbf{Raffinamento dei Dati}: La relazione \textit{Genera} è stata spostata dalla Misurazione all'entità \textit{Fase Sperimentale}. L'entità \textit{Misurazione} è stata arricchita con la connessione all'entità \textit{Parametro} (relazione \textit{Rileva}), standardizzando la tipologia di dato raccolto.
+    \item \textbf{Integrazione con il Campione}: L'entità \textit{Misurazione} mantiene il suo legame con il \textit{Campione} (relazione \textit{Relativa A}), chiudendo il ciclo di vita del dato (da dove proviene, come è stato generato e cosa rappresenta).
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/ESPERIMENTO_rivisitato.png}
+    \caption{Schema E-R della vista dell'Esperimento}
+    \label{fig:er_esperimento}
+\end{figure}
+
+\subsubsection{Schema E-R del Laboratorio}
+Nel passaggio dallo scheletro allo schema E-R finale, sono state apportate le seguenti modifiche e integrazioni per garantire la conformità agli standard di qualità (ISO 20387 \cite{iso20387}) e la completa tracciabilità delle risorse:
+
+\begin{enumerate}
+    \item \textbf{Distinzione Reagente-Lotto:} L'entità \textit{Reagente} dello scheletro è stata raffinata distinguendo il concetto di \textbf{Reagente} (definizione da catalogo con proprietà chimiche) da quello di \textbf{Lotto} (istanza fisica deperibile). Questa separazione è fondamentale per gestire la data di scadenza e la quantità residua di ogni singola confezione utilizzata negli esperimenti.
+    \item \textbf{Tracciabilità della Fornitura:} L'entità \textbf{Fornitore} è stata collegata direttamente all'entità \textbf{Lotto}, permettendo di tracciare l'origine specifica di ogni materiale in ingresso nel laboratorio, associando a ogni lotto il fornitore che lo ha consegnato.
+    \item \textbf{Gestione della Manutenzione:} L'entità \textbf{Manutenzione} mantiene la relazione con \textbf{Strumentazione} per storicizzare gli interventi. L'identificazione del responsabile dell'intervento è gestita tramite l'attributo \textit{Tecnico\_Esecutore}, che permette di registrare il nome dell'operatore (interno o esterno) che ha effettuato la lavorazione.
+    \item \textbf{Standardizzazione Anagrafica:} Sono stati introdotti gli attributi compositi \textbf{Indirizzo} (per Laboratorio e Fornitore) e \textbf{Contatti} (per Fornitore), uniformando la struttura dati alle altre viste del progetto per una gestione coerente dei recapiti.
+    \item \textbf{Stato della Strumentazione:} È stato aggiunto l'attributo \textit{Stato} all'entità \textbf{Strumentazione} per permettere di distinguere operativamente gli strumenti funzionanti da quelli in manutenzione o dismessi.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/LABORATORIO_rivisitato.png}
+    \caption{Schema E-R della vista Laboratorio}
+    \label{fig:er_laboratorio}
+\end{figure}
+
+\newpage
+\section{Dizionario dei dati}
+\subsection{Dizionario entità}
+
+\begin{table}[H]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Entità} & \textbf{Descrizione} & \textbf{Attributi} & \textbf{Identificatore} \\ \hline
+Laboratorio & \begin{tabular}[c]{@{}l@{}}Struttura che ospita\\ progetti e risorse varie\end{tabular} & \begin{tabular}[c]{@{}l@{}}Codice, Nome, Piano,\\ Responsabile(FK), Indirizzo\end{tabular} & Codice \\ \hline
+Ricercatore & \begin{tabular}[c]{@{}l@{}}Personale che realizza\\ esperimenti\end{tabular} & \begin{tabular}[c]{@{}l@{}}ID\_Ricercatore, CF, Nome,\\ Cognome, Contatti\end{tabular} & ID\_Ricercatore \\ \hline
+Responsabile & Ricercatore senior & - & - \\ \hline
+Operativo & Ricercatore junior & - & - \\ \hline
+Progetto scientifico & \begin{tabular}[c]{@{}l@{}}Insieme di attività con\\ obiettivi comuni\end{tabular} & \begin{tabular}[c]{@{}l@{}}ID\_Progetto, Titolo, Descrizione,\\ Budget, Settore, Data inizio, Data fine,\\ Laboratorio\end{tabular} & ID\_Progetto \\ \hline
+Pubblicazione & \begin{tabular}[c]{@{}l@{}}Opera bibliografica che\\ descrive un progetto terminato\end{tabular} & \begin{tabular}[c]{@{}l@{}}ID\_Pubblicazione, Titolo, Data\\ pubblicazione\end{tabular} & \begin{tabular}[c]{@{}l@{}}ID\_Pubblicazione,\\ Titolo\end{tabular} \\ \hline
+Esperimento & \begin{tabular}[c]{@{}l@{}}Attività scientifica condotta in\\ laboratorio\end{tabular} & ID\_Esperimento, Titolo, Stato, Note & ID\_Esperimento \\ \hline
+Fase Sperimentale & \begin{tabular}[c]{@{}l@{}}"Sotto-attività" in cui si decompone\\ un esperimento\end{tabular} & \begin{tabular}[c]{@{}l@{}}Numero\_Fase, Titolo, Data Inizio,\\ Data Fine, Descrizione,\\ ID\_Esperimento(FK)\end{tabular} & Numero\_Fase \\ \hline
+Protocollo & Procedura standard da rispettare & Codice, Versione & Codice, Versione \\ \hline
+Protocollo Sperimentale & \begin{tabular}[c]{@{}l@{}}Protocollo da seguire durante\\ l'esecuzione di un esperimento\end{tabular} & - & - \\ \hline
+Protocollo Sicurezza & \begin{tabular}[c]{@{}l@{}}Protocollo relativo alle norme di\\ sicurezza da seguire\end{tabular} & - & - \\ \hline
+Campione & Materiale biologico oggetto di analisi & \begin{tabular}[c]{@{}l@{}}Codice, Tipo, UM, Note, Descrizione,\\ Laboratorio(FK), Quantità\end{tabular} & Codice \\ \hline
+Soggetto & Organismo o paziente & ID\_Soggetto, Specie, Sesso, Gruppo & ID\_Soggetto, Specie \\ \hline
+Misurazione & Dato analitico rilevato & \begin{tabular}[c]{@{}l@{}}ID\_Misurazione, Valore, Errore, UM,\\ Misurazione Data-ora\end{tabular} & ID\_Misurazione \\ \hline
+Parametro & Grandezza misurata & \begin{tabular}[c]{@{}l@{}}ID\_Parametro, Nome, Descrizione, \\ Valore\_Minimo, Valore\_Massimo,\\ Categoria, UM Standard\end{tabular} & ID\_Parametro \\ \hline
+Strumentazione & Apparecchiatura & \begin{tabular}[c]{@{}l@{}}Codice\_Inventario, Nome, Costruttore,\\ Modello, Stato, Seriale\end{tabular} & \begin{tabular}[c]{@{}l@{}}Codice\_Inventario,\\ Seriale\end{tabular} \\ \hline
+Manutenzione & \begin{tabular}[c]{@{}l@{}}Intervento tecnico sulla\\ strumentazione\end{tabular} & \begin{tabular}[c]{@{}l@{}}ID\_Manutenzione, Tecnico\_Esecutore,\\ Esito, Data, Tipo\end{tabular} & ID\_Manutenzione \\ \hline
+Lotto & Confezione di un reagente & \begin{tabular}[c]{@{}l@{}}Codice\_Lotto, Fornitore(FK),\\ Data\_Arrivo, Quantità\_Arrivo,\\ UM, Quantità\_Residua\end{tabular} & Codice\_Lotto \\ \hline
+Reagente & Sostanza chimica & \begin{tabular}[c]{@{}l@{}}Codice\_Catalogo, Nome, Categoria,\\ Stoccaggio\end{tabular} & \begin{tabular}[c]{@{}l@{}}Codice\_Catalogo,\\ Nome\end{tabular} \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\newpage
+\subsection{Dizionario relazioni}
+
+\begin{table}[H]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Relazione} & \textbf{Descrizione} & \textbf{Entità Coinvolte} \\ \hline
+Impiega & Assegnazione personale-laboratorio & \begin{tabular}[c]{@{}l@{}}Laboratorio (1:N)\\ Ricercatore (1:1)\end{tabular} \\ \hline
+Ospita & Assegnazione progetto-laboratorio & \begin{tabular}[c]{@{}l@{}}Laboratorio (0:N)\\ Progetto Scientifico (1:1)\end{tabular} \\ \hline
+Lavora su & Partecipazione di ricercatori ai progetti & \begin{tabular}[c]{@{}l@{}}Ricercatore (1:N)\\ Progetto Scientifico (0:N)\end{tabular} \\ \hline
+Deriva & \begin{tabular}[c]{@{}l@{}}Produzione di pubblicazione riguardanti\\ progetti\end{tabular} & \begin{tabular}[c]{@{}l@{}}Progetto Scientifico (0:N)\\ Pubblicazione (1,N)\end{tabular} \\ \hline
+Appartiene a & Inclusione dell'esperimento in un progetto & \begin{tabular}[c]{@{}l@{}}Progetto Scientifico (0,N)\\ Esperimento (1,1)\end{tabular} \\ \hline
+Conduce & Esecuzione dell'esperimento & \begin{tabular}[c]{@{}l@{}}Ricercatore (0;N)\\ Esperimento (1:1)\end{tabular} \\ \hline
+Utilizza (Protocollo) & Adozione procedure standard & \begin{tabular}[c]{@{}l@{}}Esperimento (1:N)\\ Protocollo (0:N)\end{tabular} \\ \hline
+Composto da & Decomposizione esperimento in fasi & \begin{tabular}[c]{@{}l@{}}Esperimento (1:1)\\ Fase Sperimentale (1:N)\end{tabular} \\ \hline
+Utilizza (Strumentazione) & Utilizzo di strumenti & \begin{tabular}[c]{@{}l@{}}Fase Sperimentale (0:N)\\ Strumentazione (0:N)\end{tabular} \\ \hline
+Consuma & Utilizzo di reagenti & \begin{tabular}[c]{@{}l@{}}Fase Sperimentale (0:N)\\ Reagente (0:N)\end{tabular} \\ \hline
+Genera & Produzione di dati & \begin{tabular}[c]{@{}l@{}}Fase Sperimentale (0:N)\\ Misurazione (1,1)\end{tabular} \\ \hline
+Rileva & Associazione dato-grandezza fisica & \begin{tabular}[c]{@{}l@{}}Misurazione (1:1)\\ Parametro (0:1)\end{tabular} \\ \hline
+Relativa a & Associazione risultato-campione & \begin{tabular}[c]{@{}l@{}}Misurazione (1:1)\\ Campione (0:N)\end{tabular} \\ \hline
+Utilizza (Campione) & Impiego di campioni durante un esperimento & \begin{tabular}[c]{@{}l@{}}Esperimento (1:1)\\ Campione (0:N)\end{tabular} \\ \hline
+Fornisce (Campione) & Origine del campione & \begin{tabular}[c]{@{}l@{}}Soggetto (0:N)\\ Campione (1:1)\end{tabular} \\ \hline
+Contiene (Strumentazione) & Locazione strumenti & \begin{tabular}[c]{@{}l@{}}Laboratorio (0:N)\\ Strumentazione (1:1)\end{tabular} \\ \hline
+Contiene (Lotto) & Insieme di consumabili del laboratorio & \begin{tabular}[c]{@{}l@{}}Laboratorio (0:N)\\ Lotto (1:1)\end{tabular} \\ \hline
+Sottoposto a & Intervento tecnico & \begin{tabular}[c]{@{}l@{}}Strumentazione (0:N)\\ Manutenzione (1:1)\end{tabular} \\ \hline
+Di & Associazione Lotto-Reagente & \begin{tabular}[c]{@{}l@{}}Reagente (0:N)\\ Lotto (1:1)\end{tabular} \\ \hline
+Fornisce (Lotto) & \begin{tabular}[c]{@{}l@{}}Approvvigionamento di materiale da parte\\ di fornitori\end{tabular} & \begin{tabular}[c]{@{}l@{}}Fornitore (0:N)\\ Lotto (1:1)\end{tabular} \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\newpage
+\subsection{Vincoli non esprimibili}
+\begin{itemize}
+    \item \textbf{Coerenza Temporale Progetto-Esperimento:} Un esperimento deve svolgersi necessariamente all'interno dell'intervallo temporale di validità (Data Inizio - Data Fine) del Progetto Scientifico a cui è associato.
+    \item \textbf{Disponibilità Stock:} La quantità di reagente consumata durante una fase sperimentale non può mai eccedere la quantità residua attuale del lotto selezionato.
+    \item \textbf{Blocco Strumentazione:} È vietato associare una strumentazione a una fase sperimentale se lo stato della macchina è ''In Manutenzione'' o ''Fuori Servizio''.
+    \item \textbf{Sequenzialità delle Fasi:} La data di fine di una fase sperimentale non può essere antecedente alla sua data di inizio, e l'intera fase deve essere temporalmente contenuta nella durata dell'esperimento padre.
+    \item \textbf{Integrità della Pubblicazione:} Una pubblicazione non può essere antecedente alla data di avvio del progetto scientifico da cui deriva.
+    \item \textbf{Coerenza Manutenzione:} Non è possibile registrare un nuovo intervento di manutenzione su uno strumento se esiste già un intervento aperto (senza esito o data fine) per lo stesso macchinario.
+\end{itemize}
+
+\newpage
+\section{Progettazione Logica}
+\subsection{Ristrutturazione schema E-R}
+\subsubsection{Eliminazione generalizzazioni}
+
+\begin{itemize}
+    \item \textbf{Ricercatore}: le entità figlie \textit{Responsabile} e \textit{Operativo} vengono accorpate in \textit{Ricercatore}, assorbendo gli attributi delle entità figlie.
+    \item \textbf{Protocollo}: le entità figlie \textit{Protocollo Sperimentale} e \textit{Protocollo Sicurezza} vengono accorpate in \textit{Protocollo}, assorbendo gli attributi delle entità figlie.
+    \item \textbf{Indirizzo}: l'attributo composto viene sciolto e i singoli attributi vengono aggiunti direttamente all'entità.
+    \item \textbf{Contatti}: l'attributo composto viene sciolto e i singoli attributi vengono aggiunti direttamente all'entità.
+    \item \textbf{Fase Sperimentale}: la chiave primaria è composta dalla chiave esterna dell'esperimento (\textit{ID\_Esperimento}) e da un progressivo numerico (\textit{Numero\_Fase}).
+    \item \textbf{Protocollo}: la chiave primaria è composta da \textit{Codice} e \textit{Versione}. Per tracciare lo storico delle revisioni delle varie procedure.
+\end{itemize}
+
+\subsection{Tabella dei volumi}
+
+\noindent
+\begin{minipage}{\textwidth}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{E-R} & \textbf{Tipo} & \textbf{Volume} & \textbf{Descrizione} \\ \hline
+Laboratorio & E & 5 & Strutture \\ \hline
+Ricercatore & E & 100 & Personale \\ \hline
+Progetto scientifico & E & 50 & Progetti in attivo e completati \\ \hline
+Pubblicazione & E & 150 & Stima 3 pubblicazioni per progetto \\ \hline
+Esperimento & E & 1000 & Stimati 20 esperimenti per progetto \\ \hline
+Fase Sperimentale & E & 5000 & Stimate 5 fasi per ogni esperimento \\ \hline
+Misurazione & E & 250000 & Dati grezzi \\ \hline
+Parametro & E & 200 & Tipi di analisi \\ \hline
+Protocollo & E & 100 & Procedure standard e versioni \\ \hline
+Campione & E & 5000 & Campioni biologici \\ \hline
+Soggetto & E & 500 & Pazienti, organismi \\ \hline
+Strumentazione & E & 250 & Macchine disponibili \\ \hline
+Manutenzione & E & 800 & Interventi tecnici \\ \hline
+Reagente & E & 500 & Catalogo prodotti chimici \\ \hline
+Lotto & E & 2500 & Stimati 5 lotti per reagente \\ \hline
+Fornitore & E & 25 & Fornitori \\ \hline
+Lavora su & R & 200 & Ricercatori assegnati a più progetti \\ \hline
+Deriva & R & 150 & Collegamento progetti--pubblicazioni \\ \hline
+Utilizza (Protocollo) & R & 1500 & Protocolli seguiti negli esperimenti \\ \hline
+Utilizza (Strumento) & R & 10000 & Strumenti utilizzati durante le fasi \\ \hline
+Consuma & R & 7500 & Reagenti consumati durante le fasi \\ \hline
+\end{tabular}
+}
+
+\vspace{0.5em}
+
+\raggedright
+\textbf{Legenda}
+\begin{itemize}
+  \item E = Entità
+  \item R = Relazione
+\end{itemize}
+\end{minipage}
+
+\newpage
+\subsection{Tabella delle Operazioni}
+Sulla base dei requisiti funzionali, sono state individuate le seguenti operazioni principali, corredate dalla stima della loro frequenza di esecuzione.
+
+\begin{minipage}{\textwidth}
+\begin{table}[H]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+      & Descrizione                                                                                                                     & Tipo & Frequenza   \\ \hline
+Op.1  & \begin{tabular}[c]{@{}l@{}}Inserimento di un nuovo\\ Progetto Scientifico\end{tabular}                                          & I    & 1/mese      \\ \hline
+Op.2  & \begin{tabular}[c]{@{}l@{}}Inserimento di un nuovo\\ Esperimento\end{tabular}                                                   & I    & 1/giorno    \\ \hline
+Op.3  & \begin{tabular}[c]{@{}l@{}}Inserimento di una Fase\\ Sperimentale ad un Esperimento\end{tabular}                                & I    & 5/giorno    \\ \hline
+Op.4  & \begin{tabular}[c]{@{}l@{}}Registrazione di una nuova\\ Misurazione\end{tabular}                                                & I    & 500/giorno  \\ \hline
+Op.5  & \begin{tabular}[c]{@{}l@{}}Visualizzazione fasi e risultati di\\ uno specifico Esperimento\end{tabular}                         & I    & 50/giorno   \\ \hline
+Op.6  & \begin{tabular}[c]{@{}l@{}}Visualizzazione Strumentazione\\ disponibile per l'uso\end{tabular}                                  & I    & 20/giorno   \\ \hline
+Op.7  & \begin{tabular}[c]{@{}l@{}}Verifica giacenza Lotti di un\\ Reagente\end{tabular}                                                & I    & 25/giorno   \\ \hline
+Op.8  & \begin{tabular}[c]{@{}l@{}}Scarico del magazzino successivamente\\ ad una Fase Sperimentale\end{tabular}                        & I    & 10/giorno   \\ \hline
+Op.9  & \begin{tabular}[c]{@{}l@{}}Calcolo costo totale dei Reagenti consumeti\\ da un Progetto\end{tabular}                            & B    & 1/mese      \\ \hline
+Op.10 & \begin{tabular}[c]{@{}l@{}}Ricerca Esperimenti che hanno seguito un\\ determinato Protocollo\end{tabular}                       & I    & 5/settimana \\ \hline
+Op.11 & \begin{tabular}[c]{@{}l@{}}Generazione report delle Pubblicazioni per\\ Laboratorio\end{tabular}                                & B    & 1/anno      \\ \hline
+Op.12 & Inserimento di un intervento di Manutenzione                                                                                    & I    & 2/settimana \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\vspace{0.5em}
+
+\raggedright
+\textbf{Legenda}
+\begin{itemize}
+  \item I = Interativa
+  \item B = Batch
+\end{itemize}
+\end{minipage}
+
+\subsubsection{Analisi operazioni}
+\begin{itemize}
+    \item \textbf{Operazione Critica (Op.4 - Inserimento)}: È l'operazione di scrittura più frequente (500/giorno).
+    \item \textbf{Operazione Pesante (Op.5 - Lettura)}: richiede un \texttt{JOIN} tra \textit{Esperimento}, \textit{Fase} e \textit{Misurazione}. Dato l'alto volume di letture, sarà necessaria la creazione di indici sulle chiavi esterne.
+    \item \textbf{Operazione Complessa (Op.9 - Batch)}: Richiede di unire \textit{Progetto}, \textit{Esperimento}, \textit{Fase}, \textit{Consuma}, \textit{Reagente} (o \textit{Lotto}). È una query molto costosa che attraversa molte tabelle, viene classificata come Batch.
+\end{itemize}
+
+\newpage
+\section{Valutazione dei costi dei Dati Derivati}
+Approssimiamo per semplicità 1 mese = 30 giorni.
+
+\subsection{Costo Totale Reagenti}
+Oggetto dell'analisi è l'attributo derivabile \textbf{Costo Totale Reagenti} relativo all'entità \textit{Esperimento}. Si confrontano i costi in termini di accessi in memoria tra una soluzione che calcola il valore dinamicamente (Senza Ridondanza) e una che lo memorizza come attributo aggiornato in tempo reale (Con Ridondanza).
+
+\textbf{Ipotesi:}
+\begin{itemize}
+    \item 1 mese = 30 giorni lavorativi.
+    \item Costo di lettura (R) = 1 accesso.
+    \item Costo di scrittura (W) = 2 accessi (lettura + riscrittura blocco).
+    \item Volume medio: 1 Esperimento coinvolge circa 5 Fasi e 10 consumi di reagenti totali.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|lll|}
+    \hline
+    \multicolumn{3}{|c|}{\textbf{Operazione 9: Calcolo costo totale dei reagenti (Lettura)}} \\ \hline
+    \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{Senza ridondanza} & Con ridondanza \\ \hline
+    \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Accessi per ogni\\ esecuzione\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1 (Lettura Esperimento)\\ +5 (Join con Fasi)\\ +10 (Join con Consumi)\\ +10 (Join Lotti)\\ = 26\end{tabular}} & \begin{tabular}[c]{@{}l@{}}1 (Lettura Esperimento con\\ attributo calcolato)\\ = 1 accesso\end{tabular} \\ \hline
+    \multicolumn{1}{|l|}{Costi lettura (Mese)} & \multicolumn{1}{l|}{$1 \times 26 = 26$} & $1 \times 1 = 1$ \\ \hline
+\end{tabular}%
+}
+\caption{Costi di Lettura per Costo Totale Reagenti}
+\label{tab:costi_derivati_read}
+\end{table}
+
+\begin{table}[H]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|lll|}
+    \hline
+    \multicolumn{3}{|c|}{\textbf{Operazione 8: Scarico del magazzino (Scrittura)}} \\ \hline
+    \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{Senza ridondanza} & Con ridondanza \\ \hline
+    \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Accessi per ogni\\ esecuzione\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1 (Inserimento Consuma) \\ + 2 (Update Lotto) \\ = 3 accessi\end{tabular}} & \begin{tabular}[c]{@{}l@{}}3 (Inserimento + Update Lotto) \\ + 1 (Lettura Esperimento) \\ + 2 (Update Esperimento) \\ = 6 accessi\end{tabular} \\ \hline
+    \multicolumn{1}{|l|}{Costi scrittura (Mese)} & \multicolumn{1}{l|}{$3 \times 300 = 900$} & $6 \times 300 = 1800$ \\ \hline
+    \hline
+    \multicolumn{1}{|l|}{\textbf{TOTALE (Accessi/Mese)}} & \multicolumn{1}{l|}{\textbf{26 (Lettura) + 900 (Scrittura) = 926}} & \textbf{1 (Lettura) + 1800 (Scrittura) = 1801} \\ \hline
+\end{tabular}%
+}
+\caption{Confronto Totale (Lettura + Scrittura) per Costo Esperimento}
+\label{tab:costi_derivati_total}
+\end{table}
+
+\paragraph{Decisione Progettuale (Op. 9):}
+L'analisi mostra che l'introduzione della ridondanza raddoppierebbe quasi il carico complessivo (1801 accessi contro 926). Poiché l'operazione di aggiornamento dei consumi (Op.8) è molto più frequente (quotidiana) rispetto al calcolo del costo (Op.9, mensile), \textbf{non conviene memorizzare il dato derivato}. Il costo totale verrà calcolato dinamicamente.
+
+\newpage
+\subsection{Giacenza Totale Reagente (Entità Reagente)}
+Si valuta l'introduzione dell'attributo derivato \textbf{Giacenza Totale} nell'entità \textit{Reagente}, pari alla somma delle quantità residue dei lotti associati.
+
+\textbf{Dati di analisi:}
+\begin{itemize}
+    \item \textbf{Op.7 (Lettura):} Verifica giacenza (Freq: 25/giorno $\approx$ 750/mese).
+    \item \textbf{Op.8 (Scrittura):} Scarico magazzino (Freq: 10/giorno = 300/mese).
+    \item \textbf{Volume medio:} Ogni Reagente possiede circa 5 Lotti attivi.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Confronto Costi: Giacenza Reagente}} \\ \hline
+ & \textbf{Senza ridondanza} & \textbf{Con ridondanza} \\ \hline
+Accessi lettura (Op.7) & \begin{tabular}[c]{@{}l@{}}1 (Reagente) + 5 (Lotti) \\ = 6 accessi\end{tabular} & 1 (Reagente) = 1 accesso \\ \hline
+\textbf{Costi lettura (Mese)} & $6 \times 750 = \mathbf{4.500}$ & $1 \times 750 = \mathbf{750}$ \\ \hline
+\multicolumn{3}{|c|}{\textbf{Operazione 8: Aggiornamento quantità (Scrittura)}} \\ \hline
+Accessi scrittura (Op.8) & \begin{tabular}[c]{@{}l@{}}1 (Update Lotto) \\ = 2 accessi\end{tabular} & \begin{tabular}[c]{@{}l@{}}1 (Update Lotto) + 1 (Read Reagente) \\ + 1 (Update Reagente) = 6 accessi\end{tabular} \\ \hline
+\textbf{Costi scrittura (Mese)} & $2 \times 300 = \mathbf{600}$ & $6 \times 300 = \mathbf{1.800}$ \\ \hline
+\hline
+\textbf{TOTALE (Accessi/Mese)} & $\mathbf{5.100}$ & $\mathbf{2.550}$ \\ \hline
+\end{tabular}%
+}
+\caption{Analisi della ridondanza per Giacenza Totale}
+\label{tab:costi_giacenza}
+\end{table}
+
+\paragraph{Decisione Progettuale (Op. 7):}
+In questo caso, la lettura è molto frequente (Op.7) e onerosa senza ridondanza (richiede il join su tutti i lotti). L'introduzione del dato derivato riduce il carico totale di circa il 50\% (da 5.100 a 2.550 accessi). Pertanto, \textbf{si decide di introdurre l'attributo ridondante} \textit{Giacenza Totale} nell'entità Reagente.
+
+\newpage
+\subsection{Numero Pubblicazioni per Laboratorio}
+Si valuta l'introduzione dell'attributo \textbf{Numero Pubblicazioni} nell'entità \textit{Laboratorio}.
+
+\textbf{Dati di analisi:}
+\begin{itemize}
+    \item \textbf{Op.11 (Lettura):} Report annuale pubblicazioni (Freq: 1/anno, trascurabile su base mensile $\approx$ 0.1).
+    \item \textbf{Inserimento Pubblicazione (Scrittura):} Stimati 10 nuovi articoli/mese per tutto il laboratorio.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Confronto Costi: Report Pubblicazioni}} \\ \hline
+ & \textbf{Senza ridondanza} & \textbf{Con ridondanza} \\ \hline
+Accessi lettura (Op.11) & \begin{tabular}[c]{@{}l@{}}1 (Lab) + 50 (Progetti) \\ + 150 (Pubblicazioni) \\ $\approx$ 200 accessi\end{tabular} & 1 (Lab) = 1 accesso \\ \hline
+\textbf{Costi lettura (Mese)} & $200 \times 0.1 = \mathbf{20}$ & $1 \times 0.1 \approx \mathbf{0}$ \\ \hline
+\multicolumn{3}{|c|}{\textbf{Inserimento Nuova Pubblicazione (Scrittura)}} \\ \hline
+Accessi scrittura & \begin{tabular}[c]{@{}l@{}}1 (Insert Pubblicazione) \\ = 2 accessi\end{tabular} & \begin{tabular}[c]{@{}l@{}}1 (Insert Pub) + 1 (Read Lab) \\ + 1 (Update Lab) = 6 accessi\end{tabular} \\ \hline
+\textbf{Costi scrittura (Mese)} & $2 \times 10 = \mathbf{20}$ & $6 \times 10 = \mathbf{60}$ \\ \hline
+\hline
+\textbf{TOTALE (Accessi/Mese)} & $\mathbf{40}$ & $\mathbf{60}$ \\ \hline
+\end{tabular}%
+}
+\caption{Analisi della ridondanza per Numero Pubblicazioni}
+\label{tab:costi_pubblicazioni}
+\end{table}
+
+\paragraph{Decisione Progettuale (Op. 11):}
+Nonostante il costo di lettura di un report completo sia alto, la sua frequenza è talmente bassa (annuale) che non giustifica il mantenimento di un contatore aggiornato in tempo reale. \textbf{Non si introduce ridondanza}.
+
+\newpage
+\section{Schema finale in SQL (DataGrip)}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/schema_finale_DataGrip.png}
+    \caption{Schema Logico Finale e Script SQL}
+    \label{fig:schema_sql}
+\end{figure}
+
+\subsection{Elenco delle Tabelle}
+
+\begin{itemize}
+    \item \textbf{Laboratorio} (\underline{codice\_lab}, nome, piano, via, civico, citta, cap, id\_responsabile\_scientifico) \\
+    \textit{FK: id\_responsabile\_scientifico $\rightarrow$ Ricercatore(id\_ricercatore)}
+
+    \item \textbf{Ricercatore} (\underline{id\_ricercatore}, cf, nome, cognome, email, telefono, ruolo, grado, codice\_lab) \\
+    \textit{FK: codice\_lab $\rightarrow$ Laboratorio(codice\_lab)}
+
+    \item \textbf{Fornitore} (\underline{p\_iva}, ragione\_sociale, email, telefono, via, civico, citta, cap)
+
+    \item \textbf{Reagente} (\underline{codice\_catalogo}, nome, categoria, stoccaggio, descrizione, giacenza\_totale)
+
+    \item \textbf{Strumentazione} (\underline{codice\_inventario}, nome, seriale, modello, costruttore, stato, data\_acquisto, codice\_lab) \\
+    \textit{FK: codice\_lab $\rightarrow$ Laboratorio(codice\_lab)}
+
+    \item \textbf{Ordine\_Acquisto} (\underline{id\_ordine}, data\_emissione, stato, id\_ricercatore, p\_iva\_fornitore) \\
+    \textit{FK: id\_ricercatore $\rightarrow$ Ricercatore(id\_ricercatore)} \\
+    \textit{FK: p\_iva\_fornitore $\rightarrow$ Fornitore(p\_iva)}
+
+    \item \textbf{Dettaglio\_Ordine} (\underline{id\_ordine}, \underline{numero\_riga}, codice\_reagente, quantita\_ordinata, prezzo\_pattuito, note\_riga) \\
+    \textit{FK: id\_ordine $\rightarrow$ Ordine\_Acquisto(id\_ordine)} \\
+    \textit{FK: codice\_reagente $\rightarrow$ Reagente(codice\_catalogo)}
+
+    \item \textbf{Lotto} (\underline{codice\_lotto}, data\_arrivo, data\_scadenza, quantita\_iniziale, quantita\_residua, unita\_misura, codice\_lab, id\_ordine\_origine, numero\_riga\_origine, codice\_reagente) \\
+    \textit{FK: codice\_lab $\rightarrow$ Laboratorio(codice\_lab)} \\
+    \textit{FK: (id\_ordine\_origine, numero\_riga\_origine) $\rightarrow$ Dettaglio\_Ordine(id\_ordine, numero\_riga)} \\
+    \textit{FK: codice\_reagente $\rightarrow$ Reagente(codice\_catalogo)}
+
+    \item \textbf{Protocollo} (\underline{codice}, \underline{versione}, categoria, descrizione, data\_approvazione)
+
+    \item \textbf{Progetto\_Scientifico} (\underline{id\_progetto}, titolo, descrizione, budget, settore, data\_inizio, data\_fine, codice\_lab) \\
+    \textit{FK: codice\_lab $\rightarrow$ Laboratorio(codice\_lab)}
+
+    \item \textbf{Pubblicazione} (\underline{id\_pubblicazione}, titolo, abstract, data\_pubblicazione, id\_progetto) \\
+    \textit{FK: id\_progetto $\rightarrow$ Progetto\_Scientifico(id\_progetto)}
+
+    \item \textbf{Esperimento} (\underline{id\_esperimento}, titolo, stato, note, id\_ricercatore\_responsabile, id\_progetto) \\
+    \textit{FK: id\_ricercatore\_responsabile $\rightarrow$ Ricercatore(id\_ricercatore)} \\
+    \textit{FK: id\_progetto $\rightarrow$ Progetto\_Scientifico(id\_progetto)}
+
+    \item \textbf{Fase\_Sperimentale} (\underline{id\_esperimento}, \underline{numero\_fase}, titolo, descrizione, data\_inizio, data\_fine, codice\_protocollo, versione\_protocollo) \\
+    \textit{FK: id\_esperimento $\rightarrow$ Esperimento(id\_esperimento)} \\
+    \textit{FK: (codice\_protocollo, versione\_protocollo) $\rightarrow$ Protocollo(codice, versione)}
+
+    \item \textbf{Soggetto} (\underline{id\_soggetto}, specie, sesso, gruppo)
+
+    \item \textbf{Campione} (\underline{codice\_campione}, tipo, quantita, unita\_misura, descrizione, id\_soggetto, id\_esperimento\_origine) \\
+    \textit{FK: id\_soggetto $\rightarrow$ Soggetto(id\_soggetto)} \\
+    \textit{FK: id\_esperimento\_origine $\rightarrow$ Esperimento(id\_esperimento)}
+
+    \item \textbf{Parametro} (\underline{id\_parametro}, nome, unita\_standard, valore\_minimo, valore\_massimo)
+
+    \item \textbf{Misurazione} (\underline{id\_misurazione}, valore, errore, data\_ora, unita\_misura, id\_esperimento, numero\_fase, id\_parametro, codice\_campione) \\
+    \textit{FK: (id\_esperimento, numero\_fase) $\rightarrow$ Fase\_Sperimentale(id\_esperimento, numero\_fase)} \\
+    \textit{FK: id\_parametro $\rightarrow$ Parametro(id\_parametro)} \\
+    \textit{FK: codice\_campione $\rightarrow$ Campione(codice\_campione)}
+
+    \item \textbf{Manutenzione} (\underline{id\_manutenzione}, data, tipo, esito, tecnico\_esecutore, note, codice\_strumento, p\_iva\_fornitore) \\
+    \textit{FK: codice\_strumento $\rightarrow$ Strumentazione(codice\_inventario)} \\
+    \textit{FK: p\_iva\_fornitore $\rightarrow$ Fornitore(p\_iva)}
+
+    \item \textbf{Team\_Progetto} (\underline{id\_progetto}, \underline{id\_ricercatore}, data\_assegnazione, ruolo\_specifico) \\
+    \textit{FK: id\_progetto $\rightarrow$ Progetto\_Scientifico(id\_progetto)} \\
+    \textit{FK: id\_ricercatore $\rightarrow$ Ricercatore(id\_ricercatore)}
+
+    \item \textbf{Prenotazione\_Strumento} (\underline{id\_prenotazione}, id\_esperimento, numero\_fase, codice\_strumento, data\_inizio, data\_fine) \\
+    \textit{FK: (id\_esperimento, numero\_fase) $\rightarrow$ Fase\_Sperimentale(id\_esperimento, numero\_fase)} \\
+    \textit{FK: codice\_strumento $\rightarrow$ Strumentazione(codice\_inventario)}
+
+    \item \textbf{Prelievo\_Materiale} (\underline{id\_movimento}, id\_esperimento, numero\_fase, codice\_lotto, quantita\_prelevata, data\_movimento) \\
+    \textit{FK: (id\_esperimento, numero\_fase) $\rightarrow$ Fase\_Sperimentale(id\_esperimento, numero\_fase)} \\
+    \textit{FK: codice\_lotto $\rightarrow$ Lotto(codice\_lotto)}
+\end{itemize}
 
 \newpage
 \addcontentsline{toc}{section}{Bibliografia}
@@ -160,22 +602,3 @@ Manutenzione     & \begin{tabular}[c]{@{}l@{}}Intervento tecnico effettuato sull
 \appendix
 
 \end{document}
-
-
-
-
-
-
-%All other official TU Delft colours
-\definecolor{donkerblauw}{RGB}{12, 35, 64}
-\definecolor{turkoois}{RGB}{0, 184, 200}
-\definecolor{blauw}{RGB}{0, 118, 194}
-\definecolor{paars}{RGB}{111, 29, 119}
-\definecolor{roze}{RGB}{239, 96, 163}
-\definecolor{framboos}{RGB}{165, 0, 52}
-\definecolor{rood}{RGB}{224, 60, 49}
-\definecolor{oranje}{RGB}{237, 104, 66}
-\definecolor{geel}{RGB}{255, 184, 28}
-\definecolor{lichtgroen}{RGB}{108, 194, 74}
-\definecolor{donkergroen}{RGB}{0, 155, 119}
-%You can use these to change the hyperlink colour or the colour of the header or whatever. Glück Auf!
